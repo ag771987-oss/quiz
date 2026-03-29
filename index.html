@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz SNA</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --correct-bg: #dcfce7;
+      --correct-border: #16a34a;
+      --wrong-bg: #fee2e2;
+      --wrong-border: #dc2626;
+      --info-bg: #eff6ff;
+      --info-border: #60a5fa;
+      --star: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 18px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .star-btn {
+      border: none;
+      background: white;
+      border-radius: 999px;
+      width: 54px;
+      height: 54px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      line-height: 1;
+    }
+
+    .star-btn.active {
+      color: var(--star);
+    }
+
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 15px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .toolbar button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .toolbar button.active-mode {
+      background: var(--primary);
+      color: white;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    }
+
+    .materia {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+
+    .domanda {
+      font-size: 31px;
+      line-height: 1.35;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .risposte {
+      display: grid;
+      gap: 14px;
+    }
+
+    .risposta-btn {
+      width: 100%;
+      text-align: left;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      padding: 18px 20px;
+      background: #e5e7eb;
+      color: #111;
+      font-size: 17px;
+      line-height: 1.45;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .risposta-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .risposta-btn strong {
+      display: inline-block;
+      min-width: 26px;
+    }
+
+    .risposta-btn.disabled {
+      cursor: default;
+      opacity: 0.95;
+    }
+
+    .risposta-btn.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct-border);
+    }
+
+    .risposta-btn.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong-border);
+    }
+
+    .feedback {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 28px;
+    }
+
+    .feedback.correct {
+      color: #15803d;
+    }
+
+    .feedback.wrong {
+      color: #b91c1c;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .action-btn {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      background: var(--primary);
+      color: white;
+    }
+
+    .action-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .action-btn.secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .action-btn.secondary:hover {
+      background: #d1d5db;
+    }
+
+    .spiegazione-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--info-bg);
+      border: 1px solid var(--info-border);
+      border-radius: 14px;
+      display: none;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .spiegazione-box.visible {
+      display: block;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .empty-box {
+      margin-top: 10px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      color: #9a3412;
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .domanda {
+        font-size: 25px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .risposta-btn {
+        font-size: 16px;
+        padding: 16px;
+      }
+
+      .star-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-top">
+        <h1>Quiz SNA</h1>
+        <button id="star-btn" class="star-btn" title="Aggiungi ai preferiti" onclick="togglePreferito()">☆</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="pill">Domanda: <span id="numero-domanda">-</span></div>
+        <div class="pill">Corrette: <span id="corrette">0</span></div>
+        <div class="pill">Sbagliate: <span id="sbagliate">0</span></div>
+        <div class="pill">Totale risposte: <span id="totale-risposte">0</span></div>
+        <div class="pill">Preferiti: <span id="totale-preferiti">0</span></div>
+      </div>
+
+      <div class="toolbar">
+        <button id="mode-all" class="active-mode" onclick="setModalita('tutte')">Tutte</button>
+        <button id="mode-pref" onclick="setModalita('preferiti')">Solo preferiti</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="materia" id="materia">Materia</div>
+      <div class="domanda" id="domanda">Caricamento domanda...</div>
+
+      <div class="risposte" id="risposte"></div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="actions">
+        <button class="action-btn secondary" id="btn-spiegazione" onclick="toggleSpiegazione()" disabled>
+          Mostra spiegazione
+        </button>
+        <button class="action-btn" onclick="prossimaDomanda()">
+          Prossima domanda
+        </button>
+      </div>
+
+      <div class="spiegazione-box" id="spiegazione-box"></div>
+      <div class="empty-box" id="empty-box">Non hai ancora aggiunto domande ai preferiti.</div>
+
+      <div class="footer-note">
+        Tocca la stellina per salvare la domanda corrente nei preferiti.
+      </div>
+    </div>
+  </div>
+
+  <script src="domande.js"></script>
+  <script>
+    let corrente = null;
+    let correttaGiaData = false;
+    let corrette = 0;
+    let sbagliate = 0;
+    let totaleRisposte = 0;
+    let modalita = "tutte";
+
+    function caricaPreferiti() {
+      try {
+        const raw = localStorage.getItem("quiz_preferiti");
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function salvaPreferiti(lista) {
+      localStorage.setItem("quiz_preferiti", JSON.stringify(lista));
+    }
+
+    function isPreferita(id) {
+      return caricaPreferiti().includes(id);
+    }
+
+    function togglePreferito() {
+      if (!corrente) return;
+
+      const preferiti = caricaPreferiti();
+      const index = preferiti.indexOf(corrente.id);
+
+      if (index >= 0) {
+        preferiti.splice(index, 1);
+      } else {
+        preferiti.push(corrente.id);
+      }
+
+      salvaPreferiti(preferiti);
+      aggiornaStellina();
+      aggiornaContatorePreferiti();
+    }
+
+    function aggiornaStellina() {
+      const btn = document.getElementById("star-btn");
+      if (!corrente) {
+        btn.textContent = "☆";
+        btn.classList.remove("active");
+        return;
+      }
+
+      if (isPreferita(corrente.id)) {
+        btn.textContent = "★";
+        btn.classList.add("active");
+        btn.title = "Rimuovi dai preferiti";
+      } else {
+        btn.textContent = "☆";
+        btn.classList.remove("active");
+        btn.title = "Aggiungi ai preferiti";
+      }
+    }
+
+    function aggiornaContatorePreferiti() {
+      document.getElementById("totale-preferiti").innerText = caricaPreferiti().length;
+    }
+
+    function getPoolDomande() {
+      if (modalita === "preferiti") {
+        const preferiti = caricaPreferiti();
+        return DOMANDE.filter(d => preferiti.includes(d.id));
+      }
+      return DOMANDE;
+    }
+
+    function setModalita(nuovaModalita) {
+      modalita = nuovaModalita;
+
+      document.getElementById("mode-all").classList.toggle("active-mode", modalita === "tutte");
+      document.getElementById("mode-pref").classList.toggle("active-mode", modalita === "preferiti");
+
+      prossimaDomanda();
+    }
+
+    function prossimaDomanda() {
+      const pool = getPoolDomande();
+      const emptyBox = document.getElementById("empty-box");
+
+      if (!pool.length) {
+        corrente = null;
+        document.getElementById("numero-domanda").innerText = "-";
+        document.getElementById("materia").innerText = "Preferiti";
+        document.getElementById("domanda").innerText = "Nessuna domanda disponibile.";
+        document.getElementById("risposte").innerHTML = "";
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("btn-spiegazione").disabled = true;
+        document.getElementById("spiegazione-box").classList.remove("visible");
+        document.getElementById("spiegazione-box").innerText = "";
+        emptyBox.style.display = "block";
+        aggiornaStellina();
+        return;
+      }
+
+      emptyBox.style.display = "none";
+
+      const indice = Math.floor(Math.random() * pool.length);
+      corrente = pool[indice];
+      correttaGiaData = false;
+
+      document.getElementById("numero-domanda").innerText = corrente.id;
+      document.getElementById("materia").innerText = corrente.materia;
+      document.getElementById("domanda").innerText = corrente.domanda;
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("feedback").className = "feedback";
+
+      const spiegazioneBox = document.getElementById("spiegazione-box");
+      spiegazioneBox.classList.remove("visible");
+      spiegazioneBox.innerText = corrente.spiegazione;
+
+      const btnSpiegazione = document.getElementById("btn-spiegazione");
+      btnSpiegazione.disabled = true;
+      btnSpiegazione.innerText = "Mostra spiegazione";
+
+      const risposte = document.getElementById("risposte");
+      risposte.innerHTML = "";
+
+      ["A", "B", "C", "D", "E"].forEach(lettera => {
+        if (corrente.opzioni[lettera]) {
+          const btn = document.createElement("button");
+          btn.className = "risposta-btn";
+          btn.innerHTML = `<strong>${lettera}:</strong> ${corrente.opzioni[lettera]}`;
+          btn.onclick = () => verificaRisposta(lettera);
+          risposte.appendChild(btn);
+        }
+      });
+
+      aggiornaStellina();
+    }
+
+    function verificaRisposta(letteraSelezionata) {
+      if (!corrente || correttaGiaData) return;
+
+      correttaGiaData = true;
+      totaleRisposte++;
+
+      const bottoni = document.querySelectorAll(".risposta-btn");
+      bottoni.forEach(btn => {
+        btn.classList.add("disabled");
+        btn.disabled = true;
+
+        const testo = btn.innerText.trim();
+        const lettera = testo.charAt(0);
+
+        if (lettera === corrente.corretta) {
+          btn.classList.add("correct");
+        }
+
+        if (lettera === letteraSelezionata && letteraSelezionata !== corrente.corretta) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      const feedback = document.getElementById("feedback");
+
+      if (letteraSelezionata === corrente.corretta) {
+        corrette++;
+        feedback.innerText = "✅ Risposta corretta";
+        feedback.classList.add("correct");
+      } else {
+        sbagliate++;
+        feedback.innerText = `❌ Risposta sbagliata. La risposta corretta è ${corrente.corretta}.`;
+        feedback.classList.add("wrong");
+      }
+
+      document.getElementById("corrette").innerText = corrette;
+      document.getElementById("sbagliate").innerText = sbagliate;
+      document.getElementById("totale-risposte").innerText = totaleRisposte;
+
+      document.getElementById("btn-spiegazione").disabled = false;
+    }
+
+    function toggleSpiegazione() {
+      if (!corrente) return;
+
+      const box = document.getElementById("spiegazione-box");
+      const btn = document.getElementById("btn-spiegazione");
+
+      box.classList.toggle("visible");
+      btn.innerText = box.classList.contains("visible")
+        ? "Nascondi spiegazione"
+        : "Mostra spiegazione";
+    }
+
+    aggiornaContatorePreferiti();
+    prossimaDomanda();
+  </script>
+</body>
+</html>
