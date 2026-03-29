@@ -1,17 +1,5 @@
 const DOMANDE = [
   {
-    id: 1,
-    materia: "Comprensione",
-    domanda: "Secondo il brano:",
-    opzioni: {
-      A: "Il comparto manifatturiero registra una flessione più contenuta rispetto al settore dei servizi ma non a quello delle costruzioni.",
-      B: "Il comparto manifatturiero registra una flessione più contenuta rispetto ai settori dei servizi e a quello delle costruzioni.",
-      C: "Il comparto manifatturiero registra una flessione più contenuta rispetto al settore delle costruzioni ma non a quello dei servizi."
-    },
-    corretta: "B",
-    spiegazioneId: "spiegazione_q1"
-  },
-  {
     id: 2,
     materia: "Comprensione",
     domanda: "Nel comparto manifatturiero si rileva un peggioramento delle attese su:",
