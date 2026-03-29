@@ -9,7 +9,7 @@ const DOMANDE = [
       C: "Il comparto manifatturiero registra una flessione più contenuta rispetto al settore delle costruzioni ma non a quello dei servizi."
     },
     corretta: "B",
-    spiegazione: "La risposta corretta è la B, perché il brano afferma espressamente che il comparto manifatturiero registra una flessione più contenuta rispetto ai settori dei servizi e a quello delle costruzioni. Le opzioni A e C alterano questo rapporto comparativo."
+    spiegazioneId: "spiegazione_q1"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const DOMANDE = [
       C: "Produzione."
     },
     corretta: "C",
-    spiegazione: "La risposta corretta è la C, perché il brano dice che nel comparto manifatturiero si rileva un peggioramento delle attese sulla produzione, mentre giudizi sul livello della domanda e saldo delle scorte restano sostanzialmente stabili."
+    spiegazioneId: "spiegazione_q2"
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const DOMANDE = [
       C: "Isidoro è lo zio di Isacco."
     },
     corretta: "B",
-    spiegazione: "La risposta corretta è la B. Sappiamo solo che Ilario e Irene sono figli di due fratelli, quindi sono cugini. Tuttavia il riferimento a Isacco come nonno materno del figlio di Irene non consente di ricostruire con certezza un rapporto preciso tra Isacco e Isidoro."
+    spiegazioneId: "spiegazione_q3"
   },
   {
     id: 4,
@@ -45,6 +45,18 @@ const DOMANDE = [
       C: "Non si può escludere che Amedeo faccia il venditore."
     },
     corretta: "B",
-    spiegazione: "La risposta corretta è la B, perché dalla premessa sappiamo solo che chi fa il venditore è loquace, non il contrario. Quindi non si può concludere che tutti i loquaci facciano i venditori. A è corretta, e anche C è compatibile con le premesse."
+    spiegazioneId: "spiegazione_q4"
+  },
+  {
+    id: 5,
+    materia: "Diritto Costituzionale",
+    domanda: "Secondo l'art. 48 della Costituzione, il voto è:",
+    opzioni: {
+      A: "Facoltativo e segreto.",
+      B: "Personale ed eguale, libero e segreto.",
+      C: "Personale ma delegabile in caso di impedimento."
+    },
+    corretta: "B",
+    spiegazioneId: "spiegazione_q5"
   }
 ];
