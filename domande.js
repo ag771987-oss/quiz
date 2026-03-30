@@ -22,9 +22,8 @@ const DOMANDE = [
     },
     corretta: "C",
     spiegazioneId: "spiegazione_q2"
-  }
-];
-{
+  },
+  {
     id: 3,
     materia: "Comprensione",
     domanda: "Leggere il brano e rispondere alla seguente domanda. A novembre 2018 si registra una flessione sia dell'indice del clima di fiducia dei consumatori sia dell'indice composito del clima di fiducia delle imprese. Per le componenti dei climi di fiducia delle imprese nel comparto manifatturiero (che registra una flessione più contenuta rispetto ai settori dei servizi e a quello delle costruzioni) si rileva un peggioramento delle attese sulla produzione; i giudizi sul livello della domanda e il saldo delle scorte di magazzino rimangono sostanzialmente stabili rispetto al mese di ottobre 2018. Nel settore delle costruzioni, si registra un peggioramento sia dei giudizi sugli ordini sia delle aspettative sull'occupazione. Per quanto riguarda il settore dei servizi, tutte le componenti sono in calo: si segnala in particolare il deterioramento dei giudizi sull'andamento degli affari e la contrazione sia dei giudizi sia delle attese sugli ordini. Nel commercio al dettaglio, l'aumento dell'indice è dovuto principalmente al miglioramento dei giudizi sulle vendite e ad una marcata contrazione del saldo relativo alle scorte di magazzino. Invece, le aspettative sulle vendite future sono in diminuzione. Nel settore delle costruzioni, si registra un peggioramento di:",
@@ -47,8 +46,8 @@ const DOMANDE = [
     },
     corretta: "A",
     spiegazioneId: "spiegazione_q4"
-  }
-{
+  },
+  {
     id: 5,
     materia: "Comprensione",
     domanda: "dell'indice è dovuto principalmente: (si contrassegni la risposta errata).",
@@ -215,8 +214,8 @@ const DOMANDE = [
     },
     corretta: "A",
     spiegazioneId: "spiegazione_q18"
-  }
-{
+  },
+  {
     id: 19,
     materia: "Diritto Amministrativo",
     domanda: "L'esecutorietà del provvedimento amministrativo:",
@@ -299,8 +298,8 @@ const DOMANDE = [
     },
     corretta: "A",
     spiegazioneId: "spiegazione_q25"
-  }
-{
+  },
+  {
     id: 26,
     materia: "Diritto",
     domanda: "Il termine di cinque anni per la prescrizione del diritto al risarcimento del danno in materia di responsabilità contabile decorre:",
@@ -542,10 +541,6 @@ const DOMANDE = [
   },
   {
     id: 46,
-    materia: "Contabilità Pubblica",
-    domanda: "I sistemi di contabilità e bilancio delle amministrazioni pubbliche italiane sono stati oggetto di un profondo processo di rinnovamento finalizzato a una loro totale armonizzazione. L'armonizzazione dei bilanci pubblici è stata introdotta nel nostro ordinamento:",
-{
-    id: 46,
     materia: "Diritto Costituzionale",
     domanda: "Il principio del pareggio di bilancio è stato introdotto nella Costituzione:",
     opzioni: {
@@ -666,19 +661,6 @@ const DOMANDE = [
   },
   {
     id: 56,
-    materia: "Comportamentale",
-    domanda: "ADATTAMENTO AL CAMBIAMENTO: Hai seguito diversi progetti di innovazione nell'ambito della formazione on line in qualità di addetto ai processi di digitalizzazione, e hai ricevuto dei buoni riscontri dai tuoi clienti interni. Tuttavia, ritieni utile acquisire maggiori conoscenze nell'area tecnologica della formazione. Nel contempo ricevi una proposta dal direttore dell'ufficio Information Technology, tuo supervisore, che ti propone di occuparti di un altro progetto di digitalizzazione che",
-    opzioni: {
-      A: "",
-      B: "",
-      C: ""
-    },
-    corretta: "",
-    spiegazioneId: "spiegazione_q56"
-  }
-const DOMANDE = [
-  {
-    id: 56,
     materia: "Competenze comportamentali",
     domanda: "APPRENDIMENTO CONTINUO: Lavori da un anno nell'area della formazione on line della tua organizzazione e finora hai avuto buoni riscontri sul tuo lavoro. Il tuo direttore ti chiede se saresti disponibile ad occuparti di un nuovo progetto che coinvolge più funzioni. Questo ti darebbe l'opportunità di crescere sul piano delle competenze, ma non ti consentirebbe di consolidare la tua esperienza nell'area della formazione on line.",
     opzioni: {
@@ -724,8 +706,8 @@ const DOMANDE = [
     },
     corretta: "",
     spiegazioneId: ""
-  }
-{
+  },
+  {
     id: 60,
     materia: "PRESA DI DECISIONE",
     domanda: "Prendendo in considerazione il fatto che hai sempre mostrato curiosità, apertura e conoscenze approfondite in tema di formazione, oggi il tuo capo ti ha chiesto di lavorare a un programma innovativo di formazione tecnica di livello internazionale. Ti comunica che i tempi sono sfidanti, le attività da portare avanti sono molte e coinvolgono più uffici dell'amministrazione. Anche se alcuni aspetti di questo programma ti sono familiari, ti rendi conto che è molto più complesso rispetto alla prima idea che ti eri fatto/a.",
