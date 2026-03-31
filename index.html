@@ -842,9 +842,10 @@
       const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
       window._TUTTE_LE_DOMANDE = [];
       toLoad.forEach(pack => {
+        const fileName = pack.file.split("/").pop().replace(/\.js$/, "");
         const domande = window._QUIZ_PACKS[pack.id] || [];
         domande.forEach(d => {
-          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: pack.label, _packId: pack.id }));
+          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: fileName, _packId: pack.id }));
         });
       });
 
