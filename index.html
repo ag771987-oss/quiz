@@ -110,6 +110,7 @@
     }
 
     .card {
+      position: relative;
       background: var(--card);
       border-radius: 18px;
       padding: 24px;
@@ -375,6 +376,79 @@
         font-size: 24px;
       }
     }
+
+    .source-badge {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 11px;
+      color: var(--muted);
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 10px;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .source-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .source-overlay.visible {
+      display: flex;
+    }
+
+    .source-modal {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .source-modal h2 {
+      margin: 0 0 18px;
+      font-size: 20px;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .source-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 15px;
+      user-select: none;
+    }
+
+    .source-item:hover {
+      background: #f9fafb;
+    }
+
+    .source-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
   </style>
 </head>
 <body>
@@ -396,10 +470,12 @@
       <div class="toolbar">
         <button id="mode-all" class="active-mode" onclick="setModalita('tutte')">Tutte</button>
         <button id="mode-pref" onclick="setModalita('preferiti')">Solo preferiti</button>
+        <button onclick="mostraSelezioneFonti()">📂 Cambia fonti</button>
       </div>
     </div>
 
     <div class="card">
+      <div class="source-badge" id="source-badge"></div>
       <div class="materia" id="materia">Materia</div>
       <div class="domanda" id="domanda">Caricamento domanda...</div>
 
@@ -425,6 +501,15 @@
     </div>
   </div>
 
+  <div class="source-overlay" id="source-overlay">
+    <div class="source-modal">
+      <h2>Seleziona le fonti delle domande</h2>
+      <div class="source-list" id="source-list"></div>
+      <button class="action-btn" onclick="avviaQuiz()" style="width:100%">Avvia Quiz</button>
+      <div id="source-errore" style="display:none; margin-top:12px; color:#b91c1c; font-size:14px;">Seleziona almeno un file.</div>
+    </div>
+  </div>
+
   <div class="norma-overlay" id="norma-overlay" onclick="chiudiNorma(event)">
     <div class="norma-modal" id="norma-modal">
       <div class="norma-modal-header">
@@ -436,9 +521,7 @@
     </div>
   </div>
 
-  <script src="domande.js"></script>
-  <script src="spiegazioni.js"></script>
-  <script src="norme/costituzione/cost_art_48.js"></script>
+  <script src="domande/manifest.js"></script>
   <script>
     let corrente = null;
     let correttaGiaData = false;
@@ -508,9 +591,9 @@
     function getPoolDomande() {
       if (modalita === "preferiti") {
         const preferiti = caricaPreferiti();
-        return DOMANDE.filter(d => preferiti.includes(d.id));
+        return (window._TUTTE_LE_DOMANDE || []).filter(d => preferiti.includes(d.id));
       }
-      return DOMANDE;
+      return window._TUTTE_LE_DOMANDE || [];
     }
 
     function setModalita(nuovaModalita) {
@@ -538,8 +621,7 @@
         document.getElementById("spiegazione-box").innerText = "";
         emptyBox.style.display = "block";
         aggiornaStellina();
-        return;
-      }
+      document.getElementById("source-badge").textContent = "";
 
       emptyBox.style.display = "none";
 
@@ -575,6 +657,7 @@
       });
 
       aggiornaStellina();
+      document.getElementById("source-badge").textContent = corrente._source || "";
     }
 
     function verificaRisposta(letteraSelezionata) {
@@ -637,7 +720,8 @@
 
     function renderSpiegazione(box) {
       box.innerHTML = "";
-      const spiega = SPIEGAZIONI[corrente.spiegazioneId];
+      const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
+      const spiega = packSpiega[corrente.id] || null;
 
       if (!spiega) {
         const em = document.createElement("em");
@@ -686,8 +770,78 @@
       document.getElementById("norma-overlay").classList.remove("visible");
     }
 
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[src="' + src + '"]');
+        if (existing) { resolve(); return; }
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = () => reject(new Error("Impossibile caricare: " + src));
+        document.head.appendChild(s);
+      });
+    }
+
+    function mostraSelezioneFonti() {
+      const overlay = document.getElementById("source-overlay");
+      overlay.classList.add("visible");
+      const list = document.getElementById("source-list");
+      list.innerHTML = "";
+      QUIZ_MANIFEST.forEach(pack => {
+        const label = document.createElement("label");
+        label.className = "source-item";
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.value = pack.id;
+        cb.checked = true;
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(" " + pack.label));
+        list.appendChild(label);
+      });
+      document.getElementById("source-errore").style.display = "none";
+    }
+
+    async function avviaQuiz() {
+      const checkboxes = document.querySelectorAll("#source-list input[type='checkbox']:checked");
+      const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+      if (!selectedIds.length) {
+        document.getElementById("source-errore").style.display = "block";
+        return;
+      }
+      const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
+      window._QUIZ_PACKS = window._QUIZ_PACKS || {};
+      window._QUIZ_SPIEGAZIONI = window._QUIZ_SPIEGAZIONI || {};
+      try {
+        for (const pack of toLoad) {
+          if (!window._QUIZ_PACKS[pack.id]) {
+            await loadScript(pack.file);
+          }
+          if (pack.spiegazioni && !window._QUIZ_SPIEGAZIONI[pack.id]) {
+            await loadScript(pack.spiegazioni);
+          }
+          if (pack.norme) {
+            for (const normaFile of pack.norme) {
+              await loadScript(normaFile).catch(() => {});
+            }
+          }
+        }
+      } catch (e) {
+        alert("Errore nel caricamento del file: " + e.message);
+        return;
+      }
+      window._TUTTE_LE_DOMANDE = [];
+      toLoad.forEach(pack => {
+        const domande = window._QUIZ_PACKS[pack.id] || [];
+        domande.forEach(d => {
+          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: pack.label, _packId: pack.id }));
+        });
+      });
+      document.getElementById("source-overlay").classList.remove("visible");
+      prossimaDomanda();
+    }
+
     aggiornaContatorePreferiti();
-    prossimaDomanda();
+    mostraSelezioneFonti();
   </script>
 </body>
 </html> 

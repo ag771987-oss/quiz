@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Format Transcriber</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+:root{
+  --bg:#0f0f0f;--bg2:#161616;--bg3:#1e1e1e;
+  --b1:#2a2a2a;--b2:#383838;
+  --amber:#f59e0b;--amber2:#fcd34d;
+  --green:#10b981;--red:#ef4444;--blue:#3b82f6;--purple:#8b5cf6;
+  --t1:#e5e5e5;--t2:#a3a3a3;--t3:#636363;--t4:#404040;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:var(--sans);font-size:13px;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.hd{display:flex;align-items:center;background:var(--bg2);border-bottom:1px solid var(--b1);flex-shrink:0}
+.logo{width:44px;height:44px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:14px;color:#000;flex-shrink:0}
+.hd-mid{flex:1;padding:0 16px}
+.hd-mid h1{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em}
+.hd-mid p{font-size:11px;color:var(--t3);margin-top:1px}
+.key-bar{display:flex;align-items:center;gap:8px;padding:0 16px;border-left:1px solid var(--b1)}
+.key-bar label{font-family:var(--mono);font-size:10px;color:var(--t3);white-space:nowrap}
+.key-bar input{background:var(--bg);border:1px solid var(--b2);padding:4px 10px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;width:260px;border-radius:2px}
+.key-bar input:focus{border-color:var(--amber)}
+.pill{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap}
+.pill-js{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.pill-ai{background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.steps{display:flex;background:var(--bg2);border-bottom:1px solid var(--b1);flex-shrink:0;padding:0 8px}
+.st{display:flex;align-items:center;gap:7px;padding:9px 16px;font-family:var(--mono);font-size:10px;color:var(--t4);border-bottom:2px solid transparent}
+.st.on{color:var(--amber);border-bottom-color:var(--amber)}
+.st.ok{color:var(--green);border-bottom-color:var(--green)}
+.st-n{width:16px;height:16px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0}
+.st.ok .st-n{background:var(--green);border-color:var(--green);color:#000}
+.st-arr{color:var(--b2);font-size:12px;padding:0 2px}
+main{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:0;overflow:hidden}
+.pane{display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--b1)}
+.pane:last-child{border-right:none}
+.pane-hd{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:var(--bg3);border-bottom:1px solid var(--b1);flex-shrink:0}
+.pane-title{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)}
+.badge{font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:2px;font-weight:500}
+.ba{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
+.bg{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+.bn{background:rgba(100,100,100,.1);color:var(--t3);border:1px solid var(--b1)}
+.pane-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+
+/* ── Drop zone: label wraps the visual area, input hidden outside ── */
+.dz-inp{display:none}
+.dz{border:1.5px dashed var(--b2);border-radius:4px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);display:block}
+.dz:hover,.dz.over{border-color:var(--amber);background:rgba(245,158,11,.02)}
+.dz-ico{font-size:20px;opacity:.3;margin-bottom:6px}
+.dz-lbl{font-family:var(--mono);font-size:10px;color:var(--t3)}
+.dz-sub{font-size:10px;color:var(--t4);margin-top:3px}
+
+.or{display:flex;align-items:center;gap:8px}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--b1)}
+.or span{font-family:var(--mono);font-size:10px;color:var(--t4)}
+textarea{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px;color:var(--t1);font-family:var(--mono);font-size:10px;line-height:1.6;resize:vertical;width:100%;min-height:100px;outline:none}
+textarea:focus{border-color:var(--amber)}
+textarea::placeholder{color:var(--t4)}
+.btn{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;padding:7px 16px;border:none;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-a{background:var(--amber);color:#000}.btn-a:hover{background:var(--amber2)}
+.btn-g{background:transparent;color:var(--t2);border:1px solid var(--b2)}.btn-g:hover{border-color:var(--t2);color:var(--t1)}
+.btn-ok{background:var(--green);color:#000}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.sep{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);display:flex;align-items:center;gap:8px}
+.sep::after{content:'';flex:1;height:1px;background:var(--b1)}
+.info{background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.15);border-radius:3px;padding:9px 12px;font-size:11px;color:var(--t2);line-height:1.6}
+.info b{color:var(--blue)}
+.box{background:var(--bg);border:1px solid var(--b1);border-radius:3px;overflow:hidden}
+.box-hd{padding:6px 10px;background:var(--bg3);border-bottom:1px solid var(--b1);font-family:var(--mono);font-size:9px;color:var(--t3);display:flex;justify-content:space-between}
+.box-body{padding:10px;font-family:var(--mono);font-size:10px;line-height:1.7;white-space:pre-wrap;max-height:180px;overflow-y:auto;color:var(--t1)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:9px 12px}
+.card-lbl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:3px}
+.card-val{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--amber)}
+.ok-bar{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--green);display:flex;align-items:center;gap:6px}
+.warn-bar{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.25);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--amber)}
+.fm{display:flex;flex-direction:column;gap:4px}
+.fm-row{display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:6px 10px}
+.fm-src{font-family:var(--mono);font-size:10px;color:var(--t2);flex:1}
+.fm-tgt{font-family:var(--mono);font-size:10px;color:var(--green);flex:1}
+.out{background:var(--bg);border:1px solid var(--green);border-radius:3px;padding:12px;font-family:var(--mono);font-size:10px;line-height:1.8;white-space:pre-wrap;max-height:340px;overflow-y:auto;color:var(--t1)}
+.spin{display:inline-block;width:11px;height:11px;border:2px solid rgba(245,158,11,.25);border-top-color:var(--amber);border-radius:50%;animation:sp .65s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+.lg{font-family:var(--mono);font-size:10px;color:var(--t3);display:flex;gap:8px;padding:1px 0}
+.lg.ok{color:var(--green)}.lg.w{color:var(--amber)}.lg.e{color:var(--red)}
+.lg-ts{color:var(--t4);flex-shrink:0}
+.tag{font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:2px;border:1px solid}
+.tag-fmt{color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)}
+.tag-ct{color:var(--amber);border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.08)}
+.tag-eng{color:var(--purple);border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.08)}
+.hidden{display:none!important}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+<body>
+<div class="hd">
+  <div class="logo">FX</div>
+  <div class="hd-mid"><h1>FORMAT TRANSCRIBER</h1><p>Riconoscimento e conversione intelligente di formati — standalone</p></div>
+  <div class="key-bar">
+    <label>ANTHROPIC KEY</label>
+    <input type="password" id="key-inp" placeholder="sk-ant-api03-..." oninput="onKey()">
+    <span class="pill pill-js" id="key-pill">JS LOCAL</span>
+  </div>
+</div>
+<div class="steps">
+  <div class="st on" id="st1"><div class="st-n" id="sn1">1</div>CARICA MODELLO</div>
+  <div class="st-arr">›</div>
+  <div class="st" id="st2"><div class="st-n" id="sn2">2</div>ANALISI</div>
+  <div class="st-arr">›</div>
+  <div class="st" id="st3"><div class="st-n" id="sn3">3</div>SORGENTE</div>
+  <div class="st-arr">›</div>
+  <div class="st" id="st4"><div class="st-n" id="sn4">4</div>CONVERTI</div>
+</div>
+<main>
+  <div class="pane">
+    <div class="pane-hd"><span class="pane-title">INPUT</span><span class="badge ba" id="lbadge">IN ATTESA</span></div>
+    <div class="pane-body" id="left">
+      <div id="ph1">
+        <div class="info"><b>Passo 1 — Modello:</b> carica il file che rappresenta il <b>formato di destinazione</b>.</div>
+        <div class="sep">file (txt, csv, js, json, pdf…)</div>
+        <input type="file" id="fi1" class="dz-inp">
+        <label for="fi1" class="dz" id="dz1">
+          <div class="dz-ico">📄</div>
+          <div class="dz-lbl">Clicca o trascina il file modello</div>
+          <div class="dz-sub">Qualsiasi formato</div>
+        </label>
+        <div class="or"><span>oppure incolla</span></div>
+        <textarea id="tpl-ta" rows="8" placeholder="Incolla il contenuto del file modello..."></textarea>
+        <div class="row"><button class="btn btn-a" onclick="doAnalyze()">Analizza formato →</button></div>
+      </div>
+      <div id="ph3" class="hidden">
+        <div class="info"><b>Passo 3 — Sorgente:</b> carica il file da convertire.</div>
+        <div class="sep">file sorgente</div>
+        <input type="file" id="fi3" class="dz-inp">
+        <label for="fi3" class="dz" id="dz3">
+          <div class="dz-ico">📂</div>
+          <div class="dz-lbl">Clicca o trascina il file sorgente</div>
+          <div class="dz-sub">Qualsiasi formato</div>
+        </label>
+        <div class="or"><span>oppure incolla</span></div>
+        <textarea id="src-ta" rows="8" placeholder="Incolla il contenuto da convertire..."></textarea>
+        <div id="src-prev" class="hidden">
+          <div class="box"><div class="box-hd"><span>ANTEPRIMA</span><span id="src-sz"></span></div><div class="box-body" id="src-body"></div></div>
+        </div>
+        <div class="row">
+          <button class="btn btn-a" onclick="doConvert()">Converti nel formato modello →</button>
+          <button class="btn btn-g" onclick="resetAll()">↺ Ricomincia</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pane">
+    <div class="pane-hd"><span class="pane-title">ANALISI & OUTPUT</span><span class="badge bn" id="rbadge">—</span></div>
+    <div class="pane-body" id="right">
+      <div style="text-align:center;padding:60px 20px">
+        <div style="font-size:28px;opacity:.1;margin-bottom:10px">⟳</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--t4)">In attesa del file modello...</div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+const G={tplText:'',tplAnalysis:null,srcText:'',output:'',useAI:false};
+const $=id=>document.getElementById(id);
+const show=id=>$(id).classList.remove('hidden');
+const hide=id=>$(id).classList.add('hidden');
+const esc=s=>{s=s==null?'':String(s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')};
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ts=()=>new Date().toLocaleTimeString('it-IT');
+function setStep(n){[1,2,3,4].forEach(i=>{const s=$(('st'+i)),sn=$(('sn'+i));s.className='st'+(i<n?' ok':i===n?' on':'');sn.textContent=i<n?'✓':i;});}
+function log(cid,msg,cls=''){const c=$(cid);if(!c)return;const d=document.createElement('div');d.className='lg'+(cls?' '+cls:'');d.innerHTML='<span class="lg-ts">['+ts()+']</span><span>'+esc(msg)+'</span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function onKey(){const k=$('key-inp').value.trim();G.useAI=k.startsWith('sk-')&&k.length>20;$('key-pill').textContent=G.useAI?'AI ✓':'JS LOCAL';$('key-pill').className='pill '+(G.useAI?'pill-ai':'pill-js');if(G.useAI)$('key-inp').style.borderColor='var(--green)';else $('key-inp').style.borderColor='';}
+
+// ── DROP ZONE ──────────────────────────────────────────────────────────────
+// Each drop zone is: <input type="file" class="dz-inp"> + <label for="..."> (visual zone)
+// Clicks on the label open the file picker natively (no JS needed).
+// We add drag listeners only for drag-and-drop.
+function bindDZ(inputId, labelId, cb){
+  const inp=$(inputId), lbl=$(labelId);
+  if(!inp||!lbl){console.warn('bindDZ: missing',inputId,labelId);return;}
+  // Remove old listeners by replacing element with clone
+  const newLbl=lbl.cloneNode(true);
+  lbl.parentNode.replaceChild(newLbl,lbl);
+  const zone=$(labelId);
+
+  zone.addEventListener('dragenter',e=>{e.preventDefault();zone.classList.add('over');});
+  zone.addEventListener('dragover', e=>{e.preventDefault();e.dataTransfer.dropEffect='copy';zone.classList.add('over');});
+  zone.addEventListener('dragleave',e=>{if(!zone.contains(e.relatedTarget))zone.classList.remove('over');});
+  zone.addEventListener('drop',e=>{
+    e.preventDefault();zone.classList.remove('over');
+    const f=e.dataTransfer.files[0];
+    if(f)readF(f,cb);
+  });
+
+  // Re-wire the input change (cloneNode removes old listeners)
+  inp.addEventListener('change',()=>{
+    if(inp.files&&inp.files[0])readF(inp.files[0],cb);
+    inp.value='';
+  });
+}
+
+// ── FILE READING ───────────────────────────────────────────────────────────
+async function readF(f,cb){
+  if(f.name.toLowerCase().endsWith('.pdf')){
+    await readPDF(f,cb);
+  } else {
+    const r=new FileReader();
+    r.onload=e=>cb(e.target.result,f.name);
+    r.readAsText(f,'utf-8');
+  }
+}
+
+async function readPDF(f,cb){
+  const ind=document.createElement('div');
+  ind.style.cssText='position:fixed;bottom:20px;right:20px;background:var(--bg3);border:1px solid var(--amber);color:var(--amber);font-family:var(--mono);font-size:11px;padding:10px 16px;border-radius:4px;z-index:9999';
+  ind.textContent='Estrazione testo PDF...';document.body.appendChild(ind);
+  try{
+    if(typeof pdfjsLib!=='undefined'){
+      const ab=await f.arrayBuffer();
+      const pdf=await pdfjsLib.getDocument({data:ab}).promise;
+      let text='';
+      for(let p=1;p<=pdf.numPages;p++){
+        const page=await pdf.getPage(p);
+        const tc=await page.getTextContent();
+        const items=tc.items;
+        let lastY=null,line='';
+        for(const item of items){
+          const y=Math.round(item.transform[5]);
+          if(lastY!==null&&Math.abs(y-lastY)>3){text+=line.trimEnd()+'\n';line='';}
+          line+=item.str;lastY=y;
+        }
+        if(line.trim())text+=line.trimEnd()+'\n';
+        text+='\n';
+      }
+      document.body.removeChild(ind);
+      cb(text.trim(),f.name.replace(/\.pdf$/i,'.txt'));
+      return;
+    }
+    if(G.useAI){
+      const ab=await f.arrayBuffer();
+      const b64=btoa(String.fromCharCode(...new Uint8Array(ab)));
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+        headers:{'Content-Type':'application/json','x-api-key':$('key-inp').value.trim(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:8000,messages:[{role:'user',content:[
+          {type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},
+          {type:'text',text:'Estrai il testo mantenendo struttura e formattazione. Preserva numeri domanda e lettere opzioni. Nessun commento.'}
+        ]}]})
+      });
+      const d=await res.json();
+      if(d.error)throw new Error(d.error.message);
+      document.body.removeChild(ind);
+      cb(d.content[0].text,f.name.replace(/\.pdf$/i,'.txt'));
+      return;
+    }
+    document.body.removeChild(ind);
+    alert('PDF: carica pdf.js o inserisci API key per estrarre il testo automaticamente.\nIn alternativa, converti il PDF in testo con un altro strumento e incollalo.');
+  }catch(e){try{document.body.removeChild(ind)}catch(x){}alert('Errore PDF: '+e.message);}
+}
+
+// ── FORMAT DETECTION ───────────────────────────────────────────────────────
+function stripJS(raw){
+  if(!/^(?:export\s+)?(?:const|let|var)\s+\w/.test(raw))return{val:raw,name:null};
+  const nm=raw.match(/^(?:export\s+)?(?:const|let|var)\s+(\w+)\s*=/);
+  if(!nm)return{val:raw,name:null};
+  const ei=raw.indexOf('=');
+  let v=raw.slice(ei+1).trim().replace(/;+\s*$/,'').trim();
+  v=v.replace(/,(\s*[\]\}])/g,'$1');
+  try{JSON.parse(v);return{val:v,name:nm[1]}}catch(e){}
+  try{const r=new Function('return ('+v+')')();if(r!=null)return{val:JSON.stringify(r),name:nm[1]}}catch(e){}
+  return{val:v,name:nm[1],err:true};
+}
+
+function detect(text){
+  const raw=text.trim();
+  const lines=text.split('\n').filter(l=>l.trim());
+  if(/^(?:export\s+)?(?:const|let|var)\s+\w/.test(raw)){
+    const r=stripJS(raw);
+    if(r.name&&!r.err)return{fmt:'JSON',jsName:r.name,jsonVal:r.val};
+    if(r.name&&r.err)return{fmt:'JS-INVALID',jsName:r.name};
+  }
+  if(raw[0]==='['||raw[0]==='{'){try{JSON.parse(raw);return{fmt:'JSON'}}catch(e){}}
+  if(raw.startsWith('<')&&/<\/\w/.test(raw))return{fmt:'XML'};
+  if(lines.filter(l=>(l.match(/\t/g)||[]).length>=2).length>=lines.length*.5)return{fmt:'TSV',sep:'\t'};
+  // Q&A: inline "N) text" or standalone "N)"
+  const nQ=lines.filter(l=>/^\d+\) \S/.test(l)||/^\d+\)\s*$/.test(l)).length;
+  const nO=lines.filter(l=>/^[A-C] \S/.test(l)).length;
+  if(nQ>=1&&nO>=2)return{fmt:'QA'};
+  if(lines.filter(l=>l.includes(',')).length>=lines.length*.6)return{fmt:'CSV',sep:','};
+  if(lines.filter(l=>l.includes('|')).length>=lines.length*.6)return{fmt:'PIPE',sep:'|'};
+  if(lines.filter(l=>l.includes(';')).length>=lines.length*.7)return{fmt:'CSV',sep:';'};
+  const kv=/^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\._\-]{0,39})\s*[:=]\s*(.+)$/;
+  const kvl=lines.filter(l=>kv.test(l));
+  if(kvl.length>=lines.length*.4)return{fmt:'KV',labels:[...new Set(kvl.map(l=>l.match(kv)[1].trim()))]};
+  if(lines.filter(l=>/^\d+[\.\)]\s+\S/.test(l)).length>=lines.length*.5)return{fmt:'NL'};
+  if(lines.filter(l=>/^[-*•]\s+\S/.test(l)).length>=lines.length*.5)return{fmt:'BL'};
+  return{fmt:'TEXT'};
+}
+
+// ── QA PARSER ─────────────────────────────────────────────────────────────
+function parseQA(text){
+  const records=[];
+  const hasInline=/^\d+\) \S/m.test(text);
+  const hasStandalone=/^\d+\)\s*$/m.test(text);
+
+  if(hasInline&&!hasStandalone){
+    // PDF-native format
+    const blockRe=/^(\d+)\) (.+)/gm;
+    const matches=[...text.matchAll(blockRe)];
+    for(let i=0;i<matches.length;i++){
+      const m=matches[i];
+      const qnum=parseInt(m[1]);
+      const first=m[2].trim();
+      const bEnd=i+1<matches.length?matches[i+1].index:text.length;
+      const rest=text.slice(m.index+m[0].length,bEnd);
+      const allLines=[first,...rest.split('\n').map(l=>l.trimEnd())].filter(l=>l.trim());
+      const rec=buildQARecord(qnum,allLines);
+      if(rec)records.push(rec);
+    }
+  } else {
+    // TXT-export format: "N)" alone on line
+    const bsRe=/^\s*(\d+)\)\s*$/gm;
+    const bs=[...text.matchAll(bsRe)].map(m=>({idx:m.index,n:parseInt(m[1])}));
+    for(let bi=0;bi<bs.length;bi++){
+      const {idx,n}=bs[bi];
+      const nextIdx=bi+1<bs.length?bs[bi+1].idx:text.length;
+      const block=text.slice(idx,nextIdx);
+      const lines=block.split('\n').map(l=>l.trimEnd());
+      const bodyLines=lines.slice(1).filter(l=>l.trim());
+      // Fix PDF artefact: "PRES" + "A DI DECISIONE:"
+      const fixed=[];
+      for(let k=0;k<bodyLines.length;k++){
+        if(bodyLines[k].trim()==='PRES'&&k+1<bodyLines.length&&/^A DI DECISIONE/i.test(bodyLines[k+1].trim())){
+          fixed.push('PRESA DI'+bodyLines[k+1].trim().slice(1));k++;
+        }else{fixed.push(bodyLines[k]);}
+      }
+      const rec=buildQARecord(n,fixed);
+      if(rec)records.push(rec);
+    }
+  }
+  return records;
+}
+
+function buildQARecord(id,allLines){
+  const isOpt=(l,x)=>l.trimStart().startsWith(x+' ')&&l.trimStart().length>2;
+  const ai=[],bi=[],ci=[];
+  allLines.forEach((l,j)=>{if(isOpt(l,'A'))ai.push(j);if(isOpt(l,'B'))bi.push(j);if(isOpt(l,'C'))ci.push(j);});
+  const opzioni={};
+  let optStart=null;
+  if(ai.length&&bi.length&&ci.length){
+    const cIdx=ci[ci.length-1];
+    const bCands=bi.filter(j=>j<cIdx);
+    if(bCands.length){
+      const bIdx=bCands[bCands.length-1];
+      const aCands=ai.filter(j=>j<bIdx);
+      if(aCands.length){
+        const aIdx=aCands[aCands.length-1];
+        optStart=aIdx;
+        function col(si,ei){
+          const p=[allLines[si].trimStart().slice(2).trim()];
+          for(let k=si+1;k<ei;k++){if(!isOpt(allLines[k],'A')&&!isOpt(allLines[k],'B')&&!isOpt(allLines[k],'C'))p.push(allLines[k].trim());else break;}
+          return p.join(' ').trim();
+        }
+        opzioni.A=col(aIdx,bIdx);opzioni.B=col(bIdx,cIdx);
+        const cp=[allLines[cIdx].trimStart().slice(2).trim()];
+        for(let k=cIdx+1;k<allLines.length;k++){if(!isOpt(allLines[k],'A')&&!isOpt(allLines[k],'B')&&!isOpt(allLines[k],'C'))cp.push(allLines[k].trim());else break;}
+        opzioni.C=cp.join(' ').trim();
+      }
+    }
+  }
+  let pre=(optStart!==null?allLines.slice(0,optStart):allLines).map(l=>l.trim()).filter(l=>l);
+  if(pre.length&&/leggere il brano|rispondere alla seguente/i.test(pre[0]))pre=pre.slice(1);
+  // Split brano/domanda
+  let brano='',domanda='';
+  if(!pre.length){domanda='';}
+  else{
+    const joined=pre.join(' ');
+    // Check for transition phrase
+    const transM=joined.match(/(Secondo il brano[^:]*:|Nel [^:]{3,40}:|[^.]{10,}\?)\s*$/i);
+    if(transM){
+      const at=joined.lastIndexOf(transM[0]);
+      brano=joined.slice(0,at).trim();domanda=transM[0].trim();
+    } else {
+      let splitIdx=null;
+      for(let k=pre.length-1;k>=0;k--){if(pre[k].endsWith('.')&&pre[k].length>50){splitIdx=k;break;}}
+      if(splitIdx!==null&&splitIdx<pre.length-1){brano=pre.slice(0,splitIdx+1).join(' ');domanda=pre.slice(splitIdx+1).join(' ');}
+      else{domanda=joined;}
+    }
+  }
+  // Detect materia
+  const bl=allLines.join('\n').toLowerCase();
+  let materia='';
+  if(/leggere il brano|secondo il brano/.test(bl))materia='Comprensione';
+  else if(/adattamento al cambiamento|lavoro di squadra|presa di decisione/.test(bl))materia='Situazionale';
+  else if(/\b(shall|would|the |is |are |were |been )\b/.test(allLines.join(' ')))materia='Inglese';
+  return{id,materia,brano,domanda,opzioni,corretta:'',spiegazioneId:null};
+}
+
+// ── PARSERS ────────────────────────────────────────────────────────────────
+function parseJSON(text,info){
+  const src=info.jsonVal||text;
+  try{const j=JSON.parse(src);return Array.isArray(j)?j:[j]}catch(e){}
+  const r=stripJS(text.trim());
+  if(r.name&&!r.err){try{const j=JSON.parse(r.val);return Array.isArray(j)?j:[j]}catch(e){}}
+  try{const j=JSON.parse(text);return Array.isArray(j)?j:[j]}catch(e){}
+  try{const j=new Function('return ('+text+')')();if(j!=null)return Array.isArray(j)?j:[j]}catch(e){}
+  return[];
+}
+function parseCSV(text,sep){
+  const lines=text.split('\n').filter(l=>l.trim());
+  if(!lines.length)return[];
+  const rows=lines.map(l=>l.split(sep).map(c=>c.trim().replace(/^"|"$/g,'')));
+  const hdr=rows[0];
+  return rows.slice(1).map(r=>{const o={};hdr.forEach((h,i)=>o[h]=r[i]||'');return o});
+}
+function parseKV(text){
+  const kv=/^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s\._\-]{0,39})\s*[:=]\s*(.*)$/;
+  const groups=text.split(/\n\s*\n/).filter(g=>g.trim());
+  const recs=[];
+  groups.forEach(g=>{const o={};g.split('\n').forEach(l=>{const m=l.match(kv);if(m)o[m[1].trim()]=m[2].trim()});if(Object.keys(o).length)recs.push(o)});
+  if(!recs.length){const o={};text.split('\n').forEach(l=>{const m=l.match(kv);if(m)o[m[1].trim()]=m[2].trim()});if(Object.keys(o).length)recs.push(o)}
+  return recs;
+}
+function parseRecords(text,info){
+  switch(info.fmt){
+    case'JSON':return parseJSON(text,info);
+    case'QA':return parseQA(text);
+    case'CSV':case'TSV':case'PIPE':return parseCSV(text,info.sep||',');
+    case'KV':return parseKV(text);
+    case'NL':return text.split('\n').filter(l=>l.trim()).map(l=>({text:l.replace(/^\d+[\.\)]\s*/,'')}));
+    case'BL':return text.split('\n').filter(l=>l.trim()).map(l=>({text:l.replace(/^[-*•]\s*/,'')}));
+    default:return text.split('\n').filter(l=>l.trim()).map(l=>({text:l}));
+  }
+}
+
+// ── ANALYSIS ───────────────────────────────────────────────────────────────
+function analyze(text){
+  const info=detect(text);
+  const recs=parseRecords(text,info);
+  const fields=[...new Set(recs.flatMap(r=>Object.keys(r)))];
+  let ct='dati strutturati';
+  const lo=text.toLowerCase();
+  if(info.fmt==='QA')ct='domande a risposta multipla';
+  else if(/\bdomand|\bquesit|\bquestion/i.test(lo))ct='domande e risposte';
+  else if(/nome|cognome|email|tel\b|indirizzo/i.test(lo))ct='anagrafica';
+  else if(/importo|prezzo|€|\beuro\b/i.test(lo))ct='dati economici';
+  else if(info.fmt==='JSON')ct=info.jsName?'array JS ('+info.jsName+')':'JSON';
+  else if(info.fmt==='CSV'||info.fmt==='TSV'||info.fmt==='PIPE')ct='tabella';
+  const pattern=info.jsName?'JS var: '+info.jsName:info.labels?info.labels.slice(0,3).join(' / '):info.fmt==='QA'?'N) + A/B/C':null;
+  return{fmt:info.fmt,ct,sep:info.sep||null,pattern,jsName:info.jsName||null,jsonVal:info.jsonVal||null,
+    fields,nRecs:recs.length,sample:recs.slice(0,2),ok:recs.length>0,
+    note:recs.length>0?recs.length+' record estratti':'0 record — verificare formato',
+    _recs:recs,_info:info};
+}
+
+// ── FIELD MAPPING ──────────────────────────────────────────────────────────
+const SYN={id:['id','n','num','numero'],materia:['materia','subject','area','categoria'],
+  domanda:['domanda','quesito','question','q','d','testo','text','item'],
+  brano:['brano','passage','contesto','context'],opzioni:['opzioni','options','choices'],
+  corretta:['corretta','correct','answer','soluzione'],spiegazioneId:['spiegazioneid','explanation'],
+  nome:['nome','name','firstname'],cognome:['cognome','surname','lastname']};
+function mapFields(srcFields,tplFields){
+  return srcFields.map(sf=>{
+    const sl=sf.toLowerCase().replace(/[\s_-]/g,'');
+    for(const tf of tplFields)if(sl===tf.toLowerCase().replace(/[\s_-]/g,''))return{s:sf,t:tf,m:'esatto'};
+    for(const tf of tplFields){const tl=tf.toLowerCase().replace(/[\s_-]/g,'');if(sl.includes(tl)||tl.includes(sl))return{s:sf,t:tf,m:'simile'};}
+    for(const[can,aliases]of Object.entries(SYN)){
+      const tCan=tplFields.find(t=>t.toLowerCase().replace(/[\s_-]/g,'')===can);
+      if(tCan&&(sl===can||aliases.includes(sl)))return{s:sf,t:tCan,m:'inferito'};
+    }
+    return{s:sf,t:null,m:'—'};
+  });
+}
+function resolve(rec,tf,fmap){const m=fmap.find(x=>x.t===tf&&x.m!=='—');if(!m)return'';const v=rec[m.s];return v==null?'':v;}
+
+// ── BUILD OUTPUT ───────────────────────────────────────────────────────────
+function buildOutput(sRecs,fmap,tpl){
+  const tFmt=tpl.fmt,tFields=tpl.fields||[],tJsName=tpl.jsName,tSep=tpl.sep||',';
+  const tSample=(tpl._recs||[])[0]||null;
+  const get=(rec,tf)=>{const v=resolve(rec,tf,fmap);return v==null?'':v;};
+  if(tFmt==='JSON'){
+    const out=sRecs.map((rec,idx)=>{
+      const obj={};
+      for(const tf of tFields){
+        const tfl=tf.toLowerCase();
+        if(tfl==='id'){obj[tf]=rec.id!=null?rec.id:idx+1;}
+        else if(tfl==='opzioni'||tfl==='options'){
+          const srcOpt=rec.opzioni||rec.options||null;
+          if(srcOpt&&typeof srcOpt==='object'&&!Array.isArray(srcOpt)){obj[tf]=srcOpt;}
+          else if(tSample&&tSample[tf]&&typeof tSample[tf]==='object'){
+            const shell={};Object.keys(tSample[tf]).forEach(k=>{shell[k]='';});
+            if(srcOpt&&typeof srcOpt==='object')Object.keys(srcOpt).forEach(k=>{shell[k]=srcOpt[k]||'';});
+            obj[tf]=shell;
+          }else{obj[tf]={};}
+        }else{const v=get(rec,tf);obj[tf]=typeof v==='object'&&v!==null?v:String(v);}
+      }
+      return obj;
+    });
+    return tJsName?'const '+tJsName+' = '+JSON.stringify(out,null,2)+';':JSON.stringify(out,null,2);
+  }
+  if(tFmt==='KV'){const lines=[];sRecs.forEach((rec,i)=>{if(i>0)lines.push('');tFields.forEach(tf=>{const v=get(rec,tf);lines.push(tf+': '+(typeof v==='object'?JSON.stringify(v):v));});});return lines.join('\n');}
+  if(['CSV','TSV','PIPE'].includes(tFmt)){const rows=sRecs.map(rec=>tFields.map(tf=>{const v=String(get(rec,tf)||'');return v.includes(tSep)?'"'+v.replace(/"/g,'""')+'"':v;}).join(tSep));return[tFields.join(tSep),...rows].join('\n');}
+  if(tFmt==='QA'){return sRecs.map((rec,i)=>{const p=[i+1+')'];const br=String(get(rec,'brano')||rec.brano||'');const dm=String(get(rec,'domanda')||rec.domanda||'');if(br)p.push(br);if(dm)p.push(dm);const opts=rec.opzioni&&typeof rec.opzioni==='object'?rec.opzioni:{};Object.keys(opts).sort().forEach(k=>p.push(k+') '+opts[k]));return p.join('\n');}).join('\n\n');}
+  if(tFmt==='NL')return sRecs.map((rec,i)=>i+1+'. '+String(get(rec,tFields[0])||Object.values(rec)[0]||'')).join('\n');
+  if(tFmt==='BL')return sRecs.map(rec=>'- '+String(get(rec,tFields[0])||Object.values(rec)[0]||'')).join('\n');
+  return sRecs.map(rec=>tFields.map(tf=>get(rec,tf)).filter(Boolean).join(' | ')).join('\n');
+}
+
+function convertJS(srcText,tplAnalysis){
+  const sInfo=detect(srcText);
+  const sRecs=parseRecords(srcText,sInfo);
+  const sFields=[...new Set(sRecs.flatMap(r=>Object.keys(r)))];
+  const fmap=mapFields(sFields,tplAnalysis.fields||[]);
+  return{fmt:sInfo.fmt,nRecs:sRecs.length,fmap,out:buildOutput(sRecs,fmap,tplAnalysis)};
+}
+
+// ── AI CALL ────────────────────────────────────────────────────────────────
+async function aiCall(sys,user,maxTok=4000){
+  const key=$('key-inp').value.trim();
+  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok,system:sys,messages:[{role:'user',content:user}]})
+  });
+  const d=await r.json();
+  if(d.error)throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+async function convertAI(srcText,tplAnalysis,logCb){
+  const sInfo=detect(srcText);
+  let sRecs=parseRecords(srcText,sInfo);
+  logCb('Parser JS: '+sInfo.fmt+', '+sRecs.length+' record');
+  if(sRecs.length===0){
+    logCb('0 record — estrazione AI...');
+    const sys='Estrai i record come array JSON. Campi target: '+tplAnalysis.fields.join(', ')+'. Solo JSON, nessun testo.';
+    const CHUNK=6000;
+    for(let ci=0;ci<srcText.length;ci+=CHUNK){
+      try{const raw=await aiCall(sys,'Testo:\n\n'+srcText.slice(ci,ci+CHUNK),4000);
+        const arr=JSON.parse(raw.replace(/```json|```/g,'').trim());
+        if(Array.isArray(arr))sRecs=sRecs.concat(arr);
+      }catch(e){logCb('Chunk AI fallito: '+e.message,'w');}
+      await sleep(80);
+    }
+    logCb(sRecs.length+' record estratti','ok');
+  }
+  const sFields=[...new Set(sRecs.flatMap(r=>Object.keys(r)))];
+  const fmap=mapFields(sFields,tplAnalysis.fields||[]);
+  return{fmt:sInfo.fmt,nRecs:sRecs.length,fmap,out:buildOutput(sRecs,fmap,tplAnalysis)};
+}
+
+// ── PHASES ─────────────────────────────────────────────────────────────────
+async function doAnalyze(){
+  const text=$('tpl-ta').value.trim();
+  if(!text){alert('Inserisci il file modello.');return;}
+  G.tplText=text;
+  $('right').innerHTML='<div style="display:flex;align-items:center;gap:10px;padding:8px 0"><div class="spin"></div><span style="font-family:var(--mono);font-size:10px;color:var(--amber)">Analisi...</span></div><div id="alog" style="margin-top:6px"></div>';
+  $('lbadge').textContent='ANALISI...';$('rbadge').textContent='ELABORAZIONE';$('rbadge').className='badge ba';setStep(2);
+  log('alog',text.length+' caratteri, '+text.split('\n').length+' righe');await sleep(150);
+  try{
+    let a;
+    if(G.useAI){
+      log('alog','API Anthropic...');
+      const sys='Analizza questo file. Rispondi SOLO con JSON.\n{"fmt":string,"ct":string,"sep":string|null,"pattern":string|null,"jsName":string|null,"fields":string[],"nRecs":number,"sample":object[],"ok":boolean,"note":string}\nfmt: JSON|QA|CSV|TSV|PIPE|KV|NL|BL|TEXT';
+      const raw=await aiCall(sys,'Analizza:\n\n'+text,1500);
+      const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+      const local=analyze(text);
+      a={...local,...parsed,_recs:local._recs,_info:local._info};
+    }else{
+      log('alog','Motore JS...');await sleep(200);a=analyze(text);
+    }
+    G.tplAnalysis=a;
+    log('alog','Formato: '+a.fmt,'ok');
+    log('alog',a.nRecs+' record | campi: '+a.fields.join(', '),'ok');
+    await sleep(100);renderAnalysis(a);
+  }catch(e){$('right').innerHTML='<div class="warn-bar">✗ '+esc(e.message)+'</div>';}
+}
+
+function renderAnalysis(a){
+  const eng=G.useAI?'<span class="tag tag-eng">AI</span>':'<span class="tag tag-eng">JS</span>';
+  $('right').innerHTML=`<div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+    <span class="tag tag-fmt">${esc(a.fmt)}</span><span class="tag tag-ct">${esc(a.ct)}</span>${eng}
+  </div>
+  <div class="grid2" style="margin-bottom:12px">
+    <div class="card"><div class="card-lbl">Record</div><div class="card-val">${a.nRecs}</div></div>
+    <div class="card"><div class="card-lbl">Campi</div><div class="card-val">${a.fields.length}</div></div>
+    <div class="card"><div class="card-lbl">Separatore</div><div class="card-val" style="font-size:11px">${esc(a.sep||'n/a')}</div></div>
+    <div class="card"><div class="card-lbl">Pattern</div><div class="card-val" style="font-size:10px">${esc(a.pattern||'auto')}</div></div>
+  </div>
+  <div class="sep">campi</div>
+  <div style="font-family:var(--mono);font-size:10px;color:var(--t2);margin-bottom:10px">${esc(a.fields.join(', ')||'—')}</div>
+  <div class="${a.ok?'ok-bar':'warn-bar'}" style="margin-bottom:10px">${a.ok?'✓':'⚠'} ${esc(a.note)}</div>
+  <div class="sep">campione</div>
+  <div class="box" style="margin-bottom:14px">
+    <div class="box-hd"><span>ANTEPRIMA</span><span>${a.nRecs} totali</span></div>
+    <div class="box-body">${esc(JSON.stringify(a.sample||[],null,2))}</div>
+  </div>
+  <div class="row">
+    <button class="btn btn-ok" onclick="goToSource()">✓ Confermato — Procedi</button>
+    <button class="btn btn-g" onclick="retryTpl()">↺ Ricarica</button>
+  </div>
+</div>`;
+  $('lbadge').textContent='MODELLO ✓';$('lbadge').className='badge bg';
+  $('rbadge').textContent='ANALISI OK';$('rbadge').className='badge bg';
+}
+
+function goToSource(){
+  hide('ph1');show('ph3');setStep(3);
+  bindDZ('fi3','dz3',t=>{$('src-ta').value=t;showSrcPrev(t)});
+  $('right').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:24px;opacity:.15;margin-bottom:10px">📂</div><div style="font-family:var(--mono);font-size:10px;color:var(--t4)">Carica il file sorgente...</div></div>';
+  $('rbadge').textContent='IN ATTESA';$('rbadge').className='badge ba';
+}
+
+function showSrcPrev(text){
+  $('src-sz').textContent=text.length.toLocaleString()+' car.';
+  $('src-body').textContent=text.slice(0,600)+(text.length>600?'\n…':'');
+  show('src-prev');
+}
+$('src-ta').addEventListener('input',e=>{if(e.target.value.trim())showSrcPrev(e.target.value)});
+
+async function doConvert(){
+  const srcText=$('src-ta').value.trim();
+  if(!srcText){alert('Inserisci il file sorgente.');return;}
+  if(!G.tplAnalysis){alert('Analizza prima il modello.');return;}
+  G.srcText=srcText;setStep(4);
+  $('right').innerHTML='<div style="display:flex;align-items:center;gap:10px;padding:8px 0"><div class="spin"></div><span style="font-family:var(--mono);font-size:10px;color:var(--amber)">Conversione...</span></div><div id="clog" style="margin-top:6px"></div>';
+  $('rbadge').textContent='CONVERSIONE...';$('rbadge').className='badge ba';
+  log('clog',srcText.length+' caratteri → '+G.tplAnalysis.fmt);await sleep(200);
+  try{
+    let result;
+    if(G.useAI){
+      log('clog','AI con estrazione record...');
+      result=await convertAI(srcText,G.tplAnalysis,msg=>log('clog',msg));
+    }else{
+      log('clog','Motore JS...');await sleep(200);
+      result=convertJS(srcText,G.tplAnalysis);
+    }
+    G.output=result.out||'';
+    log('clog',result.fmt+' → '+G.tplAnalysis.fmt,'ok');
+    log('clog',result.nRecs+' record convertiti','ok');
+    await sleep(100);renderOutput(result);
+  }catch(e){$('right').innerHTML='<div class="warn-bar">✗ '+esc(e.message)+'</div>';}
+}
+
+function renderOutput(r){
+  const mapHTML=(r.fmap||[]).map(m=>{
+    const c=m.m==='esatto'?'var(--green)':m.m==='simile'?'var(--amber)':m.m==='inferito'?'var(--blue)':'var(--t4)';
+    return`<div class="fm-row"><span class="fm-src">${esc(m.s)}</span><span style="color:var(--amber)">→</span><span class="fm-tgt">${esc(m.t||'(non mappato)')}</span><span style="font-family:var(--mono);font-size:8px;border:1px solid ${c};color:${c};padding:1px 5px;border-radius:2px">${m.m}</span></div>`;
+  }).join('');
+  $('right').innerHTML=`<div>
+  <div class="sep">mapping campi</div>
+  <div class="fm" style="margin-bottom:12px">${mapHTML||'<span style="font-family:var(--mono);font-size:10px;color:var(--t4)">nessun mapping</span>'}</div>
+  <div class="sep">output — ${r.nRecs} record</div>
+  <div class="out">${esc(G.output)}</div>
+  <div class="row" style="margin-top:10px">
+    <button class="btn btn-ok" onclick="dl()">⬇ Scarica</button>
+    <button class="btn btn-g" onclick="cp()">⎘ Copia</button>
+    <button class="btn btn-g" onclick="goToSource()">↺ Nuova sorgente</button>
+    <button class="btn btn-g" onclick="resetAll()">↺ Ricomincia</button>
+  </div>
+</div>`;
+  $('rbadge').textContent='COMPLETATO ✓';$('rbadge').className='badge bg';
+}
+
+function dl(){const b=new Blob([G.output],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='output_convertito.txt';a.click();URL.revokeObjectURL(u);}
+function cp(){navigator.clipboard.writeText(G.output).then(()=>alert('Copiato!'));}
+function retryTpl(){$('tpl-ta').value='';G.tplAnalysis=null;setStep(1);$('right').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:28px;opacity:.1;margin-bottom:10px">⟳</div><div style="font-family:var(--mono);font-size:10px;color:var(--t4)">In attesa del file modello...</div></div>';$('lbadge').textContent='IN ATTESA';$('lbadge').className='badge ba';$('rbadge').textContent='—';$('rbadge').className='badge bn';}
+function resetAll(){G.tplText='';G.tplAnalysis=null;G.srcText='';G.output='';$('tpl-ta').value='';show('ph1');hide('ph3');retryTpl();bindDZ('fi1','dz1',t=>{$('tpl-ta').value=t;});}
+
+// Init
+bindDZ('fi1','dz1',t=>{$('tpl-ta').value=t;});
+</script>
+</body>
+</html>
