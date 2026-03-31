@@ -774,14 +774,31 @@
 
     function loadScript(src) {
       return new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[src="' + src + '"]');
+        const existing = document.querySelector('script[data-quiz-src="' + src + '"]');
         if (existing) { resolve(); return; }
         const s = document.createElement("script");
+        s.setAttribute("data-quiz-src", src);
         s.src = src;
         s.onload = resolve;
-        s.onerror = () => reject(new Error("Impossibile caricare: " + src));
+        s.onerror = () => reject(new Error(src));
         document.head.appendChild(s);
       });
+    }
+
+    // Precarica tutti i file appena la pagina si apre, in background.
+    window._QUIZ_PACKS = {};
+    window._QUIZ_SPIEGAZIONI = {};
+    window._PRELOAD_DONE = false;
+
+    async function precaricaTutto() {
+      for (const pack of QUIZ_MANIFEST) {
+        await loadScript(pack.file).catch(() => {});
+        if (pack.spiegazioni) await loadScript(pack.spiegazioni).catch(() => {});
+        if (pack.norme) {
+          for (const n of pack.norme) await loadScript(n).catch(() => {});
+        }
+      }
+      window._PRELOAD_DONE = true;
     }
 
     function mostraSelezioneFonti() {
@@ -800,37 +817,29 @@
         label.appendChild(document.createTextNode(" " + pack.label));
         list.appendChild(label);
       });
-      document.getElementById("source-errore").style.display = "none";
+      const err = document.getElementById("source-errore");
+      err.style.display = "none";
+      err.textContent = "Seleziona almeno un file.";
     }
 
-    async function avviaQuiz() {
+    function avviaQuiz() {
       const checkboxes = document.querySelectorAll("#source-list input[type='checkbox']:checked");
       const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+      const err = document.getElementById("source-errore");
+
       if (!selectedIds.length) {
-        document.getElementById("source-errore").style.display = "block";
+        err.textContent = "Seleziona almeno un file.";
+        err.style.display = "block";
         return;
       }
+
+      if (!window._PRELOAD_DONE) {
+        err.textContent = "Caricamento in corso... riprova tra un momento.";
+        err.style.display = "block";
+        return;
+      }
+
       const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
-      window._QUIZ_PACKS = window._QUIZ_PACKS || {};
-      window._QUIZ_SPIEGAZIONI = window._QUIZ_SPIEGAZIONI || {};
-      try {
-        for (const pack of toLoad) {
-          if (!window._QUIZ_PACKS[pack.id]) {
-            await loadScript(pack.file);
-          }
-          if (pack.spiegazioni && !window._QUIZ_SPIEGAZIONI[pack.id]) {
-            await loadScript(pack.spiegazioni);
-          }
-          if (pack.norme) {
-            for (const normaFile of pack.norme) {
-              await loadScript(normaFile).catch(() => {});
-            }
-          }
-        }
-      } catch (e) {
-        alert("Errore nel caricamento del file: " + e.message);
-        return;
-      }
       window._TUTTE_LE_DOMANDE = [];
       toLoad.forEach(pack => {
         const domande = window._QUIZ_PACKS[pack.id] || [];
@@ -838,12 +847,20 @@
           window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: pack.label, _packId: pack.id }));
         });
       });
+
+      if (!window._TUTTE_LE_DOMANDE.length) {
+        err.textContent = "Nessuna domanda trovata. Controlla i file selezionati.";
+        err.style.display = "block";
+        return;
+      }
+
       document.getElementById("source-overlay").classList.remove("visible");
       prossimaDomanda();
     }
 
     aggiornaContatorePreferiti();
     mostraSelezioneFonti();
+    precaricaTutto();
   </script>
 </body>
 </html> 
