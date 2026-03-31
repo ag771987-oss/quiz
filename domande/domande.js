@@ -437,7 +437,7 @@
   {
     "id": 37,
     "materia": "",
-    "domanda": "Nelle dinamiche di funzionamento dei gruppi organizzativi, il fenomeno definito comunemente "groupthink" rappresenta:",
+    "domanda": "Nelle dinamiche di funzionamento dei gruppi organizzativi, il fenomeno definito comunemente \"groupthink\" rappresenta:",
     "opzioni": {
       "A": "una possibile patologia che porta i membri del gruppo a sottovalutare informazioni e opinioni che possano compromettere l'unità e l'unanimità del gruppo.",
       "B": "uno degli stadi di evoluzione dei gruppi, attraverso il quale tutti i gruppi transitano nella loro fase di costituzione.",
@@ -451,7 +451,7 @@
     "materia": "",
     "domanda": "Mintzberg:",
     "opzioni": {
-      "A": "esistono 2 configurazioni organizzative tipiche : struttura di "tipo 1", struttura di "tipo 2".",
+      "A": "esistono 2 configurazioni organizzative tipiche : struttura di \"tipo 1\", struttura di \"tipo 2\".",
       "B": "esistono 5 configurazioni organizzative tipiche: struttura semplice, burocrazia meccanica, burocrazia professionale, forma divisionale, adhocrazia.",
       "C": "non esistono configurazioni organizzative tipiche."
     },
@@ -629,7 +629,7 @@
   {
     "id": 53,
     "materia": "Inglese",
-    "domanda": ""Did the two governments manage to reach an agreement?" "No, the talks ended in ………………………."",
+    "domanda": "\"Did the two governments manage to reach an agreement?\" \"No, the talks ended in \u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026.\"",
     "opzioni": {
       "A": "check",
       "B": "deadlock",
