@@ -17,5 +17,12 @@ const QUIZ_MANIFEST = [
     norme: [
       "norme/costituzione/cost_art_48.js"
     ]
+  },
+  {
+    id: "sna2025",
+    label: "SNA 2025",
+    file: "domande/sna2025.js",
+    spiegazioni: "domande/sna2025_s.js",
+    norme: []
   }
 ];
