@@ -832,26 +832,40 @@
     window._QUIZ_SPIEGAZIONI = {};
     window._PRELOAD_DONE = false;
 
+    // Carica un file JS ed estrae la variabile dichiarata con const/let/var.
+    // Prima tenta fetch (HTTP/HTTPS); se fallisce (es. file://) usa loadScript
+    // con new Function per leggere il valore dallo scope globale.
+    async function fetchVar(src, varName) {
+      try {
+        const r = await fetch(src);
+        if (r.ok) {
+          const code = await r.text();
+          return new Function(code + '\n;return typeof ' + varName + '!=="undefined"?' + varName + ':[];')();
+        }
+      } catch(e) { /* file:// o errore di rete → usa loadScript */ }
+      try {
+        await loadScript(src);
+        return new Function('return typeof ' + varName + '!=="undefined"?' + varName + ':[];')();
+      } catch(e) { return []; }
+    }
+
     async function precaricaTutto() {
       for (const pack of QUIZ_MANIFEST) {
-        // ── domande (nuovo formato: const DOMANDE = [...]) ──────────────
-        await loadScript(pack.file || pack.domande).catch(() => {});
-        const domande = (typeof DOMANDE !== 'undefined') ? Array.from(DOMANDE) : [];
+        // ── domande ──────────────────────────────────────────────────────
+        const domande = await fetchVar(pack.domande || pack.file || '', 'DOMANDE');
         window._QUIZ_PACKS[pack.id] = domande;
 
-        // ── risposte (override corretta da busta_r.js) ──────────────────
+        // ── risposte (override corretta) ──────────────────────────────────
         if (pack.risposte) {
-          await loadScript(pack.risposte).catch(() => {});
-          const risposte = (typeof RISPOSTE !== 'undefined') ? RISPOSTE : [];
+          const risposte = await fetchVar(pack.risposte, 'RISPOSTE');
           const risposteMap = {};
           risposte.forEach(r => { if (r.corretta) risposteMap[r.id] = r.corretta; });
           domande.forEach(d => { if (risposteMap[d.id]) d.corretta = risposteMap[d.id]; });
         }
 
-        // ── spiegazioni (nuovo formato: const SPIEGAZIONI = [...]) ───────
+        // ── spiegazioni ───────────────────────────────────────────────────
         if (pack.spiegazioni) {
-          await loadScript(pack.spiegazioni).catch(() => {});
-          const rawSpiega = (typeof SPIEGAZIONI !== 'undefined') ? SPIEGAZIONI : [];
+          const rawSpiega = await fetchVar(pack.spiegazioni, 'SPIEGAZIONI');
           const spiegaMap = {};
           rawSpiega.forEach(s => { spiegaMap[s.id] = s; });
           window._QUIZ_SPIEGAZIONI[pack.id] = spiegaMap;
@@ -863,7 +877,7 @@
           });
         }
 
-        // ── norme ────────────────────────────────────────────────────────
+        // ── norme (usano window.NORME, loadScript va bene) ───────────────
         if (pack.norme) {
           for (const n of pack.norme) await loadScript(n).catch(() => {});
         }
