@@ -219,6 +219,16 @@
       background: #d1d5db;
     }
 
+    .action-btn.secondary.has-spiega {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1.5px solid #93c5fd;
+    }
+
+    .action-btn.secondary.has-spiega:hover {
+      background: #dbeafe;
+    }
+
     .spiegazione-box {
       margin-top: 18px;
       padding: 18px;
@@ -644,6 +654,7 @@
       const btnSpiegazione = document.getElementById("btn-spiegazione");
       btnSpiegazione.disabled = true;
       btnSpiegazione.innerText = "Mostra spiegazione";
+      btnSpiegazione.classList.remove("has-spiega");
 
       const risposte = document.getElementById("risposte");
       risposte.innerHTML = "";
@@ -701,7 +712,16 @@
       document.getElementById("sbagliate").innerText = sbagliate;
       document.getElementById("totale-risposte").innerText = totaleRisposte;
 
-      document.getElementById("btn-spiegazione").disabled = false;
+      const btnSpiega = document.getElementById("btn-spiegazione");
+      if (haSpiega()) {
+        btnSpiega.disabled = false;
+        btnSpiega.innerText = "📖 Mostra spiegazione";
+        btnSpiega.classList.add("has-spiega");
+      } else {
+        btnSpiega.disabled = true;
+        btnSpiega.innerText = "Nessuna spiegazione";
+        btnSpiega.classList.remove("has-spiega");
+      }
     }
 
     function toggleSpiegazione() {
@@ -713,11 +733,19 @@
       if (!box.classList.contains("visible")) {
         renderSpiegazione(box);
         box.classList.add("visible");
-        btn.innerText = "Nascondi spiegazione";
+        btn.innerText = "📖 Nascondi spiegazione";
       } else {
         box.classList.remove("visible");
-        btn.innerText = "Mostra spiegazione";
+        btn.innerText = "📖 Mostra spiegazione";
       }
+    }
+
+    function haSpiega() {
+      if (!corrente) return false;
+      const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
+      const lookupId = corrente.spiegazioneId != null ? corrente.spiegazioneId : corrente.id;
+      const spiega = packSpiega[lookupId];
+      return !!(spiega && (spiega.spiegazione || spiega.testo || "").trim());
     }
 
     function renderMarkdown(text) {
