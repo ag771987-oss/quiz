@@ -720,12 +720,26 @@
       }
     }
 
+    function renderMarkdown(text) {
+      const escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      return escaped
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+    }
+
     function renderSpiegazione(box) {
       box.innerHTML = "";
       const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      const spiega = packSpiega[corrente.id] || null;
+      // Lookup by spiegazioneId if present, fall back to question id
+      const lookupId = corrente.spiegazioneId != null ? corrente.spiegazioneId : corrente.id;
+      const spiega = packSpiega[lookupId] || null;
 
-      if (!spiega) {
+      const testo = spiega ? (spiega.spiegazione || spiega.testo || "") : "";
+
+      if (!testo) {
         const em = document.createElement("em");
         em.textContent = "Spiegazione non disponibile.";
         box.appendChild(em);
@@ -733,10 +747,10 @@
       }
 
       const testoDiv = document.createElement("div");
-      testoDiv.textContent = spiega.testo;
+      testoDiv.innerHTML = renderMarkdown(testo);
       box.appendChild(testoDiv);
 
-      if (spiega.riferimenti && spiega.riferimenti.length > 0) {
+      if (spiega && spiega.riferimenti && spiega.riferimenti.length > 0) {
         const sezione = document.createElement("div");
         sezione.className = "riferimenti-section";
 
@@ -792,8 +806,36 @@
 
     async function precaricaTutto() {
       for (const pack of QUIZ_MANIFEST) {
-        await loadScript(pack.file).catch(() => {});
-        if (pack.spiegazioni) await loadScript(pack.spiegazioni).catch(() => {});
+        // ── domande (nuovo formato: const DOMANDE = [...]) ──────────────
+        await loadScript(pack.file || pack.domande).catch(() => {});
+        const domande = (typeof DOMANDE !== 'undefined') ? Array.from(DOMANDE) : [];
+        window._QUIZ_PACKS[pack.id] = domande;
+
+        // ── risposte (override corretta da busta_r.js) ──────────────────
+        if (pack.risposte) {
+          await loadScript(pack.risposte).catch(() => {});
+          const risposte = (typeof RISPOSTE !== 'undefined') ? RISPOSTE : [];
+          const risposteMap = {};
+          risposte.forEach(r => { if (r.corretta) risposteMap[r.id] = r.corretta; });
+          domande.forEach(d => { if (risposteMap[d.id]) d.corretta = risposteMap[d.id]; });
+        }
+
+        // ── spiegazioni (nuovo formato: const SPIEGAZIONI = [...]) ───────
+        if (pack.spiegazioni) {
+          await loadScript(pack.spiegazioni).catch(() => {});
+          const rawSpiega = (typeof SPIEGAZIONI !== 'undefined') ? SPIEGAZIONI : [];
+          const spiegaMap = {};
+          rawSpiega.forEach(s => { spiegaMap[s.id] = s; });
+          window._QUIZ_SPIEGAZIONI[pack.id] = spiegaMap;
+          // Applica override corretta da SPIEGAZIONI (priorità massima)
+          domande.forEach(d => {
+            const sid = d.spiegazioneId != null ? d.spiegazioneId : d.id;
+            const s = spiegaMap[sid];
+            if (s && s.corretta) d.corretta = s.corretta;
+          });
+        }
+
+        // ── norme ────────────────────────────────────────────────────────
         if (pack.norme) {
           for (const n of pack.norme) await loadScript(n).catch(() => {});
         }
@@ -842,10 +884,10 @@
       const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
       window._TUTTE_LE_DOMANDE = [];
       toLoad.forEach(pack => {
-        const fileName = pack.file.split("/").pop().replace(/\.js$/, "");
+        const srcFile = (pack.domande || pack.file || "").split("/").pop().replace(/\.js$/, "");
         const domande = window._QUIZ_PACKS[pack.id] || [];
         domande.forEach(d => {
-          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: fileName, _packId: pack.id }));
+          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: srcFile || pack.label, _packId: pack.id }));
         });
       });
 
