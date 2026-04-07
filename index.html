@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz SNA</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>if(typeof pdfjsLib!=="undefined")pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";</script>
   <style>
     :root {
       --bg: #f3f4f6;
@@ -242,6 +244,57 @@
 
     .spiegazione-box.visible {
       display: block;
+    }
+
+    .pdf-preview {
+      display: none;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      text-align: center;
+    }
+
+    .pdf-preview.visible {
+      display: block;
+    }
+
+    .pdf-preview canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .pdf-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-top: 1px solid var(--border);
+      gap: 8px;
+    }
+
+    .pdf-nav-btn {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .pdf-nav-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .pdf-preview-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      flex: 1;
     }
 
     .footer-note {
@@ -489,6 +542,15 @@
       <div class="materia" id="materia">Materia</div>
       <div class="domanda" id="domanda">Caricamento domanda...</div>
 
+      <div class="pdf-preview" id="pdf-preview">
+        <canvas id="pdf-canvas"></canvas>
+        <div class="pdf-nav">
+          <button class="pdf-nav-btn" onclick="navigaPdf(-1)">&#8592; Pag. prec.</button>
+          <div class="pdf-preview-label" id="pdf-label"></div>
+          <button class="pdf-nav-btn" onclick="navigaPdf(1)">Pag. succ. &#8594;</button>
+        </div>
+      </div>
+
       <div class="risposte" id="risposte"></div>
 
       <div class="feedback" id="feedback"></div>
@@ -656,6 +718,9 @@
       btnSpiegazione.innerText = "Mostra spiegazione";
       btnSpiegazione.classList.remove("has-spiega");
 
+      // PDF preview
+      renderPdfPagina(corrente.paginaPdf || null, corrente._pdfSrc || null);
+
       const risposte = document.getElementById("risposte");
       risposte.innerHTML = "";
 
@@ -739,6 +804,60 @@
         btn.innerText = "📖 Mostra spiegazione";
       }
     }
+
+    // ── PDF preview ────────────────────────────────────────────────────────
+    const _pdfCache = {};
+    let _pdfCurrentPage = null;
+    let _pdfCurrentSrc  = null;
+
+    async function getPdfDoc(src) {
+      if (!src) return null;
+      if (_pdfCache[src]) return _pdfCache[src];
+      try {
+        const doc = await pdfjsLib.getDocument(src).promise;
+        _pdfCache[src] = doc;
+        return doc;
+      } catch(e) { return null; }
+    }
+
+    async function renderPdfPagina(pagina, src) {
+      const preview = document.getElementById("pdf-preview");
+      const canvas  = document.getElementById("pdf-canvas");
+      const label   = document.getElementById("pdf-label");
+
+      if (!pagina || !src) {
+        preview.classList.remove("visible");
+        return;
+      }
+
+      _pdfCurrentPage = pagina;
+      _pdfCurrentSrc  = src;
+
+      preview.classList.add("visible");
+      label.textContent = "Caricamento pagina " + pagina + "…";
+
+      const doc = await getPdfDoc(src);
+      if (!doc) { label.textContent = "PDF non disponibile."; return; }
+
+      try {
+        const page = await doc.getPage(pagina);
+        const viewport = page.getViewport({ scale: 1.8 });
+        canvas.width  = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+        label.textContent = "Pagina " + pagina + " di " + doc.numPages;
+      } catch(e) {
+        label.textContent = "Errore nel rendering della pagina.";
+      }
+    }
+
+    function navigaPdf(delta) {
+      if (!_pdfCurrentPage || !_pdfCurrentSrc) return;
+      const nuovaPagina = _pdfCurrentPage + delta;
+      if (nuovaPagina < 1) return;
+      renderPdfPagina(nuovaPagina, _pdfCurrentSrc);
+    }
+    // ───────────────────────────────────────────────────────────────────────
 
     function haSpiega() {
       if (!corrente) return false;
@@ -929,7 +1048,7 @@
         const srcFile = (pack.domande || pack.file || "").split("/").pop().replace(/\.js$/, "");
         const domande = window._QUIZ_PACKS[pack.id] || [];
         domande.forEach(d => {
-          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: srcFile || pack.label, _packId: pack.id }));
+          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: srcFile || pack.label, _packId: pack.id, _pdfSrc: pack.pdf || null }));
         });
       });
 

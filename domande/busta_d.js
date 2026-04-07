@@ -160,6 +160,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
+    "paginaPdf": 3,
     "opzioni": {
       "A": "Fig. 1",
       "B": "Fig. 4",
@@ -173,6 +174,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
+    "paginaPdf": 3,
     "opzioni": {
       "A": "Fig. 3",
       "B": "Fig. 2",
@@ -186,6 +188,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
+    "paginaPdf": 4,
     "opzioni": {
       "A": "Fig. 5",
       "B": "Fig. 2",
@@ -199,6 +202,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
+    "paginaPdf": 4,
     "opzioni": {
       "A": "Figura 5",
       "B": "Figura 4",
@@ -212,6 +216,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
+    "paginaPdf": 5,
     "opzioni": {
       "A": "Figura 1",
       "B": "Figura 4",
@@ -225,6 +230,7 @@ const DOMANDE = [
     "materia": "Logica",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
+    "paginaPdf": 5,
     "opzioni": {
       "A": "Figura 4",
       "B": "Figura 1",

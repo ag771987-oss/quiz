@@ -4,6 +4,7 @@ const QUIZ_MANIFEST = [
     label: "Busta — Situazionale",
     domande:    "domande/busta_d.js",
     risposte:   "domande/busta_r.js",
-    spiegazioni: "domande/busta_s.js"
+    spiegazioni: "domande/busta_s.js",
+    pdf:        "domande/busta.pdf"
   }
 ];
