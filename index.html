@@ -929,8 +929,7 @@
     function haSpiega() {
       if (!corrente) return false;
       const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      const lookupId = corrente.spiegazioneId != null ? corrente.spiegazioneId : corrente.id;
-      const spiega = packSpiega[lookupId];
+      const spiega = packSpiega[corrente.id];
       return !!(spiega && (spiega.spiegazione || spiega.testo || "").trim());
     }
 
@@ -947,8 +946,7 @@
     function renderSpiegazione(box) {
       box.innerHTML = "";
       const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      const lookupId = corrente.spiegazioneId != null ? corrente.spiegazioneId : corrente.id;
-      const spiega = packSpiega[lookupId] || null;
+      const spiega = packSpiega[corrente.id] || null;
 
       const testo = spiega ? (spiega.spiegazione || spiega.testo || "") : "";
 
@@ -1079,8 +1077,7 @@
           window._QUIZ_SPIEGAZIONI[pack.id] = spiegaMap;
           // Applica override corretta da SPIEGAZIONI (priorità massima)
           domande.forEach(d => {
-            const sid = d.spiegazioneId != null ? d.spiegazioneId : d.id;
-            const s = spiegaMap[sid];
+            const s = spiegaMap[d.id];
             if (s && s.corretta) d.corretta = s.corretta;
           });
         }

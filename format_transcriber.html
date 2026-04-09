@@ -431,7 +431,7 @@ function buildQARec(id,all){
   if(/leggere il brano|secondo il brano/.test(bl))materia='Comprensione';
   else if(/adattamento al cambiamento|lavoro di squadra|presa di decisione/.test(bl))materia='Situazionale';
   else if(/\b(shall|would|the |is |are |were |been )\b/.test(all.join(' ')))materia='Inglese';
-  return{id,materia,brano,domanda,opzioni,corretta:'',spiegazioneId:null};
+  return{id,materia,brano,domanda,opzioni,corretta:''};
 }
 
 // ══════ PARSERS ═══════════════════════════════════════════════════════════════
@@ -675,7 +675,7 @@ function dlDomande(){
   if(!SP.qs.length){alert('Nessuna domanda caricata.');return;}
   const src=$('spieg-ta').value.trim();const nm=src.match(/^(?:const|let|var)\s+(\w+)\s*=/);const varName=nm?nm[1]:'DOMANDE';
   // Non include 'corretta' nelle domande (va in RISPOSTE e SPIEGAZIONI)
-  const updated=SP.qs.map(q=>{const {corretta:_c,...qWithout}=q;return{...qWithout,spiegazioneId:q.id};});
+  const updated=SP.qs.map(q=>{const {corretta:_c,...qWithout}=q;return{...qWithout};});
   const js='const '+varName+' = '+JSON.stringify(updated,null,2)+';\n';
   const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='domande_aggiornate.js';a.click();URL.revokeObjectURL(u);
 }
