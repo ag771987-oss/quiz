@@ -126,6 +126,41 @@
       font-weight: bold;
     }
 
+    .brano {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #374151;
+      background: #f9fafb;
+      border-left: 3px solid var(--primary);
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+      max-height: 260px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .brano.visible {
+      display: block;
+    }
+
+    .brano-toggle {
+      display: none;
+      font-size: 13px;
+      color: var(--primary);
+      cursor: pointer;
+      margin-bottom: 14px;
+      background: none;
+      border: none;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    .brano-toggle.visible {
+      display: inline;
+    }
+
     .domanda {
       font-size: 31px;
       line-height: 1.35;
@@ -540,6 +575,8 @@
     <div class="card">
       <div class="source-badge" id="source-badge"></div>
       <div class="materia" id="materia">Materia</div>
+      <button class="brano-toggle" id="brano-toggle" onclick="toggleBrano()">📄 Mostra testo di riferimento</button>
+      <div class="brano" id="brano"></div>
       <div class="domanda" id="domanda">Caricamento domanda...</div>
 
       <div class="pdf-preview" id="pdf-preview">
@@ -706,6 +743,19 @@
       document.getElementById("numero-domanda").innerText = corrente.id;
       document.getElementById("materia").innerText = corrente.materia;
       document.getElementById("domanda").innerText = corrente.domanda;
+
+      const branoEl = document.getElementById("brano");
+      const branoToggle = document.getElementById("brano-toggle");
+      if (corrente.brano && corrente.brano.trim()) {
+        branoEl.textContent = corrente.brano;
+        branoEl.classList.remove("visible");
+        branoToggle.classList.add("visible");
+        branoToggle.textContent = "📄 Mostra testo di riferimento";
+      } else {
+        branoEl.textContent = "";
+        branoEl.classList.remove("visible");
+        branoToggle.classList.remove("visible");
+      }
       document.getElementById("feedback").innerText = "";
       document.getElementById("feedback").className = "feedback";
 
@@ -805,6 +855,18 @@
       }
     }
 
+    function toggleBrano() {
+      const el = document.getElementById("brano");
+      const btn = document.getElementById("brano-toggle");
+      if (el.classList.contains("visible")) {
+        el.classList.remove("visible");
+        btn.textContent = "📄 Mostra testo di riferimento";
+      } else {
+        el.classList.add("visible");
+        btn.textContent = "📄 Nascondi testo di riferimento";
+      }
+    }
+
     // ── PDF preview ────────────────────────────────────────────────────────
     const _pdfCache = {};
     let _pdfCurrentPage = null;
@@ -826,6 +888,11 @@
       const label   = document.getElementById("pdf-label");
 
       if (!pagina || !src) {
+        preview.classList.remove("visible");
+        return;
+      }
+
+      if (typeof pdfjsLib === "undefined") {
         preview.classList.remove("visible");
         return;
       }
@@ -880,7 +947,6 @@
     function renderSpiegazione(box) {
       box.innerHTML = "";
       const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      // Lookup by spiegazioneId if present, fall back to question id
       const lookupId = corrente.spiegazioneId != null ? corrente.spiegazioneId : corrente.id;
       const spiega = packSpiega[lookupId] || null;
 
@@ -897,7 +963,30 @@
       testoDiv.innerHTML = renderMarkdown(testo);
       box.appendChild(testoDiv);
 
-      if (spiega && spiega.riferimenti && spiega.riferimenti.length > 0) {
+      // Raccoglie riferimenti espliciti dalla spiegazione
+      const rifEspliciti = (spiega && spiega.riferimenti) ? spiega.riferimenti : [];
+
+      // Auto-rileva articoli citati nel testo della domanda/brano
+      const testoScan = (corrente.brano || "") + " " + (corrente.domanda || "") + " " + testo;
+      const normeCaricate = window.NORME || {};
+      const rifAuto = [];
+      const giaSegnalati = new Set(rifEspliciti.map(r => r.normaId));
+      Object.entries(normeCaricate).forEach(([normaId, norma]) => {
+        if (giaSegnalati.has(normaId)) return;
+        // Cerca "art. NN" o "articolo NN" o il titolo nel testo
+        const artMatch = normaId.match(/_art_(\d+)$/);
+        if (artMatch) {
+          const n = artMatch[1];
+          const re = new RegExp('art(?:icolo)?[.\\s]+' + n + '\\b', 'i');
+          if (re.test(testoScan)) {
+            rifAuto.push({ etichetta: norma.titolo || normaId, normaId });
+            giaSegnalati.add(normaId);
+          }
+        }
+      });
+
+      const tuttiRif = [...rifEspliciti, ...rifAuto];
+      if (tuttiRif.length > 0) {
         const sezione = document.createElement("div");
         sezione.className = "riferimenti-section";
 
@@ -906,7 +995,7 @@
         label.textContent = "Riferimenti normativi";
         sezione.appendChild(label);
 
-        spiega.riferimenti.forEach(rif => {
+        tuttiRif.forEach(rif => {
           const link = document.createElement("a");
           link.className = "riferimento-link";
           link.textContent = rif.etichetta;

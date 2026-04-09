@@ -215,7 +215,8 @@ textarea::placeholder{color:var(--t4)}
       <button class="btn btn-a" id="sq-run" onclick="runSQ()">▶ Genera spiegazioni (AI)</button>
       <button class="btn btn-g" id="sq-stop" onclick="stopSQ()" style="display:none">■ Stop</button>
       <button class="btn btn-g" onclick="dlSpieg()">⬇ SPIEGAZIONI.js</button>
-      <button class="btn btn-g" onclick="dlDomande()">⬇ DOMANDE aggiornate</button>
+      <button class="btn btn-g" onclick="dlRisposte()">⬇ RISPOSTE.js</button>
+      <button class="btn btn-g" onclick="dlDomande()">⬇ DOMANDE.js</button>
       <span id="sq-done" style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-left:auto"></span>
     </div>
   </div>
@@ -658,15 +659,23 @@ function renderSBox(q,item){
 
 function dlSpieg(){
   if(!Object.keys(SP.res).length){alert('Nessuna spiegazione generata.');return;}
-  const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),testo:r.spiegazione})).sort((a,b)=>a.id-b.id);
+  const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),corretta:r.corretta||'',spiegazione:r.spiegazione||''})).sort((a,b)=>a.id-b.id);
   const js='const SPIEGAZIONI = '+JSON.stringify(arr,null,2)+';\n';
   const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='spiegazioni.js';a.click();URL.revokeObjectURL(u);
+}
+
+function dlRisposte(){
+  if(!Object.keys(SP.res).length){alert('Nessuna spiegazione generata.');return;}
+  const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),corretta:r.corretta||''})).sort((a,b)=>a.id-b.id);
+  const js='const RISPOSTE = '+JSON.stringify(arr,null,2)+';\n';
+  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='risposte.js';a.click();URL.revokeObjectURL(u);
 }
 
 function dlDomande(){
   if(!SP.qs.length){alert('Nessuna domanda caricata.');return;}
   const src=$('spieg-ta').value.trim();const nm=src.match(/^(?:const|let|var)\s+(\w+)\s*=/);const varName=nm?nm[1]:'DOMANDE';
-  const updated=SP.qs.map(q=>{const res=SP.res[q.id];return{...q,corretta:res?res.corretta:(q.corretta||''),spiegazioneId:res?q.id:(q.spiegazioneId||null)};});
+  // Non include 'corretta' nelle domande (va in RISPOSTE e SPIEGAZIONI)
+  const updated=SP.qs.map(q=>{const {corretta:_c,...qWithout}=q;return{...qWithout,spiegazioneId:q.id};});
   const js='const '+varName+' = '+JSON.stringify(updated,null,2)+';\n';
   const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='domande_aggiornate.js';a.click();URL.revokeObjectURL(u);
 }

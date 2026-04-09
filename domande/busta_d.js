@@ -9,7 +9,6 @@ const DOMANDE = [
       "B": "Analizzi la normativa doganale, elaborando un dossier di eccezione da inoltrare alle autorità e informi il team solo quando ottieni l'ok definitivo",
       "C": "Mantieni il piano attuale cercando contatti informali per \"sbloccare\" la pratica doganale, evitando di coinvolgere il team finché non hai una risposta ufficiale"
     },
-    "corretta": "A",
     "spiegazioneId": 1
   },
   {
@@ -22,7 +21,6 @@ const DOMANDE = [
       "B": "Ampli temporaneamente la soglia di tempo di risposta consentita, confidando che l'ondata rientri da sola appena passata la finestra di rilascio software",
       "C": "Istituisci immediatamente un sistema di triage centralizzato che riassegna dinamicamente i ticket in base alla competenza, facendo daily stand-up di 15 minuti"
     },
-    "corretta": "A",
     "spiegazioneId": 2
   },
   {
@@ -35,7 +33,6 @@ const DOMANDE = [
       "B": "Le suggerisci corsi online di public speaking e rimandi a un futuro non definito l'assegnazione di task \"in vetrina\", attendendo che i tempi maturino",
       "C": "Programmi un colloquio di sviluppo per definire con lei un piano graduale: workshop interni, shadowing a un collega e poi piccole presentazioni"
     },
-    "corretta": "A",
     "spiegazioneId": 3
   },
   {
@@ -48,7 +45,6 @@ const DOMANDE = [
       "B": "Organizzi un assessment di competenze per comprendere se la strada gestionale sia davvero coerente con le sue motivazioni prima di qualsiasi incarico e ne discuti con lui i risultati",
       "C": "Lo incentivi proponendogli un bonus legato a milestone di progetto, senza cambiare le sue mansioni ritenendo che sia solo una questione di esperienza"
     },
-    "corretta": "A",
     "spiegazioneId": 4
   },
   {
@@ -61,7 +57,6 @@ const DOMANDE = [
       "B": "Crei un'area pilota, inviti volontari a testare il nuovo ambiente per quattro settimane e raccogli feedback strutturati prima del roll-out",
       "C": "Convochi una riunione plenaria dove spieghi vantaggi economici e ambientali, senza prevedere fasi intermedie d'adozione"
     },
-    "corretta": "A",
     "spiegazioneId": 5
   },
   {
@@ -74,7 +69,6 @@ const DOMANDE = [
       "B": "Imposti subito la piattaforma come unico canale di screening, lasciando agli HR solo la fase finale di colloquio",
       "C": "Organizzi workshop pratici con casi reali e inviti HR di altre aziende che usano già la piattaforma a raccontare la loro esperienza"
     },
-    "corretta": "A",
     "spiegazioneId": 6
   },
   {
@@ -87,7 +81,6 @@ const DOMANDE = [
       "B": "Continui la produzione, confidando che i test finali di controllo qualità filtrino eventuali problemi prima della distribuzione",
       "C": "Blocchi la produzione del farmaco, informi immediatamente le autorità competenti e avvii un'indagine interna trasparente"
     },
-    "corretta": "A",
     "spiegazioneId": 7
   },
   {
@@ -100,7 +93,6 @@ const DOMANDE = [
       "B": "Ti concentri sulla delivery \"essenziale\", tagliando subito tutte le funzionalità non core per minimizzare i rischi di slittamento",
       "C": "Definisci sprint settimanali con obiettivi SMART, review demo aperta al cliente e retrospettiva di miglioramento continuo"
     },
-    "corretta": "A",
     "spiegazioneId": 8
   },
   {
@@ -113,7 +105,6 @@ const DOMANDE = [
       "B": "Delinei un piano high-level e deleghi ai team-leader di dettagliare le attività, verificando i progressi con meeting mensili",
       "C": "Lanci un programma Kaizen coinvolgendo operatori e supervisori per identificare colli di bottiglia e impostare KPI giornalieri"
     },
-    "corretta": "A",
     "spiegazioneId": 9
   },
   {
@@ -126,7 +117,6 @@ const DOMANDE = [
       "B": "Istituisci un comitato inter-funzionale che si riunisce ogni due settimane con una roadmap condivisa e dashboard di avanzamento",
       "C": "Gestisci i contatti esteri da solo per velocizzare le trattative, coinvolgendo gli altri dipartimenti solo alla firma del contratto"
     },
-    "corretta": "A",
     "spiegazioneId": 10
   },
   {
@@ -139,7 +129,6 @@ const DOMANDE = [
       "B": "Prosegui la produzione contando su controlli non frequenti, ma al contempo pianifichi interventi futuri",
       "C": "Blocchi temporaneamente l'impianto, notifichi subito le autorità e avvii un audit per individuare le cause e le azioni correttive"
     },
-    "corretta": "A",
     "spiegazioneId": 11
   },
   {
@@ -152,7 +141,6 @@ const DOMANDE = [
       "B": "Gestisci in prima persona i contatti esteri e informi gli altri dipartimenti a milestone raggiunte, delegando le fasi successive",
       "C": "Lasci che ciascun dipartimento lavori in autonomia contando su una convergenza spontanea al momento del lancio"
     },
-    "corretta": "A",
     "spiegazioneId": 12
   },
   {
@@ -166,7 +154,6 @@ const DOMANDE = [
       "B": "Fig. 4",
       "C": "Fig. 5"
     },
-    "corretta": "A",
     "spiegazioneId": 13
   },
   {
@@ -180,7 +167,6 @@ const DOMANDE = [
       "B": "Fig. 2",
       "C": "Fig. 4"
     },
-    "corretta": "A",
     "spiegazioneId": 14
   },
   {
@@ -194,7 +180,6 @@ const DOMANDE = [
       "B": "Fig. 2",
       "C": "Fig. 3"
     },
-    "corretta": "A",
     "spiegazioneId": 15
   },
   {
@@ -208,7 +193,6 @@ const DOMANDE = [
       "B": "Figura 4",
       "C": "Figura 3"
     },
-    "corretta": "A",
     "spiegazioneId": 16
   },
   {
@@ -222,7 +206,6 @@ const DOMANDE = [
       "B": "Figura 4",
       "C": "Figura 2"
     },
-    "corretta": "A",
     "spiegazioneId": 17
   },
   {
@@ -236,7 +219,6 @@ const DOMANDE = [
       "B": "Figura 1",
       "C": "Figura 2"
     },
-    "corretta": "A",
     "spiegazioneId": 18
   },
   {
@@ -250,7 +232,6 @@ const DOMANDE = [
       "C": "Le cifre arabe",
       "D": "La scrittura di tipo alfabetico"
     },
-    "corretta": "A",
     "spiegazioneId": 19
   },
   {
@@ -264,7 +245,6 @@ const DOMANDE = [
       "C": "Come l'applicazione ai numeri del principio alfabetico",
       "D": "Come una grande conquista intellettuale"
     },
-    "corretta": "A",
     "spiegazioneId": 20
   },
   {
@@ -278,7 +258,6 @@ const DOMANDE = [
       "C": "Entrambi applicano lo stesso principio base",
       "D": "Dal sistema decimale può derivare il sistema binario"
     },
-    "corretta": "A",
     "spiegazioneId": 21
   },
   {
@@ -291,7 +270,6 @@ const DOMANDE = [
       "B": "",
       "C": ""
     },
-    "corretta": "A",
     "spiegazioneId": 22
   },
   {
@@ -304,7 +282,6 @@ const DOMANDE = [
       "B": "Scrittura fortemente pianificata",
       "C": "Knowledge telling"
     },
-    "corretta": "A",
     "spiegazioneId": 23
   },
   {
@@ -317,7 +294,6 @@ const DOMANDE = [
       "B": "L'enunciazione immediata di ciò che si sa",
       "C": "L'adozione degli standard usati per i verbali"
     },
-    "corretta": "A",
     "spiegazioneId": 24
   },
   {
@@ -330,7 +306,6 @@ const DOMANDE = [
       "B": "Qualunque strategia cognitiva va bene",
       "C": "Dipende dal tipo di testo"
     },
-    "corretta": "A",
     "spiegazioneId": 25
   },
   {
@@ -343,7 +318,6 @@ const DOMANDE = [
       "B": "deve essere firmata da almeno un quinto dei componenti della Camera e non può essere messa in discussione prima di tre giorni dalla sua presentazione",
       "C": "deve essere firmata da almeno un decimo dei componenti della Camera e non può essere messa in discussione prima di tre giorni dalla sua presentazione"
     },
-    "corretta": "A",
     "spiegazioneId": 26
   },
   {
@@ -356,7 +330,6 @@ const DOMANDE = [
       "B": "entro sessanta giorni dalla loro pubblicazione",
       "C": "entro venti giorni dalla loro pubblicazione"
     },
-    "corretta": "A",
     "spiegazioneId": 27
   },
   {
@@ -369,7 +342,6 @@ const DOMANDE = [
       "B": "La potestà regolamentare spetta al Governo e alle Regioni",
       "C": "La potestà regolamentare spetta esclusivamente al Parlamento"
     },
-    "corretta": "A",
     "spiegazioneId": 28
   },
   {
@@ -382,7 +354,6 @@ const DOMANDE = [
       "B": "è sempre ammessa e non può essere esclusa o limitata a particolari mezzi di impugnazione o per determinate categorie di atti",
       "C": "può essere esercitata solo a mezzo di ricorsi amministrativi ai superiori gerarchici degli organi che hanno emesso gli atti contestati"
     },
-    "corretta": "A",
     "spiegazioneId": 29
   },
   {
@@ -395,7 +366,6 @@ const DOMANDE = [
       "B": "l'amministrazione pubblica non può sospenderne gli effetti",
       "C": "producono i loro effetti senza il consenso né dei destinatari né dei controinteressati"
     },
-    "corretta": "A",
     "spiegazioneId": 30
   },
   {
@@ -408,7 +378,6 @@ const DOMANDE = [
       "B": "è la situazione soggettiva contrapposta al potere amministrativo, riconosciuta in capo ai titolari di una posizione qualificata e differenziata rispetto al suo esercizio",
       "C": "è la situazione soggettiva che consente ai titolari di agire in giudizio solo per l'annullamento dei provvedimenti amministrativi che la ledono, ma non anche per ottenere tutela risarcitoria"
     },
-    "corretta": "A",
     "spiegazioneId": 31
   },
   {
@@ -421,7 +390,6 @@ const DOMANDE = [
       "B": "possono essere assegnati solo per durate determinate a esperti di particolare e comprovata specializzazione, per specifiche esigenze connesse a obiettivi determinati, cui le amministrazioni stesse non possano far fronte con il personale in servizio",
       "C": "sono liberamente assegnabili dai dirigenti, sotto la loro esclusiva responsabilità, anche al di là del quadro dei poteri loro spettanti di organizzazione delle risorse umane, di coordinamento degli uffici e di regolazione dei tempi di lavoro"
     },
-    "corretta": "A",
     "spiegazioneId": 32
   },
   {
@@ -434,7 +402,6 @@ const DOMANDE = [
       "B": "la Commissione europea deve informarne tempestivamente il Parlamento europeo e il Consiglio europeo",
       "C": "non consente di armonizzare le legislazioni nazionali in settori esclusi da tale tecnica legislativa in base ai trattati"
     },
-    "corretta": "A",
     "spiegazioneId": 33
   },
   {
@@ -447,7 +414,6 @@ const DOMANDE = [
       "B": "una modalità di esercizio delle competenze da parte dell'Unione, la cui azione non deve andare oltre quanto strettamente necessario per il conseguimento degli obiettivi fissati nei trattati",
       "C": "un test da applicarsi nel valutare la compatibilità del diritto dell'Unione europea con le prassi nazionali"
     },
-    "corretta": "A",
     "spiegazioneId": 34
   },
   {
@@ -460,7 +426,6 @@ const DOMANDE = [
       "B": "le iniziative dei cittadini di cui all'art. 11 TUE",
       "C": "le dichiarazioni del Consiglio europeo"
     },
-    "corretta": "A",
     "spiegazioneId": 35
   },
   {
@@ -473,7 +438,6 @@ const DOMANDE = [
       "B": "una diminuzione meno che proporzionale della quantità domandata",
       "C": "una diminuzione più che proporzionale della quantità domandata"
     },
-    "corretta": "A",
     "spiegazioneId": 36
   },
   {
@@ -486,7 +450,6 @@ const DOMANDE = [
       "B": "offerta che spingerà i venditori ad offrire il bene a prezzi progressivamente più alti sino al raggiungimento dell'equilibrio",
       "C": "domanda che spingerà i consumatori a domandare il bene a prezzi progressivamente più alti fino al raggiungimento dell'equilibrio"
     },
-    "corretta": "A",
     "spiegazioneId": 37
   },
   {
@@ -499,7 +462,6 @@ const DOMANDE = [
       "B": "verrebbero annullati sia il surplus del consumatore sia la perdita secca",
       "C": "verrebbe annullata la perdita secca, ma non il surplus del consumatore"
     },
-    "corretta": "A",
     "spiegazioneId": 38
   },
   {
@@ -512,7 +474,6 @@ const DOMANDE = [
       "B": "della propensione marginale al consumo",
       "C": "dei prezzi delle materie prime"
     },
-    "corretta": "A",
     "spiegazioneId": 39
   },
   {
@@ -525,7 +486,6 @@ const DOMANDE = [
       "B": "una traslazione verso il basso a destra della curva LM a causa della diminuzione della struttura dei tassi di interesse",
       "C": "una traslazione verso l'alto a sinistra della curva LM a causa della diminuzione della struttura dei tassi di interesse"
     },
-    "corretta": "A",
     "spiegazioneId": 40
   },
   {
@@ -538,7 +498,6 @@ const DOMANDE = [
       "B": "operazioni di rifinanziamento principale",
       "C": "operazioni di rifinanziamento marginale"
     },
-    "corretta": "A",
     "spiegazioneId": 41
   },
   {
@@ -551,7 +510,6 @@ const DOMANDE = [
       "B": "risultati individuali, comportamenti organizzativi",
       "C": "output, tempi"
     },
-    "corretta": "A",
     "spiegazioneId": 42
   },
   {
@@ -564,7 +522,6 @@ const DOMANDE = [
       "B": "crediti già accertati nei confronti di terzi",
       "C": "previsioni di entrate"
     },
-    "corretta": "A",
     "spiegazioneId": 43
   },
   {
@@ -577,7 +534,6 @@ const DOMANDE = [
       "B": "Weick",
       "C": "Mayo"
     },
-    "corretta": "A",
     "spiegazioneId": 44
   },
   {
@@ -590,7 +546,6 @@ const DOMANDE = [
       "B": "sviluppato i concetti di public service motivation e di isomorfismo organizzativo",
       "C": "messo in evidenza l'importanza di una forma di macro-struttura organizzativa coerente con il contesto esterno"
     },
-    "corretta": "A",
     "spiegazioneId": 45
   },
   {
@@ -603,7 +558,6 @@ const DOMANDE = [
       "B": "l'intensità della motivazione è condizionata anche dalla difficoltà degli obiettivi",
       "C": ""
     },
-    "corretta": "A",
     "spiegazioneId": 46
   },
   {
@@ -616,7 +570,6 @@ const DOMANDE = [
       "B": "potere spirituale, potere materiale",
       "C": "potere short-term, potere mid-term, potere long-term"
     },
-    "corretta": "A",
     "spiegazioneId": 47
   },
   {
@@ -629,7 +582,6 @@ const DOMANDE = [
       "B": "del numero dei compiti attribuiti al titolare della mansione",
       "C": "dell'organico di personale stabilmente in servizio"
     },
-    "corretta": "A",
     "spiegazioneId": 48
   },
   {
@@ -642,7 +594,6 @@ const DOMANDE = [
       "B": "Agenzia per la Cybersicurezza Nazionale (ACN)",
       "C": "Scuola Nazionale dell'Amministrazione (SNA)"
     },
-    "corretta": "A",
     "spiegazioneId": 49
   },
   {
@@ -655,7 +606,6 @@ const DOMANDE = [
       "B": "coloro che promuovono una politica pubblica",
       "C": "coloro che beneficiano di una politica pubblica"
     },
-    "corretta": "A",
     "spiegazioneId": 50
   },
   {
@@ -668,7 +618,6 @@ const DOMANDE = [
       "B": "problemi che i policy makers si rifiutano di affrontare",
       "C": "problemi indefinibili e, di conseguenza, insolubili"
     },
-    "corretta": "A",
     "spiegazioneId": 51
   },
   {
@@ -681,7 +630,6 @@ const DOMANDE = [
       "B": "basi informative esplicite, trasparenti e replicabili",
       "C": "una serie di studi ad hoc commissionati a vari centri di ricerca"
     },
-    "corretta": "A",
     "spiegazioneId": 52
   },
   {
@@ -694,7 +642,6 @@ const DOMANDE = [
       "B": "nel delineare le teorie causa-effetto alla base dell'intervento pubblico",
       "C": "nel valutare le dinamiche sottostanti la trasformazione di input in output e outcomes per comprendere i meccanismi che si attivano nell'applicazione di una politica pubblica"
     },
-    "corretta": "A",
     "spiegazioneId": 53
   },
   {
@@ -707,7 +654,6 @@ const DOMANDE = [
       "B": "produrre una spiegazione plausibile e sufficientemente fondata su quali meccanismi sono stati attivati in determinati contesti",
       "C": "produrre una valutazione realisticamente plausibile alla luce delle evidenze empiriche disponibili basandosi su metodi scientificamente rigorosi"
     },
-    "corretta": "A",
     "spiegazioneId": 54
   },
   {
@@ -720,7 +666,6 @@ const DOMANDE = [
       "B": "preferred",
       "C": "soon"
     },
-    "corretta": "A",
     "spiegazioneId": 55
   },
   {
@@ -733,7 +678,6 @@ const DOMANDE = [
       "B": "out",
       "C": "up"
     },
-    "corretta": "A",
     "spiegazioneId": 56
   },
   {
@@ -746,7 +690,6 @@ const DOMANDE = [
       "B": "instructor",
       "C": "trainer"
     },
-    "corretta": "A",
     "spiegazioneId": 57
   },
   {
@@ -759,7 +702,6 @@ const DOMANDE = [
       "B": "If only",
       "C": "Unless"
     },
-    "corretta": "A",
     "spiegazioneId": 58
   },
   {
@@ -772,7 +714,6 @@ const DOMANDE = [
       "B": "one hundred twenty-four thousand and eight hundred forty-three euros",
       "C": "one hundred and twenty-four thousands, eight hundred forty-three euros"
     },
-    "corretta": "A",
     "spiegazioneId": 59
   },
   {
@@ -785,7 +726,6 @@ const DOMANDE = [
       "B": "get over",
       "C": "renounce"
     },
-    "corretta": "A",
     "spiegazioneId": null
   }
 ];
