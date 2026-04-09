@@ -112,6 +112,14 @@ textarea::placeholder{color:var(--t4)}
 .prog-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;flex-shrink:0}
 .prog-fill{height:100%;background:var(--amber);transition:width .3s}
 .modal-footer{padding:10px 20px;border-top:1px solid var(--b1);display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap}
+/* ── NORME MODAL ── */
+.n-card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px 12px;flex-shrink:0}
+.n-card .n-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.n-card .n-titolo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--amber)}
+.n-card .n-id{font-family:var(--mono);font-size:8px;color:var(--t4)}
+.n-card .n-testo{font-family:var(--mono);font-size:9px;color:var(--t2);line-height:1.6;max-height:120px;overflow-y:auto;white-space:pre-wrap;margin-top:4px;border-top:1px solid var(--b1);padding-top:4px}
+.n-card .n-dl{font-family:var(--mono);font-size:8px;color:var(--blue);cursor:pointer;margin-top:4px;text-decoration:underline}
+.n-card .n-dl:hover{color:var(--amber)}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
@@ -136,6 +144,8 @@ textarea::placeholder{color:var(--t4)}
   <div class="st" id="st4"><div class="st-n" id="sn4">4</div>CONVERTI</div>
   <div class="st-arr">›</div>
   <div class="st clickable" id="st5" onclick="openSpieg()" title="Genera spiegazioni AI"><div class="st-n">✦</div>SPIEGAZIONI</div>
+  <div class="st-arr">›</div>
+  <div class="st clickable" id="st6" onclick="openNorme()" title="Estrai articoli normativi"><div class="st-n">§</div>NORME</div>
 </div>
 
 <!-- hidden file inputs — OUTSIDE any container, at top level -->
@@ -214,10 +224,102 @@ textarea::placeholder{color:var(--t4)}
     <div class="modal-footer">
       <button class="btn btn-a" id="sq-run" onclick="runSQ()">▶ Genera spiegazioni (AI)</button>
       <button class="btn btn-g" id="sq-stop" onclick="stopSQ()" style="display:none">■ Stop</button>
-      <button class="btn btn-g" onclick="dlSpieg()">⬇ SPIEGAZIONI.js</button>
-      <button class="btn btn-g" onclick="dlRisposte()">⬇ RISPOSTE.js</button>
-      <button class="btn btn-g" onclick="dlDomande()">⬇ DOMANDE.js</button>
+      <div style="display:flex;align-items:center;gap:6px">
+        <label style="font-family:var(--mono);font-size:9px;color:var(--t3);white-space:nowrap">NOME SET</label>
+        <input id="set-name" type="text" placeholder="busta" style="background:var(--bg);border:1px solid var(--b2);padding:3px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;width:80px;border-radius:2px" oninput="aggiornaPathLabel()">
+        <span id="set-path-lbl" style="font-family:var(--mono);font-size:9px;color:var(--t4)">domande/busta/</span>
+      </div>
+      <button class="btn btn-g" onclick="dlSpieg()">⬇ _s.js</button>
+      <button class="btn btn-g" onclick="dlRisposte()">⬇ _r.js</button>
+      <button class="btn btn-g" onclick="dlDomande()">⬇ _d.js</button>
       <span id="sq-done" style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-left:auto"></span>
+    </div>
+  </div>
+</div>
+
+<!-- NORME MODAL -->
+<div id="norme-modal" class="modal-bg hidden" onclick="if(event.target===this)closeNorme()">
+  <div class="modal">
+    <div class="modal-hd">
+      <h2>§ ESTRAI NORME — NORMATTIVA</h2>
+      <button class="modal-close" onclick="closeNorme()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-col">
+        <div class="modal-col-title">Fonte normativa</div>
+        <div class="info" style="flex-shrink:0"><b>Normattiva:</b> scarica automaticamente gli articoli dal portale della legge vigente. Inserisci i parametri e il range di articoli.</div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">TIPO ATTO</label>
+            <select id="n-tipo" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px" onchange="updateURN()">
+              <option value="costituzione">Costituzione</option>
+              <option value="decreto.legislativo">D.Lgs.</option>
+              <option value="legge">Legge</option>
+              <option value="decreto.del.presidente.della.repubblica">D.P.R.</option>
+              <option value="decreto.legge">D.L.</option>
+              <option value="regio.decreto">R.D.</option>
+              <option value="custom">Personalizzato…</option>
+            </select>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">DATA GU (YYYY-MM-DD)</label>
+            <input id="n-data" type="text" placeholder="1947-12-27" value="1947-12-27" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%" oninput="updateURN()">
+          </div>
+          <div style="flex:0 0 80px;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">NUMERO</label>
+            <input id="n-num" type="text" placeholder="es. 165" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%" oninput="updateURN()">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0">
+          <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">URN ATTO (auto o personalizzato)</label>
+          <input id="n-urn" type="text" placeholder="urn:nir:stato:costituzione:1947-12-27" value="urn:nir:stato:costituzione:1947-12-27" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">DA ARTICOLO</label>
+            <input id="n-from" type="number" value="1" min="1" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">A ARTICOLO</label>
+            <input id="n-to" type="number" value="139" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">PREFISSO normaId</label>
+            <input id="n-prefix" type="text" placeholder="cost" value="cost" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">SOTTOCARTELLA norme/</label>
+            <input id="n-folder" type="text" placeholder="costituzione" value="costituzione" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0">
+          <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">FONTE (nome leggibile)</label>
+          <input id="n-fonte" type="text" placeholder="Costituzione della Repubblica Italiana" value="Costituzione della Repubblica Italiana" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+        </div>
+        <div class="row" style="flex-shrink:0">
+          <button class="btn btn-a" id="n-run" onclick="runNorme()">▶ Scarica da Normattiva</button>
+          <button class="btn btn-g" id="n-stop" onclick="stopNorme()" style="display:none">■ Stop</button>
+        </div>
+        <div class="sep" style="flex-shrink:0">oppure incolla testo + AI</div>
+        <input type="file" id="fi-norme" style="display:none" onchange="handleNormeFile()">
+        <textarea id="n-src" rows="4" style="flex:1;min-height:40px" placeholder="Incolla il testo della norma per estrazione AI…"></textarea>
+        <div class="row" style="flex-shrink:0">
+          <button class="btn btn-g" onclick="runNormeAI()">✦ Estrai con AI</button>
+        </div>
+      </div>
+      <div class="modal-col">
+        <div class="modal-col-title">Articoli estratti</div>
+        <div class="prog-bar" style="flex-shrink:0"><div class="prog-fill" id="n-prog" style="width:0%"></div></div>
+        <div id="n-status" style="font-family:var(--mono);font-size:9px;color:var(--t3);flex-shrink:0">Nessun articolo estratto</div>
+        <div class="spieg-area" id="n-area"><div style="font-family:var(--mono);font-size:10px;color:var(--t4);text-align:center;padding:30px">Gli articoli appariranno qui…</div></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-g" onclick="dlTutteNorme()">⬇ Scarica tutti i .js</button>
+      <button class="btn btn-g" onclick="dlManifestNorme()">⬇ Snippet manifest</button>
+      <span id="n-done" style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-left:auto"></span>
     </div>
   </div>
 </div>
@@ -611,8 +713,10 @@ async function runSQ(){
   const sys=`Sei un esperto di concorsi pubblici italiani. Per ogni domanda:
 1. Indica la risposta corretta (solo la lettera A, B o C)
 2. Spiega in 2-4 frasi perché è corretta e perché le altre sono sbagliate
+3. Elenca i riferimenti normativi citati o pertinenti (articoli di Costituzione, leggi, decreti, regolamenti)
 Rispondi SOLO con JSON valido, senza markdown:
-[{"id":numero,"corretta":"A"|"B"|"C","spiegazione":"testo"}]`;
+[{"id":numero,"corretta":"A"|"B"|"C","spiegazione":"testo","riferimenti":[{"normaId":"prefisso_art_N","etichetta":"Art. N Fonte"}]}]
+Convenzioni normaId: cost_art_N (Costituzione), dlgs_N_YYYY_art_N (d.lgs.), l_N_YYYY_art_N (leggi), dpr_N_YYYY_art_N (D.P.R.). Se non ci sono riferimenti: riferimenti:[].`;
 
   for(let i=0;i<SP.qs.length;i+=BATCH){
     if(SP.stop)break;
@@ -629,7 +733,7 @@ Rispondi SOLO con JSON valido, senza markdown:
       const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
       parsed.forEach(item=>{
         const q=SP.qs.find(x=>x.id===item.id)||batch[0];
-        SP.res[q.id]={corretta:item.corretta,spiegazione:item.spiegazione};
+        SP.res[q.id]={corretta:item.corretta,spiegazione:item.spiegazione,riferimenti:item.riferimenti||[]};
         renderSBox(q,item);
         const qc=document.getElementById('qc-'+q.id);if(qc){qc.className='q-card done';const qn=qc.querySelector('.qn');if(qn)qn.textContent=(q.id||'?')+') ✓';}
         done++;
@@ -653,31 +757,282 @@ function renderSBox(q,item){
   const d=document.createElement('div');d.className='spieg-box';d.id='sp-'+q.id;
   const opts=q.opzioni||{};
   const optsH=Object.entries(opts).map(([k,v])=>`<div class="spieg-opt${k===item.corretta?' ok':''}">${k}) ${esc(v)}</div>`).join('');
-  d.innerHTML=`<div class="spieg-id">Q${q.id}${q.materia?' — '+esc(q.materia):''}</div><div class="spieg-dom">${esc(q.domanda||'')}</div><div>${optsH}</div><div class="spieg-testo">${esc(item.spiegazione||'')}</div>`;
+  const rifH=(item.riferimenti||[]).length?'<div style="font-family:var(--mono);font-size:9px;color:var(--blue);margin-top:6px;border-top:1px solid var(--b1);padding-top:5px">§ '+(item.riferimenti||[]).map(r=>esc(r.etichetta||r.normaId)).join(', ')+'</div>':'';
+  d.innerHTML=`<div class="spieg-id">Q${q.id}${q.materia?' — '+esc(q.materia):''}</div><div class="spieg-dom">${esc(q.domanda||'')}</div><div>${optsH}</div><div class="spieg-testo">${esc(item.spiegazione||'')}</div>${rifH}`;
   area.appendChild(d);area.scrollTop=area.scrollHeight;
 }
 
+function getNomeSet(){return ($('set-name').value.trim()||'set').toLowerCase().replace(/\s+/g,'_');}
+function aggiornaPathLabel(){const n=getNomeSet();$('set-path-lbl').textContent='domande/'+n+'/';}
+
 function dlSpieg(){
   if(!Object.keys(SP.res).length){alert('Nessuna spiegazione generata.');return;}
-  const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),corretta:r.corretta||'',spiegazione:r.spiegazione||''})).sort((a,b)=>a.id-b.id);
+  const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),corretta:r.corretta||'',spiegazione:r.spiegazione||'',riferimenti:r.riferimenti||[]})).sort((a,b)=>a.id-b.id);
   const js='const SPIEGAZIONI = '+JSON.stringify(arr,null,2)+';\n';
-  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='spiegazioni.js';a.click();URL.revokeObjectURL(u);
+  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=getNomeSet()+'_s.js';a.click();URL.revokeObjectURL(u);
 }
 
 function dlRisposte(){
   if(!Object.keys(SP.res).length){alert('Nessuna spiegazione generata.');return;}
   const arr=Object.entries(SP.res).map(([id,r])=>({id:parseInt(id),corretta:r.corretta||''})).sort((a,b)=>a.id-b.id);
   const js='const RISPOSTE = '+JSON.stringify(arr,null,2)+';\n';
-  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='risposte.js';a.click();URL.revokeObjectURL(u);
+  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=getNomeSet()+'_r.js';a.click();URL.revokeObjectURL(u);
 }
 
 function dlDomande(){
   if(!SP.qs.length){alert('Nessuna domanda caricata.');return;}
   const src=$('spieg-ta').value.trim();const nm=src.match(/^(?:const|let|var)\s+(\w+)\s*=/);const varName=nm?nm[1]:'DOMANDE';
   // Non include 'corretta' nelle domande (va in RISPOSTE e SPIEGAZIONI)
-  const updated=SP.qs.map(q=>{const {corretta:_c,...qWithout}=q;return{...qWithout};});
+  const updated=SP.qs.map(q=>{const {corretta:_c,...qWithout}=q;const res=SP.res[q.id];if(res&&res.riferimenti&&res.riferimenti.length)qWithout.riferimenti=res.riferimenti;return qWithout;});
   const js='const '+varName+' = '+JSON.stringify(updated,null,2)+';\n';
-  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='domande_aggiornate.js';a.click();URL.revokeObjectURL(u);
+  const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=getNomeSet()+'_d.js';a.click();URL.revokeObjectURL(u);
+}
+
+// ══════ ESTRAI NORME ══════════════════════════════════════════════════════════
+const NM={arts:[],running:false,stop:false};
+const CORS_PROXIES=['https://corsproxy.io/?url=','https://api.allorigins.win/raw?url='];
+
+function openNorme(){show('norme-modal');}
+function closeNorme(){hide('norme-modal');}
+
+function handleNormeFile(){
+  const inp=$('fi-norme');
+  if(!inp.files||!inp.files[0])return;
+  const f=inp.files[0];inp.value='';
+  readF(f,text=>{$('n-src').value=text;});
+}
+
+function getNormePrefix(){return ($('n-prefix').value.trim()||'norma').toLowerCase().replace(/[^a-z0-9_]/g,'_');}
+function getNormeFolder(){return ($('n-folder').value.trim()||'norme').toLowerCase().replace(/[^a-z0-9_àèéìòù]/g,'_');}
+function getNormeFonte(){return $('n-fonte').value.trim()||'';}
+
+function updateURN(){
+  const tipo=$('n-tipo').value;
+  if(tipo==='custom')return;
+  const data=$('n-data').value.trim();
+  const num=$('n-num').value.trim();
+  let urn='urn:nir:stato:'+tipo+':'+data;
+  if(num)urn+=';'+num;
+  $('n-urn').value=urn;
+  // Auto-fill prefix and folder
+  const short={costituzione:'cost','decreto.legislativo':'dlgs',legge:'l','decreto.del.presidente.della.repubblica':'dpr','decreto.legge':'dl','regio.decreto':'rd'};
+  const p=short[tipo]||tipo.replace(/\./g,'');
+  if(num){$('n-prefix').value=p+'_'+num+'_'+data.slice(0,4);$('n-folder').value=p+'_'+num+'_'+data.slice(0,4);}
+  else{$('n-prefix').value=p;$('n-folder').value=tipo.replace(/\./g,'_');}
+}
+
+// Fetch a single URL trying CORS proxies in order
+async function fetchCORS(url){
+  // Try direct first (works if same-origin or CORS enabled)
+  try{const r=await fetch(url,{signal:AbortSignal.timeout(8000)});if(r.ok)return await r.text();}catch(e){}
+  // Try proxies
+  for(const proxy of CORS_PROXIES){
+    try{
+      const r=await fetch(proxy+encodeURIComponent(url),{signal:AbortSignal.timeout(12000)});
+      if(r.ok)return await r.text();
+    }catch(e){}
+  }
+  return null;
+}
+
+// Parse article text from Normattiva HTML
+function parseNormattivaHTML(html,artNum){
+  const parser=new DOMParser();
+  const doc=parser.parseFromString(html,'text/html');
+  // The article content is inside the main content area
+  // Try multiple selectors that Normattiva uses
+  const selectors=['#textArticle','#testoArticolo','.bodyArticle','.art-body','#corpo_del_documento','.testoArticolo'];
+  for(const sel of selectors){
+    const el=doc.querySelector(sel);
+    if(el&&el.textContent.trim()){
+      return cleanArticleText(el.textContent);
+    }
+  }
+  // Fallback: find text near "Art. N" header
+  const allText=doc.body?doc.body.textContent:'';
+  const re=new RegExp('Art\\.\\s*'+artNum+'\\s*\\n([\\s\\S]*?)(?:\\[articolo|Testo in vigore|APPROFONDIMENTI|FUNZIONI|$)','i');
+  const m=allText.match(re);
+  if(m&&m[1].trim().length>10)return cleanArticleText(m[1]);
+  // Last resort: look for any substantial text block
+  const bigBlocks=allText.split(/\n{2,}/).filter(b=>b.trim().length>30&&!/normattiva|cookie|privacy|collegamenti/i.test(b));
+  if(bigBlocks.length)return cleanArticleText(bigBlocks.join('\n'));
+  return null;
+}
+
+function cleanArticleText(text){
+  return text
+    .replace(/^\s*Art\.\s*\d+\s*/,'')
+    .replace(/\[articolo (?:precedente|successivo)\]/g,'')
+    .replace(/\[nascondi\s*\]/g,'')
+    .replace(/aggiornamenti all'articolo[\s\S]*$/,'')
+    .replace(/APPROFONDIMENTI[\s\S]*$/,'')
+    .replace(/\n{3,}/g,'\n\n')
+    .trim();
+}
+
+async function runNorme(){
+  const urn=$('n-urn').value.trim();
+  if(!urn){alert('Inserisci la URN dell\'atto.');return;}
+  const from=parseInt($('n-from').value)||1;
+  const to=parseInt($('n-to').value)||from;
+  if(from>to){alert('Il range "Da" deve essere <= "A".');return;}
+  if(NM.running)return;
+  NM.running=true;NM.stop=false;NM.arts=[];
+  $('n-run').style.display='none';$('n-stop').style.display='';
+  $('n-area').innerHTML='';
+  $('n-prog').style.width='0%';
+
+  const prefix=getNormePrefix();
+  const fonte=getNormeFonte();
+  const total=to-from+1;
+  let done=0,errors=0;
+
+  $('n-status').textContent='Scaricamento articoli da Normattiva ('+total+' articoli)…';
+
+  for(let artNum=from;artNum<=to;artNum++){
+    if(NM.stop)break;
+    const pct=Math.round((artNum-from+1)/total*100);
+    $('n-prog').style.width=pct+'%';
+    $('n-status').textContent='Art. '+artNum+' ('+Math.round(pct)+'%)…';
+
+    const url='https://www.normattiva.it/uri-res/N2Ls?'+urn+'~art'+artNum;
+    try{
+      const html=await fetchCORS(url);
+      if(!html){
+        logNormaError(artNum,'Impossibile raggiungere Normattiva (CORS). Usa la modalità testo + AI.');
+        errors++;continue;
+      }
+      const testo=parseNormattivaHTML(html,artNum);
+      if(!testo||testo.length<5){
+        logNormaError(artNum,'Articolo non trovato o vuoto');
+        errors++;continue;
+      }
+      const normaId=prefix+'_art_'+artNum;
+      const obj={numero:artNum,normaId,titolo:'Art. '+artNum+' '+fonte,fonte,testo};
+      // Evita duplicati
+      if(!NM.arts.find(a=>a.numero===artNum)){
+        NM.arts.push(obj);
+        renderNormaCard(obj);
+        done++;
+      }
+    }catch(e){
+      logNormaError(artNum,e.message);
+      errors++;
+    }
+    $('n-done').textContent=done+' ✓'+(errors?' / '+errors+' errori':'');
+    await sleep(300); // Rate limiting — non sovraccaricare Normattiva
+  }
+
+  NM.arts.sort((a,b)=>a.numero-b.numero);
+  NM.running=false;$('n-run').style.display='';$('n-stop').style.display='none';
+  $('n-status').textContent=(NM.stop?'Interrotto':'Completato')+' — '+done+'/'+total+' articoli estratti'+(errors?' ('+errors+' errori)':'');
+}
+
+// AI-based extraction fallback
+async function runNormeAI(){
+  if(!G.useAI){alert('Inserisci API key Anthropic per usare questa funzione.');return;}
+  const srcText=$('n-src').value.trim();
+  if(!srcText){alert('Inserisci il testo della norma.');return;}
+  if(NM.running)return;
+  NM.running=true;NM.stop=false;NM.arts=[];
+  $('n-run').style.display='none';$('n-stop').style.display='';
+  $('n-area').innerHTML='';$('n-prog').style.width='0%';
+  $('n-status').textContent='Estrazione AI…';
+
+  const prefix=getNormePrefix();
+  const fonte=getNormeFonte();
+  const CHUNK=4000;
+  const chunks=[];
+  for(let i=0;i<srcText.length;i+=CHUNK)chunks.push(srcText.slice(i,i+CHUNK));
+
+  const sys=`Sei un esperto giurista italiano. Dal testo fornito, estrai TUTTI gli articoli presenti.
+Per ogni articolo produci:
+- "numero": il numero dell'articolo (intero)
+- "titolo": "Art. N" seguito dalla fonte (es. "Art. 48 Costituzione")
+- "testo": il testo integrale dell'articolo, fedelmente riprodotto, con commi numerati se presenti
+Rispondi SOLO con un array JSON valido, senza markdown:
+[{"numero":N,"titolo":"...","testo":"..."}]
+Se il chunk non contiene articoli completi, restituisci []. Non inventare testo.`;
+
+  let totalExtracted=0;
+  for(let ci=0;ci<chunks.length;ci++){
+    if(NM.stop)break;
+    const pct=Math.round((ci+1)/chunks.length*100);
+    $('n-prog').style.width=pct+'%';
+    $('n-status').textContent='Chunk '+(ci+1)+'/'+chunks.length+'…';
+    try{
+      const raw=await aiCall(sys,'Testo normativo (parte '+(ci+1)+'/'+chunks.length+'):\n\n'+chunks[ci],4000);
+      const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+      if(Array.isArray(parsed)){
+        parsed.forEach(art=>{
+          const num=parseInt(art.numero)||0;
+          if(!num||NM.arts.find(a=>a.numero===num))return;
+          const normaId=prefix+'_art_'+num;
+          const obj={numero:num,normaId,titolo:art.titolo||('Art. '+num),fonte,testo:art.testo||''};
+          NM.arts.push(obj);renderNormaCard(obj);totalExtracted++;
+        });
+      }
+    }catch(e){logNormaError('AI chunk '+(ci+1),e.message);}
+    $('n-done').textContent=totalExtracted+' articoli';
+    await sleep(150);
+  }
+
+  NM.arts.sort((a,b)=>a.numero-b.numero);
+  NM.running=false;$('n-run').style.display='';$('n-stop').style.display='none';
+  $('n-status').textContent=(NM.stop?'Interrotto':'Completato')+' — '+totalExtracted+' articoli estratti';
+}
+
+function stopNorme(){NM.stop=true;}
+
+function logNormaError(artLabel,msg){
+  const d=document.createElement('div');d.className='n-card';
+  d.innerHTML='<div style="font-family:var(--mono);font-size:10px;color:var(--red)">Art. '+esc(String(artLabel))+': '+esc(msg)+'</div>';
+  $('n-area').appendChild(d);
+}
+
+function renderNormaCard(art){
+  const area=$('n-area');
+  const ph=area.querySelector('[style*="padding:30px"]');if(ph)ph.remove();
+  const d=document.createElement('div');d.className='n-card';d.id='nart-'+art.numero;
+  d.innerHTML=`<div class="n-hd"><span class="n-titolo">${esc(art.titolo)}</span><span class="n-id">${esc(art.normaId)}</span></div>`
+    +`<div class="n-testo">${esc(art.testo)}</div>`
+    +`<div class="n-dl" onclick="dlSingolaNorma('${art.normaId}')">⬇ Scarica art${art.numero}.js</div>`;
+  area.appendChild(d);area.scrollTop=area.scrollHeight;
+}
+
+function buildNormaJS(art){
+  return 'window.NORME = window.NORME || {};\n\nwindow.NORME["'+art.normaId+'"] = '
+    +JSON.stringify({titolo:art.titolo,fonte:art.fonte,testo:art.testo},null,2)+';\n';
+}
+
+function dlSingolaNorma(normaId){
+  const art=NM.arts.find(a=>a.normaId===normaId);
+  if(!art){alert('Articolo non trovato.');return;}
+  const js=buildNormaJS(art);
+  const b=new Blob([js],{type:'text/plain;charset=utf-8'});
+  const u=URL.createObjectURL(b);const a=document.createElement('a');
+  a.href=u;a.download='art'+art.numero+'.js';a.click();URL.revokeObjectURL(u);
+}
+
+function dlTutteNorme(){
+  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
+  NM.arts.forEach(art=>{
+    const js=buildNormaJS(art);
+    const b=new Blob([js],{type:'text/plain;charset=utf-8'});
+    const u=URL.createObjectURL(b);const a=document.createElement('a');
+    a.href=u;a.download='art'+art.numero+'.js';a.click();URL.revokeObjectURL(u);
+  });
+}
+
+function dlManifestNorme(){
+  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
+  const folder='norme/'+getNormeFolder()+'/';
+  const list=NM.arts.map(art=>'"'+folder+'art'+art.numero+'.js"');
+  const txt='// Aggiungi questo array al campo "norme" nel manifest.js\n// norme: [\n'+list.map(l=>'//   '+l).join(',\n')+'\n// ]\n\n'
+    +'// normaId disponibili:\n'+NM.arts.map(a=>'// '+a.normaId+' → '+a.titolo).join('\n')+'\n';
+  const b=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const u=URL.createObjectURL(b);const a=document.createElement('a');
+  a.href=u;a.download='norme_manifest_snippet.txt';a.click();URL.revokeObjectURL(u);
 }
 </script>
 </body>

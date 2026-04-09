@@ -365,6 +365,19 @@
       background: #bfdbfe;
     }
 
+    .norma-inline-link {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      cursor: pointer;
+    }
+
+    .norma-inline-link:hover {
+      text-decoration-style: solid;
+      background: #dbeafe;
+      border-radius: 3px;
+    }
+
     .riferimenti-section {
       margin-top: 12px;
       padding-top: 10px;
@@ -742,12 +755,12 @@
 
       document.getElementById("numero-domanda").innerText = corrente.id;
       document.getElementById("materia").innerText = corrente.materia;
-      document.getElementById("domanda").innerText = corrente.domanda;
+      document.getElementById("domanda").innerHTML = linkificaNorme(corrente.domanda);
 
       const branoEl = document.getElementById("brano");
       const branoToggle = document.getElementById("brano-toggle");
       if (corrente.brano && corrente.brano.trim()) {
-        branoEl.textContent = corrente.brano;
+        branoEl.innerHTML = linkificaNorme(corrente.brano);
         branoEl.classList.remove("visible");
         branoToggle.classList.add("visible");
         branoToggle.textContent = "📄 Mostra testo di riferimento";
@@ -778,7 +791,7 @@
         if (corrente.opzioni[lettera]) {
           const btn = document.createElement("button");
           btn.className = "risposta-btn";
-          btn.innerHTML = `<strong>${lettera}:</strong> ${corrente.opzioni[lettera]}`;
+          btn.innerHTML = `<strong>${lettera}:</strong> ${linkificaNorme(corrente.opzioni[lettera])}`;
           btn.onclick = () => verificaRisposta(lettera);
           risposte.appendChild(btn);
         }
@@ -943,6 +956,33 @@
         .replace(/\n/g, '<br>');
     }
 
+    function escapeHtml(s) {
+      if (!s) return '';
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function linkificaNorme(text, skipEscape) {
+      if (!text) return '';
+      let html = skipEscape ? text : escapeHtml(text);
+      const rif = (corrente && corrente.riferimenti) || [];
+      const norme = window.NORME || {};
+      const artMap = {};
+      rif.forEach(r => {
+        const m = (r.normaId || '').match(/_art_(\d+)$/);
+        if (m) artMap[m[1]] = r.normaId;
+      });
+      Object.keys(norme).forEach(normaId => {
+        const m = normaId.match(/_art_(\d+)$/);
+        if (m && !artMap[m[1]]) artMap[m[1]] = normaId;
+      });
+      return html.replace(/\b(art(?:icolo)?\.?\s*)(\d+)/gi, (match, prefix, num) => {
+        const normaId = artMap[num] || ('cost_art_' + num);
+        const safeId = normaId.replace(/[^a-zA-Z0-9_]/g, '');
+        return '<a class="norma-inline-link" onclick="event.stopPropagation();apriNorma(\'' + safeId + '\')">'
+          + match + '</a>';
+      });
+    }
+
     function renderSpiegazione(box) {
       box.innerHTML = "";
       const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
@@ -958,11 +998,15 @@
       }
 
       const testoDiv = document.createElement("div");
-      testoDiv.innerHTML = renderMarkdown(testo);
+      testoDiv.innerHTML = linkificaNorme(renderMarkdown(testo), true);
       box.appendChild(testoDiv);
 
-      // Raccoglie riferimenti espliciti dalla spiegazione
-      const rifEspliciti = (spiega && spiega.riferimenti) ? spiega.riferimenti : [];
+      // Raccoglie riferimenti espliciti dalla spiegazione e dalla domanda
+      const rifSpieg = (spiega && spiega.riferimenti) ? spiega.riferimenti : [];
+      const rifDom = (corrente && corrente.riferimenti) ? corrente.riferimenti : [];
+      const seenIds = new Set();
+      const rifEspliciti = [];
+      [...rifSpieg, ...rifDom].forEach(r => { if (!seenIds.has(r.normaId)) { seenIds.add(r.normaId); rifEspliciti.push(r); } });
 
       // Auto-rileva articoli citati nel testo della domanda/brano
       const testoScan = (corrente.brano || "") + " " + (corrente.domanda || "") + " " + testo;
@@ -1007,11 +1051,9 @@
 
     function apriNorma(normaId) {
       const norma = window.NORME && window.NORME[normaId];
-      if (!norma) return;
-
-      document.getElementById("norma-titolo").textContent = norma.titolo;
-      document.getElementById("norma-fonte").textContent = norma.fonte;
-      document.getElementById("norma-testo").textContent = norma.testo;
+      document.getElementById("norma-titolo").textContent = norma ? norma.titolo : normaId.replace(/_/g, ' ');
+      document.getElementById("norma-fonte").textContent = norma ? norma.fonte : "";
+      document.getElementById("norma-testo").textContent = norma ? norma.testo : "Testo non disponibile. Il file della norma non è stato caricato.";
       document.getElementById("norma-overlay").classList.add("visible");
     }
 
@@ -1131,7 +1173,8 @@
       const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
       window._TUTTE_LE_DOMANDE = [];
       toLoad.forEach(pack => {
-        const srcFile = (pack.domande || pack.file || "").split("/").pop().replace(/\.js$/, "");
+        const parts = (pack.domande || pack.file || "").split("/");
+        const srcFile = parts.length > 2 ? parts[parts.length - 2] : parts[parts.length - 1].replace(/\.js$/, "");
         const domande = window._QUIZ_PACKS[pack.id] || [];
         domande.forEach(d => {
           window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: srcFile || pack.label, _packId: pack.id, _pdfSrc: pack.pdf || null }));
