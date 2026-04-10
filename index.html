@@ -976,7 +976,8 @@
         if (m && !artMap[m[1]]) artMap[m[1]] = normaId;
       });
       return html.replace(/\b(art(?:icolo)?\.?\s*)(\d+)/gi, (match, prefix, num) => {
-        const normaId = artMap[num] || ('cost_art_' + num);
+        const normaId = artMap[num];
+        if (!normaId) return match; // nessuna norma caricata per questo articolo — no link
         const safeId = normaId.replace(/[^a-zA-Z0-9_]/g, '');
         return '<a class="norma-inline-link" onclick="event.stopPropagation();apriNorma(\'' + safeId + '\')">'
           + match + '</a>';
