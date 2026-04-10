@@ -961,23 +961,50 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
+    // Mappa abbreviazioni fonte → prefisso normaId
+    const FONTE_PREFIX = {
+      'cost':'cost','costituzione':'cost',
+      'tfue':'tfue','tue':'tue','tuel':'tuel','tupi':'tupi',
+      'c.p.':'cp','c.p':'cp','cod. pen':'cp','codice penale':'cp',
+      'c.c.':'cc','c.c':'cc','cod. civ':'cc','codice civile':'cc',
+      'c.p.c.':'cpc','c.p.c':'cpc','cod. proc. civ':'cpc',
+      'c.p.p.':'cpp','c.p.p':'cpp','cod. proc. pen':'cpp',
+      'c.p.a.':'cpa','c.p.a':'cpa',
+      'c.d.s.':'cds','c.d.s':'cds','codice della strada':'cds',
+    };
+    // Regex per fonti note dopo "art. N" (opzionale)
+    const FONTE_RE = /^[\s,]*(?:della?\s+)?(Cost(?:ituzione)?|TFUE|TUE|TUEL|TUPI|C\.?P\.?(?:A|C|P)?\.?|Cod(?:ice)?\.?\s*(?:pen|civ|proc|della\s*strada)[a-z.]*)/i;
+
     function linkificaNorme(text, skipEscape) {
       if (!text) return '';
       let html = skipEscape ? text : escapeHtml(text);
       const rif = (corrente && corrente.riferimenti) || [];
       const norme = window.NORME || {};
       const artMap = {};
+      // 1. Riferimenti espliciti (dalla spiegazione/domanda)
       rif.forEach(r => {
         const m = (r.normaId || '').match(/_art_(\d+)$/);
         if (m) artMap[m[1]] = r.normaId;
       });
+      // 2. Norme effettivamente caricate
       Object.keys(norme).forEach(normaId => {
         const m = normaId.match(/_art_(\d+)$/);
         if (m && !artMap[m[1]]) artMap[m[1]] = normaId;
       });
-      return html.replace(/\b(art(?:icolo)?\.?\s*)(\d+)/gi, (match, prefix, num) => {
-        const normaId = artMap[num];
-        if (!normaId) return match; // nessuna norma caricata per questo articolo — no link
+      // 3. Regex che cattura "art. N" + eventuale fonte dopo
+      return html.replace(/\b(art(?:icolo)?\.?\s*)(\d+)([\s,]*(?:della?\s+)?(?:Cost(?:ituzione)?|TFUE|TUE|TUEL|TUPI|C\.?P\.?(?:A|C|P)?\.?|Cod(?:ice)?\.?\s*(?:pen|civ|proc|della\s*strada)[a-z.]*))?/gi, (match, prefix, num, fonteRaw) => {
+        let normaId = artMap[num];
+        if (!normaId) {
+          // Prova a dedurre il prefisso dalla fonte nel testo
+          let pfx = 'cost'; // default solo se non c'è fonte esplicita
+          if (fonteRaw) {
+            const cleaned = fonteRaw.replace(/^[\s,]*(?:della?\s+)?/i, '').trim().toLowerCase().replace(/\.$/, '');
+            for (const [key, val] of Object.entries(FONTE_PREFIX)) {
+              if (cleaned.startsWith(key)) { pfx = val; break; }
+            }
+          }
+          normaId = pfx + '_art_' + num;
+        }
         const safeId = normaId.replace(/[^a-zA-Z0-9_]/g, '');
         return '<a class="norma-inline-link" onclick="event.stopPropagation();apriNorma(\'' + safeId + '\')">'
           + match + '</a>';
@@ -1054,7 +1081,17 @@
       const norma = window.NORME && window.NORME[normaId];
       document.getElementById("norma-titolo").textContent = norma ? norma.titolo : normaId.replace(/_/g, ' ');
       document.getElementById("norma-fonte").textContent = norma ? norma.fonte : "";
-      document.getElementById("norma-testo").textContent = norma ? norma.testo : "Testo non disponibile. Il file della norma non è stato caricato.";
+      if (norma) {
+        document.getElementById("norma-testo").textContent = norma.testo;
+      } else {
+        // Ricava cartella attesa dal normaId: "tfue_art_263" → "norme/tfue/"
+        const prefixMatch = normaId.match(/^(.+)_art_\d+/);
+        const prefix = prefixMatch ? prefixMatch[1] : normaId;
+        const cartella = 'norme/' + prefix + '/';
+        document.getElementById("norma-testo").textContent =
+          'Norma assente.\n\nCaricala nella cartella:\n📁 ' + cartella + '\n\n'
+          + 'File atteso: ' + cartella + normaId + '.js';
+      }
       document.getElementById("norma-overlay").classList.add("visible");
     }
 
