@@ -1,0 +1,139 @@
+// Aggiungi questo al campo "norme" nel manifest.js
+// norme: [
+//   "statuto_isili/statuto_isili_art_1.js",
+//   "statuto_isili/statuto_isili_art_2.js",
+//   "statuto_isili/statuto_isili_art_3.js",
+//   "statuto_isili/statuto_isili_art_4.js",
+//   "statuto_isili/statuto_isili_art_5.js",
+//   "statuto_isili/statuto_isili_art_6.js",
+//   "statuto_isili/statuto_isili_art_7.js",
+//   "statuto_isili/statuto_isili_art_8.js",
+//   "statuto_isili/statuto_isili_art_9.js",
+//   "statuto_isili/statuto_isili_art_10.js",
+//   "statuto_isili/statuto_isili_art_11.js",
+//   "statuto_isili/statuto_isili_art_12.js",
+//   "statuto_isili/statuto_isili_art_13.js",
+//   "statuto_isili/statuto_isili_art_14.js",
+//   "statuto_isili/statuto_isili_art_15.js",
+//   "statuto_isili/statuto_isili_art_16.js",
+//   "statuto_isili/statuto_isili_art_17.js",
+//   "statuto_isili/statuto_isili_art_18.js",
+//   "statuto_isili/statuto_isili_art_20.js",
+//   "statuto_isili/statuto_isili_art_21.js",
+//   "statuto_isili/statuto_isili_art_22.js",
+//   "statuto_isili/statuto_isili_art_23.js",
+//   "statuto_isili/statuto_isili_art_24.js",
+//   "statuto_isili/statuto_isili_art_26.js",
+//   "statuto_isili/statuto_isili_art_27.js",
+//   "statuto_isili/statuto_isili_art_28.js",
+//   "statuto_isili/statuto_isili_art_29.js",
+//   "statuto_isili/statuto_isili_art_30.js",
+//   "statuto_isili/statuto_isili_art_31.js",
+//   "statuto_isili/statuto_isili_art_32.js",
+//   "statuto_isili/statuto_isili_art_33.js",
+//   "statuto_isili/statuto_isili_art_35.js",
+//   "statuto_isili/statuto_isili_art_36.js",
+//   "statuto_isili/statuto_isili_art_37.js",
+//   "statuto_isili/statuto_isili_art_38.js",
+//   "statuto_isili/statuto_isili_art_40.js",
+//   "statuto_isili/statuto_isili_art_41.js",
+//   "statuto_isili/statuto_isili_art_42.js",
+//   "statuto_isili/statuto_isili_art_43.js",
+//   "statuto_isili/statuto_isili_art_44.js",
+//   "statuto_isili/statuto_isili_art_45.js",
+//   "statuto_isili/statuto_isili_art_46.js",
+//   "statuto_isili/statuto_isili_art_48.js",
+//   "statuto_isili/statuto_isili_art_49.js",
+//   "statuto_isili/statuto_isili_art_50.js",
+//   "statuto_isili/statuto_isili_art_51.js",
+//   "statuto_isili/statuto_isili_art_52.js",
+//   "statuto_isili/statuto_isili_art_53.js",
+//   "statuto_isili/statuto_isili_art_54.js",
+//   "statuto_isili/statuto_isili_art_55.js",
+//   "statuto_isili/statuto_isili_art_56.js",
+//   "statuto_isili/statuto_isili_art_57.js",
+//   "statuto_isili/statuto_isili_art_58.js",
+//   "statuto_isili/statuto_isili_art_59.js",
+//   "statuto_isili/statuto_isili_art_60.js",
+//   "statuto_isili/statuto_isili_art_61.js",
+//   "statuto_isili/statuto_isili_art_62.js",
+//   "statuto_isili/statuto_isili_art_63.js",
+//   "statuto_isili/statuto_isili_art_64.js",
+//   "statuto_isili/statuto_isili_art_65.js",
+//   "statuto_isili/statuto_isili_art_66.js",
+//   "statuto_isili/statuto_isili_art_67.js",
+//   "statuto_isili/statuto_isili_art_68.js",
+//   "statuto_isili/statuto_isili_art_69.js",
+//   "statuto_isili/statuto_isili_art_71.js",
+//   "statuto_isili/statuto_isili_art_72.js",
+//   "statuto_isili/statuto_isili_art_73.js"
+// ]
+
+// normaId disponibili:
+// statuto_isili_art_1 → Art. 1 — Il Comune di Isili
+// statuto_isili_art_2 → Art. 2 — Territorio e Sede Comunale
+// statuto_isili_art_3 → Art. 3 — Stemma gonfalone e bandiere
+// statuto_isili_art_4 → Art. 4 — Toponomastica
+// statuto_isili_art_5 → Art. 5 — Cittadinanza Onoraria
+// statuto_isili_art_6 → Art. 6 — Gemellaggio
+// statuto_isili_art_7 → Art. 7 — Consiglio Comunale dei ragazzi
+// statuto_isili_art_8 → Art. 8 — Funzioni del Comune
+// statuto_isili_art_9 → Art. 9 — Funzioni di programmazione
+// statuto_isili_art_10 → Art. 10 — Pari opportunità
+// statuto_isili_art_11 → Art. 11 — Rappresentanza Legale
+// statuto_isili_art_12 → Art. 12 — Organi del Comune
+// statuto_isili_art_13 → Art. 13 — Consiglio Comunale
+// statuto_isili_art_14 → Art. 14 — Convocazione della prima seduta del Consiglio Comunale
+// statuto_isili_art_15 → Art. 15 — Adempimenti della prima seduta del Consiglio Comunale
+// statuto_isili_art_16 → Art. 16 — Consiglieri
+// statuto_isili_art_17 → Art. 17 — Decadenze e dimissioni dei Consiglieri
+// statuto_isili_art_18 → Art. 18 — Gruppi Consiliari
+// statuto_isili_art_20 → Art. 20 — Commissioni Speciali
+// statuto_isili_art_21 → Art. 21 — Commissione Pari Opportunità
+// statuto_isili_art_22 → Art. 22 — Gettoni di presenza dei Componenti le Commissioni
+// statuto_isili_art_23 → Art. 23 — Giunta
+// statuto_isili_art_24 → Art. 24 — Competenze
+// statuto_isili_art_26 → Art. 26 — Uso della lingua Sarda
+// statuto_isili_art_27 → Art. 27 — Partecipazione popolare
+// statuto_isili_art_28 → Art. 28 — Associazionismo
+// statuto_isili_art_29 → Art. 29 — Diritti delle Associazioni
+// statuto_isili_art_30 → Art. 30 — Contributi alle Associazioni
+// statuto_isili_art_31 → Art. 31 — Consultazioni
+// statuto_isili_art_32 → Art. 32 — Petizioni
+// statuto_isili_art_33 → Art. 33 — Proposte
+// statuto_isili_art_35 → Art. 35 — Accesso agli atti
+// statuto_isili_art_36 → Art. 36 — Diritto di informazione
+// statuto_isili_art_37 → Art. 37 — Diritto di intervento nei procedimenti
+// statuto_isili_art_38 → Art. 38 — Procedimenti ad istanza di parte
+// statuto_isili_art_40 → Art. 40 — Obiettivi dell'attività amministrativa
+// statuto_isili_art_41 → Art. 41 — Servizi pubblici comunali
+// statuto_isili_art_42 → Art. 42 — Forme di gestione dei servizi pubblici
+// statuto_isili_art_43 → Art. 43 — Aziende speciali
+// statuto_isili_art_44 → Art. 44 — Struttura delle aziende speciali
+// statuto_isili_art_45 → Art. 45 — Istituzioni
+// statuto_isili_art_46 → Art. 46 — Società per azioni o a responsabilità limitata
+// statuto_isili_art_48 → Art. 48 — Consorzi
+// statuto_isili_art_49 → Art. 49 — Accordi di programma
+// statuto_isili_art_50 → Art. 50 — Principi strutturali e organizzativi
+// statuto_isili_art_51 → Art. 51 — Organizzazione degli uffici e del personale
+// statuto_isili_art_52 → Art. 52 — Regolamento degli uffici e dei servizi
+// statuto_isili_art_53 → Art. 53 — Diritti e doveri dei dipendenti
+// statuto_isili_art_54 → Art. 54 — Responsabili degli uffici e dei servizi
+// statuto_isili_art_55 → Art. 55
+// statuto_isili_art_56 → Art. 56 — Collaborazioni esterne
+// statuto_isili_art_57 → Art. 57 — Ufficio di indirizzo e di controllo
+// statuto_isili_art_58 → Art. 58 — Controllo interno
+// statuto_isili_art_59 → Art. 59 — Segretario Comunale
+// statuto_isili_art_60 → Art. 60 — Ordinamento
+// statuto_isili_art_61 → Art. 61 — Gestione finanziaria
+// statuto_isili_art_62 → Art. 62 — Attività finanziaria del Comune
+// statuto_isili_art_63 → Art. 63 — Amministrazione dei beni comunali
+// statuto_isili_art_64 → Art. 64 — Bilancio Comunale
+// statuto_isili_art_65 → Art. 65 — Rendiconto della gestione
+// statuto_isili_art_66 → Art. 66 — Attività contrattuale
+// statuto_isili_art_67 → Art. 67 — Revisore dei Conti
+// statuto_isili_art_68 → Art. 68 — Tesoreria
+// statuto_isili_art_69 → Art. 69 — Controllo economico della gestione
+// statuto_isili_art_71 → Art. 71 — Esercizio di funzioni in forma associata
+// statuto_isili_art_72 → Art. 72 — Violazioni
+// statuto_isili_art_73 → Art. 73 — Pubblicazione ed entrata in vigore

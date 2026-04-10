@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Normattiva Downloader</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+:root{
+  --bg:#0f0f0f;--bg2:#161616;--bg3:#1e1e1e;
+  --b1:#2a2a2a;--b2:#383838;
+  --amber:#f59e0b;--amber2:#fcd34d;
+  --green:#10b981;--red:#ef4444;--blue:#3b82f6;--purple:#8b5cf6;
+  --t1:#e5e5e5;--t2:#a3a3a3;--t3:#636363;--t4:#404040;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:var(--sans);font-size:13px;min-height:100vh;display:flex;flex-direction:column}
+/* ── HEADER ── */
+.hd{display:flex;align-items:center;background:var(--bg2);border-bottom:1px solid var(--b1);flex-shrink:0;height:44px}
+.logo{width:44px;height:44px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:13px;color:#000;flex-shrink:0;letter-spacing:-.5px}
+.hd-mid{flex:1;padding:0 16px}
+.hd-mid h1{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em}
+.hd-mid p{font-size:10px;color:var(--t3);margin-top:1px}
+.hd-right{padding:0 16px;display:flex;align-items:center;gap:8px;border-left:1px solid var(--b1)}
+.pill{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid}
+.pill-ok{background:rgba(16,185,129,.12);color:var(--green);border-color:rgba(16,185,129,.3)}
+.pill-warn{background:rgba(245,158,11,.12);color:var(--amber);border-color:rgba(245,158,11,.3)}
+/* ── LAYOUT ── */
+.wrap{display:grid;grid-template-columns:400px 1fr;flex:1;min-height:0;overflow:hidden}
+.panel{display:flex;flex-direction:column;border-right:1px solid var(--b1);overflow:hidden}
+.panel:last-child{border-right:none}
+.panel-hd{padding:10px 16px;background:var(--bg3);border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.panel-title{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t3)}
+.badge{font-family:var(--mono);font-size:9px;padding:2px 8px;border-radius:2px;font-weight:500}
+.ba{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
+.bg{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+.bn{background:rgba(100,100,100,.1);color:var(--t3);border:1px solid var(--b1)}
+.be{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.panel-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+/* ── FORM ── */
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:7px 10px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--amber)}
+.field input::placeholder{color:var(--t4)}
+.field textarea{resize:vertical;min-height:80px;line-height:1.6}
+.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23636363'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;padding:8px 16px;border:none;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:disabled{opacity:.4;cursor:default}
+.btn-a{background:var(--amber);color:#000}.btn-a:hover:not(:disabled){background:var(--amber2)}
+.btn-g{background:transparent;color:var(--t2);border:1px solid var(--b2)}.btn-g:hover:not(:disabled){border-color:var(--t2);color:var(--t1)}
+.btn-ok{background:var(--green);color:#000}.btn-ok:hover:not(:disabled){opacity:.9}
+.btn-sm{padding:4px 10px;font-size:9px}
+/* ── INFO / WARN BARS ── */
+.info{background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.15);border-radius:3px;padding:9px 12px;font-size:11px;color:var(--t2);line-height:1.6}
+.info b{color:var(--blue)}
+.warn-bar{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.25);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--amber);line-height:1.6}
+.ok-bar{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--green);display:flex;align-items:center;gap:6px}
+.err-bar{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);line-height:1.6}
+/* ── SEPARATORI ── */
+.sep{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);display:flex;align-items:center;gap:8px}
+.sep::after{content:'';flex:1;height:1px;background:var(--b1)}
+/* ── PROGRESS ── */
+.prog-bar{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--amber);transition:width .3s;width:0%}
+/* ── STATUS LOG ── */
+.log-area{display:flex;flex-direction:column;gap:3px;max-height:120px;overflow-y:auto}
+.lg{font-family:var(--mono);font-size:9px;color:var(--t3);display:flex;gap:8px}
+.lg.ok{color:var(--green)}.lg.w{color:var(--amber)}.lg.e{color:var(--red)}
+.lg-ts{color:var(--t4);flex-shrink:0}
+/* ── SPIN ── */
+.spin{display:inline-block;width:10px;height:10px;border:2px solid rgba(245,158,11,.2);border-top-color:var(--amber);border-radius:50%;animation:sp .65s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* ── ARTICOLO CARD ── */
+.art-card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.art-card.abrogato{border-color:rgba(239,68,68,.25);opacity:.75}
+.art-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.art-titolo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--amber);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.art-id{font-family:var(--mono);font-size:8px;color:var(--t4)}
+.art-badges{display:flex;gap:4px;flex-shrink:0}
+.tag{font-family:var(--mono);font-size:8px;padding:1px 6px;border-radius:2px;border:1px solid}
+.tag-ok{color:var(--green);border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
+.tag-abr{color:var(--red);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.tag-num{color:var(--t3);border-color:var(--b1);background:var(--bg3)}
+.art-testo{font-family:var(--mono);font-size:9px;color:var(--t2);line-height:1.6;max-height:80px;overflow-y:auto;white-space:pre-wrap;border-top:1px solid var(--b1);padding-top:6px}
+.art-dl{font-family:var(--mono);font-size:8px;color:var(--blue);cursor:pointer;text-decoration:underline;align-self:flex-start}
+.art-dl:hover{color:var(--amber)}
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.stat-card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:8px 10px}
+.stat-lbl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);margin-bottom:2px}
+.stat-val{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--amber)}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+/* ── TABS ── */
+.tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--b1);flex-shrink:0;padding:0 6px}
+.tab{display:flex;align-items:center;gap:6px;padding:8px 14px;font-family:var(--mono);font-size:10px;color:var(--t4);border-bottom:2px solid transparent;cursor:pointer;user-select:none}
+.tab:hover{color:var(--t2)}
+.tab.on{color:var(--amber);border-bottom-color:var(--amber)}
+.tab-pane{display:none;flex-direction:column;gap:12px}
+.tab-pane.on{display:flex}
+/* ── DROP ZONE ── */
+.dz{border:1.5px dashed var(--b2);border-radius:4px;padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);user-select:none}
+.dz:hover,.dz.over{border-color:var(--amber);background:rgba(245,158,11,.02)}
+.dz-ico{font-size:22px;opacity:.25;margin-bottom:6px}
+.dz-lbl{font-family:var(--mono);font-size:10px;color:var(--t3)}
+.dz-sub{font-size:10px;color:var(--t4);margin-top:3px}
+.dz-loaded{font-family:var(--mono);font-size:10px;color:var(--amber);margin-top:5px;display:none}
+/* ── KEY BAR ── */
+.key-bar{display:flex;align-items:center;gap:8px;padding:0 14px;border-left:1px solid var(--b1)}
+.key-bar label{font-family:var(--mono);font-size:9px;color:var(--t3);white-space:nowrap}
+.key-bar input{background:var(--bg);border:1px solid var(--b2);padding:4px 10px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;width:240px;border-radius:2px}
+.key-bar input:focus{border-color:var(--amber)}
+/* ── RESPONSIVE ── */
+@media(max-width:800px){.wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+<body>
+
+<div class="hd">
+  <div class="logo">NX</div>
+  <div class="hd-mid">
+    <h1>NORMATTIVA DOWNLOADER</h1>
+    <p>Recupera articoli da Normattiva OpenData o da PDF → file JS per Archivio Giuridico</p>
+  </div>
+  <div class="key-bar">
+    <label>ANTHROPIC KEY</label>
+    <input type="password" id="key-inp" placeholder="sk-ant-api03-..." oninput="onKey()">
+    <span class="pill pill-warn" id="key-pill">NO KEY</span>
+  </div>
+  <div class="hd-right">
+    <span class="pill pill-warn" id="proxy-pill">PROXY</span>
+    <span style="font-family:var(--mono);font-size:9px;color:var(--t3)" id="proxy-lbl">allorigins.win</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- ── LEFT: INPUT ── -->
+  <div class="panel">
+    <div class="panel-hd">
+      <span class="panel-title">Sorgente</span>
+      <span class="badge ba" id="left-badge">IN ATTESA</span>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab on" id="tab-norm" onclick="switchTab('norm')">§ Normattiva</div>
+      <div class="tab" id="tab-pdf"  onclick="switchTab('pdf')">📄 PDF</div>
+      <div class="tab" id="tab-xml"  onclick="switchTab('xml')">XML manuale</div>
+    </div>
+
+    <div class="panel-body">
+
+      <!-- ══ TAB: NORMATTIVA ══ -->
+      <div class="tab-pane on" id="pane-norm">
+
+        <div class="info">
+          <b>Normattiva OpenData:</b> inserisci gli estremi, il tool recupera il testo via API REST e genera i file .js.
+        </div>
+
+        <div class="sep">estremi della norma</div>
+        <div class="field">
+          <label>Estremi (tipo + numero/anno)</label>
+          <input id="inp-estremi" type="text" placeholder="es. D.Lgs. 36/2023  oppure  L. 241/1990" oninput="onEstremiChange()">
+        </div>
+        <div id="urn-preview" style="display:none">
+          <div style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-bottom:3px">URN NIR generato:</div>
+          <div id="urn-text" style="font-family:var(--mono);font-size:10px;color:var(--amber);background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:6px 10px;word-break:break-all"></div>
+        </div>
+
+        <div class="sep">recupero dati</div>
+        <div class="field">
+          <label>CORS Proxy</label>
+          <select id="sel-proxy" onchange="onProxyChange()">
+            <option value="allorigins">allorigins.win (default)</option>
+            <option value="corsproxy">corsproxy.io</option>
+            <option value="direct">Diretto (solo se CORS disabilitato)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-a" id="btn-run" onclick="runDownload()">⬇ Scarica da Normattiva</button>
+          <button class="btn btn-g" id="btn-stop" style="display:none" onclick="doStop()">■ Stop</button>
+        </div>
+
+      </div>
+
+      <!-- ══ TAB: PDF ══ -->
+      <div class="tab-pane" id="pane-pdf">
+
+        <div class="info">
+          <b>Da PDF:</b> carica il file della norma. Il testo viene estratto automaticamente e <b>analizzato dall'AI</b> per identificare gli articoli, indipendentemente dal formato del documento.<br>
+          <span style="color:var(--amber)">Richiede API key Anthropic.</span>
+        </div>
+
+        <div class="sep">file pdf</div>
+        <input type="file" id="fi-pdf" accept=".pdf" style="display:none" onchange="onPdfFile()">
+        <div class="dz" id="dz-pdf" onclick="document.getElementById('fi-pdf').click()">
+          <div class="dz-ico">📄</div>
+          <div class="dz-lbl">Clicca o trascina il PDF della norma</div>
+          <div class="dz-sub">Qualsiasi struttura (GU, Normattiva, scansione con OCR…)</div>
+          <div class="dz-loaded" id="pdf-loaded"></div>
+        </div>
+
+        <div class="field">
+          <label>Dimensione chunk AI (caratteri)</label>
+          <select id="sel-chunk">
+            <option value="3000">3000 — più preciso (norme lunghe)</option>
+            <option value="4000" selected>4000 — bilanciato</option>
+            <option value="6000">6000 — più veloce (norme brevi)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-a" id="btn-pdf-run" onclick="runFromPdf()">✦ Estrai articoli via AI</button>
+          <button class="btn btn-g" id="btn-pdf-stop" style="display:none" onclick="doStop()">■ Stop</button>
+        </div>
+
+      </div>
+
+      <!-- ══ TAB: XML MANUALE ══ -->
+      <div class="tab-pane" id="pane-xml">
+
+        <div class="info">
+          <b>XML manuale:</b> incolla il contenuto XML scaricato direttamente da normattiva.it se il fetch automatico fallisce.
+        </div>
+
+        <div class="field">
+          <label>XML Normattiva</label>
+          <textarea id="inp-xml" placeholder="Incolla qui il contenuto XML..." rows="10"></textarea>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-a" id="btn-parse-xml" onclick="parseManualXML()">Parsa XML →</button>
+        </div>
+
+      </div>
+
+      <!-- ══ SEZIONE COMUNE ══ -->
+      <div class="sep">configurazione output</div>
+      <div class="field">
+        <label>Prefisso normaId</label>
+        <input id="inp-prefix" type="text" placeholder="es. dlgs_36_2023">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--t4);margin-top:2px">Usato come: <span id="prefix-ex" style="color:var(--amber)">prefisso_art_1</span></div>
+      </div>
+      <div class="field">
+        <label>Fonte (etichetta leggibile)</label>
+        <input id="inp-fonte" type="text" placeholder="es. D.Lgs. 36/2023">
+      </div>
+      <div class="field">
+        <label>Cartella (per il manifest)</label>
+        <input id="inp-folder" type="text" placeholder="es. norme/dlgs_36_2023">
+      </div>
+
+      <!-- Cartella di destinazione -->
+      <div class="sep">cartella di destinazione</div>
+      <div style="background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px 12px;display:flex;flex-direction:column;gap:7px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <button class="btn btn-g btn-sm" id="btn-scegli-cartella" onclick="scegliCartella()">📁 Scegli cartella di destinazione</button>
+          <span id="cartella-ok" style="display:none;color:var(--green);font-family:var(--mono);font-size:10px">✓</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="font-family:var(--mono);font-size:9px;color:var(--t4)">→</span>
+          <span id="cartella-path" style="font-family:var(--mono);font-size:10px;color:var(--t4)">Nessuna cartella selezionata</span>
+        </div>
+        <div id="cartella-lbl" style="font-family:var(--mono);font-size:9px;color:var(--t3);line-height:1.5">
+          I file verranno salvati in una sottocartella con il nome del prefisso norma.
+          Se non selezioni una cartella, verrà usato il download classico.
+        </div>
+      </div>
+
+      <div class="prog-bar"><div class="prog-fill" id="prog"></div></div>
+      <div id="status-txt" style="font-family:var(--mono);font-size:9px;color:var(--t3);min-height:14px"></div>
+      <div class="log-area" id="log-area"></div>
+
+    </div>
+  </div>
+
+  <!-- ── RIGHT: OUTPUT ── -->
+  <div class="panel">
+    <div class="panel-hd">
+      <span class="panel-title">Articoli estratti</span>
+      <span class="badge bn" id="right-badge">—</span>
+    </div>
+    <div class="panel-body" id="right-body">
+
+      <!-- Stats (hidden initially) -->
+      <div id="stats-section" style="display:none">
+        <div class="stats">
+          <div class="stat-card"><div class="stat-lbl">Totale</div><div class="stat-val" id="s-total">0</div></div>
+          <div class="stat-card"><div class="stat-lbl">Vigenti</div><div class="stat-val" id="s-vigenti" style="color:var(--green)">0</div></div>
+          <div class="stat-card"><div class="stat-lbl">Abrogati</div><div class="stat-val" id="s-abrogati" style="color:var(--red)">0</div></div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn btn-ok btn-sm" id="btn-dl-tutti" onclick="dlTutti()">⬇ Salva tutti nella cartella</button>
+          <button class="btn btn-g btn-sm" onclick="dlManifest()">⬇ Manifest snippet</button>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" style="text-align:center;padding:60px 20px;flex:1">
+        <div style="font-size:28px;opacity:.08;margin-bottom:12px">§</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--t4)">Nessun articolo ancora</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--t4);margin-top:4px">Inserisci gli estremi e premi Scarica</div>
+      </div>
+
+      <!-- Cards area -->
+      <div id="arts-area" style="display:flex;flex-direction:column;gap:8px"></div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════ STATE ════════════════════════════════════════════════════
+const ST = { arts: [], running: false, stop: false, pdfText: '' };
+const $ = id => document.getElementById(id);
+const esc = s => { s = s == null ? '' : String(s); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const ts = () => new Date().toLocaleTimeString('it-IT');
+
+// ══════ TABS ═════════════════════════════════════════════════════
+function switchTab(name) {
+  ['norm','pdf','xml'].forEach(t => {
+    $('tab-'+t).className = 'tab' + (t === name ? ' on' : '');
+    $('pane-'+t).className = 'tab-pane' + (t === name ? ' on' : '');
+  });
+}
+
+// ══════ API KEY ══════════════════════════════════════════════════
+function onKey() {
+  const k = $('key-inp').value.trim();
+  const ok = k.startsWith('sk-') && k.length > 20;
+  $('key-pill').textContent = ok ? 'AI ✓' : 'NO KEY';
+  $('key-pill').className = 'pill ' + (ok ? 'pill-ok' : 'pill-warn');
+}
+function hasKey() { const k = $('key-inp').value.trim(); return k.startsWith('sk-') && k.length > 20; }
+async function aiCall(sys, user, maxTok = 4000) {
+  const key = $('key-inp').value.trim();
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': key,
+      'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: maxTok,
+      system: sys, messages: [{ role: 'user', content: user }] })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+// ══════ PROXY CONFIG ════════════════════════════════════════════
+const PROXIES = {
+  allorigins: u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  corsproxy:  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  direct:     u => u
+};
+
+function getProxy() { return PROXIES[$('sel-proxy').value] || PROXIES.allorigins; }
+
+function onProxyChange(){
+  const v = $('sel-proxy').value;
+  $('proxy-lbl').textContent = v === 'allorigins' ? 'allorigins.win' : v === 'corsproxy' ? 'corsproxy.io' : 'diretto';
+  $('proxy-pill').className = 'pill ' + (v === 'direct' ? 'pill-warn' : 'pill-ok');
+}
+
+// ══════ PARSE ESTREMI → URN ══════════════════════════════════════
+const TIPO_MAP = [
+  [/d\.?\s*lgs\.?|decreto\s+legislativo/i,             'decreto.legislativo'],
+  [/d\.?\s*p\.?\s*r\.?|d\.p\.r|decreto.*presidente.*repubbl/i, 'decreto.del.presidente.della.repubblica'],
+  [/d\.?\s*p\.?\s*c\.?\s*m\.?/i,                      'decreto.del.presidente.del.consiglio.dei.ministri'],
+  [/d\.?\s*m\.?\b|decreto\s+minist/i,                 'decreto.ministeriale'],
+  [/d\.?\s*l\.?\b|decreto[\s-]legge/i,                'decreto-legge'],
+  [/cost\.?\b|costituzione\b/i,                        'costituzione'],
+  [/l\.\s*\d|^legge\b|\blegge\b/i,                    'legge'],
+];
+
+const TIPO_LABELS = {
+  'decreto.legislativo': 'D.Lgs.',
+  'decreto.del.presidente.della.repubblica': 'D.P.R.',
+  'decreto.del.presidente.del.consiglio.dei.ministri': 'D.P.C.M.',
+  'decreto.ministeriale': 'D.M.',
+  'decreto-legge': 'D.L.',
+  'costituzione': 'Cost.',
+  'legge': 'L.'
+};
+
+function parseEstremi(raw) {
+  const s = raw.trim();
+  let tipo = null;
+  for (const [re, t] of TIPO_MAP) { if (re.test(s)) { tipo = t; break; } }
+  if (!tipo) return null;
+  // Cerca numero/anno
+  const m = s.match(/(\d{1,4})\s*[\/\-]\s*(\d{4})/);
+  if (!m) {
+    // Costituzione non ha numero/anno
+    if (tipo === 'costituzione') return { tipo, numero: null, anno: '1948', label: 'Costituzione' };
+    return null;
+  }
+  const label = `${TIPO_LABELS[tipo] || tipo} ${m[1]}/${m[2]}`;
+  return { tipo, numero: m[1], anno: m[2], label };
+}
+
+function buildUrn(e) {
+  if (e.tipo === 'costituzione') return 'urn:nir:stato:costituzione:1947-12-27;0';
+  return `urn:nir:stato:${e.tipo}:${e.anno};${e.numero}`;
+}
+
+function buildPrefix(e) {
+  if (e.tipo === 'costituzione') return 'cost';
+  const tipoShort = { 'decreto.legislativo':'dlgs','decreto.del.presidente.della.repubblica':'dpr',
+    'decreto.del.presidente.del.consiglio.dei.ministri':'dpcm','decreto.ministeriale':'dm',
+    'decreto-legge':'dl','legge':'l' }[e.tipo] || e.tipo.split('.')[0];
+  return `${tipoShort}_${e.numero}_${e.anno}`;
+}
+
+function onEstremiChange() {
+  const raw = $('inp-estremi').value;
+  const e = parseEstremi(raw);
+  if (!e) { $('urn-preview').style.display = 'none'; return; }
+  const urn = buildUrn(e);
+  $('urn-text').textContent = urn;
+  $('urn-preview').style.display = '';
+  // Auto-fill
+  if (!$('inp-prefix').value) { $('inp-prefix').value = buildPrefix(e); refreshPrefixEx(); }
+  if (!$('inp-fonte').value) $('inp-fonte').value = e.label;
+  if (!$('inp-folder').value) $('inp-folder').value = `norme/${buildPrefix(e)}`;
+}
+
+$('inp-prefix').addEventListener('input', refreshPrefixEx);
+function refreshPrefixEx() {
+  const p = $('inp-prefix').value.trim() || 'prefisso';
+  $('prefix-ex').textContent = `${p}_art_1`;
+}
+
+// ══════ FETCH ════════════════════════════════════════════════════
+async function fetchNormattivaXML(urn) {
+  const direct = `https://www.normattiva.it/do/urires/N2Ls?${urn}`;
+  const proxyFn = getProxy();
+  const url = proxyFn(direct);
+  log(`Fetch: ${url.slice(0, 80)}...`, '');
+  const resp = await fetch(url, { signal: AbortSignal.timeout(20000) });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`);
+  return await resp.text();
+}
+
+// ══════ XML PARSER ════════════════════════════════════════════════
+/*
+  Normattiva usa il formato NIR (Norme In Rete).
+  Struttura tipica:
+    <NIR> → <atto> → <articolato> → <art num="1"> → <rubrica> + <comma num="1"> → <alinea>
+  In alcuni atti:
+    <body> → <div1> → <art> ...
+  Proviamo selettori multipli.
+*/
+function parseXML(xmlText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xmlText, 'text/xml');
+
+  const parseError = doc.querySelector('parsererror');
+  if (parseError) throw new Error('XML non valido: ' + parseError.textContent.slice(0, 200));
+
+  // Selettori articolo in ordine di priorità
+  const SELECTORS = ['art','article','articolo','div[tipo="articolo"]','section[tipo="art"]'];
+  let artEls = [];
+  for (const sel of SELECTORS) {
+    artEls = [...doc.querySelectorAll(sel)];
+    if (artEls.length > 0) break;
+  }
+
+  if (artEls.length === 0) {
+    // Fallback: cerca elementi con attributo num che sembrano articoli
+    artEls = [...doc.querySelectorAll('[num]')].filter(el => {
+      const tag = el.tagName.toLowerCase();
+      return tag.includes('art') || tag === 'div' || tag === 'section';
+    });
+  }
+
+  log(`Trovati ${artEls.length} elementi articolo nel XML`, artEls.length > 0 ? 'ok' : 'w');
+  if (artEls.length === 0) return [];
+
+  const arts = [];
+  const seen = new Set();
+
+  artEls.forEach(el => {
+    // Numero articolo
+    const numRaw = el.getAttribute('num') || el.getAttribute('id') || el.getAttribute('numero') || '';
+    // Normalizza: "art1", "1", "1-bis", "1bis", "1 bis"
+    const numClean = numRaw.replace(/^art\.?\s*/i, '').trim();
+    if (!numClean) return;
+    const numInt = parseInt(numClean) || 0;
+    if (!numInt) return;
+    if (seen.has(numClean)) return;
+    seen.add(numClean);
+
+    // Rubrica / titolo
+    const rubEl = el.querySelector('rubrica, heading, titolo, title, caption');
+    const rubrica = rubEl ? rubEl.textContent.trim() : '';
+
+    // Stato vigenza
+    const stato = (el.getAttribute('status') || el.getAttribute('stato') || '').toLowerCase();
+    const vigente = !stato.includes('abrog') && !stato.includes('soppres') && !stato.includes('abr.');
+
+    // Commi
+    const commiEls = [...el.querySelectorAll('comma, paragraph, alinea, p')].filter(c => {
+      // Esclude la rubrica
+      const cn = c.tagName.toLowerCase();
+      return cn !== 'rubrica' && cn !== 'heading';
+    });
+
+    let commi = [];
+    if (commiEls.length > 0) {
+      commi = commiEls.map((c, i) => ({
+        numero: c.getAttribute('num') || c.getAttribute('numero') || String(i + 1),
+        testo: c.textContent.replace(/\s+/g, ' ').trim()
+      })).filter(c => c.testo.length > 5);
+    }
+
+    // Testo completo (pulito dalla rubrica)
+    let testo = el.textContent;
+    if (rubrica) testo = testo.replace(rubrica, '').trim();
+    testo = testo.replace(/\s+/g, ' ').trim();
+
+    // Versioni storiche
+    const verEls = [...el.querySelectorAll('version, versione, history > *')];
+    const versioni = verEls.map(v => ({
+      data: v.getAttribute('date') || v.getAttribute('data') || null,
+      urn_versione: v.getAttribute('urn') || null
+    })).filter(v => v.data || v.urn_versione);
+
+    // Data entrata in vigore / abrogazione
+    const dataVig = el.getAttribute('dataEfficaciaInizio') || el.getAttribute('vigoreInizio') || null;
+    const dataAbr = el.getAttribute('dataEfficaciaFine') || el.getAttribute('vigoreFine') || null;
+
+    arts.push({ numClean, numInt, rubrica, testo, commi, vigente, versioni, dataVig, dataAbr });
+  });
+
+  arts.sort((a, b) => a.numInt - b.numInt || a.numClean.localeCompare(b.numClean));
+  return arts;
+}
+
+// ══════ BUILD JS ══════════════════════════════════════════════════
+function buildNormaJS(art, normaId, fonte, urn) {
+  const obj = {
+    titolo: art.titolo,
+    fonte,
+    testo: art.testo
+  };
+  if (art.commi && art.commi.length > 0) obj.commi = art.commi;
+  obj.metadati = {
+    vigente: art.vigente,
+    data_entrata_vigore: art.dataVig || null,
+    data_abrogazione: art.dataAbr || null,
+    versioni_storiche: art.versioni || [],
+    fonte_xml: `https://www.normattiva.it/do/urires/N2Ls?${urn}:art${art.numClean}`,
+    urn
+  };
+  return `window.NORME = window.NORME || {};\n\nwindow.NORME["${normaId}"] = ${JSON.stringify(obj, null, 2)};\n`;
+}
+
+// ══════ RENDER CARD ══════════════════════════════════════════════
+function renderCard(art) {
+  const area = $('arts-area');
+  const ph = $('empty-state');
+  if (ph) ph.style.display = 'none';
+
+  const d = document.createElement('div');
+  d.className = 'art-card' + (art.vigente ? '' : ' abrogato');
+  d.id = 'acard-' + art.normaId;
+
+  const commiTag = art.commi.length
+    ? `<span class="tag tag-num">${art.commi.length} commi</span>` : '';
+  const vigTag = art.vigente
+    ? '<span class="tag tag-ok">VIGENTE</span>'
+    : '<span class="tag tag-abr">ABROGATO</span>';
+
+  d.innerHTML = `
+    <div class="art-hd">
+      <span class="art-titolo">${esc(art.titolo)}</span>
+      <div class="art-badges">${commiTag}${vigTag}</div>
+    </div>
+    <div class="art-id">${esc(art.normaId)}</div>
+    <div class="art-testo">${esc(art.testo.slice(0, 300))}${art.testo.length > 300 ? '…' : ''}</div>
+    <div class="art-dl" onclick="dlSingolo('${art.normaId}')">⬇ Scarica ${esc(art.normaId)}.js</div>
+  `;
+  area.appendChild(d);
+  area.scrollTop = area.scrollHeight;
+}
+
+function updateStats() {
+  const tot = ST.arts.length;
+  const vig = ST.arts.filter(a => a.vigente).length;
+  const abr = tot - vig;
+  $('s-total').textContent = tot;
+  $('s-vigenti').textContent = vig;
+  $('s-abrogati').textContent = abr;
+  $('stats-section').style.display = tot > 0 ? '' : 'none';
+  $('right-badge').textContent = tot > 0 ? `${tot} ARTICOLI` : '—';
+  $('right-badge').className = 'badge ' + (tot > 0 ? 'bg' : 'bn');
+}
+
+// ══════ LOG ══════════════════════════════════════════════════════
+function log(msg, cls = '') {
+  const la = $('log-area');
+  const d = document.createElement('div');
+  d.className = 'lg' + (cls ? ' ' + cls : '');
+  d.innerHTML = `<span class="lg-ts">[${ts()}]</span><span>${esc(msg)}</span>`;
+  la.appendChild(d);
+  la.scrollTop = la.scrollHeight;
+}
+function setStatus(msg) { $('status-txt').textContent = msg; }
+function setProgress(pct) { $('prog').style.width = pct + '%'; }
+
+// ══════ MAIN RUN ══════════════════════════════════════════════════
+async function runDownload() {
+  const raw = $('inp-estremi').value.trim();
+  if (!raw) { alert('Inserisci gli estremi della norma.'); return; }
+  if (ST.running) return;
+
+  const estremi = parseEstremi(raw);
+  if (!estremi) {
+    alert('Formato non riconosciuto.\n\nEsempi validi:\n  D.Lgs. 36/2023\n  L. 241/1990\n  D.P.R. 445/2000\n  D.L. 76/2020');
+    return;
+  }
+
+  const urn = buildUrn(estremi);
+  const prefix = ($('inp-prefix').value.trim() || buildPrefix(estremi)).toLowerCase().replace(/[^a-z0-9_]/g, '_');
+  const fonte = $('inp-fonte').value.trim() || estremi.label;
+
+  // Aggiorna UI
+  $('left-badge').textContent = 'DOWNLOAD...';
+  $('left-badge').className = 'badge ba';
+  $('btn-run').disabled = true;
+  $('btn-stop').style.display = '';
+  $('btn-parse-xml').disabled = true;
+  $('log-area').innerHTML = '';
+  $('arts-area').innerHTML = '';
+  $('empty-state').style.display = '';
+  $('stats-section').style.display = 'none';
+  ST.arts = []; ST.running = true; ST.stop = false;
+  setProgress(0); setStatus('Connessione a Normattiva...');
+
+  try {
+    log(`URN: ${urn}`);
+    log(`Proxy: ${$('sel-proxy').value}`);
+    setProgress(10);
+
+    let xmlText;
+    try {
+      xmlText = await fetchNormattivaXML(urn);
+      log(`Risposta ricevuta: ${(xmlText.length / 1024).toFixed(1)} KB`, 'ok');
+    } catch (fetchErr) {
+      log(`Fetch fallito: ${fetchErr.message}`, 'e');
+      // Tenta secondo proxy
+      if ($('sel-proxy').value === 'allorigins') {
+        log('Tentativo con corsproxy.io...', 'w');
+        const direct = `https://www.normattiva.it/do/urires/N2Ls?${urn}`;
+        const resp2 = await fetch(`https://corsproxy.io/?${encodeURIComponent(direct)}`, { signal: AbortSignal.timeout(20000) });
+        if (!resp2.ok) throw new Error(`Fallback HTTP ${resp2.status}`);
+        xmlText = await resp2.text();
+        log(`Risposta (fallback): ${(xmlText.length / 1024).toFixed(1)} KB`, 'ok');
+      } else throw fetchErr;
+    }
+
+    setProgress(30); setStatus('Parsing XML...');
+
+    // Controlla se è HTML (redirect a pagina di errore) invece di XML
+    if (xmlText.trim().startsWith('<!DOCTYPE') || xmlText.trim().startsWith('<html')) {
+      throw new Error('Il server ha restituito HTML invece di XML. La norma potrebbe non essere disponibile su Normattiva OpenData con questo URN. Prova a incollare il XML manualmente.');
+    }
+
+    const parsedArts = parseXML(xmlText);
+    setProgress(50);
+
+    if (parsedArts.length === 0) {
+      // Salva XML nel textarea per debug
+      $('inp-xml').value = xmlText.slice(0, 5000);
+      throw new Error('Nessun articolo trovato nel XML. Il contenuto è stato copiato nel campo XML manuale per verifica. La struttura potrebbe essere non standard.');
+    }
+
+    log(`${parsedArts.length} articoli da parsare`, 'ok');
+    setStatus(`Elaborazione ${parsedArts.length} articoli...`);
+
+    for (let i = 0; i < parsedArts.length; i++) {
+      if (ST.stop) break;
+      const pa = parsedArts[i];
+      await sleep(30);
+      const normaId = `${prefix}_art_${pa.numClean}`;
+      const titolo = pa.rubrica ? `Art. ${pa.numClean} — ${pa.rubrica}` : `Art. ${pa.numClean}`;
+      const art = { ...pa, normaId, titolo, fonte, urn };
+      ST.arts.push(art);
+      renderCard(art);
+      updateStats();
+      const pct = 50 + Math.round((i + 1) / parsedArts.length * 50);
+      setProgress(pct);
+      setStatus(`Elaborato Art. ${pa.numClean} (${i + 1}/${parsedArts.length})`);
+      log(`[${art.vigente ? 'OK' : 'ABROGATO'}] ${normaId}`, art.vigente ? 'ok' : 'w');
+    }
+
+    setProgress(100);
+    $('left-badge').textContent = 'COMPLETATO ✓';
+    $('left-badge').className = 'badge bg';
+    const vig = ST.arts.filter(a => a.vigente).length;
+    const abr = ST.arts.length - vig;
+    setStatus(`Completato — ${ST.arts.length} art. | ${vig} vigenti | ${abr} abrogati`);
+    log(`Fine: ${ST.arts.length} articoli estratti`, 'ok');
+
+  } catch (err) {
+    $('left-badge').textContent = 'ERRORE';
+    $('left-badge').className = 'badge be';
+    setStatus('Errore: ' + err.message);
+    log('ERRORE: ' + err.message, 'e');
+    // Mostra suggerimenti
+    const area = $('arts-area');
+    $('empty-state').style.display = 'none';
+    const errEl = document.createElement('div');
+    errEl.className = 'err-bar';
+    errEl.innerHTML = `<b>Errore durante il recupero:</b><br>${esc(err.message)}<br><br>
+      <b>Suggerimenti:</b><br>
+      • Verifica che gli estremi siano corretti<br>
+      • Prova a cambiare proxy (menu "CORS Proxy")<br>
+      • Scarica il XML da <a href="https://www.normattiva.it" target="_blank" style="color:var(--amber)">normattiva.it</a> e incollalo nel campo XML manuale<br>
+      • Alcune norme potrebbero non essere disponibili in formato OpenData XML`;
+    area.appendChild(errEl);
+  }
+
+  ST.running = false;
+  $('btn-run').disabled = false;
+  $('btn-stop').style.display = 'none';
+  $('btn-parse-xml').disabled = false;
+}
+
+function doStop() {
+  ST.stop = true;
+  log('Stop richiesto dall\'utente', 'w');
+  setStatus('Interrotto dall\'utente');
+  $('left-badge').textContent = 'INTERROTTO';
+  $('left-badge').className = 'badge ba';
+}
+
+// ══════ PDF ══════════════════════════════════════════════════════
+function addDzDrag() {
+  const dz = $('dz-pdf'); if (!dz || dz._drag) return; dz._drag = true;
+  dz.addEventListener('dragenter', e => { e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragover',  e => { e.preventDefault(); e.dataTransfer.dropEffect='copy'; dz.classList.add('over'); });
+  dz.addEventListener('dragleave', e => { if (!dz.contains(e.relatedTarget)) dz.classList.remove('over'); });
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over');
+    const f = e.dataTransfer.files[0]; if (f) loadPdf(f); });
+}
+window.addEventListener('DOMContentLoaded', () => { addDzDrag(); updateFolderUI(); });
+
+function onPdfFile() {
+  const inp = $('fi-pdf'); if (!inp.files || !inp.files[0]) return;
+  const f = inp.files[0]; inp.value = ''; loadPdf(f);
+}
+
+async function loadPdf(file) {
+  const lbl = $('pdf-loaded');
+  lbl.style.display = ''; lbl.textContent = 'Lettura PDF...';
+  try {
+    const text = await extractPdfText(file);
+    ST.pdfText = text;
+    lbl.textContent = `✓ ${file.name} — ${(text.length/1000).toFixed(1)}k caratteri estratti`;
+    log(`PDF caricato: ${file.name} (${text.length} car.)`, 'ok');
+    // Auto-compila fonte dal nome file
+    if (!$('inp-fonte').value) {
+      const n = file.name.replace(/\.pdf$/i,'').replace(/[_\-]+/g,' ');
+      $('inp-fonte').value = n;
+    }
+  } catch(e) {
+    lbl.textContent = '✗ Errore lettura: ' + e.message;
+    log('Errore PDF: ' + e.message, 'e');
+  }
+}
+
+async function extractPdfText(file) {
+  if (typeof pdfjsLib === 'undefined') throw new Error('pdf.js non caricato');
+  const ab = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: ab }).promise;
+  let text = '';
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const tc = await page.getTextContent();
+    let lastY = null, line = '';
+    for (const item of tc.items) {
+      const y = Math.round(item.transform[5]);
+      if (lastY !== null && Math.abs(y - lastY) > 3) { text += line.trimEnd() + '\n'; line = ''; }
+      line += item.str; lastY = y;
+    }
+    if (line.trim()) text += line.trimEnd() + '\n';
+    text += '\n';
+  }
+  return text.trim();
+}
+
+async function runFromPdf() {
+  if (!ST.pdfText) { alert('Carica prima un file PDF.'); return; }
+  if (!hasKey()) { alert('Inserisci la API key Anthropic nell\'apposito campo in alto.'); return; }
+  if (ST.running) return;
+
+  const prefix = ($('inp-prefix').value.trim() || 'norma').toLowerCase().replace(/[^a-z0-9_]/g,'_');
+  const fonte  = $('inp-fonte').value.trim() || 'PDF';
+  const urn    = 'urn:nir:pdf:' + prefix;
+  const CHUNK  = parseInt($('sel-chunk').value) || 4000;
+
+  // Prepara chunks
+  const srcText = ST.pdfText;
+  const chunks = [];
+  for (let i = 0; i < srcText.length; i += CHUNK) chunks.push(srcText.slice(i, i + CHUNK));
+
+  // Reset UI
+  ST.arts = []; ST.running = true; ST.stop = false;
+  $('arts-area').innerHTML = '';
+  $('empty-state').style.display = '';
+  $('stats-section').style.display = 'none';
+  $('log-area').innerHTML = '';
+  $('btn-pdf-run').style.display = 'none';
+  $('btn-pdf-stop').style.display = '';
+  $('left-badge').textContent = 'AI IN CORSO...'; $('left-badge').className = 'badge ba';
+  setProgress(0); setStatus(`Analisi AI — ${chunks.length} chunk da elaborare...`);
+  log(`Testo: ${srcText.length} car. → ${chunks.length} chunk da ${CHUNK}`);
+
+  const SYS = `Sei un esperto giurista italiano. Dal testo fornito estrai TUTTI gli articoli presenti.
+Per ogni articolo produci un oggetto JSON con:
+- "numero": numero articolo come stringa (es. "1", "2-bis", "3-ter")
+- "rubrica": titolo/rubrica dell'articolo se presente, altrimenti ""
+- "testo": testo integrale dell'articolo, commi inclusi, fedele all'originale
+- "commi": array di oggetti {"numero":"1","testo":"..."} per ogni comma numerato, o [] se non numerati
+- "vigente": true (default) o false se esplicitamente abrogato nel testo
+Rispondi SOLO con un array JSON valido, senza markdown, senza commenti.
+Se il chunk non contiene articoli completi o riconoscibili, rispondi [].
+Non inventare articoli non presenti nel testo.`;
+
+  const seen = new Set();
+  let totalExt = 0;
+
+  for (let ci = 0; ci < chunks.length; ci++) {
+    if (ST.stop) break;
+    const pct = Math.round((ci + 1) / chunks.length * 90);
+    setProgress(pct);
+    setStatus(`Chunk ${ci+1}/${chunks.length} — ${totalExt} articoli finora...`);
+    log(`Chunk ${ci+1}/${chunks.length}...`);
+
+    try {
+      const raw = await aiCall(SYS, `Testo normativo (parte ${ci+1}/${chunks.length}):\n\n${chunks[ci]}`, 4000);
+      const cleaned = raw.replace(/```json|```/g,'').trim();
+      const parsed = JSON.parse(cleaned);
+      if (!Array.isArray(parsed)) continue;
+
+      for (const item of parsed) {
+        const numStr = String(item.numero || '').trim();
+        if (!numStr || seen.has(numStr)) continue;
+        seen.add(numStr);
+        const numInt = parseInt(numStr) || 0;
+        const normaId = `${prefix}_art_${numStr.replace(/[^a-z0-9]/gi,'_')}`;
+        const titolo = item.rubrica
+          ? `Art. ${numStr} — ${item.rubrica}`
+          : `Art. ${numStr}`;
+        const art = {
+          numClean: numStr, numInt,
+          normaId, titolo, fonte, urn,
+          testo: String(item.testo || '').trim(),
+          commi: Array.isArray(item.commi) ? item.commi : [],
+          vigente: item.vigente !== false,
+          versioni: [], dataVig: null, dataAbr: null
+        };
+        ST.arts.push(art);
+        renderCard(art);
+        updateStats();
+        log(`[${art.vigente ? 'OK':'ABROGATO'}] ${normaId}`, art.vigente ? 'ok':'w');
+        totalExt++;
+      }
+    } catch(e) {
+      log(`Chunk ${ci+1} errore: ${e.message}`, 'e');
+    }
+    await sleep(200);
+  }
+
+  // Riordina per numero articolo
+  ST.arts.sort((a,b) => a.numInt - b.numInt || a.numClean.localeCompare(b.numClean));
+  // Ri-renderizza in ordine
+  $('arts-area').innerHTML = '';
+  ST.arts.forEach(renderCard);
+
+  setProgress(100);
+  ST.running = false;
+  $('btn-pdf-run').style.display = '';
+  $('btn-pdf-stop').style.display = 'none';
+  $('left-badge').textContent = ST.stop ? 'INTERROTTO' : 'COMPLETATO ✓';
+  $('left-badge').className = 'badge ' + (ST.stop ? 'ba' : 'bg');
+  const vig = ST.arts.filter(a=>a.vigente).length;
+  setStatus(`${ST.stop?'Interrotto':'Completato'} — ${ST.arts.length} articoli (${vig} vigenti)`);
+  log(`Fine estrazione PDF: ${ST.arts.length} articoli`, 'ok');
+}
+async function parseManualXML() {
+  const xmlText = $('inp-xml').value.trim();
+  if (!xmlText) { alert('Incolla il contenuto XML prima.'); return; }
+  if (ST.running) return;
+
+  const raw = $('inp-estremi').value.trim();
+  const estremi = parseEstremi(raw);
+  const prefix = ($('inp-prefix').value.trim() || (estremi ? buildPrefix(estremi) : 'norma')).toLowerCase().replace(/[^a-z0-9_]/g, '_');
+  const fonte = $('inp-fonte').value.trim() || raw || 'Norma';
+  const urn = estremi ? buildUrn(estremi) : 'urn:nir:stato:norma:0000;0';
+
+  $('log-area').innerHTML = '';
+  $('arts-area').innerHTML = '';
+  $('empty-state').style.display = '';
+  $('stats-section').style.display = 'none';
+  ST.arts = [];
+  $('left-badge').textContent = 'PARSING...';
+  $('left-badge').className = 'badge ba';
+  setProgress(20);
+  setStatus('Parsing XML manuale...');
+  log('Parsing XML manuale...');
+
+  try {
+    const parsedArts = parseXML(xmlText);
+    if (parsedArts.length === 0) throw new Error('Nessun articolo trovato nel XML. Verifica la struttura.');
+    log(`${parsedArts.length} articoli trovati`, 'ok');
+
+    for (let i = 0; i < parsedArts.length; i++) {
+      const pa = parsedArts[i];
+      const normaId = `${prefix}_art_${pa.numClean}`;
+      const titolo = pa.rubrica ? `Art. ${pa.numClean} — ${pa.rubrica}` : `Art. ${pa.numClean}`;
+      const art = { ...pa, normaId, titolo, fonte, urn };
+      ST.arts.push(art);
+      renderCard(art);
+      updateStats();
+      log(`[${art.vigente ? 'OK' : 'ABROGATO'}] ${normaId}`, art.vigente ? 'ok' : 'w');
+    }
+
+    setProgress(100);
+    $('left-badge').textContent = 'COMPLETATO ✓';
+    $('left-badge').className = 'badge bg';
+    setStatus(`Parsing completato — ${ST.arts.length} articoli`);
+  } catch (err) {
+    $('left-badge').textContent = 'ERRORE';
+    $('left-badge').className = 'badge be';
+    setStatus('Errore: ' + err.message);
+    log('ERRORE: ' + err.message, 'e');
+  }
+}
+
+// ══════ FILE SYSTEM ACCESS API ═══════════════════════════════════
+const FS = { handle: null, supported: 'showDirectoryPicker' in window };
+window.addEventListener('DOMContentLoaded', updateFolderUI);
+
+// Aggiorna UI indicatore cartella
+function updateFolderUI() {
+  const btn = $('btn-scegli-cartella');
+  const lbl = $('cartella-lbl');
+  const path = $('cartella-path');
+  if (!FS.supported) {
+    btn.style.display = 'none';
+    lbl.textContent = 'File System Access API non supportata — uso download classico';
+    lbl.style.color = 'var(--t4)';
+    return;
+  }
+  if (FS.handle) {
+    btn.textContent = '📁 Cambia cartella';
+    path.textContent = FS.handle.name;
+    path.style.color = 'var(--green)';
+    $('cartella-ok').style.display = '';
+  } else {
+    btn.textContent = '📁 Scegli cartella di destinazione';
+    path.textContent = 'Nessuna cartella selezionata';
+    path.style.color = 'var(--t4)';
+    $('cartella-ok').style.display = 'none';
+  }
+}
+
+async function scegliCartella() {
+  if (!FS.supported) return;
+  try {
+    FS.handle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    updateFolderUI();
+    log(`Cartella selezionata: ${FS.handle.name}`, 'ok');
+  } catch (e) {
+    if (e.name !== 'AbortError') { log('Errore selezione cartella: ' + e.message, 'e'); }
+  }
+}
+
+// Scrive un file nella cartella selezionata (o sottocartella se specificata)
+async function writeToDir(dirHandle, filename, content) {
+  const fh = await dirHandle.getFileHandle(filename, { create: true });
+  const w = await fh.createWritable();
+  await w.write(content);
+  await w.close();
+}
+
+// ══════ DOWNLOAD ══════════════════════════════════════════════════
+function dlBlob(content, filename) {
+  const b = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const u = URL.createObjectURL(b);
+  const a = document.createElement('a');
+  a.href = u; a.download = filename; a.click();
+  URL.revokeObjectURL(u);
+}
+
+function dlSingolo(normaId) {
+  const art = ST.arts.find(a => a.normaId === normaId);
+  if (!art) { alert('Articolo non trovato.'); return; }
+  const js = buildNormaJS(art, normaId, art.fonte, art.urn);
+  dlBlob(js, `${normaId}.js`);
+}
+
+async function dlTutti() {
+  if (!ST.arts.length) { alert('Nessun articolo estratto.'); return; }
+
+  // ── Con File System Access API: scrivi direttamente nella cartella ──
+  if (FS.supported && FS.handle) {
+    const btn = $('btn-dl-tutti');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spin"></span> Salvataggio...';
+    try {
+      // Crea (o apri) sottocartella con il nome della norma
+      const subName = ($('inp-prefix').value.trim() || 'norme').replace(/[^a-z0-9_\-]/gi, '_');
+      let targetDir;
+      try {
+        targetDir = await FS.handle.getDirectoryHandle(subName, { create: true });
+        log(`Sottocartella: ${FS.handle.name}/${subName}`, 'ok');
+      } catch {
+        targetDir = FS.handle; // Fallback: scrivi direttamente nella cartella scelta
+      }
+
+      let saved = 0;
+      for (const art of ST.arts) {
+        const js = buildNormaJS(art, art.normaId, art.fonte, art.urn);
+        await writeToDir(targetDir, `${art.normaId}.js`, js);
+        saved++;
+        log(`Scritto: ${art.normaId}.js`, 'ok');
+      }
+      // Manifest
+      const folderVal = $('inp-folder').value.trim() || subName;
+      const manifest = buildManifestTxt(folderVal);
+      await writeToDir(targetDir, '_manifest_snippet.txt', manifest);
+
+      log(`✓ ${saved} file salvati in ${FS.handle.name}/${subName}`, 'ok');
+      setStatus(`✓ ${saved} file salvati nella cartella ${FS.handle.name}/${subName}`);
+    } catch (e) {
+      log('Errore scrittura: ' + e.message, 'e');
+      alert('Errore durante il salvataggio: ' + e.message);
+    }
+    btn.disabled = false;
+    btn.innerHTML = '⬇ Salva tutti nella cartella';
+    return;
+  }
+
+  // ── Fallback: download classico (un file alla volta) ──
+  if (!confirm(`Verranno scaricati ${ST.arts.length} file .js separati. Continuare?`)) return;
+  ST.arts.forEach(art => {
+    const js = buildNormaJS(art, art.normaId, art.fonte, art.urn);
+    dlBlob(js, `${art.normaId}.js`);
+  });
+}
+
+function buildManifestTxt(folder) {
+  const list = ST.arts.map(a => `"${folder}/${a.normaId}.js"`);
+  return `// Aggiungi questo al campo "norme" nel manifest.js\n// norme: [\n`
+    + list.map(l => `//   ${l}`).join(',\n')
+    + `\n// ]\n\n// normaId disponibili:\n`
+    + ST.arts.map(a => `// ${a.normaId} → ${a.titolo}${a.vigente ? '' : ' [ABROGATO]'}`).join('\n')
+    + '\n';
+}
+
+async function dlManifest() {
+  if (!ST.arts.length) { alert('Nessun articolo estratto.'); return; }
+  const folder = $('inp-folder').value.trim() || 'norme';
+  dlBlob(buildManifestTxt(folder), 'norme_manifest_snippet.txt');
+}
+</script>
+</body>
+</html>

@@ -112,14 +112,37 @@ textarea::placeholder{color:var(--t4)}
 .prog-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;flex-shrink:0}
 .prog-fill{height:100%;background:var(--amber);transition:width .3s}
 .modal-footer{padding:10px 20px;border-top:1px solid var(--b1);display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap}
-/* ── NORME MODAL ── */
-.n-card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px 12px;flex-shrink:0}
-.n-card .n-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
-.n-card .n-titolo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--amber)}
-.n-card .n-id{font-family:var(--mono);font-size:8px;color:var(--t4)}
-.n-card .n-testo{font-family:var(--mono);font-size:9px;color:var(--t2);line-height:1.6;max-height:120px;overflow-y:auto;white-space:pre-wrap;margin-top:4px;border-top:1px solid var(--b1);padding-top:4px}
-.n-card .n-dl{font-family:var(--mono);font-size:8px;color:var(--blue);cursor:pointer;margin-top:4px;text-decoration:underline}
-.n-card .n-dl:hover{color:var(--amber)}
+/* ── NORME / NORMATTIVA DOWNLOADER ── */
+.n-field{display:flex;flex-direction:column;gap:4px}
+.n-field label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
+.n-field input,.n-field select,.n-field textarea{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:7px 10px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;width:100%}
+.n-field input:focus,.n-field select:focus,.n-field textarea:focus{border-color:var(--amber)}
+.n-field input::placeholder,.n-field textarea::placeholder{color:var(--t4)}
+.n-field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23636363'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.n-tabs{display:flex;border-bottom:1px solid var(--b1);padding:0 6px;flex-shrink:0}
+.n-tab{display:flex;align-items:center;gap:6px;padding:8px 14px;font-family:var(--mono);font-size:10px;color:var(--t4);border-bottom:2px solid transparent;cursor:pointer;user-select:none}
+.n-tab:hover{color:var(--t2)}
+.n-tab.on{color:var(--amber);border-bottom-color:var(--amber)}
+.n-tab-pane{display:none;flex-direction:column;gap:12px}
+.n-tab-pane.on{display:flex}
+.art-card{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.art-card.abrogato{border-color:rgba(239,68,68,.25);opacity:.75}
+.art-hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.art-titolo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--amber);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.art-id{font-family:var(--mono);font-size:8px;color:var(--t4)}
+.art-badges{display:flex;gap:4px;flex-shrink:0}
+.tag-ok{color:var(--green);border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.08)}
+.tag-abr{color:var(--red);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)}
+.tag-num{color:var(--t3);border-color:var(--b1);background:var(--bg3)}
+.art-testo{font-family:var(--mono);font-size:9px;color:var(--t2);line-height:1.6;max-height:80px;overflow-y:auto;white-space:pre-wrap;border-top:1px solid var(--b1);padding-top:6px}
+.art-dl{font-family:var(--mono);font-size:8px;color:var(--blue);cursor:pointer;text-decoration:underline;align-self:flex-start}
+.art-dl:hover{color:var(--amber)}
+.n-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.n-stat{background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:8px 10px}
+.n-stat-lbl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);margin-bottom:2px}
+.n-stat-val{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--amber)}
+.err-bar{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);border-radius:3px;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);line-height:1.6}
+.dz-loaded{font-family:var(--mono);font-size:10px;color:var(--amber);margin-top:5px;display:none}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>if(typeof pdfjsLib!=='undefined')pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
@@ -145,7 +168,7 @@ textarea::placeholder{color:var(--t4)}
   <div class="st-arr">›</div>
   <div class="st clickable" id="st5" onclick="openSpieg()" title="Genera spiegazioni AI"><div class="st-n">✦</div>SPIEGAZIONI</div>
   <div class="st-arr">›</div>
-  <div class="st clickable" id="st6" onclick="openNorme()" title="Estrai articoli normativi"><div class="st-n">§</div>NORME</div>
+  <div class="st clickable" id="st6" onclick="openNorme()" title="Normattiva Downloader"><div class="st-n">§</div>NORMATTIVA</div>
 </div>
 
 <!-- hidden file inputs — OUTSIDE any container, at top level -->
@@ -237,88 +260,125 @@ textarea::placeholder{color:var(--t4)}
   </div>
 </div>
 
-<!-- NORME MODAL -->
+<!-- NORME MODAL — NORMATTIVA DOWNLOADER -->
 <div id="norme-modal" class="modal-bg hidden" onclick="if(event.target===this)closeNorme()">
-  <div class="modal">
+  <div class="modal" style="width:min(1080px,96vw)">
     <div class="modal-hd">
-      <h2>§ ESTRAI NORME — NORMATTIVA</h2>
+      <h2>§ NORMATTIVA DOWNLOADER</h2>
       <button class="modal-close" onclick="closeNorme()">✕</button>
     </div>
-    <div class="modal-body">
-      <div class="modal-col">
-        <div class="modal-col-title">Fonte normativa</div>
-        <div class="info" style="flex-shrink:0"><b>Normattiva:</b> scarica automaticamente gli articoli dal portale della legge vigente. Inserisci i parametri e il range di articoli.</div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">TIPO ATTO</label>
-            <select id="n-tipo" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px" onchange="updateURN()">
-              <option value="costituzione">Costituzione</option>
-              <option value="decreto.legislativo">D.Lgs.</option>
-              <option value="legge">Legge</option>
-              <option value="decreto.del.presidente.della.repubblica">D.P.R.</option>
-              <option value="decreto.legge">D.L.</option>
-              <option value="regio.decreto">R.D.</option>
-              <option value="custom">Personalizzato…</option>
-            </select>
-          </div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">DATA GU (YYYY-MM-DD)</label>
-            <input id="n-data" type="text" placeholder="1947-12-27" value="1947-12-27" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%" oninput="updateURN()">
-          </div>
-          <div style="flex:0 0 80px;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">NUMERO</label>
-            <input id="n-num" type="text" placeholder="es. 165" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%" oninput="updateURN()">
-          </div>
+    <div class="modal-body" style="grid-template-columns:380px 1fr">
+      <!-- LEFT: SORGENTE -->
+      <div class="modal-col" style="padding:0;gap:0;overflow:hidden">
+        <div class="n-tabs">
+          <div class="n-tab on" id="n-tab-norm" onclick="switchNTab('norm')">§ Normattiva</div>
+          <div class="n-tab" id="n-tab-pdf" onclick="switchNTab('pdf')">📄 PDF</div>
+          <div class="n-tab" id="n-tab-xml" onclick="switchNTab('xml')">XML</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0">
-          <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">URN ATTO (auto o personalizzato)</label>
-          <input id="n-urn" type="text" placeholder="urn:nir:stato:costituzione:1947-12-27" value="urn:nir:stato:costituzione:1947-12-27" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">DA ARTICOLO</label>
-            <input id="n-from" type="number" value="1" min="1" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+        <div style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px">
+          <!-- TAB: NORMATTIVA -->
+          <div class="n-tab-pane on" id="n-pane-norm">
+            <div class="info"><b>Normattiva OpenData:</b> inserisci gli estremi, il tool recupera il XML via API REST e genera i .js.</div>
+            <div class="n-field">
+              <label>Estremi (tipo + numero/anno)</label>
+              <input id="n-estremi" type="text" placeholder="es. D.Lgs. 36/2023  oppure  L. 241/1990  oppure  Costituzione" oninput="onEstremiChange()">
+            </div>
+            <div id="n-urn-preview" style="display:none">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-bottom:3px">URN NIR:</div>
+              <div id="n-urn-text" style="font-family:var(--mono);font-size:10px;color:var(--amber);background:var(--bg);border:1px solid var(--b1);border-radius:3px;padding:6px 10px;word-break:break-all"></div>
+            </div>
+            <div class="n-field">
+              <label>CORS Proxy</label>
+              <select id="n-proxy">
+                <option value="allorigins">allorigins.win (default)</option>
+                <option value="corsproxy">corsproxy.io</option>
+                <option value="direct">Diretto (solo CORS disabilitato)</option>
+              </select>
+            </div>
+            <div class="row">
+              <button class="btn btn-a" id="n-run" onclick="runNormeDownload()">⬇ Scarica da Normattiva</button>
+              <button class="btn btn-g" id="n-stop" style="display:none" onclick="stopNorme()">■ Stop</button>
+            </div>
           </div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">A ARTICOLO</label>
-            <input id="n-to" type="number" value="139" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          <!-- TAB: PDF -->
+          <div class="n-tab-pane" id="n-pane-pdf">
+            <div class="info"><b>Da PDF:</b> il testo viene estratto e analizzato dall'AI per identificare gli articoli.<br><span style="color:var(--amber)">Richiede API key Anthropic.</span></div>
+            <input type="file" id="n-fi-pdf" accept=".pdf" style="display:none" onchange="onNormePdfFile()">
+            <div class="dz" id="n-dz-pdf" onclick="document.getElementById('n-fi-pdf').click()">
+              <div class="dz-ico">📄</div>
+              <div class="dz-lbl">Clicca o trascina il PDF della norma</div>
+              <div class="dz-sub">GU, Normattiva, scansione OCR…</div>
+              <div class="dz-loaded" id="n-pdf-loaded"></div>
+            </div>
+            <div class="n-field">
+              <label>Chunk AI (caratteri)</label>
+              <select id="n-chunk">
+                <option value="3000">3000 — preciso</option>
+                <option value="4000" selected>4000 — bilanciato</option>
+                <option value="6000">6000 — veloce</option>
+              </select>
+            </div>
+            <div class="row">
+              <button class="btn btn-a" id="n-pdf-run" onclick="runNormeFromPdf()">✦ Estrai articoli via AI</button>
+              <button class="btn btn-g" id="n-pdf-stop" style="display:none" onclick="stopNorme()">■ Stop</button>
+            </div>
           </div>
-        </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">PREFISSO normaId</label>
-            <input id="n-prefix" type="text" placeholder="cost" value="cost" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          <!-- TAB: XML MANUALE -->
+          <div class="n-tab-pane" id="n-pane-xml">
+            <div class="info"><b>XML manuale:</b> incolla il XML scaricato da normattiva.it se il fetch automatico fallisce.</div>
+            <div class="n-field">
+              <label>XML Normattiva</label>
+              <textarea id="n-xml" placeholder="Incolla il contenuto XML..." rows="8"></textarea>
+            </div>
+            <div class="row">
+              <button class="btn btn-a" id="n-parse-xml" onclick="parseNormeManualXML()">Parsa XML →</button>
+            </div>
           </div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-            <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">SOTTOCARTELLA norme/</label>
-            <input id="n-folder" type="text" placeholder="costituzione" value="costituzione" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
+          <!-- CONFIGURAZIONE COMUNE -->
+          <div class="sep">configurazione output</div>
+          <div class="n-field">
+            <label>Prefisso normaId</label>
+            <input id="n-prefix" type="text" placeholder="es. dlgs_36_2023" oninput="refreshNPrefixEx()">
+            <div style="font-family:var(--mono);font-size:9px;color:var(--t4);margin-top:2px">→ <span id="n-prefix-ex" style="color:var(--amber)">prefisso_art_1</span></div>
           </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0">
-          <label style="font-family:var(--mono);font-size:8px;color:var(--t4)">FONTE (nome leggibile)</label>
-          <input id="n-fonte" type="text" placeholder="Costituzione della Repubblica Italiana" value="Costituzione della Repubblica Italiana" style="background:var(--bg);border:1px solid var(--b2);padding:4px 8px;color:var(--t1);font-family:var(--mono);font-size:10px;outline:none;border-radius:2px;width:100%">
-        </div>
-        <div class="row" style="flex-shrink:0">
-          <button class="btn btn-a" id="n-run" onclick="runNorme()">▶ Scarica da Normattiva</button>
-          <button class="btn btn-g" id="n-stop" onclick="stopNorme()" style="display:none">■ Stop</button>
-        </div>
-        <div class="sep" style="flex-shrink:0">oppure incolla testo + AI</div>
-        <input type="file" id="fi-norme" style="display:none" onchange="handleNormeFile()">
-        <textarea id="n-src" rows="4" style="flex:1;min-height:40px" placeholder="Incolla il testo della norma per estrazione AI…"></textarea>
-        <div class="row" style="flex-shrink:0">
-          <button class="btn btn-g" onclick="runNormeAI()">✦ Estrai con AI</button>
+          <div class="n-field">
+            <label>Fonte (etichetta leggibile)</label>
+            <input id="n-fonte" type="text" placeholder="es. D.Lgs. 36/2023">
+          </div>
+          <div class="n-field">
+            <label>Cartella (per il manifest)</label>
+            <input id="n-folder" type="text" placeholder="es. norme/dlgs_36_2023">
+          </div>
+          <div class="prog-bar"><div class="prog-fill" id="n-prog" style="width:0%"></div></div>
+          <div id="n-status" style="font-family:var(--mono);font-size:9px;color:var(--t3);min-height:14px"></div>
+          <div id="n-log" style="display:flex;flex-direction:column;gap:3px;max-height:100px;overflow-y:auto"></div>
         </div>
       </div>
+      <!-- RIGHT: ARTICOLI -->
       <div class="modal-col">
         <div class="modal-col-title">Articoli estratti</div>
-        <div class="prog-bar" style="flex-shrink:0"><div class="prog-fill" id="n-prog" style="width:0%"></div></div>
-        <div id="n-status" style="font-family:var(--mono);font-size:9px;color:var(--t3);flex-shrink:0">Nessun articolo estratto</div>
-        <div class="spieg-area" id="n-area"><div style="font-family:var(--mono);font-size:10px;color:var(--t4);text-align:center;padding:30px">Gli articoli appariranno qui…</div></div>
+        <div id="n-stats" style="display:none;flex-shrink:0">
+          <div class="n-stats">
+            <div class="n-stat"><div class="n-stat-lbl">Totale</div><div class="n-stat-val" id="n-s-total">0</div></div>
+            <div class="n-stat"><div class="n-stat-lbl">Vigenti</div><div class="n-stat-val" id="n-s-vigenti" style="color:var(--green)">0</div></div>
+            <div class="n-stat"><div class="n-stat-lbl">Abrogati</div><div class="n-stat-val" id="n-s-abrogati" style="color:var(--red)">0</div></div>
+          </div>
+        </div>
+        <div class="spieg-area" id="n-area">
+          <div id="n-empty" style="font-family:var(--mono);font-size:10px;color:var(--t4);text-align:center;padding:30px">
+            <div style="font-size:28px;opacity:.08;margin-bottom:10px">§</div>
+            Nessun articolo — inserisci gli estremi e premi Scarica
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-g" onclick="dlTutteNorme()">⬇ Scarica tutti i .js</button>
-      <button class="btn btn-g" onclick="dlManifestNorme()">⬇ Snippet manifest</button>
+      <button class="btn btn-ok" id="n-dl-tutti" onclick="dlNormeTutti()">⬇ Salva tutti i .js</button>
+      <button class="btn btn-g" onclick="dlNormeManifest()">⬇ Manifest snippet</button>
+      <div id="n-folder-ui" style="display:flex;align-items:center;gap:6px;margin-left:8px">
+        <button class="btn btn-g" style="padding:4px 10px;font-size:9px" id="n-scegli-cartella" onclick="scegliNormeCartella()">📁 Cartella</button>
+        <span id="n-cartella-path" style="font-family:var(--mono);font-size:9px;color:var(--t4)">download classico</span>
+      </div>
       <span id="n-done" style="font-family:var(--mono);font-size:9px;color:var(--t3);margin-left:auto"></span>
     </div>
   </div>
@@ -788,252 +848,491 @@ function dlDomande(){
   const b=new Blob([js],{type:'text/plain;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=getNomeSet()+'_d.js';a.click();URL.revokeObjectURL(u);
 }
 
-// ══════ ESTRAI NORME ══════════════════════════════════════════════════════════
-const NM={arts:[],running:false,stop:false};
-const CORS_PROXIES=['https://corsproxy.io/?url=','https://api.allorigins.win/raw?url='];
+// ══════ NORMATTIVA DOWNLOADER ═════════════════════════════════════════════════
+const NM={arts:[],running:false,stop:false,pdfText:''};
+const NFS={handle:null,supported:'showDirectoryPicker' in window};
 
-function openNorme(){show('norme-modal');}
+function openNorme(){show('norme-modal');updateNormeFolderUI();}
 function closeNorme(){hide('norme-modal');}
+function hasAIKey(){return G.useAI;}
 
-function handleNormeFile(){
-  const inp=$('fi-norme');
-  if(!inp.files||!inp.files[0])return;
-  const f=inp.files[0];inp.value='';
-  readF(f,text=>{$('n-src').value=text;});
-}
-
-function getNormePrefix(){return ($('n-prefix').value.trim()||'norma').toLowerCase().replace(/[^a-z0-9_]/g,'_');}
-function getNormeFolder(){return ($('n-folder').value.trim()||'norme').toLowerCase().replace(/[^a-z0-9_àèéìòù]/g,'_');}
-function getNormeFonte(){return $('n-fonte').value.trim()||'';}
-
-function updateURN(){
-  const tipo=$('n-tipo').value;
-  if(tipo==='custom')return;
-  const data=$('n-data').value.trim();
-  const num=$('n-num').value.trim();
-  let urn='urn:nir:stato:'+tipo+':'+data;
-  if(num)urn+=';'+num;
-  $('n-urn').value=urn;
-  // Auto-fill prefix and folder
-  const short={costituzione:'cost','decreto.legislativo':'dlgs',legge:'l','decreto.del.presidente.della.repubblica':'dpr','decreto.legge':'dl','regio.decreto':'rd'};
-  const p=short[tipo]||tipo.replace(/\./g,'');
-  if(num){$('n-prefix').value=p+'_'+num+'_'+data.slice(0,4);$('n-folder').value=p+'_'+num+'_'+data.slice(0,4);}
-  else{$('n-prefix').value=p;$('n-folder').value=tipo.replace(/\./g,'_');}
-}
-
-// Fetch a single URL trying CORS proxies in order
-async function fetchCORS(url){
-  // Try direct first (works if same-origin or CORS enabled)
-  try{const r=await fetch(url,{signal:AbortSignal.timeout(8000)});if(r.ok)return await r.text();}catch(e){}
-  // Try proxies
-  for(const proxy of CORS_PROXIES){
-    try{
-      const r=await fetch(proxy+encodeURIComponent(url),{signal:AbortSignal.timeout(12000)});
-      if(r.ok)return await r.text();
-    }catch(e){}
-  }
-  return null;
-}
-
-// Parse article text from Normattiva HTML
-function parseNormattivaHTML(html,artNum){
-  const parser=new DOMParser();
-  const doc=parser.parseFromString(html,'text/html');
-  // The article content is inside the main content area
-  // Try multiple selectors that Normattiva uses
-  const selectors=['#textArticle','#testoArticolo','.bodyArticle','.art-body','#corpo_del_documento','.testoArticolo'];
-  for(const sel of selectors){
-    const el=doc.querySelector(sel);
-    if(el&&el.textContent.trim()){
-      return cleanArticleText(el.textContent);
-    }
-  }
-  // Fallback: find text near "Art. N" header
-  const allText=doc.body?doc.body.textContent:'';
-  const re=new RegExp('Art\\.\\s*'+artNum+'\\s*\\n([\\s\\S]*?)(?:\\[articolo|Testo in vigore|APPROFONDIMENTI|FUNZIONI|$)','i');
-  const m=allText.match(re);
-  if(m&&m[1].trim().length>10)return cleanArticleText(m[1]);
-  // Last resort: look for any substantial text block
-  const bigBlocks=allText.split(/\n{2,}/).filter(b=>b.trim().length>30&&!/normattiva|cookie|privacy|collegamenti/i.test(b));
-  if(bigBlocks.length)return cleanArticleText(bigBlocks.join('\n'));
-  return null;
-}
-
-function cleanArticleText(text){
-  return text
-    .replace(/^\s*Art\.\s*\d+\s*/,'')
-    .replace(/\[articolo (?:precedente|successivo)\]/g,'')
-    .replace(/\[nascondi\s*\]/g,'')
-    .replace(/aggiornamenti all'articolo[\s\S]*$/,'')
-    .replace(/APPROFONDIMENTI[\s\S]*$/,'')
-    .replace(/\n{3,}/g,'\n\n')
-    .trim();
-}
-
-async function runNorme(){
-  const urn=$('n-urn').value.trim();
-  if(!urn){alert('Inserisci la URN dell\'atto.');return;}
-  const from=parseInt($('n-from').value)||1;
-  const to=parseInt($('n-to').value)||from;
-  if(from>to){alert('Il range "Da" deve essere <= "A".');return;}
-  if(NM.running)return;
-  NM.running=true;NM.stop=false;NM.arts=[];
-  $('n-run').style.display='none';$('n-stop').style.display='';
-  $('n-area').innerHTML='';
-  $('n-prog').style.width='0%';
-
-  const prefix=getNormePrefix();
-  const fonte=getNormeFonte();
-  const total=to-from+1;
-  let done=0,errors=0;
-
-  $('n-status').textContent='Scaricamento articoli da Normattiva ('+total+' articoli)…';
-
-  for(let artNum=from;artNum<=to;artNum++){
-    if(NM.stop)break;
-    const pct=Math.round((artNum-from+1)/total*100);
-    $('n-prog').style.width=pct+'%';
-    $('n-status').textContent='Art. '+artNum+' ('+Math.round(pct)+'%)…';
-
-    const url='https://www.normattiva.it/uri-res/N2Ls?'+urn+'~art'+artNum;
-    try{
-      const html=await fetchCORS(url);
-      if(!html){
-        logNormaError(artNum,'Impossibile raggiungere Normattiva (CORS). Usa la modalità testo + AI.');
-        errors++;continue;
-      }
-      const testo=parseNormattivaHTML(html,artNum);
-      if(!testo||testo.length<5){
-        logNormaError(artNum,'Articolo non trovato o vuoto');
-        errors++;continue;
-      }
-      const normaId=prefix+'_art_'+artNum;
-      const obj={numero:artNum,normaId,titolo:'Art. '+artNum+' '+fonte,fonte,testo};
-      // Evita duplicati
-      if(!NM.arts.find(a=>a.numero===artNum)){
-        NM.arts.push(obj);
-        renderNormaCard(obj);
-        done++;
-      }
-    }catch(e){
-      logNormaError(artNum,e.message);
-      errors++;
-    }
-    $('n-done').textContent=done+' ✓'+(errors?' / '+errors+' errori':'');
-    await sleep(300); // Rate limiting — non sovraccaricare Normattiva
-  }
-
-  NM.arts.sort((a,b)=>a.numero-b.numero);
-  NM.running=false;$('n-run').style.display='';$('n-stop').style.display='none';
-  $('n-status').textContent=(NM.stop?'Interrotto':'Completato')+' — '+done+'/'+total+' articoli estratti'+(errors?' ('+errors+' errori)':'');
-}
-
-// AI-based extraction fallback
-async function runNormeAI(){
-  if(!G.useAI){alert('Inserisci API key Anthropic per usare questa funzione.');return;}
-  const srcText=$('n-src').value.trim();
-  if(!srcText){alert('Inserisci il testo della norma.');return;}
-  if(NM.running)return;
-  NM.running=true;NM.stop=false;NM.arts=[];
-  $('n-run').style.display='none';$('n-stop').style.display='';
-  $('n-area').innerHTML='';$('n-prog').style.width='0%';
-  $('n-status').textContent='Estrazione AI…';
-
-  const prefix=getNormePrefix();
-  const fonte=getNormeFonte();
-  const CHUNK=4000;
-  const chunks=[];
-  for(let i=0;i<srcText.length;i+=CHUNK)chunks.push(srcText.slice(i,i+CHUNK));
-
-  const sys=`Sei un esperto giurista italiano. Dal testo fornito, estrai TUTTI gli articoli presenti.
-Per ogni articolo produci:
-- "numero": il numero dell'articolo (intero)
-- "titolo": "Art. N" seguito dalla fonte (es. "Art. 48 Costituzione")
-- "testo": il testo integrale dell'articolo, fedelmente riprodotto, con commi numerati se presenti
-Rispondi SOLO con un array JSON valido, senza markdown:
-[{"numero":N,"titolo":"...","testo":"..."}]
-Se il chunk non contiene articoli completi, restituisci []. Non inventare testo.`;
-
-  let totalExtracted=0;
-  for(let ci=0;ci<chunks.length;ci++){
-    if(NM.stop)break;
-    const pct=Math.round((ci+1)/chunks.length*100);
-    $('n-prog').style.width=pct+'%';
-    $('n-status').textContent='Chunk '+(ci+1)+'/'+chunks.length+'…';
-    try{
-      const raw=await aiCall(sys,'Testo normativo (parte '+(ci+1)+'/'+chunks.length+'):\n\n'+chunks[ci],4000);
-      const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
-      if(Array.isArray(parsed)){
-        parsed.forEach(art=>{
-          const num=parseInt(art.numero)||0;
-          if(!num||NM.arts.find(a=>a.numero===num))return;
-          const normaId=prefix+'_art_'+num;
-          const obj={numero:num,normaId,titolo:art.titolo||('Art. '+num),fonte,testo:art.testo||''};
-          NM.arts.push(obj);renderNormaCard(obj);totalExtracted++;
-        });
-      }
-    }catch(e){logNormaError('AI chunk '+(ci+1),e.message);}
-    $('n-done').textContent=totalExtracted+' articoli';
-    await sleep(150);
-  }
-
-  NM.arts.sort((a,b)=>a.numero-b.numero);
-  NM.running=false;$('n-run').style.display='';$('n-stop').style.display='none';
-  $('n-status').textContent=(NM.stop?'Interrotto':'Completato')+' — '+totalExtracted+' articoli estratti';
-}
-
-function stopNorme(){NM.stop=true;}
-
-function logNormaError(artLabel,msg){
-  const d=document.createElement('div');d.className='n-card';
-  d.innerHTML='<div style="font-family:var(--mono);font-size:10px;color:var(--red)">Art. '+esc(String(artLabel))+': '+esc(msg)+'</div>';
-  $('n-area').appendChild(d);
-}
-
-function renderNormaCard(art){
-  const area=$('n-area');
-  const ph=area.querySelector('[style*="padding:30px"]');if(ph)ph.remove();
-  const d=document.createElement('div');d.className='n-card';d.id='nart-'+art.numero;
-  d.innerHTML=`<div class="n-hd"><span class="n-titolo">${esc(art.titolo)}</span><span class="n-id">${esc(art.normaId)}</span></div>`
-    +`<div class="n-testo">${esc(art.testo)}</div>`
-    +`<div class="n-dl" onclick="dlSingolaNorma('${art.normaId}')">⬇ Scarica art${art.numero}.js</div>`;
-  area.appendChild(d);area.scrollTop=area.scrollHeight;
-}
-
-function buildNormaJS(art){
-  return 'window.NORME = window.NORME || {};\n\nwindow.NORME["'+art.normaId+'"] = '
-    +JSON.stringify({titolo:art.titolo,fonte:art.fonte,testo:art.testo},null,2)+';\n';
-}
-
-function dlSingolaNorma(normaId){
-  const art=NM.arts.find(a=>a.normaId===normaId);
-  if(!art){alert('Articolo non trovato.');return;}
-  const js=buildNormaJS(art);
-  const b=new Blob([js],{type:'text/plain;charset=utf-8'});
-  const u=URL.createObjectURL(b);const a=document.createElement('a');
-  a.href=u;a.download='art'+art.numero+'.js';a.click();URL.revokeObjectURL(u);
-}
-
-function dlTutteNorme(){
-  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
-  NM.arts.forEach(art=>{
-    const js=buildNormaJS(art);
-    const b=new Blob([js],{type:'text/plain;charset=utf-8'});
-    const u=URL.createObjectURL(b);const a=document.createElement('a');
-    a.href=u;a.download='art'+art.numero+'.js';a.click();URL.revokeObjectURL(u);
+// ── Tabs ──
+function switchNTab(name){
+  ['norm','pdf','xml'].forEach(t=>{
+    $('n-tab-'+t).className='n-tab'+(t===name?' on':'');
+    $('n-pane-'+t).className='n-tab-pane'+(t===name?' on':'');
   });
 }
 
-function dlManifestNorme(){
-  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
-  const folder='norme/'+getNormeFolder()+'/';
-  const list=NM.arts.map(art=>'"'+folder+'art'+art.numero+'.js"');
-  const txt='// Aggiungi questo array al campo "norme" nel manifest.js\n// norme: [\n'+list.map(l=>'//   '+l).join(',\n')+'\n// ]\n\n'
-    +'// normaId disponibili:\n'+NM.arts.map(a=>'// '+a.normaId+' → '+a.titolo).join('\n')+'\n';
-  const b=new Blob([txt],{type:'text/plain;charset=utf-8'});
-  const u=URL.createObjectURL(b);const a=document.createElement('a');
-  a.href=u;a.download='norme_manifest_snippet.txt';a.click();URL.revokeObjectURL(u);
+// ── Parse estremi → URN ──
+const TIPO_MAP=[
+  [/d\.?\s*lgs\.?|decreto\s+legislativo/i,'decreto.legislativo'],
+  [/d\.?\s*p\.?\s*r\.?|d\.p\.r|decreto.*presidente.*repubbl/i,'decreto.del.presidente.della.repubblica'],
+  [/d\.?\s*p\.?\s*c\.?\s*m\.?/i,'decreto.del.presidente.del.consiglio.dei.ministri'],
+  [/d\.?\s*m\.?\b|decreto\s+minist/i,'decreto.ministeriale'],
+  [/d\.?\s*l\.?\b|decreto[\s-]legge/i,'decreto-legge'],
+  [/cost\.?\b|costituzione\b/i,'costituzione'],
+  [/l\.\s*\d|^legge\b|\blegge\b/i,'legge'],
+];
+const TIPO_LABELS={
+  'decreto.legislativo':'D.Lgs.','decreto.del.presidente.della.repubblica':'D.P.R.',
+  'decreto.del.presidente.del.consiglio.dei.ministri':'D.P.C.M.','decreto.ministeriale':'D.M.',
+  'decreto-legge':'D.L.','costituzione':'Cost.','legge':'L.'
+};
+
+function parseEstremi(raw){
+  const s=raw.trim();let tipo=null;
+  for(const [re,t] of TIPO_MAP){if(re.test(s)){tipo=t;break;}}
+  if(!tipo)return null;
+  const m=s.match(/(\d{1,4})\s*[\/\-]\s*(\d{4})/);
+  if(!m){
+    if(tipo==='costituzione')return{tipo,numero:null,anno:'1948',label:'Costituzione'};
+    return null;
+  }
+  return{tipo,numero:m[1],anno:m[2],label:`${TIPO_LABELS[tipo]||tipo} ${m[1]}/${m[2]}`};
 }
+
+function buildUrn(e){
+  if(e.tipo==='costituzione')return 'urn:nir:stato:costituzione:1947-12-27;0';
+  return `urn:nir:stato:${e.tipo}:${e.anno};${e.numero}`;
+}
+
+function buildPrefix(e){
+  if(e.tipo==='costituzione')return 'cost';
+  const s={'decreto.legislativo':'dlgs','decreto.del.presidente.della.repubblica':'dpr',
+    'decreto.del.presidente.del.consiglio.dei.ministri':'dpcm','decreto.ministeriale':'dm',
+    'decreto-legge':'dl','legge':'l'}[e.tipo]||e.tipo.split('.')[0];
+  return `${s}_${e.numero}_${e.anno}`;
+}
+
+function onEstremiChange(){
+  const e=parseEstremi($('n-estremi').value);
+  if(!e){$('n-urn-preview').style.display='none';return;}
+  $('n-urn-text').textContent=buildUrn(e);
+  $('n-urn-preview').style.display='';
+  if(!$('n-prefix').value){$('n-prefix').value=buildPrefix(e);refreshNPrefixEx();}
+  if(!$('n-fonte').value)$('n-fonte').value=e.label;
+  if(!$('n-folder').value)$('n-folder').value='norme/'+buildPrefix(e);
+}
+
+function refreshNPrefixEx(){
+  $('n-prefix-ex').textContent=($('n-prefix').value.trim()||'prefisso')+'_art_1';
+}
+
+// ── Logging ──
+function nLog(msg,cls){
+  const la=$('n-log');
+  const d=document.createElement('div');d.className='lg'+(cls?' '+cls:'');
+  d.innerHTML=`<span class="lg-ts">[${ts()}]</span><span>${esc(msg)}</span>`;
+  la.appendChild(d);la.scrollTop=la.scrollHeight;
+}
+function nSetStatus(msg){$('n-status').textContent=msg;}
+function nSetProgress(pct){$('n-prog').style.width=pct+'%';}
+
+// ── Proxy ──
+const NPROXIES={
+  allorigins:u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  corsproxy:u=>`https://corsproxy.io/?${encodeURIComponent(u)}`,
+  direct:u=>u
+};
+function getNProxy(){return NPROXIES[$('n-proxy').value]||NPROXIES.allorigins;}
+
+// ── Fetch XML ──
+async function fetchNormattivaXML(urn){
+  const direct=`https://www.normattiva.it/do/urires/N2Ls?${urn}`;
+  const proxyFn=getNProxy();
+  const url=proxyFn(direct);
+  nLog('Fetch: '+url.slice(0,80)+'...','');
+  const resp=await fetch(url,{signal:AbortSignal.timeout(20000)});
+  if(!resp.ok)throw new Error(`HTTP ${resp.status} ${resp.statusText}`);
+  return await resp.text();
+}
+
+// ── XML Parser ──
+function parseNormattivaXML(xmlText){
+  const parser=new DOMParser();
+  const doc=parser.parseFromString(xmlText,'text/xml');
+  const parseError=doc.querySelector('parsererror');
+  if(parseError)throw new Error('XML non valido: '+parseError.textContent.slice(0,200));
+  const SELECTORS=['art','article','articolo','div[tipo="articolo"]','section[tipo="art"]'];
+  let artEls=[];
+  for(const sel of SELECTORS){artEls=[...doc.querySelectorAll(sel)];if(artEls.length>0)break;}
+  if(artEls.length===0){
+    artEls=[...doc.querySelectorAll('[num]')].filter(el=>{
+      const tag=el.tagName.toLowerCase();return tag.includes('art')||tag==='div'||tag==='section';
+    });
+  }
+  nLog(`Trovati ${artEls.length} elementi articolo nel XML`,artEls.length>0?'ok':'w');
+  if(artEls.length===0)return[];
+  const arts=[],seen=new Set();
+  artEls.forEach(el=>{
+    const numRaw=el.getAttribute('num')||el.getAttribute('id')||el.getAttribute('numero')||'';
+    const numClean=numRaw.replace(/^art\.?\s*/i,'').trim();
+    if(!numClean)return;
+    const numInt=parseInt(numClean)||0;
+    if(!numInt||seen.has(numClean))return;
+    seen.add(numClean);
+    const rubEl=el.querySelector('rubrica, heading, titolo, title, caption');
+    const rubrica=rubEl?rubEl.textContent.trim():'';
+    const stato=(el.getAttribute('status')||el.getAttribute('stato')||'').toLowerCase();
+    const vigente=!stato.includes('abrog')&&!stato.includes('soppres');
+    const commiEls=[...el.querySelectorAll('comma, paragraph, alinea, p')].filter(c=>{
+      const cn=c.tagName.toLowerCase();return cn!=='rubrica'&&cn!=='heading';
+    });
+    const commi=commiEls.map((c,i)=>({
+      numero:c.getAttribute('num')||c.getAttribute('numero')||String(i+1),
+      testo:c.textContent.replace(/\s+/g,' ').trim()
+    })).filter(c=>c.testo.length>5);
+    let testo=el.textContent;
+    if(rubrica)testo=testo.replace(rubrica,'').trim();
+    testo=testo.replace(/\s+/g,' ').trim();
+    const dataVig=el.getAttribute('dataEfficaciaInizio')||el.getAttribute('vigoreInizio')||null;
+    const dataAbr=el.getAttribute('dataEfficaciaFine')||el.getAttribute('vigoreFine')||null;
+    const verEls=[...el.querySelectorAll('version, versione, history > *')];
+    const versioni=verEls.map(v=>({
+      data:v.getAttribute('date')||v.getAttribute('data')||null,
+      urn_versione:v.getAttribute('urn')||null
+    })).filter(v=>v.data||v.urn_versione);
+    arts.push({numClean,numInt,rubrica,testo,commi,vigente,versioni,dataVig,dataAbr});
+  });
+  arts.sort((a,b)=>a.numInt-b.numInt||a.numClean.localeCompare(b.numClean));
+  return arts;
+}
+
+// ── Build JS file ──
+function buildNormaJS(art){
+  const obj={titolo:art.titolo,fonte:art.fonte,testo:art.testo};
+  if(art.commi&&art.commi.length>0)obj.commi=art.commi;
+  if(art.vigente===false||art.dataVig||art.dataAbr||(art.versioni&&art.versioni.length)){
+    obj.metadati={vigente:art.vigente,data_entrata_vigore:art.dataVig||null,
+      data_abrogazione:art.dataAbr||null,versioni_storiche:art.versioni||[]};
+  }
+  return `window.NORME = window.NORME || {};\n\nwindow.NORME["${art.normaId}"] = ${JSON.stringify(obj,null,2)};\n`;
+}
+
+// ── Render card ──
+function renderNormaCard(art){
+  const area=$('n-area');
+  const ph=$('n-empty');if(ph)ph.style.display='none';
+  const d=document.createElement('div');
+  d.className='art-card'+(art.vigente===false?' abrogato':'');
+  d.id='nart-'+art.normaId;
+  const commiTag=art.commi&&art.commi.length?`<span class="tag tag-num">${art.commi.length} commi</span>`:'';
+  const vigTag=art.vigente!==false
+    ?'<span class="tag tag-ok">VIGENTE</span>'
+    :'<span class="tag tag-abr">ABROGATO</span>';
+  d.innerHTML=`<div class="art-hd"><span class="art-titolo">${esc(art.titolo)}</span><div class="art-badges">${commiTag}${vigTag}</div></div>`
+    +`<div class="art-id">${esc(art.normaId)}</div>`
+    +`<div class="art-testo">${esc((art.testo||'').slice(0,300))}${(art.testo||'').length>300?'…':''}</div>`
+    +`<div class="art-dl" onclick="dlNormeSingolo('${art.normaId}')">⬇ ${esc(art.normaId)}.js</div>`;
+  area.appendChild(d);area.scrollTop=area.scrollHeight;
+}
+
+function updateNormeStats(){
+  const tot=NM.arts.length,vig=NM.arts.filter(a=>a.vigente!==false).length,abr=tot-vig;
+  $('n-s-total').textContent=tot;
+  $('n-s-vigenti').textContent=vig;
+  $('n-s-abrogati').textContent=abr;
+  $('n-stats').style.display=tot>0?'':'none';
+  $('n-done').textContent=tot>0?`${tot} articoli | ${vig} vigenti`:'';
+}
+
+// ── Main download from Normattiva ──
+async function runNormeDownload(){
+  const raw=$('n-estremi').value.trim();
+  if(!raw){alert('Inserisci gli estremi della norma.');return;}
+  if(NM.running)return;
+  const estremi=parseEstremi(raw);
+  if(!estremi){
+    alert('Formato non riconosciuto.\n\nEsempi:\n  D.Lgs. 36/2023\n  L. 241/1990\n  Costituzione');
+    return;
+  }
+  const urn=buildUrn(estremi);
+  const prefix=($('n-prefix').value.trim()||buildPrefix(estremi)).toLowerCase().replace(/[^a-z0-9_]/g,'_');
+  const fonte=$('n-fonte').value.trim()||estremi.label;
+
+  NM.arts=[];NM.running=true;NM.stop=false;
+  $('n-run').style.display='none';$('n-stop').style.display='';
+  $('n-area').innerHTML='<div id="n-empty" style="display:none"></div>';
+  $('n-log').innerHTML='';$('n-stats').style.display='none';
+  nSetProgress(0);nSetStatus('Connessione a Normattiva...');
+
+  try{
+    nLog('URN: '+urn);nLog('Proxy: '+$('n-proxy').value);
+    nSetProgress(10);
+    let xmlText;
+    try{
+      xmlText=await fetchNormattivaXML(urn);
+      nLog(`Risposta: ${(xmlText.length/1024).toFixed(1)} KB`,'ok');
+    }catch(e){
+      nLog('Fetch fallito: '+e.message,'e');
+      if($('n-proxy').value==='allorigins'){
+        nLog('Tentativo con corsproxy.io...','w');
+        const direct=`https://www.normattiva.it/do/urires/N2Ls?${urn}`;
+        const r2=await fetch(`https://corsproxy.io/?${encodeURIComponent(direct)}`,{signal:AbortSignal.timeout(20000)});
+        if(!r2.ok)throw new Error('Fallback HTTP '+r2.status);
+        xmlText=await r2.text();
+        nLog(`Risposta (fallback): ${(xmlText.length/1024).toFixed(1)} KB`,'ok');
+      }else throw e;
+    }
+
+    nSetProgress(30);nSetStatus('Parsing XML...');
+    if(xmlText.trim().startsWith('<!DOCTYPE')||xmlText.trim().startsWith('<html')){
+      throw new Error('Il server ha restituito HTML invece di XML. Prova il tab XML manuale o PDF.');
+    }
+
+    const parsedArts=parseNormattivaXML(xmlText);
+    nSetProgress(50);
+    if(parsedArts.length===0){
+      $('n-xml').value=xmlText.slice(0,5000);
+      switchNTab('xml');
+      throw new Error('Nessun articolo trovato. XML copiato nel tab XML manuale.');
+    }
+    nLog(parsedArts.length+' articoli trovati','ok');
+
+    for(let i=0;i<parsedArts.length;i++){
+      if(NM.stop)break;
+      const pa=parsedArts[i];
+      const normaId=`${prefix}_art_${pa.numClean}`;
+      const titolo=pa.rubrica?`Art. ${pa.numClean} — ${pa.rubrica}`:`Art. ${pa.numClean}`;
+      const art={...pa,normaId,titolo,fonte,urn};
+      NM.arts.push(art);renderNormaCard(art);updateNormeStats();
+      nSetProgress(50+Math.round((i+1)/parsedArts.length*50));
+      nLog(`[${art.vigente!==false?'OK':'ABR'}] ${normaId}`,art.vigente!==false?'ok':'w');
+      await sleep(30);
+    }
+
+    nSetProgress(100);nSetStatus('Completato — '+NM.arts.length+' articoli');
+    nLog('Fine: '+NM.arts.length+' articoli estratti','ok');
+  }catch(err){
+    nSetStatus('Errore: '+err.message);
+    nLog('ERRORE: '+err.message,'e');
+    const errEl=document.createElement('div');errEl.className='err-bar';
+    errEl.innerHTML=`<b>Errore:</b> ${esc(err.message)}<br><br><b>Suggerimenti:</b><br>• Verifica gli estremi<br>• Prova altro proxy<br>• Usa il tab XML manuale o PDF`;
+    $('n-area').appendChild(errEl);
+  }
+  NM.running=false;$('n-run').style.display='';$('n-stop').style.display='none';
+}
+
+function stopNorme(){
+  NM.stop=true;nLog('Stop richiesto','w');nSetStatus('Interrotto');
+}
+
+// ── PDF ──
+function addNormePdfDrag(){
+  const dz=$('n-dz-pdf');if(!dz||dz._drag)return;dz._drag=true;
+  dz.addEventListener('dragenter',e=>{e.preventDefault();dz.classList.add('over');});
+  dz.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='copy';dz.classList.add('over');});
+  dz.addEventListener('dragleave',e=>{if(!dz.contains(e.relatedTarget))dz.classList.remove('over');});
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');
+    const f=e.dataTransfer.files[0];if(f)loadNormePdf(f);});
+}
+
+function onNormePdfFile(){
+  const inp=$('n-fi-pdf');if(!inp.files||!inp.files[0])return;
+  loadNormePdf(inp.files[0]);inp.value='';
+}
+
+async function loadNormePdf(file){
+  const lbl=$('n-pdf-loaded');
+  lbl.style.display='';lbl.textContent='Lettura PDF...';
+  try{
+    if(typeof pdfjsLib==='undefined')throw new Error('pdf.js non caricato');
+    const ab=await file.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:ab}).promise;
+    let text='';
+    for(let p=1;p<=pdf.numPages;p++){
+      const page=await pdf.getPage(p);
+      const tc=await page.getTextContent();
+      let lastY=null,line='';
+      for(const item of tc.items){
+        const y=Math.round(item.transform[5]);
+        if(lastY!==null&&Math.abs(y-lastY)>3){text+=line.trimEnd()+'\n';line='';}
+        line+=item.str;lastY=y;
+      }
+      if(line.trim())text+=line.trimEnd()+'\n';
+      text+='\n';
+    }
+    NM.pdfText=text.trim();
+    lbl.textContent=`✓ ${file.name} — ${(NM.pdfText.length/1000).toFixed(1)}k car.`;
+    nLog('PDF caricato: '+file.name,'ok');
+    if(!$('n-fonte').value)$('n-fonte').value=file.name.replace(/\.pdf$/i,'').replace(/[_\-]+/g,' ');
+  }catch(e){
+    lbl.textContent='✗ '+e.message;
+    nLog('Errore PDF: '+e.message,'e');
+  }
+}
+
+async function runNormeFromPdf(){
+  if(!NM.pdfText){alert('Carica prima un file PDF.');return;}
+  if(!hasAIKey()){alert('Inserisci la API key Anthropic.');return;}
+  if(NM.running)return;
+  const prefix=($('n-prefix').value.trim()||'norma').toLowerCase().replace(/[^a-z0-9_]/g,'_');
+  const fonte=$('n-fonte').value.trim()||'PDF';
+  const urn='urn:nir:pdf:'+prefix;
+  const CHUNK=parseInt($('n-chunk').value)||4000;
+  const chunks=[];
+  for(let i=0;i<NM.pdfText.length;i+=CHUNK)chunks.push(NM.pdfText.slice(i,i+CHUNK));
+
+  NM.arts=[];NM.running=true;NM.stop=false;
+  $('n-area').innerHTML='<div id="n-empty" style="display:none"></div>';
+  $('n-log').innerHTML='';$('n-stats').style.display='none';
+  $('n-pdf-run').style.display='none';$('n-pdf-stop').style.display='';
+  nSetProgress(0);nSetStatus(`AI — ${chunks.length} chunk...`);
+
+  const SYS=`Sei un esperto giurista italiano. Dal testo estrai TUTTI gli articoli presenti.
+Per ognuno: {"numero":"1","rubrica":"titolo o empty string","testo":"testo integrale","commi":[{"numero":"1","testo":"..."}],"vigente":true}
+Rispondi SOLO con array JSON. Se nessun articolo: []. Non inventare.`;
+
+  const seen=new Set();let totalExt=0;
+  for(let ci=0;ci<chunks.length;ci++){
+    if(NM.stop)break;
+    nSetProgress(Math.round((ci+1)/chunks.length*90));
+    nSetStatus(`Chunk ${ci+1}/${chunks.length} — ${totalExt} articoli`);
+    try{
+      const raw=await aiCall(SYS,`Parte ${ci+1}/${chunks.length}:\n\n${chunks[ci]}`,4000);
+      const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+      if(!Array.isArray(parsed))continue;
+      for(const item of parsed){
+        const numStr=String(item.numero||'').trim();
+        if(!numStr||seen.has(numStr))continue;
+        seen.add(numStr);
+        const normaId=`${prefix}_art_${numStr.replace(/[^a-z0-9]/gi,'_')}`;
+        const titolo=item.rubrica?`Art. ${numStr} — ${item.rubrica}`:`Art. ${numStr}`;
+        const art={numClean:numStr,numInt:parseInt(numStr)||0,normaId,titolo,fonte,urn,
+          testo:String(item.testo||'').trim(),commi:Array.isArray(item.commi)?item.commi:[],
+          vigente:item.vigente!==false,versioni:[],dataVig:null,dataAbr:null};
+        NM.arts.push(art);renderNormaCard(art);updateNormeStats();totalExt++;
+        nLog(`[${art.vigente?'OK':'ABR'}] ${normaId}`,art.vigente?'ok':'w');
+      }
+    }catch(e){nLog(`Chunk ${ci+1} errore: ${e.message}`,'e');}
+    await sleep(200);
+  }
+  NM.arts.sort((a,b)=>a.numInt-b.numInt||a.numClean.localeCompare(b.numClean));
+  $('n-area').innerHTML='<div id="n-empty" style="display:none"></div>';
+  NM.arts.forEach(renderNormaCard);
+  nSetProgress(100);NM.running=false;
+  $('n-pdf-run').style.display='';$('n-pdf-stop').style.display='none';
+  nSetStatus(`${NM.stop?'Interrotto':'Completato'} — ${NM.arts.length} articoli`);
+  nLog('Fine PDF: '+NM.arts.length+' articoli','ok');
+}
+
+// ── Manual XML ──
+function parseNormeManualXML(){
+  const xmlText=$('n-xml').value.trim();
+  if(!xmlText){alert('Incolla il contenuto XML.');return;}
+  if(NM.running)return;
+  const raw=$('n-estremi').value.trim();
+  const estremi=parseEstremi(raw);
+  const prefix=($('n-prefix').value.trim()||(estremi?buildPrefix(estremi):'norma')).toLowerCase().replace(/[^a-z0-9_]/g,'_');
+  const fonte=$('n-fonte').value.trim()||raw||'Norma';
+  const urn=estremi?buildUrn(estremi):'urn:nir:stato:norma:0000;0';
+
+  NM.arts=[];
+  $('n-area').innerHTML='<div id="n-empty" style="display:none"></div>';
+  $('n-log').innerHTML='';$('n-stats').style.display='none';
+  nSetProgress(20);nSetStatus('Parsing XML manuale...');
+
+  try{
+    const parsedArts=parseNormattivaXML(xmlText);
+    if(parsedArts.length===0)throw new Error('Nessun articolo trovato nel XML.');
+    nLog(parsedArts.length+' articoli trovati','ok');
+    for(const pa of parsedArts){
+      const normaId=`${prefix}_art_${pa.numClean}`;
+      const titolo=pa.rubrica?`Art. ${pa.numClean} — ${pa.rubrica}`:`Art. ${pa.numClean}`;
+      const art={...pa,normaId,titolo,fonte,urn};
+      NM.arts.push(art);renderNormaCard(art);updateNormeStats();
+      nLog(`[${art.vigente!==false?'OK':'ABR'}] ${normaId}`,art.vigente!==false?'ok':'w');
+    }
+    nSetProgress(100);nSetStatus('XML — '+NM.arts.length+' articoli');
+  }catch(err){
+    nSetStatus('Errore: '+err.message);
+    nLog('ERRORE: '+err.message,'e');
+  }
+}
+
+// ── File System Access API ──
+function updateNormeFolderUI(){
+  if(!NFS.supported){$('n-scegli-cartella').style.display='none';return;}
+  if(NFS.handle){
+    $('n-cartella-path').textContent='✓ '+NFS.handle.name;
+    $('n-cartella-path').style.color='var(--green)';
+    $('n-dl-tutti').textContent='⬇ Salva nella cartella';
+  }else{
+    $('n-cartella-path').textContent='download classico';
+    $('n-cartella-path').style.color='var(--t4)';
+    $('n-dl-tutti').textContent='⬇ Salva tutti i .js';
+  }
+}
+
+async function scegliNormeCartella(){
+  if(!NFS.supported)return;
+  try{
+    NFS.handle=await window.showDirectoryPicker({mode:'readwrite'});
+    updateNormeFolderUI();
+    nLog('Cartella: '+NFS.handle.name,'ok');
+  }catch(e){if(e.name!=='AbortError')nLog('Errore cartella: '+e.message,'e');}
+}
+
+async function writeToNormeDir(dirHandle,filename,content){
+  const fh=await dirHandle.getFileHandle(filename,{create:true});
+  const w=await fh.createWritable();
+  await w.write(content);await w.close();
+}
+
+// ── Download ──
+function dlNormeBlob(content,filename){
+  const b=new Blob([content],{type:'text/plain;charset=utf-8'});
+  const u=URL.createObjectURL(b);const a=document.createElement('a');
+  a.href=u;a.download=filename;a.click();URL.revokeObjectURL(u);
+}
+
+function dlNormeSingolo(normaId){
+  const art=NM.arts.find(a=>a.normaId===normaId);
+  if(!art)return;
+  dlNormeBlob(buildNormaJS(art),art.normaId+'.js');
+}
+
+async function dlNormeTutti(){
+  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
+  if(NFS.supported&&NFS.handle){
+    const btn=$('n-dl-tutti');btn.disabled=true;btn.innerHTML='<span class="spin"></span> Salvataggio...';
+    try{
+      const subName=($('n-prefix').value.trim()||'norme').replace(/[^a-z0-9_\-]/gi,'_');
+      let targetDir;
+      try{targetDir=await NFS.handle.getDirectoryHandle(subName,{create:true});}
+      catch{targetDir=NFS.handle;}
+      let saved=0;
+      for(const art of NM.arts){
+        await writeToNormeDir(targetDir,art.normaId+'.js',buildNormaJS(art));
+        saved++;nLog('Scritto: '+art.normaId+'.js','ok');
+      }
+      const manifest=buildNormeManifestTxt();
+      await writeToNormeDir(targetDir,'_manifest_snippet.txt',manifest);
+      nLog(`✓ ${saved} file salvati in ${NFS.handle.name}/${subName}`,'ok');
+      nSetStatus(`✓ ${saved} file salvati`);
+    }catch(e){nLog('Errore scrittura: '+e.message,'e');}
+    btn.disabled=false;btn.innerHTML='⬇ Salva nella cartella';
+    return;
+  }
+  if(!confirm(`Verranno scaricati ${NM.arts.length} file .js. Continuare?`))return;
+  NM.arts.forEach(art=>dlNormeBlob(buildNormaJS(art),art.normaId+'.js'));
+}
+
+function buildNormeManifestTxt(){
+  const folder=$('n-folder').value.trim()||'norme';
+  const list=NM.arts.map(a=>`"${folder}/${a.normaId}.js"`);
+  return `// norme: [\n`+list.map(l=>`//   ${l}`).join(',\n')+`\n// ]\n\n`
+    +NM.arts.map(a=>`// ${a.normaId} → ${a.titolo}${a.vigente!==false?'':' [ABROGATO]'}`).join('\n')+'\n';
+}
+
+function dlNormeManifest(){
+  if(!NM.arts.length){alert('Nessun articolo estratto.');return;}
+  dlNormeBlob(buildNormeManifestTxt(),'norme_manifest_snippet.txt');
+}
+
+// Init PDF drag zone
+window.addEventListener('DOMContentLoaded',()=>{addNormePdfDrag();});
 </script>
 </body>
 </html>
