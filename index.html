@@ -1,1237 +1,696 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz SNA</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>if(typeof pdfjsLib!=="undefined")pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";</script>
-  <style>
-    :root {
-      --bg: #f3f4f6;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #d1d5db;
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --correct-bg: #dcfce7;
-      --correct-border: #16a34a;
-      --wrong-bg: #fee2e2;
-      --wrong-border: #dc2626;
-      --info-bg: #eff6ff;
-      --info-border: #60a5fa;
-      --star: #f59e0b;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .header {
-      margin-bottom: 18px;
-    }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 34px;
-    }
-
-    .star-btn {
-      border: none;
-      background: white;
-      border-radius: 999px;
-      width: 54px;
-      height: 54px;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      line-height: 1;
-    }
-
-    .star-btn.active {
-      color: var(--star);
-    }
-
-    .stats-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .pill {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 15px;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .toolbar button {
-      border: none;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 15px;
-      cursor: pointer;
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .toolbar button.active-mode {
-      background: var(--primary);
-      color: white;
-    }
-
-    .card {
-      position: relative;
-      background: var(--card);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
-    }
-
-    .materia {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-weight: bold;
-    }
-
-    .brano {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #374151;
-      background: #f9fafb;
-      border-left: 3px solid var(--primary);
-      padding: 14px 16px;
-      border-radius: 0 10px 10px 0;
-      margin-bottom: 20px;
-      white-space: pre-wrap;
-      max-height: 260px;
-      overflow-y: auto;
-      display: none;
-    }
-
-    .brano.visible {
-      display: block;
-    }
-
-    .brano-toggle {
-      display: none;
-      font-size: 13px;
-      color: var(--primary);
-      cursor: pointer;
-      margin-bottom: 14px;
-      background: none;
-      border: none;
-      padding: 0;
-      text-decoration: underline;
-    }
-
-    .brano-toggle.visible {
-      display: inline;
-    }
-
-    .domanda {
-      font-size: 31px;
-      line-height: 1.35;
-      margin-bottom: 24px;
-      font-weight: 700;
-    }
-
-    .risposte {
-      display: grid;
-      gap: 14px;
-    }
-
-    .risposta-btn {
-      width: 100%;
-      text-align: left;
-      border: 2px solid transparent;
-      border-radius: 18px;
-      padding: 18px 20px;
-      background: #e5e7eb;
-      color: #111;
-      font-size: 17px;
-      line-height: 1.45;
-      cursor: pointer;
-      transition: 0.15s ease;
-    }
-
-    .risposta-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .risposta-btn strong {
-      display: inline-block;
-      min-width: 26px;
-    }
-
-    .risposta-btn.disabled {
-      cursor: default;
-      opacity: 0.95;
-    }
-
-    .risposta-btn.correct {
-      background: var(--correct-bg);
-      border-color: var(--correct-border);
-    }
-
-    .risposta-btn.wrong {
-      background: var(--wrong-bg);
-      border-color: var(--wrong-border);
-    }
-
-    .feedback {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      min-height: 28px;
-    }
-
-    .feedback.correct {
-      color: #15803d;
-    }
-
-    .feedback.wrong {
-      color: #b91c1c;
-    }
-
-    .actions {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .action-btn {
-      border: none;
-      border-radius: 14px;
-      padding: 14px 18px;
-      font-size: 16px;
-      cursor: pointer;
-      background: var(--primary);
-      color: white;
-    }
-
-    .action-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .action-btn.secondary {
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .action-btn.secondary:hover {
-      background: #d1d5db;
-    }
-
-    .action-btn.secondary.has-spiega {
-      background: #eff6ff;
-      color: #1d4ed8;
-      border: 1.5px solid #93c5fd;
-    }
-
-    .action-btn.secondary.has-spiega:hover {
-      background: #dbeafe;
-    }
-
-    .spiegazione-box {
-      margin-top: 18px;
-      padding: 18px;
-      background: var(--info-bg);
-      border: 1px solid var(--info-border);
-      border-radius: 14px;
-      display: none;
-      line-height: 1.55;
-      font-size: 16px;
-    }
-
-    .spiegazione-box.visible {
-      display: block;
-    }
-
-    .pdf-preview {
-      display: none;
-      margin-bottom: 20px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #f9fafb;
-      text-align: center;
-    }
-
-    .pdf-preview.visible {
-      display: block;
-    }
-
-    .pdf-preview canvas {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .pdf-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 10px;
-      border-top: 1px solid var(--border);
-      gap: 8px;
-    }
-
-    .pdf-nav-btn {
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 8px;
-      padding: 4px 12px;
-      font-size: 13px;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    .pdf-nav-btn:hover {
-      background: #f3f4f6;
-    }
-
-    .pdf-preview-label {
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-      flex: 1;
-    }
-
-    .footer-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .empty-box {
-      margin-top: 10px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #fff7ed;
-      border: 1px solid #fdba74;
-      color: #9a3412;
-      display: none;
-    }
-
-    .riferimento-link {
-      display: inline-block;
-      margin: 4px 4px 0 0;
-      padding: 4px 12px;
-      background: #dbeafe;
-      border: 1px solid #93c5fd;
-      border-radius: 999px;
-      font-size: 13px;
-      color: #1d4ed8;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .riferimento-link:hover {
-      background: #bfdbfe;
-    }
-
-    .norma-inline-link {
-      color: #1d4ed8;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      cursor: pointer;
-    }
-
-    .norma-inline-link:hover {
-      text-decoration-style: solid;
-      background: #dbeafe;
-      border-radius: 3px;
-    }
-
-    .riferimenti-section {
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid #bfdbfe;
-    }
-
-    .riferimenti-label {
-      font-size: 13px;
-      font-weight: bold;
-      color: #6b7280;
-      margin-bottom: 6px;
-    }
-
-    .norma-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .norma-overlay.visible {
-      display: flex;
-    }
-
-    .norma-modal {
-      background: white;
-      border-radius: 18px;
-      padding: 28px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    }
-
-    .norma-modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
-      gap: 12px;
-    }
-
-    .norma-modal-titolo {
-      font-size: 20px;
-      font-weight: bold;
-      color: var(--text);
-    }
-
-    .norma-modal-fonte {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .norma-modal-testo {
-      font-size: 15px;
-      line-height: 1.65;
-      white-space: pre-wrap;
-      color: var(--text);
-    }
-
-    .norma-close-btn {
-      border: none;
-      background: #e5e7eb;
-      border-radius: 999px;
-      width: 32px;
-      height: 32px;
-      font-size: 16px;
-      cursor: pointer;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-
-    .norma-close-btn:hover {
-      background: #d1d5db;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 14px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .domanda {
-        font-size: 25px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-
-      .risposta-btn {
-        font-size: 16px;
-        padding: 16px;
-      }
-
-      .star-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 24px;
-      }
-    }
-
-    .source-badge {
-      position: absolute;
-      top: 14px;
-      right: 18px;
-      font-size: 11px;
-      color: var(--muted);
-      background: #f3f4f6;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 2px 10px;
-      max-width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .source-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .source-overlay.visible {
-      display: flex;
-    }
-
-    .source-modal {
-      background: white;
-      border-radius: 18px;
-      padding: 28px;
-      max-width: 440px;
-      width: 90%;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-
-    .source-modal h2 {
-      margin: 0 0 18px;
-      font-size: 20px;
-    }
-
-    .source-list {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .source-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 15px;
-      user-select: none;
-    }
-
-    .source-item:hover {
-      background: #f9fafb;
-    }
-
-    .source-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--primary);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz SNA</title>
+<style>
+:root{
+  --bg:#f4f5f7;--card:#ffffff;--ink:#1d2330;--ink2:#4a5263;--ink3:#7b8394;--line:#e1e4ea;
+  --accent:#2f5bd3;--accent-soft:#e8eefc;--ok:#1e8a4c;--ok-soft:#e5f5ec;--ko:#c63737;--ko-soft:#fbeaea;
+  --warn:#a86a00;--warn-soft:#fff4dc;--hint:#6b4fc9;--hint-soft:#f0ecfd;--shadow:0 1px 3px rgba(20,30,50,.08),0 4px 16px rgba(20,30,50,.05);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#12151b;--card:#1b1f27;--ink:#e7e9ee;--ink2:#b5bbc8;--ink3:#868e9e;--line:#2c323d;
+  --accent:#7c9cff;--accent-soft:#232c45;--ok:#4cc985;--ok-soft:#173226;--ko:#ff7b7b;--ko-soft:#3a1d1f;
+  --warn:#f0b54a;--warn-soft:#3a2f17;--hint:#b29cff;--hint-soft:#2a2442;--shadow:none;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+.hidden{display:none!important}
+h1{font-size:1.5rem;margin:4px 0 2px}
+h2{font-size:1.1rem;margin:0 0 12px}
+.muted{color:var(--ink3);font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.small{padding:5px 10px;font-size:.88rem}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.spacer{flex:1}
+
+/* Home */
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mode{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.mode:hover:not(:disabled){border-color:var(--accent)}
+.mode b{display:block;font-size:1.05rem;margin-bottom:4px}
+.mode span{color:var(--ink2);font-size:.9rem}
+.mode .count{float:right;font-weight:600;color:var(--accent)}
+.mode:disabled{opacity:.5;cursor:default}
+.stats-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:6px}
+.kpi{background:var(--bg);border-radius:10px;padding:10px 12px}
+.kpi .v{font-size:1.4rem;font-weight:700}
+.kpi .l{font-size:.82rem;color:var(--ink3)}
+.materie{display:grid;gap:8px}
+.mat{display:grid;grid-template-columns:22px minmax(120px,190px) 1fr 74px;align-items:center;gap:10px;font-size:.92rem}
+.mat input{width:18px;height:18px}
+.bar{height:9px;border-radius:5px;background:var(--line);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.bar .g{background:var(--ok)}.bar .s{background:var(--ko)}
+.mat .pct{text-align:right;color:var(--ink2);font-variant-numeric:tabular-nums}
+.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 18px;margin-top:6px}
+.settings label{display:flex;gap:8px;align-items:center;font-size:.93rem}
+.settings input[type=number]{width:70px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+details>summary{cursor:pointer;font-weight:600}
+
+/* Quiz */
+.topbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;flex:1;min-width:120px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .2s}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--accent-soft)}
+.timer.low{background:var(--ko-soft);color:var(--ko)}
+.qlayout{display:grid;gap:14px}
+.qlayout.with-brano{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:860px){.qlayout.with-brano{grid-template-columns:1fr}}
+.brano{white-space:pre-line;font-size:.98rem;line-height:1.65}
+.istr{font-size:.85rem;color:var(--ink3);margin-bottom:10px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.tag{font-size:.8rem;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.tag.grey{background:var(--bg);color:var(--ink3)}
+.star{border:none;background:none;font-size:1.35rem;line-height:1;padding:0 4px;color:var(--ink3)}
+.star.on{color:#e6a700}
+.domanda{font-size:1.12rem;font-weight:600;margin:4px 0 14px;white-space:pre-line}
+.figura{display:block;max-width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;margin:0 0 14px;cursor:zoom-in}
+.opts{display:grid;gap:9px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:11px 14px}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:disabled{cursor:default}
+.opt .head{display:flex;gap:10px}
+.opt .let{flex:0 0 26px;height:26px;border-radius:7px;background:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.opt .txt{flex:1}
+.opt .why{margin:9px 0 0 36px;font-size:.92rem;color:var(--ink2);border-top:1px dashed var(--line);padding-top:8px}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .let{background:var(--ok);color:#fff}
+.opt.ko{border-color:var(--ko);background:var(--ko-soft)}
+.opt.ko .let{background:var(--ko);color:#fff}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .let{background:var(--accent);color:#fff}
+.opt.dim{opacity:.8}
+.esito{font-weight:700;margin:14px 0 6px}
+.esito.ok{color:var(--ok)}.esito.ko{color:var(--ko)}.esito.na{color:var(--warn)}
+.box{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:.96rem}
+.box.hint{background:var(--hint-soft);border-left:4px solid var(--hint)}
+.box.concept{background:var(--accent-soft);border-left:4px solid var(--accent)}
+.box.warn{background:var(--warn-soft);border-left:4px solid var(--warn);font-size:.86rem}
+.box b.t{display:block;margin-bottom:4px}
+.box p{margin:0 0 6px}.box p:last-child{margin:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.kbd{font-size:.78rem;color:var(--ink3)}
+.norma-btn{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 10px;font-size:.86rem;margin:6px 6px 0 0}
+
+/* Simulazione */
+.grid-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.grid-nav button{width:36px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:.82rem}
+.grid-nav button.ans{background:var(--accent-soft);border-color:var(--accent)}
+.grid-nav button.cur{outline:2px solid var(--accent)}
+.grid-nav button.ok{background:var(--ok-soft);border-color:var(--ok)}
+.grid-nav button.ko{background:var(--ko-soft);border-color:var(--ko)}
+.result-big{font-size:2.2rem;font-weight:800}
+table.res{width:100%;border-collapse:collapse;font-size:.92rem}
+table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+
+/* Modali */
+.overlay{position:fixed;inset:0;background:rgba(10,14,22,.6);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal{background:var(--card);border-radius:14px;max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:20px}
+.modal .testo{white-space:pre-line;line-height:1.65}
+.zoom{max-width:96vw;max-height:92vh;background:#fff;border-radius:10px}
+.loading{padding:60px 0;text-align:center;color:var(--ink3)}
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="header-top">
-        <h1>Quiz SNA</h1>
-        <button id="star-btn" class="star-btn" title="Aggiungi ai preferiti" onclick="togglePreferito()">☆</button>
-      </div>
+<div class="wrap">
+  <div id="loading" class="loading">Caricamento domande…</div>
 
-      <div class="stats-bar">
-        <div class="pill">Domanda: <span id="numero-domanda">-</span></div>
-        <div class="pill">Corrette: <span id="corrette">0</span></div>
-        <div class="pill">Sbagliate: <span id="sbagliate">0</span></div>
-        <div class="pill">Totale risposte: <span id="totale-risposte">0</span></div>
-        <div class="pill">Preferiti: <span id="totale-preferiti">0</span></div>
-      </div>
+  <!-- ═════════ HOME ═════════ -->
+  <section id="home" class="hidden">
+    <div class="row" style="margin-bottom:12px">
+      <div><h1>Quiz SNA</h1><div class="muted" id="home-sub"></div></div>
+    </div>
 
-      <div class="toolbar">
-        <button id="mode-all" class="active-mode" onclick="setModalita('tutte')">Tutte</button>
-        <button id="mode-pref" onclick="setModalita('preferiti')">Solo preferiti</button>
-        <button onclick="mostraSelezioneFonti()">📂 Cambia fonti</button>
+    <div class="card">
+      <h2>Come vuoi esercitarti?</h2>
+      <div class="modes">
+        <button class="mode" data-mode="allenamento"><span class="count" id="c-all"></span><b>🎯 Allenamento</b><span>Tutte le domande, prima quelle mai viste e quelle sbagliate.</span></button>
+        <button class="mode" data-mode="errori"><span class="count" id="c-err"></span><b>🔁 Ripasso errori</b><span>Solo le domande sbagliate, finché non le indovini due volte di fila.</span></button>
+        <button class="mode" data-mode="preferiti"><span class="count" id="c-pref"></span><b>⭐ Preferiti</b><span>Le domande che hai segnato con la stella.</span></button>
+        <button class="mode" data-mode="simulazione"><span class="count" id="c-sim"></span><b>⏱️ Simulazione d’esame</b><span>Domande a tempo, senza aiuti, punteggio finale e revisione.</span></button>
       </div>
     </div>
 
     <div class="card">
-      <div class="source-badge" id="source-badge"></div>
-      <div class="materia" id="materia">Materia</div>
-      <button class="brano-toggle" id="brano-toggle" onclick="toggleBrano()">📄 Mostra testo di riferimento</button>
-      <div class="brano" id="brano"></div>
-      <div class="domanda" id="domanda">Caricamento domanda...</div>
+      <h2>I tuoi progressi</h2>
+      <div class="stats-top" id="kpi"></div>
+      <p class="muted" style="margin:6px 0 10px">Scegli le materie su cui esercitarti (vale per tutte le modalità).</p>
+      <div class="materie" id="materie"></div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn small" id="mat-tutte">Seleziona tutte</button>
+        <button class="btn small" id="mat-nessuna">Deseleziona tutte</button>
+      </div>
+    </div>
 
-      <div class="pdf-preview" id="pdf-preview">
-        <canvas id="pdf-canvas"></canvas>
-        <div class="pdf-nav">
-          <button class="pdf-nav-btn" onclick="navigaPdf(-1)">&#8592; Pag. prec.</button>
-          <div class="pdf-preview-label" id="pdf-label"></div>
-          <button class="pdf-nav-btn" onclick="navigaPdf(1)">Pag. succ. &#8594;</button>
+    <div class="card" id="fonti-card">
+      <h2>Fonti</h2>
+      <div id="fonti" class="row"></div>
+    </div>
+
+    <div class="card">
+      <details>
+        <summary>Impostazioni</summary>
+        <div class="settings">
+          <label><input type="checkbox" id="s-mescola"> Mescola l’ordine delle opzioni</label>
+          <label><input type="checkbox" id="s-tastiera"> Mostra le scorciatoie da tastiera</label>
+          <label>Simulazione: <input type="number" id="s-simn" min="5" max="500"> domande</label>
+          <label>Tempo: <input type="number" id="s-simmin" min="1" max="600"> minuti</label>
+          <label>Punti risposta giusta <input type="number" id="s-pg" step="0.01"></label>
+          <label>Punti risposta sbagliata <input type="number" id="s-ps" step="0.01"></label>
+          <label>Punti risposta non data <input type="number" id="s-po" step="0.01"></label>
+        </div>
+        <p class="muted">Imposta numero di domande, tempo e punteggi come nel bando del tuo concorso.</p>
+        <div class="row"><button class="btn small" id="reset-stats">Azzera statistiche</button></div>
+      </details>
+    </div>
+    <p class="muted">Statistiche e preferiti restano salvati solo in questo browser.</p>
+  </section>
+
+  <!-- ═════════ QUIZ ═════════ -->
+  <section id="quiz" class="hidden">
+    <div class="topbar">
+      <button class="btn small" id="q-home">← Home</button>
+      <b id="q-mode"></b>
+      <span class="muted" id="q-count"></span>
+      <div class="progress"><i id="q-prog"></i></div>
+      <span class="timer hidden" id="q-timer"></span>
+      <span class="muted" id="q-score"></span>
+    </div>
+    <div class="qlayout" id="q-layout">
+      <div class="brano-col hidden" id="q-brano-col">
+        <div class="card">
+          <div class="istr hidden" id="q-istr"></div>
+          <b>Brano</b>
+          <div class="brano" id="q-brano"></div>
         </div>
       </div>
-
-      <div class="risposte" id="risposte"></div>
-
-      <div class="feedback" id="feedback"></div>
-
-      <div class="actions">
-        <button class="action-btn secondary" id="btn-spiegazione" onclick="toggleSpiegazione()" disabled>
-          Mostra spiegazione
-        </button>
-        <button class="action-btn" onclick="prossimaDomanda()">
-          Prossima domanda
-        </button>
-      </div>
-
-      <div class="spiegazione-box" id="spiegazione-box"></div>
-      <div class="empty-box" id="empty-box">Non hai ancora aggiunto domande ai preferiti.</div>
-
-      <div class="footer-note">
-        Tocca la stellina per salvare la domanda corrente nei preferiti.
+      <div>
+        <div class="card" id="q-card">
+          <div class="tags">
+            <span class="tag" id="q-materia"></span>
+            <span class="tag grey" id="q-num"></span>
+            <span class="spacer"></span>
+            <a class="muted" id="q-pdf" target="_blank" rel="noopener">Apri nel PDF</a>
+            <button class="star" id="q-star" title="Aggiungi ai preferiti (F)">☆</button>
+          </div>
+          <div class="domanda" id="q-domanda"></div>
+          <img class="figura hidden" id="q-img" alt="Figure della domanda">
+          <div class="opts" id="q-opts"></div>
+          <div id="q-hint" class="box hint hidden"></div>
+          <div id="q-after" class="hidden">
+            <div class="esito" id="q-esito"></div>
+            <div class="box concept" id="q-concept"></div>
+            <div class="box warn hidden" id="q-certezza"></div>
+          </div>
+          <div class="actions" id="q-actions">
+            <button class="btn" id="q-hint-btn">💡 Suggerimento</button>
+            <button class="btn" id="q-skip">Salta</button>
+            <span class="spacer"></span>
+            <button class="btn primary hidden" id="q-next">Prossima →</button>
+          </div>
+          <div class="actions hidden" id="s-actions">
+            <button class="btn" id="s-prev">← Precedente</button>
+            <button class="btn" id="s-clear">Lascia in bianco</button>
+            <span class="spacer"></span>
+            <button class="btn" id="s-nextq">Successiva →</button>
+            <button class="btn primary" id="s-end">Consegna</button>
+          </div>
+          <div class="kbd" id="q-kbd" style="margin-top:10px"></div>
+        </div>
+        <div class="card hidden" id="s-navcard">
+          <b>Domande</b>
+          <div class="grid-nav" id="s-nav"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="source-overlay" id="source-overlay">
-    <div class="source-modal">
-      <h2>Seleziona le fonti delle domande</h2>
-      <div class="source-list" id="source-list"></div>
-      <button class="action-btn" onclick="avviaQuiz()" style="width:100%">Avvia Quiz</button>
-      <div id="source-errore" style="display:none; margin-top:12px; color:#b91c1c; font-size:14px;">Seleziona almeno un file.</div>
-    </div>
-  </div>
-
-  <div class="norma-overlay" id="norma-overlay" onclick="chiudiNorma(event)">
-    <div class="norma-modal" id="norma-modal">
-      <div class="norma-modal-header">
-        <div class="norma-modal-titolo" id="norma-titolo"></div>
-        <button class="norma-close-btn" onclick="chiudiNorma()">✕</button>
+  <!-- ═════════ RISULTATO SIMULAZIONE ═════════ -->
+  <section id="risultato" class="hidden">
+    <div class="topbar"><button class="btn small" id="r-home">← Home</button><b>Risultato simulazione</b></div>
+    <div class="card">
+      <div class="row">
+        <div><div class="result-big" id="r-punti"></div><div class="muted" id="r-dett"></div></div>
       </div>
-      <div class="norma-modal-fonte" id="norma-fonte"></div>
-      <div class="norma-modal-testo" id="norma-testo"></div>
     </div>
-  </div>
+    <div class="card"><h2>Per materia</h2><table class="res" id="r-mat"></table></div>
+    <div class="card"><h2>Rivedi le domande</h2><p class="muted">Tocca un numero per vedere domanda, risposta e spiegazioni.</p><div class="grid-nav" id="r-nav"></div></div>
+  </section>
+</div>
 
-  <script src="domande/manifest.js"></script>
-  <script>
-    let corrente = null;
-    let correttaGiaData = false;
-    let corrette = 0;
-    let sbagliate = 0;
-    let totaleRisposte = 0;
-    let modalita = "tutte";
+<div class="overlay hidden" id="norma-ov"><div class="modal">
+  <div class="row"><b id="norma-titolo"></b><span class="spacer"></span><button class="btn small" id="norma-chiudi">Chiudi</button></div>
+  <div class="muted" id="norma-fonte" style="margin:4px 0 12px"></div>
+  <div class="testo" id="norma-testo"></div>
+</div></div>
+<div class="overlay hidden" id="zoom-ov"><img class="zoom" id="zoom-img" alt=""></div>
 
-    function caricaPreferiti() {
-      try {
-        const raw = localStorage.getItem("quiz_preferiti");
-        const arr = raw ? JSON.parse(raw) : [];
-        return Array.isArray(arr) ? arr : [];
-      } catch (e) {
-        return [];
-      }
+<script src="domande/manifest.js"></script>
+<script>
+"use strict";
+// ═════════════════════════════════════════════════════════════════════
+// Dati
+// ═════════════════════════════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+const LETTERE = ["A", "B", "C", "D", "E", "F"];
+const STORE_KEY = "quizsna.v2";
+
+let TUTTE = [];          // tutte le domande caricate, con _key, _pack, corretta, aiuti
+const NOTA_SITUAZIONALE = "Per i test situazionali non esiste una chiave ufficiale: la risposta indicata è quella più coerente con i comportamenti che la prova intende premiare (coinvolgimento, gradualità, trasparenza, rispetto delle regole).";
+const NOTA_MEDIA = "Chiave non ufficiale: il PDF non riporta le risposte e questa è la soluzione più probabile. Verificala se hai dubbi.";
+
+// Carica un file JS ed estrae la variabile dichiarata con const.
+// Prima tenta fetch (http/https); se fallisce (es. file://) usa un <script>.
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector('script[data-src="' + src + '"]')) return resolve();
+    const s = document.createElement("script");
+    s.dataset.src = src; s.src = src;
+    s.onload = resolve; s.onerror = () => reject(new Error(src));
+    document.head.appendChild(s);
+  });
+}
+async function fetchVar(src, nome) {
+  try {
+    const r = await fetch(src);
+    if (r.ok) return new Function(await r.text() + "\n;return typeof " + nome + '!=="undefined"?' + nome + ":[];")();
+  } catch (e) { /* file:// → script tag */ }
+  try {
+    await loadScript(src);
+    return new Function("return typeof " + nome + '!=="undefined"?' + nome + ":[];")();
+  } catch (e) { console.warn("Impossibile caricare", src); return []; }
+}
+
+async function caricaTutto() {
+  for (const pack of QUIZ_MANIFEST) {
+    const domande = await fetchVar(pack.domande || pack.file, "DOMANDE");
+    const risposte = pack.risposte ? await fetchVar(pack.risposte, "RISPOSTE") : [];
+    const spiegazioni = pack.spiegazioni ? await fetchVar(pack.spiegazioni, "SPIEGAZIONI") : [];
+    const rMap = Object.fromEntries(risposte.map(r => [r.id, r]));
+    const sMap = Object.fromEntries(spiegazioni.map(s => [s.id, s]));
+    for (const d of domande) {
+      const r = rMap[d.id] || {}, s = sMap[d.id] || {};
+      const corretta = s.corretta || r.corretta || d.corretta;
+      if (!corretta || !d.opzioni || !d.opzioni[corretta] || !(d.domanda || "").trim()) continue; // domanda incompleta
+      TUTTE.push(Object.assign({}, d, {
+        _key: pack.id + ":" + d.id, _pack: pack.id, _pdf: pack.pdf || null,
+        corretta, certezza: r.certezza || "alta", aiuti: s
+      }));
     }
+    for (const n of pack.norme || []) await loadScript(n).catch(() => {});
+  }
+}
 
-    function salvaPreferiti(lista) {
-      localStorage.setItem("quiz_preferiti", JSON.stringify(lista));
+// ═════════════════════════════════════════════════════════════════════
+// Salvataggio (localStorage, con fallback in memoria)
+// ═════════════════════════════════════════════════════════════════════
+const DEFAULT = { stats: {}, preferiti: [], materie: null, fonti: null,
+  imp: { mescola: true, tastiera: true, simN: 60, simMin: 60, pg: 1, ps: 0, po: 0 } };
+let DB = JSON.parse(JSON.stringify(DEFAULT));
+function carica() {
+  try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const o = JSON.parse(raw); DB = Object.assign({}, DB, o); DB.imp = Object.assign({}, DEFAULT.imp, o.imp || {}); } } catch (e) {}
+}
+function salva() { try { localStorage.setItem(STORE_KEY, JSON.stringify(DB)); } catch (e) {} }
+function stat(k) { return DB.stats[k] || (DB.stats[k] = { v: 0, g: 0, s: 0, streak: 0, t: 0 }); }
+function registra(d, giusta) {
+  const st = stat(d._key);
+  st.v++; st.t = Date.now();
+  if (giusta) { st.g++; st.streak++; } else { st.s++; st.streak = 0; }
+  salva();
+}
+const daRipassare = d => { const st = DB.stats[d._key]; return st && st.s > 0 && st.streak < 2; };
+const isPref = d => DB.preferiti.includes(d._key);
+
+// ═════════════════════════════════════════════════════════════════════
+// Utilità
+// ═════════════════════════════════════════════════════════════════════
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function md(s) {
+  return String(s || "").split(/\n{2,}/).map(p =>
+    "<p>" + esc(p).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[\s(])_(.+?)_(?=[\s.,;:)]|$)/g, "$1<i>$2</i>").replace(/\*(.+?)\*/g, "<i>$1</i>").replace(/\n/g, "<br>") + "</p>"
+  ).join("");
+}
+function mescola(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function materieAttive() { return DB.materie || [...new Set(TUTTE.map(d => d.materia))]; }
+function fontiAttive() { return DB.fonti || QUIZ_MANIFEST.map(p => p.id); }
+function poolBase() { const m = materieAttive(), f = fontiAttive(); return TUTTE.filter(d => m.includes(d.materia) && f.includes(d._pack)); }
+function show(id) { for (const s of ["loading", "home", "quiz", "risultato"]) $(s).classList.toggle("hidden", s !== id); window.scrollTo(0, 0); }
+
+// ═════════════════════════════════════════════════════════════════════
+// Home
+// ═════════════════════════════════════════════════════════════════════
+function renderHome() {
+  const pool = poolBase();
+  const tutte = TUTTE.filter(d => fontiAttive().includes(d._pack));
+  $("home-sub").textContent = TUTTE.length + " domande da " + QUIZ_MANIFEST.length + (QUIZ_MANIFEST.length === 1 ? " fonte" : " fonti");
+  $("c-all").textContent = pool.length;
+  const nErr = pool.filter(daRipassare).length, nPref = pool.filter(isPref).length;
+  $("c-err").textContent = nErr; $("c-pref").textContent = nPref;
+  $("c-sim").textContent = Math.min(DB.imp.simN, pool.length);
+  document.querySelector('[data-mode="allenamento"]').disabled = !pool.length;
+  document.querySelector('[data-mode="errori"]').disabled = !nErr;
+  document.querySelector('[data-mode="preferiti"]').disabled = !nPref;
+  document.querySelector('[data-mode="simulazione"]').disabled = !pool.length;
+
+  let viste = 0, g = 0, s = 0;
+  for (const d of tutte) { const st = DB.stats[d._key]; if (st && st.v) { viste++; g += st.g; s += st.s; } }
+  $("kpi").innerHTML = [
+    [viste + " / " + tutte.length, "domande viste"],
+    [(g + s) ? Math.round(g / (g + s) * 100) + "%" : "—", "risposte giuste"],
+    [g + s, "risposte date"],
+    [TUTTE.filter(daRipassare).length, "da ripassare"]
+  ].map(([v, l]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+
+  const mat = {};
+  for (const d of tutte) {
+    const m = mat[d.materia] || (mat[d.materia] = { n: 0, g: 0, s: 0 });
+    m.n++; const st = DB.stats[d._key]; if (st) { m.g += st.g; m.s += st.s; }
+  }
+  const att = materieAttive();
+  $("materie").innerHTML = Object.entries(mat).map(([nome, m]) => {
+    const tot = m.g + m.s, pg = tot ? m.g / tot * 100 : 0, ps = tot ? m.s / tot * 100 : 0;
+    return `<label class="mat"><input type="checkbox" data-mat="${esc(nome)}" ${att.includes(nome) ? "checked" : ""}>
+      <span>${esc(nome)} <span class="muted">(${m.n})</span></span>
+      <span class="bar" title="${m.g} giuste, ${m.s} sbagliate"><i class="g" style="width:${pg}%"></i><i class="s" style="width:${ps}%"></i></span>
+      <span class="pct">${tot ? Math.round(pg) + "%" : "—"}</span></label>`;
+  }).join("");
+  document.querySelectorAll("[data-mat]").forEach(cb => cb.onchange = () => {
+    DB.materie = [...document.querySelectorAll("[data-mat]:checked")].map(x => x.dataset.mat); salva(); renderHome();
+  });
+
+  $("fonti-card").classList.toggle("hidden", QUIZ_MANIFEST.length < 2);
+  $("fonti").innerHTML = QUIZ_MANIFEST.map(p => `<label class="row"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}> ${esc(p.label)}</label>`).join("");
+  document.querySelectorAll("[data-fonte]").forEach(cb => cb.onchange = () => {
+    DB.fonti = [...document.querySelectorAll("[data-fonte]:checked")].map(x => x.dataset.fonte); salva(); renderHome();
+  });
+
+  const I = DB.imp;
+  $("s-mescola").checked = I.mescola; $("s-tastiera").checked = I.tastiera;
+  $("s-simn").value = I.simN; $("s-simmin").value = I.simMin; $("s-pg").value = I.pg; $("s-ps").value = I.ps; $("s-po").value = I.po;
+  show("home");
+}
+function bindImpostazioni() {
+  const num = (id, k) => $(id).onchange = e => { const v = parseFloat(e.target.value); if (!isNaN(v)) { DB.imp[k] = v; salva(); renderHome(); } };
+  $("s-mescola").onchange = e => { DB.imp.mescola = e.target.checked; salva(); };
+  $("s-tastiera").onchange = e => { DB.imp.tastiera = e.target.checked; salva(); };
+  num("s-simn", "simN"); num("s-simmin", "simMin"); num("s-pg", "pg"); num("s-ps", "ps"); num("s-po", "po");
+  $("mat-tutte").onclick = () => { DB.materie = null; salva(); renderHome(); };
+  $("mat-nessuna").onclick = () => { DB.materie = []; salva(); renderHome(); };
+  $("reset-stats").onclick = () => { if (confirm("Azzerare tutte le statistiche? I preferiti restano.")) { DB.stats = {}; salva(); renderHome(); } };
+  document.querySelectorAll(".mode").forEach(b => b.onclick = () => avvia(b.dataset.mode));
+}
+
+// ═════════════════════════════════════════════════════════════════════
+// Sessione di quiz
+// ═════════════════════════════════════════════════════════════════════
+let S = null; // sessione corrente
+
+const NOMI_MODO = { allenamento: "🎯 Allenamento", errori: "🔁 Ripasso errori", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
+
+function ordinaPerPriorita(pool) {
+  // prima: sbagliate da ripassare, poi mai viste, poi le altre (le meno recenti prima); casuale a parità
+  const gruppo = d => daRipassare(d) ? 0 : (!DB.stats[d._key] || !DB.stats[d._key].v) ? 1 : 2;
+  return mescola(pool).sort((a, b) => gruppo(a) - gruppo(b) || (gruppo(a) === 2 ? (DB.stats[a._key].t - DB.stats[b._key].t) : 0));
+}
+
+function avvia(modo) {
+  let pool = poolBase();
+  if (modo === "errori") pool = pool.filter(daRipassare);
+  if (modo === "preferiti") pool = pool.filter(isPref);
+  if (!pool.length) return;
+  const coda = modo === "simulazione" ? mescola(pool).slice(0, Math.min(DB.imp.simN, pool.length)) : ordinaPerPriorita(pool);
+  S = { modo, coda, i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
+  if (modo === "simulazione") {
+    S.fine = Date.now() + DB.imp.simMin * 60000;
+    S.timer = setInterval(tick, 500); tick();
+  }
+  show("quiz"); renderDomanda();
+}
+
+function ordineOpzioni(d) {
+  if (!S.ordini[d._key]) {
+    const lett = Object.keys(d.opzioni).filter(k => (d.opzioni[k] || "").trim());
+    S.ordini[d._key] = DB.imp.mescola ? mescola(lett) : lett;
+  }
+  return S.ordini[d._key];
+}
+
+function renderDomanda() {
+  const d = S.coda[S.i];
+  const sim = S.modo === "simulazione", rev = S.modo === "revisione";
+  $("q-mode").textContent = NOMI_MODO[S.modo];
+  $("q-home").textContent = rev ? "← Risultato" : "← Home";
+  $("q-count").textContent = (S.i + 1) + " / " + S.coda.length;
+  $("q-prog").style.width = ((S.i + (S.risposte[d._key] && !sim ? 1 : 0)) / S.coda.length * 100) + "%";
+  $("q-score").textContent = (!sim && !rev && S.date) ? `${S.giuste}/${S.date} giuste` : "";
+
+  // brano e istruzioni (testo sempre intero)
+  const haBrano = !!(d.brano && d.brano.trim());
+  $("q-layout").classList.toggle("with-brano", haBrano);
+  $("q-brano-col").classList.toggle("hidden", !haBrano);
+  $("q-brano").textContent = d.brano || "";
+  $("q-istr").classList.toggle("hidden", !d.istruzioni);
+  $("q-istr").textContent = d.istruzioni || "";
+
+  $("q-materia").textContent = d.materia;
+  const pack = QUIZ_MANIFEST.find(p => p.id === d._pack);
+  $("q-num").textContent = "Domanda " + d.id + (QUIZ_MANIFEST.length > 1 ? " · " + pack.label : "");
+  $("q-pdf").classList.toggle("hidden", !d._pdf);
+  if (d._pdf) $("q-pdf").href = d._pdf + (d.paginaPdf ? "#page=" + d.paginaPdf : "");
+  aggiornaStella(d);
+  $("q-domanda").textContent = d.domanda;
+  const img = $("q-img");
+  img.classList.toggle("hidden", !d.immagine);
+  if (d.immagine) img.src = d.immagine; else img.removeAttribute("src");
+
+  // opzioni
+  const ordine = ordineOpzioni(d);
+  $("q-opts").innerHTML = ordine.map((k, i) =>
+    `<button class="opt" data-k="${k}"><div class="head"><span class="let">${LETTERE[i]}</span><span class="txt">${esc(d.opzioni[k])}</span></div></button>`).join("");
+  document.querySelectorAll("#q-opts .opt").forEach(b => b.onclick = () => rispondi(b.dataset.k));
+
+  $("q-hint").classList.add("hidden");
+  $("q-after").classList.add("hidden");
+  const haHint = !!(d.aiuti && d.aiuti.suggerimento);
+  $("q-hint-btn").classList.toggle("hidden", sim || rev || !haHint);
+  $("q-hint-btn").disabled = false;
+  $("q-actions").classList.toggle("hidden", sim);
+  $("s-actions").classList.toggle("hidden", !sim);
+  $("s-navcard").classList.toggle("hidden", !sim && !rev);
+  $("q-skip").classList.toggle("hidden", rev);
+  $("q-next").classList.add("hidden");
+  $("q-next").textContent = S.i + 1 < S.coda.length ? "Prossima →" : (rev ? "Torna al risultato" : "Fine");
+
+  if (sim) {
+    const sel = S.risposte[d._key];
+    document.querySelectorAll("#q-opts .opt").forEach(b => b.classList.toggle("sel", b.dataset.k === sel));
+    $("s-prev").disabled = S.i === 0; $("s-nextq").disabled = S.i + 1 >= S.coda.length;
+    renderNav();
+  } else if (rev) {
+    mostraEsito(d, S.risposte[d._key]); renderNav();
+    $("q-next").classList.remove("hidden");
+  }
+  $("q-kbd").textContent = !DB.imp.tastiera ? "" : rev ? "Tastiera: Invio prossima · F preferito" : (sim
+    ? "Tastiera: 1–" + ordine.length + " o A–" + LETTERE[ordine.length - 1] + " rispondi · ← → naviga · F preferito"
+    : "Tastiera: 1–" + ordine.length + " o A–" + LETTERE[ordine.length - 1] + " rispondi · H suggerimento · Invio prossima · F preferito");
+}
+
+function aggiornaStella(d) { const on = isPref(d); $("q-star").textContent = on ? "★" : "☆"; $("q-star").classList.toggle("on", on); }
+function togglePref() {
+  const d = S && S.coda[S.i]; if (!d) return;
+  const i = DB.preferiti.indexOf(d._key);
+  if (i >= 0) DB.preferiti.splice(i, 1); else DB.preferiti.push(d._key);
+  salva(); aggiornaStella(d);
+}
+
+function rispondi(k) {
+  const d = S.coda[S.i];
+  if (S.modo === "simulazione") {
+    S.risposte[d._key] = k;
+    document.querySelectorAll("#q-opts .opt").forEach(b => b.classList.toggle("sel", b.dataset.k === k));
+    renderNav(); return;
+  }
+  if (S.modo === "revisione" || S.risposte[d._key] !== undefined) return;
+  S.risposte[d._key] = k;
+  const giusta = k === d.corretta;
+  S.date++; if (giusta) S.giuste++;
+  registra(d, giusta);
+  mostraEsito(d, k);
+  $("q-score").textContent = `${S.giuste}/${S.date} giuste`;
+  $("q-prog").style.width = ((S.i + 1) / S.coda.length * 100) + "%";
+  $("q-hint-btn").classList.add("hidden"); $("q-skip").classList.add("hidden");
+  $("q-next").classList.remove("hidden"); $("q-next").focus({ preventScroll: true });
+}
+
+function mostraEsito(d, k) {
+  const a = d.aiuti || {}, per = a.perOpzione || {};
+  document.querySelectorAll("#q-opts .opt").forEach(b => {
+    const ok = b.dataset.k;
+    b.disabled = true;
+    b.classList.toggle("ok", ok === d.corretta);
+    b.classList.toggle("ko", ok === k && k !== d.corretta);
+    b.classList.toggle("dim", ok !== d.corretta && ok !== k);
+    if (per[ok]) {
+      const why = document.createElement("div");
+      why.className = "why";
+      const pre = ok === d.corretta ? "✔ " : (ok === k ? "✘ " : "");
+      why.innerHTML = md(pre + per[ok]);
+      b.appendChild(why);
     }
-
-    function isPreferita(id) {
-      return caricaPreferiti().includes(id);
-    }
-
-    function togglePreferito() {
-      if (!corrente) return;
-
-      const preferiti = caricaPreferiti();
-      const index = preferiti.indexOf(corrente.id);
-
-      if (index >= 0) {
-        preferiti.splice(index, 1);
-      } else {
-        preferiti.push(corrente.id);
-      }
-
-      salvaPreferiti(preferiti);
-      aggiornaStellina();
-      aggiornaContatorePreferiti();
-    }
-
-    function aggiornaStellina() {
-      const btn = document.getElementById("star-btn");
-      if (!corrente) {
-        btn.textContent = "☆";
-        btn.classList.remove("active");
-        return;
-      }
-
-      if (isPreferita(corrente.id)) {
-        btn.textContent = "★";
-        btn.classList.add("active");
-        btn.title = "Rimuovi dai preferiti";
-      } else {
-        btn.textContent = "☆";
-        btn.classList.remove("active");
-        btn.title = "Aggiungi ai preferiti";
-      }
-    }
-
-    function aggiornaContatorePreferiti() {
-      document.getElementById("totale-preferiti").innerText = caricaPreferiti().length;
-    }
-
-    function getPoolDomande() {
-      if (modalita === "preferiti") {
-        const preferiti = caricaPreferiti();
-        return (window._TUTTE_LE_DOMANDE || []).filter(d => preferiti.includes(d.id));
-      }
-      return window._TUTTE_LE_DOMANDE || [];
-    }
-
-    function setModalita(nuovaModalita) {
-      modalita = nuovaModalita;
-
-      document.getElementById("mode-all").classList.toggle("active-mode", modalita === "tutte");
-      document.getElementById("mode-pref").classList.toggle("active-mode", modalita === "preferiti");
-
-      prossimaDomanda();
-    }
-
-    function prossimaDomanda() {
-      const pool = getPoolDomande();
-      const emptyBox = document.getElementById("empty-box");
-
-      if (!pool.length) {
-        corrente = null;
-        document.getElementById("numero-domanda").innerText = "-";
-        document.getElementById("materia").innerText = "Preferiti";
-        document.getElementById("domanda").innerText = "Nessuna domanda disponibile.";
-        document.getElementById("risposte").innerHTML = "";
-        document.getElementById("feedback").innerText = "";
-        document.getElementById("btn-spiegazione").disabled = true;
-        document.getElementById("spiegazione-box").classList.remove("visible");
-        document.getElementById("spiegazione-box").innerText = "";
-        emptyBox.style.display = "block";
-        aggiornaStellina();
-        document.getElementById("source-badge").textContent = "";
-        return;
-      }
-
-      emptyBox.style.display = "none";
-
-      const indice = Math.floor(Math.random() * pool.length);
-      corrente = pool[indice];
-      correttaGiaData = false;
-
-      document.getElementById("numero-domanda").innerText = corrente.id;
-      document.getElementById("materia").innerText = corrente.materia;
-      document.getElementById("domanda").innerHTML = linkificaNorme(corrente.domanda);
-
-      const branoEl = document.getElementById("brano");
-      const branoToggle = document.getElementById("brano-toggle");
-      if (corrente.brano && corrente.brano.trim()) {
-        branoEl.innerHTML = linkificaNorme(corrente.brano);
-        branoEl.classList.remove("visible");
-        branoToggle.classList.add("visible");
-        branoToggle.textContent = "📄 Mostra testo di riferimento";
-      } else {
-        branoEl.textContent = "";
-        branoEl.classList.remove("visible");
-        branoToggle.classList.remove("visible");
-      }
-      document.getElementById("feedback").innerText = "";
-      document.getElementById("feedback").className = "feedback";
-
-      const spiegazioneBox = document.getElementById("spiegazione-box");
-      spiegazioneBox.classList.remove("visible");
-      spiegazioneBox.innerHTML = "";
-
-      const btnSpiegazione = document.getElementById("btn-spiegazione");
-      btnSpiegazione.disabled = true;
-      btnSpiegazione.innerText = "Mostra spiegazione";
-      btnSpiegazione.classList.remove("has-spiega");
-
-      // PDF preview
-      renderPdfPagina(corrente.paginaPdf || null, corrente._pdfSrc || null);
-
-      const risposte = document.getElementById("risposte");
-      risposte.innerHTML = "";
-
-      ["A", "B", "C", "D", "E"].forEach(lettera => {
-        if (corrente.opzioni[lettera]) {
-          const btn = document.createElement("button");
-          btn.className = "risposta-btn";
-          btn.innerHTML = `<strong>${lettera}:</strong> ${linkificaNorme(corrente.opzioni[lettera])}`;
-          btn.onclick = () => verificaRisposta(lettera);
-          risposte.appendChild(btn);
-        }
-      });
-
-      aggiornaStellina();
-      document.getElementById("source-badge").textContent = corrente._source || "";
-    }
-
-    function verificaRisposta(letteraSelezionata) {
-      if (!corrente || correttaGiaData) return;
-
-      correttaGiaData = true;
-      totaleRisposte++;
-
-      const bottoni = document.querySelectorAll(".risposta-btn");
-      bottoni.forEach(btn => {
-        btn.classList.add("disabled");
-        btn.disabled = true;
-
-        const testo = btn.innerText.trim();
-        const lettera = testo.charAt(0);
-
-        if (lettera === corrente.corretta) {
-          btn.classList.add("correct");
-        }
-
-        if (lettera === letteraSelezionata && letteraSelezionata !== corrente.corretta) {
-          btn.classList.add("wrong");
-        }
-      });
-
-      const feedback = document.getElementById("feedback");
-
-      if (letteraSelezionata === corrente.corretta) {
-        corrette++;
-        feedback.innerText = "✅ Risposta corretta";
-        feedback.classList.add("correct");
-      } else {
-        sbagliate++;
-        feedback.innerText = `❌ Risposta sbagliata. La risposta corretta è ${corrente.corretta}.`;
-        feedback.classList.add("wrong");
-      }
-
-      document.getElementById("corrette").innerText = corrette;
-      document.getElementById("sbagliate").innerText = sbagliate;
-      document.getElementById("totale-risposte").innerText = totaleRisposte;
-
-      const btnSpiega = document.getElementById("btn-spiegazione");
-      if (haSpiega()) {
-        btnSpiega.disabled = false;
-        btnSpiega.innerText = "📖 Mostra spiegazione";
-        btnSpiega.classList.add("has-spiega");
-      } else {
-        btnSpiega.disabled = true;
-        btnSpiega.innerText = "Nessuna spiegazione";
-        btnSpiega.classList.remove("has-spiega");
-      }
-    }
-
-    function toggleSpiegazione() {
-      if (!corrente) return;
-
-      const box = document.getElementById("spiegazione-box");
-      const btn = document.getElementById("btn-spiegazione");
-
-      if (!box.classList.contains("visible")) {
-        renderSpiegazione(box);
-        box.classList.add("visible");
-        btn.innerText = "📖 Nascondi spiegazione";
-      } else {
-        box.classList.remove("visible");
-        btn.innerText = "📖 Mostra spiegazione";
-      }
-    }
-
-    function toggleBrano() {
-      const el = document.getElementById("brano");
-      const btn = document.getElementById("brano-toggle");
-      if (el.classList.contains("visible")) {
-        el.classList.remove("visible");
-        btn.textContent = "📄 Mostra testo di riferimento";
-      } else {
-        el.classList.add("visible");
-        btn.textContent = "📄 Nascondi testo di riferimento";
-      }
-    }
-
-    // ── PDF preview ────────────────────────────────────────────────────────
-    const _pdfCache = {};
-    let _pdfCurrentPage = null;
-    let _pdfCurrentSrc  = null;
-
-    async function getPdfDoc(src) {
-      if (!src) return null;
-      if (_pdfCache[src]) return _pdfCache[src];
-      try {
-        const doc = await pdfjsLib.getDocument(src).promise;
-        _pdfCache[src] = doc;
-        return doc;
-      } catch(e) { return null; }
-    }
-
-    async function renderPdfPagina(pagina, src) {
-      const preview = document.getElementById("pdf-preview");
-      const canvas  = document.getElementById("pdf-canvas");
-      const label   = document.getElementById("pdf-label");
-
-      if (!pagina || !src) {
-        preview.classList.remove("visible");
-        return;
-      }
-
-      if (typeof pdfjsLib === "undefined") {
-        preview.classList.remove("visible");
-        return;
-      }
-
-      _pdfCurrentPage = pagina;
-      _pdfCurrentSrc  = src;
-
-      preview.classList.add("visible");
-      label.textContent = "Caricamento pagina " + pagina + "…";
-
-      const doc = await getPdfDoc(src);
-      if (!doc) { label.textContent = "PDF non disponibile."; return; }
-
-      try {
-        const page = await doc.getPage(pagina);
-        const viewport = page.getViewport({ scale: 1.8 });
-        canvas.width  = viewport.width;
-        canvas.height = viewport.height;
-        await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
-        label.textContent = "Pagina " + pagina + " di " + doc.numPages;
-      } catch(e) {
-        label.textContent = "Errore nel rendering della pagina.";
-      }
-    }
-
-    function navigaPdf(delta) {
-      if (!_pdfCurrentPage || !_pdfCurrentSrc) return;
-      const nuovaPagina = _pdfCurrentPage + delta;
-      if (nuovaPagina < 1) return;
-      renderPdfPagina(nuovaPagina, _pdfCurrentSrc);
-    }
-    // ───────────────────────────────────────────────────────────────────────
-
-    function haSpiega() {
-      if (!corrente) return false;
-      const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      const spiega = packSpiega[corrente.id];
-      return !!(spiega && (spiega.spiegazione || spiega.testo || "").trim());
-    }
-
-    function renderMarkdown(text) {
-      const escaped = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-      return escaped
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br>');
-    }
-
-    function escapeHtml(s) {
-      if (!s) return '';
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-
-    // Mappa abbreviazioni fonte → prefisso normaId
-    const FONTE_PREFIX = {
-      'cost':'cost','costituzione':'cost',
-      'tfue':'tfue','tue':'tue','tuel':'tuel','tupi':'tupi',
-      'c.p.':'cp','c.p':'cp','cod. pen':'cp','codice penale':'cp',
-      'c.c.':'cc','c.c':'cc','cod. civ':'cc','codice civile':'cc',
-      'c.p.c.':'cpc','c.p.c':'cpc','cod. proc. civ':'cpc',
-      'c.p.p.':'cpp','c.p.p':'cpp','cod. proc. pen':'cpp',
-      'c.p.a.':'cpa','c.p.a':'cpa',
-      'c.d.s.':'cds','c.d.s':'cds','codice della strada':'cds',
-    };
-    // Regex per fonti note dopo "art. N" (opzionale)
-    const FONTE_RE = /^[\s,]*(?:della?\s+)?(Cost(?:ituzione)?|TFUE|TUE|TUEL|TUPI|C\.?P\.?(?:A|C|P)?\.?|Cod(?:ice)?\.?\s*(?:pen|civ|proc|della\s*strada)[a-z.]*)/i;
-
-    function linkificaNorme(text, skipEscape) {
-      if (!text) return '';
-      let html = skipEscape ? text : escapeHtml(text);
-      const rif = (corrente && corrente.riferimenti) || [];
-      const norme = window.NORME || {};
-      const artMap = {};
-      // 1. Riferimenti espliciti (dalla spiegazione/domanda)
-      rif.forEach(r => {
-        const m = (r.normaId || '').match(/_art_(\d+)$/);
-        if (m) artMap[m[1]] = r.normaId;
-      });
-      // 2. Norme effettivamente caricate
-      Object.keys(norme).forEach(normaId => {
-        const m = normaId.match(/_art_(\d+)$/);
-        if (m && !artMap[m[1]]) artMap[m[1]] = normaId;
-      });
-      // 3. Regex che cattura "art. N" + eventuale fonte dopo
-      return html.replace(/\b(art(?:icolo)?\.?\s*)(\d+)([\s,]*(?:della?\s+)?(?:Cost(?:ituzione)?|TFUE|TUE|TUEL|TUPI|C\.?P\.?(?:A|C|P)?\.?|Cod(?:ice)?\.?\s*(?:pen|civ|proc|della\s*strada)[a-z.]*))?/gi, (match, prefix, num, fonteRaw) => {
-        let normaId = artMap[num];
-        if (!normaId) {
-          // Prova a dedurre il prefisso dalla fonte nel testo
-          let pfx = 'cost'; // default solo se non c'è fonte esplicita
-          if (fonteRaw) {
-            const cleaned = fonteRaw.replace(/^[\s,]*(?:della?\s+)?/i, '').trim().toLowerCase().replace(/\.$/, '');
-            for (const [key, val] of Object.entries(FONTE_PREFIX)) {
-              if (cleaned.startsWith(key)) { pfx = val; break; }
-            }
-          }
-          normaId = pfx + '_art_' + num;
-        }
-        const safeId = normaId.replace(/[^a-zA-Z0-9_]/g, '');
-        return '<a class="norma-inline-link" onclick="event.stopPropagation();apriNorma(\'' + safeId + '\')">'
-          + match + '</a>';
-      });
-    }
-
-    function renderSpiegazione(box) {
-      box.innerHTML = "";
-      const packSpiega = (window._QUIZ_SPIEGAZIONI || {})[corrente._packId || ""] || {};
-      const spiega = packSpiega[corrente.id] || null;
-
-      const testo = spiega ? (spiega.spiegazione || spiega.testo || "") : "";
-
-      if (!testo) {
-        const em = document.createElement("em");
-        em.textContent = "Spiegazione non disponibile.";
-        box.appendChild(em);
-        return;
-      }
-
-      const testoDiv = document.createElement("div");
-      testoDiv.innerHTML = linkificaNorme(renderMarkdown(testo), true);
-      box.appendChild(testoDiv);
-
-      // Raccoglie riferimenti espliciti dalla spiegazione e dalla domanda
-      const rifSpieg = (spiega && spiega.riferimenti) ? spiega.riferimenti : [];
-      const rifDom = (corrente && corrente.riferimenti) ? corrente.riferimenti : [];
-      const seenIds = new Set();
-      const rifEspliciti = [];
-      [...rifSpieg, ...rifDom].forEach(r => { if (!seenIds.has(r.normaId)) { seenIds.add(r.normaId); rifEspliciti.push(r); } });
-
-      // Auto-rileva articoli citati nel testo della domanda/brano
-      const testoScan = (corrente.brano || "") + " " + (corrente.domanda || "") + " " + testo;
-      const normeCaricate = window.NORME || {};
-      const rifAuto = [];
-      const giaSegnalati = new Set(rifEspliciti.map(r => r.normaId));
-      Object.entries(normeCaricate).forEach(([normaId, norma]) => {
-        if (giaSegnalati.has(normaId)) return;
-        // Cerca "art. NN" o "articolo NN" o il titolo nel testo
-        const artMatch = normaId.match(/_art_(\d+)$/);
-        if (artMatch) {
-          const n = artMatch[1];
-          const re = new RegExp('art(?:icolo)?[.\\s]+' + n + '\\b', 'i');
-          if (re.test(testoScan)) {
-            rifAuto.push({ etichetta: norma.titolo || normaId, normaId });
-            giaSegnalati.add(normaId);
-          }
-        }
-      });
-
-      const tuttiRif = [...rifEspliciti, ...rifAuto];
-      if (tuttiRif.length > 0) {
-        const sezione = document.createElement("div");
-        sezione.className = "riferimenti-section";
-
-        const label = document.createElement("div");
-        label.className = "riferimenti-label";
-        label.textContent = "Riferimenti normativi";
-        sezione.appendChild(label);
-
-        tuttiRif.forEach(rif => {
-          const link = document.createElement("a");
-          link.className = "riferimento-link";
-          link.textContent = rif.etichetta;
-          link.addEventListener("click", () => apriNorma(rif.normaId));
-          sezione.appendChild(link);
-        });
-
-        box.appendChild(sezione);
-      }
-    }
-
-    function apriNorma(normaId) {
-      const norma = window.NORME && window.NORME[normaId];
-      document.getElementById("norma-titolo").textContent = norma ? norma.titolo : normaId.replace(/_/g, ' ');
-      document.getElementById("norma-fonte").textContent = norma ? norma.fonte : "";
-      if (norma) {
-        document.getElementById("norma-testo").textContent = norma.testo;
-      } else {
-        // Ricava cartella attesa dal normaId: "tfue_art_263" → "norme/tfue/"
-        const prefixMatch = normaId.match(/^(.+)_art_\d+/);
-        const prefix = prefixMatch ? prefixMatch[1] : normaId;
-        const cartella = 'norme/' + prefix + '/';
-        document.getElementById("norma-testo").textContent =
-          'Norma assente.\n\nCaricala nella cartella:\n📁 ' + cartella + '\n\n'
-          + 'File atteso: ' + cartella + normaId + '.js';
-      }
-      document.getElementById("norma-overlay").classList.add("visible");
-    }
-
-    function chiudiNorma(event) {
-      if (event && event.target !== document.getElementById("norma-overlay")) return;
-      document.getElementById("norma-overlay").classList.remove("visible");
-    }
-
-    function loadScript(src) {
-      return new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[data-quiz-src="' + src + '"]');
-        if (existing) { resolve(); return; }
-        const s = document.createElement("script");
-        s.setAttribute("data-quiz-src", src);
-        s.src = src;
-        s.onload = resolve;
-        s.onerror = () => reject(new Error(src));
-        document.head.appendChild(s);
-      });
-    }
-
-    // Precarica tutti i file appena la pagina si apre, in background.
-    window._QUIZ_PACKS = {};
-    window._QUIZ_SPIEGAZIONI = {};
-    window._PRELOAD_DONE = false;
-
-    // Carica un file JS ed estrae la variabile dichiarata con const/let/var.
-    // Prima tenta fetch (HTTP/HTTPS); se fallisce (es. file://) usa loadScript
-    // con new Function per leggere il valore dallo scope globale.
-    async function fetchVar(src, varName) {
-      try {
-        const r = await fetch(src);
-        if (r.ok) {
-          const code = await r.text();
-          return new Function(code + '\n;return typeof ' + varName + '!=="undefined"?' + varName + ':[];')();
-        }
-      } catch(e) { /* file:// o errore di rete → usa loadScript */ }
-      try {
-        await loadScript(src);
-        return new Function('return typeof ' + varName + '!=="undefined"?' + varName + ':[];')();
-      } catch(e) { return []; }
-    }
-
-    async function precaricaTutto() {
-      for (const pack of QUIZ_MANIFEST) {
-        // ── domande ──────────────────────────────────────────────────────
-        const domande = await fetchVar(pack.domande || pack.file || '', 'DOMANDE');
-        window._QUIZ_PACKS[pack.id] = domande;
-
-        // ── risposte (override corretta) ──────────────────────────────────
-        if (pack.risposte) {
-          const risposte = await fetchVar(pack.risposte, 'RISPOSTE');
-          const risposteMap = {};
-          risposte.forEach(r => { if (r.corretta) risposteMap[r.id] = r.corretta; });
-          domande.forEach(d => { if (risposteMap[d.id]) d.corretta = risposteMap[d.id]; });
-        }
-
-        // ── spiegazioni ───────────────────────────────────────────────────
-        if (pack.spiegazioni) {
-          const rawSpiega = await fetchVar(pack.spiegazioni, 'SPIEGAZIONI');
-          const spiegaMap = {};
-          rawSpiega.forEach(s => { spiegaMap[s.id] = s; });
-          window._QUIZ_SPIEGAZIONI[pack.id] = spiegaMap;
-          // Applica override corretta da SPIEGAZIONI (priorità massima)
-          domande.forEach(d => {
-            const s = spiegaMap[d.id];
-            if (s && s.corretta) d.corretta = s.corretta;
-          });
-        }
-
-        // ── norme (usano window.NORME, loadScript va bene) ───────────────
-        if (pack.norme) {
-          for (const n of pack.norme) await loadScript(n).catch(() => {});
-        }
-      }
-      window._PRELOAD_DONE = true;
-    }
-
-    function mostraSelezioneFonti() {
-      const overlay = document.getElementById("source-overlay");
-      overlay.classList.add("visible");
-      const list = document.getElementById("source-list");
-      list.innerHTML = "";
-      QUIZ_MANIFEST.forEach(pack => {
-        const label = document.createElement("label");
-        label.className = "source-item";
-        const cb = document.createElement("input");
-        cb.type = "checkbox";
-        cb.value = pack.id;
-        cb.checked = true;
-        label.appendChild(cb);
-        label.appendChild(document.createTextNode(" " + pack.label));
-        list.appendChild(label);
-      });
-      const err = document.getElementById("source-errore");
-      err.style.display = "none";
-      err.textContent = "Seleziona almeno un file.";
-    }
-
-    function avviaQuiz() {
-      const checkboxes = document.querySelectorAll("#source-list input[type='checkbox']:checked");
-      const selectedIds = Array.from(checkboxes).map(cb => cb.value);
-      const err = document.getElementById("source-errore");
-
-      if (!selectedIds.length) {
-        err.textContent = "Seleziona almeno un file.";
-        err.style.display = "block";
-        return;
-      }
-
-      if (!window._PRELOAD_DONE) {
-        err.textContent = "Caricamento in corso... riprova tra un momento.";
-        err.style.display = "block";
-        return;
-      }
-
-      const toLoad = QUIZ_MANIFEST.filter(p => selectedIds.includes(p.id));
-      window._TUTTE_LE_DOMANDE = [];
-      toLoad.forEach(pack => {
-        const parts = (pack.domande || pack.file || "").split("/");
-        const srcFile = parts.length > 2 ? parts[parts.length - 2] : parts[parts.length - 1].replace(/\.js$/, "");
-        const domande = window._QUIZ_PACKS[pack.id] || [];
-        domande.forEach(d => {
-          window._TUTTE_LE_DOMANDE.push(Object.assign({}, d, { _source: srcFile || pack.label, _packId: pack.id, _pdfSrc: pack.pdf || null }));
-        });
-      });
-
-      if (!window._TUTTE_LE_DOMANDE.length) {
-        err.textContent = "Nessuna domanda trovata. Controlla i file selezionati.";
-        err.style.display = "block";
-        return;
-      }
-
-      document.getElementById("source-overlay").classList.remove("visible");
-      prossimaDomanda();
-    }
-
-    aggiornaContatorePreferiti();
-    mostraSelezioneFonti();
-    precaricaTutto();
-  </script>
+  });
+  const es = $("q-esito");
+  if (!k) { es.className = "esito na"; es.textContent = "Non hai risposto. La risposta giusta è evidenziata in verde."; }
+  else if (k === d.corretta) { es.className = "esito ok"; es.textContent = "✔ Risposta corretta"; }
+  else { es.className = "esito ko"; es.textContent = "✘ Risposta sbagliata"; }
+
+  const c = $("q-concept");
+  c.innerHTML = a.spiegazione ? "<b class='t'>Concetto chiave</b>" + md(a.spiegazione) : "<b class='t'>Nessuna spiegazione disponibile per questa domanda.</b>";
+  for (const r of a.riferimenti || []) {
+    const n = window.NORME && window.NORME[r.normaId];
+    if (!n) continue;
+    const b = document.createElement("button");
+    b.className = "norma-btn"; b.textContent = "📜 " + n.titolo.split(" — ")[0] + (n.fonte && /Costituzione/.test(n.fonte) ? " Cost." : "");
+    b.onclick = () => apriNorma(r.normaId);
+    c.appendChild(b);
+  }
+  const cert = $("q-certezza");
+  const nota = d.materia === "Situazionale" ? NOTA_SITUAZIONALE : (d.certezza === "media" ? NOTA_MEDIA : "");
+  cert.classList.toggle("hidden", !nota); cert.textContent = nota ? "ℹ️ " + nota : "";
+  $("q-after").classList.remove("hidden");
+}
+
+function mostraSuggerimento() {
+  const d = S.coda[S.i];
+  if (!d.aiuti || !d.aiuti.suggerimento) return;
+  $("q-hint").innerHTML = "<b class='t'>💡 Suggerimento</b>" + md(d.aiuti.suggerimento);
+  $("q-hint").classList.remove("hidden"); $("q-hint-btn").disabled = true;
+}
+
+function prossima() {
+  if (S.modo === "revisione" && S.i + 1 >= S.coda.length) return mostraRisultato();
+  if (S.i + 1 < S.coda.length) { S.i++; renderDomanda(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+  // fine giro: in allenamento ricomincia, negli altri modi torna alla home
+  if (S.modo === "allenamento") {
+    alert(`Giro completato: ${S.giuste} giuste su ${S.date}. Ricomincio con un nuovo ordine, a partire dalle domande sbagliate.`);
+    avvia("allenamento");
+  } else { alert(`Finito: ${S.giuste} giuste su ${S.date}.`); esci(); }
+}
+function salta() {
+  const d = S.coda.splice(S.i, 1)[0];
+  S.coda.push(d);
+  renderDomanda();
+}
+function esci() { if (S && S.timer) clearInterval(S.timer); S = null; renderHome(); }
+
+// ── Simulazione ──
+function tick() {
+  const rest = Math.max(0, S.fine - Date.now());
+  const m = Math.floor(rest / 60000), s = Math.floor(rest / 1000) % 60;
+  const t = $("q-timer"); t.classList.remove("hidden");
+  t.textContent = "⏱ " + m + ":" + String(s).padStart(2, "0");
+  t.classList.toggle("low", rest < 5 * 60000);
+  if (rest <= 0) { alert("Tempo scaduto!"); consegna(); }
+}
+function renderNav() {
+  const rev = S.modo === "revisione";
+  $("s-nav").innerHTML = S.coda.map((d, i) => {
+    let cl = "";
+    if (rev) cl = S.risposte[d._key] === d.corretta ? "ok" : (S.risposte[d._key] ? "ko" : "");
+    else if (S.risposte[d._key]) cl = "ans";
+    return `<button class="${cl}${i === S.i ? " cur" : ""}" data-i="${i}">${i + 1}</button>`;
+  }).join("");
+  document.querySelectorAll("#s-nav button").forEach(b => b.onclick = () => { S.i = +b.dataset.i; renderDomanda(); });
+}
+function consegna(conferma) {
+  const mancanti = S.coda.filter(d => !S.risposte[d._key]).length;
+  if (conferma && !confirm(mancanti ? `Hai ancora ${mancanti} domande senza risposta. Consegnare comunque?` : "Consegnare la simulazione?")) return;
+  clearInterval(S.timer); S.timer = null; $("q-timer").classList.add("hidden");
+  for (const d of S.coda) { const k = S.risposte[d._key]; if (k) registra(d, k === d.corretta); }
+  S.modo = "revisione";
+  mostraRisultato();
+}
+function mostraRisultato() {
+  const I = DB.imp; let g = 0, s = 0, o = 0; const mat = {};
+  for (const d of S.coda) {
+    const k = S.risposte[d._key], m = mat[d.materia] || (mat[d.materia] = { g: 0, s: 0, o: 0 });
+    if (!k) { o++; m.o++; } else if (k === d.corretta) { g++; m.g++; } else { s++; m.s++; }
+  }
+  const punti = Math.round((g * I.pg + s * I.ps + o * I.po) * 100) / 100;
+  const max = S.coda.length * I.pg;
+  $("r-punti").textContent = punti + " / " + max;
+  $("r-dett").textContent = `${g} giuste · ${s} sbagliate · ${o} non date (giusta ${I.pg}, sbagliata ${I.ps}, non data ${I.po})`;
+  $("r-mat").innerHTML = "<tr><th>Materia</th><th>Giuste</th><th>Sbagliate</th><th>Non date</th></tr>" +
+    Object.entries(mat).map(([n, m]) => `<tr><td>${esc(n)}</td><td>${m.g}</td><td>${m.s}</td><td>${m.o}</td></tr>`).join("");
+  $("r-nav").innerHTML = S.coda.map((d, i) => {
+    const k = S.risposte[d._key];
+    return `<button class="${k === d.corretta ? "ok" : (k ? "ko" : "")}" data-i="${i}">${i + 1}</button>`;
+  }).join("");
+  document.querySelectorAll("#r-nav button").forEach(b => b.onclick = () => { S.i = +b.dataset.i; show("quiz"); renderDomanda(); });
+  show("risultato");
+}
+
+// ── Norme e zoom ──
+function apriNorma(id) {
+  const n = window.NORME && window.NORME[id]; if (!n) return;
+  $("norma-titolo").textContent = n.titolo; $("norma-fonte").textContent = n.fonte || ""; $("norma-testo").textContent = n.testo;
+  $("norma-ov").classList.remove("hidden");
+}
+$("norma-chiudi").onclick = () => $("norma-ov").classList.add("hidden");
+$("norma-ov").onclick = e => { if (e.target.id === "norma-ov") $("norma-ov").classList.add("hidden"); };
+$("q-img").onclick = () => { $("zoom-img").src = $("q-img").src; $("zoom-ov").classList.remove("hidden"); };
+$("zoom-ov").onclick = () => $("zoom-ov").classList.add("hidden");
+
+// ── Pulsanti e tastiera ──
+$("q-home").onclick = () => { if (S && S.modo === "revisione") return mostraRisultato(); if (S && S.modo === "simulazione" && !confirm("Abbandonare la simulazione? Le risposte non verranno salvate.")) return; esci(); };
+$("r-home").onclick = esci;
+$("q-star").onclick = togglePref;
+$("q-hint-btn").onclick = mostraSuggerimento;
+$("q-next").onclick = prossima;
+$("q-skip").onclick = salta;
+$("s-prev").onclick = () => { if (S.i > 0) { S.i--; renderDomanda(); } };
+$("s-nextq").onclick = () => { if (S.i + 1 < S.coda.length) { S.i++; renderDomanda(); } };
+$("s-clear").onclick = () => { delete S.risposte[S.coda[S.i]._key]; renderDomanda(); };
+$("s-end").onclick = () => consegna(true);
+
+document.addEventListener("keydown", e => {
+  if (!$("norma-ov").classList.contains("hidden") || !$("zoom-ov").classList.contains("hidden")) {
+    if (e.key === "Escape") { $("norma-ov").classList.add("hidden"); $("zoom-ov").classList.add("hidden"); }
+    return;
+  }
+  if (!S || $("quiz").classList.contains("hidden") || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target.tagName === "INPUT") return;
+  const d = S.coda[S.i], ordine = ordineOpzioni(d), key = e.key.toUpperCase();
+  let idx = -1;
+  if (/^[1-6]$/.test(e.key)) idx = +e.key - 1;
+  else if (LETTERE.includes(key) && key.length === 1) idx = LETTERE.indexOf(key);
+  if (idx >= 0 && idx < ordine.length) { e.preventDefault(); rispondi(ordine[idx]); return; }
+  if (key === "F") return togglePref();
+  if (key === "H" && !$("q-hint-btn").classList.contains("hidden")) return mostraSuggerimento();
+  if (S.modo === "simulazione") {
+    if (e.key === "ArrowRight") $("s-nextq").click();
+    if (e.key === "ArrowLeft") $("s-prev").click();
+    return;
+  }
+  if ((e.key === "Enter" || e.key === "ArrowRight") && !$("q-next").classList.contains("hidden")) { e.preventDefault(); prossima(); }
+});
+
+// ── Avvio ──
+(async function () {
+  carica(); bindImpostazioni();
+  await caricaTutto();
+  if (!TUTTE.length) { $("loading").textContent = "Nessuna domanda caricata: controlla domande/manifest.js."; return; }
+  renderHome();
+})();
+</script>
 </body>
-</html> 
+</html>
