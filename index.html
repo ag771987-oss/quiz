@@ -56,6 +56,13 @@ h2{font-size:1.1rem;margin:0 0 12px}
 .settings label{display:flex;gap:8px;align-items:center;font-size:.93rem}
 .settings input[type=number]{width:70px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
 details>summary{cursor:pointer;font-weight:600}
+.ediz{margin:10px 0 4px;font-weight:700;font-size:.95rem}
+.fonte{display:flex;gap:10px;align-items:center;padding:5px 0;font-size:.93rem;flex-wrap:wrap}
+.fonte input{width:18px;height:18px}
+.badge{font-size:.75rem;padding:2px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
+.badge.uff{background:var(--ok-soft);color:var(--ok)}
+.badge.ric{background:var(--warn-soft);color:var(--warn)}
+.box.info{background:var(--ok-soft);border-left:4px solid var(--ok);font-size:.86rem}
 
 /* Quiz */
 .topbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
@@ -153,8 +160,13 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     </div>
 
     <div class="card" id="fonti-card">
-      <h2>Fonti</h2>
-      <div id="fonti" class="row"></div>
+      <h2>Prove</h2>
+      <p class="muted" style="margin:0 0 10px">Ogni prova è una fonte separata. Le risposte <b>ufficiali</b> sono quelle pubblicate dalla SNA; nelle altre la chiave è <b>ricostruita</b> e può contenere errori.</p>
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn small" id="fonti-tutte">Tutte le prove</button>
+        <button class="btn small" id="fonti-uff">Solo risposte ufficiali</button>
+      </div>
+      <div id="fonti"></div>
     </div>
 
     <div class="card">
@@ -199,6 +211,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
           <div class="tags">
             <span class="tag" id="q-materia"></span>
             <span class="tag grey" id="q-num"></span>
+            <span class="badge" id="q-chiave"></span>
             <span class="spacer"></span>
             <a class="muted" id="q-pdf" target="_blank" rel="noopener">Apri nel PDF</a>
             <button class="star" id="q-star" title="Aggiungi ai preferiti (F)">☆</button>
@@ -300,11 +313,12 @@ async function caricaTutto() {
     const sMap = Object.fromEntries(spiegazioni.map(s => [s.id, s]));
     for (const d of domande) {
       const r = rMap[d.id] || {}, s = sMap[d.id] || {};
-      const corretta = s.corretta || r.corretta || d.corretta;
+      const corretta = pack.ufficiale ? (r.corretta || s.corretta) : (s.corretta || r.corretta || d.corretta);
       if (!corretta || !d.opzioni || !d.opzioni[corretta] || !(d.domanda || "").trim()) continue; // domanda incompleta
       TUTTE.push(Object.assign({}, d, {
         _key: pack.id + ":" + d.id, _pack: pack.id, _pdf: pack.pdf || null,
-        corretta, certezza: r.certezza || "alta", aiuti: s
+        immagine: d.immagine === true ? "domande/" + pack.id + "/img/q" + String(d.id).padStart(2, "0") + ".png" : d.immagine,
+        corretta, certezza: pack.ufficiale ? "ufficiale" : (r.certezza || "alta"), aiuti: s
       }));
     }
     for (const n of pack.norme || []) await loadScript(n).catch(() => {});
@@ -389,7 +403,13 @@ function renderHome() {
   });
 
   $("fonti-card").classList.toggle("hidden", QUIZ_MANIFEST.length < 2);
-  $("fonti").innerHTML = QUIZ_MANIFEST.map(p => `<label class="row"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}> ${esc(p.label)}</label>`).join("");
+  const conteggio = {}; for (const d of TUTTE) conteggio[d._pack] = (conteggio[d._pack] || 0) + 1;
+  const gruppi = {};
+  for (const p of QUIZ_MANIFEST) (gruppi[p.gruppo || "Altre prove"] = gruppi[p.gruppo || "Altre prove"] || []).push(p);
+  $("fonti").innerHTML = Object.entries(gruppi).map(([g, ps]) => `<div class="ediz">${esc(g)}</div>` + ps.map(p =>
+    `<label class="fonte"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}>
+      <span>${esc(p.label)} <span class="muted">(${conteggio[p.id] || 0})</span></span>
+      <span class="badge ${p.ufficiale ? "uff" : "ric"}">${p.ufficiale ? "✔ Risposte ufficiali SNA" : "Chiave ricostruita"}</span></label>`).join("")).join("");
   document.querySelectorAll("[data-fonte]").forEach(cb => cb.onchange = () => {
     DB.fonti = [...document.querySelectorAll("[data-fonte]:checked")].map(x => x.dataset.fonte); salva(); renderHome();
   });
@@ -404,6 +424,8 @@ function bindImpostazioni() {
   $("s-mescola").onchange = e => { DB.imp.mescola = e.target.checked; salva(); };
   $("s-tastiera").onchange = e => { DB.imp.tastiera = e.target.checked; salva(); };
   num("s-simn", "simN"); num("s-simmin", "simMin"); num("s-pg", "pg"); num("s-ps", "ps"); num("s-po", "po");
+  $("fonti-tutte").onclick = () => { DB.fonti = null; salva(); renderHome(); };
+  $("fonti-uff").onclick = () => { DB.fonti = QUIZ_MANIFEST.filter(p => p.ufficiale).map(p => p.id); salva(); renderHome(); };
   $("mat-tutte").onclick = () => { DB.materie = null; salva(); renderHome(); };
   $("mat-nessuna").onclick = () => { DB.materie = []; salva(); renderHome(); };
   $("reset-stats").onclick = () => { if (confirm("Azzerare tutte le statistiche? I preferiti restano.")) { DB.stats = {}; salva(); renderHome(); } };
@@ -464,7 +486,9 @@ function renderDomanda() {
 
   $("q-materia").textContent = d.materia;
   const pack = QUIZ_MANIFEST.find(p => p.id === d._pack);
-  $("q-num").textContent = "Domanda " + d.id + (QUIZ_MANIFEST.length > 1 ? " · " + pack.label : "");
+  $("q-num").textContent = (QUIZ_MANIFEST.length > 1 ? (pack.breve || pack.label) + " · " : "") + "Domanda " + d.id;
+  $("q-chiave").className = "badge " + (pack.ufficiale ? "uff" : "ric");
+  $("q-chiave").textContent = pack.ufficiale ? "✔ Risposta ufficiale" : "Chiave ricostruita";
   $("q-pdf").classList.toggle("hidden", !d._pdf);
   if (d._pdf) $("q-pdf").href = d._pdf + (d.paginaPdf ? "#page=" + d.paginaPdf : "");
   aggiornaStella(d);
@@ -564,8 +588,16 @@ function mostraEsito(d, k) {
     c.appendChild(b);
   }
   const cert = $("q-certezza");
-  const nota = d.materia === "Situazionale" ? NOTA_SITUAZIONALE : (d.certezza === "media" ? NOTA_MEDIA : "");
-  cert.classList.toggle("hidden", !nota); cert.textContent = nota ? "ℹ️ " + nota : "";
+  let nota = "";
+  if (d.certezza === "ufficiale") {
+    cert.className = "box info";
+    nota = "✔ Risposta ufficiale pubblicata dalla SNA." + (a.nota ? " Nota: " + a.nota : "");
+  } else {
+    cert.className = "box warn";
+    nota = "ℹ️ " + (d.materia === "Situazionale" ? NOTA_SITUAZIONALE : (d.certezza === "media" ? NOTA_MEDIA : "Chiave ricostruita: la SNA non ha pubblicato le risposte di questa prova."));
+    if (a.nota) nota += " Nota: " + a.nota;
+  }
+  cert.textContent = nota;
   $("q-after").classList.remove("hidden");
 }
 

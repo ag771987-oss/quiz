@@ -148,7 +148,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
-    "immagine": "domande/busta/img/q13.png",
+    "immagine": "domande/sna-cc11-busta1/img/q13.png",
     "paginaPdf": 3,
     "opzioni": {
       "A": "Fig. 1",
@@ -163,7 +163,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
-    "immagine": "domande/busta/img/q14.png",
+    "immagine": "domande/sna-cc11-busta1/img/q14.png",
     "paginaPdf": 3,
     "opzioni": {
       "A": "Fig. 3",
@@ -178,7 +178,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la sequenza logica?",
-    "immagine": "domande/busta/img/q15.png",
+    "immagine": "domande/sna-cc11-busta1/img/q15.png",
     "paginaPdf": 4,
     "opzioni": {
       "A": "Fig. 5",
@@ -193,7 +193,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
-    "immagine": "domande/busta/img/q16.png",
+    "immagine": "domande/sna-cc11-busta1/img/q16.png",
     "paginaPdf": 5,
     "opzioni": {
       "A": "Figura 5",
@@ -208,7 +208,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
-    "immagine": "domande/busta/img/q17.png",
+    "immagine": "domande/sna-cc11-busta1/img/q17.png",
     "paginaPdf": 5,
     "opzioni": {
       "A": "Figura 1",
@@ -223,7 +223,7 @@ const DOMANDE = [
     "materia": "Ragionamento logico",
     "brano": "",
     "domanda": "Quale figura completa coerentemente la serie?",
-    "immagine": "domande/busta/img/q18.png",
+    "immagine": "domande/sna-cc11-busta1/img/q18.png",
     "paginaPdf": 6,
     "opzioni": {
       "A": "Figura 4",
