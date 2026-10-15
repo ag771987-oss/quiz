@@ -19,6 +19,61 @@ const QUIZ_MANIFEST = [
     ]
   },
   {
+    "id": "sna-cc11-busta2",
+    "gruppo": "11° corso-concorso — prova del 26/11/2025",
+    "label": "Busta 2 (estratta)",
+    "breve": "11° CC · Busta 2",
+    "ufficiale": false,
+    "domande": "domande/sna-cc11-busta2/sna-cc11-busta2_d.js",
+    "risposte": "domande/sna-cc11-busta2/sna-cc11-busta2_r.js",
+    "spiegazioni": "domande/sna-cc11-busta2/sna-cc11-busta2_s.js",
+    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_2_domande.pdf"
+  },
+  {
+    "id": "sna-cc11-busta3",
+    "gruppo": "11° corso-concorso — prova del 26/11/2025",
+    "label": "Busta 3",
+    "breve": "11° CC · Busta 3",
+    "ufficiale": false,
+    "domande": "domande/sna-cc11-busta3/sna-cc11-busta3_d.js",
+    "risposte": "domande/sna-cc11-busta3/sna-cc11-busta3_r.js",
+    "spiegazioni": "domande/sna-cc11-busta3/sna-cc11-busta3_s.js",
+    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_3_domande.pdf"
+  },
+  {
+    "id": "sna-cc10-busta1",
+    "gruppo": "10° corso-concorso — prova del 25/07/2024",
+    "label": "Busta 1",
+    "breve": "10° CC · Busta 1",
+    "ufficiale": false,
+    "domande": "domande/sna-cc10-busta1/sna-cc10-busta1_d.js",
+    "risposte": "domande/sna-cc10-busta1/sna-cc10-busta1_r.js",
+    "spiegazioni": "domande/sna-cc10-busta1/sna-cc10-busta1_s.js",
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_1_domande.pdf"
+  },
+  {
+    "id": "sna-cc10-busta2",
+    "gruppo": "10° corso-concorso — prova del 25/07/2024",
+    "label": "Busta 2",
+    "breve": "10° CC · Busta 2",
+    "ufficiale": false,
+    "domande": "domande/sna-cc10-busta2/sna-cc10-busta2_d.js",
+    "risposte": "domande/sna-cc10-busta2/sna-cc10-busta2_r.js",
+    "spiegazioni": "domande/sna-cc10-busta2/sna-cc10-busta2_s.js",
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_2_domande.pdf"
+  },
+  {
+    "id": "sna-cc10-busta3",
+    "gruppo": "10° corso-concorso — prova del 25/07/2024",
+    "label": "Busta 3 (estratta)",
+    "breve": "10° CC · Busta 3",
+    "ufficiale": false,
+    "domande": "domande/sna-cc10-busta3/sna-cc10-busta3_d.js",
+    "risposte": "domande/sna-cc10-busta3/sna-cc10-busta3_r.js",
+    "spiegazioni": "domande/sna-cc10-busta3/sna-cc10-busta3_s.js",
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_3_domande-estratta.pdf"
+  },
+  {
     "id": "sna-cc09-prova1",
     "gruppo": "9° corso-concorso — prova del 27/06/2023",
     "label": "Prova 1",

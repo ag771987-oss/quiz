@@ -280,6 +280,7 @@ const STORE_KEY = "quizsna.v2";
 
 let TUTTE = [];          // tutte le domande caricate, con _key, _pack, corretta, aiuti
 const NOTA_SITUAZIONALE = "Per i test situazionali non esiste una chiave ufficiale: la risposta indicata è quella più coerente con i comportamenti che la prova intende premiare (coinvolgimento, gradualità, trasparenza, rispetto delle regole).";
+const NOTA_BASSA = "Chiave incerta: la SNA non ha pubblicato le risposte e più di una soluzione è difendibile. Leggi la spiegazione e la nota.";
 const NOTA_MEDIA = "Chiave non ufficiale: il PDF non riporta le risposte e questa è la soluzione più probabile. Verificala se hai dubbi.";
 
 // Carica un file JS ed estrae la variabile dichiarata con const.
@@ -595,7 +596,8 @@ function mostraEsito(d, k) {
     nota = "✔ Risposta ufficiale pubblicata dalla SNA." + (a.nota ? " Nota: " + a.nota : "");
   } else {
     cert.className = "box warn";
-    nota = "ℹ️ " + (d.materia === "Situazionale" ? NOTA_SITUAZIONALE : (d.certezza === "media" ? NOTA_MEDIA : "Chiave ricostruita: la SNA non ha pubblicato le risposte di questa prova."));
+    nota = d.certezza === "bassa" ? "⚠️ " + NOTA_BASSA
+      : "ℹ️ " + (d.materia === "Situazionale" ? NOTA_SITUAZIONALE : (d.certezza === "media" ? NOTA_MEDIA : "Chiave ricostruita: la SNA non ha pubblicato le risposte di questa prova."));
     if (a.nota) nota += " Nota: " + a.nota;
   }
   cert.textContent = nota;
