@@ -29,17 +29,23 @@ def importa(src, img_dir=None):
         d["brano"] = q.get("brano", "")
         d["domanda"] = q["domanda"]
         if q.get("immagine"):
-            nome = "%s-q%02d.png" % (pid, q["id"])
+            # preferisce la figura nativa (senza lettere delle opzioni); altrimenti il ritaglio dell'impaginato
+            nativa = "%s-q%02d-fig1.png" % (pid, q["id"])
+            nome = nativa if img_dir and os.path.exists(os.path.join(img_dir, nativa)) else "%s-q%02d.png" % (pid, q["id"])
             if not img_dir or not os.path.exists(os.path.join(img_dir, nome)):
                 sys.exit("Figura mancante: " + nome)
             os.makedirs(os.path.join(out, "img"), exist_ok=True)
             shutil.copyfile(os.path.join(img_dir, nome), os.path.join(out, "img", "q%02d.png" % q["id"]))
             d["immagine"] = True
-            d["ordineFisso"] = True  # il ritaglio contiene anche le opzioni con le lettere originali
+            if nome != nativa:
+                d["ordineFisso"] = True  # il ritaglio contiene anche le opzioni con le lettere originali
         d["paginaPdf"] = q["paginaPdf"]
         d["opzioni"] = q["opzioni"]
         D.append(d)
-        R.append({"id": q["id"], "corretta": q["corretta"]})
+        r = {"id": q["id"], "corretta": q["corretta"]}
+        if q.get("certezza"):
+            r["certezza"] = q["certezza"]
+        R.append(r)
         s = {"id": q["id"], "corretta": q["corretta"], "suggerimento": q["suggerimento"],
              "spiegazione": q["spiegazione"], "perOpzione": q["perOpzione"]}
         if q.get("nota"):

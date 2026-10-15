@@ -243,7 +243,8 @@ const SPIEGAZIONI = [
       "B": "Il brano non dice che i numeri posizionali siano nati applicando il principio della scrittura.",
       "C": "«Questa volta» segnala proprio che l’idea è **diversa**: non applicano lo stesso principio.",
       "D": "Il brano parla del passaggio dalla base dieci alla base due, ma la domanda chiede il rapporto con la **scrittura**."
-    }
+    },
+    "nota": "Domanda discutibile: una seconda risoluzione indipendente ha scelto «Entrambi applicano lo stesso principio base», leggendo l’accostamento («Anche la scoperta…») come un principio comune (pochi segni convenzionali per scrivere senza equivoci). Il «questa volta» fa propendere per due idee distinte, ma la chiave non è certa."
   },
   {
     "id": 22,
@@ -486,7 +487,8 @@ const SPIEGAZIONI = [
       "A": "La riserva obbligatoria è un obbligo di deposito, non un’operazione di gestione della liquidità giornaliera.",
       "B": "Le operazioni di rifinanziamento principale sono **settimanali** (durata una settimana).",
       "C": "Overnight, su iniziativa delle banche: servono per la liquidità giornaliera."
-    }
+    },
+    "nota": "Domanda discutibile: una seconda risoluzione indipendente ha scelto le operazioni di rifinanziamento principale, che sono lo strumento ordinario con cui la BCE fornisce liquidità. Se «giornaliera» va inteso come overnight, la risposta è il rifinanziamento marginale; la chiave non è certa."
   },
   {
     "id": 42,
