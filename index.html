@@ -462,7 +462,8 @@ function avvia(modo) {
 function ordineOpzioni(d) {
   if (!S.ordini[d._key]) {
     const lett = Object.keys(d.opzioni).filter(k => (d.opzioni[k] || "").trim());
-    S.ordini[d._key] = DB.imp.mescola ? mescola(lett) : lett;
+    // ordineFisso: la figura riporta già le lettere originali, quindi non si mescola
+    S.ordini[d._key] = DB.imp.mescola && !d.ordineFisso ? mescola(lett) : lett;
   }
   return S.ordini[d._key];
 }

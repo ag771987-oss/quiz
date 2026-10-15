@@ -35,6 +35,7 @@ def importa(src, img_dir=None):
             os.makedirs(os.path.join(out, "img"), exist_ok=True)
             shutil.copyfile(os.path.join(img_dir, nome), os.path.join(out, "img", "q%02d.png" % q["id"]))
             d["immagine"] = True
+            d["ordineFisso"] = True  # il ritaglio contiene anche le opzioni con le lettere originali
         d["paginaPdf"] = q["paginaPdf"]
         d["opzioni"] = q["opzioni"]
         D.append(d)

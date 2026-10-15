@@ -1,0 +1,746 @@
+const DOMANDE = [
+  {
+    "id": 1,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la nuovo/a responsabile di un team che vende servizi di grafica online. Gli affari stanno andando particolarmente bene ma, allo stesso tempo, dopo aver analizzato i principali dati delle vendite, vedi un modo migliore per pubblicizzare i vostri servizi targetizzando con maggiore precisione gli annunci. Potresti rivolgerti all'azienda di un tuo amico che si occupa di gestione marketing ma che non ha mai collaborato con la tua attuale realtà.",
+    "paginaPdf": 1,
+    "opzioni": {
+      "A": "Preferisci fare anzitutto un'analisi comparativa delle aziende che offrono servizi di gestione marketing (tra cui quella del tuo amico). Metti a fattor comune queste informazioni con il responsabile degli acquisti della tua azienda, con il quale ti confronti al fine di prendere una decisione condivisa.",
+      "B": "Preferisci non procedere con l'azienda del tuo amico. Anche se sai che opera in modo puntuale e offre un livello di qualità elevato, non reputi corretto rischiare che si verifichi una situazione di potenziale conflitto di interessi, almeno non in questo momento visto che sei appena entrato in azienda.",
+      "C": "Preferisci avviare un processo di ricerca volto a trovare altre aziende che offrono servizi come quelli dell'azienda del tuo amico. Fai un'analisi comparativa dei servizi offerti, dei feedback di altri clienti, dei costi e ti rivolgi al migliore sul mercato."
+    }
+  },
+  {
+    "id": 2,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile della funzione \"innovazione\" di un'azienda che opera nel settore delle energie rinnovabili. Tu e il tuo team avete appena messo a punto una nuova procedura di montaggio che consente di aumentare la durata nel tempo di alcuni componenti (es: pannelli solari, pale eoliche, ecc.). Ciò porterebbe quindi ad una maggiore efficienza anche per i clienti che si rivolgono a voi. Allo stesso tempo, sai che ci vuole tempo per formare i tecnici e avete un piano di montaggio presso nuovi clienti già definito da tempo.",
+    "paginaPdf": 1,
+    "opzioni": {
+      "A": "Non vuoi causare ritardi sulla tabella di marcia, anche perché andreste incontro a penali inserite nei contratti con i vostri clienti. Decidi di informare i responsabili delle altre funzioni della tua azienda di questa nuova procedura e chiedi alla funzione commerciale di farti sapere quando è il momento più opportuno per formare i tecnici.",
+      "B": "Informi il responsabile della funzione commerciale di questa nuova procedura e dei vantaggi per i clienti. Decidi di procedere sin da subito nel formare i tecnici e ti confronti con il tuo collega della funzione commerciale per rivedere i diversi contratti e trovare la strategia migliore per utilizzare appena possibile la nuova procedura, anche posticipando gli appuntamenti di qualche settimana.",
+      "C": "Chiedi al tuo collega della pianificazione degli interventi di montaggio di condividere con te il calendario degli appuntamenti presso i clienti. Nel frattempo cominci la formazione dei tecnici in modo che possa essere utilizzata la nuova procedura di montaggio almeno negli appuntamenti previsti tra un mese."
+    }
+  },
+  {
+    "id": 3,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile produzione di un'azienda che opera nel settore dei filati. La tua azienda è stata appena coinvolta in una fusione che ha visto insediarsi un nuovo direttivo, il quale sta apportando diversi cambiamenti e sta chiedendo a tutta la prima linea manageriale, e i relativi team, di adeguarsi. Infatti, ti è stato esplicitamente chiesto se è opportuno rivedere i processi della funzione che rappresenti, inserendo eventuali strumenti tecnologici in grado di automatizzare e standardizzare i controlli qualità. Fino ad ora avete sempre preferito gestire questo processo in modo più \"analogico\", vista la mole di attività comunque contenuta. Sebbene questo modo di procedere sia dispendioso in termini di tempo, è sempre stato in grado di garantire un elevato livello di qualità del prodotto.",
+    "paginaPdf": 1,
+    "opzioni": {
+      "A": "Dal momento che non vedi vantaggi evidenti nel cambiare le modalità di gestione del controllo qualità, lo comunichi al direttivo. Inoltre, spieghi nel dettaglio che, data la mole di attività comunque contenuta, ritieni eccessivo un investimento di questo tipo.",
+      "B": "Una gestione più efficace ed efficiente ti sembra comunque necessaria, sebbene le cose ad oggi non funzionino poi così male. Decidi di dedicarti ad una fase esplorativa volta a trovare strumenti/applicativi tecnologici che possano risultare utili.",
+      "C": "Rivedi l'intero processo del controllo qualità. Organizzi una riunione con i tuoi collaboratori per coinvolgerli nella ridefinizione dei vari step del processo, introducendo inoltre nuovi strumenti tecnologici che il mercato sta offrendo oggi."
+    }
+  },
+  {
+    "id": 4,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile di stabilimento di un'azienda che produce arredamenti per esterni. Hai appena avuto una riunione con i responsabili degli altri dipartimenti dal momento che alcune linee di prodotto, tra le più storiche e consolidate, pur raggiungendo il target di vendite stabilito, hanno visto una diminuzione della marginalità a causa dell'aumento del costo di alcuni materiali riciclati che avete iniziato ad utilizzare qualche anno fa. Ti è stato esplicitamente richiesto un contributo per trovare delle soluzioni e lo stesso è stato chiesto ai responsabili degli altri dipartimenti.",
+    "paginaPdf": 2,
+    "opzioni": {
+      "A": "Reputi che sia arrivato il momento di lavorare su una maggiore efficienza dei processi produttivi. Decidi di continuare ad utilizzare i materiali riciclati ma, nel frattempo, ti affidi ad una società esterna che possa supportare la tua azienda nell'individuare i passaggi dove vi è maggiore dispendio e nel ridefinire quindi i processi.",
+      "B": "Sei intenzionato/a a proporre di tornare ai materiali non riciclati che utilizzavate tempo addietro. Pertanto, chiedi a un tuo collaboratore di fare un'analisi dei diversi materiali e dei fornitori che potrebbero venderveli per dimostrare l'eccessivo aumento dei costi dovuto ai materiali riciclati; in questo modo, potrai meglio argomentare la tua scelta.",
+      "C": "Decidi di rivedere l'intero processo di produzione in una chiave di maggiore efficienza e, allo stesso tempo, cerchi nuove modalità di impiego dei materiali riciclati: non vuoi dover rinunciare alle recenti innovazioni ma reputi necessario trovare comunque delle alternative in grado di ridurre i costi."
+    }
+  },
+  {
+    "id": 5,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile commerciale di un'azienda che opera nel settore alimenti e bevande. Hai appena ricevuto diverse email e alcune risultano essere piuttosto urgenti. In particolare, il mittente di una email è un tuo cliente che ti riferisce di non aver trovato tutti i prodotti che ha ordinato nell'ultima spedizione che avete effettuato. Un'altra email arriva dal tuo capo, che ti chiede di redigere un piano per incrementare le vendite delle nuove bevande bio che state distribuendo da qualche mese. Infine, in un'altra email, il responsabile amministrativo ti chiede un chiarimento rispetto ad un recupero crediti di un cliente su cui hai lavorato personalmente.",
+    "paginaPdf": 2,
+    "opzioni": {
+      "A": "Gestisci con priorità assoluta la questione del cliente cercando di capire come mai nella spedizione non sono stati inclusi tutti i prodotti concordati nell'ordine. Se necessario coinvolgi anche il tuo collega responsabile della logistica.",
+      "B": "Mentre deleghi ad uno dei tuoi collaboratori di risolvere la questione relativa all'ordine del cliente, fai un'analisi delle priorità e organizzi di conseguenza la tua agenda per occuparti personalmente delle altre due richieste.",
+      "C": "Chiedi ai tuoi collaboratori di occuparsi della problematica del cliente relativa all'ordine e di definire una bozza del piano di incremento delle vendite delle bevande bio. Fornisci al responsabile amministrativo le informazioni in tuo possesso."
+    }
+  },
+  {
+    "id": 6,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Lavori come responsabile senior in una grande società di revisione contabile. Al momento stai seguendo diverse attività di audit e consulenza finanziaria, particolarmente delicate e da chiudere il prima possibile. Per alcune di esse, avrai la necessità di coinvolgere i tuoi collaboratori per un supporto sia sul piano operativo sia nella gestione degli interlocutori coinvolti.",
+    "paginaPdf": 2,
+    "opzioni": {
+      "A": "Ti focalizzi sulle attività più importanti e delicate. Costruisci un piano d'azione per gestirle al meglio e chiedi al tuo collaboratore più libero un supporto solo su attività operative specifiche.",
+      "B": "Sai che i tuoi collaboratori hanno molti impegni. Cerchi pertanto di lavorare il più possibile in autonomia, svolgendo giorno per giorno le questioni più urgenti. Chiederai un supporto solo se strettamente necessario.",
+      "C": "Decidi di ripianificare da capo tutte le attività: metti in fila le varie scadenze, analizzi le urgenze, le attività più importanti e prevedi il coinvolgimento di diversi collaboratori."
+    }
+  },
+  {
+    "id": 7,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile qualità di un'azienda che opera nel settore logistico. Nell'ultimo bimestre è aumentato il tasso di errori e incidenti nei diversi reparti. Questo aumento coincide con la nomina del nuovo direttore generale dell'azienda. Anche se è difficile attribuire direttamente questa variazione degli indici di incidenti al nuovo direttore, la responsabilità legale e di immagine sarebbe di fatto sua.",
+    "paginaPdf": 2,
+    "opzioni": {
+      "A": "Fai in modo di informare il personale dei reparti di questo aumento e chiedi loro di prestare maggiore attenzione al rispetto degli standard qualitativi previsti.",
+      "B": "Aspetti di vedere i dati del prossimo bimestre per comprendere se si è trattato di un aumento casuale o se invece ti trovi di fronte a un aumento costante.",
+      "C": "Crei una squadra dedicata alla revisione degli standard di qualità che avete in essere e ti assicuri di aderirvi in modo coerente."
+    }
+  },
+  {
+    "id": 8,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile marketing e pubblicità di una grande azienda di trasporti. Un quotidiano a tiratura nazionale afferma che la quota di mercato della tua azienda è diminuita del 18% in 14 mesi. Inoltre, l'articolo contiene una lunga discussione speculativa sulle ragioni di questo calo. Il Direttore Generale ti ha già chiamato esprimendo preoccupazione.",
+    "paginaPdf": 3,
+    "opzioni": {
+      "A": "Scrivi una lettera di risposta al giornale chiarendo quale sia la tua prospettiva rispetto all'articolo e organizzi un incontro con loro per un'intervista al Direttore Generale.",
+      "B": "Ti prepari a confrontarti con il Direttore Generale e gli comunichi che non è possibile credere a tutto ciò che riportano i giornali. Sei dell'avviso di lasciar cadere nel nulla l'articolo.",
+      "C": "Organizzi una riunione con i tuoi collaboratori e chiedi un'analisi approfondita. Chiedi, inoltre, al giornale di condividere come sono stati calcolati gli indici riportati nell'articolo."
+    }
+  },
+  {
+    "id": 9,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile selezione di un'azienda nel settore assicurativo. Hai da poco deciso di ampliare la tua squadra dal momento che vi trovate in un momento di forte espansione e i vostri carichi di lavoro sono aumentati. Uno dei tuoi nuovi collaboratori, tuttavia, ha un rendimento basso e si dimostra impacciato ed insicuro.",
+    "paginaPdf": 3,
+    "opzioni": {
+      "A": "Lasci che sia la persona in modo autonomo a trovare un metodo di lavoro a lui più idoneo. Si tratta solo di un inizio non troppo brillante.",
+      "B": "Chiarisci al collaboratore gli obiettivi stabiliti e spieghi come fare per raggiungerli. Ti preoccupi di verificare che segua le tue indicazioni.",
+      "C": "Coinvolgi il collaboratore per rivedere assieme gli obiettivi da raggiungere. Lasci poi che in autonomia decida come organizzarsi per raggiungerli."
+    }
+  },
+  {
+    "id": 10,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile di zona di una catena di profumerie. Uno dei tuoi responsabili di negozio, che lavora da diverso tempo nella tua zona, è stato assegnato ad un nuovo punto vendita occupandosi dell'apertura. Tuttavia, sta avendo notevoli difficoltà nel risolvere un problema gestionale. Finora la persona ha invece sempre operato in buona autonomia, con risultati soddisfacenti.",
+    "paginaPdf": 3,
+    "opzioni": {
+      "A": "Incoraggi la persona a esaminare nuovamente il problema andando a fondo nella questione. Garantisci il tuo supporto, indirizzandolo e mettendo a disposizione la tua esperienza.",
+      "B": "Intervieni direttamente sul problema per risolverlo con rapidità. In questo modo aumentano le possibilità di non ritardare il complicato percorso di apertura del nuovo punto vendita.",
+      "C": "Decidi di incontrare la persona e cerchi di aiutarla a risolvere il problema, anche aiutandola dal punto di vista operativo."
+    }
+  },
+  {
+    "id": 11,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile vendite di un'azienda del settore Hi-tech. Tra le persone della tua squadra e quelle del tuo collega (responsabile amministrativo) ci sono diversi attriti e nell'ultimo periodo la situazione è peggiorata. Uno dei suoi collaboratori, prendendo come alibi la nuova procedura di fatturazione ai clienti, continua a richiamare in modo pungente i tuoi collaboratori e spesso informa la direzione dei vostri \"errori\".",
+    "paginaPdf": 3,
+    "opzioni": {
+      "A": "Incontri il collaboratore del tuo collega per affrontare apertamente la questione, cerchi di capire il motivo per cui coinvolge la direzione in queste questioni e lo inviti caldamente ad assumere un atteggiamento più collaborativo e trasparente.",
+      "B": "Chiedi un incontro con il tuo collega per discutere della situazione e per assicurarti che prenderà in mano la situazione. Ti preoccupi di informarlo che la prossima volta potrai intervenire direttamente con le sue persone se continuano ad avere questo atteggiamento.",
+      "C": "Preferisci raccogliere prima le diverse problematiche che stanno riscontrando le persone del tuo team. In seguito, incontri il tuo collega per condividere le vostre difficoltà e chiedere di supportarti nel trovare una soluzione."
+    }
+  },
+  {
+    "id": 12,
+    "materia": "Situazionale",
+    "istruzioni": "Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:",
+    "brano": "",
+    "domanda": "Sei il/la responsabile della qualità e processi privacy di un'azienda di consulenza. Un vostro cliente ha deciso di svolgere un audit su come trattate i dati per loro conto. Hai pertanto la necessità di confrontarti con il legale che vi segue, il responsabile della sicurezza informatica e soprattutto il collega che all'interno della tua azienda segue direttamente i progetti del cliente. Ti è già capitato di confrontarti con questo collega in passato ed è stato difficile trovare un modo per collaborare: tende a defilarsi in merito a queste questioni e si rende poco disponibile.",
+    "paginaPdf": 3,
+    "opzioni": {
+      "A": "Mandi un'email al collega per anticipare che riceverà una tua breve telefonata durante la quale spiegherai la richiesta e i tempi necessari, lasciando al collega la scelta di come darti supporto e chi coinvolgere dello staff per aiutarti.",
+      "B": "Richiedi un incontro al tuo collega e anticipi via email i motivi della richiesta. Metti in copia le persone di staff che lavorano sui progetti del cliente affinchè possano essere di supporto nel ricercare delle informazioni che ti servono.",
+      "C": "Scrivi un'email al tuo collega, con in copia conoscenza l'amministratore delegato, chiedendo di organizzare una riunione in cui parteciperà anche il legale e il responsabile della sicurezza informatica. Evidenzi che si tratta di un'esigenza aziendale e che ti aspetti un atteggiamento collaborativo."
+    }
+  },
+  {
+    "id": 13,
+    "materia": "Comprensione del testo",
+    "brano": "Il padre dell'aria condizionata è l'ingegnere americano Willis Haviland Carrier che nel 1901, all'età di 25 anni, poco dopo aver concluso gli studi di ingegneria meccanica, ideò una macchina per la riduzione dell'umidità e della temperatura nell'aria. Il sistema, che venne brevettato nel 1906, si fondava sul principio teorizzato dal chimico e fisico inglese Michael Faraday che, circa un secolo prima, aveva scoperto come la compressione e la successiva espansione di un gas avevano come conseguenza il raffreddamento del gas stesso. Il primo condizionatore fu installato durante l'estate del 1902 in una tipografia di Brooklyn, a New York, dove i continui sbalzi di umidità rendevano difficile la stampa ostacolando il corretto trattamento della carta e degli inchiostri. Seguirono rapidamente le prime applicazioni all'industria tessile, quindi agli uffici delle aziende pubbliche e private per aumentare il rendimento degli impiegati, infine, nel secondo dopoguerra, si estesero alle abitazioni private e alle automobili. Dato che i gas utilizzati nei primi condizionatori, clorometano e ammoniaca, erano infiammabili e altamente tossici in quanto l'accidentale rottura dei compressori poteva essere molto pericolosa se non fatale, a partire dal 1928 si cominciarono a utilizzare i clorofluorocarburi, derivati dal metano e conosciuti sotto il nome di freon, che hanno ottime proprietà refrigeranti e sono innocui per l'uomo, sebbene siano dannosi per l'ozono atmosferico.",
+    "domanda": "I primi condizionatori vennero installati:",
+    "paginaPdf": 4,
+    "opzioni": {
+      "A": "prevalentemente nelle tipografie di New York",
+      "B": "soprattutto nelle aziende private per aumentare le prestazioni dei lavoratori",
+      "C": "prima negli ambienti di lavoro e poi nelle abitazioni private"
+    }
+  },
+  {
+    "id": 14,
+    "materia": "Comprensione del testo",
+    "brano": "Il padre dell'aria condizionata è l'ingegnere americano Willis Haviland Carrier che nel 1901, all'età di 25 anni, poco dopo aver concluso gli studi di ingegneria meccanica, ideò una macchina per la riduzione dell'umidità e della temperatura nell'aria. Il sistema, che venne brevettato nel 1906, si fondava sul principio teorizzato dal chimico e fisico inglese Michael Faraday che, circa un secolo prima, aveva scoperto come la compressione e la successiva espansione di un gas avevano come conseguenza il raffreddamento del gas stesso. Il primo condizionatore fu installato durante l'estate del 1902 in una tipografia di Brooklyn, a New York, dove i continui sbalzi di umidità rendevano difficile la stampa ostacolando il corretto trattamento della carta e degli inchiostri. Seguirono rapidamente le prime applicazioni all'industria tessile, quindi agli uffici delle aziende pubbliche e private per aumentare il rendimento degli impiegati, infine, nel secondo dopoguerra, si estesero alle abitazioni private e alle automobili. Dato che i gas utilizzati nei primi condizionatori, clorometano e ammoniaca, erano infiammabili e altamente tossici in quanto l'accidentale rottura dei compressori poteva essere molto pericolosa se non fatale, a partire dal 1928 si cominciarono a utilizzare i clorofluorocarburi, derivati dal metano e conosciuti sotto il nome di freon, che hanno ottime proprietà refrigeranti e sono innocui per l'uomo, sebbene siano dannosi per l'ozono atmosferico.",
+    "domanda": "I primi condizionatori:",
+    "paginaPdf": 4,
+    "opzioni": {
+      "A": "utilizzavano esclusivamente il clorometano",
+      "B": "in caso di rottura dei compressori potevano causare malessere ma non la morte",
+      "C": "tutte le altre risposte sono false"
+    }
+  },
+  {
+    "id": 15,
+    "materia": "Comprensione del testo",
+    "brano": "Il padre dell'aria condizionata è l'ingegnere americano Willis Haviland Carrier che nel 1901, all'età di 25 anni, poco dopo aver concluso gli studi di ingegneria meccanica, ideò una macchina per la riduzione dell'umidità e della temperatura nell'aria. Il sistema, che venne brevettato nel 1906, si fondava sul principio teorizzato dal chimico e fisico inglese Michael Faraday che, circa un secolo prima, aveva scoperto come la compressione e la successiva espansione di un gas avevano come conseguenza il raffreddamento del gas stesso. Il primo condizionatore fu installato durante l'estate del 1902 in una tipografia di Brooklyn, a New York, dove i continui sbalzi di umidità rendevano difficile la stampa ostacolando il corretto trattamento della carta e degli inchiostri. Seguirono rapidamente le prime applicazioni all'industria tessile, quindi agli uffici delle aziende pubbliche e private per aumentare il rendimento degli impiegati, infine, nel secondo dopoguerra, si estesero alle abitazioni private e alle automobili. Dato che i gas utilizzati nei primi condizionatori, clorometano e ammoniaca, erano infiammabili e altamente tossici in quanto l'accidentale rottura dei compressori poteva essere molto pericolosa se non fatale, a partire dal 1928 si cominciarono a utilizzare i clorofluorocarburi, derivati dal metano e conosciuti sotto il nome di freon, che hanno ottime proprietà refrigeranti e sono innocui per l'uomo, sebbene siano dannosi per l'ozono atmosferico.",
+    "domanda": "I condizionatori che vengono utilizzati oggi:",
+    "paginaPdf": 4,
+    "opzioni": {
+      "A": "tutte le altre risposte sono vere",
+      "B": "sono sicuri per la salute dell'uomo",
+      "C": "hanno maggiore efficienza energetica rispetto al passato"
+    }
+  },
+  {
+    "id": 16,
+    "materia": "Comprensione del testo",
+    "brano": "Verso la fine degli Anni Sessanta, Phyllostachys Bambusoides, una specie di bambù originaria della Cina ma introdotta in Giappone, negli Stati Uniti e in altri paesi, fiorì improvvisamente. Le foreste di questa pianta sbocciarono tutte insieme, in perfetta sincronia pur essendo separate da migliaia di chilometri. I fiori rilasciarono il loro polline nel vento e le piante di bambù, che possono crescere fino a oltre venti metri di altezza, morirono tutte all'istante, mentre con il tempo i loro semi sono germogliati e hanno fatto nascere nuove piante. La nuova generazione ha circa 50 anni di età, e non fiorirà prima del 2090. Possiamo essere piuttosto sicuri che le cose andranno così, perché gli studiosi cinesi hanno tenuto traccia di queste fioriture per secoli. Nel 999 d.C., per esempio, registrarono una fioritura di bambù cinese continentale, successivamente le piante di bambù morirono, i loro semi germogliarono, e le nuove foreste non fiorirono più fino al 1114. Dopo che la specie fu importata nel loro paese, i giapponesi documentarono nuove fioriture agli inizi del Settecento, e poi di nuovo nel 1845. Negli anni si è scoperto che esiste un certo numero di altre specie di bambù che sbocciano su cicli della durata di decenni e attraverso una fioritura sincrona che, secondo il biologo evoluzionista Daniel Janzen, potrebbe essere dovuta al fatto che molti animali si nutrono dei semi di bambù e ogni seme trangugiato rappresenta la perdita di potenziale progenie per la pianta. La fioritura contemporanea consentirebbe di mettere a disposizione un'enorme quantità di semi, alcuni dei quali rimarrebbero intatti anche se i predatori dovessero rimpinzarsi fino a scoppiare. Tali semi sopravvissuti potrebbero crescere fino a diventare piante e garantire, così, la sopravvivenza della specie.",
+    "domanda": "La particolarità dei bambù descritti è:",
+    "paginaPdf": 5,
+    "opzioni": {
+      "A": "tutte le altre risposte sono vere",
+      "B": "di morire improvvisamente dopo la fioritura",
+      "C": "di sbocciare una volta soltanto durante la loro esistenza"
+    }
+  },
+  {
+    "id": 17,
+    "materia": "Comprensione del testo",
+    "brano": "Verso la fine degli Anni Sessanta, Phyllostachys Bambusoides, una specie di bambù originaria della Cina ma introdotta in Giappone, negli Stati Uniti e in altri paesi, fiorì improvvisamente. Le foreste di questa pianta sbocciarono tutte insieme, in perfetta sincronia pur essendo separate da migliaia di chilometri. I fiori rilasciarono il loro polline nel vento e le piante di bambù, che possono crescere fino a oltre venti metri di altezza, morirono tutte all'istante, mentre con il tempo i loro semi sono germogliati e hanno fatto nascere nuove piante. La nuova generazione ha circa 50 anni di età, e non fiorirà prima del 2090. Possiamo essere piuttosto sicuri che le cose andranno così, perché gli studiosi cinesi hanno tenuto traccia di queste fioriture per secoli. Nel 999 d.C., per esempio, registrarono una fioritura di bambù cinese continentale, successivamente le piante di bambù morirono, i loro semi germogliarono, e le nuove foreste non fiorirono più fino al 1114. Dopo che la specie fu importata nel loro paese, i giapponesi documentarono nuove fioriture agli inizi del Settecento, e poi di nuovo nel 1845. Negli anni si è scoperto che esiste un certo numero di altre specie di bambù che sbocciano su cicli della durata di decenni e attraverso una fioritura sincrona che, secondo il biologo evoluzionista Daniel Janzen, potrebbe essere dovuta al fatto che molti animali si nutrono dei semi di bambù e ogni seme trangugiato rappresenta la perdita di potenziale progenie per la pianta. La fioritura contemporanea consentirebbe di mettere a disposizione un'enorme quantità di semi, alcuni dei quali rimarrebbero intatti anche se i predatori dovessero rimpinzarsi fino a scoppiare. Tali semi sopravvissuti potrebbero crescere fino a diventare piante e garantire, così, la sopravvivenza della specie.",
+    "domanda": "La specie Phyllostachys Bambusoides:",
+    "paginaPdf": 5,
+    "opzioni": {
+      "A": "ha avuto origine per la prima volta in Giappone",
+      "B": "non è originaria del Giappone",
+      "C": "solitamente non supera i venti metri di altezza"
+    }
+  },
+  {
+    "id": 18,
+    "materia": "Comprensione del testo",
+    "brano": "Verso la fine degli Anni Sessanta, Phyllostachys Bambusoides, una specie di bambù originaria della Cina ma introdotta in Giappone, negli Stati Uniti e in altri paesi, fiorì improvvisamente. Le foreste di questa pianta sbocciarono tutte insieme, in perfetta sincronia pur essendo separate da migliaia di chilometri. I fiori rilasciarono il loro polline nel vento e le piante di bambù, che possono crescere fino a oltre venti metri di altezza, morirono tutte all'istante, mentre con il tempo i loro semi sono germogliati e hanno fatto nascere nuove piante. La nuova generazione ha circa 50 anni di età, e non fiorirà prima del 2090. Possiamo essere piuttosto sicuri che le cose andranno così, perché gli studiosi cinesi hanno tenuto traccia di queste fioriture per secoli. Nel 999 d.C., per esempio, registrarono una fioritura di bambù cinese continentale, successivamente le piante di bambù morirono, i loro semi germogliarono, e le nuove foreste non fiorirono più fino al 1114. Dopo che la specie fu importata nel loro paese, i giapponesi documentarono nuove fioriture agli inizi del Settecento, e poi di nuovo nel 1845. Negli anni si è scoperto che esiste un certo numero di altre specie di bambù che sbocciano su cicli della durata di decenni e attraverso una fioritura sincrona che, secondo il biologo evoluzionista Daniel Janzen, potrebbe essere dovuta al fatto che molti animali si nutrono dei semi di bambù e ogni seme trangugiato rappresenta la perdita di potenziale progenie per la pianta. La fioritura contemporanea consentirebbe di mettere a disposizione un'enorme quantità di semi, alcuni dei quali rimarrebbero intatti anche se i predatori dovessero rimpinzarsi fino a scoppiare. Tali semi sopravvissuti potrebbero crescere fino a diventare piante e garantire, così, la sopravvivenza della specie.",
+    "domanda": "I semi di questa specie:",
+    "paginaPdf": 5,
+    "opzioni": {
+      "A": "sono un numero troppo elevato per poter essere tutti mangiati dai predatori",
+      "B": "attraverso il vento possono arrivare a migliaia di chilometri di distanza",
+      "C": "vengono in breve tempo tutti mangiati dai predatori"
+    }
+  },
+  {
+    "id": 19,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, qual è l'alternativa da scartare?",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 6,
+    "opzioni": {
+      "A": "Alternativa 1",
+      "B": "Alternativa 5",
+      "C": "Alternativa 2"
+    }
+  },
+  {
+    "id": 20,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, qual è l'alternativa da scartare?",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 6,
+    "opzioni": {
+      "A": "Alternativa 4",
+      "B": "Alternativa 3",
+      "C": "Alternativa 5"
+    }
+  },
+  {
+    "id": 21,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, quale alternativa completa la serie?",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 6,
+    "opzioni": {
+      "A": "Alternativa 1",
+      "B": "Alternativa 3",
+      "C": "Alternativa 2"
+    }
+  },
+  {
+    "id": 22,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, quale alternativa rappresentante un diagramma soddisfa la seguente relazione sistemica?\nPSICOLOGI - NUBILI - CELIBI",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 7,
+    "opzioni": {
+      "A": "Alternativa 3",
+      "B": "Alternativa 5",
+      "C": "Alternativa 1"
+    }
+  },
+  {
+    "id": 23,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, qual è l'alternativa da scartare?",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 7,
+    "opzioni": {
+      "A": "Alternativa 4",
+      "B": "Alternativa 1",
+      "C": "Alternativa 5"
+    }
+  },
+  {
+    "id": 24,
+    "materia": "Ragionamento logico",
+    "brano": "",
+    "domanda": "Data la seguente immagine, quale alternativa completa la serie 3)?",
+    "immagine": true,
+    "ordineFisso": true,
+    "paginaPdf": 7,
+    "opzioni": {
+      "A": "Alternativa E",
+      "B": "Alternativa C",
+      "C": "Alternativa B"
+    }
+  },
+  {
+    "id": 25,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Secondo il principio di riserva di legge c.d. assoluta:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "la Costituzione affida in esclusiva alla legge la disciplina di determinate materie",
+      "B": "la legge affida in esclusiva determinate materie alla disciplina delle fonti subordinate",
+      "C": "compete alla sola autorità giudiziaria emanare provvedimenti restrittivi della libertà personale"
+    }
+  },
+  {
+    "id": 26,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Il Presidente della Repubblica può essere messo in stato di accusa:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "per alto tradimento o per attentato alla Costituzione dal Parlamento in seduta comune e dalla maggioranza assoluta dei suoi membri",
+      "B": "per alto tradimento dal Governo",
+      "C": "per alto tradimento o per attentato alla Costituzione dal Parlamento in seduta comune e dalla maggioranza relativa dei suoi membri"
+    }
+  },
+  {
+    "id": 27,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "La revisione costituzionale, ai sensi dell'art. 138 Cost.:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "prevede che ciascuna Camera deliberi due volte, con un intervallo minore di tre mesi ed approvazione a maggioranza assoluta dei componenti di ciascuna Camera nella seconda votazione",
+      "B": "prevede un procedimento di competenza delle due Camere aggravato rispetto al procedimento legislativo ordinario",
+      "C": "prevede un procedimento di competenza di un organo ad hoc, diverso dalle due Camere"
+    }
+  },
+  {
+    "id": 28,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "In seguito al ricevimento del cd. preavviso di rigetto, l'istante:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "ha 20 giorni per presentare per iscritto le proprie osservazioni",
+      "B": "ha 10 giorni per presentare per iscritto le proprie osservazioni",
+      "C": "ha 60 giorni per proporre ricorso giurisdizionale"
+    }
+  },
+  {
+    "id": 29,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Un provvedimento affetto da incompetenza assoluta:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "può essere ratificato sussistendo un interesse pubblico ed entro un termine ragionevole",
+      "B": "non può essere ratificato né rettificato",
+      "C": "non può essere ratificato, ma può essere rettificato"
+    }
+  },
+  {
+    "id": 30,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "L'efficacia dei provvedimenti restrittivi della sfera giuridica dei privati:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "richiede sempre, anche per i provvedimenti a carattere urgente, la preventiva comunicazione al destinatario",
+      "B": "può essere anche immediata, se questi rivestono carattere cautelare ed urgente",
+      "C": "è sempre differita di 15 giorni successivi alla loro pubblicazione"
+    }
+  },
+  {
+    "id": 31,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Gli enti pubblici non economici:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "hanno una vocazione generale",
+      "B": "operano solo sul mercato",
+      "C": "sono sottoposti a poteri di vigilanza e di indirizzo dei ministeri o delle regioni"
+    }
+  },
+  {
+    "id": 32,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Il ricorso straordinario:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "prevede un parere vincolante da parte del Consiglio di Stato",
+      "B": "può essere proposto per motivi di legittimità e di merito",
+      "C": "garantisce il contraddittorio, anche se solo in forma orale"
+    }
+  },
+  {
+    "id": 33,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Ai sensi dell'art. 42, par. 4, TUE, le decisioni relative alla politica di sicurezza e di difesa comune sono adottate:",
+    "paginaPdf": 8,
+    "opzioni": {
+      "A": "dal Consiglio, che delibera all'unanimità su proposta dell'Alto rappresentante dell'Unione per gli affari esteri e la politica di sicurezza o su iniziativa di uno Stato membro",
+      "B": "dall'Alto rappresentante dell'Unione per gli affari esteri e la politica di sicurezza, su proposta del Consiglio o su iniziativa di uno Stato membro",
+      "C": "dal Consiglio europeo, che delibera a maggioranza su proposta dell'Alto rappresentante dell'Unione per gli affari esteri e la politica di sicurezza o su iniziativa di uno Stato membro"
+    }
+  },
+  {
+    "id": 34,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Nelle ipotesi in cui sorga un dubbio sull'interpretazione del diritto UE in un processo, il giudice nazionale può chiedere alla Corte di giustizia:",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "la pronuncia pregiudiziale esclusivamente sulla validità e l'interpretazione degli atti compiuti dalle istituzioni",
+      "B": "la pronuncia pregiudiziale sull'interpretazione dei trattati e sulla validità e l'interpretazione degli atti compiuti dalle istituzioni, dagli organi o dagli organismi dell'Unione",
+      "C": "la pronuncia pregiudiziale esclusivamente sull'interpretazione delle norme contenute nei trattati"
+    }
+  },
+  {
+    "id": 35,
+    "materia": "Diritto",
+    "brano": "",
+    "domanda": "Ai sensi degli articoli 2 e 4 TFUE, relativi alle competenze dell'UE, nel settore della coesione economica, sociale e territoriale:",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "l'Unione svolge azioni di sostegno, coordinamento e completamento dell'azione degli Stati membri",
+      "B": "l'UE è competente alla definizione e all'attuazione di programmi, senza che l'esercizio di tale competenza possa impedire agli Stati membri di esercitare la loro",
+      "C": "gli Stati membri esercitano la loro competenza nella misura in cui l'Unione non ha esercitato la propria"
+    }
+  },
+  {
+    "id": 36,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "Per produttività totale dei fattori si intende:",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "la produttività delle tecnologie utilizzate ai fini dell'innovazione",
+      "B": "la qualità e la quantità delle dotazioni tecnologiche che accrescono la produttività di un sistema-paese",
+      "C": "quella parte della variazione del prodotto che non può essere spiegata da variazioni degli input di lavoro e di capitale"
+    }
+  },
+  {
+    "id": 37,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "L'elasticità della domanda di un bene normale rispetto al prezzo misura:",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "l'aumento percentuale della quantità domandata del bene quando il suo prezzo aumenta",
+      "B": "la riduzione percentuale della quantità domandata di un bene quando il suo prezzo si riduce",
+      "C": "la riduzione percentuale della quantità domandata di un bene quando il suo prezzo aumenta"
+    }
+  },
+  {
+    "id": 38,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "In che modo sono definiti il saldo complessivo del bilancio pubblico e il saldo primario?",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "Il saldo complessivo è la somma dei saldi della parte corrente e delle entrate in conto capitale. Il saldo primario è pari al saldo complessivo più la spesa per interessi",
+      "B": "Il saldo complessivo è la differenza tra le spese correnti e le entrate in conto capitale. Il saldo primario è pari al saldo complessivo più la spesa per interessi",
+      "C": "Il saldo complessivo è la somma algebrica dei saldi della parte corrente e di quella in conto capitale. Il saldo primario è pari al saldo complessivo meno la spesa per interessi"
+    }
+  },
+  {
+    "id": 39,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "Perché una politica monetaria in economia aperta in regime di cambi fissi ed elevata mobilità dei capitali è inefficace?",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "Perché gli effetti degli interventi monetari sulla bilancia dei pagamenti sono limitati dai movimenti dei beni",
+      "B": "Perché l'impossibilità di un deprezzamento della valuta si scarica interamente sui movimenti di beni",
+      "C": "Perché la mobilità provoca una fuoriuscita di capitali e una distruzione di base monetaria"
+    }
+  },
+  {
+    "id": 40,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "In quale delle seguenti situazioni si manifesta un'esternalità?",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "In presenza di attività di produzione congiunta o di consumo congiunto",
+      "B": "In presenza di beni non omogenei",
+      "C": "In presenza di beni inferiori"
+    }
+  },
+  {
+    "id": 41,
+    "materia": "Economia",
+    "brano": "",
+    "domanda": "Il teorema di Coase può essere formulato nel modo seguente:",
+    "paginaPdf": 9,
+    "opzioni": {
+      "A": "in assenza di diritti di proprietà e con costi di transazione ragionevoli, gli agenti economici coinvolti possono internalizzare un'esternalità",
+      "B": "in presenza di diritti di proprietà indefiniti e costi di transazione elevati, gli agenti economici coinvolti possono internalizzare un'esternalità",
+      "C": "in presenza di diritti di proprietà ben definiti e costi di negoziazione e transazione nulli, gli agenti economici coinvolti possono internalizzare un'esternalità"
+    }
+  },
+  {
+    "id": 42,
+    "materia": "Organizzazione",
+    "brano": "",
+    "domanda": "A quale obiettivo è funzionale il modello burocratico secondo Weber?",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "Al mantenimento e alla legittimazione del potere legale",
+      "B": "Al mantenimento e alla legittimazione del potere carismatico",
+      "C": "Al mantenimento e alla legittimazione del potere politico"
+    }
+  },
+  {
+    "id": 43,
+    "materia": "Contabilità pubblica",
+    "brano": "",
+    "domanda": "Il Bilancio dello Stato è articolato in:",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "missioni, programmi e azioni",
+      "B": "missioni, programmi, categorie merceologiche",
+      "C": "missioni, componenti, interventi"
+    }
+  },
+  {
+    "id": 44,
+    "materia": "Organizzazione",
+    "brano": "",
+    "domanda": "Come molti autorevoli studiosi sostengono, i principi dell'organizzazione scientifica del lavoro possono essere molto efficaci ed utili per le amministrazioni pubbliche. In particolare, a partire da quale periodo storico è stato introdotto nella letteratura specialistica il concetto di One best way di F. Taylor?",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "A partire dagli anni dieci del duemila",
+      "B": "A partire dai primi decenni del novecento",
+      "C": "A partire dagli anni sessanta del novecento"
+    }
+  },
+  {
+    "id": 45,
+    "materia": "Organizzazione",
+    "brano": "",
+    "domanda": "Uno dei fattori più importanti alla base della qualità dei comportamenti individuali nelle amministrazioni pubbliche è l'intensità della spinta motivazionale. Il tema della motivazione è stato, quindi, oggetto di approfonditi studi e riflessioni teoriche. In particolare, all'interno del gruppo di teorie che si focalizzano sul contenuto della motivazione, quale teoria opera un'importante distinzione fra fattori igienici e fattori motivanti?",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "La teoria associata ai bisogni ERC",
+      "B": "La teoria delle contingenze strutturali",
+      "C": "La teoria denominata dei fattori duali"
+    }
+  },
+  {
+    "id": 46,
+    "materia": "Organizzazione",
+    "brano": "",
+    "domanda": "Nelle amministrazioni pubbliche, il lavoro di gruppo si sta sempre più affermando come modalità di organizzazione delle attività e del lavoro. Questa soluzione organizzativa, pur garantendo numerosi vantaggi porta con sé anche dei limiti. In particolare, quando si analizzano le dinamiche dei processi decisionali di gruppo, la presenza di una forma di anonimato e la possibile diminuzione del senso di responsabilità individuale creano un effetto di disimpegno o pigrizia negli individui che si definisce come:",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "Groupthink",
+      "B": "Downsizing",
+      "C": "Social loafing"
+    }
+  },
+  {
+    "id": 47,
+    "materia": "Organizzazione",
+    "brano": "",
+    "domanda": "Anche all'interno delle amministrazioni pubbliche si ragiona sulla possibilità di adeguare il modello della macro-struttura organizzativa alle esigenze del contesto esterno, in coerenza con i vincoli esistenti. Grazie al contributo delle teorie che si sono concentrate sul tema, si distinguono diversi archetipi organizzativi. In particolare, le forme a matrice si caratterizzano per:",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "la presenza di un'unica linea gerarchica formale",
+      "B": "l'assenza di una linea gerarchica formale",
+      "C": "la presenza di una doppia linea gerarchica formale"
+    }
+  },
+  {
+    "id": 48,
+    "materia": "Informatica",
+    "brano": "",
+    "domanda": "Nel vademecum AgID per \"L'implementazione delle linee guida sulla formazione, gestione e conservazione dei documenti informatici\" la tipologia di fascicolo denominata \"procedimento amministrativo\":",
+    "paginaPdf": 10,
+    "opzioni": {
+      "A": "comprende una pluralità di documenti che rappresentano azioni amministrative omogenee e destinate a concludersi con un provvedimento amministrativo",
+      "B": "comprende i documenti relativi a una competenza non proceduralizzata, ma che, nella consuetudine amministrativa, la PA deve concretamente portare a buon fine",
+      "C": "comprende tutti i documenti, anche con classifiche diverse, che si riferiscono a una persona fisica"
+    }
+  },
+  {
+    "id": 49,
+    "materia": "Informatica",
+    "brano": "",
+    "domanda": "Nel documento \"Plasmare il futuro digitale dell'Europa\", emanato dalla Commissione europea nel febbraio 2020, vengono espresse le linee politiche nel digitale. In riferimento a tale documento quale tra le seguenti è l'affermazione corretta?",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "Individua tra gli obiettivi chiave che le nuove tecnologie migliorino sensibilmente la vita quotidiana delle persone",
+      "B": "Elenca gli ambiziosi obiettivi conseguiti dall'UE nel quinquennio 2015-2020",
+      "C": "Sancisce che per adottare nuove tecnologie digitali è necessario introdurre nuovi valori europei che governino l'ambito on line in contrapposizione con i valori che governano l'ambito off line"
+    }
+  },
+  {
+    "id": 50,
+    "materia": "Politiche pubbliche",
+    "brano": "",
+    "domanda": "Nell'analisi delle politiche pubbliche il concetto di \"governance\" fa riferimento a:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "un sistema tendenzialmente gerarchico incentrato sulla forza dell'autorità e della legge",
+      "B": "un sistema di tipo reticolare basato sull'intreccio tra attori politici, tecnici, pubblici, associativi e privati",
+      "C": "un sistema in cui molti attori contribuiscono alla formazione delle scelte pubbliche attraverso canali formali"
+    }
+  },
+  {
+    "id": 51,
+    "materia": "Politiche pubbliche",
+    "brano": "",
+    "domanda": "Gli strumenti che vengono usati nella formulazione delle politiche pubbliche:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "prescindono dalle teorie causa-effetto del mutamento sociale, dello sviluppo economico e del comportamento umano",
+      "B": "non sono sensibili al contesto in cui dispiegano i propri effetti",
+      "C": "intervengono sulla sostanza dei problemi oppure sul processo di definizione delle politiche pubbliche qualora i policy maker scelgano di intervenire"
+    }
+  },
+  {
+    "id": 52,
+    "materia": "Politiche pubbliche",
+    "brano": "",
+    "domanda": "La teoria della razionalità limitata di Simon fa riferimento a decisioni che vengono prese sulla base del seguente criterio di scelta:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "accordo",
+      "B": "soddisfazione",
+      "C": "ottimizzazione"
+    }
+  },
+  {
+    "id": 53,
+    "materia": "Politiche pubbliche",
+    "brano": "",
+    "domanda": "Nella valutazione delle politiche pubbliche il metodo sperimentale costituisce:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "il metodo che si basa sulla comparazione di due gruppi di individui costruiti ad hoc dopo l'avvio di una politica pubblica",
+      "B": "il metodo meno affidabile per stimare gli effetti di una politica pubblica",
+      "C": "il metodo che può essere utilizzato per valutare solo politiche pubbliche non universaliste, ossia quelle che non si rivolgono a tutti e le cui prestazioni non costituiscono un diritto"
+    }
+  },
+  {
+    "id": 54,
+    "materia": "Politiche pubbliche",
+    "brano": "",
+    "domanda": "L'immagine della \"rete tematica\" (o issue network) elaborata da Heclo pone l'accento su:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "stabilità delle relazioni tra governi, organizzazioni sindacali e associazioni imprenditoriali",
+      "B": "condivisione del medesimo sistema di valori da parte degli attori coinvolti nei processi decisionali di un determinato settore delle politiche pubbliche",
+      "C": "carattere contingente e aperto delle reti di attori coinvolti nel ciclo di vita delle politiche pubbliche"
+    }
+  },
+  {
+    "id": 55,
+    "materia": "Inglese",
+    "brano": "Half a century ago, a small group of thinkers that called itself the Club of Rome got together to chew over a tricky question: What would happen if humanity continued to consume the world's finite resources as if they were limitless? Their efforts generated the now-famous 1972 paper \"The Limits to Growth,\" in which they modelled what might happen to humanity. It wasn't a pretty picture. The world, they predicted, was on a path to go beyond its capacity to support continued growth at some point in the first half of this century. Continuing with business as usual—burning through resources while polluting the environment and pumping out carbon—would result in a \"sudden and uncontrollable decline\" in food production, population, and industrial output by the end of the 21st century. Or put simply, global collapse.\n(Adapted from an interview with economic data expert Gaya Herrington in Wired)",
+    "domanda": "In a 1972 paper the Club of Rome predicted:",
+    "paginaPdf": 11,
+    "opzioni": {
+      "A": "A 50-year window of opportunity to model future growth.",
+      "B": "The certain collapse of humanity in this century.",
+      "C": "The critical consequences of exploiting the environment."
+    }
+  },
+  {
+    "id": 56,
+    "materia": "Inglese",
+    "brano": "",
+    "domanda": "\"What WOULD happen if humanity continued to consume the world's finite resources as if they were limitless?\"\nWhich of the following CANNOT substitute \"WOULD\" in the phrase above?",
+    "paginaPdf": 12,
+    "opzioni": {
+      "A": "will",
+      "B": "was going to",
+      "C": "could"
+    }
+  },
+  {
+    "id": 57,
+    "materia": "Inglese",
+    "brano": "",
+    "domanda": "\"CONTINUING with business as usual—burning through resources while polluting the environment and pumping out carbon—would result in a \"sudden and uncontrollable decline\" in food production, population, and industrial output by the end of the 21st century.\"\nWhich of the following could substitute \"CONTINUING\" in the sentence above?",
+    "paginaPdf": 12,
+    "opzioni": {
+      "A": "Going to continue",
+      "B": "To continue",
+      "C": "Having continued"
+    }
+  },
+  {
+    "id": 58,
+    "materia": "Inglese",
+    "brano": "",
+    "domanda": "\"..the Club of Rome got together to chew over a TRICKY question..\"\nWhich of the following could substitute \"TRICKY\" in the phrase above?",
+    "paginaPdf": 12,
+    "opzioni": {
+      "A": "touching",
+      "B": "terribly",
+      "C": "controversial"
+    }
+  },
+  {
+    "id": 59,
+    "materia": "Inglese",
+    "brano": "",
+    "domanda": "Their efforts generated the now-FAMOUS 1972 paper \"The Limits to Growth\"..\nWhich of the following words CANNOT substitute \"FAMOUS\" in the phrase above?",
+    "paginaPdf": 12,
+    "opzioni": {
+      "A": "distinguished",
+      "B": "celebrated",
+      "C": "peculiar"
+    }
+  },
+  {
+    "id": 60,
+    "materia": "Inglese",
+    "brano": "",
+    "domanda": "One of the aims of the EU Next Generation Fund is to .............. the challenge of climate change.\nWhich of the following could ALL be used to complete the sentence above appropriately?",
+    "paginaPdf": 12,
+    "opzioni": {
+      "A": "cope with / deliver / meet",
+      "B": "cope with / face / meet",
+      "C": "face / front / meet"
+    }
+  }
+];
