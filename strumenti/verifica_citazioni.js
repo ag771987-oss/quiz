@@ -29,7 +29,7 @@ for (const p of M) {
     for (const [campo, testo] of Object.entries(campi)) {
       for (const m of String(testo || "").matchAll(/«([^»]{12,})»/g)) {
         tot++;
-        const pezzi = m[1].split(/\s*(?:\[\s*\.\.\.\s*\]|\.\.\.|…)\s*/).map(norm).filter(x => x.length >= 8);
+        const pezzi = m[1].split(/\s*(?:\[\s*(?:\.\.\.|…)\s*\]|\.\.\.|…)\s*/).map(norm).filter(x => x.length >= 8);
         const manca = pezzi.filter(x => !fonti.includes(x.replace(/[.;,:]$/, "")));
         if (manca.length) { ko++; console.log(`${p.id} q${s.id} ${campo}: «${m[1].slice(0, 160)}»`); }
       }

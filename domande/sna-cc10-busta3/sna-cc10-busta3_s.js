@@ -191,8 +191,8 @@ const SPIEGAZIONI = [
     "spiegazione": "Il brano conclude che oggi i pannelli sono «una fonte di energia **sempre più diffusa** e competitiva»: cioè sempre più utilizzati.",
     "perOpzione": {
       "A": "Il brano non dice che siano «ancora oggetto di interesse»: l'interesse è citato solo per il 1973.",
-      "B": "Non tutte sono corrette: l'affermazione sui costi è contraria al brano.",
-      "C": "Il brano li definisce «competitivi», non costosi.",
+      "B": "Non tutte sono corrette: l'affermazione sui costi non trova riscontro nel brano, che parla anzi di una fonte «competitiva».",
+      "C": "Il brano definisce il fotovoltaico una fonte «competitiva», non costosa.",
       "D": "Corretta: «sempre più diffusa» equivale a sempre più utilizzati."
     }
   },
@@ -227,7 +227,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Guarda separatamente il colore del cerchio centrale, la sua dimensione, la forma esterna e i raggi.",
     "spiegazione": "Ogni riga ha un colore del cerchio (bianco, grigio, nero) che **diminuisce di dimensione** da sinistra a destra; le forme esterne (quadrato, rombo, esagono) compaiono una volta per riga e colonna; i raggi alternano **a X** e **a croce**. Manca il **rombo con piccolo cerchio nero e raggi a X**.",
     "perOpzione": {
-      "A": "La figura 3 ha forma e cerchio giusti, ma i raggi sono a croce: nella terza colonna i raggi sono a X.",
+      "A": "La figura 3 ha forma e cerchio giusti, ma i raggi sono a croce: per la regola a scacchiera la casella in basso a destra (come gli angoli e il centro della griglia) ha i raggi a X.",
       "B": "Corretta: la figura 1 è un rombo, con cerchio nero piccolo e raggi a X.",
       "C": "La figura 5 ripete l'esagono con cerchio bianco della prima riga.",
       "D": "La figura 4 ha il quadrato (già presente nella riga) e il cerchio grigio.",
@@ -292,7 +292,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "B",
     "suggerimento": "Su quale articolo della Costituzione si fondano i regolamenti delle Camere, e chi altro può disciplinare quelle materie?",
-    "spiegazione": "I **regolamenti parlamentari** (art. 64 Cost.) sono **fonti primarie** a **competenza riservata**: disciplinano l'organizzazione e il funzionamento delle Camere, ambito in cui la legge ordinaria non può intervenire.",
+    "spiegazione": "I **regolamenti parlamentari** (art. 64 Cost.) sono **fonti primarie** a **competenza riservata**: disciplinano l'organizzazione e il funzionamento delle Camere, ambito in cui la legge ordinaria non può intervenire. Art. 64, primo comma, Cost.: «Ciascuna Camera adotta il proprio regolamento a maggioranza assoluta dei suoi componenti».",
     "perOpzione": {
       "A": "I regolamenti governativi sono fonti secondarie, subordinate alla legge; quelli parlamentari sono fonti primarie.",
       "B": "Corretta: sono fonti primarie e operano in una sfera riservata dalla Costituzione all'autonomia di ciascuna Camera.",
@@ -308,7 +308,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "B",
     "suggerimento": "La guerra è la decisione politica più grave: spetta all'organo rappresentativo o all'esecutivo?",
-    "spiegazione": "Ai sensi dell'**art. 78 Cost.** sono **le Camere** a deliberare lo stato di guerra e a conferire al Governo i poteri necessari; il Presidente della Repubblica lo dichiara (art. 87).",
+    "spiegazione": "Ai sensi dell'**art. 78 Cost.** sono **le Camere** a deliberare lo stato di guerra: «Le Camere deliberano lo stato di guerra e conferiscono al Governo i poteri necessari». Il Presidente della Repubblica poi «dichiara lo stato di guerra deliberato dalle Camere» (art. 87, nono comma, Cost.).",
     "perOpzione": {
       "A": "Il Presidente del Consiglio non delibera lo stato di guerra.",
       "B": "Corretta: lo prevede l'art. 78 Cost.",
@@ -327,7 +327,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "Ricorda il caso del Ministro sfiduciato individualmente (caso Mancuso) e il ruolo della Corte dei conti in sede di controllo.",
-    "spiegazione": "Nei **conflitti di attribuzione tra poteri dello Stato** la Corte costituzionale riconosce la legittimazione della **Corte dei conti** (in sede di controllo) e, per i singoli ministri, solo in casi particolari: il **Ministro della giustizia** per le sue attribuzioni costituzionali (art. 110 Cost.) e il ministro colpito da **sfiducia individuale** (sent. n. 7/1996).",
+    "spiegazione": "Nei **conflitti di attribuzione tra poteri dello Stato** la Corte costituzionale riconosce la legittimazione della **Corte dei conti** (in sede di controllo) e, per i singoli ministri, solo in casi particolari: il **Ministro della giustizia** per le sue attribuzioni costituzionali (art. 110 Cost.) e il ministro colpito da **sfiducia individuale** (sent. n. 7/1996). Il criterio generale è nell'art. 37, primo comma, l. 87/1953: il conflitto è risolto dalla Corte «se insorge tra organi competenti a dichiarare definitivamente la volontà del potere cui appartengono».",
     "perOpzione": {
       "A": "Falsa: la Corte dei conti è stata più volte ritenuta legittimata a sollevare conflitto, in particolare nell'esercizio della funzione di controllo.",
       "B": "È l'affermazione corretta: la regola generale esclude i singoli ministri, con l'eccezione riconosciuta per la sfiducia individuale.",
@@ -337,6 +337,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "cost_art_110"
+      },
+      {
+        "normaId": "l87_1953_art_37"
       }
     ]
   },
@@ -344,7 +347,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "B",
     "suggerimento": "Orizzontale: il rapporto è tra istituzioni e livelli di governo, o tra istituzioni e cittadini?",
-    "spiegazione": "La **sussidiarietà orizzontale** (art. 118, ultimo comma, Cost.) impone a Stato, Regioni ed enti locali di **favorire l'autonoma iniziativa dei cittadini**, singoli e associati, per attività di interesse generale.",
+    "spiegazione": "La **sussidiarietà orizzontale** (art. 118, ultimo comma, Cost.) impone a Stato, Regioni ed enti locali di **favorire l'autonoma iniziativa dei cittadini**, singoli e associati, per attività di interesse generale. Art. 118, ultimo comma, Cost.: «Stato, Regioni, Città metropolitane, Province e Comuni favoriscono l'autonoma iniziativa dei cittadini, singoli e associati, per lo svolgimento di attività di interesse generale, sulla base del principio di sussidiarietà».",
     "perOpzione": {
       "A": "Riguarda i rapporti tra livelli di governo (piano verticale) e la composizione della Conferenza Stato-Regioni, non la sussidiarietà orizzontale.",
       "B": "Corretta: è il contenuto dell'art. 118, ultimo comma, Cost.",
@@ -382,9 +385,9 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "B",
     "suggerimento": "Le misure cautelari si fondano su due presupposti classici: quali?",
-    "spiegazione": "Per l'**art. 55 c.p.a.** la misura cautelare richiede il **periculum in mora** (pregiudizio grave e irreparabile) e il **fumus boni iuris** (ragionevole previsione sull'esito del ricorso).",
+    "spiegazione": "Per l'**art. 55 c.p.a.** la misura cautelare richiede il **periculum in mora** (pregiudizio grave e irreparabile) e il **fumus boni iuris** (ragionevole previsione sull'esito del ricorso). Il ricorrente deve allegare di subire «un pregiudizio grave e irreparabile durante il tempo necessario a giungere alla decisione sul ricorso» (comma 1) e l'ordinanza «indica i profili che, ad un sommario esame, inducono ad una ragionevole previsione sull'esito del ricorso» (comma 9).",
     "perOpzione": {
-      "A": "La cauzione è solo eventuale (il giudice «può» subordinarvi la misura), non un requisito necessario.",
+      "A": "La cauzione è solo eventuale, non un requisito necessario: per l'art. 55, comma 2, c.p.a. «Qualora dalla decisione sulla domanda cautelare derivino effetti irreversibili, il collegio può disporre la prestazione di una cauzione».",
       "B": "Corretta: descrive periculum in mora e fumus boni iuris.",
       "C": "La sentenza in forma semplificata (art. 60 c.p.a.) è una possibilità, non l'unico modo di dare tutela cautelare."
     },
@@ -401,7 +404,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "Accesso «difensivo»: a che cosa serve conoscere il documento?",
-    "spiegazione": "L'**accesso difensivo** (art. 24, comma 7, L. 241/1990) è il diritto di chi ha un **interesse diretto, concreto e attuale** di accedere ai documenti la cui conoscenza è **necessaria per curare o difendere i propri interessi giuridici**; prevale anche su alcune esigenze di riservatezza.",
+    "spiegazione": "L'**accesso difensivo** (art. 24, comma 7, L. 241/1990) è il diritto dell'interessato, cioè di chi ha un **interesse diretto, concreto e attuale** (art. 22, comma 1, lett. b), di accedere ai documenti la cui conoscenza è **necessaria per curare o difendere i propri interessi giuridici**; prevale anche su alcune esigenze di riservatezza. Art. 24, comma 7: «Deve comunque essere garantito ai richiedenti l'accesso ai documenti amministrativi la cui conoscenza sia necessaria per curare o per difendere i propri interessi giuridici».",
     "perOpzione": {
       "A": "Descrive l'accesso alle informazioni ambientali (d.lgs. 195/2005), un istituto diverso.",
       "B": "Corretta: combina la legittimazione dell'art. 22 e la finalità difensiva dell'art. 24, comma 7, L. 241/1990.",
@@ -420,7 +423,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "Nei settori in cui l'Unione è l'unica competente, ha senso chiedersi se gli Stati farebbero meglio?",
-    "spiegazione": "Ai sensi dell'**art. 5, par. 3, TUE** il principio di **sussidiarietà** si applica nei **settori che non sono di competenza esclusiva** dell'Unione: l'UE interviene solo se l'obiettivo non può essere raggiunto meglio dagli Stati.",
+    "spiegazione": "Ai sensi dell'**art. 5, par. 3, TUE** il principio di **sussidiarietà** si applica nei **settori che non sono di competenza esclusiva** dell'Unione: l'Unione interviene solo se gli obiettivi non possono essere conseguiti in misura sufficiente dagli Stati e possono essere conseguiti meglio a livello di Unione. Testo: «In virtù del principio di sussidiarietà, nei settori che non sono di sua competenza esclusiva l'Unione interviene soltanto se e in quanto gli obiettivi dell'azione prevista non possono essere conseguiti in misura sufficiente dagli Stati membri».",
     "perOpzione": {
       "A": "Nelle competenze esclusive solo l'Unione può agire, quindi la sussidiarietà non si applica.",
       "B": "Corretta: lo prevede l'art. 5, par. 3, TUE.",
@@ -436,11 +439,11 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "La cittadinanza europea è autonoma o dipende da quella di uno Stato membro?",
-    "spiegazione": "L'**art. 9 TUE** (e l'art. 20 TFUE) stabilisce che la cittadinanza dell'Unione **si aggiunge** alla cittadinanza nazionale **e non la sostituisce**.",
+    "spiegazione": "L'**art. 9 TUE** (come l'art. 20, par. 1, TFUE) stabilisce: «È cittadino dell'Unione chiunque abbia la cittadinanza di uno Stato membro. La cittadinanza dell'Unione **si aggiunge** alla cittadinanza nazionale **e non la sostituisce**».",
     "perOpzione": {
       "A": "Corretta: è la formula testuale dell'art. 9 TUE.",
       "B": "Falsa: non sostituisce la cittadinanza nazionale, che resta il presupposto per avere quella europea.",
-      "C": "Falsa: è un status aggiuntivo, non incorpora la cittadinanza nazionale."
+      "C": "Falsa: è uno status aggiuntivo, non incorpora la cittadinanza nazionale."
     },
     "riferimenti": [
       {
@@ -455,7 +458,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "C",
     "suggerimento": "Chi propone e chi elegge il Presidente della Commissione dopo il Trattato di Lisbona?",
-    "spiegazione": "Per l'**art. 17, par. 7, TUE** il **Consiglio europeo**, a maggioranza qualificata e tenendo conto delle elezioni europee, **propone** il candidato; il **Parlamento europeo lo elegge a maggioranza dei membri** che lo compongono.",
+    "spiegazione": "Per l'**art. 17, par. 7, TUE** il **Consiglio europeo**, a maggioranza qualificata e tenendo conto delle elezioni europee, **propone** il candidato; il **Parlamento europeo lo elegge a maggioranza dei membri** che lo compongono. Testo: «il Consiglio europeo, deliberando a maggioranza qualificata, propone al Parlamento europeo un candidato alla carica di presidente della Commissione. Tale candidato è eletto dal Parlamento europeo a maggioranza dei membri che lo compongono».",
     "perOpzione": {
       "A": "Non serve l'unanimità degli Stati: il Consiglio europeo decide a maggioranza qualificata.",
       "B": "Il Consiglio dell'Unione non nomina il Presidente, e il Parlamento non vota a maggioranza semplice.",
@@ -559,7 +562,7 @@ const SPIEGAZIONI = [
     "id": 44,
     "corretta": "C",
     "suggerimento": "Gli esperimenti di Hawthorne di Elton Mayo: in quale epoca si collocano?",
-    "spiegazione": "La **Scuola delle Relazioni Umane** nasce dagli **esperimenti di Hawthorne** (Western Electric, 1924-1932) guidati da **Elton Mayo**, cioè tra gli **anni Venti e Trenta del Novecento**, come reazione al taylorismo.",
+    "spiegazione": "La **Scuola delle Relazioni Umane** nasce dagli **esperimenti di Hawthorne** (Western Electric, 1924-1932) a cui è legato il nome di **Elton Mayo**, che ne fu il principale interprete, cioè tra gli **anni Venti e Trenta del Novecento**, come reazione al taylorismo.",
     "perOpzione": {
       "A": "Gli anni '80-'90 sono l'epoca del New Public Management, non delle Relazioni Umane.",
       "B": "Periodo recente, del tutto estraneo alla nascita della scuola.",
@@ -603,7 +606,7 @@ const SPIEGAZIONI = [
     "id": 48,
     "corretta": "A",
     "suggerimento": "Il PIAO è previsto dall'art. 6 del d.l. 80/2021: quale orizzonte temporale ha? E vale per tutte le PA?",
-    "spiegazione": "Il **PIAO** (art. 6 d.l. 80/2021) ha **durata triennale** ed è **aggiornato annualmente** entro il 31 gennaio; è obbligatorio per le PA con **più di 50 dipendenti** (con modalità semplificate per le altre), escluse le scuole.",
+    "spiegazione": "Il **PIAO** (art. 6 d.l. 80/2021) ha **durata triennale** ed è **aggiornato annualmente** entro il 31 gennaio: «Il Piano ha durata triennale, viene aggiornato annualmente» (art. 6, comma 2). Lo adottano le PA con **più di cinquanta dipendenti**, escluse scuole e istituzioni educative (comma 1); per quelle con meno di cinquanta dipendenti il Piano tipo prevede **modalità semplificate** (comma 6).",
     "perOpzione": {
       "A": "Corretta: durata triennale con aggiornamento annuale.",
       "B": "Non riguarda tutte le PA: sono escluse le istituzioni scolastiche e per le PA con meno di cinquanta dipendenti sono previste modalità semplificate.",

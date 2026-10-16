@@ -227,7 +227,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Quali aggettivi ed espressioni usa l’autore quando parla del principio posizionale?",
     "spiegazione": "L’autore parla di «**idea geniale**» e di «rivelazione di un **gran segreto del mondo**»: tono di ammirazione per una grande conquista intellettuale.",
     "perOpzione": {
-      "A": "Il brano non lo presenta come strumento pratico, ma come una rivelazione da far «sentire» al bambino.",
+      "A": "Il brano non lo presenta come strumento pratico, ma come una rivelazione che deve essere «sentita dal bambino».",
       "B": "Smentita dal brano, che invita a usare il principio anche con basi diverse dal dieci, per esempio la base due.",
       "C": "Il brano non dice che il principio posizionale derivi da quello alfabetico: sono due idee diverse.",
       "D": "«Idea geniale», «gran segreto del mondo»: lo presenta come una grande conquista intellettuale."
@@ -239,7 +239,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Rileggi l’inizio del secondo paragrafo: «Anche la scoperta…» e «L’idea geniale, questa volta, è…». Le due idee sono la stessa?",
     "spiegazione": "Il brano **accosta** le due scoperte («Anche…»), ma le distingue: per la scrittura un segno per ogni suono, per i numeri lo stesso simbolo con valore diverso secondo la posizione («questa volta»). Sono due conquiste distinte.",
     "perOpzione": {
-      "A": "Sono due scoperte separate, ciascuna con la sua «idea geniale» e ciascuna un «gran segreto del mondo».",
+      "A": "Sono due scoperte separate: entrambe presentate come un «segreto del mondo», ma fondate su un’idea diversa («L’idea geniale, questa volta, è…»).",
       "B": "Il brano non dice che i numeri posizionali siano nati applicando il principio della scrittura.",
       "C": "«Questa volta» segnala proprio che l’idea è **diversa**: non applicano lo stesso principio.",
       "D": "Il brano parla del passaggio dalla base dieci alla base due, ma la domanda chiede il rapporto con la **scrittura**."
@@ -265,7 +265,7 @@ const SPIEGAZIONI = [
     "spiegazione": "L’esempio del testo che sostiene «con argomenti personali» la raccolta differenziata è legato a «“**trasformando ciò che si sa**”»: **knowledge transforming**.",
     "perOpzione": {
       "A": "È l’associazione esplicita del brano: argomentare = trasformare ciò che si sa.",
-      "B": "«Enunciare subito ciò che si sa» è il knowledge telling, la strategia dello scrittore inesperto e del verbale.",
+      "B": "L’«enunciazione immediata di ciò che si sa» è il knowledge telling, la strategia dello scrittore inesperto e del verbale.",
       "C": "Gli standard dei verbali sono l’esempio opposto.",
       "D": "Knowledge telling è associato al verbale, non al testo argomentativo."
     }
@@ -276,7 +276,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Leggi l’ultima frase del brano.",
     "spiegazione": "La chiusura è esplicita: «**Dipende tutto dal tipo di testo richiesto e dallo scopo per cui si scrive**».",
     "perOpzione": {
-      "A": "Trappola: il knowledge transforming è «qualitativamente migliore», ma il brano chiarisce che si può scrivere bene con entrambe le vie.",
+      "A": "Trappola: per il brano «Qualitativamente, dunque, la seconda via è migliore», ma il brano chiarisce che si può scrivere bene con entrambe le vie.",
       "B": "Non «qualunque» strategia: la scelta va fatta in base al tipo di testo.",
       "C": "È la conclusione testuale del brano.",
       "D": "Il knowledge telling va bene per alcuni testi (verbale), non per tutti."
@@ -286,7 +286,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "C",
     "suggerimento": "Ricorda i due numeri dell’art. 94 Cost.: una frazione per le firme e un termine minimo prima della discussione.",
-    "spiegazione": "Art. 94, ult. comma, Cost.: mozione di sfiducia firmata da almeno **un decimo** dei componenti della Camera e discussa **non prima di tre giorni** dalla presentazione (per evitare voti a sorpresa).",
+    "spiegazione": "Art. 94, ult. comma, Cost.: «La mozione di sfiducia deve essere firmata da almeno **un decimo** dei componenti della Camera e non può essere messa in discussione **prima di tre giorni** dalla sua presentazione». Il termine minimo serve a evitare voti a sorpresa.",
     "perOpzione": {
       "A": "Un terzo è la soglia sbagliata e «entro tre giorni» capovolge la regola: i tre giorni sono un termine **minimo**, non massimo.",
       "B": "Il termine dei tre giorni è giusto, ma la soglia è un decimo, non un quinto.",
@@ -302,7 +302,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "B",
     "suggerimento": "È lo stesso termine entro cui il decreto deve essere convertito in legge.",
-    "spiegazione": "Art. 77, co. 3, Cost.: i decreti-legge perdono efficacia **sin dall’inizio** se non convertiti entro **sessanta giorni** dalla pubblicazione.",
+    "spiegazione": "Art. 77, co. 3, Cost.: «I decreti perdono efficacia **sin dall'inizio**, se non sono convertiti in legge entro **sessanta giorni** dalla loro pubblicazione».",
     "perOpzione": {
       "A": "Trenta giorni non è previsto dall’art. 77.",
       "B": "Sessanta giorni dalla pubblicazione: è il termine costituzionale.",
@@ -318,10 +318,10 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "Pensa al riparto dell’art. 117 Cost.: la potestà regolamentare segue quella legislativa?",
-    "spiegazione": "Art. 117, **co. 6**, Cost.: regolamenti dello **Stato** nelle materie di legislazione esclusiva (salvo delega), delle **Regioni** in ogni altra materia, degli **enti locali** per organizzazione e funzioni proprie.",
+    "spiegazione": "Art. 117, **co. 6**, Cost.: «La potestà regolamentare spetta allo **Stato** nelle materie di legislazione esclusiva, salva delega alle Regioni. La potestà regolamentare spetta alle **Regioni** in ogni altra materia. I **Comuni, le Province e le Città metropolitane** hanno potestà regolamentare in ordine alla disciplina dell'organizzazione e dello svolgimento delle funzioni loro attribuite».",
     "perOpzione": {
       "A": "Esclude Stato e Regioni: la potestà regolamentare non spetta «solo» agli enti locali. L’art. 118 Cost. applica la sussidiarietà alle funzioni amministrative, non alla potestà regolamentare.",
-      "B": "Riproduce fedelmente l’art. 117, co. 6, Cost.",
+      "B": "Riprende nella sostanza l’art. 117, co. 6, Cost. (le materie di legislazione esclusiva sono quelle elencate al co. 2).",
       "C": "Le Regioni non hanno potestà regolamentare nelle materie di competenza esclusiva statale (salvo delega)."
     },
     "riferimenti": [
@@ -337,7 +337,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "«Indirizzo» rimanda ai fini dell’azione amministrativa: chi li stabilisce?",
-    "spiegazione": "**Legalità-indirizzo**: la legge fissa i **fini** che l’amministrazione deve perseguire (art. 1 l. 241/1990). Si distingue dalla legalità-garanzia, in cui la legge fissa anche limiti e modalità dell’azione.",
+    "spiegazione": "**Legalità-indirizzo**: la legge fissa i **fini** che l’amministrazione deve perseguire (art. 1, co. 1, l. 241/1990: «L'attività amministrativa persegue i fini determinati dalla legge»). Si distingue dalla legalità-garanzia, in cui la legge fissa anche limiti e modalità dell’azione.",
     "perOpzione": {
       "A": "L’attività amministrativa persegue i fini determinati dalla legge: è la definizione.",
       "B": "Descrive il rapporto di fiducia Governo-Parlamento (art. 94 Cost.), non il principio di legalità.",
@@ -356,10 +356,10 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "Ricorda l’art. 113 Cost.: la tutela contro gli atti della P.A. può essere limitata?",
-    "spiegazione": "Art. 113 Cost.: la tutela giurisdizionale contro gli atti della P.A. è **sempre ammessa** e **non può essere esclusa o limitata** a particolari mezzi o categorie di atti.",
+    "spiegazione": "Art. 113, commi 1-2, Cost.: «Contro gli atti della pubblica amministrazione è **sempre ammessa** la tutela giurisdizionale dei diritti e degli interessi legittimi […]. Tale tutela giurisdizionale **non può essere esclusa o limitata** a particolari mezzi di impugnazione o per determinate categorie di atti».",
     "perOpzione": {
       "A": "Il giudice può annullare o sospendere gli atti imperativi: la tutela interferisce eccome con il potere amministrativo.",
-      "B": "È il testo dell’art. 113, commi 1-2, Cost.",
+      "B": "Riprende quasi alla lettera l’art. 113, commi 1-2, Cost.",
       "C": "I ricorsi gerarchici sono rimedi **amministrativi** facoltativi, non l’unica tutela: c’è sempre quella **giurisdizionale**."
     },
     "riferimenti": [
@@ -375,7 +375,7 @@ const SPIEGAZIONI = [
     "spiegazione": "**Imperatività**: il provvedimento modifica unilateralmente la sfera giuridica altrui **senza bisogno del consenso** dei destinatari.",
     "perOpzione": {
       "A": "Falso: il giudice amministrativo può sospendere gli effetti in via cautelare.",
-      "B": "Falso: l’amministrazione può sospendere gli effetti in autotutela (art. 21-quater l. 241/1990).",
+      "B": "Falso: l’amministrazione può sospendere gli effetti in autotutela. Art. 21-quater, co. 2, l. 241/1990: «L'efficacia ovvero l'esecuzione del provvedimento amministrativo può essere sospesa, per gravi ragioni e per il tempo strettamente necessario, dallo stesso organo che lo ha emanato ovvero da altro organo previsto dalla legge».",
       "C": "Produce effetti senza il consenso di destinatari e controinteressati: è la definizione di imperatività."
     },
     "riferimenti": [
@@ -388,7 +388,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "B",
     "suggerimento": "L’interesse legittimo nasce dal confronto con quale tipo di attività della P.A.? Ed è oggi risarcibile?",
-    "spiegazione": "**Interesse legittimo**: posizione di chi ha un interesse **qualificato e differenziato** di fronte all’esercizio del **potere** amministrativo. Dopo Cass. SU 500/1999 è anche **risarcibile**.",
+    "spiegazione": "**Interesse legittimo**: posizione di chi ha un interesse **qualificato e differenziato** di fronte all’esercizio del **potere** amministrativo. Dopo Cass. SU 500/1999 è anche **risarcibile**: oggi l’art. 30, co. 3, c.p.a. disciplina «La domanda di risarcimento per lesione di interessi legittimi».",
     "perOpzione": {
       "A": "Confonde i concetti: è l’interesse **diffuso** a riferirsi a una collettività; l’interesse legittimo è personale e differenziato.",
       "B": "È la definizione corretta: posizione qualificata e differenziata rispetto all’esercizio del potere.",
@@ -404,7 +404,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "Gli incarichi esterni sono un’eccezione: a quali condizioni sono ammessi (art. 7 d.lgs. 165/2001)?",
-    "spiegazione": "Art. 7, co. 6, d.lgs. 165/2001: incarichi solo a **esperti di particolare e comprovata specializzazione**, per **esigenze specifiche e temporanee**, non coperte dal personale interno, per **durata determinata**.",
+    "spiegazione": "Art. 7, co. 6, d.lgs. 165/2001: «per specifiche esigenze cui non possono far fronte con personale in servizio, le amministrazioni pubbliche possono conferire esclusivamente incarichi individuali, con contratti di lavoro autonomo, ad **esperti di particolare e comprovata specializzazione** anche universitaria». Tra i presupposti: obiettivi e progetti «specifici e determinati» (lett. a), prestazione «di natura temporanea e altamente qualificata» (lett. c), **durata**, oggetto e compenso «preventivamente determinati» (lett. d).",
     "perOpzione": {
       "A": "Troppo rigida: gli incarichi esterni sono ammessi, ma solo a determinate condizioni.",
       "B": "Riproduce le condizioni dell’art. 7, co. 6, d.lgs. 165/2001.",
@@ -420,9 +420,9 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "C",
     "suggerimento": "La clausola di flessibilità ha dei limiti: può servire ad armonizzare dove i trattati lo vietano?",
-    "spiegazione": "Art. 352, **par. 3**, TFUE: le misure basate sulla clausola **non possono comportare armonizzazione** nei casi in cui i trattati la escludono.",
+    "spiegazione": "Art. 352, **par. 3**, TFUE: «Le misure fondate sul presente articolo **non possono comportare un'armonizzazione** delle disposizioni legislative e regolamentari degli Stati membri nei casi in cui i trattati la escludono».",
     "perOpzione": {
-      "A": "Non è previsto un parere preventivo obbligatorio della Corte di giustizia su questo uso.",
+      "A": "L’art. 352 TFUE non prevede la possibilità di chiedere un parere preventivo della Corte di giustizia sul suo uso.",
       "B": "Imprecisa: il par. 2 prevede che la Commissione richiami l’attenzione dei **Parlamenti nazionali** (controllo di sussidiarietà), non che informi il Consiglio europeo.",
       "C": "È il limite previsto dal par. 3 dell’art. 352 TFUE."
     },
@@ -436,7 +436,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "Proporzionalità = «non più del necessario». A chi si rivolge questo principio nel TUE?",
-    "spiegazione": "Art. 5, par. 4, TUE: l’azione dell’**Unione** si limita a **quanto necessario** per gli obiettivi dei trattati. È un criterio di **esercizio** delle competenze, come la sussidiarietà.",
+    "spiegazione": "Art. 5, par. 4, TUE: «In virtù del principio di proporzionalità, il contenuto e la forma dell'azione dell'**Unione** si limitano a **quanto necessario** per il conseguimento degli obiettivi dei trattati». È un criterio di **esercizio** delle competenze, come la sussidiarietà.",
     "perOpzione": {
       "A": "Non riguarda le deroghe degli Stati membri né forme di concertazione.",
       "B": "Definizione dell’art. 5, par. 4, TUE.",
@@ -452,7 +452,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Il ricorso di annullamento serve contro atti che producono effetti giuridici: quale opzione li descrive?",
-    "spiegazione": "Art. 263 TFUE: si impugnano gli atti di istituzioni, organi e organismi UE **destinati a produrre effetti giuridici** nei confronti di terzi.",
+    "spiegazione": "Art. 263, primo comma, TFUE: la Corte controlla la legittimità degli atti delle istituzioni e «sugli atti degli organi o organismi dell'Unione **destinati a produrre effetti giuridici nei confronti di terzi**».",
     "perOpzione": {
       "A": "Atti vincolanti e produttivi di effetti: sono quelli impugnabili.",
       "B": "Un’iniziativa dei cittadini non è un atto delle istituzioni e non produce effetti vincolanti.",
@@ -538,12 +538,20 @@ const SPIEGAZIONI = [
     "id": 42,
     "corretta": "A",
     "suggerimento": "Performance «organizzativa», non «individuale»: quali dimensioni riguardano l’ente nel suo insieme?",
-    "spiegazione": "La performance **organizzativa** (d.lgs. 150/2009) si misura in **efficienza, efficacia e impatto** (outcome) sui destinatari.",
+    "spiegazione": "La performance **organizzativa** si misura in **efficienza, efficacia e impatto** (outcome) sui destinatari. L’art. 8 d.lgs. 150/2009 ne elenca gli ambiti, tra cui «l'attuazione di politiche e il conseguimento di obiettivi collegati ai bisogni e alle esigenze della collettività» (lett. a) e «l'efficienza nell'impiego delle risorse» (lett. f). I «comportamenti organizzativi» sono invece un ambito della performance individuale (art. 9).",
     "perOpzione": {
       "A": "Efficienza, efficacia e impatto: le dimensioni della performance organizzativa.",
       "B": "Risultati individuali e comportamenti sono le dimensioni della performance **individuale**.",
       "C": "Output e tempi sono singoli indicatori, non le dimensioni complessive."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs150_2009_art_8"
+      },
+      {
+        "normaId": "dlgs150_2009_art_9"
+      }
+    ]
   },
   {
     "id": 43,
@@ -615,7 +623,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "È l’agenzia che si occupa della trasformazione digitale della PA e attua il CAD.",
-    "spiegazione": "Il **Piano triennale per l’informatica nella PA** è redatto da **AgID** (art. 14-bis CAD) e approvato dal Presidente del Consiglio o dal ministro delegato.",
+    "spiegazione": "Il **Piano triennale per l’informatica nella PA** è redatto da **AgID**. Art. 14-bis, co. 2, lett. b), CAD: «Il predetto Piano è elaborato dall'AgID, anche sulla base dei dati e delle informazioni acquisiti dai soggetti di cui all'articolo 2, comma 2, ed è approvato dal Presidente del Consiglio dei ministri o dal Ministro delegato entro il 30 settembre di ogni anno».",
     "perOpzione": {
       "A": "AgID redige il Piano triennale.",
       "B": "ACN si occupa di cybersicurezza, non redige il Piano triennale.",
@@ -646,7 +654,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Rischi per un gruppo specifico possono esserci in qualsiasi politica: non definiscono un problema «maligno».",
       "B": "Non dipende dalla volontà dei decisori, ma dalla natura del problema.",
-      "C": "Indefinibili e quindi insolubili: è la definizione di Rittel e Webber."
+      "C": "Indefinibili e quindi insolubili (una volta per tutte): riprende i tratti che Rittel e Webber attribuiscono ai wicked problems, cioè nessuna formulazione definitiva e nessuna soluzione definitiva."
     }
   },
   {

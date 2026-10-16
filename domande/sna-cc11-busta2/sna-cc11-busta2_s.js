@@ -202,9 +202,9 @@ const SPIEGAZIONI = [
     "id": 18,
     "corretta": "E",
     "suggerimento": "Confronta la prima e la quarta figura: che cosa noti? Ogni riga segue un ciclo di posizioni.",
-    "spiegazione": "Ogni simbolo percorre il ciclo **destra/centro → sinistra → centro/destra** e la serie si ripete ogni tre figure: la quarta è uguale alla prima, quindi la quinta deve essere uguale alla seconda, con **croce, quadrato e triangolo tutti a sinistra**.",
+    "spiegazione": "Ogni riga segue un ciclo di tre posizioni: la croce e il triangolo vanno **destra → sinistra → centro**, il quadrato **centro → sinistra → destra**. La serie si ripete quindi ogni tre figure: la quarta è uguale alla prima, quindi la quinta deve essere uguale alla seconda, con **croce, quadrato e triangolo tutti a sinistra**.",
     "perOpzione": {
-      "A": "La figura 1 è uguale alla prima (e alla quarta) della serie: non avanza nel ciclo.",
+      "A": "La figura 1 ha la croce a sinistra (corretta), ma il quadrato al centro e il triangolo a destra: non è la configurazione attesa.",
       "B": "La figura 2 ha croce, quadrato e triangolo al centro: nessuna riga è nella posizione attesa.",
       "C": "La figura 5 ha croce e quadrato a sinistra, ma il triangolo al centro invece che a sinistra.",
       "D": "La figura 3 ha la croce a sinistra, ma quadrato e triangolo al centro.",
@@ -280,7 +280,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Nessun confronto con il mamba nero è presente nel brano.",
       "B": "Il brano non attribuisce al secondo morso alcun effetto salvifico: dopo i due morsi Tim è finito in coma.",
-      "C": "Entrambi sono descritti come serpenti «altamente velenosi».",
+      "C": "Entrambi sono descritti come serpente «altamente velenoso».",
       "D": "Il brano li descrive allo stesso modo, senza dire quale sia più velenoso."
     }
   },
@@ -288,7 +288,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "A",
     "suggerimento": "Il decreto legislativo nasce da una delega del Parlamento e segue un procedimento: cosa serve a dimostrare che è stato rispettato?",
-    "spiegazione": "L’**art. 14 della l. 400/1988** prevede che il decreto legislativo sia emanato dal Presidente della Repubblica con l’indicazione, nel preambolo, della **legge di delegazione**, della **deliberazione del Consiglio dei ministri** e degli **altri adempimenti** del procedimento prescritti dalla legge di delega (es. pareri parlamentari).",
+    "spiegazione": "L’**art. 14, comma 1, della l. 400/1988** dispone che i decreti legislativi «sono emanati dal Presidente della Repubblica con la denominazione di \"decreto legislativo\" e con l'indicazione, nel preambolo, della legge di delegazione, della deliberazione del Consiglio dei ministri e degli altri adempimenti del procedimento prescritti dalla legge di delegazione» (es. pareri parlamentari).",
     "perOpzione": {
       "A": "Riproduce il contenuto dell’art. 14 della l. 400/1988.",
       "B": "Necessità e urgenza sono il presupposto del decreto-legge (art. 77 Cost.), non del decreto legislativo.",
@@ -310,7 +310,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "C",
     "suggerimento": "Ricorda i numeri dell’art. 138 Cost.: una frazione dei parlamentari, gli stessi elettori del referendum abrogativo e lo stesso numero di Consigli regionali.",
-    "spiegazione": "Ai sensi dell’**art. 138, secondo comma, Cost.** il referendum sulle leggi costituzionali e di revisione può essere chiesto entro tre mesi da **un quinto dei membri di una Camera**, **500.000 elettori** o **cinque Consigli regionali** (salvo approvazione in seconda votazione con i due terzi).",
+    "spiegazione": "Ai sensi dell’**art. 138, secondo comma, Cost.** le leggi costituzionali e di revisione «sono sottoposte a referendum popolare quando, entro tre mesi dalla loro pubblicazione, ne facciano domanda un quinto dei membri di una Camera o cinquecentomila elettori o cinque Consigli regionali» (non si fa luogo a referendum se la legge è stata approvata in seconda votazione con i due terzi dei componenti di ciascuna Camera).",
     "perOpzione": {
       "A": "Cinquantamila elettori è il numero per l’iniziativa legislativa popolare (art. 71); i Consigli regionali sono cinque, non sei.",
       "B": "La frazione è un quinto, non un terzo, e gli elettori sono 500.000.",
@@ -345,7 +345,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "Il buon andamento (art. 97 Cost.) riguarda il modo in cui l’amministrazione si organizza e lavora: quale opzione parla di questo?",
-    "spiegazione": "Il **buon andamento** (art. 97 Cost.) impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; economicità ed efficacia sono richiamate anche dall’art. 1 della l. 241/1990 («criteri di economicità, di efficacia, di imparzialità, di pubblicità e di trasparenza»), che invece non nomina l’efficienza.",
+    "spiegazione": "Il **buon andamento** è sancito dall’**art. 97, secondo comma, Cost.**: «I pubblici uffici sono organizzati secondo disposizioni di legge, in modo che siano assicurati il buon andamento e l'imparzialità dell'amministrazione». Impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; economicità ed efficacia sono richiamate anche dall’art. 1, comma 1, della l. 241/1990 («criteri di economicità, di efficacia, di imparzialità, di pubblicità e di trasparenza»), che invece non nomina l’efficienza.",
     "perOpzione": {
       "A": "Economicità, efficienza ed efficacia sono la declinazione del buon andamento.",
       "B": "Descrive l’azione collettiva degli utenti (es. class action pubblica), uno strumento di tutela, non il contenuto del principio.",
@@ -364,12 +364,17 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "L’aggettivo «economici» si riferisce al tipo di attività che l’ente svolge: quale?",
-    "spiegazione": "Gli **enti pubblici economici** sono enti pubblici che hanno per oggetto **esclusivo o principale un’attività d’impresa** (il codice civile li assoggetta, per questo, all’obbligo di iscrizione nel registro delle imprese); operano con strumenti di diritto privato.",
+    "spiegazione": "Gli **enti pubblici economici** sono enti pubblici che hanno per oggetto **esclusivo o principale un’attività d’impresa** e operano con strumenti di diritto privato. Per questo l’**art. 2201 c.c.** li assoggetta all’iscrizione nel registro delle imprese: «Gli enti pubblici che hanno per oggetto esclusivo o principale un'attività commerciale sono soggetti all'obbligo dell'iscrizione nel registro delle imprese».",
     "perOpzione": {
       "A": "Finanziare imprese in crisi non definisce la natura dell’ente: è un’attività che può svolgere anche un ente non economico.",
       "B": "La dipendenza da un ministero non è il criterio distintivo e non riguarda solo il MEF.",
       "C": "È il criterio che identifica gli enti pubblici economici: l’esercizio, esclusivo o principale, di un’impresa."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cc_art_2201"
+      }
+    ]
   },
   {
     "id": 30,
@@ -379,33 +384,46 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Sono soggetti pubblici, non entità private.",
       "B": "Coglie il tratto essenziale: sono pubbliche amministrazioni sottratte all’indirizzo politico-amministrativo del Governo.",
-      "C": "Le agenzie del d.lgs. 300/1999 operano sotto i poteri di indirizzo e vigilanza di un ministro: non sono indipendenti."
-    }
+      "C": "Le agenzie del d.lgs. 300/1999 non sono indipendenti: per l’art. 8, co. 2, d.lgs. 300/1999 «sono sottoposte ai poteri di indirizzo e di vigilanza di un ministro»."
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs300_1999_art_8"
+      }
+    ]
   },
   {
     "id": 31,
     "corretta": "C",
     "suggerimento": "Dopo la riforma Delrio le Province sono diventate enti di secondo grado: chi vota e chi può essere votato?",
-    "spiegazione": "Con la **l. 56/2014 (legge Delrio)** la Provincia è ente di **secondo grado**: il presidente è eletto dai **sindaci e consiglieri comunali** dei Comuni della Provincia, e sono eleggibili i **sindaci** della Provincia.",
+    "spiegazione": "Con la **l. 56/2014 (legge Delrio)** la Provincia è ente di **secondo grado**. L’art. 1, comma 58, dispone: «Il presidente della provincia è eletto dai sindaci e dai consiglieri dei comuni della provincia»; il comma 60: «Sono eleggibili a presidente della provincia i sindaci della provincia, il cui mandato scada non prima di diciotto mesi dalla data di svolgimento delle elezioni».",
     "perOpzione": {
       "A": "Descrive l’elezione diretta, abolita dalla riforma del 2014 (e il ballottaggio è tipico dei sindaci dei Comuni maggiori).",
       "B": "Il Prefetto non ha alcun ruolo nella scelta del presidente: sarebbe incompatibile con l’autonomia dell’ente.",
       "C": "Elezione di secondo grado da parte di sindaci e consiglieri comunali, tra i sindaci: è il sistema della l. 56/2014."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l56_2014_art_1"
+      }
+    ]
   },
   {
     "id": 32,
     "corretta": "B",
     "suggerimento": "L’RPCT è una figura tecnica con compiti di prevenzione: cosa succede se, nonostante tutto, nell’ente si commette un reato di corruzione?",
-    "spiegazione": "Ai sensi dell’**art. 1, comma 12, della l. 190/2012**, se nell’amministrazione è commesso un reato di corruzione accertato con **sentenza passata in giudicato**, l’RPCT risponde sul piano **dirigenziale e disciplinare** (oltre che per danno erariale e all’immagine), salvo provare di aver predisposto e vigilato sul piano di prevenzione. È di norma un **dirigente** individuato dall’organo di indirizzo.",
+    "spiegazione": "Ai sensi dell’**art. 1, comma 12, della l. 190/2012**, «In caso di commissione, all'interno dell'amministrazione, di un reato di corruzione accertato con sentenza passata in giudicato, il responsabile individuato ai sensi del comma 7 del presente articolo risponde ai sensi dell'articolo 21 del decreto legislativo 30 marzo 2001, n.165, e successive modificazioni, nonché sul piano disciplinare, oltre che per il danno erariale e all'immagine della pubblica amministrazione», salvo che provi di aver predisposto il piano prima del fatto e di aver vigilato sul suo funzionamento e sulla sua osservanza. L’art. 21 del d.lgs. 165/2001 disciplina la **responsabilità dirigenziale**. L’RPCT è individuato dall’organo di indirizzo, «di norma tra i dirigenti di ruolo in servizio» (art. 1, comma 7, l. 190/2012).",
     "perOpzione": {
-      "A": "Falso: il d.lgs. 39/2013 attribuisce proprio all’RPCT la vigilanza su inconferibilità e incompatibilità e le segnalazioni all’ANAC.",
+      "A": "Falso: l’art. 15 del d.lgs. 39/2013 attribuisce proprio all’RPCT la vigilanza su inconferibilità e incompatibilità («Il responsabile segnala i casi di possibile violazione delle disposizioni del presente decreto all'Autorità nazionale anticorruzione», comma 2).",
       "B": "Corrisponde alla responsabilità prevista dall’art. 1, comma 12, della l. 190/2012.",
       "C": "L’RPCT è individuato dall’organo di indirizzo, di norma tra i dirigenti di ruolo: non coincide con l’organo politico."
     },
     "riferimenti": [
       {
         "normaId": "l190_2012_art_1"
+      },
+      {
+        "normaId": "dlgs39_2013_art_15"
       }
     ]
   },
@@ -413,7 +431,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "A",
     "suggerimento": "La «doppia maggioranza» ha una soglia ordinaria e una rafforzata: quale vale quando l’iniziativa viene dalla Commissione?",
-    "spiegazione": "Dal 2014 la **maggioranza qualificata** (art. 16 TUE e art. 238 TFUE) è una **doppia maggioranza**: **55% degli Stati** (almeno 15) che rappresentino almeno il **65% della popolazione** dell’Unione. Se il Consiglio non delibera su proposta della Commissione o dell’Alto rappresentante, la soglia degli Stati sale al 72%.",
+    "spiegazione": "Dal 1° novembre 2014 la **maggioranza qualificata** è una **doppia maggioranza**. Per l’**art. 16, par. 4, TUE** «per maggioranza qualificata si intende almeno il 55% dei membri del Consiglio, con un minimo di quindici, rappresentanti Stati membri che totalizzino almeno il 65% della popolazione dell'Unione». Se il Consiglio non delibera su proposta della Commissione o dell’Alto rappresentante, l’**art. 238, par. 2, TFUE** richiede invece «almeno il 72% dei membri del Consiglio».",
     "perOpzione": {
       "A": "È la regola ordinaria della doppia maggioranza, applicabile alle proposte della Commissione.",
       "B": "Il 72% degli Stati si applica quando il Consiglio non delibera su proposta della Commissione.",
@@ -432,7 +450,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "Ricorda la formula dell’art. 265: un’istituzione si astiene dal pronunciarsi «in violazione» di che cosa?",
-    "spiegazione": "Il **ricorso in carenza (art. 265 TFUE)** si propone quando un’istituzione, un organo o un organismo dell’Unione, **«in violazione dei trattati»**, si astiene dal pronunciarsi; è ricevibile solo se l’istituzione è stata prima invitata ad agire e non ha preso posizione entro due mesi.",
+    "spiegazione": "Il **ricorso in carenza** è disciplinato dall’**art. 265, primo comma, TFUE**: «Qualora, in violazione dei trattati, il Parlamento europeo, il Consiglio europeo, il Consiglio, la Commissione o la Banca centrale europea si astengano dal pronunciarsi, gli Stati membri e le altre istituzioni dell'Unione possono adire la Corte di giustizia dell'Unione europea per far constatare tale violazione». Lo stesso vale per organi e organismi dell’Unione. Il ricorso è ricevibile solo se l’istituzione è stata prima richiesta di agire e non ha preso posizione entro due mesi.",
     "perOpzione": {
       "A": "Il principio di attribuzione riguarda i limiti alle competenze dell’Unione: è un vizio tipico di un atto adottato, non dell’inerzia.",
       "B": "È la formula dell’art. 265 TFUE: l’astensione «in violazione dei trattati».",
@@ -536,12 +554,17 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "C",
     "suggerimento": "Ricorda le fasi di gestione: per le spese si parla di impegno, liquidazione, ordinazione e pagamento. E per le entrate?",
-    "spiegazione": "Nella contabilità pubblica le entrate seguono le fasi di **accertamento** (si individua il credito e il debitore), **riscossione** (l’incasso) e **versamento** (il trasferimento in tesoreria), precedute dalla **previsione** in bilancio.",
+    "spiegazione": "Nella contabilità pubblica le entrate seguono le fasi di **accertamento** (si individua il credito e il debitore), **riscossione** (l’incasso) e **versamento** (il trasferimento in tesoreria), precedute dalla **previsione** in bilancio. Per gli enti locali lo dice espressamente l’**art. 178 del d.lgs. 267/2000 (TUEL)**: «Le fasi di gestione delle entrate sono l'accertamento, la riscossione ed il versamento».",
     "perOpzione": {
       "A": "L’ingiunzione è uno strumento di riscossione coattiva e la liquidazione è una fase della spesa.",
       "B": "Impegno e pagamento sono fasi del ciclo della spesa, non dell’entrata.",
       "C": "Previsione, accertamento, riscossione e versamento: è la sequenza corretta delle entrate."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs267_2000_art_178"
+      }
+    ]
   },
   {
     "id": 44,
@@ -602,7 +625,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "AgID nasce dal «decreto Sviluppo» del governo Monti, assorbendo DigitPA e l’Agenzia per la diffusione delle tecnologie per l’innovazione.",
-    "spiegazione": "L’**AgID** è stata istituita dall’**art. 19 del d.l. 83/2012** (decreto «Crescita» o «Sviluppo»), convertito dalla l. 134/2012, raccogliendo le funzioni di DigitPA, dell’Agenzia per la diffusione delle tecnologie per l’innovazione e del Dipartimento per la digitalizzazione.",
+    "spiegazione": "L’**AgID** è stata istituita dall’**art. 19, comma 1, del d.l. 83/2012** (decreto «Crescita» o «Sviluppo»), convertito dalla l. 134/2012: «È istituita l'Agenzia per l'Italia Digitale». Ha raccolto le funzioni di DigitPA e dell’Agenzia per la diffusione delle tecnologie per l’innovazione (soppressi dall’art. 22) e del Dipartimento per la digitalizzazione della pubblica amministrazione (art. 20, comma 2).",
     "perOpzione": {
       "A": "Anno corretto: d.l. 83/2012.",
       "B": "Nel 2004 esisteva il CNIPA (predecessore di DigitPA), non l’AgID.",

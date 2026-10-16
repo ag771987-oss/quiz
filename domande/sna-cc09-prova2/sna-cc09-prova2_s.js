@@ -193,7 +193,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Leggi con attenzione **a chi si riferisce** ogni dato: il +13% di rischio d'infarto riguarda **solo i soggetti predisposti** e il lunedì mattina; peso e pressione più alti riguardano **anche le persone sane**.",
     "perOpzione": {
       "A": "Corretta: «anche nelle persone sane e in forma, il lunedì peso e pressione sanguigna sono più alti che nel resto della settimana».",
-      "B": "Generalizza indebitamente: il +13% riguarda «i soggetti predisposti», non la popolazione in generale.",
+      "B": "Generalizza indebitamente: il +13% riguarda i «soggetti predisposti», non la popolazione in generale.",
       "C": "Anche qui il riferimento alla «popolazione» è errato: il testo parla di soggetti predisposti; inoltre non afferma che il rischio aumenti «solo» la mattina."
     }
   },
@@ -225,8 +225,8 @@ const SPIEGAZIONI = [
     "suggerimento": "Ogni figura ha cinque «bracci» orizzontali di lunghezza diversa: conta i rombi di ciascuna riga e confronta la prima figura con la seconda.",
     "spiegazione": "Le lunghezze delle cinque righe **scorrono verso l'alto**: la riga in cima passa in fondo a ogni passo. Prima figura: 3-1-5-2-4; seconda: 1-5-2-4-3; quindi la terza deve essere **5-2-4-3-1**, e infatti la quarta è 2-4-3-1-5 e la quinta 4-3-1-5-2.",
     "perOpzione": {
-      "A": "Ha lunghezze diverse dalla sequenza 5-2-4-3-1 richiesta: la riga più lunga non è in cima e la più corta non è in fondo.",
-      "B": "Non rispetta lo scorrimento: la sequenza delle lunghezze non corrisponde a quella attesa (5-2-4-3-1).",
+      "A": "Le righe misurano 2, 4, 3, 5 e 1 rombi: la più corta è in fondo, ma la più lunga è al quarto posto invece che in cima, quindi la sequenza non è 5-2-4-3-1.",
+      "B": "Non rispetta lo scorrimento: le righe misurano 4, 2, 5, 3 e 1 rombi, non 5-2-4-3-1 come richiesto.",
       "C": "Corretta: le righe misurano 5, 2, 4, 3 e 1 rombi, cioè la seconda figura con la riga in cima spostata in fondo."
     }
   },
@@ -247,7 +247,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Le regole sono due e indipendenti: una riguarda quale metà del quadrato è ombreggiata, l'altra la posizione delle tre frecce. Ogni quante figure si ripete ciascuna?",
     "spiegazione": "Il quadrato è diviso da una diagonale: l'ombreggiatura segue un **ciclo di 3** (nessuna metà, metà in basso a sinistra, metà in alto a destra), quindi la sesta figura ha in grigio la metà **in alto a destra**. Le frecce seguono un **ciclo di 4** (la quinta figura è uguale alla prima), quindi la sesta ha le frecce della seconda: freccia lunga in alto, freccia corta a sinistra, freccia grigia lunga in basso a destra.",
     "perOpzione": {
-      "A": "Ha la metà in alto a destra grigia, ma le frecce (una lunga verso il basso, una grigia in alto a sinistra) non corrispondono a quelle della seconda figura.",
+      "A": "Ha la metà in alto a destra grigia, ma le frecce (una lunga verticale a doppia punta, in su e in giù, e una grigia in alto a sinistra) non corrispondono a quelle della seconda figura.",
       "B": "Corretta: metà in alto a destra ombreggiata e frecce identiche alla seconda figura (su, sinistra corta, diagonale grigia in basso a destra).",
       "C": "Ha in grigio la metà in basso a sinistra (che spetterebbe alla figura successiva) e le frecce della prima figura invece che della seconda."
     }
@@ -267,10 +267,10 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "B",
     "suggerimento": "Due dettagli da controllare: il numero di elettori richiesto e se i due soggetti promotori sono alternativi o devono agire insieme.",
-    "spiegazione": "L'**art. 75 Cost.** prevede che il referendum abrogativo sia indetto quando lo richiedono **cinquecentomila elettori o cinque Consigli regionali**: si tratta di due iniziative **alternative**, ciascuna sufficiente da sola.",
+    "spiegazione": "L'**art. 75, primo comma, Cost.** dispone: «È indetto referendum popolare per deliberare la abrogazione, totale o parziale, di una legge o di un atto avente valore di legge, quando lo richiedono **cinquecentomila elettori o cinque Consigli regionali**»: si tratta di due iniziative **alternative**, ciascuna sufficiente da sola.",
     "perOpzione": {
       "A": "Il numero è sbagliato: servono cinquecentomila elettori, non cinquemila.",
-      "B": "Corretta: è la formula testuale dell'art. 75, primo comma, Cost.",
+      "B": "Corretta: riprende la formula dell'art. 75, primo comma, Cost. («cinquecentomila elettori o cinque Consigli regionali»).",
       "C": "Il numero è giusto ma la congiunzione no: elettori e Consigli regionali sono promotori alternativi («o»), non cumulativi."
     },
     "riferimenti": [
@@ -283,7 +283,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "B",
     "suggerimento": "I quindici giudici costituzionali provengono da tre fonti diverse, in parti uguali: quali sono?",
-    "spiegazione": "Ai sensi dell'**art. 135 Cost.** la Corte è composta da **15 giudici**: un terzo nominati dal **Presidente della Repubblica**, un terzo eletti dal **Parlamento in seduta comune**, un terzo eletti dalle **supreme magistrature ordinaria e amministrative**.",
+    "spiegazione": "Per l'**art. 135, primo comma, Cost.** «La Corte costituzionale è composta di quindici giudici nominati per un terzo dal Presidente della Repubblica, per un terzo dal Parlamento in seduta comune e per un terzo dalle **supreme magistrature ordinaria ed amministrative**». Le tre fonti hanno quindi lo stesso peso: un terzo ciascuna.",
     "perOpzione": {
       "A": "Non eleggono «tutti i magistrati ordinari»: l'elezione spetta alle supreme magistrature (Cassazione, Consiglio di Stato, Corte dei conti).",
       "B": "Corretta: è la quota di un terzo prevista dall'art. 135 Cost. per le supreme magistrature ordinaria e amministrative.",
@@ -299,7 +299,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "C",
     "suggerimento": "Ricorda la formula dell'art. 71 Cost.: chi può proporre e in che forma deve essere presentata la proposta?",
-    "spiegazione": "Per l'**art. 71, secondo comma, Cost.** il popolo esercita l'iniziativa delle leggi mediante la proposta, da parte di **almeno cinquantamila elettori**, di un **progetto redatto in articoli**.",
+    "spiegazione": "Per l'**art. 71, secondo comma, Cost.** «Il popolo esercita l'iniziativa delle leggi, mediante la proposta, da parte di **almeno cinquantamila elettori**, di un **progetto redatto in articoli**».",
     "perOpzione": {
       "A": "La riserva di assemblea (art. 72, quarto comma, Cost.) riguarda la procedura di esame in Parlamento, non limita chi può presentare l'iniziativa.",
       "B": "Non esiste alcun limite temporale all'iniziativa popolare legato al primo anno di legislatura.",
@@ -318,7 +318,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "Distingui tra chi deve ricevere la comunicazione di avvio e chi può soltanto intervenire nel procedimento.",
-    "spiegazione": "L'**art. 7 della l. 241/1990** impone di comunicare l'avvio ai destinatari diretti, a chi per legge deve intervenire e ai **soggetti, individuati o facilmente individuabili, che possono subire un pregiudizio** dal provvedimento. I portatori di interessi diffusi costituiti in associazioni o comitati possono **intervenire** (art. 9), ma non sono destinatari della comunicazione.",
+    "spiegazione": "L'**art. 7 della l. 241/1990** impone di comunicare l'avvio ai destinatari diretti, a chi per legge deve intervenire e ai terzi pregiudicati. Il comma 1 dispone: «qualora da un provvedimento possa derivare un pregiudizio a **soggetti individuati o facilmente individuabili**, diversi dai suoi diretti destinatari, l'amministrazione è tenuta a fornire loro, con le stesse modalità, notizia dell'inizio del procedimento». I portatori di interessi diffusi costituiti in associazioni o comitati possono **intervenire** (art. 9), ma non sono destinatari della comunicazione.",
     "perOpzione": {
       "A": "Corretta: riprende nella sostanza l'art. 7, comma 1, l. 241/1990.",
       "B": "I portatori di interessi diffusi non hanno diritto alla comunicazione; possono intervenire se costituiti in associazioni o comitati (art. 9).",
@@ -337,7 +337,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "Da dove nasce l'accordo secondo l'art. 11 della l. 241/1990? E su quale parte del provvedimento può incidere: quella vincolata o quella discrezionale?",
-    "spiegazione": "L'**art. 11 della l. 241/1990** consente all'amministrazione, **in accoglimento di osservazioni e proposte** presentate dai privati (art. 10), di concludere accordi per determinare il **contenuto discrezionale** del provvedimento (accordi integrativi) o sostituirlo (accordi sostitutivi). Tutti gli accordi devono essere **motivati** ai sensi dell'art. 3.",
+    "spiegazione": "Per l'**art. 11, comma 1, della l. 241/1990** «**In accoglimento di osservazioni e proposte** presentate a norma dell'articolo 10, l'amministrazione procedente può concludere, senza pregiudizio dei diritti dei terzi, e in ogni caso nel perseguimento del pubblico interesse, accordi con gli interessati al fine di determinare il **contenuto discrezionale** del provvedimento finale ovvero in sostituzione di questo» (accordi integrativi e sostitutivi). Il comma 2 aggiunge: «Gli accordi di cui al presente articolo devono essere **motivati** ai sensi dell'articolo 3».",
     "perOpzione": {
       "A": "Gli accordi incidono sul contenuto discrezionale del provvedimento: dove il contenuto è vincolato non c'è nulla da negoziare.",
       "B": "Corretta: è il presupposto previsto dall'art. 11, comma 1, l. 241/1990.",
@@ -359,7 +359,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "C",
     "suggerimento": "Dopo che si è formato il silenzio assenso, l'amministrazione ha ancora qualche strumento per correggere un esito illegittimo?",
-    "spiegazione": "Per l'**art. 20 della l. 241/1990** il silenzio dell'amministrazione equivale ad accoglimento, ma l'amministrazione **può assumere determinazioni in autotutela** (artt. 21-quinquies e 21-nonies). Il silenzio assenso è escluso, tra l'altro, per **patrimonio culturale e paesaggistico, ambiente**, difesa nazionale, pubblica sicurezza, salute.",
+    "spiegazione": "Per l'**art. 20 della l. 241/1990** il silenzio dell'amministrazione equivale ad accoglimento, ma il comma 3 precisa: «Nei casi in cui il silenzio dell'amministrazione equivale ad accoglimento della domanda, l'amministrazione competente **può assumere determinazioni in via di autotutela**, ai sensi degli articoli 21-quinquies e 21-nonies». Il silenzio assenso è escluso, tra l'altro, per **patrimonio culturale e paesaggistico, ambiente**, difesa nazionale, pubblica sicurezza, salute.",
     "perOpzione": {
       "A": "L'esclusione dall'art. 20, comma 4, riguarda sia il patrimonio culturale e paesaggistico sia l'ambiente.",
       "B": "La legge non limita il silenzio assenso alle attività vincolate: è la regola generale per i procedimenti a istanza di parte, salve le eccezioni previste.",
@@ -381,7 +381,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "C",
     "suggerimento": "È una nozione di origine europea, pensata per evitare che le regole sugli appalti vengano aggirate: conta la veste giuridica o la sostanza?",
-    "spiegazione": "L'**organismo di diritto pubblico** è una nozione **funzionale** di origine UE: è tale qualunque soggetto, anche di forma privata, **dotato di personalità giuridica**, istituito per soddisfare **esigenze di interesse generale non industriali o commerciali** e soggetto all'**influenza dominante pubblica** (finanziamento, controllo o nomina degli organi). Per questo è **amministrazione aggiudicatrice** tenuta ad applicare il codice dei contratti pubblici.",
+    "spiegazione": "L'**organismo di diritto pubblico** è una nozione **funzionale** di origine UE: è tale qualunque soggetto, anche di forma privata, **dotato di personalità giuridica**, istituito per soddisfare **esigenze di interesse generale non industriali o commerciali** e soggetto all'**influenza dominante pubblica** (finanziamento, controllo o nomina degli organi). Per questo è **amministrazione aggiudicatrice** tenuta ad applicare il codice dei contratti pubblici. Alla data della prova (27/06/2023) si applicava ancora il d.lgs. 50/2016, il cui art. 3, comma 1, lett. d), definiva «organismi di diritto pubblico» «qualsiasi organismo, **anche in forma societaria**, [...] 1) istituito per soddisfare specificatamente esigenze di interesse generale, aventi carattere non industriale o commerciale; 2) **dotato di personalità giuridica**; 3) la cui attività sia finanziata in modo maggioritario dallo Stato, dagli enti pubblici territoriali o da altri organismi di diritto pubblico oppure la cui gestione sia soggetta al controllo di questi ultimi [...]». Dal 1° luglio 2023 la stessa nozione è ripresa dal nuovo codice (d.lgs. 36/2023, allegato I.1).",
     "perOpzione": {
       "A": "Sbagliata in più punti: non persegue fini di lucro, può avere anche forma privata e rientra pienamente nel codice dei contratti.",
       "B": "Il requisito delle esigenze di interesse generale è giusto, ma l'organismo deve essere dotato di personalità giuridica, non privo.",
@@ -392,7 +392,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "Oltre alla giurisdizione esclusiva, il giudice amministrativo può pronunciarsi su un diritto anche senza efficacia di giudicato?",
-    "spiegazione": "Il giudice amministrativo conosce dei diritti soggettivi nelle materie di **giurisdizione esclusiva** (art. 103 Cost.; art. 7 c.p.a.) e, fuori da queste, **in via incidentale e senza efficacia di giudicato** sulle questioni pregiudiziali o incidentali relative a diritti, necessarie per decidere la questione principale (**art. 8 c.p.a.**, d.lgs. 104/2010), salvo lo stato e la capacità delle persone e l'incidente di falso.",
+    "spiegazione": "Il giudice amministrativo conosce dei diritti soggettivi nelle materie di **giurisdizione esclusiva** (art. 103 Cost.; art. 7 c.p.a.) e, fuori da queste, in via incidentale. Per l'**art. 8, comma 1, c.p.a.** (d.lgs. 104/2010) «Il giudice amministrativo nelle materie in cui non ha giurisdizione esclusiva conosce, **senza efficacia di giudicato**, di tutte le questioni pregiudiziali o incidentali relative a diritti, la cui risoluzione sia necessaria per pronunciare sulla questione principale». Restano riservate al giudice ordinario le questioni sullo stato e la capacità delle persone (salvo la capacità di stare in giudizio) e l'incidente di falso (comma 2).",
     "perOpzione": {
       "A": "Incompleta: dimentica la cognizione incidentale prevista dall'art. 8 c.p.a.",
       "B": "Corretta: comprende sia la giurisdizione esclusiva sia la cognizione incidenter tantum.",
@@ -414,7 +414,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "A",
     "suggerimento": "La legge 234/2012 riguarda il rapporto Italia–UE nella produzione delle norme: cerca l'elenco di principi tipici del riparto di competenze e della cooperazione tra livelli.",
-    "spiegazione": "L'**art. 1 della l. 234/2012** stabilisce che la partecipazione dell'Italia al processo normativo UE si svolge in coerenza con gli **artt. 11 e 117 Cost.**, secondo i principi di **attribuzione, sussidiarietà, proporzionalità, leale collaborazione, efficienza, trasparenza e partecipazione democratica**.",
+    "spiegazione": "L'**art. 1, comma 1, della l. 234/2012** disciplina la partecipazione dell'Italia alla formazione e all'attuazione degli atti UE «in coerenza con gli articoli 11 e 117 della Costituzione, sulla base dei principi di **attribuzione, di sussidiarietà, di proporzionalità, di leale collaborazione, di efficienza, di trasparenza e di partecipazione democratica**».",
     "perOpzione": {
       "A": "Corretta: è l'elenco previsto dall'art. 1 della l. 234/2012.",
       "B": "Sono i valori fondanti dell'Unione indicati dall'art. 2 TUE, non i principi della legge 234/2012.",
@@ -439,9 +439,9 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "La Carta vincola l'Unione, ma vincola anche gli Stati? Se sì, sempre o solo in certi casi?",
-    "spiegazione": "Per l'**art. 51 della Carta** le sue disposizioni si applicano alle **istituzioni, organi e organismi dell'Unione** e agli **Stati membri esclusivamente nell'attuazione del diritto dell'Unione**. Non si estende alle materie puramente interne.",
+    "spiegazione": "Per l'**art. 51, par. 1, della Carta** «Le disposizioni della presente Carta si applicano alle **istituzioni, organi e organismi dell'Unione** nel rispetto del principio di sussidiarietà, come pure agli **Stati membri esclusivamente nell'attuazione del diritto dell'Unione**». Le agenzie rientrano tra gli organismi dell'Unione. Non si estende alle materie puramente interne.",
     "perOpzione": {
-      "A": "Corretta: riproduce l'ambito di applicazione dell'art. 51 della Carta.",
+      "A": "Corretta: riprende nella sostanza l'ambito di applicazione dell'art. 51, par. 1, della Carta (le agenzie sono «organismi» dell'Unione).",
       "B": "Errata perché estende la Carta al diritto interno: gli Stati sono vincolati solo quando attuano il diritto dell'Unione.",
       "C": "Errata perché esclude gli Stati membri, che sono vincolati quando attuano il diritto dell'Unione."
     },
@@ -455,7 +455,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Non confondere il Consiglio europeo (vertice politico) con il Consiglio dell'Unione europea (i ministri).",
-    "spiegazione": "L'**art. 15, par. 2, TUE**: il Consiglio europeo è composto dai **capi di Stato o di governo** degli Stati membri, dal suo **presidente** e dal **presidente della Commissione**; l'Alto rappresentante partecipa ai lavori. I ministri compongono invece il **Consiglio** (dell'Unione europea, art. 16 TUE).",
+    "spiegazione": "Per l'**art. 15, par. 2, TUE** «Il Consiglio europeo è composto dai **capi di Stato o di governo** degli Stati membri, dal suo **presidente** e dal **presidente della Commissione**. L'alto rappresentante dell'Unione per gli affari esteri e la politica di sicurezza partecipa ai lavori». I ministri compongono invece il **Consiglio** (dell'Unione europea, art. 16 TUE).",
     "perOpzione": {
       "A": "Corretta: è la composizione prevista dall'art. 15, par. 2, TUE.",
       "B": "Descrive, in modo impreciso, il Consiglio dell'Unione europea (formazioni di ministri), non il Consiglio europeo.",
@@ -551,7 +551,7 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "C",
     "suggerimento": "Le entrate dello Stato sono gestite in modo unitario; le spese, invece, sono ripartite tra chi le gestisce. Come si traduce nella struttura del bilancio?",
-    "spiegazione": "Il bilancio di previsione dello Stato (**art. 21 della l. 196/2009**) è costituito da **un unico stato di previsione dell'entrata** e da **tanti stati di previsione della spesa quanti sono i ministeri** (con portafoglio), oltre al quadro generale riassuntivo.",
+    "spiegazione": "Per l'**art. 21, comma 10, della l. 196/2009** «La seconda sezione del disegno di legge di bilancio è costituita dallo **stato di previsione dell'entrata**, dagli **stati di previsione della spesa distinti per Ministeri**, e dal quadro generale riassuntivo con riferimento al triennio». C'è quindi un unico stato di previsione dell'entrata e uno stato di previsione della spesa per ciascun ministero (con portafoglio).",
     "perOpzione": {
       "A": "Le entrate non sono ripartite per ministero: lo stato di previsione dell'entrata è unico.",
       "B": "Le spese non sono in un unico documento: ogni ministero ha il proprio stato di previsione.",
