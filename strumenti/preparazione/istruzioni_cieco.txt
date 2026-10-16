@@ -1,0 +1,11 @@
+Risolvi in modo indipendente i 60 quesiti di una prova preselettiva SNA (corso-concorso dirigenti) la cui chiave non è stata pubblicata. Il tuo risultato servirà come controllo incrociato di un'altra soluzione: NON leggere nessun file nelle cartelle out_ric/, lav/ o out/ dello scratchpad. Non modificare nulla, non usare la rete, non fare git.
+
+PROVA: __ID__ (__DESC__).
+- Testo: /home/user/cla/ricerche/sna_preselettive/txt/__ID__.txt
+- Quesiti con figura: __FIG__ — guarda con lo strumento Read /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN.png (domanda + opzioni) e /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN-fig1.png (figura ad alta risoluzione).
+
+Per ogni quesito ragiona con cura (diritto/economia: norma vigente; comprensione: solo il brano; figure: trova la regola e verifica che individui una sola alternativa; situazionali: il comportamento che la SNA premia — coinvolgimento, gradualità, trasparenza, responsabilità, rispetto delle regole).
+
+OUTPUT (scrivilo con json.dump da Python, ensure_ascii=False): <LAVORO>/cieco/__ID__.json
+{"id": "__ID__", "risposte": {"1": {"r": "B", "sicurezza": "alta|media|bassa", "motivo": "una frase"}, ..., "60": {...}}}
+Devono esserci tutte e 60 le risposte. Resoconto finale: solo il numero di risposte con sicurezza media/bassa.

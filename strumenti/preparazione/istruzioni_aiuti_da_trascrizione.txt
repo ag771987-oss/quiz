@@ -1,0 +1,26 @@
+Devi completare, per un'app di quiz, una prova preselettiva SNA (7° corso-concorso dirigenti, 2019) già trascritta, per la quale la SNA NON ha pubblicato le risposte: la chiave va ricostruita da te. Lavora solo leggendo i file indicati e scrivendo UN solo file di output. Non modificare nulla altrove, non fare git, non usare la rete. Non leggere i file nella cartella cieco/.
+
+PROVA: __ID__
+INPUT
+- Trascrizione già fatta (NON modificare i campi esistenti: id, materia, istruzioni, brano, domanda, immagine, paginaPdf, opzioni): <LAVORO>/c7/__ID__.json
+- Testo originale per controllo: /home/user/cla/ricerche/sna_preselettive/txt/__ID__.txt
+- Per i quesiti con "immagine": true guarda con lo strumento Read il ritaglio /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN.png (NN a due cifre). Nell'app il ritaglio viene mostrato così com'è, con le lettere A/B/C originali.
+- Esempio di stile per gli aiuti (già approvato dall'utente): <LAVORO>/esempio_aiuti.py
+
+OUTPUT: <LAVORO>/out_ric/__ID__.json
+Stesso formato dell'input ({"id", "domande": [...]}), dove a ogni quesito aggiungi:
+  "corretta": "B",          // la tua risposta, dopo un ragionamento accurato
+  "certezza": "alta",       // alta = oggettiva e sicura (norma, definizione, calcolo, testo del brano, regola univoca); media = probabile ma discutibile; bassa = davvero incerta
+  "suggerimento": "...",    // aiuto da mostrare PRIMA di rispondere, senza svelare la risposta
+  "spiegazione": "...",     // concetto chiave (2-4 frasi), con riferimenti normativi precisi quando pertinenti (cita la norma VIGENTE; se la norma è cambiata dopo il 2019 spiega sia la regola di allora sia quella di oggi)
+  "perOpzione": {"A": "...", "B": "...", "C": "..."},  // per OGNI opzione: perché è giusta o sbagliata, 1-2 frasi concrete
+  "nota": "..."             // opzionale: dubbi sulla chiave o sul testo
+REGOLE
+1. Risolvi ogni quesito con cura: per i calcoli e le serie rifai i conti e verifica che UNA sola opzione funzioni; per la comprensione basati solo sul brano; per diritto/economia applica la norma (citala solo se sei sicuro del numero dell'articolo).
+2. Sii onesto con "certezza": l'app mostra un avviso sulle domande non "alta".
+3. Non svelare la risposta nel suggerimento. Nei perOpzione non citare le lettere delle altre opzioni (nell'app le opzioni testuali vengono mescolate): riferisciti al contenuto.
+4. Italiano chiaro. Grassetto con **...** con moderazione.
+Quando hai finito verifica con:
+python3 <LAVORO>/valida_ric.py <LAVORO>/out_ric/__ID__.json
+e correggi finché stampa OK. Scrivi il JSON con json.dump da Python (ensure_ascii=False), a pezzi (es. 10 quesiti alla volta, salvando ogni volta). Script in <LAVORO>/lav/__ID__/.
+Resoconto finale (breve): quesiti con certezza media/bassa, quesiti con nota.

@@ -1,0 +1,20 @@
+Devi trascrivere in formato strutturato i 60 quesiti di una prova preselettiva SNA (7° corso-concorso dirigenti, 2019). NON devi risolvere i quesiti né scrivere spiegazioni: solo il testo, fedele. Lavora solo leggendo i file indicati e scrivendo UN solo file di output. Non modificare nulla altrove, non fare git, non usare la rete.
+
+PROVA: __ID__
+- Testo estratto dal PDF digitale: /home/user/cla/ricerche/sna_preselettive/txt/__ID__.txt (impaginazione da sistemare; alcune figure/tabelle sono "disegnate" con caratteri di testo)
+- Quesiti con figura (elenco: /home/user/cla/ricerche/sna_preselettive/quesiti_con_figure.tsv, righe con id __ID__): per ciascuno esiste il ritaglio dell'impaginato /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN.png (domanda + figura + opzioni). Guardalo con lo strumento Read. Se il quesito non è rappresentabile fedelmente come solo testo (figure, serie di lettere disposte a croce, tabelle, carte...), metti "immagine": true: nell'app verrà mostrato il ritaglio. In quel caso "domanda" contiene comunque il testo della domanda e "opzioni" il testo delle opzioni (per opzioni puramente grafiche usa un'etichetta breve, es. "Figura A", "Alternativa A" coerente con il ritaglio).
+
+OUTPUT (json.dump da Python, ensure_ascii=False): <LAVORO>/c7/__ID__.json
+{"id": "__ID__", "domande": [ {
+  "id": 1,                  // numero del quesito 1..60
+  "materia": "...",         // una tra: Situazionale, Ragionamento logico, Ragionamento numerico, Comprensione del testo, Diritto, Economia, Organizzazione, Politiche pubbliche, Contabilità pubblica, Informatica, Statistica, Inglese, Cultura generale
+  "istruzioni": "...",      // opzionale: consegna ripetuta (es. "LEGGERE E RISPONDERE ALLE DOMANDE DA 1 A 4", o le regole comuni di una serie di quesiti)
+  "brano": "...",           // brano di lettura completo se il quesito ne usa uno (ripetuto integralmente in ciascun quesito 1-4 e 5-8), altrimenti ""
+  "domanda": "...",
+  "immagine": true,         // solo se serve il ritaglio
+  "paginaPdf": 1,           // dal «Pagina N» del testo
+  "opzioni": {"A": "...", "B": "...", "C": "..."}
+} ] }
+
+REGOLE: testo fedele (non riassumere, non correggere refusi dell'originale), righe spezzate unite, intestazioni e numeri di pagina tolti, \n solo tra paragrafi veri o per elenchi/righe di tabella. Controlla che ci siano tutti i 60 quesiti con tutte le opzioni.
+Resoconto finale: solo l'elenco dei quesiti con "immagine": true e eventuali problemi.

@@ -1,0 +1,41 @@
+Devi preparare, per un'app di quiz, una prova preselettiva SNA (Scuola Nazionale dell'Amministrazione, corso-concorso dirigenti) per la quale la SNA NON ha pubblicato le risposte: la chiave va ricostruita da te. Lavora solo leggendo i file indicati e scrivendo UN solo file di output. Non modificare nulla altrove, non fare git, non usare la rete. Non leggere i file nelle cartelle out_ric/ o cieco/ di altre prove.
+
+PROVA: __ID__ (__DESC__).
+
+INPUT
+- Testo estratto dal PDF digitale (affidabile, ma con a capo, numeri di pagina e impaginazione da sistemare): /home/user/cla/ricerche/sna_preselettive/txt/__ID__.txt
+- Quesiti con figura: __FIG__. Per ciascuno guarda con lo strumento Read sia il ritaglio dell'impaginato /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN.png (domanda + opzioni) sia la figura ad alta risoluzione /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN-fig1.png, che è quella mostrata nell'app.
+- Esempio di stile per gli aiuti (già approvato dall'utente): <LAVORO>/esempio_aiuti.py
+
+OUTPUT: <LAVORO>/out_ric/__ID__.json
+Formato:
+{"id": "__ID__", "domande": [ {
+  "id": 1,                       // numero del quesito 1..60
+  "materia": "...",              // una tra: Situazionale, Ragionamento logico, Ragionamento numerico, Comprensione del testo, Diritto, Economia, Organizzazione, Politiche pubbliche, Contabilità pubblica, Informatica, Statistica, Inglese, Cultura generale (esattamente questi nomi)
+  "istruzioni": "...",           // opzionale: consegna generale ripetuta (es. il paragrafo «Questo brano viene ripetuto per 3 domande...» oppure «Scegli di seguito l'opzione che maggiormente si avvicina al tuo modo di agire:»)
+  "brano": "...",                // testo del brano se il quesito ne ha uno (riportato integralmente in ogni quesito che lo usa), altrimenti ""
+  "domanda": "...",              // la domanda vera e propria
+  "immagine": true,              // solo per i quesiti con figura
+  "paginaPdf": 1,                // pagina in cui inizia il quesito (dalla numerazione «Pagina N di M» del testo)
+  "opzioni": {"A": "...", "B": "...", "C": "..."},   // tutte le opzioni presenti (anche D, E)
+  "corretta": "B",               // la tua risposta, dopo un ragionamento accurato
+  "certezza": "alta",            // alta = risposta oggettiva e sicura (norma, definizione, calcolo, testo del brano); media = probabile ma discutibile (tipico dei situazionali e di figure con più regole possibili); bassa = davvero incerta
+  "suggerimento": "...",         // aiuto da mostrare PRIMA di rispondere: indirizza il ragionamento SENZA svelare la risposta
+  "spiegazione": "...",          // concetto chiave da ricordare (2-4 frasi), con riferimenti normativi precisi quando pertinenti
+  "perOpzione": {"A": "...", "B": "...", ...},  // per OGNI opzione: perché è giusta o sbagliata, 1-2 frasi concrete
+  "nota": "..."                  // opzionale: dubbi sulla chiave (es. due opzioni difendibili) o sul testo. Breve.
+} ] }
+
+REGOLE
+1. Testo fedele al PDF: non riscrivere né riassumere domande, brani e opzioni; unisci le righe spezzate, togli numeri di pagina e intestazioni, \n solo tra paragrafi veri. Lascia gli eventuali refusi dell'originale.
+2. Risolvi ogni quesito con cura, come farebbe un esperto: per diritto/economia/contabilità applica la norma vigente (citala solo se sei sicuro del numero dell'articolo); per la comprensione basati solo sul brano; per le figure trova la regola e verifica che individui UNA sola alternativa; per i situazionali scegli il comportamento che la SNA premia (coinvolgimento, gradualità, trasparenza, responsabilità, rispetto delle regole, orientamento al risultato) e metti certezza "media" salvo casi netti.
+3. Sii onesto con "certezza": l'app mostra un avviso sulle domande non "alta". Meglio "media" che una falsa sicurezza.
+4. Non svelare la risposta nel suggerimento. Nei perOpzione non citare le lettere delle altre opzioni (le opzioni vengono mescolate nell'app): riferisciti al contenuto (per le figure: «la figura 3...»).
+5. Figure: descrivi in parole la regola che porta alla risposta.
+6. Italiano chiaro. Grassetto con **...** per i concetti chiave, con moderazione.
+
+Quando hai finito, verifica con:
+python3 <LAVORO>/valida_ric.py <LAVORO>/out_ric/__ID__.json
+e correggi finché stampa OK. Scrivi il JSON con json.dump da uno script Python (ensure_ascii=False); costruiscilo a pezzi (es. 10 quesiti alla volta, salvando ogni volta) per non perdere lavoro. Metti i tuoi script in <LAVORO>/lav/__ID__/.
+
+Resoconto finale (breve): correzioni di testo rilevanti, elenco dei quesiti con certezza media/bassa, quesiti con nota, materie con conteggio.
