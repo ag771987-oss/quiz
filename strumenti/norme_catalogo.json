@@ -1,0 +1,32 @@
+{
+  "consultato": "2026-10-16",
+  "fonti": {
+    "cost":        {"dir": "costituzione", "fonte": "Costituzione della Repubblica italiana", "sigla": "Cost.", "urn": "urn:nir:stato:costituzione:1947-12-27",
+                    "articoli": ["10","11","13","21","24","26","41","48","60","61","64","71","72","73","75","77","78","81","87","90","92","94","95","97","100","103","104","105","110","113","117","118","119","120","134","135","136","138"]},
+    "l241_1990":   {"dir": "l241_1990", "fonte": "Legge 7 agosto 1990, n. 241", "sigla": "l. 241/1990", "urn": "urn:nir:stato:legge:1990-08-07;241",
+                    "articoli": ["1","2","3","6","7","9","10","10-bis","11","19","20","21-bis","21-ter","21-quater","21-quinquies","21-septies","21-nonies","22","24"]},
+    "l400_1988":   {"dir": "l400_1988", "fonte": "Legge 23 agosto 1988, n. 400", "sigla": "l. 400/1988", "urn": "urn:nir:stato:legge:1988-08-23;400", "articoli": ["9","14","17"]},
+    "dlgs165_2001":{"dir": "dlgs165_2001", "fonte": "Decreto legislativo 30 marzo 2001, n. 165", "sigla": "d.lgs. 165/2001", "urn": "urn:nir:stato:decreto.legislativo:2001-03-30;165", "articoli": ["6","7","19","35","52"]},
+    "cc":          {"dir": "codice_civile", "fonte": "Codice civile (R.D. 16 marzo 1942, n. 262)", "sigla": "c.c.", "urn": "urn:nir:stato:regio.decreto:1942-03-16;262:2", "articoli": ["823","826"]},
+    "cpa":         {"dir": "cpa", "fonte": "Codice del processo amministrativo (d.lgs. 2 luglio 2010, n. 104, Allegato 1)", "sigla": "c.p.a.", "urn": "urn:nir:stato:decreto.legislativo:2010-07-02;104",
+                    "allegato": {"codiceRedazionale": "010G0127", "dataGU": "2010-07-07", "idGruppo": "9", "flagTipoArticolo": "2"},
+                    "articoli": ["7","8","15","30","55","60","117"]},
+    "l190_2012":   {"dir": "l190_2012", "fonte": "Legge 6 novembre 2012, n. 190", "sigla": "l. 190/2012", "urn": "urn:nir:stato:legge:2012-11-06;190", "articoli": ["1"]},
+    "l20_1994":    {"dir": "l20_1994", "fonte": "Legge 14 gennaio 1994, n. 20", "sigla": "l. 20/1994", "urn": "urn:nir:stato:legge:1994-01-14;20", "articoli": ["1","3"]},
+    "dlgs152_2006":{"dir": "dlgs152_2006", "fonte": "Decreto legislativo 3 aprile 2006, n. 152", "sigla": "d.lgs. 152/2006", "urn": "urn:nir:stato:decreto.legislativo:2006-04-03;152", "articoli": ["144"]},
+    "dlgs286_1999":{"dir": "dlgs286_1999", "fonte": "Decreto legislativo 30 luglio 1999, n. 286", "sigla": "d.lgs. 286/1999", "urn": "urn:nir:stato:decreto.legislativo:1999-07-30;286", "articoli": ["1","4"]},
+    "l124_2015":   {"dir": "l124_2015", "fonte": "Legge 7 agosto 2015, n. 124", "sigla": "l. 124/2015", "urn": "urn:nir:stato:legge:2015-08-07;124", "articoli": ["14"]},
+    "dl83_2012":   {"dir": "dl83_2012", "fonte": "Decreto-legge 22 giugno 2012, n. 83", "sigla": "d.l. 83/2012", "urn": "urn:nir:stato:decreto.legge:2012-06-22;83", "articoli": ["19"]},
+    "cad":         {"dir": "cad", "fonte": "Codice dell'amministrazione digitale (d.lgs. 7 marzo 2005, n. 82)", "sigla": "CAD", "urn": "urn:nir:stato:decreto.legislativo:2005-03-07;82", "articoli": ["1","14-bis","17","64"]},
+    "dl80_2021":   {"dir": "dl80_2021", "fonte": "Decreto-legge 9 giugno 2021, n. 80", "sigla": "d.l. 80/2021", "urn": "urn:nir:stato:decreto.legge:2021-06-09;80", "articoli": ["6"]},
+    "l234_2012":   {"dir": "l234_2012", "fonte": "Legge 24 dicembre 2012, n. 234", "sigla": "l. 234/2012", "urn": "urn:nir:stato:legge:2012-12-24;234", "articoli": ["1"]},
+    "dlgs175_2016":{"dir": "dlgs175_2016", "fonte": "Decreto legislativo 19 agosto 2016, n. 175", "sigla": "d.lgs. 175/2016", "urn": "urn:nir:stato:decreto.legislativo:2016-08-19;175", "articoli": ["3"]},
+    "l196_2009":   {"dir": "l196_2009", "fonte": "Legge 31 dicembre 2009, n. 196", "sigla": "l. 196/2009", "urn": "urn:nir:stato:legge:2009-12-31;196", "articoli": ["10","21","25-bis"]},
+    "l87_1953":    {"dir": "l87_1953", "fonte": "Legge 11 marzo 1953, n. 87", "sigla": "l. 87/1953", "urn": "urn:nir:stato:legge:1953-03-11;87", "articoli": ["23"]},
+    "dlgs36_2023": {"dir": "dlgs36_2023", "fonte": "Decreto legislativo 31 marzo 2023, n. 36", "sigla": "d.lgs. 36/2023", "urn": "urn:nir:stato:decreto.legislativo:2023-03-31;36", "articoli": ["101"]},
+    "tue":         {"dir": "tue", "fonte": "Trattato sull'Unione europea (versione consolidata, GU C 202 del 7.6.2016)", "sigla": "TUE", "celex": "12016M/TXT", "articoli": ["2","5","6","9","13","15","16","17","42"]},
+    "tfue":        {"dir": "tfue", "fonte": "Trattato sul funzionamento dell'Unione europea (versione consolidata, GU C 202 del 7.6.2016)", "sigla": "TFUE", "celex": "12016E/TXT", "articoli": ["2","3","4","6","20","79","108","218","238","256","263","265","267","288","352"]},
+    "cdfue":       {"dir": "carta_ue", "fonte": "Carta dei diritti fondamentali dell'Unione europea (GU C 202 del 7.6.2016)", "sigla": "Carta UE", "celex": "12016P/TXT", "articoli": ["51"]},
+    "prot19":      {"dir": "tfue", "fonte": "Protocollo (n. 19) sull'acquis di Schengen integrato nell'ambito dell'Unione europea (GU C 202 del 7.6.2016)", "sigla": "Prot. 19", "intestazione": "Protocollo n. 19 sull'acquis di Schengen", "celex": "12016E/PRO/19", "articoli": ["1"]}
+  }
+}

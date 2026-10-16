@@ -291,7 +291,12 @@ const SPIEGAZIONI = [
       "A": "Un atto del Capo dello Stato non può sostituirsi al Parlamento: la Costituzione richiede la legge.",
       "B": "È il testo dell’art. 77, co. 3: le Camere possono regolare con legge quei rapporti.",
       "C": "Un DPCM è un atto amministrativo del Governo, non idoneo a sanare gli effetti di un decreto decaduto."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_77"
+      }
+    ]
   },
   {
     "id": 26,
@@ -302,7 +307,12 @@ const SPIEGAZIONI = [
       "A": "Serve un’espressa autorizzazione legislativa e la comunicazione va al Presidente del Consiglio, non al Presidente della Camera.",
       "B": "Serve un’espressa autorizzazione legislativa e la comunicazione non va al Presidente della Repubblica.",
       "C": "Autorizzazione espressa della legge e comunicazione preventiva al Presidente del Consiglio: è l’art. 17, co. 3, l. 400/1988."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_17"
+      }
+    ]
   },
   {
     "id": 27,
@@ -313,7 +323,12 @@ const SPIEGAZIONI = [
       "A": "La Corte costituzionale è un organo di garanzia esterno al Governo.",
       "B": "È il testo dell’art. 95 Cost.",
       "C": "Il Capo dello Stato non fa parte del Governo e non ne dirige l’indirizzo politico."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_95"
+      }
+    ]
   },
   {
     "id": 28,
@@ -335,7 +350,12 @@ const SPIEGAZIONI = [
       "A": "Descrive il potere sostitutivo del Governo verso gli enti locali (art. 120 Cost.), che è una relazione tra enti, non gerarchia tra organi.",
       "B": "Tra i poteri del superiore rientra la decisione del ricorso gerarchico, con possibile annullamento dell’atto.",
       "C": "La gerarchia, pur attenuata, esiste ancora nell’ordinamento (es. ricorso gerarchico)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_120"
+      }
+    ]
   },
   {
     "id": 30,
@@ -357,7 +377,12 @@ const SPIEGAZIONI = [
       "A": "Descrive le dichiarazioni sostitutive (d.P.R. 445/2000), istituto diverso.",
       "B": "È il soccorso istruttorio dell’art. 6 l. 241/1990.",
       "C": "La comunicazione di avvio non si «anticipa in via riservata»: non è un istituto previsto."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_6"
+      }
+    ]
   },
   {
     "id": 32,
@@ -369,7 +394,12 @@ const SPIEGAZIONI = [
       "B": "La legge non parla di nullità ma di inefficacia.",
       "C": "È la qualificazione dell’art. 2, co. 8-bis, l. 241/1990."
     },
-    "nota": "Prima del d.l. 76/2020 la giurisprudenza discuteva tra illegittimità e altre qualificazioni; la risposta segue la norma vigente."
+    "nota": "Prima del d.l. 76/2020 la giurisprudenza discuteva tra illegittimità e altre qualificazioni; la risposta segue la norma vigente.",
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_2"
+      }
+    ]
   },
   {
     "id": 33,
@@ -380,7 +410,12 @@ const SPIEGAZIONI = [
       "A": "Il principio non prevede un simile «ritiro» di competenze all’unanimità.",
       "B": "È il testo dell’art. 5, par. 2, TUE.",
       "C": "Capovolge il principio: sono gli Stati ad attribuire competenze all’Unione, quelle non attribuite restano agli Stati."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_5"
+      }
+    ]
   },
   {
     "id": 34,
@@ -391,7 +426,12 @@ const SPIEGAZIONI = [
       "A": "È l’effetto dell’art. 6, par. 1, TUE dopo Lisbona.",
       "B": "Proprio il Trattato di Lisbona le ha attribuito valore vincolante.",
       "C": "Proclamata a Nizza nel 2000, la Carta è divenuta vincolante solo con Lisbona."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_6"
+      }
+    ]
   },
   {
     "id": 35,
@@ -402,7 +442,15 @@ const SPIEGAZIONI = [
       "A": "L’art. 15 TUE esclude espressamente la funzione legislativa, che spetta a Parlamento europeo e Consiglio.",
       "B": "È il testo dell’art. 15, par. 1, TUE.",
       "C": "Gli accordi internazionali seguono la procedura dell’art. 218 TFUE (Commissione/Alto rappresentante negoziano, il Consiglio conclude)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_15"
+      },
+      {
+        "normaId": "tfue_art_218"
+      }
+    ]
   },
   {
     "id": 36,
@@ -545,7 +593,12 @@ const SPIEGAZIONI = [
       "A": "È la definizione dello SPID.",
       "B": "Lo scambio di dati tra PA avviene tramite l’interoperabilità (PDND), non lo SPID.",
       "C": "L’anagrafe nazionale è l’ANPR."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cad_art_64"
+      }
+    ]
   },
   {
     "id": 49,
@@ -557,7 +610,12 @@ const SPIEGAZIONI = [
       "B": "Non è un diritto generalizzato: dipende dalla compatibilità delle attività e dall’organizzazione.",
       "C": "Le esigenze di conciliazione danno priorità di accesso, ma non ne sono il presupposto esclusivo."
     },
-    "nota": "La soglia è cambiata più volte (10%, 50-60% nella fase emergenziale, poi 15% con il d.l. 56/2021): la risposta segue il testo vigente alla data della prova."
+    "nota": "La soglia è cambiata più volte (10%, 50-60% nella fase emergenziale, poi 15% con il d.l. 56/2021): la risposta segue il testo vigente alla data della prova.",
+    "riferimenti": [
+      {
+        "normaId": "l124_2015_art_14"
+      }
+    ]
   },
   {
     "id": 50,

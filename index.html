@@ -97,8 +97,8 @@ details>summary{cursor:pointer;font-weight:600}
 .figura{display:block;max-width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;margin:0 0 14px;cursor:zoom-in}
 .opts{display:grid;gap:9px}
 .opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:11px 14px}
-.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
-.opt:disabled{cursor:default}
+.opt:hover:not(:disabled):not(.fatta){border-color:var(--accent);background:var(--accent-soft)}
+.opt:disabled,.opt.fatta{cursor:default}
 .opt .head{display:flex;gap:10px}
 .opt .let{flex:0 0 26px;height:26px;border-radius:7px;background:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
 .opt .txt{flex:1}
@@ -121,6 +121,8 @@ details>summary{cursor:pointer;font-weight:600}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
 .kbd{font-size:.78rem;color:var(--ink3)}
 .norma-btn{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:4px 10px;font-size:.86rem;margin:6px 6px 0 0}
+.cit{color:var(--accent);text-decoration:underline dotted;text-underline-offset:2px;cursor:pointer;border-radius:3px}
+.cit:hover,.cit:focus{background:var(--accent-soft);outline:none}
 
 /* Simulazione */
 .grid-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -137,6 +139,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .overlay{position:fixed;inset:0;background:rgba(10,14,22,.6);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
 .modal{background:var(--card);border-radius:14px;max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:20px}
 .modal .testo{white-space:pre-line;line-height:1.65}
+.modal .meta{font-size:.84rem;margin:-6px 0 12px;overflow-wrap:anywhere}
 .zoom{max-width:96vw;max-height:92vh;background:#fff;border-radius:10px}
 .loading{padding:60px 0;text-align:center;color:var(--ink3)}
 </style>
@@ -282,11 +285,13 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 <div class="overlay hidden" id="norma-ov"><div class="modal">
   <div class="row"><b id="norma-titolo"></b><span class="spacer"></span><button class="btn small" id="norma-chiudi">Chiudi</button></div>
   <div class="muted" id="norma-fonte" style="margin:4px 0 12px"></div>
+  <div class="muted meta" id="norma-meta"></div>
   <div class="testo" id="norma-testo"></div>
 </div></div>
 <div class="overlay hidden" id="zoom-ov"><img class="zoom" id="zoom-img" alt=""></div>
 
 <script src="domande/manifest.js"></script>
+<script src="norme/citazioni.js"></script>
 <script>
 "use strict";
 // ═════════════════════════════════════════════════════════════════════
@@ -340,7 +345,7 @@ async function caricaTutto() {
         corretta, certezza: pack.ufficiale ? "ufficiale" : (r.certezza || "alta"), aiuti: s
       }));
     }
-    for (const n of pack.norme || []) await loadScript(n).catch(() => {});
+    await Promise.all((pack.norme || []).map(n => loadScript(n).catch(() => console.warn("Norma non caricata", n))));
   }
 }
 
@@ -616,7 +621,8 @@ function mostraEsito(d, k) {
   const a = d.aiuti || {}, per = a.perOpzione || {};
   document.querySelectorAll("#q-opts .opt").forEach(b => {
     const ok = b.dataset.k;
-    b.disabled = true;
+    // niente disabled: le citazioni nelle spiegazioni devono restare cliccabili
+    b.onclick = null; b.classList.add("fatta");
     b.classList.toggle("ok", ok === d.corretta);
     b.classList.toggle("ko", ok === k && k !== d.corretta);
     b.classList.toggle("dim", ok !== d.corretta && ok !== k);
@@ -634,12 +640,13 @@ function mostraEsito(d, k) {
   else { es.className = "esito ko"; es.textContent = "✘ Risposta sbagliata"; }
 
   const c = $("q-concept");
-  c.innerHTML = a.spiegazione ? "<b class='t'>Concetto chiave</b>" + md(a.spiegazione) : "<b class='t'>Nessuna spiegazione disponibile per questa domanda.</b>";
+  c.innerHTML = a.spiegazione ? "<b class='t'>Concetto chiave</b><div class='sp'>" + md(a.spiegazione) + "</div>" : "<b class='t'>Nessuna spiegazione disponibile per questa domanda.</b>";
+  linkaCitazioni(d);
   for (const r of a.riferimenti || []) {
     const n = window.NORME && window.NORME[r.normaId];
     if (!n) continue;
     const b = document.createElement("button");
-    b.className = "norma-btn"; b.textContent = "📜 " + n.titolo.split(" — ")[0] + (n.fonte && /Costituzione/.test(n.fonte) ? " Cost." : "");
+    b.className = "norma-btn"; b.textContent = "📜 " + etichettaNorma(n);
     b.onclick = () => apriNorma(r.normaId);
     c.appendChild(b);
   }
@@ -729,9 +736,59 @@ function mostraRisultato() {
 }
 
 // ── Norme e zoom ──
+function etichettaNorma(n) {
+  const sigla = n.sigla || (n.fonte && /Costituzione/.test(n.fonte) ? "Cost." : "");
+  return n.titolo.split(" — ")[0] + (sigla ? " " + sigla : "");
+}
+// Rende cliccabili le citazioni («art. 94 Cost.», «art. 2, co. 8-bis, l. 241/1990»...) nel concetto
+// chiave e nelle spiegazioni delle opzioni, se il testo della norma è caricato.
+function linkaCitazioni(d) {
+  if (!window.CITAZIONI || !window.NORME) return;
+  const per = (d.aiuti && d.aiuti.perOpzione) || {};
+  const els = [document.querySelector("#q-concept .sp")].concat(Object.keys(per).map(k => document.querySelector('#q-opts .opt[data-k="' + k + '"] .why')));
+  const ris = CITAZIONI.risolvi(els.map(el => el ? el.textContent : ""), id => !!window.NORME[id]);
+  els.forEach((el, i) => {
+    if (!el) return;
+    for (const c of ris[i].filter(c => c.id && window.NORME[c.id]).reverse()) avvolgi(el, c.start, c.end, c.id);
+  });
+}
+function avvolgi(el, start, end, id) {
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let pos = 0, nodo;
+  while ((nodo = w.nextNode())) {
+    const len = nodo.nodeValue.length;
+    if (start >= pos && end <= pos + len) {
+      if (nodo.parentNode.closest && nodo.parentNode.closest(".cit")) return;
+      const r = document.createRange();
+      r.setStart(nodo, start - pos); r.setEnd(nodo, end - pos);
+      const sp = document.createElement("span");
+      sp.className = "cit"; sp.dataset.norma = id; sp.tabIndex = 0; sp.setAttribute("role", "button");
+      sp.title = "Leggi il testo: " + etichettaNorma(window.NORME[id]);
+      r.surroundContents(sp);
+      return;
+    }
+    pos += len;
+  }
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest && e.target.closest(".cit[data-norma]");
+  if (c) { e.preventDefault(); e.stopPropagation(); apriNorma(c.dataset.norma); }
+}, true);
 function apriNorma(id) {
   const n = window.NORME && window.NORME[id]; if (!n) return;
   $("norma-titolo").textContent = n.titolo; $("norma-fonte").textContent = n.fonte || ""; $("norma-testo").textContent = n.testo;
+  const meta = $("norma-meta"); meta.textContent = "";
+  if (n.url) {
+    const a = document.createElement("a");
+    a.href = n.url; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "Testo ufficiale su " + new URL(n.url).hostname.replace(/^www\./, "");
+    meta.append(a);
+  }
+  if (n.consultato) {
+    const [y, m, g] = n.consultato.split("-");
+    meta.append((n.url ? " · " : "") + "consultato il " + g + "/" + m + "/" + y);
+  }
+  meta.classList.toggle("hidden", !n.url && !n.consultato);
   $("norma-ov").classList.remove("hidden");
 }
 $("norma-chiudi").onclick = () => $("norma-ov").classList.add("hidden");
@@ -754,6 +811,7 @@ $("s-clear").onclick = () => { delete S.risposte[S.coda[S.i]._key]; renderDomand
 $("s-end").onclick = () => consegna(true);
 
 document.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("cit")) { e.preventDefault(); apriNorma(e.target.dataset.norma); return; }
   if (!$("norma-ov").classList.contains("hidden") || !$("zoom-ov").classList.contains("hidden")) {
     if (e.key === "Escape") { $("norma-ov").classList.add("hidden"); $("zoom-ov").classList.add("hidden"); }
     return;

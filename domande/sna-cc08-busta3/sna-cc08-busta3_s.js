@@ -163,7 +163,18 @@ const SPIEGAZIONI = [
       "A": "Lo stato di guerra è il presupposto della **proroga** della durata delle Camere (art. 60 Cost.), non della prorogatio.",
       "B": "I casi straordinari di necessità e d’urgenza sono il presupposto dei decreti-legge (art. 77 Cost.).",
       "C": "La prorogatio opera quando le Camere sono scadute, finché non si riuniscono le nuove."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_61"
+      },
+      {
+        "normaId": "cost_art_60"
+      },
+      {
+        "normaId": "cost_art_77"
+      }
+    ]
   },
   {
     "id": 16,
@@ -174,7 +185,15 @@ const SPIEGAZIONI = [
       "A": "Non sono ministri che hanno ceduto le proprie competenze: al contrario, esercitano funzioni ricevute per delega dal Presidente del Consiglio.",
       "B": "Tutti i ministri sono nominati dal Presidente della Repubblica su proposta del Presidente del Consiglio (art. 92 Cost.): non è questo il criterio distintivo.",
       "C": "Sono i ministri privi di un dicastero, cioè di un ministero con apparato e bilancio propri."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_9"
+      },
+      {
+        "normaId": "cost_art_92"
+      }
+    ]
   },
   {
     "id": 17,
@@ -185,7 +204,15 @@ const SPIEGAZIONI = [
       "A": "Formula non prevista dall’art. 48: le cause di limitazione sono solo quelle elencate dalla norma.",
       "B": "L’ordine pubblico e il buon costume sono limiti di altre libertà (es. art. 21 Cost.), non del diritto di voto.",
       "C": "Riproduce il testo dell’art. 48, co. 4, Cost."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_48"
+      },
+      {
+        "normaId": "cost_art_21"
+      }
+    ]
   },
   {
     "id": 18,
@@ -196,7 +223,12 @@ const SPIEGAZIONI = [
       "A": "Oggetto e parametro: sono gli elementi richiesti dall’art. 23, co. 1.",
       "B": "Incompleta: senza le norme costituzionali violate la questione non è correttamente posta.",
       "C": "Il giudizio costituzionale riguarda la legge, non gli interessi delle parti: la norma non li richiede."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l87_1953_art_23"
+      }
+    ]
   },
   {
     "id": 19,
@@ -207,7 +239,12 @@ const SPIEGAZIONI = [
       "A": "Descrive l’**efficacia** (o esecutività): l’idoneità a produrre effetti, non il potere di esecuzione coattiva.",
       "B": "Richiama correttamente l’art. 21-ter l. 241/1990: l’esecuzione coattiva è ammessa solo nei casi previsti dalla legge.",
       "C": "Descrive l’**imperatività**: l’incidenza sulla sfera giuridica altrui senza il consenso dell’interessato."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_21_ter"
+      }
+    ]
   },
   {
     "id": 20,
@@ -229,7 +266,12 @@ const SPIEGAZIONI = [
       "A": "Riproduce l’art. 52, co. 2, lett. a): proroga fino a dodici mesi se sono avviate le procedure.",
       "B": "Diciotto mesi non è previsto: il limite massimo è dodici.",
       "C": "La proroga non è a tempo indeterminato e presuppone che le procedure siano già avviate, non il contrario."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_52"
+      }
+    ]
   },
   {
     "id": 22,
@@ -240,7 +282,15 @@ const SPIEGAZIONI = [
       "A": "Il vincolo di permanenza nella prima sede (art. 35, co. 5-bis) era di cinque anni, non sette.",
       "B": "Corrisponde all’art. 35, co. 4: il reclutamento si basa sulla programmazione dei fabbisogni.",
       "C": "La validità delle graduatorie è molto più breve (biennale, dopo la l. 160/2019), non settennale."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_35"
+      },
+      {
+        "normaId": "dlgs165_2001_art_6"
+      }
+    ]
   },
   {
     "id": 23,
@@ -251,7 +301,12 @@ const SPIEGAZIONI = [
       "A": "È la seconda sezione del DEF a contenere le previsioni tendenziali a legislazione vigente (art. 10, co. 3).",
       "B": "La Nota di aggiornamento aggiorna previsioni e obiettivi, ma la norma citata riguarda il contenuto del DEF.",
       "C": "La prima sezione contiene lo schema del Programma di stabilità (art. 10, co. 2), con gli obiettivi di politica economica."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l196_2009_art_10"
+      }
+    ]
   },
   {
     "id": 24,
@@ -262,7 +317,12 @@ const SPIEGAZIONI = [
       "A": "È la regola: le carenze dell’offerta tecnica ed economica non sono sanabili con il soccorso istruttorio.",
       "B": "Non esiste un’autorizzazione dell’ANAC che renda sanabili tali carenze.",
       "C": "Consentirlo permetterebbe di modificare l’offerta dopo la scadenza, a danno della parità di trattamento."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs36_2023_art_101"
+      }
+    ]
   },
   {
     "id": 25,
@@ -273,7 +333,12 @@ const SPIEGAZIONI = [
       "A": "Descrive il meccanismo di riassunzione entro trenta giorni previsto dall’art. 15 c.p.a.",
       "B": "Falso: la riassunzione davanti al giudice competente è proprio ciò che la norma consente.",
       "C": "Il giudice incompetente non può decidere il merito: non esiste una deroga per «gravi motivi»."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_15"
+      }
+    ]
   },
   {
     "id": 26,
@@ -284,7 +349,12 @@ const SPIEGAZIONI = [
       "A": "L’avvio del procedimento non è il dies a quo della prescrizione, semmai un atto che può interromperla.",
       "B": "L’accertamento del fatto non è il criterio di decorrenza; conta la scoperta solo in caso di occultamento doloso.",
       "C": "È il criterio dell’art. 1, co. 2, l. 20/1994: la prescrizione decorre dal verificarsi del fatto dannoso."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l20_1994_art_1"
+      }
+    ]
   },
   {
     "id": 27,
@@ -295,7 +365,12 @@ const SPIEGAZIONI = [
       "A": "È il controllo previsto dall’art. 3, co. 1, lett. a), l. 20/1994.",
       "B": "Falso: la riforma del 1994 ha ridotto il controllo preventivo, ma lo ha mantenuto proprio per questi atti.",
       "C": "Il «controllo incidentale» non è una categoria del controllo della Corte dei conti su questi atti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l20_1994_art_3"
+      }
+    ]
   },
   {
     "id": 28,
@@ -306,7 +381,15 @@ const SPIEGAZIONI = [
       "A": "È la definizione dei trattati: dipende dal possesso della cittadinanza di uno Stato membro.",
       "B": "Conta la cittadinanza effettivamente posseduta, attribuita dalle leggi nazionali, non la sola nascita da un genitore cittadino.",
       "C": "La nascita sul territorio dell’Unione non attribuisce di per sé la cittadinanza europea."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_20"
+      },
+      {
+        "normaId": "tue_art_9"
+      }
+    ]
   },
   {
     "id": 29,
@@ -317,7 +400,12 @@ const SPIEGAZIONI = [
       "A": "La discrezionalità sui mezzi è tipica delle **direttive**, che vincolano solo quanto al risultato.",
       "B": "È la nozione di portata generale elaborata dalla giurisprudenza della Corte di giustizia.",
       "C": "I regolamenti sono completi e direttamente applicabili; non richiedono necessariamente atti delegati o di esecuzione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_288"
+      }
+    ]
   },
   {
     "id": 30,
@@ -328,7 +416,12 @@ const SPIEGAZIONI = [
       "A": "Il par. 5 dell’art. 218 attribuisce al Consiglio, su proposta del negoziatore, la decisione che autorizza la firma.",
       "B": "Il Parlamento non condivide la decisione sulla firma: interviene, quando previsto, in fase di conclusione.",
       "C": "Il CESE e il Comitato delle Regioni non hanno alcun ruolo nella procedura dell’art. 218."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_218"
+      }
+    ]
   },
   {
     "id": 31,
@@ -339,7 +432,12 @@ const SPIEGAZIONI = [
       "A": "L’impugnazione non consente di ridiscutere i fatti: è limitata ai motivi di diritto.",
       "B": "Non è previsto un parere preventivo del primo avvocato generale come condizione dell’impugnazione.",
       "C": "Riproduce l’art. 256 TFUE: solo motivi di diritto, alle condizioni dello statuto."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_256"
+      }
+    ]
   },
   {
     "id": 32,
@@ -504,7 +602,12 @@ const SPIEGAZIONI = [
       "A": "Il d.lgs. 118/2011 attua l’armonizzazione, ma non la introduce: «solo» è sbagliato.",
       "B": "La l. cost. 1/2012 l’ha resa competenza esclusiva dello Stato, ma la materia esisteva già.",
       "C": "È la riforma che per prima ha inserito l’armonizzazione dei bilanci pubblici nell’art. 117 Cost."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_117"
+      }
+    ]
   },
   {
     "id": 47,

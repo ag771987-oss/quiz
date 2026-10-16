@@ -339,7 +339,15 @@ const SPIEGAZIONI = [
       "A": "L’attività amministrativa persegue i fini determinati dalla legge: è la definizione.",
       "B": "Descrive il rapporto di fiducia Governo-Parlamento (art. 94 Cost.), non il principio di legalità.",
       "C": "Descrive la gerarchia interna, che non c’entra con la legalità."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_1"
+      },
+      {
+        "normaId": "cost_art_94"
+      }
+    ]
   },
   {
     "id": 29,
@@ -366,7 +374,12 @@ const SPIEGAZIONI = [
       "A": "Falso: il giudice amministrativo può sospendere gli effetti in via cautelare.",
       "B": "Falso: l’amministrazione può sospendere gli effetti in autotutela (art. 21-quater l. 241/1990).",
       "C": "Produce effetti senza il consenso di destinatari e controinteressati: è la definizione di imperatività."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_21_quater"
+      }
+    ]
   },
   {
     "id": 31,
@@ -377,7 +390,12 @@ const SPIEGAZIONI = [
       "A": "Confonde i concetti: è l’interesse **diffuso** a riferirsi a una collettività; l’interesse legittimo è personale e differenziato.",
       "B": "È la definizione corretta: posizione qualificata e differenziata rispetto all’esercizio del potere.",
       "C": "Superata: l’interesse legittimo ammette anche la tutela risarcitoria (Cass. SU 500/1999, art. 30 c.p.a.)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_30"
+      }
+    ]
   },
   {
     "id": 32,
@@ -388,7 +406,12 @@ const SPIEGAZIONI = [
       "A": "Troppo rigida: gli incarichi esterni sono ammessi, ma solo a determinate condizioni.",
       "B": "Riproduce le condizioni dell’art. 7, co. 6, d.lgs. 165/2001.",
       "C": "Opposto della norma: non sono «liberamente» assegnabili e non oltre i poteri del dirigente."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_7"
+      }
+    ]
   },
   {
     "id": 33,
@@ -399,7 +422,12 @@ const SPIEGAZIONI = [
       "A": "Non è previsto un parere preventivo obbligatorio della Corte di giustizia su questo uso.",
       "B": "Imprecisa: il par. 2 prevede che la Commissione richiami l’attenzione dei **Parlamenti nazionali** (controllo di sussidiarietà), non che informi il Consiglio europeo.",
       "C": "È il limite previsto dal par. 3 dell’art. 352 TFUE."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_352"
+      }
+    ]
   },
   {
     "id": 34,
@@ -410,7 +438,12 @@ const SPIEGAZIONI = [
       "A": "Non riguarda le deroghe degli Stati membri né forme di concertazione.",
       "B": "Definizione dell’art. 5, par. 4, TUE.",
       "C": "Non è un test di compatibilità con le prassi nazionali, ma un limite all’azione dell’Unione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_5"
+      }
+    ]
   },
   {
     "id": 35,
@@ -421,7 +454,12 @@ const SPIEGAZIONI = [
       "A": "Atti vincolanti e produttivi di effetti: sono quelli impugnabili.",
       "B": "Un’iniziativa dei cittadini non è un atto delle istituzioni e non produce effetti vincolanti.",
       "C": "Le dichiarazioni politiche non producono effetti giuridici vincolanti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_263"
+      }
+    ]
   },
   {
     "id": 36,
@@ -576,7 +614,12 @@ const SPIEGAZIONI = [
       "A": "AgID redige il Piano triennale.",
       "B": "ACN si occupa di cybersicurezza, non redige il Piano triennale.",
       "C": "La SNA si occupa di formazione e reclutamento dei dirigenti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cad_art_14_bis"
+      }
+    ]
   },
   {
     "id": 50,
