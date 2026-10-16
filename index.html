@@ -190,7 +190,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 
     <div class="card" id="fonti-card">
       <h2>Prove</h2>
-      <p class="muted" style="margin:0 0 10px">Ogni prova è una fonte separata. Le risposte <b>ufficiali</b> sono quelle pubblicate dalla SNA; nelle altre la chiave è <b>ricostruita</b> e può contenere errori.</p>
+      <p class="muted" style="margin:0 0 10px">Ogni prova è una fonte separata. Le risposte <b>ufficiali</b> sono quelle pubblicate dalla SNA; nelle altre la chiave è <b>ricostruita da noi, non ufficiale</b>, e può contenere errori.</p>
       <div class="row" style="margin-bottom:10px">
         <button class="btn small" id="fonti-tutte">Tutte le prove</button>
         <button class="btn small" id="fonti-uff">Solo risposte ufficiali</button>
@@ -485,7 +485,7 @@ function renderHome() {
     const migliore = st.length ? Math.max(...st.map(x => x.punti)) : null;
     return `<div class="fonte-riga"><label class="fonte"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}>
       <span>${esc(p.label)} <span class="muted">(${conteggio[p.id] || 0})</span></span>
-      <span class="badge ${p.ufficiale ? "uff" : "ric"}">${p.ufficiale ? "✔ Risposte ufficiali SNA" : "Chiave ricostruita"}</span></label>
+      <span class="badge ${bollino(p).cls}">${bollino(p).lista}</span></label>
       <span class="fonte-azioni">${ult ? `<span class="muted">ultimo ${ult.punti}/${ult.max} · migliore ${migliore}</span>` : ""}
       <button class="btn small" data-prova="${esc(p.id)}" ${conteggio[p.id] ? "" : "disabled"}>📝 Fai la prova</button></span></div>`;
   }).join("")).join("");
@@ -543,6 +543,12 @@ function avvia(modo) {
     S.timer = setInterval(tick, 500); tick();
   }
   show("quiz"); renderDomanda();
+}
+
+// Bollino della fonte: risposte ufficiali SNA oppure chiave ricostruita (non ufficiale)
+function bollino(p) {
+  return p.ufficiale ? { cls: "uff", lista: "✔ Risposte ufficiali SNA", domanda: "✔ Risposta ufficiale" }
+    : { cls: "ric", lista: "⚠ Chiave non ufficiale", domanda: "⚠ Chiave non ufficiale" };
 }
 
 // Prova d'esame: una prova intera, domande e opzioni nell'ordine originale, a tempo, senza aiuti.
@@ -615,8 +621,8 @@ function renderDomanda() {
   $("q-materia").textContent = d.materia;
   const pack = QUIZ_MANIFEST.find(p => p.id === d._pack);
   $("q-num").textContent = (QUIZ_MANIFEST.length > 1 ? (pack.breve || pack.label) + " · " : "") + "Domanda " + d.id;
-  $("q-chiave").className = "badge " + (pack.ufficiale ? "uff" : "ric");
-  $("q-chiave").textContent = pack.ufficiale ? "✔ Risposta ufficiale" : "Chiave ricostruita";
+  $("q-chiave").className = "badge " + bollino(pack).cls;
+  $("q-chiave").textContent = bollino(pack).domanda;
   $("q-pdf").classList.toggle("hidden", !d._pdf);
   if (d._pdf) $("q-pdf").href = d._pdf + (d.paginaPdf ? "#page=" + d.paginaPdf : "");
   aggiornaStella(d);
@@ -711,9 +717,13 @@ function mostraEsito(d, k) {
     }
   });
   const es = $("q-esito");
-  if (!k) { es.className = "esito na"; es.textContent = "Non hai risposto. La risposta giusta è evidenziata in verde."; }
-  else if (k === d.corretta) { es.className = "esito ok"; es.textContent = "✔ Risposta corretta"; }
-  else { es.className = "esito ko"; es.textContent = "✘ Risposta sbagliata"; }
+  if (!k) { es.className = "esito na"; es.textContent = d.certezza !== "ufficiale" ? "Non hai risposto. In verde la risposta della chiave ricostruita (non ufficiale)." : "Non hai risposto. La risposta giusta è evidenziata in verde."; }
+  else {
+    // con la chiave ricostruita l'esito dice sempre che non è la risposta ufficiale
+    const nonUff = d.certezza !== "ufficiale" ? " secondo la chiave ricostruita (non ufficiale)" : "";
+    if (k === d.corretta) { es.className = "esito ok"; es.textContent = nonUff ? "✔ Corretta" + nonUff : "✔ Risposta corretta"; }
+    else { es.className = "esito ko"; es.textContent = nonUff ? "✘ Sbagliata" + nonUff : "✘ Risposta sbagliata"; }
+  }
 
   const c = $("q-concept");
   c.innerHTML = a.spiegazione ? "<b class='t'>Concetto chiave</b><div class='sp'>" + md(a.spiegazione) + "</div>" : "<b class='t'>Nessuna spiegazione disponibile per questa domanda.</b>";
