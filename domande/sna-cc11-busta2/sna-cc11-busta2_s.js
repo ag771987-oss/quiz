@@ -213,16 +213,16 @@ const SPIEGAZIONI = [
   },
   {
     "id": 19,
-    "corretta": "C",
-    "suggerimento": "Il brano dice che la maggioranza degli studenti risponde in un certo modo… e poi spiega perché sbaglia. Quali punti non si raggiungono?",
-    "spiegazione": "Secondo il brano, dividendo a metà **non si raggiungono** i punti irrazionali e **nemmeno tutti i razionali**: per un punto C arbitrario la risposta al problema è quindi negativa. La risposta affermativa è proprio l’errore intuitivo descritto da Fischbein.",
+    "corretta": "B",
+    "suggerimento": "Il brano dice quali punti la divisione a metà non raggiunge mai: allora da che cosa dipende se si arriva proprio a C?",
+    "spiegazione": "Secondo il brano un punto irrazionale «non possa essere raggiunto da una tale divisione» e «non tutti i punti razionali possono essere raggiunti». Per un punto C arbitrario la coincidenza quindi **non è garantita**: si arriva a C **solo se C è uno dei punti raggiungibili** con le divisioni successive a metà.",
     "perOpzione": {
-      "A": "È la risposta della maggioranza degli studenti, che il brano presenta come frutto del modello intuitivo errato.",
-      "B": "È una tautologia (si raggiunge C solo se C è raggiungibile): non risponde alla domanda su un punto arbitrario.",
-      "C": "Corretta: il brano chiarisce che i punti irrazionali e parte dei razionali non vengono mai raggiunti, quindi per un C qualsiasi non si arriva a farlo coincidere.",
+      "A": "È la risposta affermativa data dalla maggioranza degli studenti, che il brano presenta come frutto dell’intuizione dell’infinito come «inesauribile».",
+      "B": "Corretta (risposta ufficiale): la divisione a metà raggiunge solo alcuni punti, quindi la coincidenza dipende dal fatto che C sia tra quelli raggiungibili.",
+      "C": "Un «no» assoluto è troppo: alcuni punti, per esempio il punto medio, vengono raggiunti; il brano esclude gli irrazionali e una parte dei razionali, non tutti i punti.",
       "D": "Il brano dice espressamente che «non tutti i punti razionali possono essere raggiunti»: essere razionale non basta."
     },
-    "nota": "La B è formalmente vera ma tautologica; la chiave più probabile è «No», risposta al problema per un punto arbitrario."
+    "nota": "Chiave confermata dalla correzione ufficiale. Nella versione precedente del quiz la risposta ricostruita era «No» (C)."
   },
   {
     "id": 20,
@@ -659,7 +659,7 @@ const SPIEGAZIONI = [
       "B": "Somiglia, ma descrive un’assegnazione mirata a categorie specifiche, più vicina alle politiche distributive; manca l’idea di riequilibrio.",
       "C": "Riequilibrare il bilancio è un obiettivo di finanza pubblica, non la caratteristica delle politiche redistributive."
     },
-    "nota": "L’opzione sull’assegnazione di risorse a scapito di altri è vicina; la chiave più probabile è quella con il riequilibrio tra gruppi."
+    "nota": "L’opzione sull’assegnazione di risorse a scapito di altri è vicina; la risposta ufficiale è quella con il riequilibrio tra gruppi."
   },
   {
     "id": 51,
@@ -706,7 +706,7 @@ const SPIEGAZIONI = [
       "B": "Stimare i benefici attesi è solo una parte del lavoro (manca il confronto con i costi) e non costituisce gli obiettivi della valutazione.",
       "C": "Lo scostamento tra costi previsti ed effettivi è un controllo di gestione o di bilancio, non l’obiettivo della valutazione economica."
     },
-    "nota": "L’opzione sui benefici attesi potrebbe essere letta come descrizione dell’analisi economica ex ante; la chiave più probabile resta il trio efficienza-efficacia-equità."
+    "nota": "L’opzione sui benefici attesi potrebbe essere letta come descrizione dell’analisi economica ex ante; la risposta ufficiale è il trio efficienza-efficacia-equità."
   },
   {
     "id": 55,

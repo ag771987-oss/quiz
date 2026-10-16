@@ -36,7 +36,7 @@ const QUIZ_MANIFEST = [
     "gruppo": "11° corso-concorso — prova del 26/11/2025",
     "label": "Busta 2 (estratta)",
     "breve": "11° CC · Busta 2",
-    "ufficiale": false,
+    "ufficiale": true,
     "domande": "domande/sna-cc11-busta2/sna-cc11-busta2_d.js",
     "risposte": "domande/sna-cc11-busta2/sna-cc11-busta2_r.js",
     "spiegazioni": "domande/sna-cc11-busta2/sna-cc11-busta2_s.js",
@@ -65,7 +65,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_265.js",
       "norme/tue/tue_art_16.js"
     ],
-    "dataProva": "2025-11-26"
+    "dataProva": "2025-11-26",
+    "fonteChiave": "correzione ufficiale di un compito (piattaforma della prova); la SNA non ha pubblicato la chiave"
   },
   {
     "id": "sna-cc11-busta3",
