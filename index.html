@@ -73,6 +73,7 @@ details>summary{cursor:pointer;font-weight:600}
 .badge{font-size:.75rem;padding:2px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
 .badge.uff{background:var(--ok-soft);color:var(--ok)}
 .badge.ric{background:var(--warn-soft);color:var(--warn)}
+.badge.eser{background:var(--accent-soft);color:var(--accent)}
 .box.info{background:var(--ok-soft);border-left:4px solid var(--ok);font-size:.86rem}
 
 /* Quiz */
@@ -190,7 +191,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 
     <div class="card" id="fonti-card">
       <h2>Prove</h2>
-      <p class="muted" style="margin:0 0 10px">Ogni prova è una fonte separata. Le risposte <b>ufficiali</b> sono quelle pubblicate dalla SNA; nelle altre la chiave è <b>ricostruita da noi, non ufficiale</b>, e può contenere errori.</p>
+      <p class="muted" style="margin:0 0 10px">Ogni prova è una fonte separata. Le risposte <b>ufficiali</b> sono quelle pubblicate dalla SNA; nelle altre la chiave è <b>ricostruita da noi, non ufficiale</b>, e può contenere errori. Le <b>esercitazioni</b> 📝 sono domande create per lo studio, non domande SNA.</p>
       <div class="row" style="margin-bottom:10px">
         <button class="btn small" id="fonti-tutte">Tutte le prove</button>
         <button class="btn small" id="fonti-uff">Solo risposte ufficiali</button>
@@ -334,6 +335,7 @@ const STORE_KEY = "quizsna.v2";
 let TUTTE = [];          // tutte le domande caricate, con _key, _pack, corretta, aiuti
 const NOTA_SITUAZIONALE = "Per i test situazionali non esiste una chiave ufficiale: la risposta indicata è quella più coerente con i comportamenti che la prova intende premiare (coinvolgimento, gradualità, trasparenza, rispetto delle regole).";
 const NOTA_BASSA = "Chiave incerta: la SNA non ha pubblicato le risposte e più di una soluzione è difendibile. Leggi la spiegazione e la nota.";
+const NOTA_ESERCITAZIONE = "📝 Domanda di esercitazione creata per lo studio, sul modello delle prove SNA: non è una domanda d’esame. Le risposte sulle norme si fondano sul testo vigente citato.";
 const NOTA_MEDIA = "Chiave non ufficiale: il PDF non riporta le risposte e questa è la soluzione più probabile. Verificala se hai dubbi.";
 
 // Carica un file JS ed estrae la variabile dichiarata con const.
@@ -372,7 +374,7 @@ async function caricaTutto() {
       TUTTE.push(Object.assign({}, d, {
         _key: pack.id + ":" + d.id, _pack: pack.id, _pdf: pack.pdf || null,
         immagine: d.immagine === true ? "domande/" + pack.id + "/img/q" + String(d.id).padStart(2, "0") + ".png" : d.immagine,
-        corretta, certezza: pack.ufficiale ? "ufficiale" : (r.certezza || "alta"), aiuti: s
+        corretta, certezza: pack.ufficiale ? "ufficiale" : pack.tipo === "esercitazione" ? "esercitazione" : (r.certezza || "alta"), aiuti: s
       }));
     }
     await Promise.all((pack.norme || []).map(n => loadScript(n).catch(() => console.warn("Norma non caricata", n))));
@@ -547,6 +549,7 @@ function avvia(modo) {
 
 // Bollino della fonte: risposte ufficiali SNA oppure chiave ricostruita (non ufficiale)
 function bollino(p) {
+  if (p.tipo === "esercitazione") return { cls: "eser", lista: "📝 Esercitazione", domanda: "📝 Esercitazione" };
   return p.ufficiale ? { cls: "uff", lista: "✔ Risposte ufficiali SNA", domanda: "✔ Risposta ufficiale" }
     : { cls: "ric", lista: "⚠ Chiave non ufficiale", domanda: "⚠ Chiave non ufficiale" };
 }
@@ -717,10 +720,10 @@ function mostraEsito(d, k) {
     }
   });
   const es = $("q-esito");
-  if (!k) { es.className = "esito na"; es.textContent = d.certezza !== "ufficiale" ? "Non hai risposto. In verde la risposta della chiave ricostruita (non ufficiale)." : "Non hai risposto. La risposta giusta è evidenziata in verde."; }
+  if (!k) { es.className = "esito na"; es.textContent = d.certezza !== "ufficiale" && d.certezza !== "esercitazione" ? "Non hai risposto. In verde la risposta della chiave ricostruita (non ufficiale)." : "Non hai risposto. La risposta giusta è evidenziata in verde."; }
   else {
     // con la chiave ricostruita l'esito dice sempre che non è la risposta ufficiale
-    const nonUff = d.certezza !== "ufficiale" ? " secondo la chiave ricostruita (non ufficiale)" : "";
+    const nonUff = d.certezza === "esercitazione" ? " (esercitazione)" : d.certezza !== "ufficiale" ? " secondo la chiave ricostruita (non ufficiale)" : "";
     if (k === d.corretta) { es.className = "esito ok"; es.textContent = nonUff ? "✔ Corretta" + nonUff : "✔ Risposta corretta"; }
     else { es.className = "esito ko"; es.textContent = nonUff ? "✘ Sbagliata" + nonUff : "✘ Risposta sbagliata"; }
   }
@@ -742,7 +745,10 @@ function mostraEsito(d, k) {
   }
   const cert = $("q-certezza");
   let nota = "";
-  if (d.certezza === "ufficiale") {
+  if (d.certezza === "esercitazione") {
+    cert.className = "box info";
+    nota = NOTA_ESERCITAZIONE + (a.nota ? " Nota: " + a.nota : "");
+  } else if (d.certezza === "ufficiale") {
     cert.className = "box info";
     const fonteChiave = (QUIZ_MANIFEST.find(p => p.id === d._pack) || {}).fonteChiave;
     nota = (fonteChiave ? "✔ Risposta ufficiale, dalla correzione ufficiale della prova (la SNA non ha pubblicato la chiave)." : "✔ Risposta ufficiale pubblicata dalla SNA.") + (a.nota ? " Nota: " + a.nota : "");
