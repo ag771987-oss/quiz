@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz SNA</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2f5bd3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Quiz SNA">
+<link rel="apple-touch-icon" href="icone/apple-touch-icon.png">
 <style>
 :root{
   --bg:#f4f5f7;--card:#ffffff;--ink:#1d2330;--ink2:#4a5263;--ink3:#7b8394;--line:#e1e4ea;
@@ -208,6 +213,21 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
         </div>
         <p class="muted">Imposta numero di domande, tempo e punteggi come nel bando del tuo concorso.</p>
         <div class="row"><button class="btn small" id="reset-stats">Azzera statistiche</button></div>
+      </details>
+    </div>
+
+    <div class="card">
+      <details id="offline-card">
+        <summary>Uso offline e backup</summary>
+        <p class="muted">Testi, risposte, spiegazioni e norme restano disponibili anche senza rete dopo la prima apertura; le figure si salvano quando le apri. Per averle tutte subito (circa 8 MB, meglio con il Wi-Fi):</p>
+        <div class="row"><button class="btn small" id="scarica-tutto">📥 Scarica tutto per l’uso offline</button><span class="muted" id="scarica-stato"></span></div>
+        <p class="muted">I progressi (statistiche, ripasso, preferiti, prove fatte) restano solo in questo browser. Esportali in un file per non perderli o per passarli tra telefono e computer: importandoli vengono <b>uniti</b> a quelli già presenti.</p>
+        <div class="row">
+          <button class="btn small" id="esporta">💾 Esporta progressi</button>
+          <button class="btn small" id="importa">📂 Importa progressi</button>
+          <input type="file" id="importa-file" accept="application/json,.json" class="hidden">
+          <span class="muted" id="backup-stato"></span>
+        </div>
       </details>
     </div>
     <p class="muted">Statistiche e preferiti restano salvati solo in questo browser.</p>
@@ -415,7 +435,7 @@ function show(id) { for (const s of ["loading", "home", "quiz", "risultato"]) $(
 function renderHome() {
   const pool = poolBase();
   const tutte = TUTTE.filter(d => fontiAttive().includes(d._pack));
-  $("home-sub").textContent = TUTTE.length + " domande da " + QUIZ_MANIFEST.length + (QUIZ_MANIFEST.length === 1 ? " fonte" : " fonti");
+  $("home-sub").textContent = TUTTE.length + " domande da " + QUIZ_MANIFEST.length + (QUIZ_MANIFEST.length === 1 ? " fonte" : " fonti") + (navigator.onLine ? "" : " · offline");
   $("c-all").textContent = pool.length;
   const nErr = pool.filter(daRipassare).length, nPref = pool.filter(isPref).length;
   $("c-err").textContent = nErr; $("c-pref").textContent = nPref;
@@ -489,6 +509,10 @@ function bindImpostazioni() {
   $("fonti-uff").onclick = () => { DB.fonti = QUIZ_MANIFEST.filter(p => p.ufficiale).map(p => p.id); salva(); renderHome(); };
   $("mat-tutte").onclick = () => { DB.materie = null; salva(); renderHome(); };
   $("mat-nessuna").onclick = () => { DB.materie = []; salva(); renderHome(); };
+  $("scarica-tutto").onclick = scaricaTutto;
+  $("esporta").onclick = esportaProgressi;
+  $("importa").onclick = () => $("importa-file").click();
+  $("importa-file").onchange = e => { const f = e.target.files[0]; if (f) importaProgressi(f); e.target.value = ""; };
   $("reset-stats").onclick = () => { if (confirm("Azzerare tutte le statistiche? I preferiti restano.")) { DB.stats = {}; salva(); renderHome(); } };
   document.querySelectorAll(".mode[data-mode]").forEach(b => b.onclick = () => avvia(b.dataset.mode));
 }
@@ -856,6 +880,51 @@ function apriNorma(id) {
   meta.classList.toggle("hidden", !n.url && !n.consultato);
   $("norma-ov").classList.remove("hidden");
 }
+// ── Offline e backup ──
+async function scaricaTutto() {
+  if (!("caches" in window) || !navigator.serviceWorker || !navigator.serviceWorker.controller) {
+    $("scarica-stato").textContent = "Non disponibile qui: apri il quiz dal sito (non dal file) e ricarica la pagina una volta.";
+    return;
+  }
+  const urls = [...new Set(TUTTE.filter(d => d.immagine).map(d => d.immagine))];
+  let fatti = 0, errori = 0;
+  for (const u of urls) {
+    try { const r = await fetch(u); if (!r.ok) errori++; } catch (e) { errori++; }
+    fatti++; $("scarica-stato").textContent = `Figure salvate: ${fatti}/${urls.length}`;
+  }
+  $("scarica-stato").textContent = errori ? `Salvate ${fatti - errori} figure su ${urls.length}; riprova per le altre.` : `✔ Tutto pronto per l’uso offline (${urls.length} figure).`;
+}
+function esportaProgressi() {
+  const dati = { app: "quiz-sna", versione: 2, esportato: new Date().toISOString(), progressi: DB };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(dati)], { type: "application/json" }));
+  a.download = "quiz-sna-progressi-" + new Date().toISOString().slice(0, 10) + ".json";
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  $("backup-stato").textContent = "✔ File salvato.";
+}
+async function importaProgressi(file) {
+  let o;
+  try { o = JSON.parse(await file.text()); } catch (e) { $("backup-stato").textContent = "File non valido."; return; }
+  const P = o && o.app === "quiz-sna" ? o.progressi : null;
+  if (!P || typeof P.stats !== "object") { $("backup-stato").textContent = "Questo file non contiene progressi del Quiz SNA."; return; }
+  let n = 0;
+  for (const [k, st] of Object.entries(P.stats)) {   // per ogni domanda vale il dato più recente
+    const mio = DB.stats[k];
+    if (!mio || (st.t || 0) > (mio.t || 0)) { DB.stats[k] = st; n++; }
+  }
+  DB.preferiti = [...new Set([...(DB.preferiti || []), ...(P.preferiti || [])])];
+  for (const [id, lista] of Object.entries(P.prove || {})) {
+    const viste = new Set((DB.prove[id] || []).map(x => x.data));
+    DB.prove[id] = [...(DB.prove[id] || []), ...lista.filter(x => !viste.has(x.data))].sort((a, b) => a.data - b.data);
+  }
+  salva(); renderHome();
+  $("offline-card").open = true;
+  $("backup-stato").textContent = `✔ Progressi uniti: ${n} domande aggiornate.`;
+}
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+
 $("norma-chiudi").onclick = () => $("norma-ov").classList.add("hidden");
 $("norma-ov").onclick = e => { if (e.target.id === "norma-ov") $("norma-ov").classList.add("hidden"); };
 $("q-img").onclick = () => { $("zoom-img").src = $("q-img").src; $("zoom-ov").classList.remove("hidden"); };
