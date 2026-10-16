@@ -406,6 +406,9 @@ const SPIEGAZIONI = [
     "nota": "L’ultimo periodo del comma 2 è stato aggiunto dal d.l. 76/2020 (decreto Semplificazioni), convertito dalla l. 120/2020.",
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_21_octies"
+      },
+      {
         "normaId": "l241_1990_art_10_bis"
       }
     ]

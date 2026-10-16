@@ -21,6 +21,7 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_118.js",
       "norme/costituzione/cost_art_120.js",
       "norme/l241_1990/l241_1990_art_10_bis.js",
+      "norme/l241_1990/l241_1990_art_21_octies.js",
       "norme/tfue/tfue_art_2.js",
       "norme/tfue/tfue_art_18.js",
       "norme/tfue/tfue_art_314.js",
