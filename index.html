@@ -57,6 +57,12 @@ h2{font-size:1.1rem;margin:0 0 12px}
 .settings input[type=number]{width:70px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
 details>summary{cursor:pointer;font-weight:600}
 .ediz{margin:10px 0 4px;font-weight:700;font-size:.95rem}
+.fonte-riga{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;border-bottom:1px solid var(--line)}
+.fonte-riga:last-child{border-bottom:none}
+.fonte-azioni{display:flex;gap:8px;align-items:center;font-size:.85rem}
+.lampeggia{animation:lamp 1.2s ease 2}
+@keyframes lamp{50%{box-shadow:0 0 0 4px var(--accent)}}
+.storico{font-size:.9rem;margin-top:8px}
 .fonte{display:flex;gap:10px;align-items:center;padding:5px 0;font-size:.93rem;flex-wrap:wrap}
 .fonte input{width:18px;height:18px}
 .badge{font-size:.75rem;padding:2px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
@@ -155,15 +161,17 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
       <h2>Come vuoi esercitarti?</h2>
       <div class="modes">
         <button class="mode" data-mode="allenamento"><span class="count" id="c-all"></span><b>🎯 Allenamento</b><span>Tutte le domande, prima quelle mai viste e quelle sbagliate.</span></button>
-        <button class="mode" data-mode="errori"><span class="count" id="c-err"></span><b>🔁 Ripasso errori</b><span>Solo le domande sbagliate, finché non le indovini due volte di fila.</span></button>
+        <button class="mode" data-mode="ripasso"><span class="count" id="c-err"></span><b>🔁 Ripasso del giorno</b><span>Le domande da rivedere oggi: le sbagliate tornano subito, le giuste dopo 1, 3, 7, 16, 35 giorni.</span></button>
         <button class="mode" data-mode="preferiti"><span class="count" id="c-pref"></span><b>⭐ Preferiti</b><span>Le domande che hai segnato con la stella.</span></button>
-        <button class="mode" data-mode="simulazione"><span class="count" id="c-sim"></span><b>⏱️ Simulazione d’esame</b><span>Domande a tempo, senza aiuti, punteggio finale e revisione.</span></button>
+        <button class="mode" data-mode="simulazione"><span class="count" id="c-sim"></span><b>⏱️ Simulazione mista</b><span>Domande pescate da tutte le prove scelte, a tempo, senza aiuti.</span></button>
+        <button class="mode" id="vai-prove"><span class="count" id="c-prove"></span><b>📝 Prova d’esame</b><span>Una prova ufficiale intera, nell’ordine originale e a tempo, con lo storico dei tuoi punteggi.</span></button>
       </div>
     </div>
 
     <div class="card">
       <h2>I tuoi progressi</h2>
       <div class="stats-top" id="kpi"></div>
+      <div class="muted" id="prossimi" style="margin:4px 0 6px"></div>
       <p class="muted" style="margin:6px 0 10px">Scegli le materie su cui esercitarti (vale per tutte le modalità).</p>
       <div class="materie" id="materie"></div>
       <div class="row" style="margin-top:12px">
@@ -190,6 +198,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
           <label><input type="checkbox" id="s-tastiera"> Mostra le scorciatoie da tastiera</label>
           <label>Simulazione: <input type="number" id="s-simn" min="5" max="500"> domande</label>
           <label>Tempo: <input type="number" id="s-simmin" min="1" max="600"> minuti</label>
+          <label>Prova d’esame: <input type="number" id="s-provamin" min="1" max="600"> minuti</label>
           <label>Punti risposta giusta <input type="number" id="s-pg" step="0.01"></label>
           <label>Punti risposta sbagliata <input type="number" id="s-ps" step="0.01"></label>
           <label>Punti risposta non data <input type="number" id="s-po" step="0.01"></label>
@@ -268,12 +277,13 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 
   <!-- ═════════ RISULTATO SIMULAZIONE ═════════ -->
   <section id="risultato" class="hidden">
-    <div class="topbar"><button class="btn small" id="r-home">← Home</button><b>Risultato simulazione</b></div>
+    <div class="topbar"><button class="btn small" id="r-home">← Home</button><b id="r-titolo">Risultato simulazione</b></div>
     <div class="card">
       <div class="row">
         <div><div class="result-big" id="r-punti"></div><div class="muted" id="r-dett"></div></div>
       </div>
     </div>
+    <div class="card hidden" id="r-storico-card"><h2>I tuoi tentativi su questa prova</h2><table class="res" id="r-storico"></table></div>
     <div class="card"><h2>Per materia</h2><table class="res" id="r-mat"></table></div>
     <div class="card"><h2>Rivedi le domande</h2><p class="muted">Tocca un numero per vedere domanda, risposta e spiegazioni.</p><div class="grid-nav" id="r-nav"></div></div>
   </section>
@@ -348,20 +358,35 @@ async function caricaTutto() {
 // Salvataggio (localStorage, con fallback in memoria)
 // ═════════════════════════════════════════════════════════════════════
 const DEFAULT = { stats: {}, preferiti: [], materie: null, fonti: null,
-  imp: { mescola: true, tastiera: true, simN: 60, simMin: 60, pg: 1, ps: 0, po: 0 } };
+  imp: { mescola: true, tastiera: true, simN: 60, simMin: 60, provaMin: 60, pg: 1, ps: 0, po: 0 }, prove: {} };
 let DB = JSON.parse(JSON.stringify(DEFAULT));
 function carica() {
-  try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const o = JSON.parse(raw); DB = Object.assign({}, DB, o); DB.imp = Object.assign({}, DEFAULT.imp, o.imp || {}); } } catch (e) {}
+  try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const o = JSON.parse(raw); DB = Object.assign({}, DB, o); DB.imp = Object.assign({}, DEFAULT.imp, o.imp || {}); DB.prove = DB.prove || {}; } } catch (e) {}
 }
 function salva() { try { localStorage.setItem(STORE_KEY, JSON.stringify(DB)); } catch (e) {} }
-function stat(k) { return DB.stats[k] || (DB.stats[k] = { v: 0, g: 0, s: 0, streak: 0, t: 0 }); }
+// Ripetizione spaziata (scala di Leitner): ogni risposta giusta fa salire la domanda di un livello e
+// la ripropone dopo un intervallo più lungo; una risposta sbagliata la riporta al livello 0 e la rende
+// di nuovo da ripassare dopo pochi minuti.
+const GIORNO = 86400000;
+const INTERVALLI = [0, 1, 3, 7, 16, 35, 90]; // giorni per livello
+const LIVELLO_CONSOLIDATO = 4;
+function stat(k) { return DB.stats[k] || (DB.stats[k] = { v: 0, g: 0, s: 0, streak: 0, t: 0, box: 0, due: 0 }); }
+function normalizzaStat(st) { // statistiche salvate prima della ripetizione spaziata
+  if (st.box === undefined) {
+    st.box = Math.min(st.streak || 0, 2);
+    st.due = (st.s > 0 && st.streak < 2) ? st.t : st.t + INTERVALLI[st.box] * GIORNO;
+  }
+  return st;
+}
 function registra(d, giusta) {
-  const st = stat(d._key);
-  st.v++; st.t = Date.now();
-  if (giusta) { st.g++; st.streak++; } else { st.s++; st.streak = 0; }
+  const st = normalizzaStat(stat(d._key)), ora = Date.now();
+  st.v++; st.t = ora;
+  if (giusta) { st.g++; st.streak++; st.box = Math.min(st.box + 1, INTERVALLI.length - 1); st.due = ora + INTERVALLI[st.box] * GIORNO; }
+  else { st.s++; st.streak = 0; st.box = 0; st.due = ora + 10 * 60000; }
   salva();
 }
-const daRipassare = d => { const st = DB.stats[d._key]; return st && st.s > 0 && st.streak < 2; };
+const daRipassare = d => { const st = DB.stats[d._key]; return !!(st && st.v && normalizzaStat(st).due <= Date.now()); };
+const consolidata = d => { const st = DB.stats[d._key]; return !!(st && st.v && normalizzaStat(st).box >= LIVELLO_CONSOLIDATO); };
 const isPref = d => DB.preferiti.includes(d._key);
 
 // ═════════════════════════════════════════════════════════════════════
@@ -391,7 +416,8 @@ function renderHome() {
   $("c-err").textContent = nErr; $("c-pref").textContent = nPref;
   $("c-sim").textContent = Math.min(DB.imp.simN, pool.length);
   document.querySelector('[data-mode="allenamento"]').disabled = !pool.length;
-  document.querySelector('[data-mode="errori"]').disabled = !nErr;
+  document.querySelector('[data-mode="ripasso"]').disabled = !nErr;
+  $("c-prove").textContent = QUIZ_MANIFEST.length;
   document.querySelector('[data-mode="preferiti"]').disabled = !nPref;
   document.querySelector('[data-mode="simulazione"]').disabled = !pool.length;
 
@@ -400,10 +426,14 @@ function renderHome() {
   $("kpi").innerHTML = [
     [viste + " / " + tutte.length, "domande viste"],
     [(g + s) ? Math.round(g / (g + s) * 100) + "%" : "—", "risposte giuste"],
-    [g + s, "risposte date"],
-    [TUTTE.filter(daRipassare).length, "da ripassare"]
+    [tutte.filter(consolidata).length, "consolidate"],
+    [tutte.filter(daRipassare).length, "da ripassare oggi"]
   ].map(([v, l]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
 
+  const ora = Date.now(); let domani = 0, settimana = 0;
+  for (const d of tutte) { const st = DB.stats[d._key]; if (!st || !st.v) continue; const due = normalizzaStat(st).due;
+    if (due > ora && due <= ora + GIORNO) domani++; if (due > ora && due <= ora + 7 * GIORNO) settimana++; }
+  $("prossimi").textContent = viste ? `In arrivo: ${domani} da ripassare entro domani, ${settimana} nei prossimi 7 giorni. «Consolidate» = indovinate almeno ${LIVELLO_CONSOLIDATO} volte di fila a intervalli crescenti.` : "";
   const mat = {};
   for (const d of tutte) {
     const m = mat[d.materia] || (mat[d.materia] = { n: 0, g: 0, s: 0 });
@@ -425,30 +455,37 @@ function renderHome() {
   const conteggio = {}; for (const d of TUTTE) conteggio[d._pack] = (conteggio[d._pack] || 0) + 1;
   const gruppi = {};
   for (const p of QUIZ_MANIFEST) (gruppi[p.gruppo || "Altre prove"] = gruppi[p.gruppo || "Altre prove"] || []).push(p);
-  $("fonti").innerHTML = Object.entries(gruppi).map(([g, ps]) => `<div class="ediz">${esc(g)}</div>` + ps.map(p =>
-    `<label class="fonte"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}>
+  $("fonti").innerHTML = Object.entries(gruppi).map(([g, ps]) => `<div class="ediz">${esc(g)}</div>` + ps.map(p => {
+    const st = DB.prove[p.id] || [], ult = st[st.length - 1];
+    const migliore = st.length ? Math.max(...st.map(x => x.punti)) : null;
+    return `<div class="fonte-riga"><label class="fonte"><input type="checkbox" data-fonte="${esc(p.id)}" ${fontiAttive().includes(p.id) ? "checked" : ""}>
       <span>${esc(p.label)} <span class="muted">(${conteggio[p.id] || 0})</span></span>
-      <span class="badge ${p.ufficiale ? "uff" : "ric"}">${p.ufficiale ? "✔ Risposte ufficiali SNA" : "Chiave ricostruita"}</span></label>`).join("")).join("");
+      <span class="badge ${p.ufficiale ? "uff" : "ric"}">${p.ufficiale ? "✔ Risposte ufficiali SNA" : "Chiave ricostruita"}</span></label>
+      <span class="fonte-azioni">${ult ? `<span class="muted">ultimo ${ult.punti}/${ult.max} · migliore ${migliore}</span>` : ""}
+      <button class="btn small" data-prova="${esc(p.id)}" ${conteggio[p.id] ? "" : "disabled"}>📝 Fai la prova</button></span></div>`;
+  }).join("")).join("");
+  document.querySelectorAll("[data-prova]").forEach(b => b.onclick = () => avviaProva(b.dataset.prova));
   document.querySelectorAll("[data-fonte]").forEach(cb => cb.onchange = () => {
     DB.fonti = [...document.querySelectorAll("[data-fonte]:checked")].map(x => x.dataset.fonte); salva(); renderHome();
   });
 
   const I = DB.imp;
   $("s-mescola").checked = I.mescola; $("s-tastiera").checked = I.tastiera;
-  $("s-simn").value = I.simN; $("s-simmin").value = I.simMin; $("s-pg").value = I.pg; $("s-ps").value = I.ps; $("s-po").value = I.po;
+  $("s-simn").value = I.simN; $("s-simmin").value = I.simMin; $("s-provamin").value = I.provaMin; $("s-pg").value = I.pg; $("s-ps").value = I.ps; $("s-po").value = I.po;
   show("home");
 }
 function bindImpostazioni() {
   const num = (id, k) => $(id).onchange = e => { const v = parseFloat(e.target.value); if (!isNaN(v)) { DB.imp[k] = v; salva(); renderHome(); } };
   $("s-mescola").onchange = e => { DB.imp.mescola = e.target.checked; salva(); };
   $("s-tastiera").onchange = e => { DB.imp.tastiera = e.target.checked; salva(); };
-  num("s-simn", "simN"); num("s-simmin", "simMin"); num("s-pg", "pg"); num("s-ps", "ps"); num("s-po", "po");
+  num("s-simn", "simN"); num("s-simmin", "simMin"); num("s-provamin", "provaMin");
+  $("vai-prove").onclick = () => { const c = $("fonti-card"); c.scrollIntoView({ behavior: "smooth" }); c.classList.remove("lampeggia"); void c.offsetWidth; c.classList.add("lampeggia"); }; num("s-pg", "pg"); num("s-ps", "ps"); num("s-po", "po");
   $("fonti-tutte").onclick = () => { DB.fonti = null; salva(); renderHome(); };
   $("fonti-uff").onclick = () => { DB.fonti = QUIZ_MANIFEST.filter(p => p.ufficiale).map(p => p.id); salva(); renderHome(); };
   $("mat-tutte").onclick = () => { DB.materie = null; salva(); renderHome(); };
   $("mat-nessuna").onclick = () => { DB.materie = []; salva(); renderHome(); };
   $("reset-stats").onclick = () => { if (confirm("Azzerare tutte le statistiche? I preferiti restano.")) { DB.stats = {}; salva(); renderHome(); } };
-  document.querySelectorAll(".mode").forEach(b => b.onclick = () => avvia(b.dataset.mode));
+  document.querySelectorAll(".mode[data-mode]").forEach(b => b.onclick = () => avvia(b.dataset.mode));
 }
 
 // ═════════════════════════════════════════════════════════════════════
@@ -456,7 +493,7 @@ function bindImpostazioni() {
 // ═════════════════════════════════════════════════════════════════════
 let S = null; // sessione corrente
 
-const NOMI_MODO = { allenamento: "🎯 Allenamento", errori: "🔁 Ripasso errori", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
+const NOMI_MODO = { allenamento: "🎯 Allenamento", ripasso: "🔁 Ripasso del giorno", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
 
 function ordinaPerPriorita(pool) {
   // prima: sbagliate da ripassare, poi mai viste, poi le altre (le meno recenti prima); casuale a parità
@@ -466,10 +503,11 @@ function ordinaPerPriorita(pool) {
 
 function avvia(modo) {
   let pool = poolBase();
-  if (modo === "errori") pool = pool.filter(daRipassare);
+  if (modo === "ripasso") pool = pool.filter(daRipassare).sort((a, b) => DB.stats[a._key].due - DB.stats[b._key].due);
   if (modo === "preferiti") pool = pool.filter(isPref);
   if (!pool.length) return;
-  const coda = modo === "simulazione" ? mescola(pool).slice(0, Math.min(DB.imp.simN, pool.length)) : ordinaPerPriorita(pool);
+  const coda = modo === "simulazione" ? mescola(pool).slice(0, Math.min(DB.imp.simN, pool.length))
+    : modo === "ripasso" ? pool : ordinaPerPriorita(pool);
   S = { modo, coda, i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
   if (modo === "simulazione") {
     S.fine = Date.now() + DB.imp.simMin * 60000;
@@ -478,11 +516,21 @@ function avvia(modo) {
   show("quiz"); renderDomanda();
 }
 
+// Prova d'esame: una prova intera, domande e opzioni nell'ordine originale, a tempo, senza aiuti.
+function avviaProva(id) {
+  const coda = TUTTE.filter(d => d._pack === id).sort((a, b) => a.id - b.id);
+  if (!coda.length) return;
+  S = { modo: "simulazione", prova: id, coda, i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, inizio: Date.now(),
+        fine: Date.now() + DB.imp.provaMin * 60000, timer: null };
+  S.timer = setInterval(tick, 500); tick();
+  show("quiz"); renderDomanda();
+}
+
 function ordineOpzioni(d) {
   if (!S.ordini[d._key]) {
     const lett = Object.keys(d.opzioni).filter(k => (d.opzioni[k] || "").trim());
     // ordineFisso: la figura riporta già le lettere originali, quindi non si mescola
-    S.ordini[d._key] = DB.imp.mescola && !d.ordineFisso ? mescola(lett) : lett;
+    S.ordini[d._key] = DB.imp.mescola && !d.ordineFisso && !S.prova ? mescola(lett) : lett;
   }
   return S.ordini[d._key];
 }
@@ -510,7 +558,7 @@ function scriviDomanda(d, riempi) {
 function renderDomanda() {
   const d = S.coda[S.i];
   const sim = S.modo === "simulazione", rev = S.modo === "revisione";
-  $("q-mode").textContent = NOMI_MODO[S.modo];
+  $("q-mode").textContent = S.prova ? (S.modo === "revisione" ? "Revisione · " : "📝 ") + (QUIZ_MANIFEST.find(p => p.id === S.prova) || {}).breve : NOMI_MODO[S.modo];
   $("q-home").textContent = rev ? "← Risultato" : "← Home";
   $("q-count").textContent = (S.i + 1) + " / " + S.coda.length;
   $("q-prog").style.width = ((S.i + (S.risposte[d._key] && !sim ? 1 : 0)) / S.coda.length * 100) + "%";
@@ -603,6 +651,10 @@ function rispondi(k) {
   const giusta = k === d.corretta;
   S.date++; if (giusta) S.giuste++;
   registra(d, giusta);
+  // sbagliata: la domanda ricompare qualche posizione più avanti nella stessa sessione (una volta sola)
+  if (!giusta && (S.modo === "allenamento" || S.modo === "ripasso") && !d._ancora) {
+    S.coda.splice(Math.min(S.i + 6, S.coda.length), 0, Object.assign({}, d, { _ancora: true }));
+  }
   mostraEsito(d, k);
   $("q-score").textContent = `${S.giuste}/${S.date} giuste`;
   $("q-prog").style.width = ((S.i + 1) / S.coda.length * 100) + "%";
@@ -667,7 +719,7 @@ function mostraSuggerimento() {
 
 function prossima() {
   if (S.modo === "revisione" && S.i + 1 >= S.coda.length) return mostraRisultato();
-  if (S.i + 1 < S.coda.length) { S.i++; renderDomanda(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+  if (S.i + 1 < S.coda.length) { S.i++; if (S.coda[S.i]._ancora) delete S.risposte[S.coda[S.i]._key]; renderDomanda(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
   // fine giro: in allenamento ricomincia, negli altri modi torna alla home
   if (S.modo === "allenamento") {
     alert(`Giro completato: ${S.giuste} giuste su ${S.date}. Ricomincio con un nuovo ordine, a partire dalle domande sbagliate.`);
@@ -705,6 +757,13 @@ function consegna(conferma) {
   if (conferma && !confirm(mancanti ? `Hai ancora ${mancanti} domande senza risposta. Consegnare comunque?` : "Consegnare la simulazione?")) return;
   clearInterval(S.timer); S.timer = null; $("q-timer").classList.add("hidden");
   for (const d of S.coda) { const k = S.risposte[d._key]; if (k) registra(d, k === d.corretta); }
+  if (S.prova) {
+    const I = DB.imp; let g = 0, s = 0, o = 0;
+    for (const d of S.coda) { const k = S.risposte[d._key]; if (!k) o++; else if (k === d.corretta) g++; else s++; }
+    (DB.prove[S.prova] = DB.prove[S.prova] || []).push({ data: Date.now(), g, s, o, punti: Math.round((g * I.pg + s * I.ps + o * I.po) * 100) / 100,
+      max: S.coda.length * I.pg, minuti: Math.round((Date.now() - S.inizio) / 60000) });
+    salva();
+  }
   S.modo = "revisione";
   mostraRisultato();
 }
@@ -718,6 +777,12 @@ function mostraRisultato() {
   const max = S.coda.length * I.pg;
   $("r-punti").textContent = punti + " / " + max;
   $("r-dett").textContent = `${g} giuste · ${s} sbagliate · ${o} non date (giusta ${I.pg}, sbagliata ${I.ps}, non data ${I.po})`;
+  const pk = S.prova && QUIZ_MANIFEST.find(p => p.id === S.prova);
+  $("r-titolo").textContent = pk ? "Risultato — " + (pk.gruppo || "").split(" — ")[0] + ", " + pk.label : "Risultato simulazione";
+  const storico = S.prova ? (DB.prove[S.prova] || []) : [];
+  $("r-storico-card").classList.toggle("hidden", !storico.length);
+  $("r-storico").innerHTML = "<tr><th>Data</th><th>Punti</th><th>Giuste</th><th>Sbagliate</th><th>Non date</th><th>Tempo</th></tr>" +
+    storico.slice().reverse().map(x => `<tr><td>${new Date(x.data).toLocaleDateString("it-IT")}</td><td><b>${x.punti}</b>/${x.max}</td><td>${x.g}</td><td>${x.s}</td><td>${x.o}</td><td>${x.minuti} min</td></tr>`).join("");
   $("r-mat").innerHTML = "<tr><th>Materia</th><th>Giuste</th><th>Sbagliate</th><th>Non date</th></tr>" +
     Object.entries(mat).map(([n, m]) => `<tr><td>${esc(n)}</td><td>${m.g}</td><td>${m.s}</td><td>${m.o}</td></tr>`).join("");
   $("r-nav").innerHTML = S.coda.map((d, i) => {
