@@ -59,9 +59,9 @@ const SPIEGAZIONI = [
     "id": 6,
     "corretta": "A",
     "suggerimento": "Disegna l’albero: chi sono i genitori di Ilario e di Irene? Chi è il nonno materno del figlio di Irene?",
-    "spiegazione": "Ilario e Irene sono **cugini**: un genitore di Ilario e un genitore di Irene sono fratelli. Il **nonno materno del figlio di Irene** è il **padre di Irene**, cioè Isacco, fratello di un genitore di Ilario e quindi anche di Isidoro (fratello di Ilario). Dunque **Isacco è zio di Isidoro**.",
+    "spiegazione": "Ilario e Irene sono **cugini**: un genitore di Ilario e un genitore di Irene sono fratelli. Il **nonno materno del figlio di Irene** è il **padre di Irene**, cioè Isacco. Se il fratello del genitore di Ilario è proprio Isacco, questi è zio di Ilario e quindi anche di Isidoro (fratello di Ilario). Se invece la sorella del genitore di Ilario è la madre di Irene, Isacco ne è il marito, cioè lo zio acquisito. In entrambi i casi **Isacco è zio di Isidoro**.",
     "perOpzione": {
-      "A": "Isacco è il padre di Irene, fratello del genitore di Ilario e Isidoro: è loro zio.",
+      "A": "Isacco è il padre di Irene: fratello o cognato del genitore di Ilario e Isidoro, è comunque loro zio.",
       "B": "I dati bastano: il nonno materno del figlio di Irene è il padre di Irene, e da qui si ricostruisce la parentela.",
       "C": "Rapporto invertito: è Isacco, della generazione precedente, a essere zio di Isidoro."
     }
@@ -158,7 +158,7 @@ const SPIEGAZIONI = [
     "id": 15,
     "corretta": "C",
     "suggerimento": "L’art. 61 Cost. parla dell’elezione delle nuove Camere: fino a quando restano in carica le precedenti?",
-    "spiegazione": "Art. 61, co. 2, Cost.: «Finché non siano riunite le nuove Camere sono prorogati i poteri delle precedenti». La **prorogatio** presuppone quindi Camere **scadute** (o sciolte) e serve a evitare vuoti di potere. Da non confondere con la **proroga** della legislatura (art. 60, co. 2, Cost.), ammessa solo per legge e in caso di guerra.",
+    "spiegazione": "Art. 61, co. 2, Cost.: «Finchè non siano riunite le nuove Camere sono prorogati i poteri delle precedenti». La **prorogatio** presuppone quindi Camere **scadute** (o sciolte) e serve a evitare vuoti di potere. Da non confondere con la **proroga** della legislatura (art. 60, co. 2, Cost.), ammessa solo per legge e in caso di guerra.",
     "perOpzione": {
       "A": "Lo stato di guerra è il presupposto della **proroga** della durata delle Camere (art. 60 Cost.), non della prorogatio.",
       "B": "I casi straordinari di necessità e d’urgenza sono il presupposto dei decreti-legge (art. 77 Cost.).",
@@ -180,7 +180,7 @@ const SPIEGAZIONI = [
     "id": 16,
     "corretta": "C",
     "suggerimento": "«Portafoglio» indica la dotazione di un apparato amministrativo e di un bilancio proprio.",
-    "spiegazione": "I **ministri senza portafoglio** non sono a capo di un **dicastero** (ministero con strutture e bilancio propri); svolgono le funzioni loro **delegate dal Presidente del Consiglio** (art. 9 l. 400/1988), avvalendosi di strutture della Presidenza.",
+    "spiegazione": "I **ministri senza portafoglio** non sono a capo di un **dicastero** (ministero con strutture e bilancio propri); svolgono le funzioni loro **delegate dal Presidente del Consiglio**. Art. 9, co. 1, l. 400/1988: il Presidente della Repubblica «può nominare, presso la Presidenza del Consiglio dei ministri, ministri senza portafoglio, i quali svolgono le funzioni loro delegate dal Presidente del Consiglio dei ministri sentito il Consiglio dei ministri».",
     "perOpzione": {
       "A": "Non sono ministri che hanno ceduto le proprie competenze: al contrario, esercitano funzioni ricevute per delega dal Presidente del Consiglio.",
       "B": "Tutti i ministri sono nominati dal Presidente della Repubblica su proposta del Presidente del Consiglio (art. 92 Cost.): non è questo il criterio distintivo.",
@@ -203,7 +203,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Formula non prevista dall’art. 48: le cause di limitazione sono solo quelle elencate dalla norma.",
       "B": "Il buon costume è un limite di altre libertà (es. art. 21, ultimo comma, Cost.), non del diritto di voto, che può essere limitato solo nei casi tassativi dell’art. 48, co. 4.",
-      "C": "Riproduce il testo dell’art. 48, co. 4, Cost."
+      "C": "Riprende nella sostanza le tre cause tassative dell’art. 48, co. 4, Cost."
     },
     "riferimenti": [
       {
@@ -218,7 +218,7 @@ const SPIEGAZIONI = [
     "id": 18,
     "corretta": "A",
     "suggerimento": "Perché la Corte possa decidere, cosa deve sapere con precisione dal giudice: solo l’oggetto o anche il parametro?",
-    "spiegazione": "Art. 23, co. 1, l. 87/1953 (richiamato dal co. 3 per l’ordinanza del giudice): l’atto di rimessione deve indicare le **disposizioni di legge ritenute illegittime** (oggetto) e le **disposizioni della Costituzione** o delle leggi costituzionali **che si assumono violate** (parametro).",
+    "spiegazione": "Art. 23, co. 1, l. 87/1953: la questione va sollevata «indicando: a) le disposizioni della legge o dell'atto avente forza di legge dello Stato o di una Regione, viziate da illegittimità costituzionale; b) le disposizioni della Costituzione o delle leggi costituzionali, che si assumono violate». Il co. 3 richiede che l’ordinanza del giudice contenga «le indicazioni previste alle lettere a) e b) del primo comma». Servono quindi l’**oggetto** (norme di legge ritenute illegittime) e il **parametro** (norme costituzionali violate).",
     "perOpzione": {
       "A": "Oggetto e parametro: sono gli elementi richiesti dall’art. 23, co. 1.",
       "B": "Incompleta: senza le norme costituzionali violate la questione non è correttamente posta.",
@@ -234,7 +234,7 @@ const SPIEGAZIONI = [
     "id": 19,
     "corretta": "B",
     "suggerimento": "L’esecutorietà riguarda l’esecuzione coattiva: la P.A. può sempre imporla o solo quando la legge lo prevede?",
-    "spiegazione": "**Esecutorietà**: potere della P.A. di imporre **coattivamente** l’adempimento degli obblighi nei confronti dei destinatari, ma solo **nei casi e con le modalità previsti dalla legge** (art. 21-ter l. 241/1990). È quindi un carattere **eccezionale**, non generale.",
+    "spiegazione": "**Esecutorietà**: potere della P.A. di imporre **coattivamente** l’adempimento degli obblighi nei confronti dei destinatari, ma solo **nei casi e con le modalità previsti dalla legge** (art. 21-ter, co. 1, l. 241/1990: «Nei casi e con le modalità stabiliti dalla legge, le pubbliche amministrazioni possono imporre coattivamente l'adempimento degli obblighi nei loro confronti»). È quindi un carattere **eccezionale**, non generale.",
     "perOpzione": {
       "A": "Descrive l’**efficacia** (o esecutività): l’idoneità a produrre effetti, non il potere di esecuzione coattiva.",
       "B": "Richiama correttamente l’art. 21-ter l. 241/1990: l’esecuzione coattiva è ammessa solo nei casi previsti dalla legge.",
@@ -263,7 +263,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Il periodo di sei mesi può essere esteso, ma con un tetto preciso e a una condizione: quale?",
     "spiegazione": "Art. 52, co. 2, lett. a), d.lgs. 165/2001: mansioni superiori per vacanza di posto «per non più di **sei mesi**, prorogabili fino a **dodici** qualora siano state **avviate le procedure** per la copertura dei posti vacanti».",
     "perOpzione": {
-      "A": "Riproduce l’art. 52, co. 2, lett. a): proroga fino a dodici mesi se sono avviate le procedure.",
+      "A": "Corrisponde all’art. 52, co. 2, lett. a): proroga fino a dodici mesi se sono avviate le procedure.",
       "B": "Diciotto mesi non è previsto: il limite massimo è dodici.",
       "C": "La proroga non è a tempo indeterminato e presuppone che le procedure siano già avviate, non il contrario."
     },
@@ -277,7 +277,7 @@ const SPIEGAZIONI = [
     "id": 22,
     "corretta": "B",
     "suggerimento": "Il reclutamento deve essere programmato: su quale documento si basano le decisioni di avviare i concorsi?",
-    "spiegazione": "Art. 35, co. 4, d.lgs. 165/2001: le determinazioni relative all’avvio delle procedure di reclutamento sono adottate **sulla base del piano triennale dei fabbisogni** (art. 6). Oggi il piano confluisce nel **PIAO**.",
+    "spiegazione": "Art. 35, co. 4, d.lgs. 165/2001: «Le determinazioni relative all'avvio di procedure di reclutamento sono adottate da ciascuna amministrazione o ente sulla base del piano triennale dei fabbisogni approvato ai sensi dell'articolo 6, comma 4». Oggi il piano confluisce nel **PIAO**.",
     "perOpzione": {
       "A": "Il vincolo di permanenza nella prima sede (art. 35, co. 5-bis) è di cinque anni (tre per i direttori dei servizi generali e amministrativi delle scuole), non sette.",
       "B": "Corrisponde all’art. 35, co. 4: il reclutamento si basa sulla programmazione dei fabbisogni.",
@@ -296,7 +296,7 @@ const SPIEGAZIONI = [
     "id": 23,
     "corretta": "A",
     "suggerimento": "Il DEF ha tre sezioni: la prima è il Programma di stabilità; quale contiene i conti e le previsioni di finanza pubblica?",
-    "spiegazione": "Art. 10, co. 3, l. 196/2009: la **seconda sezione del DEF** contiene, tra l’altro, l’analisi del conto economico e di cassa della P.A. e le **previsioni tendenziali a legislazione vigente, almeno per il triennio successivo**. La **prima sezione** è lo schema del **Programma di stabilità**.",
+    "spiegazione": "Art. 10, co. 3, l. 196/2009: «La seconda sezione del DEF contiene: […] b) le previsioni tendenziali a legislazione vigente, almeno per il triennio successivo […]», oltre all’analisi del conto economico e del conto di cassa delle P.A. (lett. a). La **prima sezione** è lo schema del **Programma di stabilità** (co. 2).",
     "perOpzione": {
       "A": "È la seconda sezione del DEF a contenere le previsioni tendenziali a legislazione vigente (art. 10, co. 3).",
       "B": "La Nota di aggiornamento aggiorna previsioni e obiettivi, ma la norma citata riguarda il contenuto del DEF.",
@@ -312,7 +312,7 @@ const SPIEGAZIONI = [
     "id": 24,
     "corretta": "A",
     "suggerimento": "Il soccorso istruttorio serve a sanare carenze della documentazione amministrativa: può toccare anche il contenuto dell’offerta?",
-    "spiegazione": "Il **soccorso istruttorio** consente di integrare o regolarizzare la documentazione amministrativa, **con esclusione** degli elementi afferenti all’**offerta tecnica ed economica** (art. 83, co. 9, d.lgs. 50/2016, vigente all’epoca; oggi art. 101 d.lgs. 36/2023). Altrimenti si violerebbero **par condicio** e segretezza delle offerte.",
+    "spiegazione": "Il **soccorso istruttorio** consente di integrare o regolarizzare la documentazione amministrativa, ma non l’offerta. All’epoca della prova valeva l’art. 83, co. 9, d.lgs. 50/2016, che lo ammetteva per le carenze essenziali «con esclusione di quelle afferenti all'offerta economica e all'offerta tecnica». Oggi l’art. 101, co. 1, lett. a) e b), d.lgs. 36/2023 esclude allo stesso modo «la documentazione che compone l'offerta tecnica e l'offerta economica». Altrimenti si violerebbero **par condicio** e segretezza delle offerte.",
     "perOpzione": {
       "A": "È la regola: le carenze dell’offerta tecnica ed economica non sono sanabili con il soccorso istruttorio.",
       "B": "Non esiste un’autorizzazione dell’ANAC che renda sanabili tali carenze.",
@@ -328,7 +328,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "A",
     "suggerimento": "Nel processo amministrativo l’incompetenza non chiude la partita: il giudizio prosegue? A quali condizioni e in che termine?",
-    "spiegazione": "Art. 15 c.p.a.: il giudice che si dichiara incompetente **indica il giudice competente**; se la causa è **riassunta** davanti a quest’ultimo **entro il termine perentorio di trenta giorni** dalla comunicazione dell’ordinanza, il processo **continua** davanti al nuovo giudice (**translatio iudicii**).",
+    "spiegazione": "Art. 15, co. 4, c.p.a.: «Se dichiara la propria incompetenza, indica il giudice ritenuto competente. Se, nel termine perentorio di trenta giorni dalla comunicazione di tale ordinanza, la causa è riassunta davanti al giudice dichiarato competente, il processo continua davanti al nuovo giudice» (**translatio iudicii**).",
     "perOpzione": {
       "A": "Descrive il meccanismo di riassunzione entro trenta giorni previsto dall’art. 15 c.p.a.",
       "B": "Falso: la riassunzione davanti al giudice competente è proprio ciò che la norma consente.",
@@ -344,7 +344,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "C",
     "suggerimento": "In materia di responsabilità amministrativo-contabile la legge fissa un momento oggettivo, salvo il caso di occultamento doloso.",
-    "spiegazione": "Art. 1, co. 2, l. 20/1994: il diritto al risarcimento si prescrive in **cinque anni**, «decorrenti dalla data in cui si è **verificato il fatto dannoso**», ovvero, in caso di **occultamento doloso** del danno, dalla data della sua **scoperta**.",
+    "spiegazione": "Art. 1, co. 2, l. 20/1994: «Il diritto al risarcimento del danno si prescrive in ogni caso in **cinque anni**, decorrenti dalla data in cui si è **verificato fatto dannoso**, indipendentemente dal momento in cui l'amministrazione o la Corte dei conti sono venuti a conoscenza del danno, ovvero, in caso di **occultamento doloso** del danno, realizzato con una condotta attiva o in violazione di obblighi di comunicazione, dalla data della sua **scoperta**».",
     "perOpzione": {
       "A": "L’avvio del procedimento non è il dies a quo della prescrizione, semmai un atto che può interromperla.",
       "B": "L’accertamento del fatto non è il criterio di decorrenza; conta la scoperta solo in caso di occultamento doloso.",
@@ -360,7 +360,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "A",
     "suggerimento": "La l. 20/1994 elenca gli atti sottoposti al controllo della Corte dei conti prima che diventino efficaci: li ricordi?",
-    "spiegazione": "Art. 3, co. 1, lett. a), l. 20/1994: il **controllo preventivo di legittimità** della Corte dei conti si esercita, tra l’altro, sui **provvedimenti emanati a seguito di deliberazione del Consiglio dei Ministri**.",
+    "spiegazione": "Art. 3, co. 1, lett. a), l. 20/1994: «Il **controllo preventivo di legittimità** della Corte dei conti si esercita esclusivamente sui seguenti atti non aventi forza di legge: a) **provvedimenti emanati a seguito di deliberazione del Consiglio dei Ministri**».",
     "perOpzione": {
       "A": "È il controllo previsto dall’art. 3, co. 1, lett. a), l. 20/1994.",
       "B": "Falso: la riforma del 1994 ha ridotto il controllo preventivo, ma lo ha mantenuto proprio per questi atti.",
@@ -376,7 +376,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "La cittadinanza europea si aggiunge a quella nazionale: da cosa dipende?",
-    "spiegazione": "Art. 20 TFUE (e art. 9 TUE): è cittadino dell’Unione **chiunque abbia la cittadinanza di uno Stato membro**. La cittadinanza europea è **aggiuntiva** e non sostitutiva di quella nazionale, le cui regole restano di competenza statale.",
+    "spiegazione": "Art. 20, par. 1, TFUE (con le stesse parole l’art. 9 TUE): «È cittadino dell'Unione **chiunque abbia la cittadinanza di uno Stato membro**. La cittadinanza dell'Unione si aggiunge alla cittadinanza nazionale e non la sostituisce». Le regole sull’acquisto della cittadinanza restano di competenza statale.",
     "perOpzione": {
       "A": "È la definizione dei trattati: dipende dal possesso della cittadinanza di uno Stato membro.",
       "B": "Conta la cittadinanza effettivamente posseduta, attribuita dalle leggi nazionali, non la sola nascita da un genitore cittadino.",
@@ -395,7 +395,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "Art. 288 TFUE: «portata generale», «obbligatorio in tutti i suoi elementi», «direttamente applicabile». Quale opzione rispecchia la portata generale?",
-    "spiegazione": "I **regolamenti** hanno **portata generale**, sono obbligatori in tutti i loro elementi e **direttamente applicabili** (art. 288 TFUE). Secondo la Corte di giustizia si rivolgono a **categorie di destinatari determinate astrattamente**, non a soggetti individuati.",
+    "spiegazione": "I **regolamenti** hanno **portata generale**, sono obbligatori in tutti i loro elementi e **direttamente applicabili** (art. 288, secondo comma, TFUE: «Il regolamento ha portata generale. Esso è obbligatorio in tutti i suoi elementi e direttamente applicabile in ciascuno degli Stati membri»). Secondo la Corte di giustizia si rivolgono a **categorie di destinatari determinate astrattamente**, non a soggetti individuati.",
     "perOpzione": {
       "A": "La discrezionalità sui mezzi è tipica delle **direttive**, che vincolano solo quanto al risultato.",
       "B": "È la nozione di portata generale elaborata dalla giurisprudenza della Corte di giustizia.",
@@ -411,7 +411,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "A",
     "suggerimento": "Nella procedura dell’art. 218 TFUE, quale istituzione autorizza l’avvio dei negoziati, la firma e la conclusione?",
-    "spiegazione": "Art. 218 TFUE: è il **Consiglio** che autorizza l’avvio dei negoziati, adotta le direttive di negoziato, **autorizza la firma** (par. 5) e conclude gli accordi. Il Parlamento interviene, nei casi previsti, con approvazione o consultazione solo nella fase di **conclusione** (par. 6).",
+    "spiegazione": "Art. 218, par. 2, TFUE: «Il Consiglio autorizza l'avvio dei negoziati, definisce le direttive di negoziato, autorizza la firma e conclude gli accordi». Par. 5: «Il Consiglio, su proposta del negoziatore, adotta una decisione che autorizza la firma dell'accordo». Il Parlamento interviene, nei casi previsti, con approvazione o consultazione nella fase di **conclusione** (par. 6) ed è informato in tutte le fasi (par. 10).",
     "perOpzione": {
       "A": "Il par. 5 dell’art. 218 attribuisce al Consiglio, su proposta del negoziatore, la decisione che autorizza la firma.",
       "B": "Il Parlamento non condivide la decisione sulla firma: interviene, quando previsto, in fase di conclusione.",
@@ -427,11 +427,11 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "C",
     "suggerimento": "Il giudizio di impugnazione davanti alla Corte di giustizia è simile a un giudizio di legittimità: riesamina anche i fatti?",
-    "spiegazione": "Art. 256, par. 1, TFUE: le decisioni del Tribunale possono essere impugnate davanti alla Corte di giustizia «**per i soli motivi di diritto**, alle condizioni ed entro i limiti previsti dallo **statuto**». L’accertamento dei fatti spetta al Tribunale.",
+    "spiegazione": "Art. 256, par. 1, TFUE: le decisioni del Tribunale possono essere impugnate davanti alla Corte di giustizia «**per i soli motivi di diritto** e alle condizioni ed entro i limiti previsti dallo **statuto**». L’accertamento dei fatti spetta al Tribunale.",
     "perOpzione": {
       "A": "L’impugnazione non consente di ridiscutere i fatti: è limitata ai motivi di diritto.",
       "B": "Non è previsto un parere preventivo del primo avvocato generale come condizione dell’impugnazione.",
-      "C": "Riproduce l’art. 256 TFUE: solo motivi di diritto, alle condizioni dello statuto."
+      "C": "Corrisponde all’art. 256, par. 1, TFUE: solo motivi di diritto, alle condizioni dello statuto."
     },
     "riferimenti": [
       {
@@ -564,7 +564,7 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "A",
     "suggerimento": "Lowi distingue politiche distributive, regolative, redistributive, costitutive: in quali chi riceve non toglie visibilmente a qualcun altro?",
-    "spiegazione": "Per **Theodore Lowi** le **politiche distributive** assegnano benefici a gruppi specifici con costi diffusi sulla collettività: generano **bassa conflittualità** (arene «di spartizione» e consenso). Sono le **redistributive** a generare forte conflitto.",
+    "spiegazione": "Per **Theodore Lowi** le **politiche distributive** assegnano benefici a gruppi specifici con costi diffusi sulla collettività: generano **bassa conflittualità** (prevalgono accordi di reciproco sostegno tra i beneficiari, il cosiddetto logrolling). Sono le **redistributive** a generare forte conflitto.",
     "perOpzione": {
       "A": "I vantaggi sono concentrati e i costi diffusi: il conflitto resta basso.",
       "B": "Il conflitto sistematico caratterizza le politiche **redistributive**, che tolgono a qualcuno per dare ad altri.",
@@ -597,7 +597,7 @@ const SPIEGAZIONI = [
     "id": 46,
     "corretta": "C",
     "suggerimento": "L’«armonizzazione dei bilanci pubblici» compare per la prima volta nell’art. 117 Cost.: con quale riforma?",
-    "spiegazione": "L’**armonizzazione dei bilanci pubblici** entra in Costituzione con la **l. cost. 3/2001** (riforma del Titolo V), come materia di legislazione **concorrente** (art. 117, co. 3). La **l. cost. 1/2012** l’ha poi spostata tra le materie di competenza **esclusiva statale** (art. 117, co. 2, lett. e); il **d.lgs. 118/2011** ne è l’attuazione per Regioni ed enti locali.",
+    "spiegazione": "L’**armonizzazione dei bilanci pubblici** entra in Costituzione con la **l. cost. 3/2001** (riforma del Titolo V), come materia di legislazione **concorrente** (art. 117, co. 3). La **l. cost. 1/2012** l’ha poi spostata tra le materie di competenza **esclusiva statale** (art. 117, co. 2, lett. e), Cost., che oggi elenca tra l’altro «sistema tributario e contabile dello Stato; armonizzazione dei bilanci pubblici»); il **d.lgs. 118/2011** ne è l’attuazione per Regioni ed enti locali.",
     "perOpzione": {
       "A": "Il d.lgs. 118/2011 attua l’armonizzazione, ma non la introduce: «solo» è sbagliato.",
       "B": "La l. cost. 1/2012 l’ha resa competenza esclusiva dello Stato, ma la materia esisteva già.",
