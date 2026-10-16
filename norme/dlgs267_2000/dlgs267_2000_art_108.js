@@ -1,0 +1,11 @@
+window.NORME = window.NORME || {};
+
+window.NORME["dlgs267_2000_art_108"] = {
+  "titolo": "Art. 108 — Direttore generale",
+  "fonte": "Testo unico delle leggi sull'ordinamento degli enti locali (d.lgs. 18 agosto 2000, n. 267)",
+  "sigla": "TUEL",
+  "testo": "1. Il sindaco nei comuni con popolazione superiore ai 15.000 abitanti e il presidente della provincia, previa deliberazione della giunta comunale o provinciale, possono nominare un direttore generale, al di fuori della dotazione organica e con contratto a tempo determinato, e secondo criteri stabiliti dal regolamento di organizzazione degli uffici e dei servizi, che provvede ad attuare gli indirizzi e gli obiettivi stabiliti dagli organi di governo dell'ente, secondo le direttive impartite dal sindaco o dal presidente della provincia, e che sovrintende alla gestione dell'ente, perseguendo livelli ottimali di efficacia ed efficienza. Compete in particolare al direttore generale la predisposizione del piano dettagliato di obiettivi previsto dall'articolo 197, comma 2, lettera a), nonché la proposta di piano esecutivo di gestione previsto dall'articolo 169. A tali fini, al direttore generale rispondono, nell'esercizio delle funzioni loro assegnate, i dirigenti dell'ente, ad eccezione del segretario del comune e della provincia.\n2. Il direttore generale è revocato dal sindaco o dal presidente della provincia, previa deliberazione della giunta comunale o provinciale. La durata dell'incarico non può eccedere quella del mandato del sindaco o del presidente della provincia.\n3. Nei comuni con popolazione inferiore ai 15.000 abitanti è consentito procedere alla nomina del direttore generale previa stipula di convenzione tra comuni le cui popolazioni assommate raggiungano i 15.000 abitanti. In tal caso il direttore generale dovrà provvedere anche alla gestione coordinata o unitaria dei servizi tra i comuni interessati.\n4. Quando non risultino stipulate le convenzioni previste dal comma 3 e in ogni altro caso in cui il direttore generale non sia stato nominato, le relative funzioni possono essere conferite dal sindaco o dal presidente della provincia al segretario.",
+  "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art108",
+  "consultato": "2026-10-16",
+  "vigoreDal": "15-7-2022"
+};

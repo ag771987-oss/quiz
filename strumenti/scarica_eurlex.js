@@ -11,10 +11,12 @@ const celex = [...new Set(Object.values(cat.fonti).filter(f => f.celex).map(f =>
   const opts = fs.existsSync("/opt/pw-browsers/chromium") ? { executablePath: "/opt/pw-browsers/chromium" } : {};
   const b = await chromium.launch(opts), p = await b.newPage();
   for (const c of celex) {
+    const dest = path.join(cache, "eurlex_" + c.replace(/\W/g, "_") + ".html");
+    if (fs.existsSync(dest)) { console.log(c, "già in cache"); continue; }
     await p.goto("https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:" + c, { waitUntil: "networkidle", timeout: 120000 });
-    await p.waitForSelector("p.ti-art", { timeout: 60000 });
+    await p.waitForSelector("p.ti-art, p.oj-ti-art", { timeout: 60000 });
     const h = await p.content();
-    fs.writeFileSync(path.join(cache, "eurlex_" + c.replace(/\W/g, "_") + ".html"), h);
+    fs.writeFileSync(dest, h);
     console.log(c, h.length);
   }
   await b.close();

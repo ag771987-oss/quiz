@@ -274,7 +274,15 @@ const SPIEGAZIONI = [
       "A": "La Costituzione non richiede una legge costituzionale: basta la legge ordinaria dello Stato.",
       "B": "L’ordinamento della capitale è materia statale, non regionale: la Regione Lazio non ha questa competenza.",
       "C": "È la formula dell’art. 114, terzo comma, Cost.: la legge dello Stato disciplina l’ordinamento di Roma capitale."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_114"
+      },
+      {
+        "normaId": "l42_2009_art_24"
+      }
+    ]
   },
   {
     "id": 26,
@@ -285,7 +293,12 @@ const SPIEGAZIONI = [
       "A": "L’insindacabilità è una garanzia della funzione parlamentare, non un privilegio personale: senza nesso funzionale le dichiarazioni non sono coperte.",
       "B": "È l’orientamento costante della Corte: le dichiarazioni esterne sono coperte se riproducono sostanzialmente il contenuto di atti parlamentari, per divulgarli.",
       "C": "Troppo restrittiva: la Corte ammette la copertura anche fuori dalla sede parlamentare, purché ci sia la corrispondenza con atti tipici della funzione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_68"
+      }
+    ]
   },
   {
     "id": 27,
@@ -296,7 +309,12 @@ const SPIEGAZIONI = [
       "A": "La Costituzione non prevede mai un’autorizzazione per le riunioni, neppure in luogo pubblico.",
       "B": "È il testo dell’art. 17, secondo comma: per le riunioni in luogo aperto al pubblico non serve preavviso.",
       "C": "Questa disciplina vale per le riunioni in luogo pubblico, non per quelle in luogo aperto al pubblico."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_17"
+      }
+    ]
   },
   {
     "id": 28,
@@ -339,7 +357,12 @@ const SPIEGAZIONI = [
       "A": "I motivi aggiunti servono a impugnare nuovi atti o a dedurre nuove censure, non a far eseguire una misura cautelare.",
       "B": "È il meccanismo dell’art. 59 c.p.a.: istanza motivata allo stesso TAR, che decide con i poteri del giudice dell’ottemperanza.",
       "C": "L’appello cautelare serve a contestare l’ordinanza cautelare, non a ottenerne l’esecuzione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_59"
+      }
+    ]
   },
   {
     "id": 31,
@@ -350,7 +373,12 @@ const SPIEGAZIONI = [
       "A": "Manca il consiglio metropolitano e compare la giunta, che la legge non prevede.",
       "B": "È l’elenco esatto dell’art. 1, comma 7, l. 56/2014.",
       "C": "Manca la conferenza metropolitana e compare la giunta, che non è un organo della città metropolitana."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l56_2014_art_1"
+      }
+    ]
   },
   {
     "id": 32,
@@ -366,6 +394,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l241_1990_art_21_septies"
+      },
+      {
+        "normaId": "cp_art_323"
       }
     ]
   },
@@ -378,7 +409,12 @@ const SPIEGAZIONI = [
       "A": "La gestione finanziaria, tecnica e amministrativa con autonomi poteri di spesa spetta ai dirigenti (art. 4, comma 2).",
       "B": "Anche l’organizzazione delle risorse umane, strumentali e di controllo è compito dei dirigenti, non degli organi politici.",
       "C": "È espressamente prevista tra le attribuzioni degli organi di governo dall’art. 4, comma 1, d.lgs. 165/2001."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_4"
+      }
+    ]
   },
   {
     "id": 34,
@@ -389,7 +425,12 @@ const SPIEGAZIONI = [
       "A": "È l’esclusione prevista dall’art. 13, comma 1, l. 241/1990.",
       "B": "La conferenza di servizi non esclude la partecipazione dei privati: l’art. 13 non la menziona.",
       "C": "L’art. 13 non esclude la partecipazione per l’attività consultiva obbligatoria: l’ipotesi non è prevista."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_13"
+      }
+    ]
   },
   {
     "id": 35,
@@ -400,7 +441,21 @@ const SPIEGAZIONI = [
       "A": "Descrive il controllo analogo nella formula del codice e del testo unico sulle società partecipate: è il requisito decisivo.",
       "B": "La sola partecipazione pubblica totale non basta: senza controllo analogo da parte dell’ente affidante l’affidamento diretto non è legittimo.",
       "C": "Il 100% del capitale non è né sufficiente né necessario: è ammesso il controllo analogo congiunto di più enti e, in casi previsti dalla legge, una partecipazione privata senza poteri di controllo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_5"
+      },
+      {
+        "normaId": "dlgs175_2016_art_2"
+      },
+      {
+        "normaId": "dlgs36_2023_art_7"
+      },
+      {
+        "normaId": "dir2014_24_art_12"
+      }
+    ]
   },
   {
     "id": 36,
@@ -411,7 +466,12 @@ const SPIEGAZIONI = [
       "A": "Il decreto non prevede casi in cui l’istanza vada motivata.",
       "B": "È la regola dell’art. 5, comma 3, d.lgs. 33/2013: l’istanza non richiede motivazione.",
       "C": "È il contrario: la motivazione è richiesta per l’accesso documentale della l. 241/1990, non per l’accesso civico."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs33_2013_art_5"
+      }
+    ]
   },
   {
     "id": 37,
@@ -422,7 +482,12 @@ const SPIEGAZIONI = [
       "A": "La norma non distingue in base al livello di governo: vale per tutte le amministrazioni coinvolte.",
       "B": "Per i rapporti tra amministrazioni l’art. 17-bis include espressamente anche gli interessi sensibili, come la salute, con un termine più lungo.",
       "C": "L’art. 17-bis, comma 3, applica il silenzio assenso anche alle amministrazioni preposte alla tutela della salute dei cittadini."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_17_bis"
+      }
+    ]
   },
   {
     "id": 38,
@@ -564,7 +629,12 @@ const SPIEGAZIONI = [
       "A": "La deroga è ammessa come eccezione, purché motivata nella nota integrativa o in un documento analogo.",
       "B": "Il principio non è assoluto: ammette deroghe in casi eccezionali, se motivate.",
       "C": "La deroga senza motivazione impedirebbe la comparabilità dei bilanci: la motivazione è obbligatoria."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cc_art_2423_bis"
+      }
+    ]
   },
   {
     "id": 50,
@@ -597,7 +667,12 @@ const SPIEGAZIONI = [
       "A": "Il lavoro agile non comporta tagli al trattamento economico: la legge garantisce parità di trattamento con chi lavora in sede.",
       "B": "Corrisponde alla definizione legale: flessibilità di tempi e spazi, lavoro per fasi e obiettivi.",
       "C": "La retribuzione di base non viene rivista: lo smart working incide sull’organizzazione del lavoro, non sulla struttura della paga."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l81_2017_art_18"
+      }
+    ]
   },
   {
     "id": 53,

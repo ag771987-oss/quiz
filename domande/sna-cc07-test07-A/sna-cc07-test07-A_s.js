@@ -327,6 +327,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "cost_art_15"
+      },
+      {
         "normaId": "cost_art_21"
       }
     ]
@@ -344,6 +347,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "cpa_art_30"
+      },
+      {
+        "normaId": "cc_art_2947"
       }
     ]
   },
@@ -384,6 +390,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "dlgs165_2001_art_16"
+      },
+      {
         "normaId": "cost_art_113"
       }
     ]
@@ -397,7 +406,12 @@ const SPIEGAZIONI = [
       "A": "La conferenza metropolitana (i sindaci dei comuni) ha poteri propositivi e consultivi e approva lo statuto, ma non elegge il sindaco metropolitano.",
       "B": "Corretta: sindaco di diritto è il sindaco del capoluogo, salvo elezione diretta prevista dallo statuto.",
       "C": "Il consiglio metropolitano è eletto dai sindaci e consiglieri comunali, ma non elegge il sindaco metropolitano."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l56_2014_art_1"
+      }
+    ]
   },
   {
     "id": 33,
@@ -408,7 +422,15 @@ const SPIEGAZIONI = [
       "A": "Procedere senza il parere è previsto per i pareri (art. 16), non per le valutazioni tecniche dell'art. 17.",
       "B": "Corretta: riproduce l'art. 17, comma 1, con il verbo «deve».",
       "C": "Il contenuto è giusto, ma la legge configura un obbligo («deve»), non una facoltà."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_17"
+      },
+      {
+        "normaId": "l241_1990_art_16"
+      }
+    ]
   },
   {
     "id": 34,
@@ -419,7 +441,15 @@ const SPIEGAZIONI = [
       "A": "Troppo ampia: la sospensione scatta solo se ci sono dissensi qualificati delle amministrazioni preposte agli interessi sensibili, non in ogni approvazione a maggioranza.",
       "B": "Corretta: servono insieme le posizioni prevalenti e il dissenso qualificato di un'amministrazione preposta a interessi sensibili.",
       "C": "La legge non collega la sospensione a una richiesta di due amministrazioni, ma alla presenza di dissensi qualificati."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_14_quater"
+      },
+      {
+        "normaId": "l241_1990_art_14_quinquies"
+      }
+    ]
   },
   {
     "id": 35,
@@ -446,7 +476,12 @@ const SPIEGAZIONI = [
       "A": "Il contratto non si forma con l'aggiudicazione: occorre la successiva stipulazione.",
       "B": "Corretta: l'aggiudicazione non equivale ad accettazione dell'offerta; il vincolo nasce con la stipula.",
       "C": "Il piano triennale di prevenzione della corruzione (oggi sezione del PIAO) non può cambiare la natura giuridica dell'aggiudicazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_32"
+      }
+    ]
   },
   {
     "id": 37,

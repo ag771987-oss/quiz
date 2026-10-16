@@ -4,32 +4,53 @@
 // le citazioni e da strumenti/collega_norme.js per compilare i «riferimenti».
 (function (root) {
   const NUM = "\\d+(?:-(?:bis|ter|quater|quinquies|sexies|septies|octies|novies|nonies|decies))?";
-  const QUAL1 = "\\s*,?\\s*(?:(?:co\\.|comma|commi|par\\.|paragrafo|paragrafi|lett\\.|lettera|n\\.)\\s*[\\w-]+\\)?(?:\\s*(?:e|-)\\s*[\\w-]+\\)?)?|(?:primo|secondo|terzo|quarto|quinto|sesto|settimo|ultimo|ult\\.)\\s+comma)";
+  const QUAL1 = "\\s*,?\\s*(?:(?:co\\.|comma|commi|par\\.|paragrafo|paragrafi|lett\\.|lettera|n\\.)\\s*[\\w-]+\\)?(?:\\s*(?:e|-)\\s*[\\w-]+\\)?)?|(?:primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono|decimo|ultimo|ult\\.)\\s+comma)";
   const QUAL = "(?:" + QUAL1 + ")*";
-  const ATTO = "(?:Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|c\\.p\\.a\\.|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|[lL]\\. ?cost\\. ?\\d+\\/\\d{4}|[lL]\\. ?\\d+\\/\\d{4}|legge \\d+\\/\\d{4}|[dD]\\.\\s?[lL]gs\\.? ?\\d+\\/\\d{4}|[dD]\\.[lL]\\. ?\\d+\\/\\d{4}|[dD]\\.\\s?P\\.\\s?R\\.? ?\\d+\\/\\d{4}|TUEL)";
+  // numero e anno di un atto: «241/1990», «n. 241/1990», «n. 241 del 1990», «7 agosto 1990, n. 241»
+  const MESI = "(?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)";
+  const NA = "(?:(?:n\\.\\s?)?\\d+\\s?\\/\\s?\\d{4}|n\\.\\s?\\d+ del \\d{4}|\\d{1,2}°? " + MESI + " \\d{4},? n\\.\\s?\\d+)";
+  const ATTO = "(?:Carta (?:ONU|delle Nazioni Unite)|Statuto della Corte internazionale di giustizia|Costituzione dell[’']ILO|Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|codice civile|c\\.p\\.a\\.|codice del processo amministrativo|c\\.p\\.(?!a)|codice penale|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|TUEL|direttiva \\d{4}\\/\\d+\\/UE|legge 241(?![\\d\\/])"
+    + "|(?:[lL]\\.|legge) ?cost(?:\\.|ituzionale) ?" + NA + "|(?:[lL]\\.|legge) ?" + NA + "|(?:[dD]\\.\\s?[lL]gs\\.?|decreto legislativo) ?" + NA
+    + "|(?:[dD]\\.\\s?[lL]\\.|decreto-legge) ?" + NA + "|(?:[dD]\\.\\s?P\\.\\s?R\\.?|decreto del Presidente della Repubblica) ?" + NA + ")";
   const PREP = "(?:\\s*,?\\s*(?:del|della|dello|dal|dalla|nel|nella)?\\s*)";
   const RE_CIT = new RegExp("\\b([Aa]rtt?\\.|[Aa]rticol[oi])\\s*(" + NUM + ")((?:" + QUAL + "(?:\\s*,?\\s*(?:e|ed|-|,)\\s*(?:(?:all'|dall'|l')?artt?\\.\\s*)?" + NUM + "(?![\\d/]))?)*)" + QUAL + "(?:" + PREP + "(" + ATTO + ")(?![\\w]))?", "g");
   const RE_ATTO = new RegExp("(?:^|[^\\w])(" + ATTO + ")(?![\\w])", "g");
 
+  // numero e anno da «241/1990», «n. 241 del 1990», «7 agosto 1990, n. 241»
+  function numAnno(a) {
+    let m;
+    if ((m = a.match(/(\d+)\s?\/\s?(\d{4})/))) return m[1] + "_" + m[2];
+    if ((m = a.match(/n\.\s?(\d+) del (\d{4})/))) return m[1] + "_" + m[2];
+    if ((m = a.match(/(\d{4}),? n\.\s?(\d+)/))) return m[2] + "_" + m[1];
+    return null;
+  }
   function prefisso(atto) {
     if (!atto) return null;
     const a = atto.replace(/\s+/g, " ").trim();
+    if (/^Carta (ONU|delle Nazioni)/.test(a)) return "onu";
+    if (/^Statuto della Corte internazionale/.test(a)) return "cig";
+    if (/^Costituzione dell/.test(a)) return "ilo";
     if (/^Cost|^Costituzione/.test(a)) return "cost";
     if (a === "TUE") return "tue";
     if (a === "TFUE") return "tfue";
-    if (a === "c.c.") return "cc";
-    if (a === "c.p.a.") return "cpa";
+    if (a === "c.c." || a === "codice civile") return "cc";
+    if (a === "c.p.a." || a === "codice del processo amministrativo") return "cpa";
+    if (a === "c.p." || a === "codice penale") return "cp";
     if (a === "CAD") return "cad";
     if (/^Carta/.test(a)) return "cdfue";
     if (/^Testo unico/.test(a)) return null;
     if (a === "TUEL") return "dlgs267_2000";
+    if (a === "legge 241") return "l241_1990";
     let m;
     if ((m = a.match(/^Protocollo n\. ?(\d+)/))) return "prot" + m[1];
-    if ((m = a.match(/^[lL]\. ?cost\. ?(\d+)\/(\d{4})/))) return "lcost" + m[1] + "_" + m[2];
-    if ((m = a.match(/^(?:[lL]\.|legge) ?(\d+)\/(\d{4})/))) return "l" + m[1] + "_" + m[2];
-    if ((m = a.match(/^[dD]\.\s?[lL]gs\.? ?(\d+)\/(\d{4})/))) return m[1] === "82" && m[2] === "2005" ? "cad" : "dlgs" + m[1] + "_" + m[2];
-    if ((m = a.match(/^[dD]\.[lL]\. ?(\d+)\/(\d{4})/))) return "dl" + m[1] + "_" + m[2];
-    if ((m = a.match(/^[dD]\.\s?P\.\s?R\.? ?(\d+)\/(\d{4})/))) return "dpr" + m[1] + "_" + m[2];
+    if ((m = a.match(/^direttiva (\d{4})\/(\d+)\/UE/))) return "dir" + m[1] + "_" + m[2];
+    const na = numAnno(a);
+    if (!na) return null;
+    if (/^(?:[lL]\.|legge) ?cost/.test(a)) return "lcost" + na;
+    if (/^(?:[lL]\.|legge)/.test(a)) return "l" + na;
+    if (/^(?:[dD]\.\s?[lL]gs|decreto legislativo)/.test(a)) return na === "82_2005" ? "cad" : na === "267_2000" ? "dlgs267_2000" : "dlgs" + na;
+    if (/^(?:[dD]\.\s?[lL]\.|decreto-legge)/.test(a)) return "dl" + na;
+    if (/^(?:[dD]\.\s?P|decreto del Presidente)/.test(a)) return "dpr" + na;
     return null;
   }
   const idArt = (pre, n) => pre + "_art_" + n.replace(/-/g, "_");
@@ -68,13 +89,16 @@
   // esiste(id) dice se il testo della norma è disponibile; per le citazioni senza atto
   // si usa l'atto citato più vicino prima (nello stesso blocco, poi nei precedenti),
   // altrimenti il primo dopo, scartando gli atti di cui non esiste il testo.
-  // Ritorna per ogni blocco [{start,end,art,id|null}].
+  // Ritorna per ogni blocco [{start,end,art,id|null,esplicito,inCitazione}].
   function risolvi(blocchi, esiste) {
     const ris = [], storico = [];
     blocchi.forEach((testo, b) => {
       const cit = trova(testo || ""), ctx = atti(testo || "");
+      // i rinvii dentro un testo di legge riportato tra «» appartengono a quella norma: si segnano
+      const virgolette = [...(testo || "").matchAll(/«[^»]*»/g)].map(m => [m.index, m.index + m[0].length]);
       const r = [];
       for (const c of cit) {
+        const inCitazione = virgolette.some(([a, b]) => c.start > a && c.start < b);
         for (const p of c.parti) {
           let id = null;
           if (c.pre) id = idArt(c.pre, p.art);
@@ -85,7 +109,7 @@
               if (a.pre && esiste(idArt(a.pre, p.art))) { id = idArt(a.pre, p.art); break; }
             }
           }
-          r.push({ start: p.start, end: p.end, art: p.art, id, esplicito: !!c.pre });
+          r.push({ start: p.start, end: p.end, art: p.art, id, esplicito: !!c.pre, inCitazione });
         }
       }
       ris.push(r);

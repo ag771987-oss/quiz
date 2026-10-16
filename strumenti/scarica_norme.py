@@ -85,10 +85,12 @@ def vigore(h):
     return m.group(1) if m else ""
 
 
-def scarica_normattiva(chiave, f, art):
+def scarica_normattiva(chiave, f, art, vig=None):
     urn_art = f["urn"] + "~art" + art.replace("-", "")
+    if vig:
+        urn_art += "!vig=" + vig   # testo in vigore a quella data (norme abrogate o modificate)
     url = NT + "/uri-res/N2Ls?" + urn_art
-    h = curl(url, os.path.join(CACHE, f"{chiave}_{art}.html"))
+    h = curl(url, os.path.join(CACHE, f"{chiave}_{art}" + (f"_{vig}" if vig else "") + ".html"))
     corpo = corpo_normattiva(h)
     corpo = prepara(corpo) if corpo else corpo
     if not corpo or ('id="art_' not in corpo and "attachment-just-text" not in corpo and "art-just-text" not in corpo):
@@ -115,14 +117,21 @@ def scarica_allegato(chiave, f, art):
     num, _, suff = art.partition("-")
     sotto = {"": 1, "bis": 2, "ter": 3, "quater": 4, "quinquies": 5}[suff]
     # l'albero dell'atto (pagina URN) elenca gli articoli dell'allegato con la versione vigente
-    albero = curl(NT + "/uri-res/N2Ls?" + f["urn"], os.path.join(CACHE, f"{chiave}_atto.html"))
+    # la pagina dell'atto apre anche la sessione richiesta da caricaArticolo: va sempre ricaricata
+    dest_atto = os.path.join(CACHE, f"{chiave}_atto.html")
+    if os.path.exists(dest_atto):
+        os.remove(dest_atto)
+    albero = curl(NT + "/uri-res/N2Ls?" + f["urn"], dest_atto)
     scelta = None
     for m in re.finditer(r"caricaArticolo\?([^'\"]*)", albero):
         q = html.unescape(m.group(1))
         if ("art.flagTipoArticolo=" + a["flagTipoArticolo"] + "&") in q and ("&art.idArticolo=%s&" % num) in q \
                 and ("&art.idSottoArticolo=%d&" % sotto) in q and "imUpdate=true" not in q:
             url = NT + "/atto/caricaArticolo?" + q
-            h = curl(url, os.path.join(CACHE, f"{chiave}_{art}_vig.html"))
+            dest = os.path.join(CACHE, f"{chiave}_{art}_vig.html")
+            h = curl(url, dest)
+            if "bodyTesto" not in h:   # pagina di errore (sessione scaduta): non tenerla in cache
+                os.remove(dest)
             scelta = (url, h)
             break
     if not scelta or "bodyTesto" not in scelta[1]:
@@ -150,10 +159,10 @@ def scarica_allegato(chiave, f, art):
 def eurlex(chiave, f, art):
     nome = "eurlex_" + re.sub(r"\W", "_", f["celex"]) + ".html"
     h = open(os.path.join(CACHE, nome), encoding="utf-8").read()
-    m = re.search(r'<p[^>]*class="ti-art"[^>]*>\s*Articolo ' + re.escape(art) + r'\s*</p>', h)
+    m = re.search(r'<p[^>]*class="(?:oj-)?ti-art"[^>]*>\s*Articolo ' + re.escape(art) + r'\s*</p>', h)
     if not m:
         raise RuntimeError("articolo non trovato in EUR-Lex")
-    j = re.search(r'<p[^>]*class="ti-art"', h[m.end():])
+    j = re.search(r'<p[^>]*class="(?:oj-)?ti-art"', h[m.end():])
     fine = m.end() + j.start() if j else len(h)
     corpo = h[m.end():fine]
     # taglia le intestazioni di titolo/capo che seguono l'ultimo paragrafo
@@ -161,7 +170,7 @@ def eurlex(chiave, f, art):
     if k:
         corpo = corpo[:k.start()]
     sti = ""
-    m2 = re.search(r'<p class="sti-art">(.*?)</p>', corpo, re.S)
+    m2 = re.search(r'<p class="(?:oj-)?sti-art">(.*?)</p>', corpo, re.S)
     if m2:
         sti = testo_da_html(m2.group(1))
         corpo = corpo.replace(m2.group(0), "")
@@ -222,7 +231,10 @@ def main():
     for chiave, f in CAT["fonti"].items():
         if SOLO and chiave not in SOLO:
             continue
-        for art in f["articoli"]:
+        for voce in f["articoli"]:
+            # «83@2022-03-15»: articolo nel testo in vigore a una data; altrimenti vale «vig» della fonte
+            art, _, vig = voce.partition("@")
+            vig = vig or f.get("vig")
             nid = norma_id(chiave, art)
             try:
                 if "celex" in f:
@@ -230,7 +242,7 @@ def main():
                 elif "allegato" in f:
                     r = scarica_allegato(chiave, f, art)
                 else:
-                    r = scarica_normattiva(chiave, f, art)
+                    r = scarica_normattiva(chiave, f, art, vig)
                 t = r["testo"]
                 t = re.sub(r"(?m)^((?:[ivx]+|[a-z]{1,2}|\d+)\)|—)\s*\n", r"\1 ", t)   # «ii)» o «—» da soli su una riga
                 t = re.sub(r"([a-zà-ù,])\n(?=[a-zà-ù])", r"\1 ", t)                     # a capo a metà frase
@@ -243,10 +255,16 @@ def main():
                 if chiave == "cost":
                     rub = next(nome for fine, nome in COST if int(art) <= fine)
                 titolo = f"Art. {art}" + (f" — {rub}" if rub else "")
-                obj = {"titolo": titolo, "fonte": f["fonte"], "sigla": f["sigla"], "testo": r["testo"],
+                fonte = f["fonte"]
+                if vig:
+                    g = vig.split("-")
+                    fonte += f" — testo in vigore al {g[2]}/{g[1]}/{g[0]}" + (f" ({f['nota']})" if f.get("nota") else "")
+                obj = {"titolo": titolo, "fonte": fonte, "sigla": f["sigla"], "testo": r["testo"],
                        "url": r["url"], "consultato": CAT["consultato"]}
                 if r["vigore"]:
                     obj["vigoreDal"] = r["vigore"]
+                if vig:
+                    obj["vigenteAl"] = vig
                 d = os.path.join(ROOT, "norme", f["dir"])
                 os.makedirs(d, exist_ok=True)
                 with open(os.path.join(d, nid + ".js"), "w", encoding="utf-8") as fh:

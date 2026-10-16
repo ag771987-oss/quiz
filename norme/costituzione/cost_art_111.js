@@ -1,0 +1,11 @@
+window.NORME = window.NORME || {};
+
+window.NORME["cost_art_111"] = {
+  "titolo": "Art. 111 — La Magistratura: norme sulla giurisdizione",
+  "fonte": "Costituzione della Repubblica italiana",
+  "sigla": "Cost.",
+  "testo": "La giurisdizione si attua mediante il giusto processo regolato dalla legge.\nOgni processo si svolge nel contraddittorio tra le parti, in condizioni di parità, davanti a giudice terzo e imparziale. La legge ne assicura la ragionevole durata.\nNel processo penale, la legge assicura che la persona accusata di un reato sia, nel più breve tempo possibile, informata riservatamente della natura e dei motivi dell'accusa elevata a suo carico; disponga del tempo e delle condizioni necessari per preparare la sua difesa; abbia la facoltà, davanti al giudice, di interrogare o di far interrogare le persone che rendono dichiarazioni a suo carico, di ottenere la convocazione e l'interrogatorio di persone a sua difesa nelle stesse condizioni dell'accusa e l'acquisizione di ogni altro mezzo di prova a suo favore; sia assistita da un interprete se non comprende o non parla la lingua impiegata nel processo.\nIl processo penale è regolato dal principio del contraddittorio nella formazione della prova. La colpevolezza dell'imputato non può essere provata sulla base di dichiarazioni rese da chi, per libera scelta, si è sempre volontariamente sottratto all'interrogatorio da parte dell'imputato o del suo difensore.\nLa legge regola i casi in cui la formazione della prova non ha luogo in contraddittorio per consenso dell'imputato o per accertata impossibilità di natura oggettiva o per effetto di provata condotta illecita.\nTutti i provvedimenti giurisdizionali devono essere motivati.\nContro le sentenze e contro i provvedimenti sulla libertà personale, pronunciati dagli organi giurisdizionali ordinari o speciali, è sempre ammesso ricorso in Cassazione per violazione di legge. Si può derogare a tale norma soltanto per le sentenze dei tribunali militari in tempo di guerra.\nContro le decisioni del Consiglio di Stato e della Corte dei conti il ricorso in Cassazione è ammesso per i soli motivi inerenti alla giurisdizione.",
+  "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art111",
+  "consultato": "2026-10-16",
+  "vigoreDal": "7-1-2000"
+};

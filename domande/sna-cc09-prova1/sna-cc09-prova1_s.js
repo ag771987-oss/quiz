@@ -390,6 +390,9 @@ const SPIEGAZIONI = [
       },
       {
         "normaId": "dpr1199_1971_art_14"
+      },
+      {
+        "normaId": "dl19_2026_art_6"
       }
     ]
   },

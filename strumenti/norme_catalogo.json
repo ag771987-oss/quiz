@@ -7,20 +7,29 @@
    "sigla": "Cost.",
    "urn": "urn:nir:stato:costituzione:1947-12-27",
    "articoli": [
+    "3",
     "10",
     "11",
     "13",
+    "15",
+    "17",
     "21",
     "24",
+    "25",
     "26",
+    "32",
+    "36",
     "41",
     "48",
     "60",
     "61",
     "64",
+    "68",
+    "69",
     "71",
     "72",
     "73",
+    "74",
     "75",
     "76",
     "77",
@@ -37,7 +46,9 @@
     "104",
     "105",
     "110",
+    "111",
     "113",
+    "114",
     "117",
     "118",
     "119",
@@ -56,6 +67,7 @@
    "articoli": [
     "1",
     "2",
+    "2-bis",
     "3",
     "6",
     "7",
@@ -63,16 +75,26 @@
     "10",
     "10-bis",
     "11",
+    "13",
+    "14-bis",
+    "14-quater",
+    "14-quinquies",
+    "14-ter",
+    "16",
+    "17",
+    "17-bis",
     "19",
     "20",
     "21-bis",
-    "21-ter",
+    "21-nonies",
     "21-quater",
     "21-quinquies",
     "21-septies",
-    "21-nonies",
+    "21-ter",
     "22",
-    "24"
+    "24",
+    "25",
+    "29"
    ]
   },
   "l400_1988": {
@@ -82,6 +104,7 @@
    "urn": "urn:nir:stato:legge:1988-08-23;400",
    "articoli": [
     "2",
+    "8",
     "9",
     "14",
     "17"
@@ -93,9 +116,16 @@
    "sigla": "d.lgs. 165/2001",
    "urn": "urn:nir:stato:decreto.legislativo:2001-03-30;165",
    "articoli": [
+    "1",
+    "4",
+    "5",
     "6",
     "7",
+    "14",
+    "16",
     "19",
+    "21",
+    "23-bis",
     "35",
     "52"
    ]
@@ -108,7 +138,10 @@
    "articoli": [
     "823",
     "826",
-    "2201"
+    "2103",
+    "2201",
+    "2423-bis",
+    "2947"
    ]
   },
   "cpa": {
@@ -127,8 +160,14 @@
     "8",
     "15",
     "30",
+    "43",
     "55",
+    "59",
     "60",
+    "61",
+    "62",
+    "91",
+    "98",
     "117"
    ]
   },
@@ -185,7 +224,9 @@
    "sigla": "d.l. 83/2012",
    "urn": "urn:nir:stato:decreto.legge:2012-06-22;83",
    "articoli": [
-    "19"
+    "19",
+    "20",
+    "22"
    ]
   },
   "cad": {
@@ -224,6 +265,7 @@
    "sigla": "d.lgs. 175/2016",
    "urn": "urn:nir:stato:decreto.legislativo:2016-08-19;175",
    "articoli": [
+    "2",
     "3"
    ]
   },
@@ -233,6 +275,7 @@
    "sigla": "l. 196/2009",
    "urn": "urn:nir:stato:legge:2009-12-31;196",
    "articoli": [
+    "2",
     "10",
     "21",
     "25-bis"
@@ -254,7 +297,11 @@
    "sigla": "d.lgs. 36/2023",
    "urn": "urn:nir:stato:decreto.legislativo:2023-03-31;36",
    "articoli": [
-    "101"
+    "7",
+    "72",
+    "101",
+    "104",
+    "108"
    ]
   },
   "dpr1199_1971": {
@@ -274,7 +321,8 @@
    "sigla": "l. 352/1970",
    "urn": "urn:nir:stato:legge:1970-05-25;352",
    "articoli": [
-    "32"
+    "32",
+    "33"
    ]
   },
   "dlgs150_2009": {
@@ -283,8 +331,10 @@
    "sigla": "d.lgs. 150/2009",
    "urn": "urn:nir:stato:decreto.legislativo:2009-10-27;150",
    "articoli": [
+    "5",
     "8",
-    "9"
+    "9",
+    "14"
    ]
   },
   "l56_2014": {
@@ -311,6 +361,11 @@
    "sigla": "TUEL",
    "urn": "urn:nir:stato:decreto.legislativo:2000-08-18;267",
    "articoli": [
+    "98",
+    "99",
+    "107",
+    "108",
+    "110",
     "178"
    ]
   },
@@ -320,7 +375,90 @@
    "sigla": "d.lgs. 300/1999",
    "urn": "urn:nir:stato:decreto.legislativo:1999-07-30;300",
    "articoli": [
-    "8"
+    "8",
+    "9"
+   ]
+  },
+  "dlgs50_2016": {
+   "dir": "dlgs50_2016",
+   "fonte": "Decreto legislativo 18 aprile 2016, n. 50 (Codice dei contratti pubblici)",
+   "nota": "abrogato dal d.lgs. 36/2023 dal 1° luglio 2023",
+   "sigla": "d.lgs. 50/2016",
+   "urn": "urn:nir:stato:decreto.legislativo:2016-04-18;50",
+   "vig": "2019-01-22",
+   "articoli": [
+    "3@2023-06-27",
+    "5",
+    "32",
+    "61",
+    "83@2022-03-15",
+    "89",
+    "95"
+   ]
+  },
+  "cp": {
+   "dir": "codice_penale",
+   "fonte": "Codice penale (R.D. 19 ottobre 1930, n. 1398)",
+   "nota": "art. 323 abrogato dalla l. 114/2024",
+   "sigla": "c.p.",
+   "urn": "urn:nir:stato:regio.decreto:1930-10-19;1398:1",
+   "vig": "2019-01-22",
+   "articoli": [
+    "323"
+   ]
+  },
+  "l42_2009": {
+   "dir": "l42_2009",
+   "fonte": "Legge 5 maggio 2009, n. 42",
+   "sigla": "l. 42/2009",
+   "urn": "urn:nir:stato:legge:2009-05-05;42",
+   "articoli": [
+    "24"
+   ]
+  },
+  "dlgs33_2013": {
+   "dir": "dlgs33_2013",
+   "fonte": "Decreto legislativo 14 marzo 2013, n. 33",
+   "sigla": "d.lgs. 33/2013",
+   "urn": "urn:nir:stato:decreto.legislativo:2013-03-14;33",
+   "articoli": [
+    "5"
+   ]
+  },
+  "l212_2000": {
+   "dir": "l212_2000",
+   "fonte": "Legge 27 luglio 2000, n. 212 (Statuto dei diritti del contribuente)",
+   "sigla": "l. 212/2000",
+   "urn": "urn:nir:stato:legge:2000-07-27;212",
+   "articoli": [
+    "3"
+   ]
+  },
+  "l81_2017": {
+   "dir": "l81_2017",
+   "fonte": "Legge 22 maggio 2017, n. 81",
+   "sigla": "l. 81/2017",
+   "urn": "urn:nir:stato:legge:2017-05-22;81",
+   "articoli": [
+    "18"
+   ]
+  },
+  "dl19_2026": {
+   "dir": "dl19_2026",
+   "fonte": "Decreto-legge 19 febbraio 2026, n. 19",
+   "sigla": "d.l. 19/2026",
+   "urn": "urn:nir:stato:decreto.legge:2026-02-19;19",
+   "articoli": [
+    "6"
+   ]
+  },
+  "dir2014_24": {
+   "dir": "direttive_ue",
+   "fonte": "Direttiva 2014/24/UE del Parlamento europeo e del Consiglio, del 26 febbraio 2014, sugli appalti pubblici",
+   "sigla": "dir. 2014/24/UE",
+   "celex": "32014L0024",
+   "articoli": [
+    "12"
    ]
   },
   "tue": {
@@ -338,6 +476,7 @@
     "15",
     "16",
     "17",
+    "18",
     "42"
    ]
   },
@@ -361,6 +500,7 @@
     "265",
     "267",
     "288",
+    "291",
     "352"
    ]
   },

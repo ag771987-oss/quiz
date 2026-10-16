@@ -273,7 +273,12 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: il Ministro dell’Interno non ha per legge alcuna funzione di supplenza del Presidente del Consiglio.",
       "B": "Sbagliata: il sottosegretario alla Presidenza non è membro del Consiglio dei ministri e non supplisce il Presidente.",
       "C": "Corretta: è il criterio residuale dell’art. 8 della l. 400/1988."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_8"
+      }
+    ]
   },
   {
     "id": 26,
@@ -284,7 +289,12 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: la Costituzione non impone i caratteri di generalità e astrattezza alla legge; per questo le leggi-provvedimento sono ammesse.",
       "B": "Corretta: sono legittime ma soggette a un controllo più rigoroso di ragionevolezza.",
       "C": "Sbagliata: secondo la Corte non esiste in Costituzione una riserva di amministrazione che impedisca al legislatore di provvedere su casi concreti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_97"
+      }
+    ]
   },
   {
     "id": 27,
@@ -295,7 +305,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: riproduce la riserva di legge dell’art. 32, comma 2, Cost.",
       "B": "Sbagliata: il trattamento obbligatorio è un’eccezione, ammessa solo se previsto da una legge.",
       "C": "Sbagliata: il consenso informato è la regola per i trattamenti volontari; quello obbligatorio, per definizione, prescinde dal consenso e si fonda sulla legge."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_32"
+      }
+    ]
   },
   {
     "id": 28,
@@ -322,7 +337,15 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: la conferenza di servizi non è la conseguenza del silenzio prevista dall’art. 17-bis, che invece fa scattare l’assenso.",
       "B": "Sbagliata: la decisione del Presidente del Consiglio, previa deliberazione del Consiglio dei ministri, riguarda il caso di dissenso espresso (mancato accordo) tra amministrazioni statali, non il silenzio.",
       "C": "Corretta: è il silenzio-assenso previsto dall’art. 17-bis."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_17_bis"
+      },
+      {
+        "normaId": "l241_1990_art_14_ter"
+      }
+    ]
   },
   {
     "id": 30,
@@ -365,7 +388,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la distinzione prevista dall’art. 5 del d.lgs. 150/2009.",
       "B": "Sbagliata: la classificazione macro/micro non è utilizzata dalla norma.",
       "C": "Sbagliata: la distinzione tra obiettivi trasversali e settoriali non è quella dell’art. 5."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs150_2009_art_5"
+      }
+    ]
   },
   {
     "id": 33,
@@ -376,7 +404,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: riproduce il testo dell’art. 43 c.p.a.",
       "B": "Sbagliata: i motivi aggiunti possono contenere anche nuove ragioni a sostegno delle domande originarie, non solo domande nuove.",
       "C": "Sbagliata: oltre alle nuove ragioni sono ammesse anche domande nuove connesse."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_43"
+      }
+    ]
   },
   {
     "id": 34,
@@ -387,7 +420,15 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: non esiste un’autorizzazione dell’ANAC come requisito per presentare offerta.",
       "B": "Sbagliata: la legge non richiede una specifica esperienza quinquennale; i requisiti sono fissati dal bando e la selezione avviene tramite invito.",
       "C": "Corretta: è il tratto distintivo della procedura ristretta."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_61"
+      },
+      {
+        "normaId": "dlgs36_2023_art_72"
+      }
+    ]
   },
   {
     "id": 35,
@@ -398,7 +439,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: cinque anni massimo e nessun computo a fini di quiescenza e previdenza.",
       "B": "Sbagliata: il limite è di cinque anni, non tre.",
       "C": "Sbagliata: il limite non è di sette anni e il periodo non è computabile ai fini previdenziali."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_23_bis"
+      }
+    ]
   },
   {
     "id": 36,
@@ -429,7 +475,12 @@ const SPIEGAZIONI = [
       "B": "Coglie la facoltà prevista nel 2019, ma dimentica l’eccezione del comma 3 per i pareri in materia ambientale, paesaggistica, territoriale e sanitaria.",
       "C": "È il testo in vigore all’epoca della prova: facoltà di procedere, salvo i pareri delle amministrazioni preposte a ambiente, paesaggio, territorio e salute."
     },
-    "nota": "Chiave secondo la norma in vigore nel 2019, data della prova. Con il testo attuale (d.l. 76/2020: «procede») la risposta sarebbe quella che parla di obbligo."
+    "nota": "Chiave secondo la norma in vigore nel 2019, data della prova. Con il testo attuale (d.l. 76/2020: «procede») la risposta sarebbe quella che parla di obbligo.",
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_16"
+      }
+    ]
   },
   {
     "id": 38,

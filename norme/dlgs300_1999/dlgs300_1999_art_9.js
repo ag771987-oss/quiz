@@ -1,0 +1,11 @@
+window.NORME = window.NORME || {};
+
+window.NORME["dlgs300_1999_art_9"] = {
+  "titolo": "Art. 9 — Il personale e la dotazione finanziaria",
+  "fonte": "Decreto legislativo 30 luglio 1999, n. 300",
+  "sigla": "d.lgs. 300/1999",
+  "testo": "1. Alla copertura dell'organico delle agenzie, nei limiti determinati per ciascuna di esse dai successivi articoli, si provvede, nell'ordine:\na) mediante l'inquadramento del personale trasferito dai ministeri e dagli enti pubblici, di cui al precedente articolo 8, comma 1;\nb) mediante le procedure di mobilità di cui al capo III del titolo II del decreto legislativo 3 febbraio 1993, n. 29 e successive modificazioni ed integrazioni;\nc) a regime, mediante le ordinarie forme di reclutamento.\n2. Al termine delle procedure di inquadramento di cui al precedente comma 1, sono corrispondentemente ridotte le dotazioni organiche delle amministrazioni e degli enti di provenienza e le corrispondenti risorse finanziarie sono trasferite all'agenzia. In ogni caso, le suddette dotazioni organiche non possono essere reintegrate.\n3. Al personale inquadrato nell'organico dell'agenzia, ai sensi del precedente comma 1, è mantenuto il trattamento giuridico ed economico spettante presso gli enti, le amministrazioni e gli organismi di provenienza al momento dell'inquadramento, fino alla stipulazione del primo contratto integrativo collettivo di ciascuna agenzia.\n4. Gli oneri di funzionamento dell'agenzia sono coperti:\na) mediante le risorse finanziarie trasferite da amministrazioni secondo quanto disposto dal precedente comma 2;\nb) mediante gli introiti derivanti dai contratti stipulati con le amministrazioni per le prestazioni di collaborazione, consulenza, assistenza, servizio, supporto, promozione;\nc) mediante un finanziamento annuale, nei limiti del fondo a tale scopo stanziato in apposita unità previsionale di base dello stato di previsione dei ministero competente e suddiviso in tre capitoli, distintamente riferiti agli oneri di gestione, calcolati tenendo conto dei vincoli di servizio, alle spese di investimento, alla quota incentivante connessa al raggiungimento degli obiettivi gestionali.",
+  "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;300~art9",
+  "consultato": "2026-10-16",
+  "vigoreDal": "14-9-1999"
+};

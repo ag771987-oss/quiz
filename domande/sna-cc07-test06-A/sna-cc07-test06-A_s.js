@@ -289,7 +289,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la formula dell’art. 69 Cost.",
       "B": "I regolamenti parlamentari disciplinano l’organizzazione delle Camere, ma la Costituzione riserva alla legge la fissazione dell’indennità.",
       "C": "Le delibere degli Uffici di Presidenza intervengono solo in attuazione della legge, non sono la fonte indicata dalla Costituzione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_69"
+      }
+    ]
   },
   {
     "id": 27,
@@ -300,7 +305,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: la contraddittorietà tra il contenuto della norma e il suo scopo è il caso tipico di irragionevolezza.",
       "B": "Il contrasto con altre leggi ordinarie si risolve con i criteri cronologico e di specialità, non con il giudizio di legittimità costituzionale.",
       "C": "Il contrasto con più principi costituzionali è una violazione diretta di quei principi, non la figura specifica dell’irragionevolezza desunta dall’art. 3."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_3"
+      }
+    ]
   },
   {
     "id": 28,
@@ -314,7 +324,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "cost_art_25"
+      },
+      {
         "normaId": "cost_art_11"
+      },
+      {
+        "normaId": "l212_2000_art_3"
       }
     ]
   },
@@ -333,6 +349,12 @@ const SPIEGAZIONI = [
         "normaId": "dlgs165_2001_art_52"
       },
       {
+        "normaId": "cost_art_36"
+      },
+      {
+        "normaId": "cc_art_2103"
+      },
+      {
         "normaId": "cost_art_97"
       }
     ]
@@ -346,7 +368,15 @@ const SPIEGAZIONI = [
       "A": "Incompleta: l’avvalimento copre anche i requisiti economici e finanziari.",
       "B": "Corretta: comprende sia i requisiti economico-finanziari sia quelli tecnico-professionali.",
       "C": "Incompleta: l’avvalimento copre anche i requisiti tecnici e professionali."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_89"
+      },
+      {
+        "normaId": "dlgs36_2023_art_104"
+      }
+    ]
   },
   {
     "id": 31,
@@ -357,7 +387,15 @@ const SPIEGAZIONI = [
       "A": "Il direttore generale non nomina il segretario: la nomina spetta al sindaco (o al presidente della provincia).",
       "B": "Corretta: nomina del sindaco, scelta tra gli iscritti all’albo nazionale cui si accede per concorso.",
       "C": "Il segretario non è un incarico a contratto fuori dotazione organica: va scelto tra gli iscritti all’albo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs267_2000_art_99"
+      },
+      {
+        "normaId": "dlgs267_2000_art_98"
+      }
+    ]
   },
   {
     "id": 32,
@@ -416,7 +454,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: è l’elenco completo dell’art. 91 c.p.a.",
       "B": "Il ricorso per cassazione contro le decisioni del giudice amministrativo è ammesso solo per motivi di giurisdizione, non per qualsiasi violazione di legge.",
       "C": "Incompleta: mancano la revocazione e l’opposizione di terzo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_91"
+      },
+      {
+        "normaId": "cost_art_111"
+      }
+    ]
   },
   {
     "id": 36,
@@ -427,7 +473,12 @@ const SPIEGAZIONI = [
       "A": "Partecipare con un rappresentante non abilitato equivale a non esprimere una posizione valida: l’amministrazione si considera assenziente e non può opporsi.",
       "B": "Se la posizione non è espressa in modo univoco e vincolante, la legge la considera come assenso senza condizioni, che preclude l’opposizione.",
       "C": "Corretta: il presupposto dell’opposizione è il dissenso motivato e inequivoco espresso prima della chiusura della conferenza."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_14_quinquies"
+      }
+    ]
   },
   {
     "id": 37,
@@ -454,7 +505,12 @@ const SPIEGAZIONI = [
       "A": "Le agenzie europee non sono le titolari generali dell’esecuzione: il ruolo spetta in primo luogo agli Stati membri.",
       "B": "Corretta: è la regola dell’art. 291 TFUE (esecuzione statale, Commissione se servono condizioni uniformi).",
       "C": "Inverte la regola: la competenza esecutiva di base spetta agli Stati, la Commissione interviene solo se servono condizioni uniformi."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_291"
+      }
+    ]
   },
   {
     "id": 39,
@@ -581,7 +637,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: affiancamento della contabilità economico-patrimoniale, con piano dei conti integrato, a fini conoscitivi.",
       "B": "Non è previsto il passaggio alla contabilità civilistica: questa riguarda le amministrazioni già in contabilità economica, come le società.",
       "C": "La contabilità finanziaria non viene sostituita ma affiancata: resta quella che autorizza la spesa."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l196_2009_art_2"
+      }
+    ]
   },
   {
     "id": 50,

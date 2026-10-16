@@ -316,6 +316,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l352_1970_art_32"
+      },
+      {
+        "normaId": "l352_1970_art_33"
       }
     ]
   },

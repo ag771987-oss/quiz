@@ -389,6 +389,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "dlgs300_1999_art_8"
+      },
+      {
+        "normaId": "dlgs300_1999_art_9"
       }
     ]
   },
@@ -421,6 +424,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l190_2012_art_1"
+      },
+      {
+        "normaId": "dlgs165_2001_art_21"
       },
       {
         "normaId": "dlgs39_2013_art_15"
@@ -634,6 +640,12 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "dl83_2012_art_19"
+      },
+      {
+        "normaId": "dl83_2012_art_22"
+      },
+      {
+        "normaId": "dl83_2012_art_20"
       }
     ]
   },

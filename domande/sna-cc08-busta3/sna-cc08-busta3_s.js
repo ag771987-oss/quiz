@@ -320,6 +320,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "dlgs50_2016_art_83"
+      },
+      {
         "normaId": "dlgs36_2023_art_101"
       }
     ]

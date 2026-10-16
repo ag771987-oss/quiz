@@ -277,6 +277,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "cost_art_72"
+      },
+      {
+        "normaId": "cost_art_74"
       }
     ]
   },
@@ -289,7 +292,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: riproduce l’art. 17, terzo comma, Cost.",
       "B": "L’assenza di preavviso vale per le riunioni in luogo privato o aperto al pubblico, non per quelle in luogo pubblico.",
       "C": "La Costituzione non prevede autorizzazione ma solo preavviso: la riunione è un diritto, non una concessione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_17"
+      }
+    ]
   },
   {
     "id": 27,
@@ -348,7 +356,18 @@ const SPIEGAZIONI = [
       "A": "La contrattazione integrativa è condotta dalla parte pubblica tecnica (dirigenti/delegazioni), non dal Ministro.",
       "B": "Promuovere e resistere alle liti è compito dei dirigenti degli uffici dirigenziali generali (art. 16, comma 1, lett. f, d.lgs. 165/2001).",
       "C": "Corretta: è la funzione di indirizzo che l’art. 14 attribuisce al Ministro."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_4"
+      },
+      {
+        "normaId": "dlgs165_2001_art_14"
+      },
+      {
+        "normaId": "dlgs165_2001_art_16"
+      }
+    ]
   },
   {
     "id": 31,
@@ -359,7 +378,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: scelta discrezionale della stazione appaltante, con un tetto del 30% al punteggio economico.",
       "B": "La ripartizione non è fissata in modo rigido: 30% è solo il limite massimo per il prezzo.",
       "C": "Il 30% è un tetto (massimo), non una soglia minima: la norma serve a impedire che il prezzo prevalga sulla qualità."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_95"
+      },
+      {
+        "normaId": "dlgs36_2023_art_108"
+      }
+    ]
   },
   {
     "id": 32,
@@ -373,7 +400,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "cpa_art_62"
+      },
+      {
         "normaId": "cpa_art_60"
+      },
+      {
+        "normaId": "cpa_art_98"
       }
     ]
   },
@@ -423,7 +456,12 @@ const SPIEGAZIONI = [
       "B": "Corretta: è il limite del 30% previsto dall’art. 110, comma 1, TUEL.",
       "C": "20% non è la percentuale prevista dall’art. 110, comma 1, TUEL."
     },
-    "nota": "Chiave certa per il testo vigente nel 2019 (30%); prima di usarla oggi verificare eventuali modifiche successive alla percentuale dell’art. 110 TUEL."
+    "nota": "Chiave certa per il testo vigente nel 2019 (30%); prima di usarla oggi verificare eventuali modifiche successive alla percentuale dell’art. 110 TUEL.",
+    "riferimenti": [
+      {
+        "normaId": "dlgs267_2000_art_110"
+      }
+    ]
   },
   {
     "id": 36,
@@ -437,7 +475,16 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_2_bis"
+      },
+      {
+        "normaId": "l241_1990_art_29"
+      },
+      {
         "normaId": "l241_1990_art_11"
+      },
+      {
+        "normaId": "l241_1990_art_25"
       },
       {
         "normaId": "l241_1990_art_6"
@@ -456,7 +503,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_25"
+      },
+      {
         "normaId": "l241_1990_art_22"
+      },
+      {
+        "normaId": "dlgs33_2013_art_5"
       }
     ]
   },
@@ -469,7 +522,12 @@ const SPIEGAZIONI = [
       "A": "L’Alto rappresentante non partecipa «senza voto»: presiede il Consiglio Affari esteri.",
       "B": "Corretta: presidenza del Consiglio Affari esteri e vicepresidenza della Commissione (art. 18 TUE).",
       "C": "Non c’è incompatibilità: anzi, è per legge vicepresidente della Commissione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_18"
+      }
+    ]
   },
   {
     "id": 39,

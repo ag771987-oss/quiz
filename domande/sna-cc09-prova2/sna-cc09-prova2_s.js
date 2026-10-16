@@ -386,7 +386,12 @@ const SPIEGAZIONI = [
       "A": "Sbagliata in più punti: non persegue fini di lucro, può avere anche forma privata e rientra pienamente nel codice dei contratti.",
       "B": "Il requisito delle esigenze di interesse generale è giusto, ma l'organismo deve essere dotato di personalità giuridica, non privo.",
       "C": "Corretta: conta la sostanza (missione di interesse generale e legami con le amministrazioni), non la forma pubblica o privata; ne deriva l'applicazione del codice dei contratti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_3"
+      }
+    ]
   },
   {
     "id": 32,

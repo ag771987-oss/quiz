@@ -353,7 +353,12 @@ const SPIEGAZIONI = [
       "A": "La legge non prevede una comunicazione al dirigente sovraordinato: richiede la motivazione nel provvedimento.",
       "B": "Non serve un accordo con il responsabile del procedimento: l'organo decide autonomamente motivando.",
       "C": "È la formula dell'art. 6, comma 1, lett. e)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_6"
+      }
+    ]
   },
   {
     "id": 31,
@@ -364,7 +369,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: la norma configura una facoltà della stazione appaltante.",
       "B": "Non c'è alcun obbligo: la stazione appaltante può sempre scegliere l'offerta economicamente più vantaggiosa.",
       "C": "Al contrario, l'elevata ripetitività è proprio uno dei casi in cui il minor prezzo è ammesso."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs50_2016_art_95"
+      },
+      {
+        "normaId": "dlgs36_2023_art_108"
+      }
+    ]
   },
   {
     "id": 32,
@@ -375,7 +388,18 @@ const SPIEGAZIONI = [
       "A": "Troppo restrittivo: l'accesso non è riservato a chi è intervenuto nel procedimento (questo è il diritto di prendere visione degli atti ex art. 10).",
       "B": "Riproduce la definizione di «interessati» dell'art. 22 della legge 241.",
       "C": "Descrive l'accesso civico generalizzato del d.lgs. 33/2013, non l'accesso documentale della legge 241."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_22"
+      },
+      {
+        "normaId": "dlgs33_2013_art_5"
+      },
+      {
+        "normaId": "l241_1990_art_10"
+      }
+    ]
   },
   {
     "id": 33,
@@ -386,7 +410,15 @@ const SPIEGAZIONI = [
       "A": "Il segretario comunale ha funzioni di assistenza giuridico-amministrativa e coordinamento; può svolgere funzioni dirigenziali solo se conferite, ma la norma le attribuisce ai dirigenti.",
       "B": "Corretta: è uno dei compiti gestionali elencati dall'art. 107, comma 3.",
       "C": "Il direttore generale (art. 108 TUEL) attua indirizzi e obiettivi e sovrintende alla gestione, ma non adotta questi provvedimenti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs267_2000_art_107"
+      },
+      {
+        "normaId": "dlgs267_2000_art_108"
+      }
+    ]
   },
   {
     "id": 34,
@@ -397,7 +429,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: il limite massimo di efficacia è di 60 giorni.",
       "B": "La misura non sopravvive indefinitamente fino alla decisione cautelare ordinaria: decade comunque dopo 60 giorni.",
       "C": "Non resta efficace a tempo indeterminato: ha un termine di efficacia fissato dalla legge."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_61"
+      }
+    ]
   },
   {
     "id": 35,
@@ -408,7 +445,15 @@ const SPIEGAZIONI = [
       "A": "Le «posizioni prevalenti» sono il criterio di decisione della conferenza simultanea (art. 14-ter), non il presupposto per saltare quella semplificata.",
       "B": "Falso: la legge prevede espressamente casi di conferenza simultanea immediata.",
       "C": "Corretta: riproduce i presupposti dell'art. 14-bis, comma 7."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_14_bis"
+      },
+      {
+        "normaId": "l241_1990_art_14_ter"
+      }
+    ]
   },
   {
     "id": 36,
@@ -419,7 +464,12 @@ const SPIEGAZIONI = [
       "A": "L'esame congiunto non è previsto dalla norma come condizione generale: è fatta salva la sola informazione (oltre alle forme previste dai contratti).",
       "B": "Riproduce il testo vigente dell'art. 5, comma 2.",
       "C": "Gli organi di governo hanno funzioni di indirizzo; la gestione spetta ai dirigenti (separazione politica-amministrazione)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_5"
+      }
+    ]
   },
   {
     "id": 37,
@@ -430,7 +480,18 @@ const SPIEGAZIONI = [
       "A": "Il rinvio è all'art. 21-nonies (annullamento d'ufficio), non alla revoca (art. 21-quinquies).",
       "B": "Riprende la formulazione anteriore alla legge n. 124/2015, superata già al tempo della prova.",
       "C": "Corretta: è il rinvio dell'art. 19, comma 4, all'art. 21-nonies."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_19"
+      },
+      {
+        "normaId": "l241_1990_art_21_nonies"
+      },
+      {
+        "normaId": "l241_1990_art_21_quinquies"
+      }
+    ]
   },
   {
     "id": 38,
@@ -612,7 +673,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: «indipendenti» è la denominazione dell'art. 14 d.lgs. 150/2009.",
       "B": "«Interni» non è la denominazione legale; gli OIV hanno sostituito i vecchi servizi di controllo interno.",
       "C": "Gli OIV possono essere monocratici o collegiali, ma «individuali» non è la loro denominazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs150_2009_art_14"
+      }
+    ]
   },
   {
     "id": 54,

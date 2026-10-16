@@ -631,6 +631,9 @@ const SPIEGAZIONI = [
       },
       {
         "normaId": "dl80_2021_art_6"
+      },
+      {
+        "normaId": "dlgs165_2001_art_1"
       }
     ]
   },

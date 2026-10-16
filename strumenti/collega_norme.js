@@ -31,6 +31,9 @@ const piano = s => String(s || "").replace(/\*\*/g, "").replace(/(^|[\s(])_([^_\
 
 const man = leggi("domande/manifest.js", "QUIZ_MANIFEST");
 const mancanti = {};
+// trattati internazionali senza testo ufficiale italiano su normattiva o EUR-Lex
+// (Carta ONU, Statuto della Corte internazionale di giustizia, Costituzione dell'ILO)
+const ESTERNE = /^(onu|cig|ilo)_/, esterne = {};
 let totRif = 0, domandeCollegate = 0;
 for (const p of man.val) {
   const sp = leggi(p.spiegazioni, "SPIEGAZIONI");
@@ -46,6 +49,8 @@ for (const p of man.val) {
     const ids = [];
     for (const r of ris) {
       if (r.id && esiste(r.id)) { if (!ids.includes(r.id)) ids.push(r.id); }
+      else if (r.inCitazione) continue; // rinvio interno a un testo di legge citato tra «»
+      else if (r.id && ESTERNE.test(r.id)) (esterne[r.id] = esterne[r.id] || []).push(p.id + " q" + s.id);
       else (mancanti[r.id || "?art. " + r.art] = mancanti[r.id || "?art. " + r.art] || []).push(p.id + " q" + s.id);
     }
     if (ids.length) {
@@ -62,3 +67,7 @@ if (scrivi) salva("domande/manifest.js", man.src, "QUIZ_MANIFEST", man.val);
 console.log(`\nDomande collegate: ${domandeCollegate}, riferimenti: ${totRif}, norme disponibili: ${Object.keys(indice).length}`);
 console.log("Citazioni senza testo disponibile:");
 for (const [k, v] of Object.entries(mancanti)) console.log("  " + k + "  ←  " + v.join(", "));
+if (Object.keys(esterne).length) {
+  console.log("Fonti internazionali senza testo ufficiale italiano su normattiva/EUR-Lex (non scaricate):");
+  for (const [k, v] of Object.entries(esterne)) console.log("  " + k + "  ·  " + v.join(", "));
+}
