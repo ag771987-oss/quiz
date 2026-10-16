@@ -292,5 +292,139 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_288.js",
       "norme/tue/tue_art_9.js"
     ]
+  },
+  {
+    "id": "sna-cc07-test03-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 3 (versione A)",
+    "breve": "7° CC · Test 3",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test03-A/sna-cc07-test03-A_d.js",
+    "risposte": "domande/sna-cc07-test03-A/sna-cc07-test03-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test03-A/sna-cc07-test03-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_3_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_71.js",
+      "norme/costituzione/cost_art_72.js",
+      "norme/costituzione/cost_art_104.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/l241_1990/l241_1990_art_3.js",
+      "norme/tue/tue_art_17.js"
+    ]
+  },
+  {
+    "id": "sna-cc07-test04-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 4 (versione A)",
+    "breve": "7° CC · Test 4",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test04-A/sna-cc07-test04-A_d.js",
+    "risposte": "domande/sna-cc07-test04-A/sna-cc07-test04-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test04-A/sna-cc07-test04-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_4_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_64.js",
+      "norme/costituzione/cost_art_72.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/cpa/cpa_art_60.js",
+      "norme/l241_1990/l241_1990_art_6.js",
+      "norme/l241_1990/l241_1990_art_7.js",
+      "norme/l241_1990/l241_1990_art_9.js",
+      "norme/l241_1990/l241_1990_art_11.js",
+      "norme/l241_1990/l241_1990_art_20.js",
+      "norme/l241_1990/l241_1990_art_21_septies.js",
+      "norme/l241_1990/l241_1990_art_22.js",
+      "norme/tfue/tfue_art_288.js"
+    ]
+  },
+  {
+    "id": "sna-cc07-test05-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 5 (versione A)",
+    "breve": "7° CC · Test 5",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test05-A/sna-cc07-test05-A_d.js",
+    "risposte": "domande/sna-cc07-test05-A/sna-cc07-test05-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test05-A/sna-cc07-test05-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_5_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_81.js",
+      "norme/l241_1990/l241_1990_art_21_septies.js",
+      "norme/l241_1990/l241_1990_art_21_ter.js",
+      "norme/tfue/tfue_art_263.js",
+      "norme/tue/tue_art_16.js"
+    ]
+  },
+  {
+    "id": "sna-cc07-test06-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 6 (versione A)",
+    "breve": "7° CC · Test 6",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test06-A/sna-cc07-test06-A_d.js",
+    "risposte": "domande/sna-cc07-test06-A/sna-cc07-test06-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test06-A/sna-cc07-test06-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_6_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_11.js",
+      "norme/costituzione/cost_art_81.js",
+      "norme/costituzione/cost_art_97.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_52.js",
+      "norme/l20_1994/l20_1994_art_3.js",
+      "norme/l241_1990/l241_1990_art_10_bis.js",
+      "norme/l241_1990/l241_1990_art_21_bis.js",
+      "norme/l241_1990/l241_1990_art_21_quinquies.js",
+      "norme/tue/tue_art_16.js"
+    ]
+  },
+  {
+    "id": "sna-cc07-test07-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 7 (versione A)",
+    "breve": "7° CC · Test 7",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test07-A/sna-cc07-test07-A_d.js",
+    "risposte": "domande/sna-cc07-test07-A/sna-cc07-test07-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test07-A/sna-cc07-test07-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_7_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_21.js",
+      "norme/costituzione/cost_art_60.js",
+      "norme/costituzione/cost_art_113.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/costituzione/cost_art_138.js",
+      "norme/cpa/cpa_art_30.js",
+      "norme/l20_1994/l20_1994_art_3.js",
+      "norme/l241_1990/l241_1990_art_2.js",
+      "norme/l241_1990/l241_1990_art_20.js",
+      "norme/l241_1990/l241_1990_art_21_nonies.js",
+      "norme/l241_1990/l241_1990_art_21_quater.js",
+      "norme/l241_1990/l241_1990_art_21_quinquies.js",
+      "norme/tue/tue_art_15.js",
+      "norme/tue/tue_art_16.js",
+      "norme/tue/tue_art_17.js"
+    ]
+  },
+  {
+    "id": "sna-cc07-test12-A",
+    "gruppo": "7° corso-concorso — prove del 2019",
+    "label": "Test 12 (versione A)",
+    "breve": "7° CC · Test 12",
+    "ufficiale": false,
+    "domande": "domande/sna-cc07-test12-A/sna-cc07-test12-A_d.js",
+    "risposte": "domande/sna-cc07-test12-A/sna-cc07-test12-A_r.js",
+    "spiegazioni": "domande/sna-cc07-test12-A/sna-cc07-test12-A_s.js",
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_12_Versione_A.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_11.js",
+      "norme/costituzione/cost_art_104.js",
+      "norme/costituzione/cost_art_113.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/l20_1994/l20_1994_art_1.js",
+      "norme/l241_1990/l241_1990_art_3.js",
+      "norme/l241_1990/l241_1990_art_21_quinquies.js",
+      "norme/tfue/tfue_art_20.js",
+      "norme/tue/tue_art_9.js"
+    ]
   }
 ];
