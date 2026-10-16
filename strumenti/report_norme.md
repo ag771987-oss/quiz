@@ -4,8 +4,8 @@ Branch `norme-originali`, consultazione delle fonti del **16/10/2026**.
 
 ## In sintesi
 
-- **120 articoli** scaricati con il testo integrale e letterale: 94 da **normattiva.it** (testo vigente) e 26 da **EUR-Lex** (TUE, TFUE e Protocollo 19 nella versione consolidata della GU C 202 del 7.6.2016; Carta dei diritti fondamentali).
-- **111 domande** delle 10 prove collegate a **164 riferimenti** (`riferimenti: [{normaId}]`); ogni prova ha nel manifest la lista `norme` dei file da caricare.
+- **122 articoli** scaricati con il testo integrale e letterale: 95 da **normattiva.it** (testo vigente) e 27 da **EUR-Lex** (TUE, TFUE e Protocollo 19 nella versione consolidata della GU C 202 del 7.6.2016; Carta dei diritti fondamentali).
+- **111 domande** delle 10 prove collegate a **166 riferimenti** (`riferimenti: [{normaId}]`); ogni prova ha nel manifest la lista `norme` dei file da caricare.
 - **20 correzioni** in 17 domande (vedi tabella). **Nessuna chiave (`corretta`) modificata**; nessun caso «da decidere».
 - 1 articolo citato non scaricato: art. 83 d.lgs. 50/2016 (abrogato).
 
@@ -17,11 +17,11 @@ Branch `norme-originali`, consultazione delle fonti del **16/10/2026**.
 | `norme/citazioni.js` | Riconosce le citazioni nel testo («art. 94 Cost.», «art. 2, co. 8-bis, l. 241/1990», «artt. 104-105 Cost.», «art. 263 TFUE»). Per le citazioni senza atto («art. 9») usa l'atto citato più vicino nel testo della domanda. Lo usano sia l'app sia lo script di collegamento. |
 | `strumenti/norme_catalogo.json` | Elenco delle fonti (URN normattiva / CELEX) e degli articoli. |
 | `strumenti/scarica_norme.py` + `strumenti/scarica_eurlex.js` | Riscaricano i testi. EUR-Lex richiede un browser: si usa Playwright. Uso: `node strumenti/scarica_eurlex.js <cache>` e poi `python3 strumenti/scarica_norme.py <cache>`. |
-| `strumenti/collega_norme.js` | Ricalcola i `riferimenti` dalle citazioni e le liste `norme` del manifest (`--scrivi` per salvare). |
+| `strumenti/collega_norme.js` | Ricalcola i `riferimenti` dalle citazioni e le liste `norme` del manifest (`--scrivi` per salvare). Legge spiegazioni, opzioni spiegate e note e, dal testo della domanda e delle opzioni, le citazioni con l'atto indicato (es. «art. 76 Cost.» nella domanda). |
 | `index.html` | I pulsanti 📜 mostrano la sigla dell'atto. Le citazioni nel concetto chiave e nelle spiegazioni delle opzioni sono cliccabili. Il popup mostra il link alla fonte ufficiale e la data di consultazione. Le opzioni già risposte non sono più `disabled`, così i link al loro interno funzionano: una seconda risposta resta bloccata da `rispondi()`. |
 
 Note sul testo:
-- Da normattiva sono stati tolti solo gli apparati redazionali: i rinvii alle note «(14)», i segni «(( ))» delle parti modificate, le note «AGGIORNAMENTO» e il preambolo dell'atto. I refusi della fonte sono stati lasciati come sono (es. «sUperiori» all'art. 52 d.lgs. 165/2001; «si è verificato fatto dannoso» all'art. 1, co. 2, l. 20/1994).
+- Da normattiva sono stati tolti solo gli apparati redazionali: i rinvii alle note «(14)», i segni «(( ))» delle parti modificate, le note «AGGIORNAMENTO» e il preambolo dell'atto. I refusi della fonte sono stati lasciati come sono (es. «sUperiori» all'art. 52 d.lgs. 165/2001; «si è verificato fatto dannoso» all'art. 1, co. 2, l. 20/1994; «non puo essere delegato», senza accento, all'art. 76 Cost.).
 - La Costituzione e i Trattati non hanno rubriche. Il titolo riporta quindi la partizione in cui si trova l'articolo (es. «Art. 94 — Il Governo: il Consiglio dei ministri»; «Art. 263 — La Corte di giustizia dell'Unione europea»).
 - Gli articoli del c.p.a. (allegato 1 al d.lgs. 104/2010) non hanno un URN per articolo. Il link è quello della pagina normattiva dell'articolo nella versione vigente, presa dall'albero dell'atto.
 - I quattro file della Costituzione che c'erano già (artt. 77, 94, 113, 117) sono stati riscaricati con lo stesso formato. Il testo dell'art. 117 ora non contiene più le note.
@@ -32,7 +32,7 @@ Note sul testo:
 |---|---|---|
 | art. 83, co. 9, d.lgs. 50/2016 | 8° CC Busta 3, q24 | Codice dei contratti abrogato. Normattiva non ha un testo vigente, quindi non è stato inserito. La spiegazione cita già l'articolo che lo sostituisce, l'art. 101 d.lgs. 36/2023, che è stato scaricato e collegato. |
 
-Gli atti citati solo come fonte di modifiche o come contesto, senza indicare un articolo, non sono stati scaricati: d.l. 76/2020, d.l. 34/2020, d.l. 56/2021, l. 36/1994, l. cost. 1/2012 e 3/2001, d.lgs. 118/2011, l. 160/2019, d.P.R. 1199/1971, d.P.R. 445/2000, d.lgs. 39/2013, d.lgs. 195/2005, Cass. SU 500/1999, Corte cost. 7/1996. Lo stesso vale per gli articoli che le spiegazioni non citano ma che le opzioni o le domande richiamano: art. 76 Cost. (11° CC Busta 2, q25), art. 11 TUE (11° CC Busta 1, q35), artt. 50-ter e 62 CAD (10° CC Busta 1, q48), artt. 20-22 d.l. 83/2012 e art. 6 del Protocollo 19. Si possono aggiungere al catalogo se servono.
+Gli atti citati solo come fonte di modifiche o come contesto, senza indicare un articolo, non sono stati scaricati: d.l. 76/2020, d.l. 34/2020, d.l. 56/2021, l. 36/1994, l. cost. 1/2012 e 3/2001, d.lgs. 118/2011, l. 160/2019, d.P.R. 1199/1971, d.P.R. 445/2000, d.lgs. 39/2013, d.lgs. 195/2005, Cass. SU 500/1999, Corte cost. 7/1996. Non sono stati scaricati nemmeno alcuni articoli richiamati solo per contesto: artt. 50-ter e 62 CAD (10° CC Busta 1, q48), artt. 20-22 d.l. 83/2012 e art. 6 del Protocollo 19. Si possono aggiungere al catalogo se servono.
 
 ## Correzioni alle spiegazioni
 
@@ -92,6 +92,7 @@ Due osservazioni, senza conseguenze sulla chiave:
 | `cost_art_72` | Art. 72 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art72) |
 | `cost_art_73` | Art. 73 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art73) |
 | `cost_art_75` | Art. 75 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art75) |
+| `cost_art_76` | Art. 76 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art76) |
 | `cost_art_77` | Art. 77 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art77) |
 | `cost_art_78` | Art. 78 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art78) |
 | `cost_art_81` | Art. 81 — Il Parlamento: la formazione delle leggi (in vigore dal 8-5-2012) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art81) |
@@ -270,6 +271,7 @@ Due osservazioni, senza conseguenze sulla chiave:
 | `tue_art_5` | Art. 5 — Disposizioni comuni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_6` | Art. 6 — Disposizioni comuni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_9` | Art. 9 — Disposizioni relative ai principi democratici | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
+| `tue_art_11` | Art. 11 — Disposizioni relative ai principi democratici | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_13` | Art. 13 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_15` | Art. 15 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_16` | Art. 16 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |

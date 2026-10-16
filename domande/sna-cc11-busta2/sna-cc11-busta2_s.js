@@ -300,6 +300,9 @@ const SPIEGAZIONI = [
       },
       {
         "normaId": "cost_art_77"
+      },
+      {
+        "normaId": "cost_art_76"
       }
     ]
   },

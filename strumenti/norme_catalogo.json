@@ -2,7 +2,7 @@
   "consultato": "2026-10-16",
   "fonti": {
     "cost":        {"dir": "costituzione", "fonte": "Costituzione della Repubblica italiana", "sigla": "Cost.", "urn": "urn:nir:stato:costituzione:1947-12-27",
-                    "articoli": ["10","11","13","21","24","26","41","48","60","61","64","71","72","73","75","77","78","81","87","90","92","94","95","97","100","103","104","105","110","113","117","118","119","120","134","135","136","138"]},
+                    "articoli": ["10","11","13","21","24","26","41","48","60","61","64","71","72","73","75","76","77","78","81","87","90","92","94","95","97","100","103","104","105","110","113","117","118","119","120","134","135","136","138"]},
     "l241_1990":   {"dir": "l241_1990", "fonte": "Legge 7 agosto 1990, n. 241", "sigla": "l. 241/1990", "urn": "urn:nir:stato:legge:1990-08-07;241",
                     "articoli": ["1","2","3","6","7","9","10","10-bis","11","19","20","21-bis","21-ter","21-quater","21-quinquies","21-septies","21-nonies","22","24"]},
     "l400_1988":   {"dir": "l400_1988", "fonte": "Legge 23 agosto 1988, n. 400", "sigla": "l. 400/1988", "urn": "urn:nir:stato:legge:1988-08-23;400", "articoli": ["9","14","17"]},
@@ -24,7 +24,7 @@
     "l196_2009":   {"dir": "l196_2009", "fonte": "Legge 31 dicembre 2009, n. 196", "sigla": "l. 196/2009", "urn": "urn:nir:stato:legge:2009-12-31;196", "articoli": ["10","21","25-bis"]},
     "l87_1953":    {"dir": "l87_1953", "fonte": "Legge 11 marzo 1953, n. 87", "sigla": "l. 87/1953", "urn": "urn:nir:stato:legge:1953-03-11;87", "articoli": ["23"]},
     "dlgs36_2023": {"dir": "dlgs36_2023", "fonte": "Decreto legislativo 31 marzo 2023, n. 36", "sigla": "d.lgs. 36/2023", "urn": "urn:nir:stato:decreto.legislativo:2023-03-31;36", "articoli": ["101"]},
-    "tue":         {"dir": "tue", "fonte": "Trattato sull'Unione europea (versione consolidata, GU C 202 del 7.6.2016)", "sigla": "TUE", "celex": "12016M/TXT", "articoli": ["2","5","6","9","13","15","16","17","42"]},
+    "tue":         {"dir": "tue", "fonte": "Trattato sull'Unione europea (versione consolidata, GU C 202 del 7.6.2016)", "sigla": "TUE", "celex": "12016M/TXT", "articoli": ["2","5","6","9","11","13","15","16","17","42"]},
     "tfue":        {"dir": "tfue", "fonte": "Trattato sul funzionamento dell'Unione europea (versione consolidata, GU C 202 del 7.6.2016)", "sigla": "TFUE", "celex": "12016E/TXT", "articoli": ["2","3","4","6","20","79","108","218","238","256","263","265","267","288","352"]},
     "cdfue":       {"dir": "carta_ue", "fonte": "Carta dei diritti fondamentali dell'Unione europea (GU C 202 del 7.6.2016)", "sigla": "Carta UE", "celex": "12016P/TXT", "articoli": ["51"]},
     "prot19":      {"dir": "tfue", "fonte": "Protocollo (n. 19) sull'acquis di Schengen integrato nell'ambito dell'Unione europea (GU C 202 del 7.6.2016)", "sigla": "Prot. 19", "intestazione": "Protocollo n. 19 sull'acquis di Schengen", "celex": "12016E/PRO/19", "articoli": ["1"]}

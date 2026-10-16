@@ -24,7 +24,8 @@ const QUIZ_MANIFEST = [
       "norme/l241_1990/l241_1990_art_21_quater.js",
       "norme/tfue/tfue_art_263.js",
       "norme/tfue/tfue_art_352.js",
-      "norme/tue/tue_art_5.js"
+      "norme/tue/tue_art_5.js",
+      "norme/tue/tue_art_11.js"
     ]
   },
   {
@@ -39,6 +40,7 @@ const QUIZ_MANIFEST = [
     "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_2_domande.pdf",
     "norme": [
       "norme/costituzione/cost_art_71.js",
+      "norme/costituzione/cost_art_76.js",
       "norme/costituzione/cost_art_77.js",
       "norme/costituzione/cost_art_97.js",
       "norme/costituzione/cost_art_117.js",
