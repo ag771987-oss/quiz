@@ -305,7 +305,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Leggi con attenzione i dettagli sull'intervallo tra le deliberazioni: è «minore» o «non minore» di tre mesi?",
     "spiegazione": "L'**art. 138 Cost.** prevede un **procedimento aggravato** svolto dalle **due Camere**: doppia deliberazione con intervallo **non minore di tre mesi**, maggioranza assoluta nella seconda votazione ed eventuale referendum (escluso se nella seconda votazione si raggiungono i due terzi). La nostra Costituzione è perciò **rigida**.",
     "perOpzione": {
-      "A": "Contiene un errore decisivo: l'intervallo tra le due deliberazioni deve essere **non minore** di tre mesi, non minore.",
+      "A": "Contiene un errore decisivo: l'intervallo tra le due deliberazioni deve essere **non minore** di tre mesi, non «minore» come dice l’opzione.",
       "B": "Corretta: la revisione è affidata alle stesse Camere ma con un procedimento più gravoso di quello ordinario.",
       "C": "L'ordinamento italiano non prevede un'assemblea costituente o un organo ad hoc per la revisione: provvedono le Camere."
     },

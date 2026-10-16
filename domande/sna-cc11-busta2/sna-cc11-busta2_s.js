@@ -342,7 +342,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "Il buon andamento (art. 97 Cost.) riguarda il modo in cui l’amministrazione si organizza e lavora: quale opzione parla di questo?",
-    "spiegazione": "Il **buon andamento** (art. 97 Cost.) impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; questi criteri sono richiamati anche dall’art. 1 della l. 241/1990.",
+    "spiegazione": "Il **buon andamento** (art. 97 Cost.) impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; economicità ed efficacia sono richiamate anche dall’art. 1 della l. 241/1990 («criteri di economicità, di efficacia, di imparzialità, di pubblicità e di trasparenza»), che invece non nomina l’efficienza.",
     "perOpzione": {
       "A": "Economicità, efficienza ed efficacia sono la declinazione del buon andamento.",
       "B": "Descrive l’azione collettiva degli utenti (es. class action pubblica), uno strumento di tutela, non il contenuto del principio.",

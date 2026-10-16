@@ -320,7 +320,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Distingui tra chi deve ricevere la comunicazione di avvio e chi può soltanto intervenire nel procedimento.",
     "spiegazione": "L'**art. 7 della l. 241/1990** impone di comunicare l'avvio ai destinatari diretti, a chi per legge deve intervenire e ai **soggetti, individuati o facilmente individuabili, che possono subire un pregiudizio** dal provvedimento. I portatori di interessi diffusi costituiti in associazioni o comitati possono **intervenire** (art. 9), ma non sono destinatari della comunicazione.",
     "perOpzione": {
-      "A": "Corretta: riprende testualmente l'art. 7, comma 1, l. 241/1990.",
+      "A": "Corretta: riprende nella sostanza l'art. 7, comma 1, l. 241/1990.",
       "B": "I portatori di interessi diffusi non hanno diritto alla comunicazione; possono intervenire se costituiti in associazioni o comitati (art. 9).",
       "C": "Ancora meno: gli interessi diffusi non organizzati in comitati o associazioni non legittimano nemmeno all'intervento."
     },

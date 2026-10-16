@@ -441,7 +441,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "L’art. 15 TUE esclude espressamente la funzione legislativa, che spetta a Parlamento europeo e Consiglio.",
       "B": "È il testo dell’art. 15, par. 1, TUE.",
-      "C": "Gli accordi internazionali seguono la procedura dell’art. 218 TFUE (Commissione/Alto rappresentante negoziano, il Consiglio conclude)."
+      "C": "Gli accordi internazionali seguono la procedura dell’art. 218 TFUE (Commissione o Alto rappresentante presentano raccomandazioni; il Consiglio autorizza i negoziati, designa il negoziatore e conclude l’accordo)."
     },
     "riferimenti": [
       {
@@ -604,7 +604,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "La legge fissa una percentuale minima di dipendenti: è un diritto per tutti o una soglia organizzativa?",
-    "spiegazione": "Art. 14, co. 1, l. 124/2015 (come modificato dal d.l. 34/2020 e dal d.l. 56/2021): il lavoro agile va garantito ad **almeno il 15 per cento dei dipendenti** che svolgono attività compatibili, nell’ambito della programmazione dell’ente (oggi nel PIAO).",
+    "spiegazione": "Art. 14, co. 1, l. 124/2015 (come modificato dal d.l. 34/2020 e dal d.l. 56/2021): il POLA prevede, per le attività che possono essere svolte in modalità agile, che **almeno il 15 per cento dei dipendenti** possa avvalersene; se il POLA non è adottato, il lavoro agile si applica almeno al 15 per cento dei dipendenti, ove lo richiedano (oggi la programmazione confluisce nel PIAO, art. 6 d.l. 80/2021).",
     "perOpzione": {
       "A": "Riprende la soglia minima del 15 per cento dell’art. 14 l. 124/2015.",
       "B": "Non è un diritto generalizzato: dipende dalla compatibilità delle attività e dall’organizzazione.",
@@ -614,6 +614,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l124_2015_art_14"
+      },
+      {
+        "normaId": "dl80_2021_art_6"
       }
     ]
   },

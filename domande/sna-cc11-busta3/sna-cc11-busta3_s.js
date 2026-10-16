@@ -358,10 +358,10 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "Sono gli incarichi apicali, i più vicini all’indirizzo politico: che cosa succede quando cambia il Governo?",
-    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede che gli incarichi apicali del co. 3 **cessano decorsi novanta giorni dal voto sulla fiducia al Governo** (il cosiddetto spoils system), salvo conferma.",
+    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede che gli incarichi apicali del co. 3 **cessano decorsi novanta giorni dal voto sulla fiducia al Governo** (il cosiddetto spoils system).",
     "perOpzione": {
       "A": "Non c’è un’esclusiva: possono essere conferiti anche a dirigenti di altre amministrazioni o a esterni nei limiti dell’art. 19, co. 6.",
-      "B": "La norma non prevede un limite di due rinnovi consecutivi per questi incarichi.",
+      "B": "La norma non prevede un limite di due rinnovi consecutivi per questi incarichi: l’art. 19, co. 2, dice solo che «gli incarichi sono rinnovabili».",
       "C": "È la regola dell’art. 19, co. 8: cessazione automatica dopo novanta giorni dalla fiducia al nuovo Governo."
     },
     "riferimenti": [
@@ -374,7 +374,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "A",
     "suggerimento": "Ricorda la differenza tra demanio e patrimonio indisponibile: dove stanno gli edifici sedi di uffici pubblici?",
-    "spiegazione": "Fanno parte del demanio idrico **tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo** (art. 144 d.lgs. 152/2006, già l. 36/1994). I beni demaniali sono **inalienabili e non espropriabili** (art. 823 c.c.); gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
+    "spiegazione": "Fanno parte del demanio idrico **tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo** (art. 144 d.lgs. 152/2006, già l. 36/1994). I beni demaniali sono **inalienabili** e **non possono formare oggetto di diritti a favore di terzi** (art. 823 c.c.), quindi i creditori non possono aggredirli; gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
     "perOpzione": {
       "A": "È la formula della legge: tutte le acque superficiali e sotterranee appartengono al demanio dello Stato.",
       "B": "I beni demaniali sono inalienabili e non possono formare oggetto di diritti a favore di terzi: i creditori non possono aggredirli.",
@@ -396,11 +396,11 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "C",
     "suggerimento": "La responsabilità amministrativo-contabile ha un termine di prescrizione speciale, più breve di quello ordinario: quanto dura?",
-    "spiegazione": "Per l’**art. 1, co. 2, l. 20/1994** il diritto al risarcimento del danno erariale si prescrive in **cinque anni** dal fatto dannoso o, in caso di **occultamento doloso**, dalla data della sua **scoperta**.",
+    "spiegazione": "Per l’**art. 1, co. 2, l. 20/1994** il diritto al risarcimento del danno erariale si prescrive «in ogni caso» in **cinque anni** dal fatto dannoso, indipendentemente da quando l’amministrazione o la Corte dei conti ne sono venute a conoscenza, o, in caso di **occultamento doloso** (con una condotta attiva o in violazione di obblighi di comunicazione), dalla data della sua **scoperta**.",
     "perOpzione": {
       "A": "Il termine decennale è quello ordinario del codice civile; per il danno erariale la legge ne fissa uno speciale di cinque anni.",
-      "B": "Il dolo e l’illecito arricchimento rilevano per la trasmissibilità agli eredi, non rendono il diritto imprescrittibile.",
-      "C": "È il testo dell’art. 1, co. 2, l. 20/1994: cinque anni dal fatto, o dalla scoperta in caso di occultamento doloso."
+      "B": "L’illecito arricchimento rileva per la trasmissibilità del debito agli eredi (art. 1, co. 1, l. 20/1994) e, insieme al dolo, per la responsabilità solidale dei concorrenti (co. 1-quinquies); nessuno dei due rende il diritto imprescrittibile: il co. 2 fissa la prescrizione «in ogni caso» in cinque anni.",
+      "C": "È quanto prevede l’art. 1, co. 2, l. 20/1994: cinque anni dal fatto, o dalla scoperta in caso di occultamento doloso."
     },
     "riferimenti": [
       {

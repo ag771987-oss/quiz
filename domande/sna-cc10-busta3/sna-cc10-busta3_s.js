@@ -606,7 +606,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Il **PIAO** (art. 6 d.l. 80/2021) ha **durata triennale** ed è **aggiornato annualmente** entro il 31 gennaio; è obbligatorio per le PA con **più di 50 dipendenti** (con modalità semplificate per le altre), escluse le scuole.",
     "perOpzione": {
       "A": "Corretta: durata triennale con aggiornamento annuale.",
-      "B": "Non riguarda tutte le PA: sono escluse le istituzioni scolastiche e per le PA fino a 50 dipendenti è previsto un piano semplificato.",
+      "B": "Non riguarda tutte le PA: sono escluse le istituzioni scolastiche e per le PA con meno di cinquanta dipendenti sono previste modalità semplificate.",
       "C": "È uno strumento stabile di programmazione integrata, non una misura transitoria legata al Covid."
     },
     "riferimenti": [

@@ -320,13 +320,16 @@ const SPIEGAZIONI = [
     "suggerimento": "Pensa al riparto dell’art. 117 Cost.: la potestà regolamentare segue quella legislativa?",
     "spiegazione": "Art. 117, **co. 6**, Cost.: regolamenti dello **Stato** nelle materie di legislazione esclusiva (salvo delega), delle **Regioni** in ogni altra materia, degli **enti locali** per organizzazione e funzioni proprie.",
     "perOpzione": {
-      "A": "Esclude Stato e Regioni: la potestà regolamentare non spetta «solo» agli enti locali.",
+      "A": "Esclude Stato e Regioni: la potestà regolamentare non spetta «solo» agli enti locali. L’art. 118 Cost. applica la sussidiarietà alle funzioni amministrative, non alla potestà regolamentare.",
       "B": "Riproduce fedelmente l’art. 117, co. 6, Cost.",
       "C": "Le Regioni non hanno potestà regolamentare nelle materie di competenza esclusiva statale (salvo delega)."
     },
     "riferimenti": [
       {
         "normaId": "cost_art_117"
+      },
+      {
+        "normaId": "cost_art_118"
       }
     ]
   },
@@ -453,7 +456,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Atti vincolanti e produttivi di effetti: sono quelli impugnabili.",
       "B": "Un’iniziativa dei cittadini non è un atto delle istituzioni e non produce effetti vincolanti.",
-      "C": "Le dichiarazioni politiche non producono effetti giuridici vincolanti."
+      "C": "L’art. 263 TFUE ammette il ricorso contro gli atti del Consiglio europeo solo se «destinati a produrre effetti giuridici nei confronti di terzi»: le dichiarazioni politiche non producono effetti giuridici vincolanti."
     },
     "riferimenti": [
       {

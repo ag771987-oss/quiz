@@ -345,7 +345,7 @@ const SPIEGAZIONI = [
     "spiegazione": "L'**art. 21-nonies L. 241/1990** consente l'annullamento d'ufficio dell'atto illegittimo solo se sussistono **ragioni di interesse pubblico**, entro un termine ragionevole e tenendo conto degli interessi dei destinatari e dei controinteressati. Secondo la giurisprudenza consolidata questo interesse deve essere **concreto e attuale** e **ulteriore** rispetto al mero ripristino della legalità violata.",
     "perOpzione": {
       "A": "Il solo ripristino della legalità non basta: altrimenti ogni atto illegittimo andrebbe annullato, senza bilanciamento con l'affidamento dei privati.",
-      "B": "Non esiste un tale onere: l'annullamento d'ufficio deve intervenire entro un termine ragionevole (comunque non superiore a dodici mesi per i provvedimenti autorizzatori o di attribuzione di vantaggi economici), non entro 30 giorni.",
+      "B": "Non esiste un tale onere: l'annullamento d'ufficio deve intervenire entro un termine ragionevole (per i provvedimenti autorizzatori o di attribuzione di vantaggi economici: non oltre dodici mesi all’epoca della prova; il testo oggi vigente dice «comunque non superiore a sei mesi dal momento dell'adozione»), non entro 30 giorni.",
       "C": "Corretto: serve un interesse pubblico specifico, diverso e ulteriore rispetto al ripristino della legalità, da esplicitare in motivazione."
     },
     "riferimenti": [

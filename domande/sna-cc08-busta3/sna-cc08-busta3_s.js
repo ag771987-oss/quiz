@@ -202,7 +202,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Art. 48, **co. 4**, Cost.: «Il diritto di voto non può essere limitato se non per **incapacità civile** o per effetto di **sentenza penale irrevocabile** o nei casi di **indegnità morale** indicati dalla legge». Le cause sono **tassative**.",
     "perOpzione": {
       "A": "Formula non prevista dall’art. 48: le cause di limitazione sono solo quelle elencate dalla norma.",
-      "B": "L’ordine pubblico e il buon costume sono limiti di altre libertà (es. art. 21 Cost.), non del diritto di voto.",
+      "B": "Il buon costume è un limite di altre libertà (es. art. 21, ultimo comma, Cost.), non del diritto di voto, che può essere limitato solo nei casi tassativi dell’art. 48, co. 4.",
       "C": "Riproduce il testo dell’art. 48, co. 4, Cost."
     },
     "riferimenti": [
@@ -218,7 +218,7 @@ const SPIEGAZIONI = [
     "id": 18,
     "corretta": "A",
     "suggerimento": "Perché la Corte possa decidere, cosa deve sapere con precisione dal giudice: solo l’oggetto o anche il parametro?",
-    "spiegazione": "Art. 23, co. 1, l. 87/1953: l’atto di rimessione deve indicare le **disposizioni di legge ritenute illegittime** (oggetto) e le **disposizioni della Costituzione** o delle leggi costituzionali **che si assumono violate** (parametro).",
+    "spiegazione": "Art. 23, co. 1, l. 87/1953 (richiamato dal co. 3 per l’ordinanza del giudice): l’atto di rimessione deve indicare le **disposizioni di legge ritenute illegittime** (oggetto) e le **disposizioni della Costituzione** o delle leggi costituzionali **che si assumono violate** (parametro).",
     "perOpzione": {
       "A": "Oggetto e parametro: sono gli elementi richiesti dall’art. 23, co. 1.",
       "B": "Incompleta: senza le norme costituzionali violate la questione non è correttamente posta.",
@@ -279,7 +279,7 @@ const SPIEGAZIONI = [
     "suggerimento": "Il reclutamento deve essere programmato: su quale documento si basano le decisioni di avviare i concorsi?",
     "spiegazione": "Art. 35, co. 4, d.lgs. 165/2001: le determinazioni relative all’avvio delle procedure di reclutamento sono adottate **sulla base del piano triennale dei fabbisogni** (art. 6). Oggi il piano confluisce nel **PIAO**.",
     "perOpzione": {
-      "A": "Il vincolo di permanenza nella prima sede (art. 35, co. 5-bis) era di cinque anni, non sette.",
+      "A": "Il vincolo di permanenza nella prima sede (art. 35, co. 5-bis) è di cinque anni (tre per i direttori dei servizi generali e amministrativi delle scuole), non sette.",
       "B": "Corrisponde all’art. 35, co. 4: il reclutamento si basa sulla programmazione dei fabbisogni.",
       "C": "La validità delle graduatorie è molto più breve (biennale, dopo la l. 160/2019), non settennale."
     },

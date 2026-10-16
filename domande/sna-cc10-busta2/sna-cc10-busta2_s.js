@@ -443,16 +443,13 @@ const SPIEGAZIONI = [
       "B": "Corretta: è la formula dell'art. 6, par. 2, TUE.",
       "C": "L'adesione è già prevista dal trattato e l'accordo segue la procedura dell'art. 218 TFUE (Consiglio all'unanimità), non una decisione del Consiglio europeo a maggioranza qualificata."
     },
-    "nota": "L'adesione prevista dall'art. 6, par. 2, non è ancora perfezionata; la risposta riprende la formula del trattato.",
+    "nota": "L'adesione prevista dall'art. 6, par. 2, TUE non è ancora perfezionata; la risposta riprende la formula del trattato.",
     "riferimenti": [
       {
         "normaId": "tue_art_6"
       },
       {
         "normaId": "tfue_art_218"
-      },
-      {
-        "normaId": "tfue_art_6"
       }
     ]
   },
@@ -619,7 +616,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "Il Codice dell'amministrazione digitale chiede a ogni amministrazione di dotarsi di una propria figura interna: a quale livello?",
-    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**.",
+    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**; le amministrazioni diverse da quelle statali possono individuare l’ufficio tra quelli di livello dirigenziale o, se ne sono prive, un responsabile tra le posizioni apicali (co. 1-sexies).",
     "perOpzione": {
       "A": "Corretta: è un ufficio dirigenziale generale interno a ciascuna amministrazione.",
       "B": "AgID coordina e fornisce indirizzi, ma non svolge i compiti del RTD delle singole amministrazioni.",
