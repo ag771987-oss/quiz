@@ -52,7 +52,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "È l'informazione errata: il brano dice che il '900 «si schianta» con l'oggi e che le norme non intercettano l'evoluzione, non che le vecchie tutele restino sostenibili.",
       "B": "Coerente con il brano: la «bicromia» subordinato/autonomo deve fare i conti con «una nuova scala di colori» e con le «sfumature».",
-      "C": "Coerente con il brano: il lavoro è «difforme e vario» e difficile da tradurre in categorie giuridiche semplici, che faticano ad applicarsi."
+      "C": "Coerente con il brano: il lavoro resta «una realtà difforme e varia» e difficile da tradurre in categorie giuridiche semplici, che faticano ad applicarsi."
     }
   },
   {
@@ -81,7 +81,7 @@ const SPIEGAZIONI = [
     "id": 8,
     "corretta": "C",
     "suggerimento": "Il proscenio è la parte del palco più vicina al pubblico. Nella stessa frase l'espressione è contrapposta a «lascia in ombra».",
-    "spiegazione": "«Porre nel proscenio» significa **mettere in primo piano**, dare risalto. Nel brano il cittadino-consumatore viene messo in primo piano (preso in considerazione), mentre il cittadino-lavoratore viene «lasciato in ombra».",
+    "spiegazione": "«Porre nel proscenio» significa **mettere in primo piano**, dare risalto. Nel brano il cittadino-consumatore viene messo in primo piano (preso in considerazione), mentre la digitalizzazione «lascia in ombra la dimensione del cittadino come lavoratore».",
     "perOpzione": {
       "A": "È il contrario: nel brano «lascia in ombra» si riferisce al cittadino come lavoratore, contrapposto a chi viene posto nel proscenio.",
       "B": "«Tenere in disparte» è l'opposto di mettere sulla ribalta.",
@@ -152,7 +152,7 @@ const SPIEGAZIONI = [
     "spiegazione": "RAPA e ARPA hanno esattamente le stesse lettere in ordine diverso: è un **anagramma** (regola b). Tra le alternative, l'unico anagramma di COLLA è CALLO (C, O, L, L, A).",
     "perOpzione": {
       "A": "COLLANA ha 7 lettere contro le 5 di COLLA: non è un anagramma e non è il doppio né la metà.",
-      "B": "GRADO non ha nessuna consonante in comune con COLLA: non è un anagramma.",
+      "B": "GRADO non ha nessuna consonante in comune con COLLA: non è un anagramma. Ha però le stesse vocali (A, O): soddisferebbe la regola c, ma la prima coppia RAPA-ARPA è un anagramma completo, quindi la regola da applicare è la b, più specifica.",
       "C": "Corretta: CALLO usa esattamente le lettere di COLLA (C, O, L, L, A)."
     }
   },
@@ -164,7 +164,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "VALIDO ha consonanti V, L, D: la D sostituisce la G, quindi le consonanti non coincidono.",
       "B": "Corretta: VIGILIA ha come consonanti V, G, L, le stesse di VALIGE in ordine diverso.",
-      "C": "VIALE ha solo V e L come consonanti: manca la G."
+      "C": "VIALE ha solo V e L come consonanti: manca la G. Ha le stesse vocali di VALIGE (A, I, E), ma la relazione GUANTI-TANGO riguarda le consonanti (le vocali sono diverse), quindi va applicata la regola delle consonanti."
     }
   },
   {
@@ -303,7 +303,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "C",
     "suggerimento": "Il referendum costituzionale si può chiedere quando la seconda deliberazione ha ottenuto la sola maggioranza assoluta: quale soglia più alta lo esclude?",
-    "spiegazione": "**Art. 138 Cost.**: le leggi costituzionali sono adottate con due deliberazioni a intervallo non minore di tre mesi; nella seconda serve almeno la maggioranza assoluta. Il referendum (su richiesta di un quinto dei membri di una Camera, 500.000 elettori o cinque Consigli regionali) **non si fa se nella seconda votazione la legge è approvata da ciascuna Camera a maggioranza dei due terzi** dei componenti (comma 3).",
+    "spiegazione": "**Art. 138 Cost.**: le leggi costituzionali sono adottate con due deliberazioni a intervallo non minore di tre mesi; nella seconda serve almeno la maggioranza assoluta. Il referendum (su richiesta di un quinto dei membri di una Camera, 500.000 elettori o cinque Consigli regionali) è escluso dall'**art. 138, terzo comma, Cost.**: «Non si fa luogo a referendum se la legge è stata approvata nella seconda votazione da ciascuna delle Camere a maggioranza di due terzi dei suoi componenti».",
     "perOpzione": {
       "A": "La maggioranza assoluta è il minimo per approvare la legge nella seconda votazione: con essa il referendum resta possibile.",
       "B": "I tre quinti non sono la soglia prevista dall'art. 138 Cost.",
@@ -319,11 +319,11 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "C",
     "suggerimento": "Distingui la comunicazione «riservata» tra persone determinate dalla diffusione del pensiero verso chiunque: quale articolo tutela ciascuna?",
-    "spiegazione": "L'**art. 15 Cost.** tutela la comunicazione **intersoggettiva**, rivolta a destinatari determinati con l'esclusione degli altri (da qui la segretezza). La comunicazione verso una collettività indeterminata rientra invece nella **manifestazione del pensiero** dell'art. 21 Cost.",
+    "spiegazione": "L'**art. 15, primo comma, Cost.** («La libertà e la segretezza della corrispondenza e di ogni altra forma di comunicazione sono inviolabili») tutela la comunicazione **intersoggettiva**, rivolta a destinatari determinati con l'esclusione degli altri (da qui la segretezza). La comunicazione verso una collettività indeterminata rientra invece nella **manifestazione del pensiero** dell'art. 21 Cost.",
     "perOpzione": {
       "A": "La comunicazione verso una collettività indeterminata è manifestazione del pensiero (art. 21 Cost.), non corrispondenza.",
       "B": "Mescola le due libertà: la comunicazione a una collettività indeterminata non rientra nell'art. 15 Cost.",
-      "C": "Corretta: l'art. 15 tutela la comunicazione con persone determinate, escludendo gli altri."
+      "C": "Corretta: l'art. 15 Cost. tutela la comunicazione con persone determinate, escludendo gli altri."
     },
     "riferimenti": [
       {
@@ -338,7 +338,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "Il c.p.a. (art. 30) prevede per l'azione risarcitoria verso la PA un termine breve di decadenza, con due possibili decorrenze. Quanti giorni, e da quando?",
-    "spiegazione": "**Art. 30, comma 3, c.p.a.** (d.lgs. 104/2010): la domanda di risarcimento per lesione di interessi legittimi si propone **entro 120 giorni, a pena di decadenza**, dal giorno in cui il fatto si è verificato ovvero dalla conoscenza del provvedimento se il danno deriva direttamente da questo. Non vale la prescrizione quinquennale dell'illecito civile.",
+    "spiegazione": "**Art. 30, comma 3, c.p.a.** (d.lgs. 104/2010): «La domanda di risarcimento per lesione di interessi legittimi è proposta entro il termine di decadenza di centoventi giorni decorrente dal giorno in cui il fatto si è verificato ovvero dalla conoscenza del provvedimento se il danno deriva direttamente da questo». Il termine è dunque **unico (120 giorni, a pena di decadenza)** con due possibili decorrenze. Non vale la prescrizione quinquennale dell'illecito civile.",
     "perOpzione": {
       "A": "Il termine decorrente dalla conoscenza del provvedimento non è di 60 giorni: anche in questo caso è di 120 giorni.",
       "B": "La prescrizione quinquennale è quella dell'illecito civile (art. 2947 c.c.); il c.p.a. prevede invece un termine di decadenza di 120 giorni.",
@@ -357,7 +357,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "Con il silenzio assenso, alla scadenza del termine il provvedimento di accoglimento si è già formato: che strumenti restano all'amministrazione per rimetterlo in discussione?",
-    "spiegazione": "Scaduto il termine, il silenzio **equivale ad accoglimento**: l'amministrazione non può più adottare un diniego, ma può intervenire **in autotutela** (revoca art. 21-quinquies, annullamento d'ufficio art. 21-nonies), come prevede l'**art. 20, comma 3, l. 241/1990**. Dal 2020 (d.l. 76/2020) l'art. 2, comma 8-bis, l. 241/1990 dichiara espressamente **inefficaci** i provvedimenti di diniego adottati dopo la scadenza del termine nei casi di silenzio assenso.",
+    "spiegazione": "Scaduto il termine, il silenzio **equivale ad accoglimento**: l'amministrazione non può più adottare un diniego, ma può intervenire **in autotutela**: l'**art. 20, comma 3, l. 241/1990** (testo identico nel 2019 e oggi) dispone che «l'amministrazione competente può assumere determinazioni in via di autotutela, ai sensi degli articoli 21-quinquies e 21-nonies» (revoca e annullamento d'ufficio). Dal 2020 (d.l. 76/2020) l'art. 2, comma 8-bis, l. 241/1990 dichiara espressamente **inefficaci** i provvedimenti di diniego adottati dopo la scadenza del termine nei casi di silenzio assenso.",
     "perOpzione": {
       "A": "La legge non prevede un ulteriore termine di 60 giorni per il rigetto: scaduto il termine, l'assenso si è formato.",
       "B": "Corretta: il diniego tardivo non è più possibile (oggi è anche espressamente inefficace), ma resta l'autotutela (art. 20, comma 3, l. 241/1990).",
@@ -365,13 +365,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_20"
+      },
+      {
         "normaId": "l241_1990_art_21_quinquies"
       },
       {
         "normaId": "l241_1990_art_21_nonies"
-      },
-      {
-        "normaId": "l241_1990_art_20"
       },
       {
         "normaId": "l241_1990_art_2"
@@ -382,7 +382,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "A",
     "suggerimento": "Il ricorso gerarchico presuppone un superiore gerarchico: chi sta sopra i dirigenti di vertice e i dirigenti generali?",
-    "spiegazione": "**Art. 16, comma 4, d.lgs. 165/2001**: gli atti e i provvedimenti dei dirigenti di uffici dirigenziali generali **non sono suscettibili di ricorso gerarchico**. È una conseguenza della separazione tra indirizzo politico e gestione: il ministro non è un superiore gerarchico che può riesaminare gli atti di gestione. Restano ammessi il ricorso giurisdizionale e quello straordinario al Presidente della Repubblica.",
+    "spiegazione": "**Art. 16, comma 4, d.lgs. 165/2001**: «Gli atti e i provvedimenti adottati dai dirigenti preposti al vertice dell'amministrazione e dai dirigenti di uffici dirigenziali generali di cui al presente articolo non sono suscettibili di ricorso gerarchico». È una conseguenza della separazione tra indirizzo politico e gestione: il ministro non è un superiore gerarchico che può riesaminare gli atti di gestione. Restano ammessi il ricorso giurisdizionale e quello straordinario al Presidente della Repubblica.",
     "perOpzione": {
       "A": "Corretta: è la regola dell'art. 16 d.lgs. 165/2001, che esclude il ricorso gerarchico.",
       "B": "Il ricorso straordinario al Presidente della Repubblica resta esperibile contro gli atti amministrativi definitivi, compresi quelli dei dirigenti generali.",
@@ -401,7 +401,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "La legge Delrio (l. 56/2014) ha costruito le città metropolitane come enti di secondo livello: c'è una figura che ne diventa sindaco automaticamente?",
-    "spiegazione": "**L. 56/2014, art. 1, comma 19**: il sindaco metropolitano è **di diritto il sindaco del comune capoluogo**. Lo statuto può prevederne l'**elezione diretta** a suffragio universale (comma 22), alle condizioni fissate dalla legge.",
+    "spiegazione": "**Art. 1, comma 19, l. 56/2014**: «Il sindaco metropolitano è di diritto il sindaco del comune capoluogo». Lo statuto può prevederne l'**elezione diretta** a suffragio universale (comma 22), alle condizioni fissate dalla legge.",
     "perOpzione": {
       "A": "La conferenza metropolitana (i sindaci dei comuni) ha poteri propositivi e consultivi e approva lo statuto, ma non elegge il sindaco metropolitano.",
       "B": "Corretta: sindaco di diritto è il sindaco del capoluogo, salvo elezione diretta prevista dallo statuto.",
@@ -417,7 +417,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "A differenza dei pareri (art. 16), per le valutazioni tecniche la legge non consente di prescinderne: il responsabile ha una facoltà o un obbligo di rivolgersi altrove?",
-    "spiegazione": "**Art. 17, comma 1, l. 241/1990**: se gli organi tecnici non provvedono nei termini, il responsabile del procedimento **deve** chiedere le valutazioni tecniche ad altri organi o enti pubblici con qualificazione e capacità tecnica equipollenti, ovvero a istituti universitari. Non può procedere senza: la valutazione tecnica è un presupposto istruttorio necessario.",
+    "spiegazione": "**Art. 17, comma 1, l. 241/1990**: se gli organi tecnici non provvedono nei termini, «il responsabile del procedimento deve chiedere le suddette valutazioni tecniche ad altri organi dell'amministrazione pubblica o ad enti pubblici che siano dotati di qualificazione e capacità tecnica equipollenti, ovvero ad istituti universitari» (il verbo decisivo è **deve**). Non può procedere senza: la valutazione tecnica è un presupposto istruttorio necessario.",
     "perOpzione": {
       "A": "Procedere senza il parere è previsto per i pareri (art. 16), non per le valutazioni tecniche dell'art. 17.",
       "B": "Corretta: riproduce l'art. 17, comma 1, con il verbo «deve».",
@@ -436,7 +436,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "La sospensione serve a dare tempo all'opposizione al Presidente del Consiglio: chi può proporla e in quale caso?",
-    "spiegazione": "**Art. 14-quater, comma 3, l. 241/1990**: se la conferenza si chiude con approvazione unanime, la determinazione è immediatamente efficace; se si chiude **sulla base delle posizioni prevalenti**, l'efficacia è **sospesa** ove siano stati espressi **dissensi qualificati** (art. 14-quinquies: amministrazioni preposte a tutela ambientale, paesaggistico-territoriale, dei beni culturali, della salute e della pubblica incolumità) per il periodo utile all'opposizione.",
+    "spiegazione": "**Art. 14-quater, comma 3, l. 241/1990**: con approvazione unanime la determinazione è immediatamente efficace, mentre «In caso di approvazione sulla base delle posizioni prevalenti, l'efficacia della determinazione è sospesa ove siano stati espressi dissensi qualificati ai sensi dell'articolo 14-quinquies e per il periodo utile all'esperimento dei rimedi ivi previsti». I dissensi qualificati sono quelli delle amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, dei beni culturali o della salute e della pubblica incolumità (art. 14-quinquies l. 241/1990), che possono proporre opposizione al Presidente del Consiglio dei ministri.",
     "perOpzione": {
       "A": "Troppo ampia: la sospensione scatta solo se ci sono dissensi qualificati delle amministrazioni preposte agli interessi sensibili, non in ogni approvazione a maggioranza.",
       "B": "Corretta: servono insieme le posizioni prevalenti e il dissenso qualificato di un'amministrazione preposta a interessi sensibili.",
@@ -455,7 +455,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "B",
     "suggerimento": "L'art. 3, comma 1, della l. 20/1994 elenca gli atti del Governo e dei ministeri soggetti a controllo preventivo: tra le opzioni, quale atto ha natura di riparto di risorse a livello governativo?",
-    "spiegazione": "Con la **l. 20/1994** il controllo preventivo di legittimità della Corte dei conti è limitato agli atti tassativamente elencati all'**art. 3, comma 1**, tra cui i **provvedimenti dei comitati interministeriali di riparto o assegnazione di fondi**. Le gestioni fuori bilancio rientrano invece nel **controllo successivo sulla gestione** (art. 3, comma 4).",
+    "spiegazione": "Con la **l. 20/1994** il controllo preventivo di legittimità della Corte dei conti è limitato agli atti tassativamente elencati all'**art. 3, comma 1**, tra cui, alla lettera d), i «provvedimenti dei comitati interministeriali di riparto o assegnazione di fondi». Le gestioni fuori bilancio rientrano invece nel **controllo successivo sulla gestione** (art. 3, comma 4).",
     "perOpzione": {
       "A": "Gli atti di liquidazione dei trattamenti di quiescenza non figurano nell'elenco tassativo del controllo preventivo dell'art. 3, comma 1.",
       "B": "Corretta: i provvedimenti dei comitati interministeriali di riparto o assegnazione di fondi sono tra gli atti soggetti a controllo preventivo.",
@@ -480,6 +480,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "dlgs50_2016_art_32"
+      },
+      {
+        "normaId": "dlgs36_2023_art_18"
       }
     ]
   },
@@ -487,10 +490,10 @@ const SPIEGAZIONI = [
     "id": 37,
     "corretta": "A",
     "suggerimento": "La sospensione è una misura cautelare in vista di un possibile ritiro dell'atto: il limite temporale è quello del potere di autotutela soggetto a un termine preciso.",
-    "spiegazione": "**Art. 21-quater, comma 2, l. 241/1990** (come modificato dalla l. 124/2015): la sospensione per gravi ragioni «non può comunque essere disposta o perdurare oltre i termini per l'esercizio del potere di **annullamento** di cui all'art. 21-nonies». Quel termine «ragionevole» era di 18 mesi nel 2019 per i provvedimenti di autorizzazione o attribuzione di vantaggi economici; dal d.l. 77/2021 è di **12 mesi**.",
+    "spiegazione": "**Art. 21-quater, comma 2, l. 241/1990** (ultimo periodo aggiunto dalla l. 124/2015; testo identico nel 2019 e oggi): «La sospensione non può comunque essere disposta o perdurare oltre i termini per l'esercizio del potere di annullamento di cui all'articolo 21-nonies». Il limite è quindi quello dell'**annullamento d'ufficio**. Per i provvedimenti di autorizzazione o di attribuzione di vantaggi economici l'art. 21-nonies, comma 1, l. 241/1990 nel testo in vigore nel 2019 fissava un termine ragionevole «comunque non superiore a diciotto mesi»; il d.l. 77/2021 lo ha ridotto a dodici mesi e il testo oggi vigente dice «comunque non superiore a sei mesi».",
     "perOpzione": {
-      "A": "Corretta: il limite è quello dell'annullamento d'ufficio (art. 21-nonies), richiamato dall'art. 21-quater, comma 2.",
-      "B": "La revoca (art. 21-quinquies) non ha un termine finale fisso, quindi non può fare da limite temporale.",
+      "A": "Corretta: il limite è quello dell'annullamento d'ufficio (art. 21-nonies l. 241/1990), richiamato dall'art. 21-quater, comma 2, l. 241/1990.",
+      "B": "La revoca (art. 21-quinquies l. 241/1990) non ha un termine finale fisso, quindi non può fare da limite temporale.",
       "C": "I termini di impugnazione giurisdizionale riguardano i ricorrenti, non i poteri di autotutela dell'amministrazione."
     },
     "riferimenti": [

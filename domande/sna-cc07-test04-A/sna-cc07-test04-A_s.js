@@ -51,7 +51,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Il pre-pensionamento è un’uscita anticipata dal lavoro; anzi, la riforma Fornero ha alzato i requisiti, cioè ha fatto l’opposto.",
       "B": "Corretta: «assottigliamento» qui indica la diminuzione del numero dei pensionati (−4,6%).",
-      "C": "L’affilatura è il significato concreto (rendere sottile una lama), fuori luogo in un testo sui redditi."
+      "C": "L’affilatura è l’operazione di rendere tagliente una lama: un significato concreto, legato a «affilare» e non ad «assottigliare», fuori luogo in un testo sui redditi."
     }
   },
   {
@@ -268,15 +268,21 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "B",
     "suggerimento": "Pensa all’art. 72 della Costituzione: chi, oltre a quote di parlamentari, può chiedere che un progetto torni alla procedura normale in Assemblea?",
-    "spiegazione": "L’**art. 72, terzo comma, Cost.** stabilisce che il disegno di legge assegnato in sede deliberante è rimesso alla Camera, fino all’approvazione definitiva, se lo richiedono **il Governo**, un decimo dei componenti della Camera o un quinto della commissione.",
+    "spiegazione": "L’**art. 72, terzo comma, Cost.** stabilisce che anche per i disegni di legge deferiti alle commissioni (sede deliberante), «fino al momento della sua approvazione definitiva, il disegno di legge è rimesso alla Camera, se **il Governo** o un decimo dei componenti della Camera o un quinto della commissione richiedono che sia discusso o votato dalla Camera stessa oppure che sia sottoposto alla sua approvazione finale con sole dichiarazioni di voto».",
     "perOpzione": {
-      "A": "Il Presidente della Repubblica non ha alcun potere di intervento nel procedimento in commissione: interviene solo in sede di promulgazione (art. 74 Cost.).",
-      "B": "Corretta: è il testo dell’art. 72, terzo comma, Cost.",
+      "A": "Il Presidente della Repubblica non ha alcun potere di intervento nel procedimento in commissione: nel procedimento legislativo interviene all’inizio, autorizzando la presentazione dei disegni di legge del Governo (art. 87, quarto comma, Cost.), e alla fine, con la promulgazione o il rinvio alle Camere (artt. 73-74 Cost.).",
+      "B": "Corretta: riprende nella sostanza l’art. 72, terzo comma, Cost. («se il Governo o un decimo dei componenti della Camera o un quinto della commissione richiedono che sia discusso o votato dalla Camera stessa»).",
       "C": "La richiesta spetta al Governo come organo collegiale, non a «due membri del Governo»."
     },
     "riferimenti": [
       {
         "normaId": "cost_art_72"
+      },
+      {
+        "normaId": "cost_art_87"
+      },
+      {
+        "normaId": "cost_art_73"
       },
       {
         "normaId": "cost_art_74"
@@ -287,7 +293,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "A",
     "suggerimento": "L’art. 17 distingue tra riunioni in luogo privato, aperto al pubblico e pubblico: per quest’ultimo serve qualcosa, ma non un permesso.",
-    "spiegazione": "**Art. 17 Cost.**: i cittadini hanno diritto di riunirsi pacificamente e senz’armi; per le riunioni anche in luogo aperto al pubblico non è richiesto preavviso; per quelle **in luogo pubblico deve essere dato preavviso** alle autorità, che possono vietarle soltanto per comprovati motivi di sicurezza o di incolumità pubblica.",
+    "spiegazione": "**Art. 17 Cost.**: i cittadini hanno diritto di riunirsi pacificamente e senz’armi; per le riunioni anche in luogo aperto al pubblico non è richiesto preavviso; per quelle in luogo pubblico il terzo comma dispone: «Delle riunioni in luogo pubblico **deve essere dato preavviso** alle autorità, che possono vietarle soltanto per comprovati motivi di sicurezza o di incolumità pubblica».",
     "perOpzione": {
       "A": "Corretta: riproduce l’art. 17, terzo comma, Cost.",
       "B": "L’assenza di preavviso vale per le riunioni in luogo privato o aperto al pubblico, non per quelle in luogo pubblico.",
@@ -319,7 +325,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "C",
     "suggerimento": "Pensa all’autonomia costituzionale delle Camere (art. 64 Cost.) e all’autodichia: una legge ordinaria può dettare principi al Parlamento sulla sua organizzazione interna?",
-    "spiegazione": "In forza dell’**autonomia normativa e organizzativa** delle Camere (art. 64 Cost.), il rapporto di lavoro dei loro dipendenti è disciplinato da **regolamenti interni** di ciascuna Camera (regolamenti «minori» del personale), sottratti alla legge ordinaria e al d.lgs. 165/2001; le controversie sono decise dagli organi di autodichia (Corte cost. n. 262/2017).",
+    "spiegazione": "In forza dell’**autonomia normativa e organizzativa** delle Camere (art. 64, primo comma, Cost.: «Ciascuna Camera adotta il proprio regolamento», fondamento anche dei regolamenti interni «minori»), il rapporto di lavoro dei loro dipendenti è disciplinato da **regolamenti interni** di ciascuna Camera (regolamenti «minori» del personale), sottratti alla legge ordinaria e al d.lgs. 165/2001; le controversie sono decise dagli organi di autodichia (Corte cost. n. 262/2017).",
     "perOpzione": {
       "A": "Il modello «regolamenti in attuazione di principi fissati dalla legge» non vale per le Camere: la loro autonomia esclude che la legge ordinaria ne vincoli l’organizzazione interna.",
       "B": "Il personale delle Camere non è soggetto né al codice civile né al lavoro privato: la disciplina è interna e autonoma.",
@@ -335,7 +341,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "L’art. 20, comma 4, elenca le materie «sensibili» escluse dal silenzio assenso: ambiente, patrimonio culturale, salute… e il territorio?",
-    "spiegazione": "Il silenzio assenso (**art. 20 l. 241/1990**) **non si applica** (comma 4) agli atti e procedimenti riguardanti patrimonio culturale e paesaggistico, ambiente, **tutela dal rischio idrogeologico**, difesa nazionale, pubblica sicurezza, immigrazione, asilo e cittadinanza, salute e pubblica incolumità, ai casi in cui il diritto UE impone provvedimenti formali e a quelli individuati con d.P.C.M.",
+    "spiegazione": "Il silenzio assenso (**art. 20 l. 241/1990**) **non si applica** nelle materie sensibili. L’art. 20, comma 4, dispone: «Le disposizioni del presente articolo non si applicano agli atti e procedimenti riguardanti il patrimonio culturale e paesaggistico, l'ambiente, la **tutela dal rischio idrogeologico**, la difesa nazionale, la pubblica sicurezza, l'immigrazione, l'asilo e la cittadinanza, la salute e la pubblica incolumità». Sono esclusi anche i casi in cui la normativa comunitaria impone provvedimenti formali, quelli in cui la legge qualifica il silenzio come rigetto dell’istanza e quelli individuati con d.P.C.M. Il comma 4 è identico nel testo in vigore nel 2019 e in quello attuale.",
     "perOpzione": {
       "A": "Contrasta con l’art. 20, comma 4, che esclude espressamente la tutela dal rischio idrogeologico.",
       "B": "L’esclusione è stabilita dalla legge: l’amministrazione non può «consentire» il silenzio assenso in una materia esclusa.",
@@ -351,11 +357,11 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "C",
     "suggerimento": "Il d.lgs. 165/2001 separa indirizzo politico e gestione: quale attività è tipica dell’organo politico?",
-    "spiegazione": "Per il principio di **distinzione tra politica e amministrazione** (artt. 4 e 14 d.lgs. 165/2001) il Ministro esercita le funzioni di indirizzo politico-amministrativo e, in particolare, **definisce obiettivi, priorità, piani e programmi** ed emana le direttive generali per l’attività amministrativa e la gestione. La gestione, compresa la promozione e resistenza alle liti, spetta ai dirigenti (art. 16).",
+    "spiegazione": "Per il principio di **distinzione tra politica e amministrazione** (artt. 4 e 14 d.lgs. 165/2001) il Ministro esercita le funzioni di indirizzo politico-amministrativo e, in particolare, ai sensi dell’art. 14, comma 1, lett. a), «**definisce obiettivi, priorità, piani e programmi** da attuare ed emana le conseguenti direttive generali per l'attività amministrativa e per la gestione». La gestione, compresa la promozione e resistenza alle liti, spetta ai dirigenti (art. 16).",
     "perOpzione": {
       "A": "La contrattazione integrativa è condotta dalla parte pubblica tecnica (dirigenti/delegazioni), non dal Ministro.",
       "B": "Promuovere e resistere alle liti è compito dei dirigenti degli uffici dirigenziali generali (art. 16, comma 1, lett. f, d.lgs. 165/2001).",
-      "C": "Corretta: è la funzione di indirizzo che l’art. 14 attribuisce al Ministro."
+      "C": "Corretta: è la funzione di indirizzo che l’art. 14 d.lgs. 165/2001 attribuisce al Ministro."
     },
     "riferimenti": [
       {
@@ -373,7 +379,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "A",
     "suggerimento": "Il legislatore ha voluto valorizzare la qualità dell’offerta: per farlo, avrà limitato il peso del prezzo verso l’alto o verso il basso?",
-    "spiegazione": "Nell’offerta economicamente più vantaggiosa la stazione appaltante sceglie i criteri e la ponderazione, ma per valorizzare la qualità deve fissare un **tetto massimo per il punteggio economico entro il 30%**. Nel 2019: **art. 95, comma 10-bis, d.lgs. 50/2016** (introdotto dal d.lgs. 56/2017). Oggi la regola è ripresa dall’**art. 108, comma 4, d.lgs. 36/2023** (nuovo Codice dei contratti).",
+    "spiegazione": "Nell’offerta economicamente più vantaggiosa la stazione appaltante sceglie i criteri e la loro ponderazione, ma per valorizzare la qualità deve limitare il peso del prezzo. Nel 2019 l’**art. 95, comma 10-bis, d.lgs. 50/2016** (introdotto dal d.lgs. 56/2017) disponeva: «A tal fine la stazione appaltante stabilisce un **tetto massimo per il punteggio economico entro il limite del 30 per cento**». Oggi l’**art. 108, comma 4, d.lgs. 36/2023** non prevede più questo tetto in via generale: lo mantiene solo per alcuni contratti («Per i contratti ad alta intensità di manodopera, la stazione appaltante stabilisce un tetto massimo per il punteggio economico entro il limite del 30 per cento», regola estesa ai servizi di trasporto per le uscite didattiche) e lo abbassa al 10 per cento per i beni e servizi informatici impiegati in contesti connessi alla tutela degli interessi nazionali strategici.",
     "perOpzione": {
       "A": "Corretta: scelta discrezionale della stazione appaltante, con un tetto del 30% al punteggio economico.",
       "B": "La ripartizione non è fissata in modo rigido: 30% è solo il limite massimo per il prezzo.",
@@ -392,7 +398,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "Nel processo amministrativo le misure cautelari si concedono con un tipo di provvedimento diverso dalla sentenza: quale?",
-    "spiegazione": "L’**appello cautelare** è il rimedio contro le **ordinanze cautelari** del TAR: l’**art. 62 c.p.a.** prevede che contro di esse sia ammesso appello al Consiglio di Stato entro 30 giorni dalla notificazione (o 60 dalla pubblicazione).",
+    "spiegazione": "L’**appello cautelare** è il rimedio contro le **ordinanze cautelari** del TAR: l’**art. 62, comma 1, c.p.a.** dispone: «Contro le ordinanze cautelari è ammesso appello al Consiglio di Stato, da proporre nel termine di trenta giorni dalla notificazione dell'ordinanza, ovvero di sessanta giorni dalla sua pubblicazione».",
     "perOpzione": {
       "A": "Corretta: è l’appello contro le ordinanze cautelari (art. 62 c.p.a.).",
       "B": "Le sentenze in forma semplificata (art. 60 c.p.a.) si impugnano con l’appello ordinario, non con quello cautelare.",
@@ -414,7 +420,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "A",
     "suggerimento": "La sottoscrizione permette di riferire l’atto al suo autore: senza di essa, all’atto manca un elemento essenziale?",
-    "spiegazione": "Secondo l’impostazione tradizionale la sottoscrizione è **elemento essenziale** della forma scritta dell’atto, perché ne attesta la provenienza: la sua mancanza determina la **nullità** per difetto di un elemento essenziale (**art. 21-septies l. 241/1990**). La giurisprudenza tende però ad attenuare la regola quando l’autore è comunque individuabile con certezza da altri elementi dell’atto.",
+    "spiegazione": "Secondo l’impostazione tradizionale la sottoscrizione è **elemento essenziale** della forma scritta dell’atto, perché ne attesta la provenienza: la sua mancanza determina la **nullità** per difetto di un elemento essenziale (**art. 21-septies, comma 1, l. 241/1990**: «È nullo il provvedimento amministrativo che manca degli elementi essenziali»). La giurisprudenza tende però ad attenuare la regola quando l’autore è comunque individuabile con certezza da altri elementi dell’atto.",
     "perOpzione": {
       "A": "Corretta secondo l’impostazione tradizionale: manca un elemento essenziale, quindi l’atto è nullo (art. 21-septies l. 241/1990).",
       "B": "L’irregolarità riguarda vizi minori che non incidono sulla validità; la sottoscrizione è invece considerata elemento essenziale (salvo che l’autore sia comunque certo).",
@@ -434,8 +440,8 @@ const SPIEGAZIONI = [
     "spiegazione": "**Art. 9 l. 241/1990**: «Qualunque soggetto, portatore di interessi pubblici o privati, nonché i portatori di interessi diffusi costituiti in associazioni o comitati, cui possa derivare un pregiudizio dal provvedimento, hanno facoltà di intervenire nel procedimento». La formula «individuati o facilmente individuabili» appartiene invece all’art. 7 (destinatari della comunicazione di avvio).",
     "perOpzione": {
       "A": "L’intervento non è limitato a chi ha ricevuto la comunicazione di avvio: l’art. 9 lo estende a qualunque portatore di interessi che possa subire un pregiudizio.",
-      "B": "Corretta: riproduce il testo dell’art. 9 l. 241/1990.",
-      "C": "«Individuato o facilmente individuabile» è il criterio dell’art. 7 per la comunicazione di avvio, non quello dell’art. 9 per l’intervento."
+      "B": "Corretta: riprende il testo dell’art. 9 l. 241/1990, tralasciando l’inciso «nonché i portatori di interessi diffusi costituiti in associazioni o comitati».",
+      "C": "«Individuato o facilmente individuabile» è il criterio dell’art. 7 l. 241/1990 per la comunicazione di avvio, non quello dell’art. 9 l. 241/1990 per l’intervento."
     },
     "riferimenti": [
       {
@@ -456,7 +462,7 @@ const SPIEGAZIONI = [
       "B": "Corretta: è il limite del 30% previsto dall’art. 110, comma 1, TUEL.",
       "C": "20% non è la percentuale prevista dall’art. 110, comma 1, TUEL."
     },
-    "nota": "Chiave certa per il testo vigente nel 2019 (30%); prima di usarla oggi verificare eventuali modifiche successive alla percentuale dell’art. 110 TUEL.",
+    "nota": "Chiave certa: il limite del 30% dell’art. 110, comma 1, TUEL è identico nel testo in vigore al 22/01/2019 e in quello vigente.",
     "riferimenti": [
       {
         "normaId": "dlgs267_2000_art_110"
@@ -517,7 +523,7 @@ const SPIEGAZIONI = [
     "id": 38,
     "corretta": "B",
     "suggerimento": "Con il Trattato di Lisbona l’Alto rappresentante ha un «doppio cappello»: Consiglio e Commissione.",
-    "spiegazione": "L’**art. 18 TUE** prevede che l’Alto rappresentante **presieda il Consiglio «Affari esteri»** (par. 3) e sia **uno dei vicepresidenti della Commissione** (par. 4). È nominato dal Consiglio europeo a maggioranza qualificata, con l’accordo del presidente della Commissione.",
+    "spiegazione": "L’**art. 18 TUE** dispone che «L'alto rappresentante **presiede il Consiglio \"Affari esteri\"**» (par. 3) e che «L'alto rappresentante è **uno dei vicepresidenti della Commissione**» (par. 4). È nominato dal Consiglio europeo a maggioranza qualificata, con l’accordo del presidente della Commissione.",
     "perOpzione": {
       "A": "L’Alto rappresentante non partecipa «senza voto»: presiede il Consiglio Affari esteri.",
       "B": "Corretta: presidenza del Consiglio Affari esteri e vicepresidenza della Commissione (art. 18 TUE).",
@@ -533,7 +539,7 @@ const SPIEGAZIONI = [
     "id": 39,
     "corretta": "A",
     "suggerimento": "«Generale» si contrappone a «individuale»: pensa alla differenza tra regolamento e decisione rivolta a destinatari precisi.",
-    "spiegazione": "La **portata generale** (art. 288 TFUE) significa che il regolamento si applica a situazioni determinate oggettivamente e a **categorie di destinatari individuate in modo generale e astratto**, non a soggetti specifici (come invece può fare la decisione).",
+    "spiegazione": "La **portata generale** (art. 288, secondo comma, TFUE: «Il regolamento ha portata generale») significa che il regolamento si applica a situazioni determinate oggettivamente e a **categorie di destinatari individuate in modo generale e astratto**, non a soggetti specifici (come invece può fare la decisione).",
     "perOpzione": {
       "A": "Corretta: è la definizione di portata generale elaborata dalla Corte di giustizia.",
       "B": "L’efficacia in tutti gli Stati è legata alla diretta applicabilità e all’obbligatorietà, non alla «portata generale»; inoltre il regolamento si rivolge anche ai privati, non solo agli Stati.",
@@ -549,7 +555,7 @@ const SPIEGAZIONI = [
     "id": 40,
     "corretta": "C",
     "suggerimento": "Chi siede al Consiglio di sicurezza: persone scelte per la loro competenza o Stati?",
-    "spiegazione": "Il Consiglio di sicurezza è composto da **15 Stati membri** (5 permanenti e 10 eletti; art. 23 Carta ONU): è un **organo di Stati**, i cui rappresentanti agiscono come organi del proprio Stato e ne esprimono la volontà, su istruzioni del governo. È diverso dagli organi «individuali» (es. giudici della Corte internazionale di giustizia, Segretario generale).",
+    "spiegazione": "Il Consiglio di sicurezza è composto da **15 Stati membri** (5 permanenti e 10 eletti; art. 23 della Carta delle Nazioni Unite): è un **organo di Stati**, i cui rappresentanti agiscono come organi del proprio Stato e ne esprimono la volontà, su istruzioni del governo. È diverso dagli organi «individuali» (es. giudici della Corte internazionale di giustizia, Segretario generale).",
     "perOpzione": {
       "A": "I membri non agiscono a titolo individuale e non dipendono dall’Assemblea Generale: è il Consiglio ad avere la responsabilità principale per la pace.",
       "B": "Indipendenza e divieto di istruzioni valgono per gli organi individuali (es. Segretariato, giudici), non per i rappresentanti degli Stati in Consiglio.",

@@ -344,6 +344,9 @@ const QUIZ_MANIFEST = [
       "norme/dlgs165_2001/dlgs165_2001_art_5.js",
       "norme/dlgs267_2000/dlgs267_2000_art_107.js",
       "norme/dlgs267_2000/dlgs267_2000_art_108.js",
+      "norme/l195_1958/l195_1958_art_30.js",
+      "norme/l234_2012/l234_2012_art_1.js",
+      "norme/l234_2012/l234_2012_art_30.js",
       "norme/l241_1990/l241_1990_art_3.js",
       "norme/l241_1990/l241_1990_art_6.js",
       "norme/l241_1990/l241_1990_art_10.js",
@@ -353,6 +356,7 @@ const QUIZ_MANIFEST = [
       "norme/l241_1990/l241_1990_art_21_nonies.js",
       "norme/l241_1990/l241_1990_art_21_quinquies.js",
       "norme/l241_1990/l241_1990_art_22.js",
+      "norme/l352_1970/l352_1970_art_48.js",
       "norme/tue/tue_art_17.js"
     ]
   },
@@ -370,7 +374,9 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_17.js",
       "norme/costituzione/cost_art_64.js",
       "norme/costituzione/cost_art_72.js",
+      "norme/costituzione/cost_art_73.js",
       "norme/costituzione/cost_art_74.js",
+      "norme/costituzione/cost_art_87.js",
       "norme/costituzione/cost_art_117.js",
       "norme/cpa/cpa_art_60.js",
       "norme/cpa/cpa_art_62.js",
@@ -424,11 +430,13 @@ const QUIZ_MANIFEST = [
       "norme/l56_2014/l56_2014_art_1.js",
       "norme/l81_2017/l81_2017_art_18.js",
       "norme/l241_1990/l241_1990_art_13.js",
+      "norme/l241_1990/l241_1990_art_14.js",
       "norme/l241_1990/l241_1990_art_17_bis.js",
       "norme/l241_1990/l241_1990_art_21_septies.js",
       "norme/l241_1990/l241_1990_art_21_ter.js",
       "norme/tfue/tfue_art_263.js",
-      "norme/tue/tue_art_16.js"
+      "norme/tue/tue_art_16.js",
+      "norme/tue/tue_art_18.js"
     ]
   },
   {
@@ -443,8 +451,8 @@ const QUIZ_MANIFEST = [
     "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_6_Versione_A.pdf",
     "norme": [
       "norme/codice_civile/cc_art_2103.js",
+      "norme/codice_civile/preleggi_art_11.js",
       "norme/costituzione/cost_art_3.js",
-      "norme/costituzione/cost_art_11.js",
       "norme/costituzione/cost_art_25.js",
       "norme/costituzione/cost_art_36.js",
       "norme/costituzione/cost_art_69.js",
@@ -453,6 +461,7 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_111.js",
       "norme/cpa/cpa_art_91.js",
       "norme/dlgs36_2023/dlgs36_2023_art_104.js",
+      "norme/dlgs50_2016/dlgs50_2016_art_83.js",
       "norme/dlgs50_2016/dlgs50_2016_art_89.js",
       "norme/dlgs165_2001/dlgs165_2001_art_52.js",
       "norme/dlgs267_2000/dlgs267_2000_art_98.js",
@@ -462,10 +471,13 @@ const QUIZ_MANIFEST = [
       "norme/l212_2000/l212_2000_art_3.js",
       "norme/l241_1990/l241_1990_art_10_bis.js",
       "norme/l241_1990/l241_1990_art_14_quinquies.js",
+      "norme/l241_1990/l241_1990_art_14_ter.js",
       "norme/l241_1990/l241_1990_art_21_bis.js",
       "norme/l241_1990/l241_1990_art_21_quinquies.js",
       "norme/tfue/tfue_art_291.js",
-      "norme/tue/tue_art_16.js"
+      "norme/tue/tue_art_16.js",
+      "norme/tue/tue_art_24.js",
+      "norme/tue/tue_art_26.js"
     ]
   },
   {
@@ -487,6 +499,7 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_117.js",
       "norme/costituzione/cost_art_138.js",
       "norme/cpa/cpa_art_30.js",
+      "norme/dlgs36_2023/dlgs36_2023_art_18.js",
       "norme/dlgs50_2016/dlgs50_2016_art_32.js",
       "norme/dlgs165_2001/dlgs165_2001_art_16.js",
       "norme/l20_1994/l20_1994_art_3.js",

@@ -183,7 +183,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Da «4 1 3 2 → 0»: in 1ª posizione non c’è 4, in 2ª non c’è 1, in 3ª non c’è 3, in 4ª non c’è 2. Nella prima riga «1 4 3 2 → 2» il 3 in terza e il 2 in quarta sono quindi sbagliati, perciò sono giusti **1 in prima** e **4 in seconda**. Restano 2 e 3: il 3 non può stare in terza, quindi la combinazione è **1 4 2 3**.",
     "perOpzione": {
       "A": "Corretta: rispetta entrambe le righe (2 posizioni esatte con la prima, nessuna con la seconda).",
-      "B": "Con la seconda riga darebbe 2 posizioni esatte (il 4 in prima e il 2 in quarta) invece di 0; con la prima, nessuna invece di 2.",
+      "B": "Con la seconda riga darebbe 2 posizioni esatte (il 4 in prima e il 2 in quarta) invece di 0; con la prima, 1 sola (il 2 in quarta) invece di 2.",
       "C": "Con la prima riga torna (1 e 3 al posto giusto), ma con la seconda darebbe 1 posizione esatta (il 3 in terza) invece di 0."
     }
   },
@@ -268,11 +268,11 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "C",
     "suggerimento": "L’art. 81, dopo la riforma del 2012 sul pareggio di bilancio, ammette il debito in due sole situazioni: una legata all’andamento dell’economia, l’altra eccezionale.",
-    "spiegazione": "L’art. 81, secondo comma, Cost. (testo introdotto dalla **legge cost. n. 1/2012**) stabilisce che il ricorso all’indebitamento è consentito **solo al fine di considerare gli effetti del ciclo economico** e, previa autorizzazione delle Camere a maggioranza assoluta dei componenti, **al verificarsi di eventi eccezionali**. La finalità della spesa (obbligatoria o di investimento) non è un criterio previsto dalla norma.",
+    "spiegazione": "L’art. 81, secondo comma, Cost. (testo introdotto dalla **legge cost. n. 1/2012**, identico nel 2019 e oggi) stabilisce: «Il ricorso all'indebitamento è consentito **solo al fine di considerare gli effetti del ciclo economico** e, previa autorizzazione delle Camere adottata a maggioranza assoluta dei rispettivi componenti, **al verificarsi di eventi eccezionali**». La finalità della spesa (obbligatoria o di investimento) non è un criterio previsto dalla norma.",
     "perOpzione": {
       "A": "La Costituzione non lega l’indebitamento alla copertura delle spese obbligatorie: il criterio è il ciclo economico.",
       "B": "La «regola d’oro» che ammette il debito per le spese di investimento non è stata accolta nell’art. 81: il riferimento è al ciclo economico.",
-      "C": "Corretta: riproduce il testo dell’art. 81, secondo comma (effetti del ciclo economico ed eventi eccezionali)."
+      "C": "Corretta: riprende il testo dell’art. 81, secondo comma, Cost., omettendo l’inciso sull’autorizzazione delle Camere (effetti del ciclo economico ed eventi eccezionali)."
     },
     "riferimenti": [
       {
@@ -300,7 +300,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "A",
     "suggerimento": "Il giudizio di ragionevolezza guarda alla coerenza interna della legge: la norma serve davvero allo scopo per cui è stata fatta?",
-    "spiegazione": "La Corte costituzionale, sulla base dell’**art. 3 Cost.**, censura come irragionevole la norma **intrinsecamente incoerente o contraddittoria** rispetto alla finalità (ratio) perseguita dal legislatore, oltre che quella che tratta in modo diverso situazioni uguali. Il parametro è la coerenza logica e la proporzionalità della scelta legislativa, non il contrasto con altre leggi ordinarie.",
+    "spiegazione": "La Corte costituzionale, sulla base dell’**art. 3, primo comma, Cost.** («Tutti i cittadini hanno pari dignità sociale e sono eguali davanti alla legge»), censura come irragionevole la norma **intrinsecamente incoerente o contraddittoria** rispetto alla finalità (ratio) perseguita dal legislatore, oltre che quella che tratta in modo diverso situazioni uguali. Il parametro è la coerenza logica e la proporzionalità della scelta legislativa, non il contrasto con altre leggi ordinarie.",
     "perOpzione": {
       "A": "Corretta: la contraddittorietà tra il contenuto della norma e il suo scopo è il caso tipico di irragionevolezza.",
       "B": "Il contrasto con altre leggi ordinarie si risolve con i criteri cronologico e di specialità, non con il giudizio di legittimità costituzionale.",
@@ -316,7 +316,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "B",
     "suggerimento": "In quale articolo la Costituzione parla di leggi che non possono essere applicate a fatti commessi prima della loro entrata in vigore? Riguarda tutte le materie?",
-    "spiegazione": "La Costituzione vieta la retroattività solo per la **legge penale** (art. 25, secondo comma: nessuno può essere punito se non in forza di una legge entrata in vigore prima del fatto commesso). Negli altri settori l’irretroattività è un principio generale fissato da una legge ordinaria (**art. 11 delle preleggi**), derogabile da altre leggi ordinarie nel rispetto della ragionevolezza e dell’affidamento. In materia tributaria il limite è posto dallo Statuto del contribuente (l. 212/2000, art. 3), che è legge ordinaria.",
+    "spiegazione": "La Costituzione vieta la retroattività solo per la **legge penale**: l’art. 25, secondo comma, Cost. dispone che «Nessuno può essere punito se non in forza di una legge che sia entrata in vigore prima del fatto commesso». Negli altri settori l’irretroattività è un principio generale fissato da una legge ordinaria, l’**art. 11 delle preleggi** (la legge «non ha effetto retroattivo»), derogabile da altre leggi ordinarie nel rispetto della ragionevolezza e dell’affidamento. In materia tributaria il limite è posto dallo Statuto del contribuente (art. 3, comma 1, l. 212/2000: «le disposizioni tributarie non hanno effetto retroattivo»), che è legge ordinaria.",
     "perOpzione": {
       "A": "In materia tributaria il divieto di retroattività non è costituzionale ma deriva dallo Statuto del contribuente, legge ordinaria.",
       "B": "Corretta: solo l’art. 25 Cost. impone l’irretroattività, e soltanto per la legge penale.",
@@ -327,7 +327,7 @@ const SPIEGAZIONI = [
         "normaId": "cost_art_25"
       },
       {
-        "normaId": "cost_art_11"
+        "normaId": "preleggi_art_11"
       },
       {
         "normaId": "l212_2000_art_3"
@@ -338,11 +338,11 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "A",
     "suggerimento": "Distingui due effetti: la carriera (inquadramento) e la retribuzione per il lavoro effettivamente svolto. Ricorda anche l’art. 36 Cost.",
-    "spiegazione": "L’**art. 52 del d.lgs. 165/2001** stabilisce che l’esercizio di fatto di mansioni non corrispondenti alla qualifica **non ha effetto ai fini dell’inquadramento**. Tuttavia, per il principio di retribuzione proporzionata (art. 36 Cost.) e per lo stesso art. 52 (comma 5), al lavoratore spetta la **differenza di trattamento economico** con la qualifica superiore per il periodo di effettiva prestazione, come chiarito dalla Cassazione a Sezioni Unite.",
+    "spiegazione": "L’**art. 52, comma 1, d.lgs. 165/2001** stabilisce che «L'esercizio di fatto di mansioni non corrispondenti alla qualifica di appartenenza **non ha effetto ai fini dell'inquadramento** del lavoratore o dell'assegnazione di incarichi di direzione». Tuttavia, per il principio di retribuzione proporzionata (art. 36 Cost.) e per lo stesso art. 52, comma 5, d.lgs. 165/2001 («al lavoratore è corrisposta la differenza di trattamento economico con la qualifica superiore»), al lavoratore spetta la **differenza di trattamento economico** per il periodo di effettiva prestazione, come chiarito dalla Cassazione a Sezioni Unite. I passi citati sono identici nel testo del 2019 e in quello vigente.",
     "perOpzione": {
       "A": "Corretta: niente promozione automatica, ma diritto alla retribuzione superiore per il tempo di effettivo svolgimento.",
       "B": "Il diritto alla differenza retributiva non è limitato ai casi di sostituzione: spetta per qualsiasi svolgimento effettivo di mansioni superiori.",
-      "C": "Questa è la regola del lavoro privato (art. 2103 c.c.); nel pubblico impiego è esclusa, perché l’accesso alle qualifiche richiede il concorso (art. 97 Cost.)."
+      "C": "È la regola del lavoro privato (art. 2103, settimo comma, c.c.: l’assegnazione diviene definitiva dopo il periodo fissato dai contratti collettivi o, in mancanza, «dopo sei mesi continuativi»); nel pubblico impiego è esclusa, perché l’accesso alle qualifiche richiede il concorso (art. 97 Cost.)."
     },
     "riferimenti": [
       {
@@ -363,7 +363,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "L’avvalimento riguarda i requisiti «speciali» di partecipazione alla gara: quali categorie di requisiti speciali conosci?",
-    "spiegazione": "Con l’avvalimento l’operatore economico soddisfa i requisiti di **capacità economico-finanziaria e tecnico-professionale** avvalendosi delle capacità di altri soggetti (art. 89 d.lgs. 50/2016, vigente nel 2019). Oggi la disciplina è nell’**art. 104 del d.lgs. 36/2023**, che conferma l’istituto per entrambe le categorie di requisiti (e lo estende al miglioramento dell’offerta). Restano esclusi i requisiti generali (morali).",
+    "spiegazione": "Con l’avvalimento l’operatore economico soddisfa i requisiti di **capacità economico-finanziaria e tecnico-professionale** avvalendosi delle capacità di altri soggetti: l’art. 89, comma 1, d.lgs. 50/2016 (vigente nel 2019) gli consentiva di «soddisfare la richiesta relativa al possesso dei requisiti di carattere economico, finanziario, tecnico e professionale di cui all'articolo 83, comma 1, lettere b) e c)», «con esclusione dei requisiti di cui all'articolo 80» (requisiti generali). Oggi la disciplina è nell’**art. 104 del d.lgs. 36/2023**, che configura l’avvalimento come il contratto con cui l’impresa ausiliaria mette a disposizione «dotazioni tecniche e risorse umane e strumentali» (comma 1) e ne ammette l’uso sia «per acquisire un requisito di partecipazione» sia «per migliorare la propria offerta» (comma 4).",
     "perOpzione": {
       "A": "Incompleta: l’avvalimento copre anche i requisiti economici e finanziari.",
       "B": "Corretta: comprende sia i requisiti economico-finanziari sia quelli tecnico-professionali.",
@@ -374,6 +374,9 @@ const SPIEGAZIONI = [
         "normaId": "dlgs50_2016_art_89"
       },
       {
+        "normaId": "dlgs50_2016_art_83"
+      },
+      {
         "normaId": "dlgs36_2023_art_104"
       }
     ]
@@ -382,7 +385,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "B",
     "suggerimento": "Chi è il vertice politico del comune che sceglie il segretario? E da quale elenco lo sceglie?",
-    "spiegazione": "L’**art. 99 del TUEL** (d.lgs. 267/2000) prevede che il **sindaco** nomini il segretario, che dipende funzionalmente da lui, **scegliendolo tra gli iscritti all’albo** di cui all’art. 98. All’albo nazionale si accede per concorso (corso-concorso). L’albo, dopo la soppressione dell’Agenzia autonoma (d.l. 78/2010), è gestito dal Ministero dell’Interno.",
+    "spiegazione": "L’**art. 99, comma 1, TUEL** (d.lgs. 267/2000; testo identico nel 2019 e oggi) dispone: «Il **sindaco** e il presidente della provincia nominano il segretario, che dipende funzionalmente dal capo dell'amministrazione, **scegliendolo tra gli iscritti all'albo** di cui all'articolo 98». L’art. 98, comma 1, TUEL precisa che si tratta dell’«albo nazionale dei segretari comunali e provinciali, al quale si accede per concorso». L’albo, dopo la soppressione dell’Agenzia autonoma (d.l. 78/2010), è gestito dal Ministero dell’Interno.",
     "perOpzione": {
       "A": "Il direttore generale non nomina il segretario: la nomina spetta al sindaco (o al presidente della provincia).",
       "B": "Corretta: nomina del sindaco, scelta tra gli iscritti all’albo nazionale cui si accede per concorso.",
@@ -401,7 +404,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "C",
     "suggerimento": "L’art. 21-quinquies della l. 241/1990 ammette la revoca per «nuova valutazione dell’interesse pubblico originario», ma con un’eccezione introdotta nel 2014.",
-    "spiegazione": "L’**art. 21-quinquies l. 241/1990** consente la revoca dei provvedimenti a efficacia durevole per sopravvenuti motivi di pubblico interesse, per mutamento non prevedibile della situazione di fatto e per **nuova valutazione dell’interesse pubblico originario**, quest’ultima però **salvo che per i provvedimenti di autorizzazione o di attribuzione di vantaggi economici** (limite aggiunto dal d.l. 133/2014). La revoca comporta l’obbligo di indennizzo per i pregiudizi subiti dagli interessati.",
+    "spiegazione": "L’**art. 21-quinquies l. 241/1990** consente la revoca dei provvedimenti a efficacia durevole per sopravvenuti motivi di pubblico interesse, per mutamento non prevedibile della situazione di fatto e per nuova valutazione dell’interesse pubblico originario, quest’ultima però con il limite posto dal comma 1 (aggiunto dal d.l. 133/2014, quindi già vigente nel 2019 e tuttora invariato): «**salvo che per i provvedimenti di autorizzazione o di attribuzione di vantaggi economici**, di **nuova valutazione dell'interesse pubblico originario**». La revoca comporta l’obbligo di indennizzo per i pregiudizi subiti dagli interessati.",
     "perOpzione": {
       "A": "Incompleta: la regola non vale per tutti i provvedimenti, perché la legge esclude autorizzazioni e attribuzioni di vantaggi economici.",
       "B": "La revoca per nuova valutazione dell’interesse originario è espressamente ammessa dalla legge, sia pure con eccezioni.",
@@ -417,7 +420,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "L’art. 3 della l. 20/1994 elenca gli atti soggetti al controllo che si svolge prima che l’atto produca effetti. Di che tipo di controllo si tratta?",
-    "spiegazione": "L’**art. 3, comma 1, della l. 20/1994** individua tassativamente gli atti sottoposti al **controllo preventivo di legittimità** della Corte dei conti, tra cui i provvedimenti di disposizione del demanio e del patrimonio immobiliare. Il controllo preventivo verifica solo la conformità alla legge, non l’opportunità (merito).",
+    "spiegazione": "L’**art. 3, comma 1, della l. 20/1994** (su questo punto identico nel 2019 e oggi) stabilisce che «Il **controllo preventivo di legittimità** della Corte dei conti si esercita esclusivamente sui seguenti atti non aventi forza di legge» e alla lettera f) elenca i «provvedimenti di disposizione del demanio e del patrimonio immobiliare». Il controllo preventivo verifica solo la conformità alla legge, non l’opportunità (merito).",
     "perOpzione": {
       "A": "La Corte dei conti non esercita un controllo di merito sugli atti: il controllo preventivo è solo di legittimità.",
       "B": "Corretta: è uno degli atti elencati all’art. 3, comma 1, soggetti a controllo preventivo di legittimità.",
@@ -433,7 +436,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "A cosa serve il preavviso di rigetto? Se poi il diniego si basa su ragioni mai comunicate, il privato ha potuto difendersi?",
-    "spiegazione": "Il preavviso di rigetto (**art. 10-bis l. 241/1990**) serve a far conoscere all’istante i motivi ostativi perché possa contrastarli con osservazioni. Per la giurisprudenza amministrativa il diniego non può fondarsi su **motivi del tutto nuovi** rispetto a quelli comunicati: sarebbe un’**elusione delle garanzie partecipative**, e occorrerebbe un nuovo preavviso. Sono ammesse solo precisazioni o integrazioni dei motivi già indicati. La riforma del d.l. 76/2020 ha rafforzato la regola: dopo un annullamento giudiziale l’amministrazione non può addurre per la prima volta motivi ostativi già emergenti dall’istruttoria.",
+    "spiegazione": "Il preavviso di rigetto (**art. 10-bis l. 241/1990**) serve a far conoscere all’istante i motivi ostativi perché possa contrastarli con osservazioni. Nel testo vigente nel 2019 il comma 1 prevedeva soltanto: «Dell'eventuale mancato accoglimento di tali osservazioni è data ragione nella motivazione del provvedimento finale». Su questa base la giurisprudenza amministrativa riteneva che il diniego non potesse fondarsi su **motivi del tutto nuovi** rispetto a quelli comunicati: sarebbe un’**elusione delle garanzie partecipative**, e occorreva un nuovo preavviso; erano ammesse solo precisazioni o integrazioni dei motivi già indicati. Il d.l. 76/2020 ha tradotto la regola nel testo: oggi l’amministrazione dà ragione del mancato accoglimento delle osservazioni «indicando, se ve ne sono, i soli motivi ostativi ulteriori che sono conseguenza delle osservazioni» e, dopo un annullamento in giudizio, «non può addurre per la prima volta motivi ostativi già emergenti dall'istruttoria del provvedimento annullato».",
     "perOpzione": {
       "A": "Valutare le osservazioni nella motivazione è un obbligo, ma non basta a sanare il fatto che i motivi finali non siano mai stati sottoposti al contraddittorio.",
       "B": "Corretta: fondare il diniego su motivi del tutto diversi da quelli preannunciati svuota la funzione del preavviso.",
@@ -449,7 +452,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Il codice del processo amministrativo (art. 91) elenca quattro mezzi; ricorda che in Cassazione contro le sentenze del Consiglio di Stato si va solo per un tipo di motivo (art. 111 Cost.).",
-    "spiegazione": "L’**art. 91 c.p.a.** (d.lgs. 104/2010) stabilisce che i mezzi di impugnazione delle sentenze sono **l’appello, la revocazione, l’opposizione di terzo e il ricorso per cassazione per i soli motivi inerenti alla giurisdizione**. Il limite del ricorso in Cassazione deriva dall’**art. 111, ottavo comma, Cost.**",
+    "spiegazione": "L’**art. 91 c.p.a.** (d.lgs. 104/2010) (comma 1, testo invariato dal 2010, quindi identico nel 2019 e oggi) stabilisce: «I mezzi di impugnazione delle sentenze sono **l'appello, la revocazione, l'opposizione di terzo e il ricorso per cassazione per i soli motivi inerenti alla giurisdizione**». Il limite del ricorso in Cassazione deriva dall’**art. 111, ottavo comma, Cost.**",
     "perOpzione": {
       "A": "Corretta: è l’elenco completo dell’art. 91 c.p.a.",
       "B": "Il ricorso per cassazione contro le decisioni del giudice amministrativo è ammesso solo per motivi di giurisdizione, non per qualsiasi violazione di legge.",
@@ -468,7 +471,7 @@ const SPIEGAZIONI = [
     "id": 36,
     "corretta": "C",
     "suggerimento": "Per potersi opporre dopo la conferenza, l’amministrazione «sensibile» deve aver fatto qualcosa durante la conferenza stessa: cosa?",
-    "spiegazione": "L’**art. 14-quinquies l. 241/1990** consente alle amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, dei beni culturali o della salute e della pubblica incolumità di proporre opposizione al Presidente del Consiglio, entro 10 giorni dalla comunicazione della determinazione conclusiva, **a condizione che abbiano espresso in modo inequivoco il proprio motivato dissenso prima della conclusione dei lavori**. Chi non partecipa o non esprime una posizione univoca si considera invece assenziente.",
+    "spiegazione": "L’**art. 14-quinquies l. 241/1990** consente alle amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, dei beni culturali o della salute e della pubblica incolumità di proporre opposizione al Presidente del Consiglio, entro 10 giorni dalla comunicazione della determinazione conclusiva, «**a condizione che abbiano espresso in modo inequivoco il proprio motivato dissenso prima della conclusione dei lavori della conferenza**» (comma 1, testo del d.lgs. 127/2016, identico nel 2019 e oggi). Chi non partecipa o non esprime la propria posizione si considera invece assenziente (art. 14-ter, comma 7, l. 241/1990: «Si considera acquisito l'assenso senza condizioni»).",
     "perOpzione": {
       "A": "Partecipare con un rappresentante non abilitato equivale a non esprimere una posizione valida: l’amministrazione si considera assenziente e non può opporsi.",
       "B": "Se la posizione non è espressa in modo univoco e vincolante, la legge la considera come assenso senza condizioni, che preclude l’opposizione.",
@@ -477,6 +480,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l241_1990_art_14_quinquies"
+      },
+      {
+        "normaId": "l241_1990_art_14_ter"
       }
     ]
   },
@@ -484,7 +490,7 @@ const SPIEGAZIONI = [
     "id": 37,
     "corretta": "C",
     "suggerimento": "L’art. 21-bis della l. 241/1990 ammette la clausola di immediata efficacia solo per alcuni provvedimenti limitativi: anche per quelli sanzionatori?",
-    "spiegazione": "Per l’**art. 21-bis l. 241/1990** il provvedimento limitativo della sfera giuridica dei privati **acquista efficacia con la comunicazione** al destinatario. La clausola motivata di immediata efficacia è ammessa **solo per i provvedimenti non aventi carattere sanzionatorio**. Un provvedimento sanzionatorio non comunicato è quindi sempre inefficace.",
+    "spiegazione": "Per l’**art. 21-bis, comma 1, l. 241/1990** (identico nel 2019 e oggi) «Il provvedimento limitativo della sfera giuridica dei privati **acquista efficacia** nei confronti di ciascun destinatario **con la comunicazione** allo stesso effettuata»; la clausola di immediata efficacia è ammessa solo per il provvedimento limitativo «**non avente carattere sanzionatorio**», che «può contenere una motivata clausola di immediata efficacia». Un provvedimento sanzionatorio non comunicato è quindi sempre inefficace.",
     "perOpzione": {
       "A": "La comunicazione è condizione di efficacia, non solo il punto da cui decorre il termine per impugnare: senza di essa il provvedimento limitativo non produce effetti.",
       "B": "La clausola di immediata efficacia è esclusa proprio per i provvedimenti sanzionatori.",
@@ -500,7 +506,7 @@ const SPIEGAZIONI = [
     "id": 38,
     "corretta": "B",
     "suggerimento": "Nel sistema UE chi attua di norma il diritto dell’Unione? Quando invece serve un’esecuzione uniforme?",
-    "spiegazione": "L’**art. 291 TFUE** stabilisce che gli **Stati membri** adottano le misure di diritto interno necessarie per attuare gli atti giuridicamente vincolanti dell’Unione. Quando sono necessarie **condizioni uniformi di esecuzione**, gli atti conferiscono competenze di esecuzione alla **Commissione** (o, in casi specifici debitamente motivati e in materia di PESC, al Consiglio).",
+    "spiegazione": "L’**art. 291 TFUE** stabilisce che «Gli **Stati membri** adottano tutte le misure di diritto interno necessarie per l'attuazione degli atti giuridicamente vincolanti dell'Unione» (par. 1). «Allorché sono necessarie **condizioni uniformi di esecuzione** degli atti giuridicamente vincolanti dell'Unione, questi conferiscono competenze di esecuzione alla **Commissione** o, in casi specifici debitamente motivati e nelle circostanze previste agli articoli 24 e 26 del trattato sull'Unione europea, al Consiglio» (par. 2; gli artt. 24 e 26 TUE riguardano la PESC).",
     "perOpzione": {
       "A": "Le agenzie europee non sono le titolari generali dell’esecuzione: il ruolo spetta in primo luogo agli Stati membri.",
       "B": "Corretta: è la regola dell’art. 291 TFUE (esecuzione statale, Commissione se servono condizioni uniformi).",
@@ -509,6 +515,12 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "tfue_art_291"
+      },
+      {
+        "normaId": "tue_art_24"
+      },
+      {
+        "normaId": "tue_art_26"
       }
     ]
   },
@@ -557,7 +569,7 @@ const SPIEGAZIONI = [
     "suggerimento": "In un’economia di puro scambio non c’è produzione: la curva dei contratti riguarda solo le preferenze dei consumatori.",
     "spiegazione": "Nella scatola di Edgeworth la **curva dei contratti dello scambio** è il luogo delle allocazioni Pareto-efficienti, dove le curve di indifferenza dei due consumatori sono tangenti, cioè i loro **saggi marginali di sostituzione sono uguali**. Non entrano in gioco SMT o SMST, che riguardano la produzione.",
     "perOpzione": {
-      "A": "Descrive l’efficienza paretiana generale (scambio + produzione + composizione del prodotto), non la sola curva dei contratti dello scambio.",
+      "A": "Mescola condizioni di efficienza che riguardano anche la produzione (SMT e SMST): non è la curva dei contratti dello scambio, che in un’economia di puro scambio considera solo i SMS dei consumatori.",
       "B": "È la curva dei contratti della produzione, riferita a fattori produttivi e non a beni di consumo.",
       "C": "Corretta: uguaglianza dei SMS dei consumatori, condizione di efficienza nello scambio."
     }
@@ -632,7 +644,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "L’armonizzazione non ha abolito la contabilità finanziaria: le ha affiancato un altro sistema, collegato tramite un piano dei conti.",
-    "spiegazione": "La **l. 196/2009** (art. 2) e i decreti attuativi (d.lgs. 91/2011 per le amministrazioni pubbliche, d.lgs. 118/2011 per Regioni ed enti locali) prevedono che le amministrazioni in contabilità finanziaria adottino, tramite un **piano dei conti integrato**, un sistema di **contabilità economico-patrimoniale in affiancamento** a quella finanziaria, a fini conoscitivi. La contabilità finanziaria resta il sistema autorizzatorio. Oggi la riforma 1.15 del PNRR punta a introdurre un sistema unico di contabilità economico-patrimoniale (accrual) per le PA, ancora in corso di attuazione.",
+    "spiegazione": "La **l. 196/2009** (art. 2, comma 2, lettere a e d: «comune piano dei conti integrato» e «affiancamento, ai fini conoscitivi, al sistema di contabilità finanziaria di un sistema e di schemi di contabilità economico-patrimoniale») e i decreti attuativi (d.lgs. 91/2011 per le amministrazioni pubbliche diverse da Regioni ed enti locali; per questi il d.lgs. 118/2011, adottato in base alla l. 42/2009 come modificata dall’art. 2, comma 6, della stessa l. 196/2009) prevedono che le amministrazioni in contabilità finanziaria adottino, tramite un **piano dei conti integrato**, un sistema di **contabilità economico-patrimoniale in affiancamento** a quella finanziaria, a fini conoscitivi. La contabilità finanziaria resta il sistema autorizzatorio. Oggi la riforma 1.15 del PNRR punta a introdurre un sistema unico di contabilità economico-patrimoniale (accrual) per le PA, ancora in corso di attuazione.",
     "perOpzione": {
       "A": "Corretta: affiancamento della contabilità economico-patrimoniale, con piano dei conti integrato, a fini conoscitivi.",
       "B": "Non è previsto il passaggio alla contabilità civilistica: questa riguarda le amministrazioni già in contabilità economica, come le società.",
@@ -729,7 +741,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "«Might have been» esprime una possibilità, non una previsione certa; mal si concilia con la frase successiva («were to be the norm»).",
       "B": "Corretta: è il future perfect visto dal passato, coerente con «Little did I know» e con «grew up».",
-      "C": "«Will have been» è il future perfect riferito al presente: non si accorda con la narrazione al passato."
+      "C": "«Will have been» è il future perfect ordinario, che guarda al futuro dal presente: non si accorda con la narrazione al passato."
     }
   },
   {

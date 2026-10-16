@@ -273,7 +273,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "La Costituzione non richiede una legge costituzionale: basta la legge ordinaria dello Stato.",
       "B": "L’ordinamento della capitale è materia statale, non regionale: la Regione Lazio non ha questa competenza.",
-      "C": "È la formula dell’art. 114, terzo comma, Cost.: la legge dello Stato disciplina l’ordinamento di Roma capitale."
+      "C": "È quanto dispone l’art. 114, terzo comma, Cost.: «La legge dello Stato disciplina il suo ordinamento» (di Roma capitale)."
     },
     "riferimenti": [
       {
@@ -288,7 +288,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "B",
     "suggerimento": "L’insindacabilità protegge la funzione o la persona? Fuori dal Parlamento, cosa deve legare una dichiarazione all’attività parlamentare?",
-    "spiegazione": "Per la Corte costituzionale (dalle sentenze nn. 10 e 11 del 2000 in poi) l’art. 68, primo comma, Cost. copre anche le dichiarazioni rese fuori dalle Camere solo se c’è un **nesso funzionale**: devono essere sostanzialmente corrispondenti a opinioni già espresse nell’esercizio delle funzioni, con finalità divulgativa. Non basta la qualità di parlamentare, né il contesto politico.",
+    "spiegazione": "L’art. 68, primo comma, Cost. dispone: «I membri del Parlamento non possono essere chiamati a rispondere delle opinioni espresse e dei voti dati **nell'esercizio delle loro funzioni**». Per la Corte costituzionale (dalle sentenze nn. 10 e 11 del 2000 in poi) questa garanzia copre anche le dichiarazioni rese fuori dalle Camere solo se c’è un **nesso funzionale**: devono essere sostanzialmente corrispondenti a opinioni già espresse nell’esercizio delle funzioni, con finalità divulgativa. Non basta la qualità di parlamentare, né il contesto politico.",
     "perOpzione": {
       "A": "L’insindacabilità è una garanzia della funzione parlamentare, non un privilegio personale: senza nesso funzionale le dichiarazioni non sono coperte.",
       "B": "È l’orientamento costante della Corte: le dichiarazioni esterne sono coperte se riproducono sostanzialmente il contenuto di atti parlamentari, per divulgarli.",
@@ -304,7 +304,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "L’art. 17 Cost. distingue tre tipi di luogo: privato, aperto al pubblico e pubblico. Per quale serve il preavviso?",
-    "spiegazione": "L’art. 17 Cost. dispone: «Per le riunioni, **anche in luogo aperto al pubblico, non è richiesto preavviso**. Delle riunioni in luogo pubblico deve essere dato preavviso alle autorità, che possono vietarle soltanto per comprovati motivi di sicurezza o di incolumità pubblica». Il luogo aperto al pubblico (teatro, cinema, sala) è accessibile a determinate condizioni ed è diverso dal luogo pubblico (piazza, strada).",
+    "spiegazione": "L’art. 17, secondo e terzo comma, Cost. dispone: «Per le riunioni, **anche in luogo aperto al pubblico, non è richiesto preavviso**. Delle riunioni in luogo pubblico deve essere dato preavviso alle autorità, che possono vietarle soltanto per comprovati motivi di sicurezza o di incolumità pubblica». Il luogo aperto al pubblico (teatro, cinema, sala) è accessibile a determinate condizioni ed è diverso dal luogo pubblico (piazza, strada).",
     "perOpzione": {
       "A": "La Costituzione non prevede mai un’autorizzazione per le riunioni, neppure in luogo pubblico.",
       "B": "È il testo dell’art. 17, secondo comma: per le riunioni in luogo aperto al pubblico non serve preavviso.",
@@ -336,7 +336,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "A",
     "suggerimento": "L’esecutorietà dei provvedimenti amministrativi è libera o vincolata dal principio di legalità?",
-    "spiegazione": "L’art. 21-ter della l. 241/1990 prevede che, se l’interessato non ottempera, le pubbliche amministrazioni, **previa diffida**, possono provvedere all’esecuzione coattiva **nelle ipotesi e secondo le modalità previste dalla legge**. L’esecuzione forzata è un potere eccezionale e deve avere una base legale.",
+    "spiegazione": "L’art. 21-ter, comma 1, della l. 241/1990 dispone: «Qualora l'interessato non ottemperi, le pubbliche amministrazioni, **previa diffida**, possono provvedere all'esecuzione coattiva **nelle ipotesi e secondo le modalità previste dalla legge**». L’esecuzione forzata è un potere eccezionale e deve avere una base legale.",
     "perOpzione": {
       "A": "Riproduce l’art. 21-ter, comma 1, l. 241/1990: diffida e poi esecuzione coattiva nei casi e modi previsti dalla legge.",
       "B": "Le modalità non le stabilisce liberamente l’amministrazione: per il principio di legalità devono essere previste dalla legge.",
@@ -352,7 +352,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "Per far eseguire una sentenza amministrativa c’è un rimedio tipico: lo stesso strumento serve anche per le misure cautelari?",
-    "spiegazione": "L’art. 59 del codice del processo amministrativo (d.lgs. 104/2010) prevede che, se le misure cautelari non sono eseguite, l’interessato, **con istanza motivata** notificata alle altre parti, chieda al TAR le opportune disposizioni attuative; il TAR **esercita i poteri inerenti al giudizio di ottemperanza**.",
+    "spiegazione": "L’art. 59, comma 1, del codice del processo amministrativo (c.p.a., d.lgs. 104/2010) dispone: «Qualora i provvedimenti cautelari non siano eseguiti, in tutto o in parte, l'interessato, **con istanza motivata** e notificata alle altre parti, può chiedere al tribunale amministrativo regionale le opportune misure attuative. Il tribunale **esercita i poteri inerenti al giudizio di ottemperanza**».",
     "perOpzione": {
       "A": "I motivi aggiunti servono a impugnare nuovi atti o a dedurre nuove censure, non a far eseguire una misura cautelare.",
       "B": "È il meccanismo dell’art. 59 c.p.a.: istanza motivata allo stesso TAR, che decide con i poteri del giudice dell’ottemperanza.",
@@ -368,7 +368,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "B",
     "suggerimento": "La riforma Delrio (l. 56/2014) ha costruito gli organi della città metropolitana sul modello «assembleare»: c’è una giunta?",
-    "spiegazione": "Ai sensi dell’art. 1, comma 7, della l. 56/2014 sono organi della città metropolitana: **il sindaco metropolitano, il consiglio metropolitano e la conferenza metropolitana**. Non è prevista una giunta.",
+    "spiegazione": "L’art. 1, comma 7, della l. 56/2014 dispone: «Sono organi della città metropolitana: a) **il sindaco metropolitano**; b) **il consiglio metropolitano**; c) **la conferenza metropolitana**». Non è prevista una giunta.",
     "perOpzione": {
       "A": "Manca il consiglio metropolitano e compare la giunta, che la legge non prevede.",
       "B": "È l’elenco esatto dell’art. 1, comma 7, l. 56/2014.",
@@ -384,7 +384,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "Un provvedimento che non permette di capire su che cosa incide: gli manca un requisito di legittimità o un elemento essenziale?",
-    "spiegazione": "Per l’art. 21-septies della l. 241/1990 è **nullo** il provvedimento che manca degli **elementi essenziali**, tra cui l’oggetto, che deve essere determinato o determinabile. Un’ordinanza di demolizione che non consente di individuare l’edificio non ha un oggetto: il vizio è la nullità, non la semplice annullabilità.",
+    "spiegazione": "L’art. 21-septies, comma 1, della l. 241/1990 dispone: «È **nullo** il provvedimento amministrativo che manca degli **elementi essenziali**». Tra questi la dottrina e la giurisprudenza includono l’oggetto, che deve essere determinato o determinabile. Un’ordinanza di demolizione che non consente di individuare l’edificio non ha un oggetto: il vizio è la nullità, non la semplice annullabilità.",
     "perOpzione": {
       "A": "Se l’edificio non è individuabile, manca l’oggetto, elemento essenziale: è nullità ai sensi dell’art. 21-septies l. 241/1990.",
       "B": "L’eccesso di potere è un vizio di legittimità della funzione; qui il problema è più grave: manca un elemento essenziale dell’atto.",
@@ -404,9 +404,9 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "C",
     "suggerimento": "L’art. 4 del d.lgs. 165/2001 separa politica e gestione: quali di queste attività sono di indirizzo e quali gestionali?",
-    "spiegazione": "L’art. 4, comma 1, del d.lgs. 165/2001 attribuisce agli organi di governo le funzioni di indirizzo politico-amministrativo, elencando tra l’altro **le richieste di pareri alle autorità amministrative indipendenti e al Consiglio di Stato**. Il comma 2 riserva invece ai dirigenti la gestione finanziaria, tecnica e amministrativa con autonomi poteri di spesa e di organizzazione delle risorse umane, strumentali e di controllo.",
+    "spiegazione": "L’art. 4, comma 1, del d.lgs. 165/2001 attribuisce agli organi di governo le funzioni di indirizzo politico-amministrativo, elencando alla lettera f): «**le richieste di pareri alle autorità amministrative indipendenti ed al Consiglio di Stato**». Il comma 2 riserva invece ai dirigenti la gestione finanziaria, tecnica e amministrativa con autonomi poteri di spesa e di organizzazione delle risorse umane, strumentali e di controllo.",
     "perOpzione": {
-      "A": "La gestione finanziaria, tecnica e amministrativa con autonomi poteri di spesa spetta ai dirigenti (art. 4, comma 2).",
+      "A": "La gestione finanziaria, tecnica e amministrativa con autonomi poteri di spesa spetta ai dirigenti (art. 4, comma 2, d.lgs. 165/2001).",
       "B": "Anche l’organizzazione delle risorse umane, strumentali e di controllo è compito dei dirigenti, non degli organi politici.",
       "C": "È espressamente prevista tra le attribuzioni degli organi di governo dall’art. 4, comma 1, d.lgs. 165/2001."
     },
@@ -420,15 +420,18 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "Pensa agli atti che si rivolgono a una generalità di destinatari: avrebbe senso la partecipazione individuale del capo III?",
-    "spiegazione": "L’art. 13 della l. 241/1990 esclude le norme sulla partecipazione del capo III per l’attività diretta all’emanazione di **atti normativi, amministrativi generali, di pianificazione e di programmazione**, che restano regolati dalle norme speciali (oltre ai procedimenti tributari e ad alcuni altri casi).",
+    "spiegazione": "L’art. 13, comma 1, della l. 241/1990 dispone: «Le disposizioni contenute nel presente capo non si applicano nei confronti dell'attività della pubblica amministrazione diretta alla emanazione di **atti normativi, amministrativi generali, di pianificazione e di programmazione**, per i quali restano ferme le particolari norme che ne regolano la formazione». Il comma 2 esclude anche i procedimenti tributari e alcuni altri procedimenti speciali.",
     "perOpzione": {
       "A": "È l’esclusione prevista dall’art. 13, comma 1, l. 241/1990.",
-      "B": "La conferenza di servizi non esclude la partecipazione dei privati: l’art. 13 non la menziona.",
-      "C": "L’art. 13 non esclude la partecipazione per l’attività consultiva obbligatoria: l’ipotesi non è prevista."
+      "B": "La conferenza di servizi non esclude la partecipazione dei privati: l’art. 13 l. 241/1990 non la menziona.",
+      "C": "L’art. 13 l. 241/1990 non esclude la partecipazione per l’attività consultiva obbligatoria: l’ipotesi non è prevista."
     },
     "riferimenti": [
       {
         "normaId": "l241_1990_art_13"
+      },
+      {
+        "normaId": "l241_1990_art_14"
       }
     ]
   },
@@ -436,7 +439,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Il cuore dell’in house è un tipo particolare di controllo, più che una percentuale di capitale.",
-    "spiegazione": "Il requisito centrale dell’in house è il **controllo analogo**: l’amministrazione esercita sulla società un controllo analogo a quello sui propri servizi, con **influenza determinante sugli obiettivi strategici e sulle decisioni significative** (art. 5 d.lgs. 50/2016 allora vigente; oggi art. 2 d.lgs. 175/2016, richiamato dall’art. 7 d.lgs. 36/2023, e art. 12 della direttiva 2014/24/UE). Servono anche l’attività prevalente (oltre l’80%) a favore dell’ente e, di regola, l’assenza di capitali privati, salvo le eccezioni previste dalla legge.",
+    "spiegazione": "Il requisito centrale dell’in house è il **controllo analogo**: l’amministrazione esercita sulla società un controllo analogo a quello sui propri servizi, con **influenza determinante sugli obiettivi strategici e sulle decisioni significative** (art. 5, comma 2, d.lgs. 50/2016, vigente nel 2019: «qualora essa eserciti un'influenza determinante sia sugli obiettivi strategici che sulle decisioni significative della persona giuridica controllata»; la stessa nozione è nell’art. 2, comma 1, lett. c), d.lgs. 175/2016, in vigore già allora e oggi, e nell’art. 12 della direttiva 2014/24/UE; oggi l’affidamento diretto a società in house è regolato dall’art. 7, comma 2, d.lgs. 36/2023). Servono anche l’attività prevalente (oltre l’80%) a favore dell’ente e, di regola, l’assenza di capitali privati, salvo le eccezioni previste dalla legge.",
     "perOpzione": {
       "A": "Descrive il controllo analogo nella formula del codice e del testo unico sulle società partecipate: è il requisito decisivo.",
       "B": "La sola partecipazione pubblica totale non basta: senza controllo analogo da parte dell’ente affidante l’affidamento diretto non è legittimo.",
@@ -450,10 +453,10 @@ const SPIEGAZIONI = [
         "normaId": "dlgs175_2016_art_2"
       },
       {
-        "normaId": "dlgs36_2023_art_7"
+        "normaId": "dir2014_24_art_12"
       },
       {
-        "normaId": "dir2014_24_art_12"
+        "normaId": "dlgs36_2023_art_7"
       }
     ]
   },
@@ -461,7 +464,7 @@ const SPIEGAZIONI = [
     "id": 36,
     "corretta": "B",
     "suggerimento": "L’accesso civico è pensato come diritto di «chiunque»: serve giustificare un interesse?",
-    "spiegazione": "L’art. 5, comma 3, del d.lgs. 33/2013 dispone che l’istanza di accesso civico (sia semplice sia generalizzato) **non richiede motivazione**. È proprio ciò che la distingue dall’accesso documentale della l. 241/1990, che richiede un interesse diretto, concreto e attuale.",
+    "spiegazione": "L’art. 5, comma 3, del d.lgs. 33/2013 dispone: «L'istanza di accesso civico identifica i dati, le informazioni o i documenti richiesti e **non richiede motivazione**»; la regola vale sia per l’accesso civico semplice (comma 1) sia per quello generalizzato (comma 2). È proprio ciò che la distingue dall’accesso documentale della l. 241/1990, che richiede un interesse diretto, concreto e attuale.",
     "perOpzione": {
       "A": "Il decreto non prevede casi in cui l’istanza vada motivata.",
       "B": "È la regola dell’art. 5, comma 3, d.lgs. 33/2013: l’istanza non richiede motivazione.",
@@ -477,11 +480,11 @@ const SPIEGAZIONI = [
     "id": 37,
     "corretta": "C",
     "suggerimento": "L’art. 17-bis della l. 241/1990 prevede termini diversi per alcuni interessi «sensibili»: li esclude o li include?",
-    "spiegazione": "L’art. 17-bis della l. 241/1990 (introdotto dalla l. 124/2015) estende il silenzio assenso tra amministrazioni anche ai casi in cui sono richiesti assensi, concerti o nulla osta di amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, dei beni culturali e **della salute dei cittadini**; in questi casi il termine è di 90 giorni (salvo termini diversi fissati dalla legge).",
+    "spiegazione": "L’art. 17-bis della l. 241/1990 (introdotto dalla l. 124/2015) estende il silenzio assenso tra amministrazioni anche a questi casi. Il comma 3 dispone: «Le disposizioni dei commi 1 e 2 si applicano anche ai casi in cui è prevista l'acquisizione di assensi, concerti o nulla osta comunque denominati di amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, dei beni culturali e **della salute dei cittadini**»; in questi casi il termine è di 90 giorni (salvo termini diversi fissati dalla legge).",
     "perOpzione": {
       "A": "La norma non distingue in base al livello di governo: vale per tutte le amministrazioni coinvolte.",
-      "B": "Per i rapporti tra amministrazioni l’art. 17-bis include espressamente anche gli interessi sensibili, come la salute, con un termine più lungo.",
-      "C": "L’art. 17-bis, comma 3, applica il silenzio assenso anche alle amministrazioni preposte alla tutela della salute dei cittadini."
+      "B": "Per i rapporti tra amministrazioni l’art. 17-bis l. 241/1990 include espressamente anche gli interessi sensibili, come la salute, con un termine più lungo.",
+      "C": "L’art. 17-bis, comma 3, l. 241/1990 applica il silenzio assenso anche alle amministrazioni preposte alla tutela della salute dei cittadini."
     },
     "riferimenti": [
       {
@@ -493,7 +496,7 @@ const SPIEGAZIONI = [
     "id": 38,
     "corretta": "A",
     "suggerimento": "Distingui il Consiglio dell’Unione (ministri) dal Consiglio europeo (capi di Stato o di governo): quale si riunisce in «formazioni»?",
-    "spiegazione": "Il **Consiglio dell’UE** si riunisce in diverse formazioni (art. 16, par. 6, TUE). Il Consiglio «Affari generali» e il Consiglio «**Affari esteri**» sono previsti direttamente dal Trattato; quest’ultimo è presieduto dall’Alto rappresentante. Il Consiglio europeo non ha formazioni.",
+    "spiegazione": "L’art. 16, par. 6, TUE dispone: «Il Consiglio si riunisce in varie formazioni, il cui elenco è adottato conformemente all'articolo 236 del trattato sul funzionamento dell'Unione europea». Il Consiglio «Affari generali» e il Consiglio «**Affari esteri**» sono previsti direttamente dallo stesso paragrafo; quest’ultimo è presieduto dall’Alto rappresentante (art. 18, par. 3, TUE). Il Consiglio europeo non ha formazioni.",
     "perOpzione": {
       "A": "Il Consiglio Affari esteri è una delle formazioni del Consiglio dell’UE (art. 16, par. 6, TUE).",
       "B": "Il Consiglio europeo (capi di Stato o di governo) non si riunisce in formazioni: è il Consiglio dell’UE ad averle.",
@@ -502,6 +505,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "tue_art_16"
+      },
+      {
+        "normaId": "tue_art_18"
       }
     ]
   },
@@ -509,7 +515,7 @@ const SPIEGAZIONI = [
     "id": 39,
     "corretta": "C",
     "suggerimento": "I ricorrenti «non privilegiati» hanno condizioni di legittimazione più strette: quali sono, dopo il Trattato di Lisbona?",
-    "spiegazione": "L’art. 263, quarto comma, TFUE consente a ogni persona fisica o giuridica di impugnare gli atti **adottati nei suoi confronti**, quelli che la **riguardano direttamente e individualmente** e gli **atti regolamentari** che la riguardano direttamente e **non comportano misure di esecuzione** (novità introdotta dal Trattato di Lisbona).",
+    "spiegazione": "L’art. 263, quarto comma, TFUE dispone: «Qualsiasi persona fisica o giuridica può proporre, alle condizioni previste al primo e secondo comma, un ricorso contro gli atti **adottati nei suoi confronti** o che la **riguardano direttamente e individualmente**, e contro gli **atti regolamentari** che la riguardano direttamente e che **non comportano alcuna misura d'esecuzione**». L’ultima ipotesi è una novità introdotta dal Trattato di Lisbona.",
     "perOpzione": {
       "A": "La legittimazione dei privati non si estende a tutti gli atti non legislativi: servono i requisiti dell’incidenza diretta (e individuale).",
       "B": "È troppo restrittiva: oltre agli atti di cui il privato è destinatario, la legittimazione copre gli atti che lo riguardano direttamente e individualmente e certi atti regolamentari.",
@@ -525,7 +531,7 @@ const SPIEGAZIONI = [
     "id": 40,
     "corretta": "C",
     "suggerimento": "I giudici dell’Aja rappresentano il proprio Paese o sono magistrati indipendenti?",
-    "spiegazione": "Lo Statuto della Corte internazionale di giustizia (art. 2) la definisce come un collegio di **magistrati indipendenti**, eletti indipendentemente dalla nazionalità tra persone di alta moralità e competenza. I giudici esercitano le funzioni a titolo individuale e non possono ricevere istruzioni da alcun governo; non sono organi degli Stati.",
+    "spiegazione": "Lo Statuto della Corte internazionale di giustizia (art. 2) la definisce come un collegio di **magistrati indipendenti**, eletti indipendentemente dalla nazionalità tra persone di alta moralità e competenza. I giudici non sono organi degli Stati di cui sono cittadini: non possono esercitare funzioni politiche o amministrative (art. 16 dello Statuto della Corte internazionale di giustizia) e prima di entrare in carica dichiarano solennemente di esercitare le loro funzioni in modo imparziale e coscienzioso (art. 20 dello Statuto). Il divieto di ricevere istruzioni da un governo, indicato nell’opzione C, non è scritto testualmente nello Statuto ma discende da questa indipendenza.",
     "perOpzione": {
       "A": "I giudici non sono organi dello Stato di cittadinanza e non ne esprimono la volontà: sono magistrati indipendenti.",
       "B": "L’ufficio è a titolo individuale, ma il giudice non agisce nell’interesse del proprio Stato: deve essere imparziale.",
@@ -624,7 +630,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "Cambiare i criteri di valutazione è vietato del tutto o è un’eccezione da giustificare?",
-    "spiegazione": "Il principio della **costanza (e comparabilità)** dei criteri di valutazione, tra i principi contabili generali dell’allegato 1 al d.lgs. 118/2011 (e, per le imprese, art. 2423-bis c.c.), ammette deroghe solo **eccezionali**, che devono essere **motivate** e illustrate nella nota integrativa o in un documento analogo (per esempio la relazione sulla gestione), indicandone gli effetti.",
+    "spiegazione": "Il principio della **costanza** dei criteri di valutazione ammette deroghe solo **eccezionali** e **motivate**. Per le imprese l’art. 2423-bis, secondo comma, c.c. dispone: «Deroghe al principio enunciato nel numero 6) del comma precedente sono consentite in casi eccezionali. **La nota integrativa deve motivare la deroga** e indicarne l'influenza sulla rappresentazione della situazione patrimoniale e finanziaria e del risultato economico». Per le amministrazioni pubbliche il principio n. 11 «della continuità e della costanza» dell’allegato 1 al d.lgs. 118/2011 richiede che il cambiamento dei criteri di valutazione rappresenti un’eccezione «opportunamente descritta e documentata in apposite relazioni nel contesto del sistema di bilancio».",
     "perOpzione": {
       "A": "La deroga è ammessa come eccezione, purché motivata nella nota integrativa o in un documento analogo.",
       "B": "Il principio non è assoluto: ammette deroghe in casi eccezionali, se motivate.",

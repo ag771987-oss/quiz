@@ -4,10 +4,10 @@ Branch `norme-originali`, consultazione delle fonti del **16/10/2026**.
 
 ## In sintesi
 
-- **135 articoli** scaricati (122 nella prima tappa, 13 nella seconda revisione) con il testo integrale e letterale: 108 da **normattiva.it** (testo vigente) e 27 da **EUR-Lex** (TUE, TFUE e Protocollo 19 nella versione consolidata della GU C 202 del 7.6.2016; Carta dei diritti fondamentali).
-- **121 domande** delle 10 prove collegate a **183 riferimenti** (`riferimenti: [{normaId}]`); ogni prova ha nel manifest la lista `norme` dei file da caricare.
-- **20 correzioni** in 17 domande nella prima verifica e **174** nella seconda revisione di tutte le 600 spiegazioni (vedi sotto). **Nessuna chiave (`corretta`) modificata**; nessun caso «da decidere».
-- 1 articolo citato non scaricato: art. 83 d.lgs. 50/2016 (abrogato).
+- **215 articoli** scaricati (122 nella prima tappa, 13 nella seconda revisione, 80 per il 7° corso-concorso) con il testo integrale e letterale: 183 da **normattiva.it** (testo vigente, o alla data della prova per le norme abrogate) e 32 da **EUR-Lex** (TUE, TFUE e Protocollo 19 nella versione consolidata della GU C 202 del 7.6.2016; Carta dei diritti fondamentali).
+- **216 domande** delle 16 prove collegate a **347 riferimenti** (`riferimenti: [{normaId}]`); ogni prova ha nel manifest la lista `norme` dei file da caricare.
+- **20 correzioni** in 17 domande nella prima verifica **174** nella seconda revisione delle 600 spiegazioni dal 2022 al 2025 e **115** nelle 360 del 7° corso-concorso (vedi sotto). **Nessuna chiave (`corretta`) modificata**; nessun caso «da decidere».
+- Norme abrogate (d.lgs. 50/2016, art. 323 c.p.) nel testo in vigore alla data della prova. Non sono scaricati solo i trattati internazionali senza testo ufficiale italiano su normattiva o EUR-Lex: Carta ONU, Statuto della Corte internazionale di giustizia, Costituzione dell'ILO.
 
 ## Come funziona
 
@@ -28,11 +28,11 @@ Note sul testo:
 
 ## Norme non trovate o non scaricate
 
-| Citazione | Dove | Motivo |
-|---|---|---|
-| art. 83, co. 9, d.lgs. 50/2016 | 8° CC Busta 3, q24 | Codice dei contratti abrogato. Normattiva non ha un testo vigente, quindi non è stato inserito. La spiegazione cita già l'articolo che lo sostituisce, l'art. 101 d.lgs. 36/2023, che è stato scaricato e collegato. |
+Situazione aggiornata dopo il lavoro sul 7° corso-concorso:
+- **art. 83, co. 9, d.lgs. 50/2016** (8° CC Busta 3, q24): nella prima tappa non era stato inserito perché abrogato. Ora è in archivio nel testo in vigore al 15/03/2022, data della prova.
+- **Trattati internazionali senza testo ufficiale italiano su normattiva o EUR-Lex** (Carta ONU, Statuto della Corte internazionale di giustizia, Costituzione dell'ILO): non scaricati, citati solo in parafrasi. Dettagli nella sezione sul 7° corso-concorso.
 
-Gli atti citati solo come fonte di modifiche o come contesto, senza indicare un articolo, non sono stati scaricati: d.l. 76/2020, d.l. 34/2020, d.l. 56/2021, l. 36/1994, l. cost. 1/2012 e 3/2001, d.lgs. 118/2011, l. 160/2019, d.P.R. 1199/1971, d.P.R. 445/2000, d.lgs. 39/2013, d.lgs. 195/2005, Cass. SU 500/1999, Corte cost. 7/1996. Non sono stati scaricati nemmeno alcuni articoli richiamati solo per contesto: artt. 50-ter e 62 CAD (10° CC Busta 1, q48), artt. 20-22 d.l. 83/2012 e art. 6 del Protocollo 19. Si possono aggiungere al catalogo se servono.
+Gli atti citati solo come fonte di modifiche o come contesto, senza indicare un articolo, non sono stati scaricati: d.l. 76/2020, d.l. 34/2020, d.l. 56/2021, l. 36/1994, l. cost. 1/2012 e 3/2001, l. 160/2019, d.P.R. 445/2000, d.lgs. 195/2005, Cass. SU 500/1999, Corte cost. 7/1996. Non sono stati scaricati nemmeno gli artt. 50-ter e 62 CAD (10° CC Busta 1, q48) e l'art. 6 del Protocollo 19, richiamati solo per contesto. Il principio n. 11 dell'allegato 1 al d.lgs. 118/2011 è stato verificato su normattiva, ma non è in archivio perché non è un articolo.
 
 ## Correzioni alle spiegazioni
 
@@ -291,26 +291,229 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | sna-cc11-busta3 | 35 | spiegazione | citazione testuale aggiunta | … → L’**art. 79, par. 2, TFUE** consente a Parlamento e Consiglio di adottare misure su condizioni di ingresso e soggiorno, immigrazione clandestina e tratta e, alla lett. b), sulla «definizione dei diritti dei cittadini di paesi terzi regolarmente soggiornanti … | Citazione testuale dell'art. 79, par. 2, lett. b), e par. 5, TFUE. |
 | sna-cc11-busta3 | 43 | spiegazione | citazione testuale aggiunta | … → Per l’**art. 1, co. 1, lett. b), d.lgs. 286/1999** le amministrazioni si dotano di strumenti per «verificare l'efficacia, efficienza ed economicità dell'azione amministrativa al fine di ottimizzare, anche mediante tempestivi interventi di correzione, il … | Citazione testuale dell'art. 1, co. 1, lett. b), d.lgs. 286/1999. |
 
+## 7° corso-concorso (prove del 22-24 gennaio 2019)
+
+Branch `norme-cc07`, creato da `revisione-quiz` e allineato al commit `29636bb`. Le prove sono sei, Test 3, 4, 5, 6, 7 e 12 nella versione A, con chiave ricostruita. Le spiegazioni sono state verificate sul testo ufficiale delle norme. **La chiave segue la norma in vigore alla data della prova (22/01/2019)**. Quando la norma è cambiata dopo, la spiegazione riporta tra «» il testo del 2019 e indica quello attuale.
+
+### Norme aggiunte
+
+Sono stati aggiunti 80 articoli: l'archivio passa da 135 a 215 norme, con 216 domande collegate e 347 riferimenti. Tra le aggiunte:
+- **Costituzione:** artt. 3, 15, 17, 25, 32, 36, 68, 69, 74, 111, 114.
+- **l. 241/1990:** artt. 2-bis, 13, 14, 14-bis, 14-ter, 14-quater, 14-quinquies, 16, 17, 17-bis, 25, 29.
+- **d.lgs. 165/2001:** artt. 1, 4, 5, 14, 16, 21, 23-bis.
+- **c.p.a.:** artt. 43, 59, 61, 62, 91, 98.
+- **TUEL:** artt. 98, 99, 107, 108, 110.
+- **d.lgs. 36/2023:** artt. 7, 18, 72, 104, 108.
+- **c.c. e preleggi:** artt. 2103, 2423-bis, 2947 c.c.; art. 11 preleggi.
+- **UE:** artt. 18, 24, 26 TUE; art. 291 TFUE; art. 12 della direttiva 2014/24/UE (EUR-Lex).
+- **Altre:** l. 400/1988 art. 8; d.lgs. 150/2009 artt. 5 e 14; d.lgs. 33/2013 art. 5; d.lgs. 175/2016 art. 2; l. 42/2009 art. 24; l. 212/2000 art. 3; l. 81/2017 art. 18; l. 195/1958 art. 30; l. 352/1970 artt. 33 e 48; l. 234/2012 art. 30; l. 196/2009 art. 2; d.l. 83/2012 artt. 20 e 22; d.lgs. 300/1999 art. 9; d.l. 19/2026 art. 6.
+
+**Norme abrogate**, scaricate nella versione in vigore alla data della prova (URN normattiva con `!vig=`, data indicata nel campo `fonte` e in `vigenteAl`):
+- d.lgs. 50/2016, artt. 5, 32, 61, 89, 95 al 22/01/2019;
+- art. 83 al 15/03/2022 (8° CC Busta 3, q24);
+- art. 3 al 27/06/2023 (9° CC Prova 2, q31);
+- art. 323 c.p. (abuso d'ufficio, abrogato dalla l. 114/2024) al 22/01/2019.
+
+**Verifica del testo 2019.** Gli agenti hanno confrontato con normattiva al 22/01/2019 tutte le norme italiane su cui si fondano le risposte. Per il c.p.a. l'URN con data non funziona: le versioni sono state lette dall'albero dell'atto. Gli artt. 43, 59, 61, 62, 91 e 98 c.p.a. hanno l'ultima versione in vigore dal 2012 o da prima, quindi il testo del 2019 coincide con quello attuale. Le differenze che toccano le spiegazioni sono queste:
+- art. 10-bis l. 241/1990 (d.l. 76/2020);
+- art. 14-bis, co. 7, l. 241/1990 (termine da 45 a 30 giorni);
+- art. 16 l. 241/1990 («è in facoltà» diventato «procede»);
+- art. 19, co. 4, l. 241/1990;
+- art. 21-nonies l. 241/1990 (diciotto mesi nel 2019, poi dodici, oggi sei);
+- art. 23-bis d.lgs. 165/2001;
+- art. 95 d.lgs. 50/2016, confrontato con l'art. 108 d.lgs. 36/2023.
+
+**Nessuna di queste modifiche smentisce le chiavi.**
+
+### Citazioni senza testo
+
+`node strumenti/collega_norme.js` non elenca più citazioni senza testo. Le prime due regole valgono per tutte le prove, non solo per il 7°:
+- **Riconoscitore ampliato.** `norme/citazioni.js` ora riconosce «legge n. 241/1990», «d.lgs. n. 50/2016», «n. 165 del 2001», le date per esteso («30 marzo 2001, n. 165»), «codice del processo amministrativo», «c.p.», «preleggi», le direttive UE e i commi ordinali fino a «decimo».
+- **Rinvii dentro le citazioni.** Gli «articolo N» che compaiono dentro un testo di legge citato tra «» si collegano se il testo c'è; altrimenti non sono contati come citazioni mancanti, perché sono rinvii interni alla norma citata.
+- **Atto esplicito.** Nelle spiegazioni del 7° le citazioni ambigue indicano ora l'atto (20 correzioni).
+- **Fonti esterne.** Restano elencati a parte, come «fonti internazionali», i trattati che non hanno un testo ufficiale italiano su normattiva o EUR-Lex:
+  - Carta delle Nazioni Unite, artt. 23, 57, 63: la l. 848/1957 su normattiva riporta solo il testo francese;
+  - Statuto della Corte internazionale di giustizia, artt. 2, 3, 4, 8, 16, 20;
+  - Costituzione dell'ILO, artt. 3, 4.
+
+  Sono citati solo in parafrasi, senza «», e non sono stati scaricati.
+
+### Citazioni tra «» non letterali
+
+`node strumenti/verifica_citazioni.js` oggi controlla 529 frasi tra «»; 47 non risultano alla lettera nei testi in archivio. Le 20 delle prove dal 2022 al 2025 sono spiegate sopra. Le 27 del 7° sono state controllate una per una:
+- **6 riportano il testo del 2019, verificato su normattiva al 22/01/2019:**
+  - art. 10-bis l. 241/1990 (Test 6, q34);
+  - art. 21-nonies l. 241/1990, «diciotto mesi» (Test 7, q37);
+  - art. 23-bis d.lgs. 165/2001, due citazioni (Test 12, q35);
+  - art. 16 l. 241/1990, «è in facoltà» (Test 12, q37).
+- **1 riporta il testo anteriore al 2015**, verificato al 01/01/2015: art. 19 l. 241/1990 (Test 3, q37).
+- **2 vengono dall'allegato 1 al d.lgs. 118/2011** (principio n. 11, Test 5, q49), che non è in archivio. Sono state verificate su normattiva, identiche nella versione in vigore nel 2019 e in quella attuale.
+- **1 differisce solo per un carattere della fonte.** Il testo EUR-Lex dell'art. 263 TFUE ha «proporre‚» con una virgola tipografica anomala (Test 5, q39).
+- **17 non sono citazioni:** sinonimi e glosse nelle domande di lessico e comprensione («impiegare, consumare», «mettere in primo piano»), espressioni del brano con altre virgolette o al singolare («doppio Jobs Act»), esempi («ghiaccio bollente»), etichette nei suggerimenti («doppia maggioranza», «regola d'oro»), parafrasi dell'opzione (Test 4, q28).
+
+### Correzioni alle spiegazioni del 7°
+
+Sono state fatte 115 correzioni nelle sei prove. **Nessuna chiave (`corretta`) è stata modificata. Casi «da decidere»: nessuno.**
+
+| Tipo | Numero |
+|---|---|
+| citazione testuale aggiunta | 58 |
+| atto reso esplicito | 20 |
+| imprecisione | 15 |
+| citazione resa letterale | 8 |
+| testo 2019 / testo attuale | 8 |
+| errore | 3 |
+| chiarezza | 2 |
+| attribuzione non verificata | 1 |
+| **totale** | **115** |
+
+| Prova | Dom. | Campo | Tipo | Prima → dopo | Motivo |
+|---|---|---|---|---|---|
+| 7° Test 3 | 13 | perOpzione.B | errore | sarebbe circa i 3/5 di 75. → sono esattamente i 3/5 di 75, non i 4/5 della sua terza parte. | 3/5 di 75 = 45 esatto, non «circa». |
+| 7° Test 3 | 25 | spiegazione | citazione testuale aggiunta | … → Per il **principio di continuità** degli organi costituzionali, il CSM scaduto resta in carica (prorogatio) fino all'insediamento del nuovo Consiglio. Lo prevede l'**art. 30 della legge 24 marzo 1958, n. 195**: «Il Consiglio superiore scade al termine del … | Art. 30 l. 195/1958 (normattiva, vig. 22/01/2019 e vigente): «Il Consiglio superiore scade al termine del quadriennio. Tuttavia finchè non è insediato il nuovo Consiglio continua a funzionare quello precedente». Prima la legge era citata senza articolo. |
+| 7° Test 3 | 28 | spiegazione | citazione testuale aggiunta | … → l'**art. 48, secondo comma, della legge 25 maggio 1970, n. 352** affida la verifica alla **Camera a cui la proposta è presentata**: «Spetta a tale Camera provvedere alla verifica ed al computo delle firme dei richiedenti al fine di accertare la regolarità … | Art. 48, secondo comma, l. 352/1970 (2019 e vigente): «Spetta a tale Camera provvedere alla verifica ed al computo delle firme dei richiedenti...». |
+| 7° Test 3 | 29 | perOpzione.B | citazione resa letterale | Riproduce l'art. 3, comma 3, l. 241/1990 → Riprende nella sostanza l'art. 3, comma 3, l. 241/1990 | L'opzione non è letterale (la norma non dice «al destinatario» ma «indicato e reso disponibile, a norma della presente legge»). |
+| 7° Test 3 | 29 | spiegazione | citazione testuale aggiunta | … → L'**art. 3, comma 3, l. 241/1990** ammette la motivazione per relationem: «Se le ragioni della decisione risultano da altro atto dell'amministrazione richiamato dalla decisione stessa, insieme alla comunicazione di quest'ultima deve essere **indicato e reso … | Art. 3, comma 3, l. 241/1990, testo 2019 = vigente; aggiunto il passo decisivo tra «». |
+| 7° Test 3 | 30 | perOpzione.C | atto reso esplicito | È la formula dell'art. 6, comma 1, lett. e). → Corrisponde all'art. 6, comma 1, lett. e), l. 241/1990: ci si può discostare dall'istruttoria solo «indicandone la motivazione nel provvedimento finale». | Atto esplicito; «formula» sostituita da citazione letterale del passo. |
+| 7° Test 3 | 30 | spiegazione | citazione testuale aggiunta | … → Ai sensi dell'**art. 6, comma 1, lett. e), l. 241/1990**: «L'organo competente per l'adozione del provvedimento finale, ove diverso dal responsabile del procedimento, **non può discostarsi** dalle risultanze dell'istruttoria condotta dal responsabile del … | Art. 6, comma 1, lett. e), l. 241/1990, testo 2019 = vigente. |
+| 7° Test 3 | 31 | spiegazione | testo 2019 / testo attuale | L'**art. 95, comma 4, del d.lgs. n. 50/2016** stabiliva che «**può** essere utilizzato» il criterio del minor prezzo, tra l'altro, per servizi e forniture … → L'**art. 95, comma 4, d.lgs. 50/2016**, nel testo in vigore alla data della prova (22/01/2019), stabiliva: «Può essere utilizzato il criterio del minor prezzo: [...] c) per i servizi e le forniture di importo fino a 40.000 euro, nonché per i servizi e le … | Art. 95, c. 4, lett. c), d.lgs. 50/2016 vig. 22/01/2019 (iniziale «Può», minuscolo nella vecchia citazione; aggiunta la soglia 40.000 euro-soglia UE). Art. 108, c. 3, d.lgs. 36/2023 vigente esclude solo i servizi ad alta intensità di manodopera: «tra gli altri» era errato. |
+| 7° Test 3 | 32 | perOpzione.A | atto reso esplicito | ex art. 10) → ex art. 10 l. 241/1990) | Nel testo compaiono l. 241/1990 e d.lgs. 33/2013. |
+| 7° Test 3 | 32 | perOpzione.B | atto reso esplicito | Riproduce la definizione di «interessati» dell'art. 22 della legge 241. → Riprende quasi alla lettera la definizione di «interessati» dell'art. 22, comma 1, lett. b), l. 241/1990. | Atto esplicito; l'opzione omette «compresi quelli portatori di interessi pubblici o diffusi», quindi non è una riproduzione letterale. |
+| 7° Test 3 | 32 | spiegazione | citazione testuale aggiunta | … → L'**art. 22, comma 1, lett. b), l. 241/1990** definisce «interessati» «tutti i soggetti privati, compresi quelli portatori di interessi pubblici o diffusi, che abbiano un **interesse diretto, concreto e attuale**, corrispondente ad una situazione … | Art. 22, c. 1, lett. b), l. 241/1990, 2019 = vigente. |
+| 7° Test 3 | 33 | perOpzione.B | atto reso esplicito | dall'art. 107, comma 3. → dall'art. 107, comma 3, TUEL. | Atto esplicito. |
+| 7° Test 3 | 33 | spiegazione | citazione testuale aggiunta | … → L'**art. 107, comma 3, lett. f), TUEL (d.lgs. 267/2000)** attribuisce ai **dirigenti** «i provvedimenti di autorizzazione, concessione o analoghi, il cui rilascio presupponga accertamenti e valutazioni, anche di natura discrezionale, nel rispetto di criteri … | Art. 107, c. 3, lett. f), TUEL, 2019 = vigente. |
+| 7° Test 3 | 34 | spiegazione | citazione testuale aggiunta | … → Per l'**art. 61, comma 5, c.p.a.**, la misura cautelare anteriore alla causa perde effetto se entro 15 giorni dalla sua emanazione non è notificato il ricorso con la domanda cautelare (e depositato nei 5 giorni successivi) e, comunque, «in ogni caso la misura … | Art. 61, c. 5, c.p.a., testo vig. 22/01/2019 (normattiva) = vigente. |
+| 7° Test 3 | 35 | perOpzione.A | atto reso esplicito | (art. 14-ter) → (art. 14-ter, comma 7, l. 241/1990) | Atto esplicito. |
+| 7° Test 3 | 35 | perOpzione.C | atto reso esplicito | Corretta: riproduce i presupposti dell'art. 14-bis, comma 7. → Corretta: riprende i presupposti dell'art. 14-bis, comma 7, l. 241/1990. | Atto esplicito; l'opzione non è letterale («riprende» invece di «riproduce»). |
+| 7° Test 3 | 35 | spiegazione | testo 2019 / testo attuale | L'**art. 14-bis, comma 7, della legge n. 241/1990** consente all'amministrazione procedente, ove necessario per la **particolare complessità** della … → L'**art. 14-bis, comma 7, l. 241/1990**, nel testo in vigore nel 2019, prevedeva: «Ove necessario, in relazione alla **particolare complessità** della determinazione da assumere, l'amministrazione procedente può comunque procedere direttamente in forma … | Art. 14-bis, c. 7, l. 241/1990: vig. 22/01/2019 «convocando la riunione entro i successivi quarantacinque giorni» + periodo finale sulla convocazione; vigente «entro i successivi trenta giorni». Presupposti invariati. |
+| 7° Test 3 | 36 | perOpzione.B | atto reso esplicito | Riproduce il testo vigente dell'art. 5, comma 2. → Riproduce il testo dell'art. 5, comma 2, d.lgs. 165/2001, identico nel 2019 e oggi (i «contratti di cui all'articolo 9» sono i contratti collettivi). | Atto esplicito; il testo era lo stesso anche alla data della prova. |
+| 7° Test 3 | 36 | spiegazione | citazione resa letterale | L'**art. 5, comma 2, del d.lgs. n. 165/2001**, nel testo modificato dal d.lgs. n. 75/2017, prevede che le misure inerenti alla gestione dei rapporti di lavoro … → L'**art. 5, comma 2, d.lgs. 165/2001**, nel testo modificato dal d.lgs. 75/2017 (in vigore nel 2019 e tuttora), prevede che le misure inerenti alla gestione dei rapporti di lavoro siano assunte «**in via esclusiva dagli organi preposti alla gestione** con la … | Art. 5, c. 2, d.lgs. 165/2001, 2019 = vigente: la norma dice «ove previsti nei contratti di cui all'articolo 9», non «ove previste dai contratti collettivi». |
+| 7° Test 3 | 37 | perOpzione.A | atto reso esplicito | Il rinvio è all'art. 21-nonies (annullamento d'ufficio), non alla revoca (art. 21-quinquies). → Il rinvio è all'art. 21-nonies l. 241/1990 (annullamento d'ufficio), non alla revoca (art. 21-quinquies l. 241/1990). | Atto esplicito. |
+| 7° Test 3 | 37 | perOpzione.B | imprecisione | Riprende la formulazione anteriore alla legge n. 124/2015, superata già al tempo della prova. → L'elenco di interessi (ambiente, paesaggio, beni culturali, salute, sicurezza pubblica, difesa nazionale) è quello che l'art. 19, comma 3, l. 241/1990 usa per la sospensione dell'attività entro il termine dei controlli; scaduti i 60 giorni il presupposto è … | L'elenco dell'opzione B coincide con l'art. 19, c. 3, l. 241/1990 (2019), non con la formulazione ante 2015, che parlava di «pericolo di un danno» per patrimonio artistico e culturale, ambiente, salute, sicurezza pubblica o difesa nazionale, senza il paesaggio. |
+| 7° Test 3 | 37 | perOpzione.C | atto reso esplicito | Corretta: è il rinvio dell'art. 19, comma 4, all'art. 21-nonies. → Corretta: è il rinvio dell'art. 19, comma 4, all'art. 21-nonies l. 241/1990. | Atto esplicito. |
+| 7° Test 3 | 37 | spiegazione | testo 2019 / testo attuale | L'**art. 19, comma 4, della legge n. 241/1990** (riformato dalla legge n. 124/2015) prevede che, decorso il termine di 60 giorni, l'amministrazione adotti … → L'**art. 19, comma 4, l. 241/1990** (riformato dalla l. 124/2015), nel testo in vigore nel 2019, disponeva: «Decorso il termine per l'adozione dei provvedimenti di cui al comma 3, primo periodo, ovvero di cui al comma 6-bis, l'amministrazione competente … | Art. 19, c. 4, l. 241/1990 vig. 22/01/2019 vs vigente (aggiunta clausola art. 75 d.P.R. 445/2000); art. 21-nonies: «diciotto mesi» nel 2019, «sei mesi» oggi; testo ante 2015 verificato su normattiva (vig. 01/01/2015). |
+| 7° Test 3 | 38 | spiegazione | citazione testuale aggiunta | … → La **legge n. 234/2012** ha diviso la legge comunitaria in due strumenti (art. 30 l. 234/2012, testo identico nel 2019 e oggi): la **legge di delegazione europea** reca «disposizioni per il conferimento al Governo di delega legislativa volta esclusivamente … | Art. 30, c. 2, lett. a) e c. 3, lett. a), l. 234/2012, 2019 = vigente. |
+| 7° Test 3 | 39 | perOpzione.B | imprecisione | Non esiste una selezione da un elenco di proposte degli Stati membri: il Consiglio europeo propone un unico candidato. → La selezione di personalità «in base alle proposte presentate dagli Stati membri» riguarda, per l'art. 17, par. 7, secondo comma, TUE, gli altri membri della Commissione, non il Presidente, per il quale il Consiglio europeo propone un unico candidato al … | Non è vero che la selezione da proposte degli Stati «non esiste»: l'art. 17, par. 7, secondo comma, TUE la prevede per gli altri commissari. |
+| 7° Test 3 | 39 | spiegazione | citazione testuale aggiunta | … → L'**art. 17, paragrafo 7, TUE**: «Tenuto conto delle elezioni del Parlamento europeo e dopo aver effettuato le consultazioni appropriate, il Consiglio europeo, deliberando a maggioranza qualificata, propone al Parlamento europeo un candidato alla carica di … | Art. 17, par. 7, primo comma, TUE (testo invariato dal Trattato di Lisbona). |
+| 7° Test 4 | 5 | perOpzione.C | imprecisione | L’affilatura è il significato concreto (rendere sottile una lama), fuori luogo in un testo sui redditi. → L’affilatura è l’operazione di rendere tagliente una lama: un significato concreto, legato a «affilare» e non ad «assottigliare», fuori luogo in un testo sui redditi. | Affilare significa rendere tagliente, non rendere sottile. |
+| 7° Test 4 | 25 | perOpzione.A | imprecisione | interviene solo in sede di promulgazione (art. 74 Cost.). → nel procedimento legislativo interviene all’inizio, autorizzando la presentazione dei disegni di legge del Governo (art. 87, quarto comma, Cost.), e alla fine, con la promulgazione o il rinvio alle Camere (artt. 73-74 Cost.). | Il PdR interviene anche autorizzando la presentazione dei disegni di legge governativi (art. 87 Cost.); il rinvio è all'art. 74, la promulgazione all'art. 73. |
+| 7° Test 4 | 25 | perOpzione.B | citazione resa letterale | Corretta: è il testo dell’art. 72, terzo comma, Cost. → Corretta: riprende nella sostanza l’art. 72, terzo comma, Cost. («se il Governo o un decimo dei componenti della Camera o un quinto della commissione richiedono che sia discusso o votato dalla Camera stessa»). | L'opzione non è letterale: la norma dice «richiedono che sia discusso o votato dalla Camera stessa», non «lo richiedono». |
+| 7° Test 4 | 25 | spiegazione | citazione testuale aggiunta | … → L’**art. 72, terzo comma, Cost.** stabilisce che anche per i disegni di legge deferiti alle commissioni (sede deliberante), «fino al momento della sua approvazione definitiva, il disegno di legge è rimesso alla Camera, se **il Governo** o un decimo dei … | Passo decisivo dell'art. 72, terzo comma, Cost., identico nel 2019 e oggi. |
+| 7° Test 4 | 26 | spiegazione | citazione testuale aggiunta | … → per quelle in luogo pubblico il terzo comma dispone: «Delle riunioni in luogo pubblico **deve essere dato preavviso** alle autorità, che possono vietarle soltanto per comprovati motivi di sicurezza o di incolumità pubblica». | Art. 17, terzo comma, Cost., testo identico nel 2019 e oggi. |
+| 7° Test 4 | 28 | spiegazione | citazione testuale aggiunta | … → (art. 64, primo comma, Cost.: «Ciascuna Camera adotta il proprio regolamento», fondamento anche dei regolamenti interni «minori») | Art. 64, primo comma, Cost., testo identico nel 2019 e oggi. |
+| 7° Test 4 | 29 | spiegazione | citazione testuale aggiunta | … → Il silenzio assenso (**art. 20 l. 241/1990**) **non si applica** nelle materie sensibili. L’art. 20, comma 4, dispone: «Le disposizioni del presente articolo non si applicano agli atti e procedimenti riguardanti il patrimonio culturale e paesaggistico, … | Art. 20, comma 4, l. 241/1990, identico nella versione al 22/01/2019 e in quella vigente; aggiunta l'esclusione dei casi di silenzio-rigetto, prima omessa. |
+| 7° Test 4 | 30 | perOpzione.C | atto reso esplicito | l’art. 14 attribuisce → l’art. 14 d.lgs. 165/2001 attribuisce | Atto non indicato nel campo. |
+| 7° Test 4 | 30 | spiegazione | citazione testuale aggiunta | … → e, in particolare, ai sensi dell’art. 14, comma 1, lett. a), «**definisce obiettivi, priorità, piani e programmi** da attuare ed emana le conseguenti direttive generali per l'attività amministrativa e per la gestione». | Art. 14, comma 1, lett. a), d.lgs. 165/2001, identico nel 2019 e oggi. |
+| 7° Test 4 | 31 | spiegazione | testo 2019 / testo attuale | Nell’offerta economicamente più vantaggiosa la stazione appaltante sceglie i criteri e la ponderazione, ma per valorizzare la qualità deve fissare un **tetto … → Nell’offerta economicamente più vantaggiosa la stazione appaltante sceglie i criteri e la loro ponderazione, ma per valorizzare la qualità deve limitare il peso del prezzo. Nel 2019 l’**art. 95, comma 10-bis, d.lgs. 50/2016** (introdotto dal d.lgs. 56/2017) … | Art. 95, comma 10-bis, d.lgs. 50/2016 (versione 2019): «stabilisce un tetto massimo per il punteggio economico entro il limite del 30 per cento». Art. 108, comma 4, d.lgs. 36/2023 vigente: il tetto del 30% vale solo «Per i contratti ad alta intensità di manodopera» (e per il trasporto nelle uscite … |
+| 7° Test 4 | 32 | spiegazione | citazione testuale aggiunta | … → l’**art. 62, comma 1, c.p.a.** dispone: «Contro le ordinanze cautelari è ammesso appello al Consiglio di Stato, da proporre nel termine di trenta giorni dalla notificazione dell'ordinanza, ovvero di sessanta giorni dalla sua pubblicazione». | Art. 62, comma 1, c.p.a. (testo vigente; comma invariato dal 2010). |
+| 7° Test 4 | 33 | spiegazione | citazione testuale aggiunta | … → (**art. 21-septies, comma 1, l. 241/1990**: «È nullo il provvedimento amministrativo che manca degli elementi essenziali») | Art. 21-septies, comma 1, l. 241/1990, identico nel 2019 e oggi. |
+| 7° Test 4 | 34 | perOpzione.B | citazione resa letterale | Corretta: riproduce il testo dell’art. 9 l. 241/1990. → Corretta: riprende il testo dell’art. 9 l. 241/1990, tralasciando l’inciso «nonché i portatori di interessi diffusi costituiti in associazioni o comitati». | L'opzione omette l'inciso sui portatori di interessi diffusi: non riproduce alla lettera l'art. 9 (identico nel 2019 e oggi). |
+| 7° Test 4 | 34 | perOpzione.C | atto reso esplicito | è il criterio dell’art. 7 per la comunicazione di avvio, non quello dell’art. 9 per l’intervento. → è il criterio dell’art. 7 l. 241/1990 per la comunicazione di avvio, non quello dell’art. 9 l. 241/1990 per l’intervento. | Atto non indicato nel campo. |
+| 7° Test 4 | 35 | nota | testo 2019 / testo attuale | Chiave certa per il testo vigente nel 2019 (30%); prima di usarla oggi verificare eventuali modifiche successive alla percentuale dell’art. 110 TUEL. → Chiave certa: il limite del 30% dell’art. 110, comma 1, TUEL è identico nel testo in vigore al 22/01/2019 e in quello vigente. | Confrontate la versione normattiva al 22/01/2019 e quella vigente: comma 1 identico («non superiore al 30 per cento»). |
+| 7° Test 4 | 38 | spiegazione | citazione testuale aggiunta | … → dispone che «L'alto rappresentante **presiede il Consiglio "Affari esteri"**» (par. 3) e che «L'alto rappresentante è **uno dei vicepresidenti della Commissione**» (par. 4). | Art. 18, parr. 3 e 4, TUE (testo vigente, invariato dal 2009). |
+| 7° Test 4 | 39 | spiegazione | citazione testuale aggiunta | … → La **portata generale** (art. 288, secondo comma, TFUE: «Il regolamento ha portata generale») | Art. 288, secondo comma, TFUE. |
+| 7° Test 4 | 40 | spiegazione | atto reso esplicito | art. 23 Carta ONU → art. 23 della Carta delle Nazioni Unite | Trattato internazionale da indicare per esteso. |
+| 7° Test 5 | 25 | perOpzione.C | citazione resa letterale | È la formula dell’art. 114, terzo comma, Cost.: la legge dello Stato disciplina l’ordinamento di Roma capitale. → È quanto dispone l’art. 114, terzo comma, Cost.: «La legge dello Stato disciplina il suo ordinamento» (di Roma capitale). | Parafrasi presentata come «formula»: sostituita con le parole esatte dell’art. 114, terzo comma, Cost. (testo identico nel 2019 e oggi). |
+| 7° Test 5 | 26 | spiegazione | citazione testuale aggiunta | … → L’art. 68, primo comma, Cost. dispone: «I membri del Parlamento non possono essere chiamati a rispondere delle opinioni espresse e dei voti dati **nell'esercizio delle loro funzioni**». Per la Corte costituzionale (dalle sentenze nn. 10 e 11 del 2000 in poi) … | Aggiunto il passo decisivo dell’art. 68, primo comma, Cost. (identico nel 2019 e oggi). |
+| 7° Test 5 | 27 | spiegazione | imprecisione | L’art. 17 Cost. dispone: «Per le riunioni, → L’art. 17, secondo e terzo comma, Cost. dispone: «Per le riunioni, | La citazione riunisce il secondo e il terzo comma dell’art. 17 Cost. (testo identico nel 2019 e oggi): indicati i commi. |
+| 7° Test 5 | 29 | spiegazione | citazione testuale aggiunta | … → L’art. 21-ter, comma 1, della l. 241/1990 dispone: «Qualora l'interessato non ottemperi, le pubbliche amministrazioni, **previa diffida**, possono provvedere all'esecuzione coattiva **nelle ipotesi e secondo le modalità previste dalla legge**». | Riportato alla lettera l’art. 21-ter, comma 1, terzo periodo, l. 241/1990 (testo identico nel 2019 e oggi). |
+| 7° Test 5 | 30 | spiegazione | citazione testuale aggiunta | … → L’art. 59, comma 1, del codice del processo amministrativo (c.p.a., d.lgs. 104/2010) dispone: «Qualora i provvedimenti cautelari non siano eseguiti, in tutto o in parte, l'interessato, **con istanza motivata** e notificata alle altre parti, può chiedere al … | La norma parla di «opportune misure attuative», non di «disposizioni attuative»; riportato il testo dell’art. 59, comma 1, c.p.a. (unica versione dell’articolo, identica nel 2019 e oggi; verificata su normattiva). |
+| 7° Test 5 | 31 | spiegazione | citazione testuale aggiunta | … → L’art. 1, comma 7, della l. 56/2014 dispone: «Sono organi della città metropolitana: a) **il sindaco metropolitano**; b) **il consiglio metropolitano**; c) **la conferenza metropolitana**». | Riportato alla lettera l’art. 1, comma 7, l. 56/2014 (identico nel 2019 e oggi). |
+| 7° Test 5 | 32 | spiegazione | citazione testuale aggiunta | … → L’art. 21-septies, comma 1, della l. 241/1990 dispone: «È **nullo** il provvedimento amministrativo che manca degli **elementi essenziali**». Tra questi la dottrina e la giurisprudenza includono l’oggetto, | Aggiunto il passo dell’art. 21-septies, comma 1, l. 241/1990 (identico nel 2019 e oggi); l’elenco degli elementi essenziali non è nella norma ma è ricostruzione interpretativa. |
+| 7° Test 5 | 33 | perOpzione.A | atto reso esplicito | spetta ai dirigenti (art. 4, comma 2). → spetta ai dirigenti (art. 4, comma 2, d.lgs. 165/2001). | Indicato l’atto. |
+| 7° Test 5 | 33 | spiegazione | citazione testuale aggiunta | … → elencando alla lettera f): «**le richieste di pareri alle autorità amministrative indipendenti ed al Consiglio di Stato**». | Riportato alla lettera l’art. 4, comma 1, lett. f), d.lgs. 165/2001 (identico nel 2019 e oggi). |
+| 7° Test 5 | 34 | perOpzione.B | atto reso esplicito | l’art. 13 non la menziona. → l’art. 13 l. 241/1990 non la menziona. | Indicato l’atto. |
+| 7° Test 5 | 34 | perOpzione.C | atto reso esplicito | L’art. 13 non esclude → L’art. 13 l. 241/1990 non esclude | Indicato l’atto. |
+| 7° Test 5 | 34 | spiegazione | citazione testuale aggiunta | … → L’art. 13, comma 1, della l. 241/1990 dispone: «Le disposizioni contenute nel presente capo non si applicano nei confronti dell'attività della pubblica amministrazione diretta alla emanazione di **atti normativi, amministrativi generali, di pianificazione e … | Riportato alla lettera l’art. 13, comma 1, l. 241/1990 (identico nel 2019 e oggi). |
+| 7° Test 5 | 35 | spiegazione | imprecisione | (art. 5 d.lgs. 50/2016 allora vigente; oggi art. 2 d.lgs. 175/2016, richiamato dall’art. 7 d.lgs. 36/2023, e art. 12 della direttiva 2014/24/UE) → (art. 5, comma 2, d.lgs. 50/2016, vigente nel 2019: «qualora essa eserciti un'influenza determinante sia sugli obiettivi strategici che sulle decisioni significative della persona giuridica controllata»; la stessa nozione è nell’art. 2, comma 1, lett. c), … | Il d.lgs. 175/2016 era già vigente nel 2019 (non è un «oggi») e l’art. 7 d.lgs. 36/2023 non richiama testualmente il d.lgs. 175/2016; aggiunta la citazione letterale dell’art. 5, comma 2, d.lgs. 50/2016 (testo al 22/01/2019). |
+| 7° Test 5 | 36 | spiegazione | citazione testuale aggiunta | … → L’art. 5, comma 3, del d.lgs. 33/2013 dispone: «L'istanza di accesso civico identifica i dati, le informazioni o i documenti richiesti e **non richiede motivazione**»; la regola vale sia per l’accesso civico semplice (comma 1) sia per quello generalizzato … | Riportato alla lettera l’art. 5, comma 3, d.lgs. 33/2013 (identico nel 2019 e oggi). |
+| 7° Test 5 | 37 | perOpzione.B | atto reso esplicito | l’art. 17-bis include → l’art. 17-bis l. 241/1990 include | Indicato l’atto. |
+| 7° Test 5 | 37 | perOpzione.C | atto reso esplicito | L’art. 17-bis, comma 3, applica → L’art. 17-bis, comma 3, l. 241/1990 applica | Indicato l’atto. |
+| 7° Test 5 | 37 | spiegazione | citazione testuale aggiunta | … → estende il silenzio assenso tra amministrazioni anche a questi casi. Il comma 3 dispone: «Le disposizioni dei commi 1 e 2 si applicano anche ai casi in cui è prevista l'acquisizione di assensi, concerti o nulla osta comunque denominati di amministrazioni … | Riportato alla lettera l’art. 17-bis, comma 3, l. 241/1990: testo identico al 22/01/2019 e oggi (le modifiche del d.l. 76/2020 hanno toccato rubrica e commi 1-2, non il comma 3). |
+| 7° Test 5 | 38 | spiegazione | citazione testuale aggiunta | … → L’art. 16, par. 6, TUE dispone: «Il Consiglio si riunisce in varie formazioni, il cui elenco è adottato conformemente all'articolo 236 del trattato sul funzionamento dell'Unione europea». Il Consiglio «Affari generali» e il Consiglio «**Affari esteri**» sono … | Aggiunto il passo dell’art. 16, par. 6, TUE e la fonte della presidenza dell’Alto rappresentante (art. 18, par. 3, TUE: «L'alto rappresentante presiede il Consiglio "Affari esteri"»). |
+| 7° Test 5 | 39 | spiegazione | citazione testuale aggiunta | … → L’art. 263, quarto comma, TFUE dispone: «Qualsiasi persona fisica o giuridica può proporre, alle condizioni previste al primo e secondo comma, un ricorso contro gli atti **adottati nei suoi confronti** o che la **riguardano direttamente e individualmente**, e … | Riportato alla lettera l’art. 263, quarto comma, TFUE (invariato dal 2009). |
+| 7° Test 5 | 40 | spiegazione | imprecisione | I giudici esercitano le funzioni a titolo individuale e non possono ricevere istruzioni da alcun governo; non sono organi degli Stati. → I giudici non sono organi degli Stati di cui sono cittadini: non possono esercitare funzioni politiche o amministrative (art. 16 dello Statuto della Corte internazionale di giustizia) e prima di entrare in carica dichiarano solennemente di esercitare le loro … | Lo Statuto della Corte internazionale di giustizia non contiene una formula espressa sul divieto di istruzioni: l’indipendenza risulta dagli artt. 2, 16 e 20 dello Statuto (testo non in archivio; contenuto standard dei manuali). |
+| 7° Test 5 | 49 | spiegazione | imprecisione | Il principio della **costanza (e comparabilità)** dei criteri di valutazione, tra i principi contabili generali dell’allegato 1 al d.lgs. 118/2011 (e, per le … → Il principio della **costanza** dei criteri di valutazione ammette deroghe solo **eccezionali** e **motivate**. Per le imprese l’art. 2423-bis, secondo comma, c.c. dispone: «Deroghe al principio enunciato nel numero 6) del comma precedente sono consentite in … | Nell’allegato 1 al d.lgs. 118/2011 il principio è il n. 11 «della continuità e della costanza» (la comparabilità è il n. 12) e non menziona la nota integrativa, prevista invece dall’art. 2423-bis, secondo comma, c.c. (identico nel 2019 e oggi); citati entrambi i testi (allegato verificato su … |
+| 7° Test 6 | 17 | perOpzione.B | errore | con la prima, nessuna invece di 2. → con la prima, 1 sola (il 2 in quarta) invece di 2. | 4 3 1 2 confrontata con 1 4 3 2 coincide nella quarta posizione (2): una posizione esatta, non nessuna. |
+| 7° Test 6 | 25 | perOpzione.C | citazione resa letterale | riproduce il testo dell’art. 81, secondo comma → riprende il testo dell’art. 81, secondo comma, Cost., omettendo l’inciso sull’autorizzazione delle Camere | L'opzione non è letterale: omette «previa autorizzazione delle Camere adottata a maggioranza assoluta dei rispettivi componenti». |
+| 7° Test 6 | 25 | spiegazione | citazione testuale aggiunta | … → L’art. 81, secondo comma, Cost. (testo introdotto dalla **legge cost. n. 1/2012**, identico nel 2019 e oggi) stabilisce: «Il ricorso all'indebitamento è consentito **solo al fine di considerare gli effetti del ciclo economico** e, previa autorizzazione delle … | Art. 81, secondo comma, Cost., testo 2019 = vigente (l. cost. 1/2012): citato alla lettera il passo decisivo. |
+| 7° Test 6 | 27 | spiegazione | citazione testuale aggiunta | … → sulla base dell’**art. 3, primo comma, Cost.** («Tutti i cittadini hanno pari dignità sociale e sono eguali davanti alla legge») | Art. 3, primo comma, Cost., testo identico nel 2019 e oggi. |
+| 7° Test 6 | 28 | spiegazione | citazione testuale aggiunta | … → La Costituzione vieta la retroattività solo per la **legge penale**: l’art. 25, secondo comma, Cost. dispone che «Nessuno può essere punito se non in forza di una legge che sia entrata in vigore prima del fatto commesso». Negli altri settori l’irretroattività … | Art. 25, secondo comma, Cost. citato alla lettera e con l'atto esplicito; art. 11 disp. prel. c.c. e art. 3, comma 1, l. 212/2000: passi identici nel testo al 22/01/2019 e in quello vigente. |
+| 7° Test 6 | 29 | perOpzione.C | imprecisione | Questa è la regola del lavoro privato (art. 2103 c.c.) → È la regola del lavoro privato (art. 2103, settimo comma, c.c.: l’assegnazione diviene definitiva dopo il periodo fissato dai contratti collettivi o, in mancanza, «dopo sei mesi continuativi») | Art. 2103, settimo comma, c.c. (testo 2019 = vigente): i sei mesi valgono solo in mancanza di diverso periodo fissato dai contratti collettivi. |
+| 7° Test 6 | 29 | spiegazione | citazione testuale aggiunta | … → L’**art. 52, comma 1, d.lgs. 165/2001** stabilisce che «L'esercizio di fatto di mansioni non corrispondenti alla qualifica di appartenenza **non ha effetto ai fini dell'inquadramento** del lavoratore o dell'assegnazione di incarichi di direzione». Tuttavia, … | Art. 52, commi 1 (secondo periodo) e 5, d.lgs. 165/2001: testo al 22/01/2019 identico al vigente per questi passi; aggiunte le citazioni letterali e l'atto esplicito. |
+| 7° Test 6 | 30 | spiegazione | citazione testuale aggiunta | … → Con l’avvalimento l’operatore economico soddisfa i requisiti di **capacità economico-finanziaria e tecnico-professionale** avvalendosi delle capacità di altri soggetti: l’art. 89, comma 1, d.lgs. 50/2016 (vigente nel 2019) gli consentiva di «soddisfare la … | Art. 89, comma 1, d.lgs. 50/2016 nel testo al 22/01/2019 citato alla lettera; l'art. 104 d.lgs. 36/2023 non menziona espressamente le «due categorie di requisiti», per cui l'affermazione è sostituita con le sue parole (commi 1 e 4). |
+| 7° Test 6 | 31 | spiegazione | citazione testuale aggiunta | … → L’**art. 99, comma 1, TUEL** (d.lgs. 267/2000; testo identico nel 2019 e oggi) dispone: «Il **sindaco** e il presidente della provincia nominano il segretario, che dipende funzionalmente dal capo dell'amministrazione, **scegliendolo tra gli iscritti … | Artt. 99, comma 1, e 98, comma 1, TUEL: testo al 22/01/2019 identico al vigente. |
+| 7° Test 6 | 32 | spiegazione | citazione testuale aggiunta | … → per nuova valutazione dell’interesse pubblico originario, quest’ultima però con il limite posto dal comma 1 (aggiunto dal d.l. 133/2014, quindi già vigente nel 2019 e tuttora invariato): «**salvo che per i provvedimenti di autorizzazione o di attribuzione di … | Art. 21-quinquies, comma 1, l. 241/1990: testo al 22/01/2019 identico al vigente. |
+| 7° Test 6 | 33 | spiegazione | citazione testuale aggiunta | … → L’**art. 3, comma 1, della l. 20/1994** (su questo punto identico nel 2019 e oggi) stabilisce che «Il **controllo preventivo di legittimità** della Corte dei conti si esercita esclusivamente sui seguenti atti non aventi forza di legge» e alla lettera f) … | Art. 3, comma 1, alinea e lett. f), l. 20/1994: testo al 22/01/2019 identico al vigente. |
+| 7° Test 6 | 34 | spiegazione | testo 2019 / testo attuale | Il preavviso di rigetto (**art. 10-bis l. 241/1990**) serve a far conoscere all’istante i motivi ostativi perché possa contrastarli con osservazioni. Per la … → Il preavviso di rigetto (**art. 10-bis l. 241/1990**) serve a far conoscere all’istante i motivi ostativi perché possa contrastarli con osservazioni. Nel testo vigente nel 2019 il comma 1 prevedeva soltanto: «Dell'eventuale mancato accoglimento di tali … | Art. 10-bis, comma 1, l. 241/1990: testo al 22/01/2019 («Dell'eventuale mancato accoglimento di tali osservazioni è data ragione nella motivazione del provvedimento finale») diverso dal vigente, modificato dal d.l. 76/2020; la chiave B resta fondata sulla giurisprudenza del 2019 e oggi è confermata … |
+| 7° Test 6 | 35 | spiegazione | citazione testuale aggiunta | … → (comma 1, testo invariato dal 2010, quindi identico nel 2019 e oggi) stabilisce: «I mezzi di impugnazione delle sentenze sono **l'appello, la revocazione, l'opposizione di terzo e il ricorso per cassazione per i soli motivi inerenti alla giurisdizione**». | Art. 91, comma 1, c.p.a.: testo originario (versione 1 su normattiva), mai modificato. |
+| 7° Test 6 | 36 | spiegazione | citazione testuale aggiunta | … → «**a condizione che abbiano espresso in modo inequivoco il proprio motivato dissenso prima della conclusione dei lavori della conferenza**» (comma 1, testo del d.lgs. 127/2016, identico nel 2019 e oggi). Chi non partecipa o non esprime la propria posizione si … | Art. 14-quinquies, comma 1, e art. 14-ter, comma 7, l. 241/1990: testo al 22/01/2019 identico al vigente. |
+| 7° Test 6 | 37 | spiegazione | citazione testuale aggiunta | … → Per l’**art. 21-bis, comma 1, l. 241/1990** (identico nel 2019 e oggi) «Il provvedimento limitativo della sfera giuridica dei privati **acquista efficacia** nei confronti di ciascun destinatario **con la comunicazione** allo stesso effettuata»; la clausola di … | Art. 21-bis, comma 1, l. 241/1990: testo al 22/01/2019 identico al vigente. |
+| 7° Test 6 | 38 | spiegazione | citazione testuale aggiunta | … → L’**art. 291 TFUE** stabilisce che «Gli **Stati membri** adottano tutte le misure di diritto interno necessarie per l'attuazione degli atti giuridicamente vincolanti dell'Unione» (par. 1). «Allorché sono necessarie **condizioni uniformi di esecuzione** degli … | Art. 291, parr. 1 e 2, TFUE (testo invariato dal Trattato di Lisbona, quindi identico nel 2019 e oggi). |
+| 7° Test 6 | 42 | perOpzione.A | imprecisione | Descrive l’efficienza paretiana generale (scambio + produzione + composizione del prodotto), non la sola curva dei contratti dello scambio. → Mescola condizioni di efficienza che riguardano anche la produzione (SMT e SMST): non è la curva dei contratti dello scambio, che in un’economia di puro scambio considera solo i SMS dei consumatori. | L'opzione A non descrive correttamente l'efficienza paretiana generale (in cui il SMST si eguaglia tra produttori, non al SMS/SMT): meglio non attribuirle quella definizione. |
+| 7° Test 6 | 49 | spiegazione | imprecisione | La **l. 196/2009** (art. 2) e i decreti attuativi (d.lgs. 91/2011 per le amministrazioni pubbliche, d.lgs. 118/2011 per Regioni ed enti locali) prevedono → La **l. 196/2009** (art. 2, comma 2, lettere a e d: «comune piano dei conti integrato» e «affiancamento, ai fini conoscitivi, al sistema di contabilità finanziaria di un sistema e di schemi di contabilità economico-patrimoniale») e i decreti attuativi (d.lgs. … | Art. 2, comma 1, l. 196/2009 delega l'armonizzazione «ad esclusione delle regioni e degli enti locali»: il d.lgs. 118/2011 attua la l. 42/2009. Testo 2019 = vigente; aggiunta citazione delle lettere a) e d). |
+| 7° Test 6 | 57 | perOpzione.C | imprecisione | «Will have been» è il future perfect riferito al presente → «Will have been» è il future perfect ordinario, che guarda al futuro dal presente | Il future perfect non è «riferito al presente»: proietta dal presente un'azione compiuta nel futuro. |
+| 7° Test 7 | 5 | perOpzione.C | citazione resa letterale | il lavoro è «difforme e vario» → il lavoro resta «una realtà difforme e varia» | Il brano dice «Il lavoro resta una realtà difforme e varia»: la citazione non era letterale. |
+| 7° Test 7 | 8 | spiegazione | citazione resa letterale | mentre il cittadino-lavoratore viene «lasciato in ombra». → mentre la digitalizzazione «lascia in ombra la dimensione del cittadino come lavoratore». | Il brano dice «lascia in ombra la dimensione del cittadino come lavoratore»; «lasciato in ombra» non è nel testo. |
+| 7° Test 7 | 14 | perOpzione.B | chiarezza | GRADO non ha nessuna consonante in comune con COLLA: non è un anagramma. → GRADO non ha nessuna consonante in comune con COLLA: non è un anagramma. Ha però le stesse vocali (A, O): soddisferebbe la regola c, ma la prima coppia RAPA-ARPA è un anagramma completo, quindi la regola da applicare è la b, più specifica. | RAPA-ARPA soddisfa sia la regola b sia la c; GRADO ha le stesse vocali di COLLA (O, A), quindi va spiegato perché è esclusa. |
+| 7° Test 7 | 15 | perOpzione.C | chiarezza | VIALE ha solo V e L come consonanti: manca la G. → VIALE ha solo V e L come consonanti: manca la G. Ha le stesse vocali di VALIGE (A, I, E), ma la relazione GUANTI-TANGO riguarda le consonanti (le vocali sono diverse), quindi va applicata la regola delle consonanti. | VIALE ha le stesse vocali di VALIGE: letteralmente rientrerebbe nella regola c («le vocali oppure le consonanti»); va spiegato perché è esclusa. |
+| 7° Test 7 | 27 | spiegazione | citazione testuale aggiunta | … → Il referendum (su richiesta di un quinto dei membri di una Camera, 500.000 elettori o cinque Consigli regionali) è escluso dall'**art. 138, terzo comma, Cost.**: «Non si fa luogo a referendum se la legge è stata approvata nella seconda votazione da ciascuna … | Art. 138, terzo comma, Cost., testo identico nel 2019 e oggi. |
+| 7° Test 7 | 28 | perOpzione.C | atto reso esplicito | l'art. 15 tutela → l'art. 15 Cost. tutela | Nel testo compaiono gli artt. 15 e 21 Cost.: atto esplicito. |
+| 7° Test 7 | 28 | spiegazione | citazione testuale aggiunta | … → L'**art. 15, primo comma, Cost.** («La libertà e la segretezza della corrispondenza e di ogni altra forma di comunicazione sono inviolabili») tutela la comunicazione | Art. 15, primo comma, Cost., testo identico nel 2019 e oggi. |
+| 7° Test 7 | 29 | spiegazione | citazione testuale aggiunta | … → «La domanda di risarcimento per lesione di interessi legittimi è proposta entro il termine di decadenza di centoventi giorni decorrente dal giorno in cui il fatto si è verificato ovvero dalla conoscenza del provvedimento se il danno deriva direttamente da … | Art. 30, comma 3, c.p.a., testo identico nel 2019 (normattiva) e oggi. |
+| 7° Test 7 | 30 | spiegazione | citazione testuale aggiunta | … → ma può intervenire **in autotutela**: l'**art. 20, comma 3, l. 241/1990** (testo identico nel 2019 e oggi) dispone che «l'amministrazione competente può assumere determinazioni in via di autotutela, ai sensi degli articoli 21-quinquies e 21-nonies» (revoca e … | Art. 20, comma 3, l. 241/1990, versione 2019 = vigente; esplicitato l'atto degli artt. 21-quinquies e 21-nonies (nel testo compare anche il d.l. 76/2020). |
+| 7° Test 7 | 31 | spiegazione | citazione testuale aggiunta | … → «Gli atti e i provvedimenti adottati dai dirigenti preposti al vertice dell'amministrazione e dai dirigenti di uffici dirigenziali generali di cui al presente articolo non sono suscettibili di ricorso gerarchico». | Art. 16, comma 4, d.lgs. 165/2001, testo identico nel 2019 e oggi; la parafrasi ometteva i dirigenti di vertice citati nella domanda. |
+| 7° Test 7 | 32 | spiegazione | citazione testuale aggiunta | … → **Art. 1, comma 19, l. 56/2014**: «Il sindaco metropolitano è di diritto il sindaco del comune capoluogo». | Art. 1, comma 19, l. 56/2014, testo identico nel 2019 e oggi. |
+| 7° Test 7 | 33 | spiegazione | citazione testuale aggiunta | … → «il responsabile del procedimento deve chiedere le suddette valutazioni tecniche ad altri organi dell'amministrazione pubblica o ad enti pubblici che siano dotati di qualificazione e capacità tecnica equipollenti, ovvero ad istituti universitari» (il verbo … | Art. 17, comma 1, l. 241/1990, testo identico nel 2019 e oggi. |
+| 7° Test 7 | 34 | spiegazione | citazione testuale aggiunta | … → **Art. 14-quater, comma 3, l. 241/1990**: con approvazione unanime la determinazione è immediatamente efficace, mentre «In caso di approvazione sulla base delle posizioni prevalenti, l'efficacia della determinazione è sospesa ove siano stati espressi dissensi … | Art. 14-quater, comma 3, l. 241/1990, testo identico nel 2019 e oggi. |
+| 7° Test 7 | 35 | spiegazione | citazione testuale aggiunta | … → tra cui, alla lettera d), i «provvedimenti dei comitati interministeriali di riparto o assegnazione di fondi». | Art. 3, comma 1, lett. d), l. 20/1994, testo identico nel 2019 e oggi. |
+| 7° Test 7 | 37 | perOpzione.A | atto reso esplicito | (art. 21-nonies), richiamato dall'art. 21-quater, comma 2. → (art. 21-nonies l. 241/1990), richiamato dall'art. 21-quater, comma 2, l. 241/1990. | Nel testo compaiono anche l. 124/2015 e d.l. 77/2021. |
+| 7° Test 7 | 37 | perOpzione.B | atto reso esplicito | La revoca (art. 21-quinquies) → La revoca (art. 21-quinquies l. 241/1990) | Nel testo compaiono più atti. |
+| 7° Test 7 | 37 | spiegazione | testo 2019 / testo attuale | **Art. 21-quater, comma 2, l. 241/1990** (come modificato dalla l. 124/2015): la sospensione per gravi ragioni «non può comunque essere disposta o perdurare … → **Art. 21-quater, comma 2, l. 241/1990** (ultimo periodo aggiunto dalla l. 124/2015; testo identico nel 2019 e oggi): «La sospensione non può comunque essere disposta o perdurare oltre i termini per l'esercizio del potere di annullamento di cui all'articolo … | La citazione non era letterale («articolo», non «art.»); il termine dell'art. 21-nonies è oggi di sei mesi (normattiva, vigente al 16/10/2026; dodici mesi ancora al 15/12/2025), non di 12; nel 2019 «diciotto mesi». |
+| 7° Test 12 | 25 | perOpzione.C | imprecisione | dell’art. 8 della l. 400/1988 → dell’art. 8, comma 2, della l. 400/1988 | Il criterio è nel comma 2 dell'art. 8 l. 400/1988. |
+| 7° Test 12 | 25 | spiegazione | errore | L’art. 8, comma 1, della **legge n. 400/1988** prevede che, in assenza o impedimento del Presidente del Consiglio, la supplenza spetti al Vicepresidente; se … → L’art. 8 della **l. 400/1988** prevede al comma 1 che, in caso di assenza o impedimento temporaneo del Presidente del Consiglio, la supplenza spetti al Vicepresidente; il comma 2 aggiunge: «Quando non sia stato nominato il Vicepresidente del Consiglio dei … | La regola del ministro più anziano è nel comma 2 dell'art. 8 l. 400/1988, non nel comma 1; aggiunta la citazione letterale del comma 2 (testo 2019 = vigente, verificato su normattiva). |
+| 7° Test 12 | 28 | spiegazione | citazione testuale aggiunta | … → L’art. 104, quarto comma, Cost. stabilisce che gli altri componenti del CSM sono eletti «per un terzo dal Parlamento in seduta comune tra **professori ordinari di università in materie giuridiche** ed **avvocati dopo quindici anni di esercizio**». | Aggiunto il passo letterale dell'art. 104, quarto comma, Cost. (invariato dal 1948). |
+| 7° Test 12 | 29 | spiegazione | citazione testuale aggiunta | … → L’art. 17-bis della **l. 241/1990** (introdotto dalla l. 124/2015) disciplina il **silenzio-assenso tra amministrazioni pubbliche**: il comma 2 dispone che, «Decorsi i termini di cui al comma 1 senza che sia stato comunicato l'assenso, il concerto o il nulla … | Aggiunta la citazione letterale dell'art. 17-bis, comma 2, l. 241/1990; il periodo citato è uguale nella versione al 22/01/2019 e in quella vigente (il d.l. 76/2020 ha cambiato la rubrica e aggiunto la disciplina della proposta, non questa regola). |
+| 7° Test 12 | 30 | spiegazione | citazione testuale aggiunta | … → L’art. 1, comma 1-ter, della **l. 20/1994** stabilisce: «Nel caso di deliberazioni di organi collegiali la responsabilità si imputa **esclusivamente a coloro che hanno espresso voto favorevole**» (testo identico nel 2019 e oggi). | Aggiunta la citazione letterale del comma 1-ter, art. 1 l. 20/1994 (versione 2019 = vigente). |
+| 7° Test 12 | 32 | spiegazione | citazione testuale aggiunta | … → L’art. 5, comma 01, del **d.lgs. 150/2009** (inserito dal d.lgs. 74/2017, quindi già in vigore nel 2019) stabilisce: «Gli obiettivi si articolano in: a) **obiettivi generali**, che identificano [...] le priorità strategiche delle pubbliche amministrazioni … | Aggiunto il passo letterale dell'art. 5, comma 01, d.lgs. 150/2009 (testo uguale al 22/01/2019 e oggi). |
+| 7° Test 12 | 33 | spiegazione | citazione testuale aggiunta | … → L’art. 43, comma 1, del **c.p.a.** (d.lgs. 104/2010) dispone: «I ricorrenti, principale e incidentale, possono introdurre con motivi aggiunti **nuove ragioni** a sostegno delle domande già proposte, **ovvero domande nuove purché connesse** a quelle già … | Aggiunta la citazione letterale dell'art. 43, comma 1, c.p.a. (testo vigente; comma non modificato dopo il 2010). |
+| 7° Test 12 | 34 | spiegazione | citazione testuale aggiunta | … → Nella **procedura ristretta** ogni operatore può chiedere di partecipare, ma solo gli invitati presentano l’offerta. Nel 2019 l’art. 61, comma 3, del d.lgs. 50/2016 stabiliva: «A seguito della valutazione da parte delle amministrazioni aggiudicatrici delle … | Aggiunti i passi letterali dell'art. 61, comma 3, d.lgs. 50/2016 (versione 2019) e dell'art. 72, comma 3, d.lgs. 36/2023 (vigente). |
+| 7° Test 12 | 35 | spiegazione | testo 2019 / testo attuale | L’art. 23-bis, comma 1, del **d.lgs. 165/2001** consente ai dirigenti di essere collocati in aspettativa senza assegni per svolgere attività presso soggetti e … → Nel testo dell’art. 23-bis del **d.lgs. 165/2001** in vigore nel 2019, il comma 1 prevedeva il collocamento in aspettativa senza assegni dei «dirigenti delle pubbliche amministrazioni» (e di altre categorie) per svolgere attività presso soggetti e organismi … | Il limite dei cinque anni e la non computabilità sono nel comma 4, non nel comma 1, dell'art. 23-bis d.lgs. 165/2001. Versione 22/01/2019 (normattiva): comma 1 «i dirigenti delle pubbliche amministrazioni», comma 4 «non può superare i cinque anni e non è computabile...»; vigente: comma 1 «i … |
+| 7° Test 12 | 36 | spiegazione | citazione testuale aggiunta | … → L’obbligo generale di motivazione è stabilito dall’art. 3, comma 1, della **l. 241/1990**: «Ogni provvedimento amministrativo [...] **deve essere motivato**, salvo che nelle ipotesi previste dal comma 2» (atti normativi e a contenuto generale); la motivazione … | Aggiunto il passo letterale dell'art. 3, comma 1, l. 241/1990 (versione 2019 = vigente). |
+| 7° Test 12 | 38 | spiegazione | citazione testuale aggiunta | … → L’art. 20, paragrafo 1, del **TFUE** (come l’art. 9 TUE) stabilisce: «**È cittadino dell'Unione chiunque abbia la cittadinanza di uno Stato membro.** La cittadinanza dell'Unione si aggiunge alla cittadinanza nazionale e non la sostituisce». Sono gli Stati a … | Aggiunta la citazione letterale dell'art. 20, par. 1, TFUE (identico all'art. 9 TUE; trattati invariati dal 2009). |
+| 7° Test 12 | 40 | perOpzione.A | imprecisione | Sbagliata: i giudici sono 15 e li eleggono insieme Assemblea generale e Consiglio di sicurezza. → Sbagliata: i giudici sono 15 e li eleggono sia l’Assemblea generale sia il Consiglio di sicurezza, non il solo Consiglio. | Secondo l'art. 8 dello Statuto della CIG i due organi votano separatamente: «insieme» era impreciso. |
+| 7° Test 12 | 40 | perOpzione.B | imprecisione | Corretta: 15 giudici, elezione congiunta dei due organi, a prescindere dalla nazionalità. → Corretta: 15 giudici, eletti sia dall’Assemblea generale sia dal Consiglio di sicurezza (con votazioni separate), a prescindere dalla nazionalità. | Non è un'elezione «congiunta»: art. 8 dello Statuto della CIG, i due organi procedono indipendentemente l'uno dall'altro. |
+| 7° Test 12 | 40 | spiegazione | attribuzione non verificata | eletti «senza riguardo alla loro nazionalità» (art. 2) → eletti senza riguardo alla loro nazionalità (art. 2 dello Statuto) | Lo Statuto della CIG non è in archivio: tolte le virgolette di citazione letterale (traduzione italiana non verificata su fonte ufficiale). |
+
 ## Norme scaricate
 
 ### Costituzione della Repubblica italiana
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `cost_art_3` | Art. 3 — Principi fondamentali (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art3) |
 | `cost_art_10` | Art. 10 — Principi fondamentali (in vigore dal 18-7-1967) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art10) |
 | `cost_art_11` | Art. 11 — Principi fondamentali (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art11) |
 | `cost_art_13` | Art. 13 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art13) |
+| `cost_art_15` | Art. 15 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art15) |
+| `cost_art_17` | Art. 17 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art17) |
 | `cost_art_21` | Art. 21 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art21) |
 | `cost_art_24` | Art. 24 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art24) |
+| `cost_art_25` | Art. 25 — Rapporti civili (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art25) |
 | `cost_art_26` | Art. 26 — Rapporti civili (in vigore dal 18-7-1967) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art26) |
+| `cost_art_32` | Art. 32 — Rapporti etico-sociali (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art32) |
+| `cost_art_36` | Art. 36 — Rapporti economici (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art36) |
 | `cost_art_41` | Art. 41 — Rapporti economici (in vigore dal 9-3-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art41) |
 | `cost_art_48` | Art. 48 — Rapporti politici (in vigore dal 4-2-2000) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art48) |
 | `cost_art_60` | Art. 60 — Il Parlamento: le Camere (in vigore dal 27-2-1963) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art60) |
 | `cost_art_61` | Art. 61 — Il Parlamento: le Camere (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art61) |
 | `cost_art_64` | Art. 64 — Il Parlamento: le Camere (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art64) |
+| `cost_art_68` | Art. 68 — Il Parlamento: le Camere (in vigore dal 14-11-1993) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art68) |
+| `cost_art_69` | Art. 69 — Il Parlamento: le Camere (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art69) |
 | `cost_art_71` | Art. 71 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art71) |
 | `cost_art_72` | Art. 72 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art72) |
 | `cost_art_73` | Art. 73 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art73) |
+| `cost_art_74` | Art. 74 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art74) |
 | `cost_art_75` | Art. 75 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art75) |
 | `cost_art_76` | Art. 76 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art76) |
 | `cost_art_77` | Art. 77 — Il Parlamento: la formazione delle leggi (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art77) |
@@ -327,7 +530,9 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `cost_art_104` | Art. 104 — La Magistratura: ordinamento giurisdizionale (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art104) |
 | `cost_art_105` | Art. 105 — La Magistratura: ordinamento giurisdizionale (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art105) |
 | `cost_art_110` | Art. 110 — La Magistratura: ordinamento giurisdizionale (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art110) |
+| `cost_art_111` | Art. 111 — La Magistratura: norme sulla giurisdizione (in vigore dal 7-1-2000) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art111) |
 | `cost_art_113` | Art. 113 — La Magistratura: norme sulla giurisdizione (in vigore dal 1-1-1948) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art113) |
+| `cost_art_114` | Art. 114 — Le Regioni, le Province, i Comuni (in vigore dal 8-11-2001) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art114) |
 | `cost_art_117` | Art. 117 — Le Regioni, le Province, i Comuni (in vigore dal 8-5-2012) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art117) |
 | `cost_art_118` | Art. 118 — Le Regioni, le Province, i Comuni (in vigore dal 8-11-2001) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art118) |
 | `cost_art_119` | Art. 119 — Le Regioni, le Province, i Comuni (in vigore dal 30-11-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:costituzione:1947-12-27~art119) |
@@ -343,6 +548,7 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 |---|---|---|
 | `l241_1990_art_1` | Art. 1 — Principi generali dell'attività amministrativa (in vigore dal 15-9-2020) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art1) |
 | `l241_1990_art_2` | Art. 2 — Conclusione del procedimento (in vigore dal 1-6-2021) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art2) |
+| `l241_1990_art_2_bis` | Art. 2-bis — Conseguenze per il ritardo dell'amministrazione nella conclusione del procedimento (in vigore dal 21-8-2013) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art2bis) |
 | `l241_1990_art_3` | Art. 3 — Motivazione del provvedimento (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art3) |
 | `l241_1990_art_6` | Art. 6 — Compiti del responsabile del procedimento (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art6) |
 | `l241_1990_art_7` | Art. 7 — Comunicazione di avvio del procedimento (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art7) |
@@ -350,6 +556,15 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `l241_1990_art_10` | Art. 10 — Diritti dei partecipanti al procedimento (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art10) |
 | `l241_1990_art_10_bis` | Art. 10-bis — Comunicazione dei motivi ostativi all'accoglimento dell'istanza (in vigore dal 17-7-2020) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art10bis) |
 | `l241_1990_art_11` | Art. 11 — Accordi integrativi o sostitutivi del provvedimento (in vigore dal 28-11-2012) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art11) |
+| `l241_1990_art_13` | Art. 13 — Ambito di applicazione delle norme sulla partecipazione (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art13) |
+| `l241_1990_art_14` | Art. 14 — Conferenze di servizi (in vigore dal 21-7-2017) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art14) |
+| `l241_1990_art_14_bis` | Art. 14-bis — Conferenza semplificata (in vigore dal 21-4-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art14bis) |
+| `l241_1990_art_14_ter` | Art. 14-ter — Conferenza simultanea (in vigore dal 21-4-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art14ter) |
+| `l241_1990_art_14_quater` | Art. 14-quater — Decisione della conferenza di servizi (in vigore dal 28-7-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art14quater) |
+| `l241_1990_art_14_quinquies` | Art. 14-quinquies — Rimedi per le amministrazioni dissenzienti (in vigore dal 28-7-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art14quinquies) |
+| `l241_1990_art_16` | Art. 16 — Attività consultiva (in vigore dal 21-4-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art16) |
+| `l241_1990_art_17` | Art. 17 — Valutazioni tecniche (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art17) |
+| `l241_1990_art_17_bis` | Art. 17-bis (in vigore dal 17-7-2020) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art17bis) |
 | `l241_1990_art_19` | Art. 19 — Segnalazione certificata di inizio attività - Scia (in vigore dal 20-2-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art19) |
 | `l241_1990_art_20` | Art. 20 — Silenzio assenso (in vigore dal 21-4-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art20) |
 | `l241_1990_art_21_bis` | Art. 21-bis — Efficacia del provvedimento limitativo della sfera giuridica dei privati (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art21bis) |
@@ -360,12 +575,15 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `l241_1990_art_21_nonies` | Art. 21-nonies — Annullamento d'ufficio (in vigore dal 18-12-2025) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art21nonies) |
 | `l241_1990_art_22` | Art. 22 — Definizioni e principi in materia di accesso (in vigore dal 4-7-2009) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art22) |
 | `l241_1990_art_24` | Art. 24 — Esclusione dal diritto di accesso (in vigore dal 8-3-2005) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art24) |
+| `l241_1990_art_25` | Art. 25 — Modalità di esercizio del diritto di accesso e ricorsi (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art25) |
+| `l241_1990_art_29` | Art. 29 — Ambito di applicazione della legge (in vigore dal 17-7-2020) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241~art29) |
 
 ### Legge 23 agosto 1988, n. 400
 
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `l400_1988_art_2` | Art. 2 — Attribuzioni del Consiglio dei ministri (in vigore dal 16-9-1999) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art2) |
+| `l400_1988_art_8` | Art. 8 — Vicepresidenti del Consiglio dei ministri (in vigore dal 27-9-1988) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art8) |
 | `l400_1988_art_9` | Art. 9 — Ministri senza portafoglio, incarichi speciali di Governo, incarichi di reggenza ad interim (in vigore dal 12-10-2007) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art9) |
 | `l400_1988_art_14` | Art. 14 — Decreti legislativi (in vigore dal 27-9-1988) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art14) |
 | `l400_1988_art_17` | Art. 17 — Regolamenti (in vigore dal 4-7-2009) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1988-08-23;400~art17) |
@@ -374,11 +592,30 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `dlgs165_2001_art_1` | Art. 1 — Finalità ed ambito di applicazione (in vigore dal 27-2-2011) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art1) |
+| `dlgs165_2001_art_4` | Art. 4 — Indirizzo politico-amministrativo. Funzioni e responsabilità (in vigore dal 1-1-2008) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art4) |
+| `dlgs165_2001_art_5` | Art. 5 — Potere di organizzazione (in vigore dal 22-6-2017) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art5) |
 | `dlgs165_2001_art_6` | Art. 6 — Organizzazione degli uffici e fabbisogni di personale (in vigore dal 15-7-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art6) |
 | `dlgs165_2001_art_7` | Art. 7 — Gestione delle risorse umane (in vigore dal 8-10-2020) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art7) |
+| `dlgs165_2001_art_14` | Art. 14 — Indirizzo politico-amministrativo (in vigore dal 22-6-2017) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art14) |
+| `dlgs165_2001_art_16` | Art. 16 — Funzioni dei dirigenti di uffici dirigenziali generali (in vigore dal 15-8-2012) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art16) |
 | `dlgs165_2001_art_19` | Art. 19 — Incarichi di funzioni dirigenziali (in vigore dal 19-7-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art19) |
+| `dlgs165_2001_art_21` | Art. 21 — Responsabilità dirigenziale (in vigore dal 21-11-2018) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art21) |
+| `dlgs165_2001_art_23_bis` | Art. 23-bis — Disposizioni in materia di mobilità tra pubblico e privato (in vigore dal 26-8-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art23bis) |
 | `dlgs165_2001_art_35` | Art. 35 — Reclutamento del personale (in vigore dal 31-12-2025) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art35) |
 | `dlgs165_2001_art_52` | Art. 52 — Disciplina delle mansioni (in vigore dal 22-6-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-30;165~art52) |
+
+### Disposizioni sulla legge in generale (preleggi al Codice civile)
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `preleggi_art_11` | Art. 11 — Efficacia della legge nel tempo (in vigore dal 19-4-1942) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:1~art11) |
+
+### Legge 24 marzo 1958, n. 195
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `l195_1958_art_30` | Art. 30 — Cessazione del Consiglio al termine del quadriennio (in vigore dal 27-9-1958) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1958-03-24;195~art30) |
 
 ### Codice civile (R.D. 16 marzo 1942, n. 262)
 
@@ -386,7 +623,10 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 |---|---|---|
 | `cc_art_823` | Art. 823 — Condizione giuridica del demanio pubblico (in vigore dal 19-4-1942) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art823) |
 | `cc_art_826` | Art. 826 — Patrimonio dello Stato, delle provincie e dei comuni (in vigore dal 19-4-1942) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art826) |
+| `cc_art_2103` | Art. 2103 (in vigore dal 25-6-2015) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art2103) |
 | `cc_art_2201` | Art. 2201 — Enti pubblici (in vigore dal 19-4-1942) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art2201) |
+| `cc_art_2423_bis` | Art. 2423-bis — Principi di redazione del bilancio (in vigore dal 1-1-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art2423bis) |
+| `cc_art_2947` | Art. 2947 — Prescrizione del diritto al risarcimento del danno (in vigore dal 19-4-1942) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262:2~art2947) |
 
 ### Codice del processo amministrativo (d.lgs. 2 luglio 2010, n. 104, Allegato 1)
 
@@ -396,8 +636,14 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `cpa_art_8` | Art. 8 — Cognizione incidentale e questioni pregiudiziali (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=3&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=8&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 | `cpa_art_15` | Art. 15 — Rilievo dell'incompetenza (in vigore dal 18-9-2012) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=4&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=15&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 | `cpa_art_30` | Art. 30 — Azione di condanna (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=9&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=30&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_43` | Art. 43 — Motivi aggiunti (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=12&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=43&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 | `cpa_art_55` | Art. 55 — Misure cautelari collegiali (in vigore dal 18-9-2012) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=3&art.idGruppo=14&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=55&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_59` | Art. 59 — Esecuzione delle misure cautelari (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=14&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=59&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 | `cpa_art_60` | Art. 60 — Definizione del giudizio in esito all'udienza cautelare (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=14&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=60&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_61` | Art. 61 — Misure cautelari anteriori alla causa (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=14&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=61&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_62` | Art. 62 — Appello cautelare (in vigore dal 18-9-2012) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=14&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=62&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_91` | Art. 91 — Mezzi di impugnazione (in vigore dal 16-9-2010) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=26&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=91&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
+| `cpa_art_98` | Art. 98 — Misure cautelari (in vigore dal 18-9-2012) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=3&art.idGruppo=26&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=98&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 | `cpa_art_117` | Art. 117 — Ricorsi avverso il silenzio (in vigore dal 22-6-2013) | [normattiva](https://www.normattiva.it/atto/caricaArticolo?art.versione=3&art.idGruppo=33&art.flagTipoArticolo=2&art.codiceRedazionale=010G0127&art.idArticolo=117&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2010-07-07&art.progressivo=0&) |
 
 ### Legge 6 novembre 2012, n. 190
@@ -437,6 +683,8 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `dl83_2012_art_19` | Art. 19 — Istituzione dell'Agenzia per l'Italia digitale (in vigore dal 21-8-2013) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2012-06-22;83~art19) |
+| `dl83_2012_art_20` | Art. 20 (in vigore dal 14-9-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2012-06-22;83~art20) |
+| `dl83_2012_art_22` | Art. 22 — Soppressione di DigitPA e dell'Agenzia per la diffusione delle tecnologie per l'innovazione; successione dei rapporti e individuazione delle effettive risorse umane e strumentali (in vigore dal 29-1-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2012-06-22;83~art22) |
 
 ### Codice dell'amministrazione digitale (d.lgs. 7 marzo 2005, n. 82)
 
@@ -458,17 +706,20 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `l234_2012_art_1` | Art. 1 — Finalità (in vigore dal 19-1-2013) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-12-24;234~art1) |
+| `l234_2012_art_30` | Art. 30 — Contenuti della legge di delegazione europea (in vigore dal 19-1-2013) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-12-24;234~art30) |
 
 ### Decreto legislativo 19 agosto 2016, n. 175
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `dlgs175_2016_art_2` | Art. 2 — Definizioni (in vigore dal 16-7-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-08-19;175~art2) |
 | `dlgs175_2016_art_3` | Art. 3 — Tipi di società in cui è ammessa la partecipazione pubblica (in vigore dal 23-9-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-08-19;175~art3) |
 
 ### Legge 31 dicembre 2009, n. 196
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `l196_2009_art_2` | Art. 2 — Delega al Governo per l'adeguamento (in vigore dal 6-10-2010) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009-12-31;196~art2) |
 | `l196_2009_art_10` | Art. 10 — Documento di economia e finanza (in vigore dal 9-9-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009-12-31;196~art10) |
 | `l196_2009_art_21` | Art. 21 — Bilancio di previsione (in vigore dal 24-10-2018) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009-12-31;196~art21) |
 | `l196_2009_art_25_bis` | Art. 25-bis — Introduzione delle azioni (in vigore dal 24-10-2018) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009-12-31;196~art25bis) |
@@ -484,7 +735,12 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `dlgs36_2023_art_7` | Art. 7 — Principio di auto-organizzazione amministrativa (in vigore dal 1-4-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art7) |
+| `dlgs36_2023_art_18` | Art. 18 — Il contratto e la sua stipulazione (in vigore dal 31-12-2024) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art18) |
+| `dlgs36_2023_art_72` | Art. 72 — Procedura ristretta (in vigore dal 1-4-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art72) |
 | `dlgs36_2023_art_101` | Art. 101 — Soccorso istruttorio (in vigore dal 1-4-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art101) |
+| `dlgs36_2023_art_104` | Art. 104 — Avvalimento (in vigore dal 31-12-2024) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art104) |
+| `dlgs36_2023_art_108` | Art. 108 — Criteri di aggiudicazione degli appalti di lavori, servizi e forniture (in vigore dal 6-11-2025) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art108) |
 
 ### Decreto del Presidente della Repubblica 24 novembre 1971, n. 1199
 
@@ -499,13 +755,17 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `l352_1970_art_32` | Art. 32 (in vigore dal 30-9-2021) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-25;352~art32) |
+| `l352_1970_art_33` | Art. 33 (in vigore dal 30-9-2021) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-25;352~art33) |
+| `l352_1970_art_48` | Art. 48 (in vigore dal 30-6-1970) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-25;352~art48) |
 
 ### Decreto legislativo 27 ottobre 2009, n. 150
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `dlgs150_2009_art_5` | Art. 5 — Obiettivi e indicatori (in vigore dal 19-7-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2009-10-27;150~art5) |
 | `dlgs150_2009_art_8` | Art. 8 — Ambiti di misurazione e valutazione della performance organizzativa (in vigore dal 19-7-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2009-10-27;150~art8) |
 | `dlgs150_2009_art_9` | Art. 9 — Ambiti di misurazione e valutazione della performance individuale (in vigore dal 19-7-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2009-10-27;150~art9) |
+| `dlgs150_2009_art_14` | Art. 14 — Organismo indipendente di valutazione della performance (in vigore dal 22-6-2017) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2009-10-27;150~art14) |
 
 ### Legge 7 aprile 2014, n. 56
 
@@ -523,6 +783,11 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 
 | normaId | Articolo | Fonte |
 |---|---|---|
+| `dlgs267_2000_art_98` | Art. 98 — Albo nazionale (in vigore dal 15-8-2015) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art98) |
+| `dlgs267_2000_art_99` | Art. 99 — Nomina (in vigore dal 13-10-2000) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art99) |
+| `dlgs267_2000_art_107` | Art. 107 — Funzioni e responsabiltà della dirigenza (in vigore dal 1-4-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art107) |
+| `dlgs267_2000_art_108` | Art. 108 — Direttore generale (in vigore dal 15-7-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art108) |
+| `dlgs267_2000_art_110` | Art. 110 — Incarichi a contratto (in vigore dal 22-4-2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art110) |
 | `dlgs267_2000_art_178` | Art. 178 — Fasi dell'entrata (in vigore dal 13-10-2000) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2000-08-18;267~art178) |
 
 ### Decreto legislativo 30 luglio 1999, n. 300
@@ -530,6 +795,61 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `dlgs300_1999_art_8` | Art. 8 — L'ordinamento (in vigore dal 14-9-1999) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;300~art8) |
+| `dlgs300_1999_art_9` | Art. 9 — Il personale e la dotazione finanziaria (in vigore dal 14-9-1999) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1999-07-30;300~art9) |
+
+### Decreto legislativo 18 aprile 2016, n. 50 (Codice dei contratti pubblici)
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `dlgs50_2016_art_3` | Art. 3 — Definizioni (testo al 27/06/2023) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art3!vig=2023-06-27) |
+| `dlgs50_2016_art_5` | Art. 5 — Principi comuni in materia di esclusione per concessioni, appalti pubblici e accordi tra enti e amministrazioni aggiudicatrici nell'ambito del settore pubblico (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art5!vig=2019-01-22) |
+| `dlgs50_2016_art_32` | Art. 32 — Fasi delle procedure di affidamento (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art32!vig=2019-01-22) |
+| `dlgs50_2016_art_61` | Art. 61 — Procedura ristretta (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art61!vig=2019-01-22) |
+| `dlgs50_2016_art_83` | Art. 83 — Criteri di selezione e soccorso istruttorio (testo al 15/03/2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art83!vig=2022-03-15) |
+| `dlgs50_2016_art_89` | Art. 89 — Avvalimento (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art89!vig=2019-01-22) |
+| `dlgs50_2016_art_95` | Art. 95 — Criteri di aggiudicazione dell'appalto (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2016-04-18;50~art95!vig=2019-01-22) |
+
+### Codice penale (R.D. 19 ottobre 1930, n. 1398)
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `cp_art_323` | Art. 323 — Abuso d'ufficio (testo al 22/01/2019) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1930-10-19;1398:1~art323!vig=2019-01-22) |
+
+### Legge 5 maggio 2009, n. 42
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `l42_2009_art_24` | Art. 24 — Ordinamento transitorio di Roma capitale ai sensi dell'articolo 114, terzo comma, della Costituzione (in vigore dal 15-8-2012) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2009-05-05;42~art24) |
+
+### Decreto legislativo 14 marzo 2013, n. 33
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `dlgs33_2013_art_5` | Art. 5 — Accesso civico a dati e documenti (in vigore dal 23-6-2016) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2013-03-14;33~art5) |
+
+### Legge 27 luglio 2000, n. 212 (Statuto dei diritti del contribuente)
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `l212_2000_art_3` | Art. 3 — Efficacia temporale delle norme tributarie (in vigore dal 2-8-2025) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2000-07-27;212~art3) |
+
+### Legge 22 maggio 2017, n. 81
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `l81_2017_art_18` | Art. 18 — Lavoro agile (in vigore dal 13-8-2022) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2017-05-22;81~art18) |
+
+### Decreto-legge 19 febbraio 2026, n. 19
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `dl19_2026_art_6` | Art. 6 — Misure di semplificazione in favore dei cittadini e dei consumatori (in vigore dal 21-4-2026) | [normattiva](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2026-02-19;19~art6) |
+
+### Direttiva 2014/24/UE del Parlamento europeo e del Consiglio, del 26 febbraio 2014, sugli appalti pubblici
+
+| normaId | Articolo | Fonte |
+|---|---|---|
+| `dir2014_24_art_12` | Art. 12 — Appalti pubblici tra enti nell’ambito del settore pubblico | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:32014L0024) |
 
 ### Trattato sull'Unione europea (versione consolidata, GU C 202 del 7.6.2016)
 
@@ -544,6 +864,9 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `tue_art_15` | Art. 15 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_16` | Art. 16 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_17` | Art. 17 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
+| `tue_art_18` | Art. 18 — Disposizioni relative alle istituzioni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
+| `tue_art_24` | Art. 24 — Disposizioni comuni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
+| `tue_art_26` | Art. 26 — Disposizioni comuni | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 | `tue_art_42` | Art. 42 — Disposizioni sulla politica di sicurezza e di difesa comune | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016M/TXT) |
 
 ### Trattato sul funzionamento dell'Unione europea (versione consolidata, GU C 202 del 7.6.2016)
@@ -564,6 +887,7 @@ Per le citazioni aggiunte la tabella riporta il testo nuovo, abbreviato. Il test
 | `tfue_art_265` | Art. 265 — La Corte di giustizia dell'Unione europea | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT) |
 | `tfue_art_267` | Art. 267 — La Corte di giustizia dell'Unione europea | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT) |
 | `tfue_art_288` | Art. 288 — Atti giuridici dell'Unione | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT) |
+| `tfue_art_291` | Art. 291 — Atti giuridici dell'Unione | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT) |
 | `tfue_art_352` | Art. 352 — Disposizioni generali e finali | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT) |
 
 ### Carta dei diritti fondamentali dell'Unione europea (GU C 202 del 7.6.2016)

@@ -268,11 +268,11 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "C",
     "suggerimento": "Pensa alla legge n. 400/1988 sull’ordinamento della Presidenza del Consiglio: quale criterio oggettivo usa in mancanza del Vicepresidente?",
-    "spiegazione": "L’art. 8, comma 1, della **legge n. 400/1988** prevede che, in assenza o impedimento del Presidente del Consiglio, la supplenza spetti al Vicepresidente; se non è stato nominato, spetta, salvo diversa disposizione del Presidente, al **Ministro più anziano per età**.",
+    "spiegazione": "L’art. 8 della **l. 400/1988** prevede al comma 1 che, in caso di assenza o impedimento temporaneo del Presidente del Consiglio, la supplenza spetti al Vicepresidente; il comma 2 aggiunge: «Quando non sia stato nominato il Vicepresidente del Consiglio dei ministri, la supplenza di cui al comma 1 spetta, in assenza di diversa disposizione da parte del Presidente del Consiglio dei ministri, al **ministro più anziano secondo l'età**» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "Sbagliata: il Ministro dell’Interno non ha per legge alcuna funzione di supplenza del Presidente del Consiglio.",
       "B": "Sbagliata: il sottosegretario alla Presidenza non è membro del Consiglio dei ministri e non supplisce il Presidente.",
-      "C": "Corretta: è il criterio residuale dell’art. 8 della l. 400/1988."
+      "C": "Corretta: è il criterio residuale dell’art. 8, comma 2, della l. 400/1988."
     },
     "riferimenti": [
       {
@@ -316,7 +316,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "L’art. 104 Cost. indica due categorie tra cui il Parlamento sceglie i membri «laici»: quali e con quali requisiti?",
-    "spiegazione": "L’art. 104, comma 4, Cost.: i membri del CSM eletti dal Parlamento in seduta comune sono scelti tra **professori ordinari di università in materie giuridiche** e **avvocati dopo quindici anni di esercizio**.",
+    "spiegazione": "L’art. 104, quarto comma, Cost. stabilisce che gli altri componenti del CSM sono eletti «per un terzo dal Parlamento in seduta comune tra **professori ordinari di università in materie giuridiche** ed **avvocati dopo quindici anni di esercizio**».",
     "perOpzione": {
       "A": "Corretta: è una delle due categorie previste dall’art. 104 Cost.",
       "B": "Sbagliata: per gli avvocati sono richiesti quindici anni di esercizio, non dieci.",
@@ -332,7 +332,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "L’art. 17-bis della l. 241/1990 è intitolato al «silenzio» tra amministrazioni: che valore dà al silenzio?",
-    "spiegazione": "L’art. 17-bis della **l. 241/1990** (introdotto dalla l. 124/2015) disciplina il **silenzio-assenso tra amministrazioni pubbliche**: decorso il termine (di regola 30 giorni) senza che sia comunicato l’assenso, il concerto o il nulla osta, questo **si intende acquisito**. L’intervento del Presidente del Consiglio è previsto solo in caso di mancato accordo tra amministrazioni statali.",
+    "spiegazione": "L’art. 17-bis della **l. 241/1990** (introdotto dalla l. 124/2015) disciplina il **silenzio-assenso tra amministrazioni pubbliche**: il comma 2 dispone che, «Decorsi i termini di cui al comma 1 senza che sia stato comunicato l'assenso, il concerto o il nulla osta, **lo stesso si intende acquisito**» (il termine è di regola di 30 giorni; testo identico nel 2019 e oggi). L’intervento del Presidente del Consiglio, previa deliberazione del Consiglio dei ministri, è previsto solo «In caso di mancato accordo tra le amministrazioni statali coinvolte».",
     "perOpzione": {
       "A": "Sbagliata: la conferenza di servizi non è la conseguenza del silenzio prevista dall’art. 17-bis, che invece fa scattare l’assenso.",
       "B": "Sbagliata: la decisione del Presidente del Consiglio, previa deliberazione del Consiglio dei ministri, riguarda il caso di dissenso espresso (mancato accordo) tra amministrazioni statali, non il silenzio.",
@@ -351,7 +351,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "Chi ha votato contro o si è astenuto ha contribuito alla decisione dannosa?",
-    "spiegazione": "L’art. 1, comma 1-ter, della **l. n. 20/1994** stabilisce che, nel caso di deliberazioni di organi collegiali, la responsabilità amministrativa si imputa **esclusivamente a coloro che hanno espresso voto favorevole**.",
+    "spiegazione": "L’art. 1, comma 1-ter, della **l. 20/1994** stabilisce: «Nel caso di deliberazioni di organi collegiali la responsabilità si imputa **esclusivamente a coloro che hanno espresso voto favorevole**» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "Sbagliata: i membri dissenzienti o assenti non rispondono della deliberazione.",
       "B": "Corretta: è la regola dell’art. 1, comma 1-ter, l. 20/1994.",
@@ -383,7 +383,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "Dopo la riforma del 2017, l’art. 5 distingue obiettivi comuni a tutte le PA da obiettivi propri di ciascuna amministrazione.",
-    "spiegazione": "L’art. 5, comma 01, del **d.lgs. 150/2009** (come modificato dal d.lgs. 74/2017) prevede che gli obiettivi si articolino in **obiettivi generali**, che identificano le priorità strategiche delle PA in coerenza con le politiche nazionali, e **obiettivi specifici** di ogni amministrazione, indicati nel Piano della performance.",
+    "spiegazione": "L’art. 5, comma 01, del **d.lgs. 150/2009** (inserito dal d.lgs. 74/2017, quindi già in vigore nel 2019) stabilisce: «Gli obiettivi si articolano in: a) **obiettivi generali**, che identificano [...] le priorità strategiche delle pubbliche amministrazioni [...]; b) **obiettivi specifici** di ogni pubblica amministrazione», individuati nel Piano della performance. Gli obiettivi generali sono fissati in coerenza con le priorità delle politiche pubbliche nazionali.",
     "perOpzione": {
       "A": "Corretta: è la distinzione prevista dall’art. 5 del d.lgs. 150/2009.",
       "B": "Sbagliata: la classificazione macro/micro non è utilizzata dalla norma.",
@@ -399,7 +399,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "A",
     "suggerimento": "I motivi aggiunti servono solo a rafforzare la domanda originaria o anche ad ampliarla?",
-    "spiegazione": "L’art. 43, comma 1, del **codice del processo amministrativo** (d.lgs. 104/2010) consente ai ricorrenti, principale e incidentale, di introdurre con motivi aggiunti **nuove ragioni** a sostegno delle domande già proposte, **ovvero domande nuove purché connesse** a quelle già proposte.",
+    "spiegazione": "L’art. 43, comma 1, del **c.p.a.** (d.lgs. 104/2010) dispone: «I ricorrenti, principale e incidentale, possono introdurre con motivi aggiunti **nuove ragioni** a sostegno delle domande già proposte, **ovvero domande nuove purché connesse** a quelle già proposte».",
     "perOpzione": {
       "A": "Corretta: riproduce il testo dell’art. 43 c.p.a.",
       "B": "Sbagliata: i motivi aggiunti possono contenere anche nuove ragioni a sostegno delle domande originarie, non solo domande nuove.",
@@ -415,7 +415,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "C",
     "suggerimento": "Che differenza c’è tra procedura aperta e procedura ristretta?",
-    "spiegazione": "Nella **procedura ristretta** ogni operatore può chiedere di partecipare, ma **possono presentare un’offerta soltanto gli operatori invitati** dalla stazione appaltante dopo la valutazione delle informazioni fornite. Nel 2019 lo prevedeva l’art. 61 del d.lgs. 50/2016; oggi la regola è nell’art. 72 del d.lgs. 36/2023 (nuovo Codice dei contratti pubblici).",
+    "spiegazione": "Nella **procedura ristretta** ogni operatore può chiedere di partecipare, ma solo gli invitati presentano l’offerta. Nel 2019 l’art. 61, comma 3, del d.lgs. 50/2016 stabiliva: «A seguito della valutazione da parte delle amministrazioni aggiudicatrici delle informazioni fornite, **soltanto gli operatori economici invitati possono presentare un'offerta**». Oggi la stessa regola, con le stesse parole (salvo «stazioni appaltanti» al posto di «amministrazioni aggiudicatrici»), è nell’art. 72, comma 3, del d.lgs. 36/2023.",
     "perOpzione": {
       "A": "Sbagliata: non esiste un’autorizzazione dell’ANAC come requisito per presentare offerta.",
       "B": "Sbagliata: la legge non richiede una specifica esperienza quinquennale; i requisiti sono fissati dal bando e la selezione avviene tramite invito.",
@@ -434,7 +434,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Si tratta di un’aspettativa senza assegni: ha senso che valga ai fini pensionistici?",
-    "spiegazione": "L’art. 23-bis, comma 1, del **d.lgs. 165/2001** consente ai dirigenti di essere collocati in aspettativa senza assegni per svolgere attività presso soggetti e organismi pubblici o privati; il periodo **non può superare i cinque anni** e **non è computabile** ai fini del trattamento di quiescenza e previdenza.",
+    "spiegazione": "Nel testo dell’art. 23-bis del **d.lgs. 165/2001** in vigore nel 2019, il comma 1 prevedeva il collocamento in aspettativa senza assegni dei «dirigenti delle pubbliche amministrazioni» (e di altre categorie) per svolgere attività presso soggetti e organismi pubblici o privati, e il comma 4 stabiliva: «Nel caso di svolgimento di attività presso soggetti diversi dalle amministrazioni pubbliche, il periodo di collocamento in aspettativa di cui al comma 1 **non può superare i cinque anni e non è computabile ai fini del trattamento di quiescenza e previdenza**». Oggi il comma 1 si riferisce ai «dipendenti delle pubbliche amministrazioni» e il comma 4 dice che il periodo «non può superare i cinque anni, è rinnovabile per una sola volta e non è computabile ai fini del trattamento di quiescenza e previdenza»: la risposta resta la stessa.",
     "perOpzione": {
       "A": "Corretta: cinque anni massimo e nessun computo a fini di quiescenza e previdenza.",
       "B": "Sbagliata: il limite è di cinque anni, non tre.",
@@ -450,7 +450,7 @@ const SPIEGAZIONI = [
     "id": 36,
     "corretta": "B",
     "suggerimento": "L’obbligo di motivazione è scritto nella Costituzione o nella legge generale sul procedimento?",
-    "spiegazione": "L’obbligo generale di motivazione è stabilito dall’art. 3 della **l. 241/1990**: ogni provvedimento amministrativo deve essere motivato (salvo atti normativi e a contenuto generale), indicando presupposti di fatto e ragioni giuridiche. L’art. 113 Cost. riguarda invece la tutela giurisdizionale contro gli atti della PA.",
+    "spiegazione": "L’obbligo generale di motivazione è stabilito dall’art. 3, comma 1, della **l. 241/1990**: «Ogni provvedimento amministrativo [...] **deve essere motivato**, salvo che nelle ipotesi previste dal comma 2» (atti normativi e a contenuto generale); la motivazione deve indicare «i presupposti di fatto e le ragioni giuridiche» della decisione (testo identico nel 2019 e oggi). L’art. 113 Cost. riguarda invece la tutela giurisdizionale contro gli atti della PA.",
     "perOpzione": {
       "A": "Sbagliata: l’art. 113 Cost. garantisce la tutela giurisdizionale, non impone espressamente la motivazione.",
       "B": "Corretta: è l’art. 3 della l. 241/1990.",
@@ -486,7 +486,7 @@ const SPIEGAZIONI = [
     "id": 38,
     "corretta": "A",
     "suggerimento": "La cittadinanza europea si aggiunge a quella nazionale: da cosa dipende?",
-    "spiegazione": "L’art. 20 del **TFUE** (e l’art. 9 TUE) stabilisce che è cittadino dell’Unione **chiunque abbia la cittadinanza di uno Stato membro**; la cittadinanza dell’Unione si aggiunge a quella nazionale e non la sostituisce. Sono gli Stati a decidere chi è loro cittadino.",
+    "spiegazione": "L’art. 20, paragrafo 1, del **TFUE** (come l’art. 9 TUE) stabilisce: «**È cittadino dell'Unione chiunque abbia la cittadinanza di uno Stato membro.** La cittadinanza dell'Unione si aggiunge alla cittadinanza nazionale e non la sostituisce». Sono gli Stati a decidere chi è loro cittadino.",
     "perOpzione": {
       "A": "Corretta: è la definizione dell’art. 20 TFUE.",
       "B": "Sbagliata: la cittadinanza UE non deriva dall’origine dei genitori ma dal possesso della cittadinanza di uno Stato membro, secondo le leggi nazionali.",
@@ -524,10 +524,10 @@ const SPIEGAZIONI = [
     "id": 40,
     "corretta": "B",
     "suggerimento": "Quanti sono i giudici dell’Aia e chi li elegge? Conta la nazionalità?",
-    "spiegazione": "Lo **Statuto della Corte internazionale di giustizia** prevede **15 giudici** (art. 3), eletti «senza riguardo alla loro nazionalità» (art. 2) dall’**Assemblea generale e dal Consiglio di sicurezza**, che votano separatamente (artt. 4 e 8). Non possono esserci due giudici della stessa nazionalità.",
+    "spiegazione": "Lo **Statuto della Corte internazionale di giustizia** prevede **15 giudici** (art. 3), eletti senza riguardo alla loro nazionalità (art. 2 dello Statuto) dall’**Assemblea generale e dal Consiglio di sicurezza**, che votano separatamente (artt. 4 e 8). Non possono esserci due giudici della stessa nazionalità.",
     "perOpzione": {
-      "A": "Sbagliata: i giudici sono 15 e li eleggono insieme Assemblea generale e Consiglio di sicurezza.",
-      "B": "Corretta: 15 giudici, elezione congiunta dei due organi, a prescindere dalla nazionalità.",
+      "A": "Sbagliata: i giudici sono 15 e li eleggono sia l’Assemblea generale sia il Consiglio di sicurezza, non il solo Consiglio.",
+      "B": "Corretta: 15 giudici, eletti sia dall’Assemblea generale sia dal Consiglio di sicurezza (con votazioni separate), a prescindere dalla nazionalità.",
       "C": "Sbagliata: i giudici non devono provenire dai membri permanenti del Consiglio di sicurezza; la scelta prescinde dalla nazionalità."
     }
   },

@@ -9,10 +9,10 @@
   // numero e anno di un atto: «241/1990», «n. 241/1990», «n. 241 del 1990», «7 agosto 1990, n. 241»
   const MESI = "(?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)";
   const NA = "(?:(?:n\\.\\s?)?\\d+\\s?\\/\\s?\\d{4}|n\\.\\s?\\d+ del \\d{4}|\\d{1,2}°? " + MESI + " \\d{4},? n\\.\\s?\\d+)";
-  const ATTO = "(?:Carta (?:ONU|delle Nazioni Unite)|Statuto della Corte internazionale di giustizia|Costituzione dell[’']ILO|Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|codice civile|c\\.p\\.a\\.|codice del processo amministrativo|c\\.p\\.(?!a)|codice penale|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|TUEL|direttiva \\d{4}\\/\\d+\\/UE|legge 241(?![\\d\\/])"
+  const ATTO = "(?:Carta (?:ONU|delle Nazioni Unite)|Statuto della Corte internazionale di giustizia|Costituzione dell[’']ILO|Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|codice civile|c\\.p\\.a\\.|codice del processo amministrativo|c\\.p\\.(?!a)|codice penale|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|TUEL|preleggi|disposizioni sulla legge in generale|disp\\. prel\\.|direttiva \\d{4}\\/\\d+\\/UE|legge 241(?![\\d\\/])"
     + "|(?:[lL]\\.|legge) ?cost(?:\\.|ituzionale) ?" + NA + "|(?:[lL]\\.|legge) ?" + NA + "|(?:[dD]\\.\\s?[lL]gs\\.?|decreto legislativo) ?" + NA
     + "|(?:[dD]\\.\\s?[lL]\\.|decreto-legge) ?" + NA + "|(?:[dD]\\.\\s?P\\.\\s?R\\.?|decreto del Presidente della Repubblica) ?" + NA + ")";
-  const PREP = "(?:\\s*,?\\s*(?:del|della|dello|dal|dalla|nel|nella)?\\s*)";
+  const PREP = "(?:\\s*,?\\s*(?:del|della|dello|delle|dei|degli|dal|dalla|nel|nella)?\\s*)";
   const RE_CIT = new RegExp("\\b([Aa]rtt?\\.|[Aa]rticol[oi])\\s*(" + NUM + ")((?:" + QUAL + "(?:\\s*,?\\s*(?:e|ed|-|,)\\s*(?:(?:all'|dall'|l')?artt?\\.\\s*)?" + NUM + "(?![\\d/]))?)*)" + QUAL + "(?:" + PREP + "(" + ATTO + ")(?![\\w]))?", "g");
   const RE_ATTO = new RegExp("(?:^|[^\\w])(" + ATTO + ")(?![\\w])", "g");
 
@@ -40,6 +40,7 @@
     if (/^Carta/.test(a)) return "cdfue";
     if (/^Testo unico/.test(a)) return null;
     if (a === "TUEL") return "dlgs267_2000";
+    if (/^(preleggi|disposizioni sulla legge|disp\. prel)/.test(a)) return "preleggi";
     if (a === "legge 241") return "l241_1990";
     let m;
     if ((m = a.match(/^Protocollo n\. ?(\d+)/))) return "prot" + m[1];
@@ -100,7 +101,7 @@
       for (const c of cit) {
         const inCitazione = virgolette.some(([a, b]) => c.start > a && c.start < b);
         for (const p of c.parti) {
-          let id = null;
+          let id = null, dedotto = false;
           if (c.pre) id = idArt(c.pre, p.art);
           else {
             const prima = ctx.filter(a => a.pos < c.start).reverse().concat(storico.slice().reverse());
@@ -108,8 +109,11 @@
             for (const a of prima.concat(dopo)) {
               if (a.pre && esiste(idArt(a.pre, p.art))) { id = idArt(a.pre, p.art); break; }
             }
+            // nessun testo disponibile: si attribuisce comunque all'atto citato subito prima (serve
+            // a dire quale norma manca; l'app collega solo le norme di cui ha il testo)
+            if (!id) { const a0 = prima.find(a => a.pre); if (a0) { id = idArt(a0.pre, p.art); dedotto = true; } }
           }
-          r.push({ start: p.start, end: p.end, art: p.art, id, esplicito: !!c.pre, inCitazione });
+          r.push({ start: p.start, end: p.end, art: p.art, id, esplicito: !!c.pre, inCitazione, dedotto });
         }
       }
       ris.push(r);

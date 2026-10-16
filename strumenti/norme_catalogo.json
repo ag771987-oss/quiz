@@ -76,21 +76,22 @@
     "10-bis",
     "11",
     "13",
+    "14",
     "14-bis",
+    "14-ter",
     "14-quater",
     "14-quinquies",
-    "14-ter",
     "16",
     "17",
     "17-bis",
     "19",
     "20",
     "21-bis",
-    "21-nonies",
+    "21-ter",
     "21-quater",
     "21-quinquies",
     "21-septies",
-    "21-ter",
+    "21-nonies",
     "22",
     "24",
     "25",
@@ -128,6 +129,24 @@
     "23-bis",
     "35",
     "52"
+   ]
+  },
+  "preleggi": {
+   "dir": "codice_civile",
+   "fonte": "Disposizioni sulla legge in generale (preleggi al Codice civile)",
+   "sigla": "preleggi",
+   "urn": "urn:nir:stato:regio.decreto:1942-03-16;262:1",
+   "articoli": [
+    "11"
+   ]
+  },
+  "l195_1958": {
+   "dir": "l195_1958",
+   "fonte": "Legge 24 marzo 1958, n. 195",
+   "sigla": "l. 195/1958",
+   "urn": "urn:nir:stato:legge:1958-03-24;195",
+   "articoli": [
+    "30"
    ]
   },
   "cc": {
@@ -256,7 +275,8 @@
    "sigla": "l. 234/2012",
    "urn": "urn:nir:stato:legge:2012-12-24;234",
    "articoli": [
-    "1"
+    "1",
+    "30"
    ]
   },
   "dlgs175_2016": {
@@ -298,6 +318,7 @@
    "urn": "urn:nir:stato:decreto.legislativo:2023-03-31;36",
    "articoli": [
     "7",
+    "18",
     "72",
     "101",
     "104",
@@ -322,7 +343,8 @@
    "urn": "urn:nir:stato:legge:1970-05-25;352",
    "articoli": [
     "32",
-    "33"
+    "33",
+    "48"
    ]
   },
   "dlgs150_2009": {
@@ -477,6 +499,8 @@
     "16",
     "17",
     "18",
+    "24",
+    "26",
     "42"
    ]
   },

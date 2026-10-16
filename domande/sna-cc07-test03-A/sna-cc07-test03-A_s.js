@@ -138,7 +138,7 @@ const SPIEGAZIONI = [
     "spiegazione": "75 : 3 = **25**; 25 × 4/5 = **20**.",
     "perOpzione": {
       "A": "25 × 4/5 = 20: risultato corretto.",
-      "B": "45 non deriva dal calcolo: sarebbe circa i 3/5 di 75.",
+      "B": "45 non deriva dal calcolo: sono esattamente i 3/5 di 75, non i 4/5 della sua terza parte.",
       "C": "25 è solo la terza parte di 75: manca l'ultimo passaggio (i 4/5)."
     }
   },
@@ -267,13 +267,16 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "A",
     "suggerimento": "Un organo costituzionale può restare senza titolare? Pensa al principio di continuità degli organi (prorogatio).",
-    "spiegazione": "Per il **principio di continuità** degli organi costituzionali, il CSM scaduto resta in carica (prorogatio) fino all'insediamento del nuovo Consiglio: lo prevede la legge 24 marzo 1958, n. 195, che disciplina costituzione e funzionamento del CSM (art. 104 Cost. fissa la durata quadriennale).",
+    "spiegazione": "Per il **principio di continuità** degli organi costituzionali, il CSM scaduto resta in carica (prorogatio) fino all'insediamento del nuovo Consiglio. Lo prevede l'**art. 30 della legge 24 marzo 1958, n. 195**: «Il Consiglio superiore scade al termine del quadriennio. Tuttavia finchè non è insediato il nuovo Consiglio continua a funzionare quello precedente» (testo identico nel 2019 e oggi). La durata quadriennale discende dall'art. 104, sesto comma, Cost.: «I membri elettivi del Consiglio durano in carica quattro anni».",
     "perOpzione": {
       "A": "Corretta: vale la prorogatio del Consiglio uscente fino all'insediamento del nuovo.",
       "B": "Una commissione nominata dal Ministro violerebbe l'autonomia e l'indipendenza della magistratura (art. 104 Cost.).",
       "C": "La sospensione delle funzioni bloccherebbe un organo di rilievo costituzionale: la legge esclude vuoti di funzionamento."
     },
     "riferimenti": [
+      {
+        "normaId": "l195_1958_art_30"
+      },
       {
         "normaId": "cost_art_104"
       }
@@ -315,7 +318,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "A",
     "suggerimento": "Non confondere l'iniziativa legislativa popolare con il referendum: chi controlla le firme nei due casi?",
-    "spiegazione": "Per l'**iniziativa legislativa popolare** (art. 71, secondo comma, Cost.: almeno 50.000 elettori) la legge 25 maggio 1970, n. 352 affida la verifica e il computo delle firme alla **Camera a cui la proposta è presentata**. La Corte di cassazione (Ufficio centrale per il referendum) interviene invece sulle richieste di referendum.",
+    "spiegazione": "Per l'**iniziativa legislativa popolare** (art. 71, secondo comma, Cost.: almeno 50.000 elettori) l'**art. 48, secondo comma, della legge 25 maggio 1970, n. 352** affida la verifica alla **Camera a cui la proposta è presentata**: «Spetta a tale Camera provvedere alla verifica ed al computo delle firme dei richiedenti al fine di accertare la regolarità della richiesta» (testo identico nel 2019 e oggi). La Corte di cassazione (Ufficio centrale per il referendum) interviene invece sulle richieste di referendum.",
     "perOpzione": {
       "A": "Corretta: la verifica spetta alla Camera presso cui la proposta è depositata.",
       "B": "Non spetta sempre alla Camera dei deputati: la proposta può essere presentata anche al Senato, che la verifica.",
@@ -324,6 +327,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "cost_art_71"
+      },
+      {
+        "normaId": "l352_1970_art_48"
       }
     ]
   },
@@ -331,10 +337,10 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "La motivazione per relationem è ammessa, ma l'interessato deve poter conoscere le ragioni: cosa deve fare l'amministrazione con l'atto richiamato?",
-    "spiegazione": "L'**art. 3, comma 3, della legge n. 241/1990** ammette la motivazione per relationem: se le ragioni risultano da altro atto richiamato dalla decisione, insieme alla comunicazione di quest'ultima deve essere **indicato e reso disponibile** anche l'atto richiamato.",
+    "spiegazione": "L'**art. 3, comma 3, l. 241/1990** ammette la motivazione per relationem: «Se le ragioni della decisione risultano da altro atto dell'amministrazione richiamato dalla decisione stessa, insieme alla comunicazione di quest'ultima deve essere **indicato e reso disponibile**, a norma della presente legge, anche l'atto cui essa si richiama» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "Non basta produrre l'atto in giudizio: deve essere reso disponibile già con la comunicazione del provvedimento.",
-      "B": "Riproduce l'art. 3, comma 3, l. 241/1990: atto richiamato e reso disponibile.",
+      "B": "Riprende nella sostanza l'art. 3, comma 3, l. 241/1990: atto richiamato e reso disponibile.",
       "C": "La motivazione è obbligatoria, ma la legge ammette espressamente che risulti da un altro atto richiamato."
     },
     "nota": "Nel testo originale l'opzione B reca il refuso «ad destinatario» (per «al destinatario»).",
@@ -348,11 +354,11 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "C",
     "suggerimento": "L'art. 6 della l. 241/1990 vuole valorizzare l'istruttoria del responsabile del procedimento: discostarsene è possibile, ma a quale condizione?",
-    "spiegazione": "Ai sensi dell'**art. 6, comma 1, lett. e), della legge n. 241/1990**, l'organo competente all'adozione del provvedimento finale, se diverso dal responsabile, **non può discostarsi** dalle risultanze dell'istruttoria **se non indicandone la motivazione** nel provvedimento finale.",
+    "spiegazione": "Ai sensi dell'**art. 6, comma 1, lett. e), l. 241/1990**: «L'organo competente per l'adozione del provvedimento finale, ove diverso dal responsabile del procedimento, **non può discostarsi** dalle risultanze dell'istruttoria condotta dal responsabile del procedimento **se non indicandone la motivazione** nel provvedimento finale» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "La legge non prevede una comunicazione al dirigente sovraordinato: richiede la motivazione nel provvedimento.",
       "B": "Non serve un accordo con il responsabile del procedimento: l'organo decide autonomamente motivando.",
-      "C": "È la formula dell'art. 6, comma 1, lett. e)."
+      "C": "Corrisponde all'art. 6, comma 1, lett. e), l. 241/1990: ci si può discostare dall'istruttoria solo «indicandone la motivazione nel provvedimento finale»."
     },
     "riferimenti": [
       {
@@ -364,7 +370,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "A",
     "suggerimento": "Il minor prezzo è un criterio residuale rispetto all'offerta economicamente più vantaggiosa: la legge lo impone, lo vieta o lo consente?",
-    "spiegazione": "L'**art. 95, comma 4, del d.lgs. n. 50/2016** stabiliva che «**può** essere utilizzato» il criterio del minor prezzo, tra l'altro, per servizi e forniture caratterizzati da **elevata ripetitività** (salvo quelli di notevole contenuto tecnologico o innovativi): una facoltà, non un obbligo. Oggi il codice è il **d.lgs. n. 36/2023**: l'art. 108, comma 3, consente ancora il minor prezzo per servizi e forniture con caratteristiche standardizzate o le cui condizioni sono definite dal mercato (esclusi, tra gli altri, i servizi ad alta intensità di manodopera).",
+    "spiegazione": "L'**art. 95, comma 4, d.lgs. 50/2016**, nel testo in vigore alla data della prova (22/01/2019), stabiliva: «Può essere utilizzato il criterio del minor prezzo: [...] c) per i servizi e le forniture di importo fino a 40.000 euro, nonché per i servizi e le forniture di importo pari o superiore a 40.000 euro e sino alla soglia di cui all'articolo 35 solo se caratterizzati da **elevata ripetitività**, fatta eccezione per quelli di notevole contenuto tecnologico o che hanno un carattere innovativo»: una **facoltà**, non un obbligo. Oggi il codice è il **d.lgs. 36/2023**, il cui art. 108, comma 3, dispone: «Può essere utilizzato il criterio del minor prezzo per i servizi e le forniture con caratteristiche standardizzate o le cui condizioni sono definite dal mercato, fatta eccezione per i servizi ad alta intensità di manodopera [...]»; l'elevata ripetitività non è più menzionata.",
     "perOpzione": {
       "A": "Corretta: la norma configura una facoltà della stazione appaltante.",
       "B": "Non c'è alcun obbligo: la stazione appaltante può sempre scegliere l'offerta economicamente più vantaggiosa.",
@@ -383,10 +389,10 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "Distingui l'accesso «documentale» della legge 241 dall'accesso civico generalizzato del d.lgs. 33/2013: quale dei due richiede un interesse qualificato?",
-    "spiegazione": "L'**art. 22, comma 1, lett. b), della legge n. 241/1990** definisce «interessati» tutti i soggetti privati, compresi i portatori di interessi pubblici o diffusi, che abbiano un **interesse diretto, concreto e attuale**, corrispondente a una situazione giuridicamente tutelata e collegata al documento. L'accesso di «chiunque», senza motivazione, è invece l'accesso civico generalizzato (art. 5, comma 2, d.lgs. n. 33/2013, introdotto nel 2016).",
+    "spiegazione": "L'**art. 22, comma 1, lett. b), l. 241/1990** definisce «interessati» «tutti i soggetti privati, compresi quelli portatori di interessi pubblici o diffusi, che abbiano un **interesse diretto, concreto e attuale**, corrispondente ad una situazione giuridicamente tutelata e collegata al documento al quale è chiesto l'accesso» (testo identico nel 2019 e oggi). L'accesso di «chiunque», senza motivazione, è invece l'accesso civico generalizzato (art. 5, comma 2, d.lgs. 33/2013, introdotto nel 2016).",
     "perOpzione": {
-      "A": "Troppo restrittivo: l'accesso non è riservato a chi è intervenuto nel procedimento (questo è il diritto di prendere visione degli atti ex art. 10).",
-      "B": "Riproduce la definizione di «interessati» dell'art. 22 della legge 241.",
+      "A": "Troppo restrittivo: l'accesso non è riservato a chi è intervenuto nel procedimento (questo è il diritto di prendere visione degli atti ex art. 10 l. 241/1990).",
+      "B": "Riprende quasi alla lettera la definizione di «interessati» dell'art. 22, comma 1, lett. b), l. 241/1990.",
       "C": "Descrive l'accesso civico generalizzato del d.lgs. 33/2013, non l'accesso documentale della legge 241."
     },
     "riferimenti": [
@@ -405,10 +411,10 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "Ricorda il principio di separazione tra indirizzo politico e gestione: a chi spettano gli atti di gestione negli enti locali?",
-    "spiegazione": "L'**art. 107, comma 3, lett. f), del d.lgs. n. 267/2000** attribuisce ai **dirigenti** i provvedimenti di autorizzazione, concessione o analoghi, il cui rilascio presupponga accertamenti e valutazioni anche discrezionali, nel rispetto dei criteri predeterminati da leggi, regolamenti e atti generali di indirizzo.",
+    "spiegazione": "L'**art. 107, comma 3, lett. f), TUEL (d.lgs. 267/2000)** attribuisce ai **dirigenti** «i provvedimenti di autorizzazione, concessione o analoghi, il cui rilascio presupponga accertamenti e valutazioni, anche di natura discrezionale, nel rispetto di criteri predeterminati dalla legge, dai regolamenti, da atti generali di indirizzo» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "Il segretario comunale ha funzioni di assistenza giuridico-amministrativa e coordinamento; può svolgere funzioni dirigenziali solo se conferite, ma la norma le attribuisce ai dirigenti.",
-      "B": "Corretta: è uno dei compiti gestionali elencati dall'art. 107, comma 3.",
+      "B": "Corretta: è uno dei compiti gestionali elencati dall'art. 107, comma 3, TUEL.",
       "C": "Il direttore generale (art. 108 TUEL) attua indirizzi e obiettivi e sovrintende alla gestione, ma non adotta questi provvedimenti."
     },
     "riferimenti": [
@@ -424,7 +430,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "Le misure ante causam sono provvisorie per definizione: la legge fissa un termine massimo di efficacia?",
-    "spiegazione": "Per l'**art. 61, comma 5, del codice del processo amministrativo**, la misura cautelare anteriore alla causa perde effetto se entro 15 giorni non è notificato il ricorso (e depositato nei 5 giorni successivi) e **in ogni caso con il decorso di 60 giorni dalla sua emissione**; dopo restano efficaci solo le misure confermate o disposte in corso di causa.",
+    "spiegazione": "Per l'**art. 61, comma 5, c.p.a.**, la misura cautelare anteriore alla causa perde effetto se entro 15 giorni dalla sua emanazione non è notificato il ricorso con la domanda cautelare (e depositato nei 5 giorni successivi) e, comunque, «in ogni caso la misura concessa ai sensi del presente articolo **perde effetto con il decorso di sessanta giorni dalla sua emissione**, dopo di che restano efficaci le sole misure cautelari che siano confermate o disposte in corso di causa» (testo identico nel 2019 e oggi).",
     "perOpzione": {
       "A": "Corretta: il limite massimo di efficacia è di 60 giorni.",
       "B": "La misura non sopravvive indefinitamente fino alla decisione cautelare ordinaria: decade comunque dopo 60 giorni.",
@@ -440,11 +446,11 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "C",
     "suggerimento": "La conferenza semplificata è la regola, ma l'art. 14-bis prevede casi in cui si può passare subito a quella simultanea: quali?",
-    "spiegazione": "L'**art. 14-bis, comma 7, della legge n. 241/1990** consente all'amministrazione procedente, ove necessario per la **particolare complessità** della determinazione, di procedere direttamente in forma simultanea e modalità sincrona; lo stesso può avvenire su **richiesta motivata** delle altre amministrazioni o del privato interessato.",
+    "spiegazione": "L'**art. 14-bis, comma 7, l. 241/1990**, nel testo in vigore nel 2019, prevedeva: «Ove necessario, in relazione alla **particolare complessità** della determinazione da assumere, l'amministrazione procedente può comunque procedere direttamente in forma simultanea e in modalità sincrona, ai sensi dell'articolo 14-ter» e «L'amministrazione procedente può altresì procedere in forma simultanea e in modalità sincrona su **richiesta motivata** delle altre amministrazioni o del privato interessato avanzata entro il termine perentorio di cui al comma 2, lettera b)». Questi passi sono rimasti identici; nel testo vigente è cambiato solo il termine per convocare la riunione («entro i successivi trenta giorni», nel 2019 quarantacinque).",
     "perOpzione": {
-      "A": "Le «posizioni prevalenti» sono il criterio di decisione della conferenza simultanea (art. 14-ter), non il presupposto per saltare quella semplificata.",
+      "A": "Le «posizioni prevalenti» sono il criterio di decisione della conferenza simultanea (art. 14-ter, comma 7, l. 241/1990), non il presupposto per saltare quella semplificata.",
       "B": "Falso: la legge prevede espressamente casi di conferenza simultanea immediata.",
-      "C": "Corretta: riproduce i presupposti dell'art. 14-bis, comma 7."
+      "C": "Corretta: riprende i presupposti dell'art. 14-bis, comma 7, l. 241/1990."
     },
     "riferimenti": [
       {
@@ -459,10 +465,10 @@ const SPIEGAZIONI = [
     "id": 36,
     "corretta": "B",
     "suggerimento": "Nella gestione del personale le PA agiscono con i poteri del privato datore di lavoro: che spazio resta ai sindacati?",
-    "spiegazione": "L'**art. 5, comma 2, del d.lgs. n. 165/2001**, nel testo modificato dal d.lgs. n. 75/2017, prevede che le misure inerenti alla gestione dei rapporti di lavoro siano assunte **in via esclusiva dagli organi preposti alla gestione** con la capacità e i poteri del privato datore di lavoro, **fatte salve la sola informazione ai sindacati** ovvero le ulteriori forme di partecipazione, ove previste dai contratti collettivi.",
+    "spiegazione": "L'**art. 5, comma 2, d.lgs. 165/2001**, nel testo modificato dal d.lgs. 75/2017 (in vigore nel 2019 e tuttora), prevede che le misure inerenti alla gestione dei rapporti di lavoro siano assunte «**in via esclusiva dagli organi preposti alla gestione** con la capacità e i poteri del privato datore di lavoro, **fatte salve la sola informazione ai sindacati** ovvero le ulteriori forme di partecipazione, ove previsti nei contratti di cui all'articolo 9».",
     "perOpzione": {
       "A": "L'esame congiunto non è previsto dalla norma come condizione generale: è fatta salva la sola informazione (oltre alle forme previste dai contratti).",
-      "B": "Riproduce il testo vigente dell'art. 5, comma 2.",
+      "B": "Riproduce il testo dell'art. 5, comma 2, d.lgs. 165/2001, identico nel 2019 e oggi (i «contratti di cui all'articolo 9» sono i contratti collettivi).",
       "C": "Gli organi di governo hanno funzioni di indirizzo; la gestione spetta ai dirigenti (separazione politica-amministrazione)."
     },
     "riferimenti": [
@@ -475,11 +481,11 @@ const SPIEGAZIONI = [
     "id": 37,
     "corretta": "C",
     "suggerimento": "Scaduto il termine per i controlli, l'amministrazione può ancora intervenire sulla SCIA, ma usando quale istituto di autotutela?",
-    "spiegazione": "L'**art. 19, comma 4, della legge n. 241/1990** (riformato dalla legge n. 124/2015) prevede che, decorso il termine di 60 giorni, l'amministrazione adotti comunque i provvedimenti inibitori **in presenza delle condizioni previste dall'art. 21-nonies**, cioè quelle dell'**annullamento d'ufficio** (illegittimità, interesse pubblico, termine ragionevole). Prima del 2015 l'intervento tardivo era ammesso solo per danno a patrimonio artistico, ambiente, salute, sicurezza pubblica o difesa nazionale.",
+    "spiegazione": "L'**art. 19, comma 4, l. 241/1990** (riformato dalla l. 124/2015), nel testo in vigore nel 2019, disponeva: «Decorso il termine per l'adozione dei provvedimenti di cui al comma 3, primo periodo, ovvero di cui al comma 6-bis, l'amministrazione competente adotta comunque i provvedimenti previsti dal medesimo comma 3 **in presenza delle condizioni previste dall'articolo 21-nonies**», cioè quelle dell'**annullamento d'ufficio** (illegittimità, ragioni di interesse pubblico, termine ragionevole: nel 2019 non superiore a diciotto mesi, oggi a sei mesi). Il testo vigente aggiunge soltanto «fatta salva, in ogni caso, la sanzione di cui all'articolo 75» del d.P.R. 445/2000, senza mutare la risposta. Prima del 2015 l'intervento tardivo era ammesso «solo in presenza del pericolo di un danno per il patrimonio artistico e culturale, per l'ambiente, per la salute, per la sicurezza pubblica o la difesa nazionale».",
     "perOpzione": {
-      "A": "Il rinvio è all'art. 21-nonies (annullamento d'ufficio), non alla revoca (art. 21-quinquies).",
-      "B": "Riprende la formulazione anteriore alla legge n. 124/2015, superata già al tempo della prova.",
-      "C": "Corretta: è il rinvio dell'art. 19, comma 4, all'art. 21-nonies."
+      "A": "Il rinvio è all'art. 21-nonies l. 241/1990 (annullamento d'ufficio), non alla revoca (art. 21-quinquies l. 241/1990).",
+      "B": "L'elenco di interessi (ambiente, paesaggio, beni culturali, salute, sicurezza pubblica, difesa nazionale) è quello che l'art. 19, comma 3, l. 241/1990 usa per la sospensione dell'attività entro il termine dei controlli; scaduti i 60 giorni il presupposto è invece quello dell'art. 21-nonies l. 241/1990. Anche la formula anteriore alla l. 124/2015 era diversa (pericolo di danno per patrimonio artistico e culturale, ambiente, salute, sicurezza pubblica o difesa nazionale).",
+      "C": "Corretta: è il rinvio dell'art. 19, comma 4, all'art. 21-nonies l. 241/1990."
     },
     "riferimenti": [
       {
@@ -497,21 +503,29 @@ const SPIEGAZIONI = [
     "id": 38,
     "corretta": "C",
     "suggerimento": "La legge n. 234/2012 ha sdoppiato la vecchia legge comunitaria in due leggi annuali: quale delle due contiene le deleghe?",
-    "spiegazione": "La **legge n. 234/2012** ha diviso la legge comunitaria in due strumenti: la **legge di delegazione europea**, che conferisce al Governo le **deleghe legislative per il recepimento delle direttive** e degli altri atti UE, e la **legge europea**, che contiene norme di diretta attuazione, comprese le modifiche o abrogazioni di norme statali in contrasto con gli obblighi europei.",
+    "spiegazione": "La **legge n. 234/2012** ha diviso la legge comunitaria in due strumenti (art. 30 l. 234/2012, testo identico nel 2019 e oggi): la **legge di delegazione europea** reca «disposizioni per il conferimento al Governo di delega legislativa volta esclusivamente all'attuazione delle direttive europee e delle decisioni quadro da recepire nell'ordinamento nazionale» (comma 2, lett. a), mentre la **legge europea** reca «disposizioni modificative o abrogative di disposizioni statali vigenti in contrasto con gli obblighi indicati all'articolo 1» (comma 3, lett. a).",
     "perOpzione": {
       "A": "Non riguarda deleghe ai rappresentanti del Governo nelle sedi europee.",
       "B": "È il contenuto tipico della legge europea, non della legge di delegazione europea.",
       "C": "Corretta: è la funzione della legge di delegazione europea."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l234_2012_art_30"
+      },
+      {
+        "normaId": "l234_2012_art_1"
+      }
+    ]
   },
   {
     "id": 39,
     "corretta": "C",
     "suggerimento": "Dal Trattato di Lisbona il ruolo del Parlamento europeo nella scelta del Presidente della Commissione è diventato di «elezione».",
-    "spiegazione": "L'**art. 17, paragrafo 7, TUE**: il Consiglio europeo, a maggioranza qualificata, **tenuto conto delle elezioni del Parlamento europeo** e dopo consultazioni appropriate, propone un candidato, che è **eletto dal Parlamento europeo** a maggioranza dei membri che lo compongono.",
+    "spiegazione": "L'**art. 17, paragrafo 7, TUE**: «Tenuto conto delle elezioni del Parlamento europeo e dopo aver effettuato le consultazioni appropriate, il Consiglio europeo, deliberando a maggioranza qualificata, propone al Parlamento europeo un candidato alla carica di presidente della Commissione. Tale candidato è **eletto dal Parlamento europeo** a maggioranza dei membri che lo compongono».",
     "perOpzione": {
       "A": "Il Presidente non è nominato dal Consiglio europeo per poi ottenere la fiducia: è eletto dal Parlamento su proposta del Consiglio europeo.",
-      "B": "Non esiste una selezione da un elenco di proposte degli Stati membri: il Consiglio europeo propone un unico candidato.",
+      "B": "La selezione di personalità «in base alle proposte presentate dagli Stati membri» riguarda, per l'art. 17, par. 7, secondo comma, TUE, gli altri membri della Commissione, non il Presidente, per il quale il Consiglio europeo propone un unico candidato al Parlamento europeo.",
       "C": "Riproduce il meccanismo dell'art. 17, par. 7, TUE."
     },
     "riferimenti": [
