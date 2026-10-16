@@ -81,6 +81,19 @@ details>summary{cursor:pointer;font-weight:600}
 .star{border:none;background:none;font-size:1.35rem;line-height:1;padding:0 4px;color:var(--ink3)}
 .star.on{color:#e6a700}
 .domanda{font-size:1.12rem;font-weight:600;margin:4px 0 14px;white-space:pre-line}
+.tipo{font-size:.85rem;color:var(--ink2);margin:-2px 0 10px}
+.consegna{font-size:.85rem;color:var(--ink3);margin:0 0 10px}
+.consegna summary{font-weight:500;color:var(--ink3)}
+.salta-brano{display:none;margin-bottom:10px}
+@media (max-width:860px){.with-brano .salta-brano{display:inline-block}}
+.gap{display:inline-block;min-width:5.5em;border-bottom:2px solid var(--accent);text-align:center;color:var(--accent);padding:0 4px}
+.gap.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft);border-radius:4px}
+.opts.griglia{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.opts.griglia .opt .why{margin-left:0}
+#q-card[data-tipo=figura] .figura{width:100%;max-height:62vh;object-fit:contain}
+.figura-nota{font-size:.8rem;margin:-8px 0 12px}
+#q-card[data-tipo=situazionale] .domanda{font-weight:500;font-size:1.06rem;background:var(--bg);border-radius:10px;padding:12px 14px}
+#q-card[data-tipo=situazionale] .opt .txt{font-size:.97rem}
 .figura{display:block;max-width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;margin:0 0 14px;cursor:zoom-in}
 .opts{display:grid;gap:9px}
 .opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:11px 14px}
@@ -201,9 +214,10 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     <div class="qlayout" id="q-layout">
       <div class="brano-col hidden" id="q-brano-col">
         <div class="card">
-          <div class="istr hidden" id="q-istr"></div>
+          <details class="consegna hidden" id="q-istr"><summary>Consegna</summary><div id="q-istr-txt"></div></details>
           <b>Brano</b>
           <div class="brano" id="q-brano"></div>
+          <button class="btn small salta-brano" id="q-vai-domanda" style="margin-top:12px">↓ Vai alla domanda</button>
         </div>
       </div>
       <div>
@@ -216,8 +230,12 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
             <a class="muted" id="q-pdf" target="_blank" rel="noopener">Apri nel PDF</a>
             <button class="star" id="q-star" title="Aggiungi ai preferiti (F)">☆</button>
           </div>
+          <div class="tipo" id="q-tipo"></div>
+          <details class="consegna hidden" id="q-consegna"><summary>Consegna</summary><div id="q-consegna-txt"></div></details>
+          <button class="btn small salta-brano hidden" id="q-vai-brano">📖 Rileggi il brano</button>
           <div class="domanda" id="q-domanda"></div>
           <img class="figura hidden" id="q-img" alt="Figure della domanda">
+          <div class="muted figura-nota hidden" id="q-img-nota">Tocca la figura per ingrandirla</div>
           <div class="opts" id="q-opts"></div>
           <div id="q-hint" class="box hint hidden"></div>
           <div id="q-after" class="hidden">
@@ -352,7 +370,7 @@ const isPref = d => DB.preferiti.includes(d._key);
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 function md(s) {
   return String(s || "").split(/\n{2,}/).map(p =>
-    "<p>" + esc(p).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[\s(])_(.+?)_(?=[\s.,;:)]|$)/g, "$1<i>$2</i>").replace(/\*(.+?)\*/g, "<i>$1</i>").replace(/\n/g, "<br>") + "</p>"
+    "<p>" + esc(p).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/(^|[\s(])_([^_\s][^_]*?)_(?=[\s.,;:)]|$)/g, "$1<i>$2</i>").replace(/\*(.+?)\*/g, "<i>$1</i>").replace(/\n/g, "<br>") + "</p>"
   ).join("");
 }
 function mescola(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
@@ -469,6 +487,26 @@ function ordineOpzioni(d) {
   return S.ordini[d._key];
 }
 
+const TIPI = {
+  situazionale: { icona: "🧭", testo: "Caso situazionale: scegli il comportamento più efficace", hint: "💡 Come ragiona la SNA?" },
+  brano: { icona: "📖", testo: "Comprensione: rispondi solo in base al brano", hint: "💡 Dove guardare nel brano" },
+  figura: { icona: "🧩", testo: "Ragionamento: trova la regola che lega le figure", hint: "💡 Indizio sulla regola" },
+  inglese: { icona: "🇬🇧", testo: "Scegli l’espressione corretta", hint: "💡 Suggerimento" },
+  teoria: { icona: "📚", testo: "", hint: "💡 Suggerimento" }
+};
+function tipoDomanda(d) {
+  if (d.materia === "Situazionale") return "situazionale";
+  if (d.immagine) return "figura";
+  if (d.brano && d.brano.trim()) return "brano";
+  if (d.materia === "Inglese") return "inglese";
+  return "teoria";
+}
+// Mostra la domanda; per le frasi da completare evidenzia lo spazio vuoto (e lo riempie dopo la risposta).
+function scriviDomanda(d, riempi) {
+  const html = esc(d.domanda).replace(/_{3,}/g, () => `<span class="gap${riempi ? " ok" : ""}">${riempi ? esc(d.opzioni[d.corretta]) : "&nbsp;"}</span>`);
+  $("q-domanda").innerHTML = html;
+}
+
 function renderDomanda() {
   const d = S.coda[S.i];
   const sim = S.modo === "simulazione", rev = S.modo === "revisione";
@@ -483,8 +521,19 @@ function renderDomanda() {
   $("q-layout").classList.toggle("with-brano", haBrano);
   $("q-brano-col").classList.toggle("hidden", !haBrano);
   $("q-brano").textContent = d.brano || "";
-  $("q-istr").classList.toggle("hidden", !d.istruzioni);
-  $("q-istr").textContent = d.istruzioni || "";
+  // la consegna sta accanto al brano se c'è, altrimenti è una riga compatta nella domanda
+  $("q-istr").classList.toggle("hidden", !d.istruzioni || !haBrano);
+  $("q-istr-txt").textContent = d.istruzioni || "";
+  $("q-istr").open = window.innerWidth > 860;
+  $("q-consegna").classList.toggle("hidden", !d.istruzioni || haBrano);
+  $("q-consegna").open = false;
+  $("q-consegna-txt").textContent = d.istruzioni || "";
+  const tipo = tipoDomanda(d), T = TIPI[tipo];
+  $("q-card").dataset.tipo = tipo;
+  $("q-tipo").textContent = T.testo ? T.icona + " " + T.testo : "";
+  $("q-tipo").classList.toggle("hidden", !T.testo);
+  $("q-hint-btn").textContent = T.hint;
+  $("q-vai-brano").classList.toggle("hidden", !haBrano);
 
   $("q-materia").textContent = d.materia;
   const pack = QUIZ_MANIFEST.find(p => p.id === d._pack);
@@ -494,15 +543,18 @@ function renderDomanda() {
   $("q-pdf").classList.toggle("hidden", !d._pdf);
   if (d._pdf) $("q-pdf").href = d._pdf + (d.paginaPdf ? "#page=" + d.paginaPdf : "");
   aggiornaStella(d);
-  $("q-domanda").textContent = d.domanda;
+  scriviDomanda(d, false);
   const img = $("q-img");
   img.classList.toggle("hidden", !d.immagine);
+  $("q-img-nota").classList.toggle("hidden", !d.immagine);
   if (d.immagine) img.src = d.immagine; else img.removeAttribute("src");
 
   // opzioni
   const ordine = ordineOpzioni(d);
+  // opzioni brevi (figure, parole, numeri) su griglia; testi lunghi in colonna
+  $("q-opts").classList.toggle("griglia", ordine.every(k => (d.opzioni[k] || "").length <= 28));
   $("q-opts").innerHTML = ordine.map((k, i) =>
-    `<button class="opt" data-k="${k}"><div class="head"><span class="let">${LETTERE[i]}</span><span class="txt">${esc(d.opzioni[k])}</span></div></button>`).join("");
+    `<button class="opt" data-k="${k}"><div class="head"><span class="let">${LETTERE[i]}</span><span class="txt">${esc(d.opzioni[k].replace(/\(\s*(\d+)\s*\)/g, "($1)"))}</span></div></button>`).join("");
   document.querySelectorAll("#q-opts .opt").forEach(b => b.onclick = () => rispondi(b.dataset.k));
 
   $("q-hint").classList.add("hidden");
@@ -559,6 +611,8 @@ function rispondi(k) {
 }
 
 function mostraEsito(d, k) {
+  scriviDomanda(d, true);
+  $("q-opts").classList.remove("griglia"); // con le spiegazioni servono righe intere
   const a = d.aiuti || {}, per = a.perOpzione || {};
   document.querySelectorAll("#q-opts .opt").forEach(b => {
     const ok = b.dataset.k;
@@ -689,6 +743,8 @@ $("zoom-ov").onclick = () => $("zoom-ov").classList.add("hidden");
 $("q-home").onclick = () => { if (S && S.modo === "revisione") return mostraRisultato(); if (S && S.modo === "simulazione" && !confirm("Abbandonare la simulazione? Le risposte non verranno salvate.")) return; esci(); };
 $("r-home").onclick = esci;
 $("q-star").onclick = togglePref;
+$("q-vai-brano").onclick = () => $("q-brano-col").scrollIntoView({ behavior: "smooth" });
+$("q-vai-domanda").onclick = () => $("q-card").scrollIntoView({ behavior: "smooth" });
 $("q-hint-btn").onclick = mostraSuggerimento;
 $("q-next").onclick = prossima;
 $("q-skip").onclick = salta;
