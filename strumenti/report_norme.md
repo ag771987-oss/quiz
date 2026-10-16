@@ -901,3 +901,16 @@ Sono state fatte 115 correzioni nelle sei prove. **Nessuna chiave (`corretta`) �
 | normaId | Articolo | Fonte |
 |---|---|---|
 | `prot19_art_1` | Art. 1 — Protocollo n. 19 sull'acquis di Schengen | [EUR-Lex](https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/PRO/19) |
+
+## Versioni storiche collegate e fonti internazionali (verifica finale)
+
+**Versioni storiche.** Quando una spiegazione cita il testo in vigore alla data della prova e l'articolo è poi cambiato, in archivio c'è anche quella versione: un file a parte con suffisso `_al_AAAAMMGG`, scaricato da normattiva con `!vig=` e con «(testo al …)» nel titolo. Nel quiz viene mostrata prima della versione vigente. Gli articoli sono elencati sotto «storici» in `norme_catalogo.json`; `scarica_norme.py --solo-storici` li riscarica e `collega_norme.js` li collega usando `dataProva` del manifest.
+- l. 241/1990 al 22/01/2019: artt. 10-bis, 14-bis, 16, 19, 21-nonies (nel 2019 «diciotto mesi»; al 27/06/2023 «dodici mesi», versione collegata al 9° CC Prova 3 q29; oggi «sei mesi»);
+- d.lgs. 165/2001 art. 23-bis al 22/01/2019;
+- l. 20/1994 art. 1 al 26/11/2025 (prima della l. 1/2026);
+- d.P.R. 1199/1971 artt. 8 e 14 al 27/06/2023 (prima del d.l. 19/2026).
+
+**Fonti internazionali senza testo ufficiale italiano** (citate in parafrasi nelle domande 40 del 7° CC). Sono state verificate sui testi ufficiali in inglese: tutte le affermazioni risultano corrette.
+- Carta delle Nazioni Unite, artt. 23, 57 e 63: https://www.un.org/en/about-us/un-charter/full-text
+- Statuto della Corte internazionale di giustizia, artt. 2, 3, 4, 8, 16 e 20: https://www.icj-cij.org/statute
+- Costituzione dell'ILO, artt. 3 e 4. Le pagine ilo.org e normlex non erano raggiungibili; il testo è stato verificato su due fonti concordanti: il testo consolidato pubblicato nella Gazzetta ufficiale estone (https://www.riigiteataja.ee/aktilisa/2020/2202/1005/ILO_Constit_cons.pdf) e il Centro internazionale di formazione dell'ILO (https://training.itcilo.org/actrav_cdrom1/english/global/law/phila.htm).

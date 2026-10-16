@@ -442,6 +442,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "dlgs165_2001_art_23_bis_al_20190122"
+      },
+      {
         "normaId": "dlgs165_2001_art_23_bis"
       }
     ]
@@ -477,6 +480,9 @@ const SPIEGAZIONI = [
     },
     "nota": "Chiave secondo la norma in vigore nel 2019, data della prova. Con il testo attuale (d.l. 76/2020: «procede») la risposta sarebbe quella che parla di obbligo.",
     "riferimenti": [
+      {
+        "normaId": "l241_1990_art_16_al_20190122"
+      },
       {
         "normaId": "l241_1990_art_16"
       }

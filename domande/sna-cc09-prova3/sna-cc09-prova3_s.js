@@ -350,6 +350,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_21_nonies_al_20230627"
+      },
+      {
         "normaId": "l241_1990_art_21_nonies"
       }
     ]

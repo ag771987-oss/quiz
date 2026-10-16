@@ -28,7 +28,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_352.js",
       "norme/tue/tue_art_5.js",
       "norme/tue/tue_art_11.js"
-    ]
+    ],
+    "dataProva": "2025-11-26"
   },
   {
     "id": "sna-cc11-busta2",
@@ -63,7 +64,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_238.js",
       "norme/tfue/tfue_art_265.js",
       "norme/tue/tue_art_16.js"
-    ]
+    ],
+    "dataProva": "2025-11-26"
   },
   {
     "id": "sna-cc11-busta3",
@@ -90,12 +92,14 @@ const QUIZ_MANIFEST = [
       "norme/dlgs165_2001/dlgs165_2001_art_19.js",
       "norme/dlgs286_1999/dlgs286_1999_art_1.js",
       "norme/dlgs286_1999/dlgs286_1999_art_4.js",
+      "norme/l20_1994/l20_1994_art_1_al_20251126.js",
       "norme/l20_1994/l20_1994_art_1.js",
       "norme/l20_1994/l20_1994_art_3.js",
       "norme/tfue/prot19_art_1.js",
       "norme/tfue/tfue_art_79.js",
       "norme/tfue/tfue_art_108.js"
-    ]
+    ],
+    "dataProva": "2025-11-26"
   },
   {
     "id": "sna-cc10-busta1",
@@ -126,7 +130,8 @@ const QUIZ_MANIFEST = [
       "norme/tue/tue_art_5.js",
       "norme/tue/tue_art_6.js",
       "norme/tue/tue_art_15.js"
-    ]
+    ],
+    "dataProva": "2024-07-25"
   },
   {
     "id": "sna-cc10-busta2",
@@ -157,7 +162,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_218.js",
       "norme/tue/tue_art_6.js",
       "norme/tue/tue_art_16.js"
-    ]
+    ],
+    "dataProva": "2024-07-25"
   },
   {
     "id": "sna-cc10-busta3",
@@ -185,7 +191,8 @@ const QUIZ_MANIFEST = [
       "norme/tue/tue_art_5.js",
       "norme/tue/tue_art_9.js",
       "norme/tue/tue_art_17.js"
-    ]
+    ],
+    "dataProva": "2024-07-25"
   },
   {
     "id": "sna-cc09-prova1",
@@ -203,7 +210,9 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_134.js",
       "norme/costituzione/cost_art_138.js",
       "norme/dl19_2026/dl19_2026_art_6.js",
+      "norme/dpr1199_1971/dpr1199_1971_art_8_al_20230627.js",
       "norme/dpr1199_1971/dpr1199_1971_art_8.js",
+      "norme/dpr1199_1971/dpr1199_1971_art_14_al_20230627.js",
       "norme/dpr1199_1971/dpr1199_1971_art_14.js",
       "norme/l196_2009/l196_2009_art_21.js",
       "norme/l196_2009/l196_2009_art_25_bis.js",
@@ -215,7 +224,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_6.js",
       "norme/tfue/tfue_art_267.js",
       "norme/tue/tue_art_42.js"
-    ]
+    ],
+    "dataProva": "2023-06-27"
   },
   {
     "id": "sna-cc09-prova2",
@@ -252,7 +262,8 @@ const QUIZ_MANIFEST = [
       "norme/tue/tue_art_2.js",
       "norme/tue/tue_art_15.js",
       "norme/tue/tue_art_16.js"
-    ]
+    ],
+    "dataProva": "2023-06-27"
   },
   {
     "id": "sna-cc09-prova3",
@@ -276,13 +287,15 @@ const QUIZ_MANIFEST = [
       "norme/dlgs175_2016/dlgs175_2016_art_3.js",
       "norme/l241_1990/l241_1990_art_1.js",
       "norme/l241_1990/l241_1990_art_2.js",
+      "norme/l241_1990/l241_1990_art_21_nonies_al_20230627.js",
       "norme/l241_1990/l241_1990_art_21_nonies.js",
       "norme/tfue/tfue_art_3.js",
       "norme/tfue/tfue_art_4.js",
       "norme/tfue/tfue_art_6.js",
       "norme/tfue/tfue_art_288.js",
       "norme/tue/tue_art_13.js"
-    ]
+    ],
+    "dataProva": "2023-06-27"
   },
   {
     "id": "sna-cc08-busta3",
@@ -319,7 +332,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_256.js",
       "norme/tfue/tfue_art_288.js",
       "norme/tue/tue_art_9.js"
-    ]
+    ],
+    "dataProva": "2022-03-15"
   },
   {
     "id": "sna-cc07-test03-A",
@@ -350,15 +364,19 @@ const QUIZ_MANIFEST = [
       "norme/l241_1990/l241_1990_art_3.js",
       "norme/l241_1990/l241_1990_art_6.js",
       "norme/l241_1990/l241_1990_art_10.js",
+      "norme/l241_1990/l241_1990_art_14_bis_al_20190122.js",
       "norme/l241_1990/l241_1990_art_14_bis.js",
       "norme/l241_1990/l241_1990_art_14_ter.js",
+      "norme/l241_1990/l241_1990_art_19_al_20190122.js",
       "norme/l241_1990/l241_1990_art_19.js",
+      "norme/l241_1990/l241_1990_art_21_nonies_al_20190122.js",
       "norme/l241_1990/l241_1990_art_21_nonies.js",
       "norme/l241_1990/l241_1990_art_21_quinquies.js",
       "norme/l241_1990/l241_1990_art_22.js",
       "norme/l352_1970/l352_1970_art_48.js",
       "norme/tue/tue_art_17.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   },
   {
     "id": "sna-cc07-test04-A",
@@ -400,7 +418,8 @@ const QUIZ_MANIFEST = [
       "norme/l241_1990/l241_1990_art_29.js",
       "norme/tfue/tfue_art_288.js",
       "norme/tue/tue_art_18.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   },
   {
     "id": "sna-cc07-test05-A",
@@ -437,7 +456,8 @@ const QUIZ_MANIFEST = [
       "norme/tfue/tfue_art_263.js",
       "norme/tue/tue_art_16.js",
       "norme/tue/tue_art_18.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   },
   {
     "id": "sna-cc07-test06-A",
@@ -469,6 +489,7 @@ const QUIZ_MANIFEST = [
       "norme/l20_1994/l20_1994_art_3.js",
       "norme/l196_2009/l196_2009_art_2.js",
       "norme/l212_2000/l212_2000_art_3.js",
+      "norme/l241_1990/l241_1990_art_10_bis_al_20190122.js",
       "norme/l241_1990/l241_1990_art_10_bis.js",
       "norme/l241_1990/l241_1990_art_14_quinquies.js",
       "norme/l241_1990/l241_1990_art_14_ter.js",
@@ -478,7 +499,8 @@ const QUIZ_MANIFEST = [
       "norme/tue/tue_art_16.js",
       "norme/tue/tue_art_24.js",
       "norme/tue/tue_art_26.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   },
   {
     "id": "sna-cc07-test07-A",
@@ -510,13 +532,15 @@ const QUIZ_MANIFEST = [
       "norme/l241_1990/l241_1990_art_16.js",
       "norme/l241_1990/l241_1990_art_17.js",
       "norme/l241_1990/l241_1990_art_20.js",
+      "norme/l241_1990/l241_1990_art_21_nonies_al_20190122.js",
       "norme/l241_1990/l241_1990_art_21_nonies.js",
       "norme/l241_1990/l241_1990_art_21_quater.js",
       "norme/l241_1990/l241_1990_art_21_quinquies.js",
       "norme/tue/tue_art_15.js",
       "norme/tue/tue_art_16.js",
       "norme/tue/tue_art_17.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   },
   {
     "id": "sna-cc07-test12-A",
@@ -539,16 +563,19 @@ const QUIZ_MANIFEST = [
       "norme/dlgs36_2023/dlgs36_2023_art_72.js",
       "norme/dlgs50_2016/dlgs50_2016_art_61.js",
       "norme/dlgs150_2009/dlgs150_2009_art_5.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_23_bis_al_20190122.js",
       "norme/dlgs165_2001/dlgs165_2001_art_23_bis.js",
       "norme/l20_1994/l20_1994_art_1.js",
       "norme/l241_1990/l241_1990_art_3.js",
       "norme/l241_1990/l241_1990_art_14_ter.js",
+      "norme/l241_1990/l241_1990_art_16_al_20190122.js",
       "norme/l241_1990/l241_1990_art_16.js",
       "norme/l241_1990/l241_1990_art_17_bis.js",
       "norme/l241_1990/l241_1990_art_21_quinquies.js",
       "norme/l400_1988/l400_1988_art_8.js",
       "norme/tfue/tfue_art_20.js",
       "norme/tue/tue_art_9.js"
-    ]
+    ],
+    "dataProva": "2019-01-22"
   }
 ];

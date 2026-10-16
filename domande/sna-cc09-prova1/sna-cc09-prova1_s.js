@@ -386,7 +386,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "dpr1199_1971_art_8_al_20230627"
+      },
+      {
         "normaId": "dpr1199_1971_art_8"
+      },
+      {
+        "normaId": "dpr1199_1971_art_14_al_20230627"
       },
       {
         "normaId": "dpr1199_1971_art_14"

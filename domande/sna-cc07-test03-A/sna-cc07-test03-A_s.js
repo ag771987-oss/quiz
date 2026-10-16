@@ -454,6 +454,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_14_bis_al_20190122"
+      },
+      {
         "normaId": "l241_1990_art_14_bis"
       },
       {
@@ -489,7 +492,13 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_19_al_20190122"
+      },
+      {
         "normaId": "l241_1990_art_19"
+      },
+      {
+        "normaId": "l241_1990_art_21_nonies_al_20190122"
       },
       {
         "normaId": "l241_1990_art_21_nonies"

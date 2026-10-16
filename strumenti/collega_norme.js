@@ -53,6 +53,15 @@ for (const p of man.val) {
       else if (r.id && ESTERNE.test(r.id)) (esterne[r.id] = esterne[r.id] || []).push(p.id + " q" + s.id);
       else (mancanti[r.id || "?art. " + r.art] = mancanti[r.id || "?art. " + r.art] || []).push(p.id + " q" + s.id);
     }
+    // versione storica: se la spiegazione cita il testo in vigore alla data della prova e in archivio
+    // c'è quell'articolo «_al_<data della prova>», lo si collega prima della versione vigente
+    const data = (p.dataProva || "").replace(/-/g, "");
+    const storico = data && new RegExp("all['’]epoca|alla data della prova|in vigore (?:nel|al|all['’]epoca)|previgente|testo (?:del|di allora)|\\b" + data.slice(0, 4) + "\\b", "i")
+      .test(blocchi.join(" "));
+    if (storico) for (const id of [...ids]) {
+      const st = id + "_al_" + data;
+      if (esiste(st) && !ids.includes(st)) ids.splice(ids.indexOf(id), 0, st);
+    }
     if (ids.length) {
       s.riferimenti = ids.map(normaId => ({ normaId }));
       ids.forEach(i => usate.add(i)); totRif += ids.length; domandeCollegate++;

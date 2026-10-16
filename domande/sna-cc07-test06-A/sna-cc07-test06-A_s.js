@@ -444,6 +444,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_10_bis_al_20190122"
+      },
+      {
         "normaId": "l241_1990_art_10_bis"
       }
     ]

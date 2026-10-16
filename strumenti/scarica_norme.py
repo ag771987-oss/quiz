@@ -6,14 +6,19 @@ Norme italiane: normattiva.it (pagina URN dell'articolo, testo vigente).
 TUE, TFUE, Carta, Protocolli: pagine HTML di EUR-Lex già salvate nella cache
 da strumenti/scarica_eurlex.js (EUR-Lex richiede un browser per la verifica anti-bot).
 
-Uso: python3 strumenti/scarica_norme.py <cartella_cache> [solo_fonte ...]
+Uso: python3 strumenti/scarica_norme.py <cartella_cache> [--solo-storici] [solo_fonte ...]
+
+Nel catalogo, «storici» elenca versioni passate di articoli ancora in vigore («16@2019-01-22»):
+servono quando una spiegazione cita il testo in vigore alla data di una prova. Ognuna è salvata
+in un file a parte (normaId con suffisso «_al_AAAAMMGG») accanto alla versione vigente.
 """
 import html, json, os, re, subprocess, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAT = json.load(open(os.path.join(ROOT, "strumenti", "norme_catalogo.json"), encoding="utf-8"))
 CACHE = sys.argv[1]
-SOLO = set(sys.argv[2:])
+SOLO_STORICI = "--solo-storici" in sys.argv
+SOLO = set(a for a in sys.argv[2:] if not a.startswith("--"))
 os.makedirs(CACHE, exist_ok=True)
 COOKIE = os.path.join(CACHE, "cookie.txt")
 NT = "https://www.normattiva.it"
@@ -231,11 +236,13 @@ def main():
     for chiave, f in CAT["fonti"].items():
         if SOLO and chiave not in SOLO:
             continue
-        for voce in f["articoli"]:
+        voci = [] if SOLO_STORICI else [(v, False) for v in f["articoli"]]
+        voci += [(v, True) for v in f.get("storici", [])]
+        for voce, storico in voci:
             # «83@2022-03-15»: articolo nel testo in vigore a una data; altrimenti vale «vig» della fonte
             art, _, vig = voce.partition("@")
             vig = vig or f.get("vig")
-            nid = norma_id(chiave, art)
+            nid = norma_id(chiave, art) + ("_al_" + vig.replace("-", "") if storico else "")
             try:
                 if "celex" in f:
                     r = eurlex(chiave, f, art)
@@ -255,10 +262,13 @@ def main():
                 if chiave == "cost":
                     rub = next(nome for fine, nome in COST if int(art) <= fine)
                 titolo = f"Art. {art}" + (f" — {rub}" if rub else "")
+                if storico:
+                    g = vig.split("-")
+                    titolo += f" (testo al {g[2]}/{g[1]}/{g[0]})"
                 fonte = f["fonte"]
                 if vig:
                     g = vig.split("-")
-                    fonte += f" — testo in vigore al {g[2]}/{g[1]}/{g[0]}" + (f" ({f['nota']})" if f.get("nota") else "")
+                    fonte += f" — testo in vigore al {g[2]}/{g[1]}/{g[0]}" + (f" ({f['nota']})" if f.get("nota") and not storico else "")
                 obj = {"titolo": titolo, "fonte": fonte, "sigla": f["sigla"], "testo": r["testo"],
                        "url": r["url"], "consultato": CAT["consultato"]}
                 if r["vigore"]:

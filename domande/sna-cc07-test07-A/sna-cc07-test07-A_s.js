@@ -371,6 +371,9 @@ const SPIEGAZIONI = [
         "normaId": "l241_1990_art_21_quinquies"
       },
       {
+        "normaId": "l241_1990_art_21_nonies_al_20190122"
+      },
+      {
         "normaId": "l241_1990_art_21_nonies"
       },
       {
@@ -499,6 +502,9 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l241_1990_art_21_quater"
+      },
+      {
+        "normaId": "l241_1990_art_21_nonies_al_20190122"
       },
       {
         "normaId": "l241_1990_art_21_nonies"

@@ -404,6 +404,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l20_1994_art_1_al_20251126"
+      },
+      {
         "normaId": "l20_1994_art_1"
       }
     ]

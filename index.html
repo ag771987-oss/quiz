@@ -718,11 +718,15 @@ function mostraEsito(d, k) {
   const c = $("q-concept");
   c.innerHTML = a.spiegazione ? "<b class='t'>Concetto chiave</b><div class='sp'>" + md(a.spiegazione) + "</div>" : "<b class='t'>Nessuna spiegazione disponibile per questa domanda.</b>";
   linkaCitazioni(d);
+  const ids = (a.riferimenti || []).map(r => r.normaId);
   for (const r of a.riferimenti || []) {
     const n = window.NORME && window.NORME[r.normaId];
     if (!n) continue;
+    // versione storica («_al_AAAAMMGG») accanto a quella vigente: le etichette le distinguono
+    const st = r.normaId.match(/_al_(\d{4})\d{4}$/);
+    const extra = st ? " (testo " + st[1] + ")" : ids.some(i => i.startsWith(r.normaId + "_al_")) ? " (vigente)" : "";
     const b = document.createElement("button");
-    b.className = "norma-btn"; b.textContent = "📜 " + etichettaNorma(n);
+    b.className = "norma-btn"; b.textContent = "📜 " + etichettaNorma(n) + extra;
     b.onclick = () => apriNorma(r.normaId);
     c.appendChild(b);
   }
