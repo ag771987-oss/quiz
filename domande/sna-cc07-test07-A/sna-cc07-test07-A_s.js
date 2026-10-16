@@ -397,7 +397,12 @@ const SPIEGAZIONI = [
       "A": "La conferenza metropolitana (i sindaci dei comuni) ha poteri propositivi e consultivi e approva lo statuto, ma non elegge il sindaco metropolitano.",
       "B": "Corretta: sindaco di diritto è il sindaco del capoluogo, salvo elezione diretta prevista dallo statuto.",
       "C": "Il consiglio metropolitano è eletto dai sindaci e consiglieri comunali, ma non elegge il sindaco metropolitano."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l56_2014_art_1"
+      }
+    ]
   },
   {
     "id": 33,

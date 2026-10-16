@@ -368,6 +368,7 @@ const QUIZ_MANIFEST = [
     "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_5_Versione_A.pdf",
     "norme": [
       "norme/costituzione/cost_art_81.js",
+      "norme/l56_2014/l56_2014_art_1.js",
       "norme/l241_1990/l241_1990_art_21_septies.js",
       "norme/l241_1990/l241_1990_art_21_ter.js",
       "norme/tfue/tfue_art_263.js",
@@ -414,6 +415,7 @@ const QUIZ_MANIFEST = [
       "norme/costituzione/cost_art_138.js",
       "norme/cpa/cpa_art_30.js",
       "norme/l20_1994/l20_1994_art_3.js",
+      "norme/l56_2014/l56_2014_art_1.js",
       "norme/l241_1990/l241_1990_art_2.js",
       "norme/l241_1990/l241_1990_art_20.js",
       "norme/l241_1990/l241_1990_art_21_nonies.js",
@@ -436,6 +438,7 @@ const QUIZ_MANIFEST = [
     "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/7CC/tracce_prove/prove_preselettive/Test_12_Versione_A.pdf",
     "norme": [
       "norme/costituzione/cost_art_11.js",
+      "norme/costituzione/cost_art_97.js",
       "norme/costituzione/cost_art_104.js",
       "norme/costituzione/cost_art_113.js",
       "norme/costituzione/cost_art_117.js",

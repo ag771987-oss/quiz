@@ -350,7 +350,12 @@ const SPIEGAZIONI = [
       "A": "Manca il consiglio metropolitano e compare la giunta, che la legge non prevede.",
       "B": "È l’elenco esatto dell’art. 1, comma 7, l. 56/2014.",
       "C": "Manca la conferenza metropolitana e compare la giunta, che non è un organo della città metropolitana."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l56_2014_art_1"
+      }
+    ]
   },
   {
     "id": 32,

@@ -284,7 +284,12 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: la Costituzione non impone i caratteri di generalità e astrattezza alla legge; per questo le leggi-provvedimento sono ammesse.",
       "B": "Corretta: sono legittime ma soggette a un controllo più rigoroso di ragionevolezza.",
       "C": "Sbagliata: secondo la Corte non esiste in Costituzione una riserva di amministrazione che impedisca al legislatore di provvedere su casi concreti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_97"
+      }
+    ]
   },
   {
     "id": 27,
