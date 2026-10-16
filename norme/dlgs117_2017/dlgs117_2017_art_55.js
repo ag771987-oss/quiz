@@ -1,0 +1,11 @@
+window.NORME = window.NORME || {};
+
+window.NORME["dlgs117_2017_art_55"] = {
+  "titolo": "Art. 55 — Coinvolgimento degli enti del Terzo settore",
+  "fonte": "Decreto legislativo 3 luglio 2017, n. 117 (Codice del Terzo settore)",
+  "sigla": "d.lgs. 117/2017",
+  "testo": "1. In attuazione dei principi di sussidiarietà, cooperazione, efficacia, efficienza ed economicità, omogeneità, copertura finanziaria e patrimoniale, responsabilità ed unicità dell'amministrazione, autonomia organizzativa e regolamentare, le amministrazioni pubbliche di cui all'articolo 1, comma 2, del decreto legislativo 30 marzo 2001, n. 165, nell'esercizio delle proprie funzioni di programmazione e organizzazione a livello territoriale degli interventi e dei servizi nei settori di attività di cui all'articolo 5, assicurano il coinvolgimento attivo degli enti del Terzo settore, attraverso forme di co-programmazione e co-progettazione e accreditamento, poste in essere nel rispetto dei principi della legge 7 agosto 1990, n. 241, nonché delle norme che disciplinano specifici procedimenti ed in particolare di quelle relative alla programmazione sociale di zona.\n2. La co-programmazione è finalizzata all'individuazione, da parte della pubblica amministrazione procedente, dei bisogni da soddisfare, degli interventi a tal fine necessari, delle modalità di realizzazione degli stessi e delle risorse disponibili.\n3. La co-progettazione è finalizzata alla definizione ed eventualmente alla realizzazione di specifici progetti di servizio o di intervento finalizzati a soddisfare bisogni definiti, alla luce degli strumenti di programmazione di cui comma 2.\n4. Ai fini di cui al comma 3, l'individuazione degli enti del Terzo settore con cui attivare il partenariato avviene anche mediante forme di accreditamento nel rispetto dei principi di trasparenza, imparzialità, partecipazione e parità di trattamento, previa definizione, da parte della pubblica amministrazione procedente, degli obiettivi generali e specifici dell'intervento, della durata e delle caratteristiche essenziali dello stesso nonché dei criteri e delle modalità per l'individuazione degli enti partner.",
+  "url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2017-07-03;117~art55",
+  "consultato": "2026-10-16",
+  "vigoreDal": "3-8-2017"
+};

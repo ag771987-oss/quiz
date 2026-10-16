@@ -9,7 +9,7 @@
   // numero e anno di un atto: «241/1990», «n. 241/1990», «n. 241 del 1990», «7 agosto 1990, n. 241»
   const MESI = "(?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)";
   const NA = "(?:(?:n\\.\\s?)?\\d+\\s?\\/\\s?\\d{4}|n\\.\\s?\\d+ del \\d{4}|\\d{1,2}°? " + MESI + " \\d{4},? n\\.\\s?\\d+)";
-  const ATTO = "(?:Carta (?:ONU|delle Nazioni Unite)|Statuto della Corte internazionale di giustizia|Costituzione dell[’']ILO|Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|codice civile|c\\.p\\.a\\.|codice del processo amministrativo|c\\.p\\.(?!a)|codice penale|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|TUEL|preleggi|disposizioni sulla legge in generale|disp\\. prel\\.|direttiva \\d{4}\\/\\d+\\/UE|legge 241(?![\\d\\/])"
+  const ATTO = "(?:Carta (?:ONU|delle Nazioni Unite)|Statuto della Corte internazionale di giustizia|Costituzione dell[’']ILO|Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|codice civile|c\\.p\\.a\\.|codice del processo amministrativo|c\\.p\\.(?!a)|codice penale|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|TUEL|[Cc]odice del Terzo settore|preleggi|disposizioni sulla legge in generale|disp\\. prel\\.|direttiva \\d{4}\\/\\d+\\/UE|legge 241(?![\\d\\/])"
     + "|(?:[lL]\\.|legge) ?cost(?:\\.|ituzionale) ?" + NA + "|(?:[lL]\\.|legge) ?" + NA + "|(?:[dD]\\.\\s?[lL]gs\\.?|decreto legislativo) ?" + NA
     + "|(?:[dD]\\.\\s?[lL]\\.|decreto-legge) ?" + NA + "|(?:[dD]\\.\\s?P\\.\\s?R\\.?|decreto del Presidente della Repubblica) ?" + NA + ")";
   const PREP = "(?:\\s*,?\\s*(?:del|della|dello|delle|dei|degli|dal|dalla|nel|nella)?\\s*)";
@@ -40,6 +40,7 @@
     if (/^Carta/.test(a)) return "cdfue";
     if (/^Testo unico/.test(a)) return null;
     if (a === "TUEL") return "dlgs267_2000";
+    if (/^[Cc]odice del Terzo settore$/.test(a)) return "dlgs117_2017";
     if (/^(preleggi|disposizioni sulla legge|disp\. prel)/.test(a)) return "preleggi";
     if (a === "legge 241") return "l241_1990";
     let m;

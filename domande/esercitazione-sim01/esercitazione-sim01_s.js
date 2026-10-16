@@ -271,6 +271,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "l241_1990_art_6_bis"
+      },
+      {
         "normaId": "l190_2012_art_1"
       }
     ]

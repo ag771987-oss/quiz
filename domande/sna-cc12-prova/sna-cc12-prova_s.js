@@ -337,6 +337,9 @@ const SPIEGAZIONI = [
     },
     "riferimenti": [
       {
+        "normaId": "dlgs117_2017_art_55"
+      },
+      {
         "normaId": "cost_art_118"
       },
       {
@@ -444,7 +447,7 @@ const SPIEGAZIONI = [
   {
     "id": 37,
     "corretta": "C",
-    "suggerimento": "Quale istituzione è la «guardiana dei trattati» ed esegue il bilancio? E chi invece dà gli orientamenti politici generali?",
+    "suggerimento": "Quale istituzione è la “guardiana dei trattati” ed esegue il bilancio? E chi invece dà gli orientamenti politici generali?",
     "spiegazione": "Per l’art. 17, paragrafo 1, TUE, la Commissione «Vigila sull'applicazione del diritto dell'Unione sotto il controllo della Corte di giustizia dell'Unione europea. Dà esecuzione al bilancio e gestisce i programmi», e «Assicura la rappresentanza esterna dell'Unione, fatta eccezione per la politica estera e di sicurezza comune».",
     "perOpzione": {
       "A": "Il bilancio annuale è adottato da Parlamento europeo e Consiglio (art. 314 TFUE). Le controversie tra Stati sono decise dalla Corte di giustizia, non dalla Commissione.",
@@ -494,18 +497,28 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: gestione e risposta agli incidenti sono tra i compiti espressi dell’Agenzia, non solo allerte e raccomandazioni.",
       "B": "Coordinamento e supporto nella risposta, contenimento e ripristino, senza sostituirsi a chi indaga: è il ruolo descritto dal d.l. 82/2021.",
       "C": "L’ACN non è un organo di polizia giudiziaria: le indagini penali spettano al pubblico ministero e alle forze di polizia."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dl82_2021_art_7"
+      }
+    ]
   },
   {
     "id": 42,
     "corretta": "B",
-    "suggerimento": "Il «principio della fiducia» vuole togliere ai funzionari la «paura della firma»: quando un comportamento conforme a orientamenti autorevoli non è colpa grave?",
+    "suggerimento": "Il «principio della fiducia» vuole togliere ai funzionari la “paura della firma”: quando un comportamento conforme a orientamenti autorevoli non è colpa grave?",
     "spiegazione": "L’art. 2, comma 3, d.lgs. 36/2023 (principio della fiducia) definisce la colpa grave ai fini della responsabilità amministrativa e precisa: «Non costituisce colpa grave la violazione o l'omissione determinata dal riferimento a indirizzi giurisprudenziali prevalenti o a pareri delle autorità competenti».",
     "perOpzione": {
       "A": "La norma non prevede che l’urgenza di rispettare i termini escluda la colpa grave.",
       "B": "È l’esimente espressa dell’art. 2, comma 3: indirizzi giurisprudenziali prevalenti o pareri delle autorità competenti.",
       "C": "Non consultare la piattaforma di approvvigionamento digitale non rientra tra le esimenti. Anzi, omettere verifiche normalmente richieste può essere proprio colpa grave."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs36_2023_art_2"
+      }
+    ]
   },
   {
     "id": 43,
@@ -599,6 +612,9 @@ const SPIEGAZIONI = [
       },
       {
         "normaId": "cost_art_97"
+      },
+      {
+        "normaId": "cost_art_98"
       }
     ]
   },
@@ -644,7 +660,12 @@ const SPIEGAZIONI = [
       "A": "Sbagliata: nessuna motivazione può salvare la clausola. Le cause di esclusione sono tassative e quelle ulteriori sono nulle.",
       "B": "Corretta: le clausole che aggiungono cause di esclusione sono nulle e si considerano non apposte, quindi il resto del bando resta valido.",
       "C": "Sbagliata: il codice non prevede alcuna approvazione dell'ANAC che renda valide cause di esclusione ulteriori."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs36_2023_art_10"
+      }
+    ]
   },
   {
     "id": 54,

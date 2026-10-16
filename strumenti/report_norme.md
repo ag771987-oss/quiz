@@ -914,3 +914,23 @@ Sono state fatte 115 correzioni nelle sei prove. **Nessuna chiave (`corretta`) �
 - Carta delle Nazioni Unite, artt. 23, 57 e 63: https://www.un.org/en/about-us/un-charter/full-text
 - Statuto della Corte internazionale di giustizia, artt. 2, 3, 4, 8, 16 e 20: https://www.icj-cij.org/statute
 - Costituzione dell'ILO, artt. 3 e 4. Le pagine ilo.org e normlex non erano raggiungibili; il testo è stato verificato su due fonti concordanti: il testo consolidato pubblicato nella Gazzetta ufficiale estone (https://www.riigiteataja.ee/aktilisa/2020/2202/1005/ILO_Constit_cons.pdf) e il Centro internazionale di formazione dell'ILO (https://training.itcilo.org/actrav_cdrom1/english/global/law/phila.htm).
+
+## 12° corso-concorso, 11° Busta 2 e prova simulata n. 1 (16/10/2026)
+
+**12° corso-concorso (prova del 06/10/2026, 59 quesiti).** La chiave viene dalla correzione ufficiale di un compito. Le spiegazioni sono state verificate sui testi vigenti scaricati da normattiva ed EUR-Lex. Normattiva è rimasta irraggiungibile per alcune ore; quando è tornata disponibile sono stati scaricati e collegati:
+- art. 98 Cost. (q49);
+- art. 7 d.l. 82/2021 (q41);
+- artt. 2 e 10 d.lgs. 36/2023 (q42, q53);
+- art. 55 d.lgs. 117/2017, Codice del Terzo settore (q29). Il riconoscitore delle citazioni ora riconosce anche «Codice del Terzo settore».
+
+Esito dei controlli:
+- le citazioni testuali di q41 (art. 7, comma 1, e lett. n-bis), q42 (art. 2, comma 3), q53 (art. 10, comma 2) e q29 (art. 118, quarto comma, Cost.) risultano alla lettera nei testi ufficiali;
+- le affermazioni di q49 (artt. 97 e 98 Cost., sent. 103/2007) sono coerenti con il testo;
+- due espressioni tra «» nei suggerimenti erano modi di dire e non norme («paura della firma», q42; «guardiana dei trattati», q37): ora hanno le virgolette alte, così non vengono scambiate per citazioni.
+
+**11° corso-concorso, Busta 2.** La chiave viene dalla correzione ufficiale di un compito: 59 risposte su 60 coincidevano con quelle già ricostruite. La q19 è stata corretta (risposta B) con una spiegazione riscritta; le note delle q50 e q54 sono state aggiornate.
+
+**Prova simulata n. 1 (esercitazione-sim01, 60 quesiti).** È un'esercitazione, non una prova ufficiale. Controlli:
+- le 54 domande non grafiche sono state risolte alla cieca da due verificatori indipendenti, con 54 risposte su 54 coincidenti con la chiave;
+- le 6 serie di figure sono generate da programma con un controllo automatico che ammette una sola risposta valida, e sono state verificate anche sull'immagine;
+- le citazioni normative sono collegate ai testi vigenti, compreso l'art. 6-bis l. 241/1990 (q23), e risultano alla lettera.
