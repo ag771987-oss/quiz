@@ -41,6 +41,7 @@
     "94",
     "95",
     "97",
+    "98",
     "100",
     "103",
     "104",
@@ -91,6 +92,7 @@
     "21-quater",
     "21-quinquies",
     "21-septies",
+    "21-octies",
     "21-nonies",
     "22",
     "24",
@@ -331,7 +333,9 @@
    "sigla": "d.lgs. 36/2023",
    "urn": "urn:nir:stato:decreto.legislativo:2023-03-31;36",
    "articoli": [
+    "2",
     "7",
+    "10",
     "18",
     "72",
     "101",
@@ -501,6 +505,24 @@
     "12"
    ]
   },
+  "dl82_2021": {
+   "dir": "dl82_2021",
+   "fonte": "Decreto-legge 14 giugno 2021, n. 82 (cybersicurezza nazionale)",
+   "sigla": "d.l. 82/2021",
+   "urn": "urn:nir:stato:decreto.legge:2021-06-14;82",
+   "articoli": [
+    "7"
+   ]
+  },
+  "dlgs117_2017": {
+   "dir": "dlgs117_2017",
+   "fonte": "Decreto legislativo 3 luglio 2017, n. 117 (Codice del Terzo settore)",
+   "sigla": "d.lgs. 117/2017",
+   "urn": "urn:nir:stato:decreto.legislativo:2017-07-03;117",
+   "articoli": [
+    "55"
+   ]
+  },
   "tue": {
    "dir": "tue",
    "fonte": "Trattato sull'Unione europea (versione consolidata, GU C 202 del 7.6.2016)",
@@ -532,6 +554,7 @@
     "3",
     "4",
     "6",
+    "18",
     "20",
     "79",
     "108",
@@ -543,6 +566,7 @@
     "267",
     "288",
     "291",
+    "314",
     "352"
    ]
   },

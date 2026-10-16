@@ -744,7 +744,8 @@ function mostraEsito(d, k) {
   let nota = "";
   if (d.certezza === "ufficiale") {
     cert.className = "box info";
-    nota = "✔ Risposta ufficiale pubblicata dalla SNA." + (a.nota ? " Nota: " + a.nota : "");
+    const fonteChiave = (QUIZ_MANIFEST.find(p => p.id === d._pack) || {}).fonteChiave;
+    nota = (fonteChiave ? "✔ Risposta ufficiale, dalla correzione ufficiale della prova (la SNA non ha pubblicato la chiave)." : "✔ Risposta ufficiale pubblicata dalla SNA.") + (a.nota ? " Nota: " + a.nota : "");
   } else {
     cert.className = "box warn";
     nota = d.certezza === "bassa" ? "⚠️ " + NOTA_BASSA

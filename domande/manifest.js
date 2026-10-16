@@ -2,6 +2,33 @@
 // ufficiale: true = risposte pubblicate dalla SNA; false = chiave ricostruita.
 const QUIZ_MANIFEST = [
   {
+    "id": "sna-cc12-prova",
+    "gruppo": "12° corso-concorso — prova del 06/10/2026",
+    "label": "Prova unica (59 quesiti)",
+    "breve": "12° CC",
+    "ufficiale": true,
+    "dataProva": "2026-10-06",
+    "fonteChiave": "correzione ufficiale di un compito (piattaforma della prova); la SNA non ha pubblicato domande e chiave. Il quesito 38 (art. 10-bis l. 241/1990), neutralizzato dalla commissione, non è incluso",
+    "domande": "domande/sna-cc12-prova/sna-cc12-prova_d.js",
+    "risposte": "domande/sna-cc12-prova/sna-cc12-prova_r.js",
+    "spiegazioni": "domande/sna-cc12-prova/sna-cc12-prova_s.js",
+    "norme": [
+      "norme/cad/cad_art_17.js",
+      "norme/costituzione/cost_art_3.js",
+      "norme/costituzione/cost_art_95.js",
+      "norme/costituzione/cost_art_97.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/costituzione/cost_art_118.js",
+      "norme/costituzione/cost_art_120.js",
+      "norme/l241_1990/l241_1990_art_10_bis.js",
+      "norme/tfue/tfue_art_2.js",
+      "norme/tfue/tfue_art_18.js",
+      "norme/tfue/tfue_art_314.js",
+      "norme/tue/tue_art_15.js",
+      "norme/tue/tue_art_17.js"
+    ]
+  },
+  {
     "id": "sna-cc11-busta1",
     "gruppo": "11° corso-concorso — prova del 26/11/2025",
     "label": "Busta 1",
