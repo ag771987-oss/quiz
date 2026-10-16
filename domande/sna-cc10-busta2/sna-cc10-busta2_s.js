@@ -267,11 +267,11 @@ const SPIEGAZIONI = [
     "suggerimento": "Conta, riga per riga, i pallini e i lati disegnati di ogni riquadro: c'è un totale che si ripete?",
     "spiegazione": "In ogni riga la **somma dei pallini è 8** e la **somma dei lati disegnati è 8**. Nell'ultima riga ci sono 1+4 pallini e 4+1 lati: la figura mancante deve avere **3 pallini e 3 lati**.",
     "perOpzione": {
-      "A": "La figura 4 ha 3 pallini ma solo 2 lati (in alto e a sinistra).",
+      "A": "La figura 1 aggiunge un'ellisse estranea e ha solo 2 lati (in alto e a sinistra).",
       "B": "Corretta: la figura 5 ha 3 pallini e 3 lati (sopra, a sinistra e sotto).",
       "C": "La figura 2 ha 3 pallini ma solo 2 lati (sopra e sotto).",
-      "D": "La figura 1 aggiunge un'ellisse estranea e ha solo 2 lati.",
-      "E": "La figura 3 ha 4 pallini e un solo lato: è identica alla seconda figura dell'ultima riga."
+      "D": "La figura 3 ha 4 pallini e un solo lato: è identica alla seconda figura dell'ultima riga.",
+      "E": "La figura 4 ha 3 pallini ma solo 2 lati (in alto e a sinistra)."
     }
   },
   {
@@ -291,7 +291,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "C",
     "suggerimento": "Qual è l'organo di consulenza giuridico-amministrativa del Governo che si pronuncia sugli schemi di regolamento?",
-    "spiegazione": "I **regolamenti governativi** sono adottati con DPR, previa deliberazione del Consiglio dei ministri, **sentito il parere del Consiglio di Stato** (art. 17, l. 400/1988): un parere obbligatorio ma non vincolante.",
+    "spiegazione": "I **regolamenti governativi** sono adottati con DPR, previa deliberazione del Consiglio dei ministri, **sentito il parere del Consiglio di Stato** (art. 17, l. 400/1988): un parere obbligatorio ma non vincolante. Art. 17, comma 1, l. 400/1988: «Con decreto del Presidente della Repubblica, previa deliberazione del Consiglio dei ministri, sentito il parere del Consiglio di Stato che deve pronunziarsi entro novanta giorni dalla richiesta, possono essere emanati regolamenti».",
     "perOpzione": {
       "A": "Il Presidente della Repubblica emana il regolamento con decreto, ma non rende un parere preventivo.",
       "B": "La Corte dei conti interviene con il controllo preventivo di legittimità sull'atto, non con un parere consultivo sullo schema.",
@@ -307,33 +307,43 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "B",
     "suggerimento": "Distingui il controllo di legittimità della richiesta (firme, regolarità) da quello di ammissibilità del quesito: chi fa cosa?",
-    "spiegazione": "La **legittimità** della richiesta di referendum abrogativo è verificata dall'**Ufficio centrale per il referendum presso la Corte di cassazione**; l'**ammissibilità** del quesito spetta invece alla **Corte costituzionale** (l. 352/1970).",
+    "spiegazione": "La **legittimità** della richiesta di referendum abrogativo è verificata dall'**Ufficio centrale per il referendum presso la Corte di cassazione**; l'**ammissibilità** del quesito spetta invece alla **Corte costituzionale** (artt. 32 e 33 l. 352/1970). Art. 32 l. 352/1970: l'Ufficio centrale «costituito presso la Corte di cassazione a norma dell'articolo 12» esamina le richieste, «esclusa la cognizione dell'ammissibilità», e «decide, con ordinanza definitiva, sulla legittimità di tutte le richieste depositate».",
     "perOpzione": {
       "A": "Presso la Corte costituzionale non esiste un ufficio centrale per il referendum: la Corte giudica sull'ammissibilità, non sulla legittimità della richiesta.",
       "B": "Corretta: è l'Ufficio centrale costituito presso la Corte di cassazione.",
       "C": "Il Presidente della Repubblica indice il referendum, ma non ha alcun ufficio che ne giudichi la legittimità."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l352_1970_art_32"
+      }
+    ]
   },
   {
     "id": 27,
     "corretta": "A",
     "suggerimento": "La questione di fiducia è un atto che impegna l'intero Governo: quale organo collegiale deve essere d'accordo?",
-    "spiegazione": "La questione di fiducia è posta dal Presidente del Consiglio **previo assenso del Consiglio dei ministri** (l. 400/1988), perché impegna la **responsabilità collegiale** del Governo davanti alle Camere.",
+    "spiegazione": "La questione di fiducia è posta dal Presidente del Consiglio **previo assenso del Consiglio dei ministri** (art. 2, comma 2, l. 400/1988: «Il Consiglio dei ministri esprime l'assenso alla iniziativa del Presidente del Consiglio dei ministri di porre la questione di fiducia dinanzi alle Camere»), perché impegna la **responsabilità collegiale** del Governo davanti alle Camere.",
     "perOpzione": {
       "A": "Corretta: l'assenso è espresso dal Consiglio dei ministri.",
       "B": "Il Presidente della Repubblica non interviene nei rapporti fiduciari tra Governo e Parlamento sulla singola questione di fiducia.",
       "C": "Il Ministro della giustizia non ha alcun ruolo in questa procedura."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_2"
+      }
+    ]
   },
   {
     "id": 28,
     "corretta": "A",
     "suggerimento": "La legge sul procedimento amministrativo, dopo la riforma del 2020, indica due principi che reggono i rapporti tra cittadino e PA.",
-    "spiegazione": "L'art. 1, comma 2-bis, della **l. 241/1990** (introdotto dal d.l. 76/2020) stabilisce che i rapporti tra cittadino e PA sono improntati ai principi della **collaborazione e della buona fede**.",
+    "spiegazione": "L'art. 1, comma 2-bis, della **l. 241/1990** (introdotto dal d.l. 76/2020) stabilisce: «I rapporti tra il cittadino e la pubblica amministrazione sono improntati ai principi della **collaborazione e della buona fede**».",
     "perOpzione": {
-      "A": "Corretta: è la formula dell'art. 1, comma 2-bis, l. 241/1990.",
+      "A": "Corretta: riprende nella sostanza l'art. 1, comma 2-bis, l. 241/1990 («sono improntati ai principi della collaborazione e della buona fede»).",
       "B": "Gli atti amministrativi lesivi sono autoritativi: non richiedono il consenso del destinatario.",
-      "C": "Le controversie su questi rapporti rientrano proprio nella giurisdizione del giudice amministrativo."
+      "C": "Il principio non sottrae nulla al giudice amministrativo: le controversie sull'esercizio del potere, che coinvolgono interessi legittimi, rientrano proprio nella sua giurisdizione generale di legittimità."
     },
     "riferimenti": [
       {
@@ -345,10 +355,10 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "Quando la PA non esercita poteri autoritativi, quale diritto applica di regola?",
-    "spiegazione": "Per l'art. 1, comma 1-bis, della **l. 241/1990**, nell'adozione di atti di **natura non autoritativa** la PA **agisce secondo le norme di diritto privato**, salvo che la legge disponga diversamente.",
+    "spiegazione": "Art. 1, comma 1-bis, della **l. 241/1990**: «La pubblica amministrazione, nell'adozione di atti di **natura non autoritativa**, **agisce secondo le norme di diritto privato** salvo che la legge disponga diversamente».",
     "perOpzione": {
       "A": "I vincoli di bilancio valgono per tutta l'attività della PA, autoritativa o no.",
-      "B": "Corretta: è il testo dell'art. 1, comma 1-bis, l. 241/1990.",
+      "B": "Corretta: coincide, salvo una virgola, con il testo dell'art. 1, comma 1-bis, l. 241/1990.",
       "C": "La regola è la capacità generale di diritto privato, non un elenco tassativo di atti consentiti."
     },
     "riferimenti": [
@@ -361,7 +371,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "L'interesse legittimo si difende solo in giudizio? E il risarcimento è escluso?",
-    "spiegazione": "L'interesse legittimo è tutelato sia nel **procedimento** (partecipazione, l. 241/1990) sia in **giudizio**, anche con l'**azione risarcitoria** (art. 30 c.p.a.; dopo Cass. SU 500/1999).",
+    "spiegazione": "L'interesse legittimo è tutelato sia nel **procedimento** (partecipazione, l. 241/1990) sia in **giudizio**, anche con l'**azione risarcitoria** (art. 30 c.p.a.; dopo Cass. SU 500/1999). Art. 24, primo comma, Cost.: «Tutti possono agire in giudizio per la tutela dei propri diritti e interessi legittimi»; art. 30, comma 2, c.p.a.: «Può essere chiesta la condanna al risarcimento del danno ingiusto derivante dall'illegittimo esercizio dell'attività amministrativa».",
     "perOpzione": {
       "A": "Esclude la tutela giurisdizionale, garantita dagli artt. 24 e 113 Cost.",
       "B": "Corretta: partecipazione al procedimento e azione in giudizio, anche risarcitoria.",
@@ -383,7 +393,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "C",
     "suggerimento": "La riforma del 2020 ha voluto evitare che, dopo una sentenza di annullamento, la PA «scopra» ogni volta nuovi motivi di diniego.",
-    "spiegazione": "L'art. 10-bis della **l. 241/1990**, modificato dal d.l. 76/2020, dispone che in caso di annullamento in giudizio del diniego, nel riesercitare il potere la PA **non può addurre per la prima volta motivi ostativi già emergenti dall'istruttoria** del provvedimento annullato.",
+    "spiegazione": "L'art. 10-bis della **l. 241/1990**, modificato dal d.l. 76/2020, dispone: «In caso di annullamento in giudizio del provvedimento così adottato, nell'esercitare nuovamente il suo potere l'amministrazione **non può addurre per la prima volta motivi ostativi già emergenti dall'istruttoria del provvedimento annullato**».",
     "perOpzione": {
       "A": "La norma non consente di addurli «una volta»: li vieta se non erano stati indicati prima.",
       "B": "Non serve alcuna autorizzazione della sentenza: la regola è fissata dalla legge.",
@@ -399,7 +409,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "B",
     "suggerimento": "La SCIA è un atto del privato o un provvedimento della PA? Come si tutela il terzo che si ritiene leso?",
-    "spiegazione": "La **SCIA** è un atto del privato: consente di avviare l'attività **dalla data di presentazione**. Per l'art. 19, comma 6-ter, **l. 241/1990** non costituisce **provvedimento tacito direttamente impugnabile**: il terzo sollecita le verifiche della PA e può agire contro l'inerzia.",
+    "spiegazione": "La **SCIA** è un atto del privato: consente di avviare l'attività **dalla data di presentazione**. Per l'art. 19, comma 6-ter, **l. 241/1990** non costituisce **provvedimento tacito direttamente impugnabile**: il terzo sollecita le verifiche della PA e può agire contro l'inerzia. Art. 19, comma 2: «L'attività oggetto della segnalazione può essere iniziata, anche nei casi di cui all'articolo 19-bis, comma 2, dalla data della presentazione della segnalazione all'amministrazione competente»; comma 6-ter: «La segnalazione certificata di inizio attività, la denuncia e la dichiarazione di inizio attività non costituiscono provvedimenti taciti direttamente impugnabili».",
     "perOpzione": {
       "A": "L'attività può iniziare dalla data di presentazione; i 60 giorni (30 in edilizia) sono il termine per i controlli della PA.",
       "B": "Corretta: lo prevede espressamente l'art. 19, comma 6-ter, l. 241/1990.",
@@ -415,7 +425,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "A",
     "suggerimento": "Ricorda le categorie elencate dal TFUE (artt. 2-6): quale delle tre etichette non vi compare?",
-    "spiegazione": "Il TFUE individua competenze **esclusive**, **concorrenti** e di **sostegno, coordinamento o completamento**, oltre al coordinamento delle politiche economiche e alla PESC. Le «competenze trasversali» **non sono una categoria dei trattati**.",
+    "spiegazione": "Il TFUE individua competenze **esclusive**, **concorrenti** e di **sostegno, coordinamento o completamento**, oltre al coordinamento delle politiche economiche e alla PESC. Le «competenze trasversali» **non sono una categoria dei trattati**. L'art. 2 TFUE parla di «competenza esclusiva» (par. 1), di «competenza concorrente con quella degli Stati membri» (par. 2) e di «competenza per svolgere azioni intese a sostenere, coordinare o completare l'azione degli Stati membri» (par. 5).",
     "perOpzione": {
       "A": "Corretta: la categoria delle competenze «trasversali» non è prevista dai trattati.",
       "B": "Le competenze concorrenti sono previste dall'art. 2, par. 2, e dall'art. 4 TFUE.",
@@ -437,10 +447,10 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "L'art. 6 TUE parla di due documenti diversi: la Carta dei diritti fondamentali e la CEDU. Quale ha valore di trattato e cosa si dice dell'altra?",
-    "spiegazione": "L'art. 6 TUE riconosce alla **Carta dei diritti fondamentali** lo stesso valore giuridico dei trattati e stabilisce che l'Unione **aderisce alla CEDU** (par. 2); i diritti della CEDU sono inoltre **principi generali** del diritto UE (par. 3).",
+    "spiegazione": "L'art. 6 TUE riconosce alla **Carta dei diritti fondamentali** lo stesso valore giuridico dei trattati e stabilisce: «L'Unione aderisce alla Convenzione europea per la salvaguardia dei diritti dell'uomo e delle libertà fondamentali» (**art. 6, par. 2, TUE**); i diritti della CEDU sono inoltre **principi generali** del diritto UE (par. 3).",
     "perOpzione": {
       "A": "Lo stesso valore dei trattati è riconosciuto alla Carta dei diritti fondamentali, non alla CEDU.",
-      "B": "Corretta: è la formula dell'art. 6, par. 2, TUE.",
+      "B": "Corretta: riprende l'art. 6, par. 2, TUE («L'Unione aderisce alla Convenzione europea per la salvaguardia dei diritti dell'uomo e delle libertà fondamentali»).",
       "C": "L'adesione è già prevista dal trattato e l'accordo segue la procedura dell'art. 218 TFUE (Consiglio all'unanimità), non una decisione del Consiglio europeo a maggioranza qualificata."
     },
     "nota": "L'adesione prevista dall'art. 6, par. 2, TUE non è ancora perfezionata; la risposta riprende la formula del trattato.",
@@ -457,12 +467,17 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Chi siede nel Consiglio quando si discute di agricoltura? E quando si discute di economia?",
-    "spiegazione": "Il **Consiglio dell'UE** è composto da un rappresentante di ciascuno Stato **a livello ministeriale**: il ministro presente cambia in base alla **materia all'ordine del giorno** (formazioni del Consiglio).",
+    "spiegazione": "Il **Consiglio dell'UE** è composto da un rappresentante di ciascuno Stato **a livello ministeriale**: il ministro presente cambia in base alla **materia all'ordine del giorno** (formazioni del Consiglio). Art. 16 TUE: «Il Consiglio è composto da un rappresentante di ciascuno Stato membro a livello ministeriale» (par. 2) e «si riunisce in varie formazioni» (par. 6).",
     "perOpzione": {
       "A": "Corretta: i membri variano a seconda della formazione e dei temi trattati.",
       "B": "Il numero dei membri è fisso: un rappresentante per Stato membro.",
       "C": "Il Consiglio non prevede delegazioni del Parlamento europeo nella sua composizione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_16"
+      }
+    ]
   },
   {
     "id": 36,
@@ -600,7 +615,7 @@ const SPIEGAZIONI = [
     "id": 48,
     "corretta": "C",
     "suggerimento": "Pensa al significato di «aperto» nel Codice dell'amministrazione digitale: chi può usarli, a quale costo?",
-    "spiegazione": "Per il **CAD** (art. 1, d.lgs. 82/2005) i **dati di tipo aperto** sono **disponibili** con licenza che ne permette il riuso, **accessibili** in formati aperti e leggibili da macchina e **gratuiti** (o a costi marginali).",
+    "spiegazione": "Per il **CAD** (art. 1, comma 1, lett. l-ter), d.lgs. 82/2005) i **dati di tipo aperto** sono **disponibili** con licenza che ne permette il riuso, **accessibili** in formati aperti e leggibili da macchina e **gratuiti** (o a costi marginali): «sono disponibili secondo i termini di una licenza o di una previsione normativa che ne permetta l'utilizzo da parte di chiunque, anche per finalità commerciali» e «sono resi disponibili gratuitamente».",
     "perOpzione": {
       "A": "Il riuso è proprio lo scopo degli open data.",
       "B": "Gli open data sono gratuiti e devono essere in formato aperto, non in qualunque formato.",
@@ -616,7 +631,7 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "Il Codice dell'amministrazione digitale chiede a ogni amministrazione di dotarsi di una propria figura interna: a quale livello?",
-    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**; le amministrazioni diverse da quelle statali possono individuare l’ufficio tra quelli di livello dirigenziale o, se ne sono prive, un responsabile tra le posizioni apicali (co. 1-sexies).",
+    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**; le amministrazioni diverse da quelle statali possono individuare l’ufficio tra quelli di livello dirigenziale o, se ne sono prive, un responsabile tra le posizioni apicali (co. 1-sexies). Art. 17, comma 1, CAD: «ciascuna pubblica amministrazione affida a un unico ufficio dirigenziale generale, fermo restando il numero complessivo di tali uffici, la transizione alla modalità operativa digitale».",
     "perOpzione": {
       "A": "Corretta: è un ufficio dirigenziale generale interno a ciascuna amministrazione.",
       "B": "AgID coordina e fornisce indirizzi, ma non svolge i compiti del RTD delle singole amministrazioni.",

@@ -186,7 +186,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Gli elettrodi (catodo **positivo**, anodo **negativo**) sono isolati da un **separatore centrale**, «uno strato sottile di polimero plastico o ceramico».",
     "perOpzione": {
       "A": "Coerente con il brano: il separatore è uno strato di polimero plastico (o ceramico).",
-      "B": "Il brano le dice «ampiamente diffuse» e «indispensabili».",
+      "B": "Il brano le dice «indispensabili» e parla di un prodotto «ampiamente diffuso».",
       "C": "Inverte i poli: il catodo è il positivo, l’anodo il negativo.",
       "D": "Il brano parla di due elettrodi, un catodo e un anodo."
     },
@@ -234,7 +234,7 @@ const SPIEGAZIONI = [
     "id": 21,
     "corretta": "A",
     "suggerimento": "Per ogni riga guarda grandezza e colore del fiocco; poi verifica quale poligono manca nell’ultima riga.",
-    "spiegazione": "Ogni riga ha un fiocco di **grandezza e colore propri** (grande bianco, medio grigio, **piccolo nero**) e contiene una volta **esagono, pentagono e quadrato**. All’ultima riga manca l’**esagono con un fiocco piccolo e nero**; la croce di linee continua chiude la serie degli stili (punteggiato, sottile, continuo).",
+    "spiegazione": "Ogni riga ha un fiocco di **grandezza e colore propri** (grande bianco, medio grigio, **piccolo nero**) e contiene una volta **esagono, pentagono e quadrato**. All’ultima riga manca l’**esagono con un fiocco piccolo e nero**. Il tipo di linea della croce non è decisivo: le figure 2 e 3 differiscono solo per il colore del fiocco.",
     "perOpzione": {
       "A": "La figura 2 è un esagono con un fiocco piccolo e nero: rispetta tutte le regole.",
       "B": "La figura 5 è un quadrato con fiocco grande e bianco: appartiene alla prima riga.",
@@ -286,10 +286,10 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "B",
     "suggerimento": "Ricorda l’ultimo comma dell’art. 77: chi «può tuttavia regolare» i rapporti sorti dai decreti decaduti?",
-    "spiegazione": "Art. 77, co. 3, Cost.: i decreti-legge non convertiti perdono efficacia sin dall’inizio, ma **le Camere possono regolare con legge** i rapporti giuridici sorti sulla loro base (c.d. legge di sanatoria).",
+    "spiegazione": "Art. 77, co. 3, Cost.: «I decreti perdono efficacia sin dall'inizio, se non sono convertiti in legge entro sessanta giorni dalla loro pubblicazione. **Le Camere possono tuttavia regolare con legge** i rapporti giuridici sorti sulla base dei decreti non convertiti» (c.d. legge di sanatoria).",
     "perOpzione": {
       "A": "Un atto del Capo dello Stato non può sostituirsi al Parlamento: la Costituzione richiede la legge.",
-      "B": "È il testo dell’art. 77, co. 3: le Camere possono regolare con legge quei rapporti.",
+      "B": "È il testo dell’art. 77, co. 3, Cost.: «Le Camere possono tuttavia regolare con legge i rapporti giuridici sorti sulla base dei decreti non convertiti».",
       "C": "Un DPCM è un atto amministrativo del Governo, non idoneo a sanare gli effetti di un decreto decaduto."
     },
     "riferimenti": [
@@ -302,7 +302,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "C",
     "suggerimento": "Pensa all’art. 17, co. 3, l. 400/1988: i ministri possono adottare regolamenti di propria iniziativa? A chi vanno comunicati?",
-    "spiegazione": "Art. 17, co. 3, l. 400/1988: i regolamenti ministeriali e interministeriali possono essere adottati **solo quando la legge espressamente conferisce tale potere** e devono essere **comunicati al Presidente del Consiglio dei ministri** prima dell’emanazione.",
+    "spiegazione": "Art. 17, co. 3, l. 400/1988: i regolamenti ministeriali e interministeriali possono essere adottati «**quando la legge espressamente conferisca tale potere**» (per quelli interministeriali «ferma restando la necessità di apposita autorizzazione da parte della legge») ed «Essi debbono essere **comunicati al Presidente del Consiglio dei ministri** prima della loro emanazione».",
     "perOpzione": {
       "A": "Serve un’espressa autorizzazione legislativa e la comunicazione va al Presidente del Consiglio, non al Presidente della Camera.",
       "B": "Serve un’espressa autorizzazione legislativa e la comunicazione non va al Presidente della Repubblica.",
@@ -318,10 +318,10 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "Chi dirige la politica generale del Governo e coordina l’attività dei ministri?",
-    "spiegazione": "Art. 95, co. 1, Cost.: il **Presidente del Consiglio** dirige la politica generale del Governo e ne è responsabile; **mantiene l’unità di indirizzo politico e amministrativo**, promuovendo e coordinando l’attività dei ministri.",
+    "spiegazione": "Art. 95, co. 1, Cost.: «Il **Presidente del Consiglio dei ministri** dirige la politica generale del Governo e ne è responsabile. **Mantiene l'unità di indirizzo politico ed amministrativo**, promuovendo e coordinando l'attività dei ministri».",
     "perOpzione": {
       "A": "La Corte costituzionale è un organo di garanzia esterno al Governo.",
-      "B": "È il testo dell’art. 95 Cost.",
+      "B": "È quanto dispone l’art. 95, co. 1, Cost. per il Presidente del Consiglio dei ministri.",
       "C": "Il Capo dello Stato non fa parte del Governo e non ne dirige l’indirizzo politico."
     },
     "riferimenti": [
@@ -334,24 +334,32 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "B",
     "suggerimento": "Il principio riguarda il procedimento amministrativo: cosa garantisce al privato prima che la P.A. decida?",
-    "spiegazione": "Il **giusto procedimento** impone che il privato possa **partecipare e far valere le proprie ragioni** prima dell’adozione di provvedimenti che incidono sulla sua sfera; trova attuazione negli istituti partecipativi della l. 241/1990 (comunicazione di avvio, memorie, preavviso di rigetto).",
+    "spiegazione": "Il **giusto procedimento** impone che il privato possa **partecipare e far valere le proprie ragioni** prima dell’adozione di provvedimenti che incidono sulla sua sfera; trova attuazione negli istituti partecipativi della l. 241/1990 (comunicazione di avvio, memorie, preavviso di rigetto): ad esempio l’art. 10, co. 1, lett. b), l. 241/1990 riconosce il diritto «di presentare memorie scritte e documenti, che l'amministrazione ha l'obbligo di valutare ove siano pertinenti all'oggetto del procedimento».",
     "perOpzione": {
       "A": "Riguarda il processo, non il procedimento amministrativo: è un tema estraneo al principio.",
       "B": "È il nucleo del principio: contraddittorio con il privato prima delle decisioni che lo pregiudicano.",
       "C": "Riguarda i diritti sindacali dei dipendenti pubblici, tema estraneo al principio."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_10"
+      }
+    ]
   },
   {
     "id": 29,
     "corretta": "B",
     "suggerimento": "«Interorganica»: la gerarchia lega organi dello stesso ente. Quali poteri ha il superiore?",
-    "spiegazione": "La **gerarchia** è una relazione tra organi dello stesso ente: il superiore ha poteri di ordine, direttiva, vigilanza e anche di **annullamento su ricorso gerarchico** degli atti dell’inferiore (d.P.R. 1199/1971).",
+    "spiegazione": "La **gerarchia** è una relazione tra organi dello stesso ente: il superiore ha poteri di ordine, direttiva, vigilanza e anche di **annullamento su ricorso gerarchico** degli atti dell’inferiore (art. 5 d.P.R. 1199/1971: se l’organo decidente accoglie il ricorso «per altri motivi di legittimità o per motivi di merito, annulla o riforma l'atto»).",
     "perOpzione": {
-      "A": "Descrive il potere sostitutivo del Governo verso gli enti locali (art. 120 Cost.), che è una relazione tra enti, non gerarchia tra organi.",
+      "A": "Richiama il potere sostitutivo del Governo verso gli enti locali (l’art. 120, co. 2, Cost. menziona il «pericolo grave per l'incolumità e la sicurezza pubblica»): è una relazione tra enti, non gerarchia tra organi.",
       "B": "Tra i poteri del superiore rientra la decisione del ricorso gerarchico, con possibile annullamento dell’atto.",
       "C": "La gerarchia, pur attenuata, esiste ancora nell’ordinamento (es. ricorso gerarchico)."
     },
     "riferimenti": [
+      {
+        "normaId": "dpr1199_1971_art_5"
+      },
       {
         "normaId": "cost_art_120"
       }
@@ -372,7 +380,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "B",
     "suggerimento": "«Soccorso»: la P.A. aiuta l’interessato a rimediare a cosa?",
-    "spiegazione": "Art. 6, co. 1, lett. b), l. 241/1990: il responsabile del procedimento **può chiedere la rettifica di dichiarazioni o istanze erronee o incomplete** ed esperire accertamenti tecnici e ispezioni. È il **soccorso istruttorio**.",
+    "spiegazione": "Art. 6, co. 1, lett. b), l. 241/1990: il responsabile del procedimento «può chiedere il rilascio di dichiarazioni e **la rettifica di dichiarazioni o istanze erronee o incomplete** e può esperire accertamenti tecnici ed ispezioni ed ordinare esibizioni documentali». È il **soccorso istruttorio**.",
     "perOpzione": {
       "A": "Descrive le dichiarazioni sostitutive (d.P.R. 445/2000), istituto diverso.",
       "B": "È il soccorso istruttorio dell’art. 6 l. 241/1990.",
@@ -388,7 +396,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "C",
     "suggerimento": "Dopo il 2020 la l. 241/1990 qualifica espressamente i provvedimenti tardivi adottati quando si è già formato il silenzio-assenso: quale termine usa?",
-    "spiegazione": "Art. 2, co. 8-bis, l. 241/1990 (introdotto dal d.l. 76/2020): i provvedimenti adottati dopo la formazione del **silenzio-assenso** sono **inefficaci**, fermo restando il potere di annullamento d’ufficio.",
+    "spiegazione": "Art. 2, co. 8-bis, l. 241/1990 (introdotto dal d.l. 76/2020): le determinazioni relative ai provvedimenti adottate dopo la scadenza dei termini, tra gli altri, dell’art. 20, comma 1 (cioè dopo la formazione del **silenzio-assenso**), «sono **inefficaci**, fermo restando quanto previsto dall'articolo 21-nonies, ove ne ricorrano i presupposti e le condizioni» (annullamento d’ufficio).",
     "perOpzione": {
       "A": "L’irregolarità riguarda vizi minori che non incidono sull’atto: non è la qualificazione prevista.",
       "B": "La legge non parla di nullità ma di inefficacia.",
@@ -398,6 +406,12 @@ const SPIEGAZIONI = [
     "riferimenti": [
       {
         "normaId": "l241_1990_art_2"
+      },
+      {
+        "normaId": "l241_1990_art_20"
+      },
+      {
+        "normaId": "l241_1990_art_21_nonies"
       }
     ]
   },
@@ -405,7 +419,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "Chi attribuisce le competenze a chi?",
-    "spiegazione": "Art. 5, par. 2, TUE: l’**Unione** agisce **esclusivamente nei limiti delle competenze attribuitele dagli Stati membri** nei trattati; qualsiasi competenza non attribuita **resta agli Stati membri**.",
+    "spiegazione": "Art. 5, par. 2, TUE: «In virtù del principio di attribuzione, l'Unione agisce **esclusivamente nei limiti delle competenze che le sono attribuite dagli Stati membri nei trattati** per realizzare gli obiettivi da questi stabiliti. Qualsiasi competenza non attribuita all'Unione nei trattati **appartiene agli Stati membri**».",
     "perOpzione": {
       "A": "Il principio non prevede un simile «ritiro» di competenze all’unanimità.",
       "B": "È il testo dell’art. 5, par. 2, TUE.",
@@ -421,7 +435,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "Quale trattato ha dato alla Carta di Nizza valore giuridicamente vincolante?",
-    "spiegazione": "Art. 6, par. 1, TUE (Lisbona, in vigore dal 1° dicembre 2009): la Carta ha **lo stesso valore giuridico dei trattati**; è quindi parametro di validità degli atti dell’Unione.",
+    "spiegazione": "Art. 6, par. 1, TUE (Lisbona, in vigore dal 1° dicembre 2009): l’Unione riconosce i diritti, le libertà e i principi sanciti nella Carta, «che ha **lo stesso valore giuridico dei trattati**»; è quindi parametro di validità degli atti dell’Unione.",
     "perOpzione": {
       "A": "È l’effetto dell’art. 6, par. 1, TUE dopo Lisbona.",
       "B": "Proprio il Trattato di Lisbona le ha attribuito valore vincolante.",
@@ -437,10 +451,10 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "B",
     "suggerimento": "Il Consiglio europeo riunisce i capi di Stato e di governo: legifera o indica la direzione?",
-    "spiegazione": "Art. 15, par. 1, TUE: il Consiglio europeo **dà all’Unione gli impulsi necessari al suo sviluppo** e ne definisce orientamenti e priorità politiche generali; **non esercita funzioni legislative**.",
+    "spiegazione": "Art. 15, par. 1, TUE: «Il Consiglio europeo **dà all'Unione gli impulsi necessari al suo sviluppo** e ne definisce gli orientamenti e le priorità politiche generali. **Non esercita funzioni legislative**».",
     "perOpzione": {
       "A": "L’art. 15 TUE esclude espressamente la funzione legislativa, che spetta a Parlamento europeo e Consiglio.",
-      "B": "È il testo dell’art. 15, par. 1, TUE.",
+      "B": "Riprende nella sostanza l’art. 15, par. 1, TUE: il Consiglio europeo «dà all'Unione gli impulsi necessari al suo sviluppo».",
       "C": "Gli accordi internazionali seguono la procedura dell’art. 218 TFUE (Commissione o Alto rappresentante presentano raccomandazioni; il Consiglio autorizza i negoziati, designa il negoziatore e conclude l’accordo)."
     },
     "riferimenti": [
@@ -588,7 +602,7 @@ const SPIEGAZIONI = [
     "id": 48,
     "corretta": "A",
     "suggerimento": "Lo usano i cittadini o le amministrazioni tra loro?",
-    "spiegazione": "Lo **SPID** (Sistema Pubblico di Identità Digitale, art. 64 CAD) consente a cittadini e imprese di accedere ai **servizi online** della PA (e dei privati aderenti) con **un’unica identità digitale**.",
+    "spiegazione": "Lo **SPID** (Sistema Pubblico di Identità Digitale) è istituito dall’art. 64, co. 2-bis, CAD: «Per favorire la diffusione di servizi in rete e agevolare l'accesso agli stessi da parte di cittadini e imprese, anche in mobilità, è istituito, a cura dell'Agenzia per l'Italia digitale, il sistema pubblico per la gestione dell'identità digitale di cittadini e imprese (SPID)». Consente di accedere ai **servizi online** della PA (e dei privati aderenti) con **un’unica identità digitale**.",
     "perOpzione": {
       "A": "È la definizione dello SPID.",
       "B": "Lo scambio di dati tra PA avviene tramite l’interoperabilità (PDND), non lo SPID.",
@@ -604,13 +618,13 @@ const SPIEGAZIONI = [
     "id": 49,
     "corretta": "A",
     "suggerimento": "La legge fissa una percentuale minima di dipendenti: è un diritto per tutti o una soglia organizzativa?",
-    "spiegazione": "Art. 14, co. 1, l. 124/2015 (come modificato dal d.l. 34/2020 e dal d.l. 56/2021): il POLA prevede, per le attività che possono essere svolte in modalità agile, che **almeno il 15 per cento dei dipendenti** possa avvalersene; se il POLA non è adottato, il lavoro agile si applica almeno al 15 per cento dei dipendenti, ove lo richiedano (oggi la programmazione confluisce nel PIAO, art. 6 d.l. 80/2021).",
+    "spiegazione": "Art. 14, co. 1, l. 124/2015 (come modificato dal d.l. 34/2020 e dal d.l. 56/2021): «Il POLA individua le modalità attuative del lavoro agile prevedendo, per le attività che possono essere svolte in modalità agile, che **almeno il 15 per cento dei dipendenti** possa avvalersene […]. In caso di mancata adozione del POLA, il lavoro agile si applica almeno al 15 per cento dei dipendenti, ove lo richiedano» (oggi la programmazione confluisce nel PIAO, art. 6 d.l. 80/2021).",
     "perOpzione": {
       "A": "Riprende la soglia minima del 15 per cento dell’art. 14 l. 124/2015.",
       "B": "Non è un diritto generalizzato: dipende dalla compatibilità delle attività e dall’organizzazione.",
       "C": "Le esigenze di conciliazione danno priorità di accesso, ma non ne sono il presupposto esclusivo."
     },
-    "nota": "La soglia è cambiata più volte (10%, 50-60% nella fase emergenziale, poi 15% con il d.l. 56/2021): la risposta segue il testo vigente alla data della prova.",
+    "nota": "La soglia è cambiata più volte (10% nel testo originario del 2015; 60%, o 30% senza POLA, con il d.l. 34/2020; 15% con il d.l. 56/2021): la risposta segue il testo vigente alla data della prova.",
     "riferimenti": [
       {
         "normaId": "l124_2015_art_14"

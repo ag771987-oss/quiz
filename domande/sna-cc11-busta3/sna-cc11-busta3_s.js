@@ -202,7 +202,7 @@ const SPIEGAZIONI = [
     "id": 18,
     "corretta": "B",
     "suggerimento": "Tre aspetti da controllare: il colore dei simboli, il lato (sinistra/destra) su cui si trovano e il modo in cui i simboli si scambiano di riga.",
-    "spiegazione": "Le figure **alternano bianco e nero** (la quinta è quindi bianca) e il lato del primo simbolo **alterna sinistra/destra** (la quinta parte da sinistra). L’ordine dei simboli cambia scambiando alternativamente le **due righe centrali** e le **coppie di righe**: dalla quarta figura (X, triangolo, cerchio, quadrato) si passa a **triangolo, X, quadrato, cerchio**. È la figura 3, tutta bianca.",
+    "spiegazione": "Le figure **alternano bianco e nero** (la quinta è quindi bianca) e il lato del primo simbolo **alterna sinistra/destra** (la quinta parte da sinistra). L’ordine dei simboli cambia scambiando alternativamente i simboli delle **due righe centrali** (seconda e terza) e quelli **all’interno di ciascuna coppia di righe** (prima con seconda, terza con quarta): dalla quarta figura (X, triangolo, cerchio, quadrato) si passa a **triangolo, X, quadrato, cerchio**. È la figura 3, tutta bianca.",
     "perOpzione": {
       "A": "La figura 2 ha un triangolo nero e un cerchio nero, e due simboli sulla stessa riga: viola colore e disposizione.",
       "B": "La figura 3 è tutta bianca, alterna sinistra/destra a partire da sinistra e ha l’ordine triangolo, X, quadrato, cerchio: rispetta tutte le regole.",
@@ -287,7 +287,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "C",
     "suggerimento": "La Costituzione ammette restrizioni della libertà personale «nei soli casi e modi» previsti da quale fonte, e con quanto spazio per altri atti?",
-    "spiegazione": "L’art. 13 Cost. consente restrizioni della libertà personale solo per atto motivato dell’autorità giudiziaria e **«nei soli casi e modi previsti dalla legge»**: è una **riserva di legge assoluta** (e di giurisdizione), che esclude fonti secondarie.",
+    "spiegazione": "L’art. 13, co. 2, Cost. dispone: «Non è ammessa forma alcuna di detenzione, di ispezione o perquisizione personale, né qualsiasi altra restrizione della libertà personale, se non per atto motivato dall'autorità giudiziaria e **nei soli casi e modi previsti dalla legge**»: è una **riserva di legge assoluta** (e di giurisdizione), che esclude fonti secondarie.",
     "perOpzione": {
       "A": "La riserva relativa ammette che la legge fissi solo i principi lasciando il resto ai regolamenti: per la libertà personale non basta.",
       "B": "La riserva di assemblea richiede l’approvazione in aula (art. 72, co. 4, Cost.) per alcune leggi; non è la formula dell’art. 13.",
@@ -306,9 +306,9 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "A",
     "suggerimento": "Le tre opzioni differiscono solo nel primo presupposto: quale «unità» il Governo deve garantire secondo l’art. 120 Cost.?",
-    "spiegazione": "L’**art. 120, co. 2, Cost.** consente al Governo di sostituirsi a Regioni ed enti locali per mancato rispetto di norme internazionali o comunitarie, per pericolo grave per l’incolumità e la sicurezza pubblica, e quando lo richiede la **tutela dell’unità giuridica o economica** (in particolare dei livelli essenziali delle prestazioni).",
+    "spiegazione": "L’**art. 120, co. 2, Cost.** stabilisce: «Il Governo può sostituirsi a organi delle Regioni, delle Città metropolitane, delle Province e dei Comuni nel caso di mancato rispetto di norme e trattati internazionali o della normativa comunitaria oppure di pericolo grave per l'incolumità e la sicurezza pubblica, ovvero quando lo richiedono la tutela dell'unità giuridica o dell'unità economica e in particolare la tutela dei livelli essenziali delle prestazioni concernenti i diritti civili e sociali». Il presupposto che distingue l’opzione corretta è la **tutela dell’unità giuridica o economica**.",
     "perOpzione": {
-      "A": "Riproduce i presupposti dell’art. 120, co. 2, Cost., compresa la tutela dell’unità giuridica o economica.",
+      "A": "Riprende nella sostanza i presupposti dell’art. 120, co. 2, Cost., compresa la tutela dell’unità giuridica o economica.",
       "B": "L’equilibrio di bilancio (art. 81 e 119 Cost.) non figura tra i presupposti del potere sostitutivo.",
       "C": "Il buon costume è un limite ad alcune libertà (es. art. 21 Cost.), non un presupposto del potere sostitutivo."
     },
@@ -331,7 +331,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "A",
     "suggerimento": "L’art. 100 Cost. disciplina due organi ausiliari: quale dei due si occupa dei controlli?",
-    "spiegazione": "Per l’**art. 100 Cost.** il Consiglio di Stato è **organo di consulenza giuridico-amministrativa e di tutela della giustizia nell’amministrazione**; il controllo preventivo di legittimità sugli atti del Governo spetta invece alla **Corte dei conti**.",
+    "spiegazione": "Per l’**art. 100, co. 1, Cost.** «Il Consiglio di Stato è organo di consulenza giuridico-amministrativa e di tutela della giustizia nell'amministrazione». Il controllo spetta invece alla **Corte dei conti** (co. 2): «La Corte dei conti esercita il controllo preventivo di legittimità sugli atti del Governo».",
     "perOpzione": {
       "A": "È la formula testuale dell’art. 100, primo comma, Cost.",
       "B": "La consulenza è giuridico-amministrativa, non contabile: la materia contabile è propria della Corte dei conti.",
@@ -358,7 +358,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "Sono gli incarichi apicali, i più vicini all’indirizzo politico: che cosa succede quando cambia il Governo?",
-    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede che gli incarichi apicali del co. 3 **cessano decorsi novanta giorni dal voto sulla fiducia al Governo** (il cosiddetto spoils system).",
+    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede: «Gli incarichi di funzione dirigenziale di cui al comma 3 cessano decorsi novanta giorni dal voto sulla fiducia al Governo». Riguarda gli incarichi apicali del co. 3 (il cosiddetto spoils system).",
     "perOpzione": {
       "A": "Non c’è un’esclusiva: possono essere conferiti anche a dirigenti di altre amministrazioni o a esterni nei limiti dell’art. 19, co. 6.",
       "B": "La norma non prevede un limite di due rinnovi consecutivi per questi incarichi: l’art. 19, co. 2, dice solo che «gli incarichi sono rinnovabili».",
@@ -374,7 +374,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "A",
     "suggerimento": "Ricorda la differenza tra demanio e patrimonio indisponibile: dove stanno gli edifici sedi di uffici pubblici?",
-    "spiegazione": "Fanno parte del demanio idrico **tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo** (art. 144 d.lgs. 152/2006, già l. 36/1994). I beni demaniali sono **inalienabili** e **non possono formare oggetto di diritti a favore di terzi** (art. 823 c.c.), quindi i creditori non possono aggredirli; gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
+    "spiegazione": "L’**art. 144, co. 1, d.lgs. 152/2006** (che riprende la l. 36/1994) dispone: «Tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo, appartengono al demanio dello Stato». I beni demaniali sono **inalienabili** e **non possono formare oggetto di diritti a favore di terzi** (art. 823 c.c.), quindi i creditori non possono aggredirli; gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
     "perOpzione": {
       "A": "È la formula della legge: tutte le acque superficiali e sotterranee appartengono al demanio dello Stato.",
       "B": "I beni demaniali sono inalienabili e non possono formare oggetto di diritti a favore di terzi: i creditori non possono aggredirli.",
@@ -396,7 +396,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "C",
     "suggerimento": "La responsabilità amministrativo-contabile ha un termine di prescrizione speciale, più breve di quello ordinario: quanto dura?",
-    "spiegazione": "Per l’**art. 1, co. 2, l. 20/1994** il diritto al risarcimento del danno erariale si prescrive «in ogni caso» in **cinque anni** dal fatto dannoso, indipendentemente da quando l’amministrazione o la Corte dei conti ne sono venute a conoscenza, o, in caso di **occultamento doloso** (con una condotta attiva o in violazione di obblighi di comunicazione), dalla data della sua **scoperta**.",
+    "spiegazione": "L’**art. 1, co. 2, l. 20/1994**, nel testo vigente alla data della prova (26/11/2025), disponeva: «Il diritto al risarcimento del danno si prescrive in ogni caso in cinque anni, decorrenti dalla data in cui si è verificato fatto dannoso, ovvero, in caso di occultamento doloso del danno, dalla data della sua scoperta». È la risposta C. La l. 7 gennaio 2026, n. 1 ha poi integrato il comma: oggi il termine decorre dal fatto dannoso «indipendentemente dal momento in cui l'amministrazione o la Corte dei conti sono venuti a conoscenza del danno» e l’occultamento doloso deve essere «realizzato con una condotta attiva o in violazione di obblighi di comunicazione». Il termine di **cinque anni** resta invariato.",
     "perOpzione": {
       "A": "Il termine decennale è quello ordinario del codice civile; per il danno erariale la legge ne fissa uno speciale di cinque anni.",
       "B": "L’illecito arricchimento rileva per la trasmissibilità del debito agli eredi (art. 1, co. 1, l. 20/1994) e, insieme al dolo, per la responsabilità solidale dei concorrenti (co. 1-quinquies); nessuno dei due rende il diritto imprescrittibile: il co. 2 fissa la prescrizione «in ogni caso» in cinque anni.",
@@ -412,7 +412,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "«Preventivo» rispetto a che cosa? Pensa a quando l’atto comincia a produrre effetti.",
-    "spiegazione": "Il **controllo preventivo di legittimità** (es. quello della Corte dei conti ex art. 3 l. 20/1994) verifica la conformità a legge di alcuni atti **prima che producano effetti**: l’esito positivo è condizione di **efficacia** dell’atto.",
+    "spiegazione": "Il **controllo preventivo di legittimità** (es. quello della Corte dei conti ex art. 3 l. 20/1994) verifica la conformità a legge di alcuni atti **prima che producano effetti**: l’esito positivo è condizione di **efficacia** dell’atto. Per l’art. 3, co. 2, l. 20/1994: «I provvedimenti sottoposti al controllo preventivo acquistano efficacia se il competente ufficio di controllo non ne rimetta l'esame alla sezione del controllo nel termine di trenta giorni dal ricevimento».",
     "perOpzione": {
       "A": "Descrive il controllo sugli atti: verifica dei vizi di legittimità che condiziona l’efficacia del provvedimento.",
       "B": "Richiama i limiti all’iniziativa economica dell’art. 41 Cost., non un controllo sugli atti amministrativi.",
@@ -431,7 +431,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "B",
     "suggerimento": "Quale istituzione UE riceve la notifica dei progetti di aiuto e decide se sono compatibili con il mercato interno?",
-    "spiegazione": "Per l’**art. 108 TFUE** la **Commissione** esamina gli aiuti esistenti, riceve la **notifica preventiva** dei nuovi aiuti e ne decide la compatibilità; solo eccezionalmente il Consiglio può deliberare all’unanimità (art. 108, par. 2, co. 3).",
+    "spiegazione": "Per l’**art. 108 TFUE** la verifica spetta alla **Commissione**: «La Commissione procede con gli Stati membri all'esame permanente dei regimi di aiuti esistenti in questi Stati» (par. 1) e «Alla Commissione sono comunicati, in tempo utile perché presenti le sue osservazioni, i progetti diretti a istituire o modificare aiuti» (par. 3); è sempre la Commissione a decidere sulla compatibilità (par. 2). Solo in circostanze eccezionali il Consiglio, deliberando all’unanimità, può dichiarare compatibile un aiuto (art. 108, par. 2, terzo comma, TFUE).",
     "perOpzione": {
       "A": "Il Consiglio interviene solo in casi eccezionali; la competenza ordinaria di verifica è della Commissione.",
       "B": "È la Commissione a esaminare e decidere sulla compatibilità degli aiuti di Stato.",
@@ -447,7 +447,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "A",
     "suggerimento": "Schengen non coinvolge tutti gli Stati membri: con quale strumento di integrazione differenziata è stato inserito nei Trattati?",
-    "spiegazione": "Il **Protocollo n. 19** sull’acquis di Schengen **autorizza gli Stati membri partecipanti a instaurare tra loro una cooperazione rafforzata** nelle materie coperte dall’acquis, nel quadro istituzionale e giuridico dell’Unione.",
+    "spiegazione": "Per l’**art. 1 del Protocollo n. 19** sull’acquis di Schengen, gli Stati membri elencati «sono autorizzati ad attuare tra loro una cooperazione rafforzata nei settori riguardanti le disposizioni definite dal Consiglio che costituiscono l'acquis di Schengen». E ancora: «Tale cooperazione è realizzata nell'ambito istituzionale e giuridico dell'Unione europea».",
     "perOpzione": {
       "A": "È quanto prevede l’art. 1 del Protocollo n. 19.",
       "B": "Il Protocollo non fissa scadenze: l’ingresso di nuovi Stati dipende da una decisione all’unanimità del Consiglio, previa verifica dei requisiti.",
@@ -463,7 +463,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Ricorda quale aspetto l’art. 79 riserva espressamente agli Stati membri.",
-    "spiegazione": "L’**art. 79, par. 2, TFUE** consente a Parlamento e Consiglio di adottare misure su condizioni di ingresso e soggiorno, **diritti dei cittadini di paesi terzi regolarmente soggiornanti**, immigrazione irregolare e tratta. Il par. 5 **riserva agli Stati** la determinazione dei **volumi di ingresso**.",
+    "spiegazione": "L’**art. 79, par. 2, TFUE** consente a Parlamento e Consiglio di adottare misure su condizioni di ingresso e soggiorno, immigrazione clandestina e tratta e, alla lett. b), sulla «definizione dei diritti dei cittadini di paesi terzi regolarmente soggiornanti in uno Stato membro». Il par. 5 **riserva agli Stati** i **volumi di ingresso**: l’articolo «non incide sul diritto degli Stati membri di determinare il volume di ingresso nel loro territorio dei cittadini di paesi terzi».",
     "perOpzione": {
       "A": "Corrisponde alla lett. b) dell’art. 79, par. 2, TFUE.",
       "B": "L’art. 79 riguarda l’immigrazione e il soggiorno irregolari, compresi allontanamento e rimpatrio, ma non prevede l’armonizzazione dei motivi di espulsione.",
@@ -556,7 +556,7 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "B",
     "suggerimento": "Nel sistema dei controlli interni delle PA ci sono controlli diversi per obiettivi diversi: quale guarda al rapporto tra risorse, azioni e risultati?",
-    "spiegazione": "Il **controllo di gestione** (art. 1 e 4 d.lgs. 286/1999) serve a verificare **efficacia, efficienza ed economicità** dell’azione amministrativa, per ottimizzare il rapporto tra costi e risultati, anche con interventi correttivi.",
+    "spiegazione": "Per l’**art. 1, co. 1, lett. b), d.lgs. 286/1999** le amministrazioni si dotano di strumenti per «verificare l'efficacia, efficienza ed economicità dell'azione amministrativa al fine di ottimizzare, anche mediante tempestivi interventi di correzione, il rapporto tra costi e risultati (controllo di gestione)». L’art. 4 ne disciplina l’organizzazione.",
     "perOpzione": {
       "A": "La valutazione delle performance individuali (in particolare dei dirigenti) è un’attività distinta.",
       "B": "È la finalità che la legge assegna al controllo di gestione.",

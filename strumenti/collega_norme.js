@@ -1,6 +1,6 @@
 // Collega le spiegazioni ai testi delle norme.
 // - legge le citazioni («art. 94 Cost.», «art. 2, co. 8-bis, l. 241/1990»...) da spiegazione,
-//   perOpzione e nota di ogni domanda (norme/citazioni.js);
+//   perOpzione e nota di ogni domanda, più quelle con l'atto indicato nella domanda e nelle opzioni (norme/citazioni.js);
 // - scrive in ogni spiegazione l'elenco «riferimenti» [{normaId}] delle norme disponibili;
 // - scrive nel manifest, per ogni prova, la lista «norme» dei file da caricare.
 // Uso: node strumenti/collega_norme.js          → solo resoconto
@@ -34,10 +34,15 @@ const mancanti = {};
 let totRif = 0, domandeCollegate = 0;
 for (const p of man.val) {
   const sp = leggi(p.spiegazioni, "SPIEGAZIONI");
+  const domande = Object.fromEntries(leggi(p.domande, "DOMANDE").val.map(d => [d.id, d]));
   const usate = new Set();
   for (const s of sp.val) {
     const blocchi = [s.spiegazione, ...Object.values(s.perOpzione || {}), s.nota].map(piano);
-    const ris = CIT.risolvi(blocchi, esiste).flat();
+    // anche le norme citate (con l'atto indicato) nel testo della domanda e delle opzioni
+    const dom = domande[s.id] || {};
+    const testoDomanda = [dom.domanda, ...Object.values(dom.opzioni || {})].map(piano);
+    const ris = CIT.risolvi(blocchi, esiste).flat()
+      .concat(CIT.risolvi(testoDomanda, esiste).flat().filter(r => r.esplicito));
     const ids = [];
     for (const r of ris) {
       if (r.id && esiste(r.id)) { if (!ids.includes(r.id)) ids.push(r.id); }

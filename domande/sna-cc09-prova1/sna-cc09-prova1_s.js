@@ -146,7 +146,7 @@ const SPIEGAZIONI = [
     "id": 14,
     "corretta": "C",
     "suggerimento": "Verifica ogni affermazione parola per parola: quali gas usavano e quanto era pericolosa la rottura dei compressori?",
-    "spiegazione": "Quando c'è l'opzione «tutte le altre sono false», bisogna **smentire puntualmente** ciascuna delle altre. Qui il brano parla di **clorometano e ammoniaca** e di rotture «molto pericolose **se non fatali**».",
+    "spiegazione": "Quando c'è l'opzione «tutte le altre sono false», bisogna **smentire puntualmente** ciascuna delle altre. Qui il brano parla di **clorometano e ammoniaca** e dice che la rottura dei compressori poteva essere «molto pericolosa **se non fatale**».",
     "perOpzione": {
       "A": "Falsa: il brano indica due gas, clorometano **e** ammoniaca; «esclusivamente» è smentito.",
       "B": "Falsa: il brano dice che la rottura poteva essere «molto pericolosa se non fatale», quindi anche mortale.",
@@ -246,7 +246,7 @@ const SPIEGAZIONI = [
     "id": 23,
     "corretta": "C",
     "suggerimento": "Conta in ogni riquadro le punte della stella e i pallini: che rapporto c'è tra i due numeri?",
-    "spiegazione": "In ogni riquadro il numero dei **pallini è uguale al numero delle punte della stella meno uno**: 7 punte e 6 pallini, 5 e 4, 6 e 5, 4 e 3. Nella figura 5 la stella ha **8 punte** ma i pallini sono 6: è quella da scartare. Il pallino nero della figura 3 è solo un distrattore.",
+    "spiegazione": "In ogni riquadro il numero dei **pallini è uguale al numero delle punte della stella meno uno**: 7 punte e 6 pallini, 5 e 4, 6 e 5, 4 e 3. Nella figura 5 la stella ha **8 punte** ma i pallini sono 6: è quella da scartare. Nella figura 3 il pallino nero va contato come gli altri (4 grigi + 1 nero = 5): il colore diverso è solo un distrattore.",
     "perOpzione": {
       "A": "La figura 4 ha una stella a 4 punte e 3 pallini: rispetta la regola.",
       "B": "La figura 1 ha una stella a 7 punte e 6 pallini: rispetta la regola.",
@@ -268,7 +268,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "A",
     "suggerimento": "Chi stabilisce la riserva e a favore di quale fonte? Ricorda che la riserva serve a limitare l'intervento delle fonti secondarie.",
-    "spiegazione": "La **riserva di legge** è posta dalla **Costituzione**, che riserva alla legge (o agli atti con forza di legge) la disciplina di certe materie. È **assoluta** quando l'intera disciplina deve stare nella legge, senza spazio per regolamenti se non meramente esecutivi (es. art. 13 Cost. sulla libertà personale); è **relativa** quando la legge fissa solo i principi.",
+    "spiegazione": "La **riserva di legge** è posta dalla **Costituzione**, che riserva alla legge (o agli atti con forza di legge) la disciplina di certe materie. È **assoluta** quando l'intera disciplina deve stare nella legge, senza spazio per regolamenti se non meramente esecutivi (es. art. 13 Cost. sulla libertà personale); è **relativa** quando la legge fissa solo i principi. Esempio: l'art. 13, secondo comma, Cost. stabilisce: «Non è ammessa forma alcuna di detenzione, di ispezione o perquisizione personale, né qualsiasi altra restrizione della libertà personale, se non per atto motivato dall'autorità giudiziaria e nei soli casi e modi previsti dalla legge» (riserva assoluta di legge e, insieme, riserva di giurisdizione).",
     "perOpzione": {
       "A": "Corretta: è la Costituzione a riservare in esclusiva alla legge la disciplina di determinate materie.",
       "B": "Rovescia il concetto: la riserva di legge serve proprio a impedire che la materia sia disciplinata da fonti subordinate.",
@@ -284,9 +284,9 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "A",
     "suggerimento": "Pensa all'art. 90 Cost.: quali sono i due reati presidenziali, chi decide l'accusa e con quale maggioranza?",
-    "spiegazione": "Per l'**art. 90 Cost.** il Presidente della Repubblica non è responsabile degli atti compiuti nell'esercizio delle funzioni, tranne che per **alto tradimento** o **attentato alla Costituzione**. In tali casi è messo in stato di accusa dal **Parlamento in seduta comune**, a **maggioranza assoluta** dei suoi membri; giudica la Corte costituzionale (art. 134 Cost.).",
+    "spiegazione": "Per l'**art. 90 Cost.** il Presidente della Repubblica non è responsabile degli atti compiuti nell'esercizio delle funzioni, tranne che per **alto tradimento** o **attentato alla Costituzione**. Art. 90, secondo comma, Cost.: «In tali casi è messo in stato di accusa dal Parlamento in seduta comune, a maggioranza assoluta dei suoi membri»; giudica la Corte costituzionale (art. 134 Cost.).",
     "perOpzione": {
-      "A": "Corretta: riproduce l'art. 90 Cost. (due reati, Parlamento in seduta comune, maggioranza assoluta).",
+      "A": "Corretta: riprende nella sostanza l'art. 90 Cost. (due reati, Parlamento in seduta comune, maggioranza assoluta).",
       "B": "Il Governo non ha alcun potere di accusa nei confronti del Capo dello Stato, e i reati previsti sono due, non uno.",
       "C": "La maggioranza richiesta è assoluta, non relativa: si richiede una garanzia rafforzata per un atto così grave."
     },
@@ -303,7 +303,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "Leggi con attenzione i dettagli sull'intervallo tra le deliberazioni: è «minore» o «non minore» di tre mesi?",
-    "spiegazione": "L'**art. 138 Cost.** prevede un **procedimento aggravato** svolto dalle **due Camere**: doppia deliberazione con intervallo **non minore di tre mesi**, maggioranza assoluta nella seconda votazione ed eventuale referendum (escluso se nella seconda votazione si raggiungono i due terzi). La nostra Costituzione è perciò **rigida**.",
+    "spiegazione": "L'**art. 138 Cost.** prevede un **procedimento aggravato** svolto dalle **due Camere**: doppia deliberazione con intervallo **non minore di tre mesi**, maggioranza assoluta nella seconda votazione ed eventuale referendum (escluso se nella seconda votazione si raggiungono i due terzi). Art. 138, primo comma, Cost.: le leggi di revisione «sono adottate da ciascuna Camera con due successive deliberazioni ad intervallo non minore di tre mesi, e sono approvate a maggioranza assoluta dei componenti di ciascuna Camera nella seconda votazione». La nostra Costituzione è perciò **rigida**.",
     "perOpzione": {
       "A": "Contiene un errore decisivo: l'intervallo tra le due deliberazioni deve essere **non minore** di tre mesi, non «minore» come dice l’opzione.",
       "B": "Corretta: la revisione è affidata alle stesse Camere ma con un procedimento più gravoso di quello ordinario.",
@@ -319,7 +319,7 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "B",
     "suggerimento": "Il preavviso di rigetto è un momento di partecipazione dentro il procedimento, non ancora una fase di impugnazione. Ricordi il termine dell'art. 10-bis?",
-    "spiegazione": "Per l'**art. 10-bis della L. 241/1990**, nei procedimenti a istanza di parte, prima di adottare un provvedimento negativo l'amministrazione comunica i motivi ostativi; l'istante ha **10 giorni** dal ricevimento per presentare **per iscritto osservazioni**, eventualmente con documenti.",
+    "spiegazione": "Per l'**art. 10-bis della L. 241/1990**, nei procedimenti a istanza di parte, prima di adottare un provvedimento negativo l'amministrazione comunica i motivi ostativi; l'istante ha **10 giorni** dal ricevimento per presentare **per iscritto osservazioni**, eventualmente con documenti. Art. 10-bis, comma 1: «Entro il termine di dieci giorni dal ricevimento della comunicazione, gli istanti hanno il diritto di presentare per iscritto le loro osservazioni, eventualmente corredate da documenti».",
     "perOpzione": {
       "A": "Il termine indicato dalla legge è di 10 giorni, non di 20.",
       "B": "Corretta: 10 giorni per osservazioni scritte (art. 10-bis L. 241/1990).",
@@ -335,7 +335,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "B",
     "suggerimento": "L'incompetenza assoluta corrisponde a un vizio di annullabilità o a qualcosa di più grave? Cosa comporta per la possibilità di sanarlo?",
-    "spiegazione": "L'**incompetenza assoluta** (atto adottato da un'amministrazione del tutto priva di potere in materia) corrisponde al **difetto assoluto di attribuzione**, causa di **nullità** ai sensi dell'**art. 21-septies L. 241/1990**. Un atto nullo **non è sanabile**: la ratifica è ammessa solo per l'**incompetenza relativa**, che rende l'atto annullabile.",
+    "spiegazione": "L'**incompetenza assoluta** (atto adottato da un'amministrazione del tutto priva di potere in materia) corrisponde al **difetto assoluto di attribuzione**, causa di **nullità** ai sensi dell'**art. 21-septies L. 241/1990**, comma 1: «È nullo il provvedimento amministrativo che manca degli elementi essenziali, che è viziato da difetto assoluto di attribuzione, che è stato adottato in violazione o elusione del giudicato, nonché negli altri casi espressamente previsti dalla legge». Un atto nullo **non è sanabile**: la ratifica è ammessa solo per l'**incompetenza relativa**, che rende l'atto annullabile.",
     "perOpzione": {
       "A": "La ratifica (convalida da parte dell'organo competente) vale per l'incompetenza relativa, non per quella assoluta.",
       "B": "Corretta: l'atto viziato da incompetenza assoluta è nullo e non può essere sanato né con ratifica né con rettifica.",
@@ -351,7 +351,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "B",
     "suggerimento": "I provvedimenti limitativi sono atti recettizi, ma esiste un'eccezione legata all'urgenza: quale?",
-    "spiegazione": "Per l'**art. 21-bis L. 241/1990** il provvedimento limitativo della sfera giuridica dei privati acquista efficacia con la **comunicazione** al destinatario; tuttavia i provvedimenti a **carattere cautelare ed urgente** sono **immediatamente efficaci**.",
+    "spiegazione": "Per l'**art. 21-bis L. 241/1990** il provvedimento limitativo della sfera giuridica dei privati acquista efficacia con la **comunicazione** al destinatario; tuttavia i provvedimenti a **carattere cautelare ed urgente** sono **immediatamente efficaci**. Art. 21-bis, comma 1, ultimo periodo: «I provvedimenti limitativi della sfera giuridica dei privati aventi carattere cautelare ed urgente sono immediatamente efficaci».",
     "perOpzione": {
       "A": "La regola della comunicazione ha un'eccezione espressa proprio per i provvedimenti cautelari e urgenti: «sempre» è errato.",
       "B": "Corretta: è l'eccezione prevista dall'art. 21-bis per i provvedimenti cautelari e urgenti.",
@@ -378,18 +378,26 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "Pensa al ricorso straordinario al Presidente della Repubblica: chi decide di fatto la controversia e su quali vizi?",
-    "spiegazione": "Il **ricorso straordinario al Presidente della Repubblica** (D.P.R. 1199/1971) si propone entro 120 giorni **solo per motivi di legittimità**. Il Consiglio di Stato rende un **parere vincolante** (dopo la riforma della L. 69/2009), che il decreto presidenziale recepisce: per questo oggi è considerato un rimedio di natura sostanzialmente giurisdizionale.",
+    "spiegazione": "Il **ricorso straordinario** (D.P.R. 1199/1971; all'epoca della prova «al Presidente della Repubblica») si propone entro 120 giorni **solo per motivi di legittimità**: per l'art. 8 è ammesso «per motivi di legittimità da parte di chi vi abbia interesse». Il Consiglio di Stato rende un **parere vincolante** (dopo la riforma della L. 69/2009): nel testo vigente alla data della prova l'art. 14, comma 1, disponeva che la decisione fosse «adottata con decreto del Presidente della Repubblica su proposta del Ministero competente, conforme al parere del Consiglio di Stato». Per questo è considerato un rimedio di natura sostanzialmente giurisdizionale. **Aggiornamento**: dopo la prova il D.L. 19 febbraio 2026, n. 19 (art. 6, comma 4) ha modificato gli artt. 8 e 14: oggi il rimedio è chiamato solo «ricorso straordinario» e l'art. 14, comma 1, dispone: «La decisione del ricorso straordinario è adottata con decreto del Presidente del Consiglio di Stato, conforme al parere del Consiglio di Stato». Il parere resta vincolante, quindi la risposta A resta valida.",
     "perOpzione": {
       "A": "Corretta: il parere del Consiglio di Stato è vincolante e determina il contenuto della decisione.",
       "B": "Il ricorso straordinario è ammesso solo per motivi di legittimità; il merito è escluso.",
       "C": "Il contraddittorio è essenzialmente scritto (deduzioni e documenti), non orale: non c'è una discussione orale tra le parti come nel processo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dpr1199_1971_art_8"
+      },
+      {
+        "normaId": "dpr1199_1971_art_14"
+      }
+    ]
   },
   {
     "id": 33,
     "corretta": "A",
     "suggerimento": "La difesa tocca il cuore della sovranità degli Stati: quale regola di voto ti aspetti, e quale istituzione formata dai ministri decide?",
-    "spiegazione": "L'**art. 42, par. 4, TUE** stabilisce che le decisioni sulla **PSDC** sono adottate dal **Consiglio** che delibera **all'unanimità**, su proposta dell'**Alto rappresentante** o su iniziativa di uno Stato membro. L'unanimità riflette la natura intergovernativa della materia.",
+    "spiegazione": "L'**art. 42, par. 4, TUE** stabilisce che le decisioni sulla **PSDC** sono adottate dal **Consiglio** che delibera **all'unanimità**, su proposta dell'**Alto rappresentante** o su iniziativa di uno Stato membro. Art. 42, par. 4, TUE: «Le decisioni relative alla politica di sicurezza e di difesa comune, comprese quelle inerenti all'avvio di una missione di cui al presente articolo, sono adottate dal Consiglio che delibera all'unanimità su proposta dell'alto rappresentante dell'Unione per gli affari esteri e la politica di sicurezza o su iniziativa di uno Stato membro». L'unanimità riflette la natura intergovernativa della materia.",
     "perOpzione": {
       "A": "Corretta: Consiglio, unanimità, proposta dell'Alto rappresentante o iniziativa di uno Stato membro.",
       "B": "Inverte i ruoli: l'Alto rappresentante propone, non decide.",
@@ -405,7 +413,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "B",
     "suggerimento": "Diffida delle opzioni con «esclusivamente»: il rinvio pregiudiziale riguarda sia i trattati sia gli atti derivati?",
-    "spiegazione": "Il **rinvio pregiudiziale** (**art. 267 TFUE**) consente alla Corte di giustizia di pronunciarsi a) **sull'interpretazione dei trattati** e b) **sulla validità e l'interpretazione degli atti** compiuti dalle istituzioni, dagli organi o dagli organismi dell'Unione. Il giudice di ultima istanza è, di regola, obbligato al rinvio.",
+    "spiegazione": "Il **rinvio pregiudiziale** è disciplinato dall'**art. 267 TFUE**: «La Corte di giustizia dell'Unione europea è competente a pronunciarsi, in via pregiudiziale: a) sull'interpretazione dei trattati; b) sulla validità e l'interpretazione degli atti compiuti dalle istituzioni, dagli organi o dagli organismi dell'Unione». Il giudice di ultima istanza è, di regola, obbligato al rinvio.",
     "perOpzione": {
       "A": "Incompleta: esclude l'interpretazione dei trattati, che è invece una parte essenziale del rinvio.",
       "B": "Corretta: riproduce il contenuto dell'art. 267 TFUE.",
@@ -421,7 +429,7 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "C",
     "suggerimento": "La coesione economica, sociale e territoriale è una competenza esclusiva, concorrente o di sostegno? E cosa comporta quel tipo di competenza?",
-    "spiegazione": "La **coesione economica, sociale e territoriale** rientra tra le **competenze concorrenti** (**art. 4, par. 2, lett. c), TFUE**). Per l'**art. 2, par. 2, TFUE**, nelle materie concorrenti gli Stati membri esercitano la loro competenza **nella misura in cui l'Unione non ha esercitato la propria** (effetto di preclusione).",
+    "spiegazione": "La **coesione economica, sociale e territoriale** rientra tra le **competenze concorrenti** (**art. 4, par. 2, lett. c), TFUE**). L'art. 4, par. 2, TFUE elenca tra le competenze concorrenti la lettera «c) coesione economica, sociale e territoriale». Per l'**art. 2, par. 2, TFUE**: «Gli Stati membri esercitano la loro competenza nella misura in cui l'Unione non ha esercitato la propria» (effetto di preclusione).",
     "perOpzione": {
       "A": "Descrive le competenze di **sostegno, coordinamento e completamento** (art. 6 TFUE: salute, cultura, turismo ecc.), non la coesione.",
       "B": "Descrive le competenze «parallele» di ricerca, sviluppo tecnologico e spazio (art. 4, par. 3, TFUE), dove l'azione UE non impedisce quella nazionale.",
@@ -521,7 +529,7 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "A",
     "suggerimento": "Pensa alla struttura «per funzioni» del bilancio introdotta dalla legge di contabilità e finanza pubblica: dal livello più generale al più dettagliato.",
-    "spiegazione": "Il bilancio dello Stato è articolato, per la spesa, in **missioni** (funzioni principali e obiettivi strategici), **programmi** (aggregati di attività per raggiungere le missioni, unità di voto parlamentare) e **azioni** (ulteriore articolazione dei programmi). La disciplina è nella **L. 196/2009** (art. 21 e art. 25-bis).",
+    "spiegazione": "Il bilancio dello Stato è articolato, per la spesa, in **missioni** (funzioni principali e obiettivi strategici), **programmi** (aggregati di attività per raggiungere le missioni, unità di voto parlamentare) e **azioni** (ulteriore articolazione dei programmi). La disciplina è nella **L. 196/2009**: art. 21, comma 2: «Per la spesa, le unità di voto sono costituite dai programmi» e «Le missioni rappresentano le funzioni principali e gli obiettivi strategici perseguiti con la spesa»; art. 25-bis, comma 1: «I programmi di spesa, come definiti all'articolo 21, comma 2, secondo e terzo periodo, sono suddivisi in azioni».",
     "perOpzione": {
       "A": "Corretta: missioni, programmi e azioni sono i tre livelli della classificazione della spesa.",
       "B": "Le categorie (economiche) esistono nella classificazione, ma non «merceologiche» e non come terzo livello dopo i programmi.",

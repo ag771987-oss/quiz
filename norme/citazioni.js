@@ -6,7 +6,7 @@
   const NUM = "\\d+(?:-(?:bis|ter|quater|quinquies|sexies|septies|octies|novies|nonies|decies))?";
   const QUAL1 = "\\s*,?\\s*(?:(?:co\\.|comma|commi|par\\.|paragrafo|paragrafi|lett\\.|lettera|n\\.)\\s*[\\w-]+\\)?(?:\\s*(?:e|-)\\s*[\\w-]+\\)?)?|(?:primo|secondo|terzo|quarto|quinto|sesto|settimo|ultimo|ult\\.)\\s+comma)";
   const QUAL = "(?:" + QUAL1 + ")*";
-  const ATTO = "(?:Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|c\\.p\\.a\\.|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|[lL]\\. ?cost\\. ?\\d+\\/\\d{4}|[lL]\\. ?\\d+\\/\\d{4}|legge \\d+\\/\\d{4}|[dD]\\.\\s?[lL]gs\\.? ?\\d+\\/\\d{4}|[dD]\\.[lL]\\. ?\\d+\\/\\d{4})";
+  const ATTO = "(?:Cost\\.|Costituzione|TUE|TFUE|c\\.c\\.|c\\.p\\.a\\.|CAD|Carta(?: dei diritti fondamentali)?|Protocollo n\\. ?\\d+|Testo unico|[lL]\\. ?cost\\. ?\\d+\\/\\d{4}|[lL]\\. ?\\d+\\/\\d{4}|legge \\d+\\/\\d{4}|[dD]\\.\\s?[lL]gs\\.? ?\\d+\\/\\d{4}|[dD]\\.[lL]\\. ?\\d+\\/\\d{4}|[dD]\\.\\s?P\\.\\s?R\\.? ?\\d+\\/\\d{4}|TUEL)";
   const PREP = "(?:\\s*,?\\s*(?:del|della|dello|dal|dalla|nel|nella)?\\s*)";
   const RE_CIT = new RegExp("\\b([Aa]rtt?\\.|[Aa]rticol[oi])\\s*(" + NUM + ")((?:" + QUAL + "(?:\\s*,?\\s*(?:e|ed|-|,)\\s*(?:(?:all'|dall'|l')?artt?\\.\\s*)?" + NUM + "(?![\\d/]))?)*)" + QUAL + "(?:" + PREP + "(" + ATTO + ")(?![\\w]))?", "g");
   const RE_ATTO = new RegExp("(?:^|[^\\w])(" + ATTO + ")(?![\\w])", "g");
@@ -22,12 +22,14 @@
     if (a === "CAD") return "cad";
     if (/^Carta/.test(a)) return "cdfue";
     if (/^Testo unico/.test(a)) return null;
+    if (a === "TUEL") return "dlgs267_2000";
     let m;
     if ((m = a.match(/^Protocollo n\. ?(\d+)/))) return "prot" + m[1];
     if ((m = a.match(/^[lL]\. ?cost\. ?(\d+)\/(\d{4})/))) return "lcost" + m[1] + "_" + m[2];
     if ((m = a.match(/^(?:[lL]\.|legge) ?(\d+)\/(\d{4})/))) return "l" + m[1] + "_" + m[2];
     if ((m = a.match(/^[dD]\.\s?[lL]gs\.? ?(\d+)\/(\d{4})/))) return m[1] === "82" && m[2] === "2005" ? "cad" : "dlgs" + m[1] + "_" + m[2];
     if ((m = a.match(/^[dD]\.[lL]\. ?(\d+)\/(\d{4})/))) return "dl" + m[1] + "_" + m[2];
+    if ((m = a.match(/^[dD]\.\s?P\.\s?R\.? ?(\d+)\/(\d{4})/))) return "dpr" + m[1] + "_" + m[2];
     return null;
   }
   const idArt = (pre, n) => pre + "_art_" + n.replace(/-/g, "_");

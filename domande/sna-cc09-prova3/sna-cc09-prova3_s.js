@@ -216,7 +216,7 @@ const SPIEGAZIONI = [
     "perOpzione": {
       "A": "Alternativa 2: sfondo bianco, pallino grigio nel settore superiore e rombo bianco in alto. Rispetta tutte e tre le regole.",
       "B": "Alternativa 4: pallino e rombo sono corretti, ma lo sfondo è puntinato; dopo il quarto cerchio (puntinato) deve venire uno sfondo bianco.",
-      "C": "Alternativa 1: pallino bianco e rombo scuro, cioè la configurazione delle posizioni pari, non della quinta."
+      "C": "Alternativa 1: pallino bianco (in alto) e rombo scuro (in alto): i colori sono quelli delle posizioni pari, non quelli richiesti alla quinta (pallino grigio e rombo bianco)."
     }
   },
   {
@@ -249,7 +249,7 @@ const SPIEGAZIONI = [
     "spiegazione": "Nei diagrammi di Eulero-Venn si traducono le relazioni tra insiemi: **papà e mamme** sono **disgiunti**; **mamme e maschi ultratrentenni** sono **disgiunti**; **papà e maschi ultratrentenni** si **intersecano** (ci sono papà sopra e sotto i trent'anni, e ultratrentenni che non sono padri). Serve quindi un insieme isolato e due insiemi parzialmente sovrapposti.",
     "perOpzione": {
       "A": "Alternativa 5: tre insiemi concentrici, cioè uno contenuto nell'altro; ma le mamme non sono né papà né maschi.",
-      "B": "Alternativa 4: due insiemi intersecano entrambi l'insieme grande; ciò implicherebbe mamme che sono anche maschi ultratrentenni.",
+      "B": "Alternativa 4: due insiemi intersecano entrambi l'insieme grande; ciò implicherebbe che l'insieme delle mamme abbia elementi in comune con un altro insieme (papà o maschi ultratrentenni), il che è impossibile.",
       "C": "Alternativa 1: un insieme separato (mamme) e due insiemi che si sovrappongono parzialmente (papà e maschi ultratrentenni). Rappresenta correttamente la relazione."
     }
   },
@@ -268,7 +268,7 @@ const SPIEGAZIONI = [
     "id": 25,
     "corretta": "A",
     "suggerimento": "La Costituzione protegge chi è perseguito per le proprie idee politiche: che limite pone all'estradizione?",
-    "spiegazione": "L'**art. 10, ultimo comma, Cost.** stabilisce che «non è ammessa l'estradizione dello straniero per reati politici» (regola analoga vale per il cittadino all'art. 26). È una garanzia legata al diritto d'asilo previsto dallo stesso art. 10, terzo comma.",
+    "spiegazione": "L'**art. 10, ultimo comma, Cost.** stabilisce: «Non è ammessa l'estradizione dello straniero per reati politici». Regola analoga vale per il cittadino (art. 26, secondo comma, Cost.: «Non può in alcun caso essere ammessa per reati politici»). È una garanzia legata al diritto d'asilo previsto dallo stesso art. 10, terzo comma.",
     "perOpzione": {
       "A": "Riproduce il testo dell'art. 10, ultimo comma, Cost.: l'estradizione dello straniero per reati politici è vietata.",
       "B": "È l'opposto della regola costituzionale, che esclude proprio i reati politici.",
@@ -287,7 +287,7 @@ const SPIEGAZIONI = [
     "id": 26,
     "corretta": "A",
     "suggerimento": "La magistratura è «un ordine autonomo e indipendente da ogni altro potere»: quale organo garantisce questa autonomia, e per quali magistrati?",
-    "spiegazione": "Il **CSM** (artt. 104-105 Cost.) è l'organo di **autogoverno della magistratura ordinaria**: presieduto dal Presidente della Repubblica, decide su assunzioni, assegnazioni, trasferimenti, promozioni e provvedimenti disciplinari, a garanzia dell'**autonomia e indipendenza** dell'ordine giudiziario.",
+    "spiegazione": "Il **CSM** (artt. 104-105 Cost.) è l'organo di **autogoverno della magistratura ordinaria**: presieduto dal Presidente della Repubblica, decide su assunzioni, assegnazioni, trasferimenti, promozioni e provvedimenti disciplinari, a garanzia dell'**autonomia e indipendenza** dell'ordine giudiziario. Per l'**art. 104, primo comma, Cost.** «La magistratura costituisce un ordine autonomo e indipendente da ogni altro potere»; per l'**art. 105 Cost.** «Spettano al Consiglio superiore della magistratura, secondo le norme dell'ordinamento giudiziario, le assunzioni, le assegnazioni ed i trasferimenti, le promozioni e i provvedimenti disciplinari nei riguardi dei magistrati».",
     "perOpzione": {
       "A": "Corretto: il CSM tutela l'autonomia e l'indipendenza dell'ordine giudiziario (art. 104 Cost.).",
       "B": "Il CSM riguarda la magistratura ordinaria; la magistratura amministrativa ha un proprio organo di autogoverno (il Consiglio di presidenza della giustizia amministrativa).",
@@ -306,7 +306,7 @@ const SPIEGAZIONI = [
     "id": 27,
     "corretta": "B",
     "suggerimento": "Il momento rilevante è quello in cui la decisione diventa conoscibile a tutti: deliberazione o pubblicazione? E c'è un periodo di attesa?",
-    "spiegazione": "Per l'**art. 136, primo comma, Cost.**, quando la Corte dichiara l'illegittimità costituzionale di una norma di legge o di atto avente forza di legge, la norma **cessa di avere efficacia dal giorno successivo alla pubblicazione** della decisione. Non c'è una vacatio come per le leggi.",
+    "spiegazione": "Per l'**art. 136, primo comma, Cost.**: «Quando la Corte dichiara l'illegittimità costituzionale di una norma di legge o di atto avente forza di legge, la norma cessa di avere efficacia dal giorno successivo alla pubblicazione della decisione». Rileva quindi la **pubblicazione**, e non c'è una vacatio come per le leggi.",
     "perOpzione": {
       "A": "Rileva la pubblicazione, non la deliberazione della decisione in camera di consiglio.",
       "B": "Riproduce l'art. 136 Cost.: efficacia cessata dal giorno successivo alla pubblicazione.",
@@ -326,9 +326,9 @@ const SPIEGAZIONI = [
     "id": 28,
     "corretta": "B",
     "suggerimento": "Pensa al termine «di default» della legge sul procedimento amministrativo, quello che si applica quando nessuna norma speciale dice nulla.",
-    "spiegazione": "Per l'**art. 2, comma 2, L. 241/1990**, se disposizioni di legge o i provvedimenti attuativi non prevedono un termine diverso, i procedimenti di amministrazioni statali ed enti pubblici nazionali si concludono entro **30 giorni**. Termini diversi non possono superare di regola i 90 giorni (180 in casi particolari).",
+    "spiegazione": "Per l'**art. 2, comma 2, L. 241/1990**: «Nei casi in cui disposizioni di legge ovvero i provvedimenti di cui ai commi 3, 4 e 5 non prevedono un termine diverso, i procedimenti amministrativi di competenza delle amministrazioni statali e degli enti pubblici nazionali devono concludersi entro il termine di trenta giorni» (**30 giorni**). Termini diversi non possono superare di regola i 90 giorni (180 in casi particolari).",
     "perOpzione": {
-      "A": "90 giorni è il limite massimo che i regolamenti possono fissare in via ordinaria, non il termine generale.",
+      "A": "90 giorni è il limite massimo che i DPCM (per le amministrazioni statali) o gli enti pubblici nazionali possono fissare in via ordinaria (art. 2, comma 3, L. 241/1990), non il termine generale.",
       "B": "È il termine generale suppletivo dell'art. 2, comma 2, L. 241/1990.",
       "C": "60 giorni non è il termine generale previsto dalla L. 241/1990."
     },
@@ -342,7 +342,7 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "Basta che l'atto sia illegittimo per annullarlo d'ufficio, o serve una ragione ulteriore che giustifichi il sacrificio di chi ne beneficia?",
-    "spiegazione": "L'**art. 21-nonies L. 241/1990** consente l'annullamento d'ufficio dell'atto illegittimo solo se sussistono **ragioni di interesse pubblico**, entro un termine ragionevole e tenendo conto degli interessi dei destinatari e dei controinteressati. Secondo la giurisprudenza consolidata questo interesse deve essere **concreto e attuale** e **ulteriore** rispetto al mero ripristino della legalità violata.",
+    "spiegazione": "Per l'**art. 21-nonies, comma 1, L. 241/1990** il provvedimento illegittimo «può essere annullato d'ufficio, sussistendone le ragioni di interesse pubblico, entro un termine ragionevole», «tenendo conto degli interessi dei destinatari e dei controinteressati». Secondo la giurisprudenza consolidata questo interesse deve essere **concreto e attuale** e **ulteriore** rispetto al mero ripristino della legalità violata.",
     "perOpzione": {
       "A": "Il solo ripristino della legalità non basta: altrimenti ogni atto illegittimo andrebbe annullato, senza bilanciamento con l'affidamento dei privati.",
       "B": "Non esiste un tale onere: l'annullamento d'ufficio deve intervenire entro un termine ragionevole (per i provvedimenti autorizzatori o di attribuzione di vantaggi economici: non oltre dodici mesi all’epoca della prova; il testo oggi vigente dice «comunque non superiore a sei mesi dal momento dell'adozione»), non entro 30 giorni.",
@@ -358,7 +358,7 @@ const SPIEGAZIONI = [
     "id": 30,
     "corretta": "A",
     "suggerimento": "Quando la PA non esercita poteri autoritativi, si comporta come un qualsiasi soggetto dell'ordinamento: con quali regole?",
-    "spiegazione": "L'**art. 1, comma 1-bis, L. 241/1990** stabilisce che la PA, nell'adozione di atti di natura non autoritativa, **agisce secondo le norme di diritto privato** salvo che la legge disponga diversamente.",
+    "spiegazione": "L'**art. 1, comma 1-bis, L. 241/1990** stabilisce: «La pubblica amministrazione, nell'adozione di atti di natura non autoritativa, agisce secondo le norme di diritto privato salvo che la legge disponga diversamente».",
     "perOpzione": {
       "A": "Riproduce l'art. 1, comma 1-bis, L. 241/1990.",
       "B": "Anche quando usa strumenti privatistici la PA resta vincolata ai fini pubblici e al principio di legalità.",
@@ -374,7 +374,7 @@ const SPIEGAZIONI = [
     "id": 31,
     "corretta": "A",
     "suggerimento": "Il Testo unico sulle società a partecipazione pubblica limita i tipi societari ammessi: quali forme, e con quali varianti?",
-    "spiegazione": "L'**art. 3, comma 1, D.Lgs. 175/2016** (Testo unico in materia di società a partecipazione pubblica) prevede che le amministrazioni possano partecipare **esclusivamente** a società, anche consortili, costituite in forma di **società per azioni o a responsabilità limitata**, anche in forma **cooperativa**.",
+    "spiegazione": "L'**art. 3, comma 1, D.Lgs. 175/2016** (Testo unico in materia di società a partecipazione pubblica) dispone: «Le amministrazioni pubbliche possono partecipare esclusivamente a società, anche consortili, costituite in forma di società per azioni o di società a responsabilità limitata, anche in forma cooperativa».",
     "perOpzione": {
       "A": "Riproduce l'art. 3, comma 1, del Testo unico: solo S.p.A. e S.r.l., anche consortili o cooperative.",
       "B": "Troppo restrittiva: sono ammesse anche le S.r.l. e la forma cooperativa.",
@@ -390,7 +390,7 @@ const SPIEGAZIONI = [
     "id": 32,
     "corretta": "A",
     "suggerimento": "Il codice del processo amministrativo, quando i riti sono diversi, li separa o permette di cumulare le domande gestendole in modo differenziato?",
-    "spiegazione": "Per l'**art. 117 c.p.a.** il ricorso avverso il silenzio si propone **anche senza previa diffida** (comma 1) e, se è proposta **congiuntamente** l'azione di **risarcimento** del danno (art. 30, comma 4), il giudice può definire con rito camerale l'azione sul silenzio e trattare con **rito ordinario** la domanda risarcitoria (comma 6).",
+    "spiegazione": "Per l'**art. 117 c.p.a.** il ricorso avverso il silenzio «è proposto, anche senza previa diffida, con atto notificato all'amministrazione e ad almeno un controinteressato» (comma 1). Inoltre (comma 6): «Se l'azione di risarcimento del danno ai sensi dell'articolo 30, comma 4, è proposta congiuntamente a quella di cui al presente articolo, il giudice può definire con il rito camerale l'azione avverso il silenzio e trattare con il rito ordinario la domanda risarcitoria».",
     "perOpzione": {
       "A": "Corretto: il cumulo è espressamente ammesso dall'art. 117, comma 6, c.p.a., con trattazione differenziata.",
       "B": "La diversità di rito non impedisce il cumulo: il codice prevede proprio che le due domande proseguano con riti diversi.",
@@ -409,7 +409,7 @@ const SPIEGAZIONI = [
     "id": 33,
     "corretta": "C",
     "suggerimento": "Il TFUE distingue competenze esclusive (art. 3), concorrenti (art. 4) e di sostegno (art. 6): in quale elenco compare ciascun settore?",
-    "spiegazione": "L'**art. 4, par. 2, TFUE** elenca le competenze concorrenti: tra queste mercato interno, politica sociale, ambiente, energia, trasporti e **spazio di libertà, sicurezza e giustizia**. Le **regole di concorrenza** sono competenza **esclusiva** (art. 3), la **cultura** è competenza di **sostegno** (art. 6).",
+    "spiegazione": "L'**art. 4, par. 2, TFUE** dispone: «L'Unione ha una competenza concorrente con quella degli Stati membri nei principali seguenti settori», tra cui mercato interno, politica sociale, ambiente, trasporti, energia e, alla lettera j), «spazio di libertà, sicurezza e giustizia». Le **regole di concorrenza** necessarie al funzionamento del mercato interno sono competenza **esclusiva** (art. 3, par. 1, lett. b, TFUE), la **cultura** è competenza di **sostegno** (art. 6, lett. c, TFUE).",
     "perOpzione": {
       "A": "Le regole di concorrenza necessarie al funzionamento del mercato interno sono competenza esclusiva dell'Unione (art. 3 TFUE).",
       "B": "La cultura rientra nelle competenze di sostegno, coordinamento o completamento (art. 6 TFUE).",
@@ -431,7 +431,7 @@ const SPIEGAZIONI = [
     "id": 34,
     "corretta": "C",
     "suggerimento": "L'art. 288 TFUE apre con la frase «Per esercitare le competenze dell'Unione, ...»: chi è il soggetto di quella frase?",
-    "spiegazione": "L'**art. 288 TFUE** dispone che, per esercitare le competenze dell'Unione, **le istituzioni** adottano regolamenti, direttive, **decisioni**, raccomandazioni e pareri. La decisione è obbligatoria in tutti i suoi elementi e, se designa destinatari, è obbligatoria solo nei loro confronti.",
+    "spiegazione": "L'**art. 288, primo comma, TFUE** dispone: «Per esercitare le competenze dell'Unione, le istituzioni adottano regolamenti, direttive, decisioni, raccomandazioni e pareri». La decisione è obbligatoria in tutti i suoi elementi e, se designa destinatari, è obbligatoria solo nei loro confronti.",
     "perOpzione": {
       "A": "Nessuna norma riserva le decisioni alla Commissione su proposta del Consiglio: semmai, di regola, è la Commissione a proporre.",
       "B": "Anche il Consiglio, il Parlamento europeo con il Consiglio e la BCE adottano decisioni: non è un potere esclusivo della Commissione.",
@@ -447,10 +447,10 @@ const SPIEGAZIONI = [
     "id": 35,
     "corretta": "A",
     "suggerimento": "Ricorda l'elenco delle istituzioni dell'Unione contenuto nel Trattato sull'Unione europea: quante sono e quali?",
-    "spiegazione": "L'**art. 13 TUE** elenca le sette **istituzioni** dell'Unione: Parlamento europeo, Consiglio europeo, Consiglio, Commissione, Corte di giustizia, **Banca centrale europea** e Corte dei conti. La BCE è istituzione dal Trattato di Lisbona.",
+    "spiegazione": "L'**art. 13, par. 1, TUE** elenca le sette **istituzioni** dell'Unione («Le istituzioni dell'Unione sono: il Parlamento europeo, il Consiglio europeo, il Consiglio, la Commissione europea [...], la Corte di giustizia dell'Unione europea, la Banca centrale europea, la Corte dei conti»). La BCE è istituzione dal Trattato di Lisbona.",
     "perOpzione": {
       "A": "Corretto: la BCE figura tra le istituzioni elencate all'art. 13 TUE.",
-      "B": "Falso: la BCE è citata proprio nel TUE (art. 13), oltre che disciplinata nel TFUE.",
+      "B": "Falso: la BCE è elencata proprio nel TUE tra le istituzioni (art. 13, par. 1, TUE); la sua disciplina di dettaglio sta nel TFUE (art. 13, par. 3, TUE), ma ciò non le toglie la qualifica di istituzione.",
       "C": "Formula generica e imprecisa: la BCE non è un semplice «organo», ma un'istituzione dell'Unione."
     },
     "riferimenti": [
@@ -540,7 +540,7 @@ const SPIEGAZIONI = [
     "id": 43,
     "corretta": "A",
     "suggerimento": "«Passivi» rimanda alle spese: in quale fase del ciclo della spesa (impegno, liquidazione, ordinazione, pagamento) si sono fermate?",
-    "spiegazione": "I **residui passivi** sono le **spese impegnate** ma non ancora pagate alla fine dell'esercizio: impegnate e non ancora ordinate, oppure ordinate ma non ancora pagate. Il loro corrispettivo dal lato delle entrate sono i **residui attivi** (entrate accertate e non riscosse, o riscosse e non versate).",
+    "spiegazione": "I **residui passivi** (in senso proprio) sono le **spese impegnate** ma non ancora pagate alla fine dell'esercizio: impegnate e non ancora ordinate, oppure ordinate ma non ancora pagate. Il loro corrispettivo dal lato delle entrate sono i **residui attivi** (entrate accertate e non riscosse, o riscosse e non versate).",
     "perOpzione": {
       "A": "Definizione corretta dei residui passivi: spese che hanno superato la fase dell'impegno ma non sono state pagate.",
       "B": "È un saldo tra spese ed entrate, non la definizione dei residui.",
