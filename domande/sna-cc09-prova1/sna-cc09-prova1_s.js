@@ -273,7 +273,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la Costituzione a riservare in esclusiva alla legge la disciplina di determinate materie.",
       "B": "Rovescia il concetto: la riserva di legge serve proprio a impedire che la materia sia disciplinata da fonti subordinate.",
       "C": "Descrive la **riserva di giurisdizione** (art. 13 Cost., atto motivato dell'autorità giudiziaria), che è un istituto diverso dalla riserva di legge."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_13"
+      }
+    ]
   },
   {
     "id": 26,
@@ -284,7 +289,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: riproduce l'art. 90 Cost. (due reati, Parlamento in seduta comune, maggioranza assoluta).",
       "B": "Il Governo non ha alcun potere di accusa nei confronti del Capo dello Stato, e i reati previsti sono due, non uno.",
       "C": "La maggioranza richiesta è assoluta, non relativa: si richiede una garanzia rafforzata per un atto così grave."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_90"
+      },
+      {
+        "normaId": "cost_art_134"
+      }
+    ]
   },
   {
     "id": 27,
@@ -292,10 +305,15 @@ const SPIEGAZIONI = [
     "suggerimento": "Leggi con attenzione i dettagli sull'intervallo tra le deliberazioni: è «minore» o «non minore» di tre mesi?",
     "spiegazione": "L'**art. 138 Cost.** prevede un **procedimento aggravato** svolto dalle **due Camere**: doppia deliberazione con intervallo **non minore di tre mesi**, maggioranza assoluta nella seconda votazione ed eventuale referendum (escluso se nella seconda votazione si raggiungono i due terzi). La nostra Costituzione è perciò **rigida**.",
     "perOpzione": {
-      "A": "Contiene un errore decisivo: l'intervallo tra le due deliberazioni deve essere **non minore** di tre mesi, non minore.",
+      "A": "Contiene un errore decisivo: l'intervallo tra le due deliberazioni deve essere **non minore** di tre mesi, non «minore» come dice l’opzione.",
       "B": "Corretta: la revisione è affidata alle stesse Camere ma con un procedimento più gravoso di quello ordinario.",
       "C": "L'ordinamento italiano non prevede un'assemblea costituente o un organo ad hoc per la revisione: provvedono le Camere."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_138"
+      }
+    ]
   },
   {
     "id": 28,
@@ -306,7 +324,12 @@ const SPIEGAZIONI = [
       "A": "Il termine indicato dalla legge è di 10 giorni, non di 20.",
       "B": "Corretta: 10 giorni per osservazioni scritte (art. 10-bis L. 241/1990).",
       "C": "Il preavviso non è un provvedimento definitivo da impugnare: i 60 giorni riguardano il ricorso al giudice amministrativo contro il provvedimento finale."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_10_bis"
+      }
+    ]
   },
   {
     "id": 29,
@@ -317,7 +340,12 @@ const SPIEGAZIONI = [
       "A": "La ratifica (convalida da parte dell'organo competente) vale per l'incompetenza relativa, non per quella assoluta.",
       "B": "Corretta: l'atto viziato da incompetenza assoluta è nullo e non può essere sanato né con ratifica né con rettifica.",
       "C": "Anche la rettifica presuppone un atto valido o annullabile da correggere; un atto nullo non è recuperabile."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_21_septies"
+      }
+    ]
   },
   {
     "id": 30,
@@ -328,7 +356,12 @@ const SPIEGAZIONI = [
       "A": "La regola della comunicazione ha un'eccezione espressa proprio per i provvedimenti cautelari e urgenti: «sempre» è errato.",
       "B": "Corretta: è l'eccezione prevista dall'art. 21-bis per i provvedimenti cautelari e urgenti.",
       "C": "Non esiste una regola generale di efficacia differita di 15 giorni dalla pubblicazione: l'efficacia dipende dalla comunicazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_21_bis"
+      }
+    ]
   },
   {
     "id": 31,
@@ -361,7 +394,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: Consiglio, unanimità, proposta dell'Alto rappresentante o iniziativa di uno Stato membro.",
       "B": "Inverte i ruoli: l'Alto rappresentante propone, non decide.",
       "C": "Non è il Consiglio europeo a deliberare e la regola non è la maggioranza: in materia di difesa vale l'unanimità."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_42"
+      }
+    ]
   },
   {
     "id": 34,
@@ -372,7 +410,12 @@ const SPIEGAZIONI = [
       "A": "Incompleta: esclude l'interpretazione dei trattati, che è invece una parte essenziale del rinvio.",
       "B": "Corretta: riproduce il contenuto dell'art. 267 TFUE.",
       "C": "Incompleta: esclude gli atti di diritto derivato (validità e interpretazione)."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_267"
+      }
+    ]
   },
   {
     "id": 35,
@@ -383,7 +426,18 @@ const SPIEGAZIONI = [
       "A": "Descrive le competenze di **sostegno, coordinamento e completamento** (art. 6 TFUE: salute, cultura, turismo ecc.), non la coesione.",
       "B": "Descrive le competenze «parallele» di ricerca, sviluppo tecnologico e spazio (art. 4, par. 3, TFUE), dove l'azione UE non impedisce quella nazionale.",
       "C": "Corretta: è la regola delle competenze concorrenti dell'art. 2, par. 2, TFUE, che si applica alla coesione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_4"
+      },
+      {
+        "normaId": "tfue_art_2"
+      },
+      {
+        "normaId": "tfue_art_6"
+      }
+    ]
   },
   {
     "id": 36,
@@ -472,7 +526,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: missioni, programmi e azioni sono i tre livelli della classificazione della spesa.",
       "B": "Le categorie (economiche) esistono nella classificazione, ma non «merceologiche» e non come terzo livello dopo i programmi.",
       "C": "«Componenti» e «interventi» sono terminologie usate in altri contesti (ad es. il PNRR), non per il bilancio dello Stato."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l196_2009_art_21"
+      },
+      {
+        "normaId": "l196_2009_art_25_bis"
+      }
+    ]
   },
   {
     "id": 44,

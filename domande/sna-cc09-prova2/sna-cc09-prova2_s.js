@@ -272,7 +272,12 @@ const SPIEGAZIONI = [
       "A": "Il numero è sbagliato: servono cinquecentomila elettori, non cinquemila.",
       "B": "Corretta: è la formula testuale dell'art. 75, primo comma, Cost.",
       "C": "Il numero è giusto ma la congiunzione no: elettori e Consigli regionali sono promotori alternativi («o»), non cumulativi."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_75"
+      }
+    ]
   },
   {
     "id": 26,
@@ -283,7 +288,12 @@ const SPIEGAZIONI = [
       "A": "Non eleggono «tutti i magistrati ordinari»: l'elezione spetta alle supreme magistrature (Cassazione, Consiglio di Stato, Corte dei conti).",
       "B": "Corretta: è la quota di un terzo prevista dall'art. 135 Cost. per le supreme magistrature ordinaria e amministrative.",
       "C": "Il Presidente della Repubblica nomina un terzo dei giudici, non due terzi."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_135"
+      }
+    ]
   },
   {
     "id": 27,
@@ -294,7 +304,15 @@ const SPIEGAZIONI = [
       "A": "La riserva di assemblea (art. 72, quarto comma, Cost.) riguarda la procedura di esame in Parlamento, non limita chi può presentare l'iniziativa.",
       "B": "Non esiste alcun limite temporale all'iniziativa popolare legato al primo anno di legislatura.",
       "C": "Corretta: la proposta popolare deve consistere in un progetto di legge redatto in articoli."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_71"
+      },
+      {
+        "normaId": "cost_art_72"
+      }
+    ]
   },
   {
     "id": 28,
@@ -302,10 +320,18 @@ const SPIEGAZIONI = [
     "suggerimento": "Distingui tra chi deve ricevere la comunicazione di avvio e chi può soltanto intervenire nel procedimento.",
     "spiegazione": "L'**art. 7 della l. 241/1990** impone di comunicare l'avvio ai destinatari diretti, a chi per legge deve intervenire e ai **soggetti, individuati o facilmente individuabili, che possono subire un pregiudizio** dal provvedimento. I portatori di interessi diffusi costituiti in associazioni o comitati possono **intervenire** (art. 9), ma non sono destinatari della comunicazione.",
     "perOpzione": {
-      "A": "Corretta: riprende testualmente l'art. 7, comma 1, l. 241/1990.",
+      "A": "Corretta: riprende nella sostanza l'art. 7, comma 1, l. 241/1990.",
       "B": "I portatori di interessi diffusi non hanno diritto alla comunicazione; possono intervenire se costituiti in associazioni o comitati (art. 9).",
       "C": "Ancora meno: gli interessi diffusi non organizzati in comitati o associazioni non legittimano nemmeno all'intervento."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_7"
+      },
+      {
+        "normaId": "l241_1990_art_9"
+      }
+    ]
   },
   {
     "id": 29,
@@ -316,7 +342,18 @@ const SPIEGAZIONI = [
       "A": "Gli accordi incidono sul contenuto discrezionale del provvedimento: dove il contenuto è vincolato non c'è nulla da negoziare.",
       "B": "Corretta: è il presupposto previsto dall'art. 11, comma 1, l. 241/1990.",
       "C": "L'obbligo di motivazione riguarda tutti gli accordi dell'art. 11, sia integrativi sia sostitutivi."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_11"
+      },
+      {
+        "normaId": "l241_1990_art_10"
+      },
+      {
+        "normaId": "l241_1990_art_3"
+      }
+    ]
   },
   {
     "id": 30,
@@ -327,7 +364,18 @@ const SPIEGAZIONI = [
       "A": "L'esclusione dall'art. 20, comma 4, riguarda sia il patrimonio culturale e paesaggistico sia l'ambiente.",
       "B": "La legge non limita il silenzio assenso alle attività vincolate: è la regola generale per i procedimenti a istanza di parte, salve le eccezioni previste.",
       "C": "Corretta: l'art. 20, comma 3, fa salvi i poteri di revoca e annullamento d'ufficio."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_20"
+      },
+      {
+        "normaId": "l241_1990_art_21_quinquies"
+      },
+      {
+        "normaId": "l241_1990_art_21_nonies"
+      }
+    ]
   },
   {
     "id": 31,
@@ -349,7 +397,18 @@ const SPIEGAZIONI = [
       "A": "Incompleta: dimentica la cognizione incidentale prevista dall'art. 8 c.p.a.",
       "B": "Corretta: comprende sia la giurisdizione esclusiva sia la cognizione incidenter tantum.",
       "C": "Falsa: la giurisdizione esclusiva riguarda proprio materie in cui il giudice amministrativo decide anche su diritti soggettivi."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_103"
+      },
+      {
+        "normaId": "cpa_art_7"
+      },
+      {
+        "normaId": "cpa_art_8"
+      }
+    ]
   },
   {
     "id": 33,
@@ -360,7 +419,21 @@ const SPIEGAZIONI = [
       "A": "Corretta: è l'elenco previsto dall'art. 1 della l. 234/2012.",
       "B": "Sono i valori fondanti dell'Unione indicati dall'art. 2 TUE, non i principi della legge 234/2012.",
       "C": "Formula generica ricavabile dall'art. 11 Cost., ma non è l'elenco espresso della legge 234/2012."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l234_2012_art_1"
+      },
+      {
+        "normaId": "cost_art_11"
+      },
+      {
+        "normaId": "cost_art_117"
+      },
+      {
+        "normaId": "tue_art_2"
+      }
+    ]
   },
   {
     "id": 34,
@@ -371,7 +444,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: riproduce l'ambito di applicazione dell'art. 51 della Carta.",
       "B": "Errata perché estende la Carta al diritto interno: gli Stati sono vincolati solo quando attuano il diritto dell'Unione.",
       "C": "Errata perché esclude gli Stati membri, che sono vincolati quando attuano il diritto dell'Unione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cdfue_art_51"
+      }
+    ]
   },
   {
     "id": 35,
@@ -382,7 +460,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la composizione prevista dall'art. 15, par. 2, TUE.",
       "B": "Descrive, in modo impreciso, il Consiglio dell'Unione europea (formazioni di ministri), non il Consiglio europeo.",
       "C": "Incompleta: oltre ai capi di Stato o di governo ne fanno parte anche il suo presidente e il presidente della Commissione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_15"
+      },
+      {
+        "normaId": "tue_art_16"
+      }
+    ]
   },
   {
     "id": 36,
@@ -470,7 +556,12 @@ const SPIEGAZIONI = [
       "A": "Le entrate non sono ripartite per ministero: lo stato di previsione dell'entrata è unico.",
       "B": "Le spese non sono in un unico documento: ogni ministero ha il proprio stato di previsione.",
       "C": "Corretta: un solo stato di previsione dell'entrata e uno stato di previsione della spesa per ciascun ministero."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l196_2009_art_21"
+      }
+    ]
   },
   {
     "id": 44,

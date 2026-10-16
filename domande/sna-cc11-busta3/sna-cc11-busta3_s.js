@@ -292,7 +292,15 @@ const SPIEGAZIONI = [
       "A": "La riserva relativa ammette che la legge fissi solo i principi lasciando il resto ai regolamenti: per la libertà personale non basta.",
       "B": "La riserva di assemblea richiede l’approvazione in aula (art. 72, co. 4, Cost.) per alcune leggi; non è la formula dell’art. 13.",
       "C": "«Nei soli casi e modi previsti dalla legge»: la disciplina deve stare interamente nella legge, cioè riserva assoluta."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_13"
+      },
+      {
+        "normaId": "cost_art_72"
+      }
+    ]
   },
   {
     "id": 26,
@@ -303,7 +311,21 @@ const SPIEGAZIONI = [
       "A": "Riproduce i presupposti dell’art. 120, co. 2, Cost., compresa la tutela dell’unità giuridica o economica.",
       "B": "L’equilibrio di bilancio (art. 81 e 119 Cost.) non figura tra i presupposti del potere sostitutivo.",
       "C": "Il buon costume è un limite ad alcune libertà (es. art. 21 Cost.), non un presupposto del potere sostitutivo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_120"
+      },
+      {
+        "normaId": "cost_art_81"
+      },
+      {
+        "normaId": "cost_art_119"
+      },
+      {
+        "normaId": "cost_art_21"
+      }
+    ]
   },
   {
     "id": 27,
@@ -314,7 +336,12 @@ const SPIEGAZIONI = [
       "A": "È la formula testuale dell’art. 100, primo comma, Cost.",
       "B": "La consulenza è giuridico-amministrativa, non contabile: la materia contabile è propria della Corte dei conti.",
       "C": "Il controllo preventivo di legittimità sugli atti del Governo è attribuito dallo stesso art. 100 alla Corte dei conti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_100"
+      }
+    ]
   },
   {
     "id": 28,
@@ -331,34 +358,55 @@ const SPIEGAZIONI = [
     "id": 29,
     "corretta": "C",
     "suggerimento": "Sono gli incarichi apicali, i più vicini all’indirizzo politico: che cosa succede quando cambia il Governo?",
-    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede che gli incarichi apicali del co. 3 **cessano decorsi novanta giorni dal voto sulla fiducia al Governo** (il cosiddetto spoils system), salvo conferma.",
+    "spiegazione": "L’**art. 19, co. 8, d.lgs. 165/2001** prevede che gli incarichi apicali del co. 3 **cessano decorsi novanta giorni dal voto sulla fiducia al Governo** (il cosiddetto spoils system).",
     "perOpzione": {
       "A": "Non c’è un’esclusiva: possono essere conferiti anche a dirigenti di altre amministrazioni o a esterni nei limiti dell’art. 19, co. 6.",
-      "B": "La norma non prevede un limite di due rinnovi consecutivi per questi incarichi.",
+      "B": "La norma non prevede un limite di due rinnovi consecutivi per questi incarichi: l’art. 19, co. 2, dice solo che «gli incarichi sono rinnovabili».",
       "C": "È la regola dell’art. 19, co. 8: cessazione automatica dopo novanta giorni dalla fiducia al nuovo Governo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs165_2001_art_19"
+      }
+    ]
   },
   {
     "id": 30,
     "corretta": "A",
     "suggerimento": "Ricorda la differenza tra demanio e patrimonio indisponibile: dove stanno gli edifici sedi di uffici pubblici?",
-    "spiegazione": "Fanno parte del demanio idrico **tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo** (art. 144 d.lgs. 152/2006, già l. 36/1994). I beni demaniali sono **inalienabili e non espropriabili** (art. 823 c.c.); gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
+    "spiegazione": "Fanno parte del demanio idrico **tutte le acque superficiali e sotterranee, ancorché non estratte dal sottosuolo** (art. 144 d.lgs. 152/2006, già l. 36/1994). I beni demaniali sono **inalienabili** e **non possono formare oggetto di diritti a favore di terzi** (art. 823 c.c.), quindi i creditori non possono aggredirli; gli edifici sedi di uffici pubblici con i loro arredi rientrano invece nel **patrimonio indisponibile** (art. 826 c.c.).",
     "perOpzione": {
       "A": "È la formula della legge: tutte le acque superficiali e sotterranee appartengono al demanio dello Stato.",
       "B": "I beni demaniali sono inalienabili e non possono formare oggetto di diritti a favore di terzi: i creditori non possono aggredirli.",
       "C": "Edifici sedi di uffici pubblici, con i loro arredi, e beni destinati a un pubblico servizio fanno parte del patrimonio indisponibile, non del demanio."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs152_2006_art_144"
+      },
+      {
+        "normaId": "cc_art_823"
+      },
+      {
+        "normaId": "cc_art_826"
+      }
+    ]
   },
   {
     "id": 31,
     "corretta": "C",
     "suggerimento": "La responsabilità amministrativo-contabile ha un termine di prescrizione speciale, più breve di quello ordinario: quanto dura?",
-    "spiegazione": "Per l’**art. 1, co. 2, l. 20/1994** il diritto al risarcimento del danno erariale si prescrive in **cinque anni** dal fatto dannoso o, in caso di **occultamento doloso**, dalla data della sua **scoperta**.",
+    "spiegazione": "Per l’**art. 1, co. 2, l. 20/1994** il diritto al risarcimento del danno erariale si prescrive «in ogni caso» in **cinque anni** dal fatto dannoso, indipendentemente da quando l’amministrazione o la Corte dei conti ne sono venute a conoscenza, o, in caso di **occultamento doloso** (con una condotta attiva o in violazione di obblighi di comunicazione), dalla data della sua **scoperta**.",
     "perOpzione": {
       "A": "Il termine decennale è quello ordinario del codice civile; per il danno erariale la legge ne fissa uno speciale di cinque anni.",
-      "B": "Il dolo e l’illecito arricchimento rilevano per la trasmissibilità agli eredi, non rendono il diritto imprescrittibile.",
-      "C": "È il testo dell’art. 1, co. 2, l. 20/1994: cinque anni dal fatto, o dalla scoperta in caso di occultamento doloso."
-    }
+      "B": "L’illecito arricchimento rileva per la trasmissibilità del debito agli eredi (art. 1, co. 1, l. 20/1994) e, insieme al dolo, per la responsabilità solidale dei concorrenti (co. 1-quinquies); nessuno dei due rende il diritto imprescrittibile: il co. 2 fissa la prescrizione «in ogni caso» in cinque anni.",
+      "C": "È quanto prevede l’art. 1, co. 2, l. 20/1994: cinque anni dal fatto, o dalla scoperta in caso di occultamento doloso."
+    },
+    "riferimenti": [
+      {
+        "normaId": "l20_1994_art_1"
+      }
+    ]
   },
   {
     "id": 32,
@@ -369,7 +417,15 @@ const SPIEGAZIONI = [
       "A": "Descrive il controllo sugli atti: verifica dei vizi di legittimità che condiziona l’efficacia del provvedimento.",
       "B": "Richiama i limiti all’iniziativa economica dell’art. 41 Cost., non un controllo sugli atti amministrativi.",
       "C": "Descrive il controllo sugli organi (es. scioglimento dei consigli), che è altra cosa rispetto al controllo sugli atti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l20_1994_art_3"
+      },
+      {
+        "normaId": "cost_art_41"
+      }
+    ]
   },
   {
     "id": 33,
@@ -380,7 +436,12 @@ const SPIEGAZIONI = [
       "A": "Il Consiglio interviene solo in casi eccezionali; la competenza ordinaria di verifica è della Commissione.",
       "B": "È la Commissione a esaminare e decidere sulla compatibilità degli aiuti di Stato.",
       "C": "Il Comitato economico e sociale è un organo consultivo, senza poteri decisionali in materia di aiuti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_108"
+      }
+    ]
   },
   {
     "id": 34,
@@ -391,7 +452,12 @@ const SPIEGAZIONI = [
       "A": "È quanto prevede l’art. 1 del Protocollo n. 19.",
       "B": "Il Protocollo non fissa scadenze: l’ingresso di nuovi Stati dipende da una decisione all’unanimità del Consiglio, previa verifica dei requisiti.",
       "C": "Il Protocollo non esclude gli Stati terzi: Islanda, Norvegia, Svizzera e Liechtenstein sono associati a Schengen."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "prot19_art_1"
+      }
+    ]
   },
   {
     "id": 35,
@@ -402,7 +468,12 @@ const SPIEGAZIONI = [
       "A": "Corrisponde alla lett. b) dell’art. 79, par. 2, TFUE.",
       "B": "L’art. 79 riguarda l’immigrazione e il soggiorno irregolari, compresi allontanamento e rimpatrio, ma non prevede l’armonizzazione dei motivi di espulsione.",
       "C": "Il par. 5 lascia espressamente agli Stati membri la determinazione dei volumi di ingresso."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_79"
+      }
+    ]
   },
   {
     "id": 36,
@@ -490,7 +561,15 @@ const SPIEGAZIONI = [
       "A": "La valutazione delle performance individuali (in particolare dei dirigenti) è un’attività distinta.",
       "B": "È la finalità che la legge assegna al controllo di gestione.",
       "C": "La definizione delle deleghe attiene all’organizzazione e all’attribuzione delle responsabilità, non al controllo di gestione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs286_1999_art_1"
+      },
+      {
+        "normaId": "dlgs286_1999_art_4"
+      }
+    ]
   },
   {
     "id": 44,

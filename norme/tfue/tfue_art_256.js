@@ -1,0 +1,10 @@
+window.NORME = window.NORME || {};
+
+window.NORME["tfue_art_256"] = {
+  "titolo": "Art. 256 — La Corte di giustizia dell'Unione europea",
+  "fonte": "Trattato sul funzionamento dell'Unione europea (versione consolidata, GU C 202 del 7.6.2016)",
+  "sigla": "TFUE",
+  "testo": "1. Il Tribunale è competente a conoscere in primo grado dei ricorsi di cui agli articoli 263, 265, 268, 270 e 272, ad eccezione di quelli attribuiti a un tribunale specializzato istituito in applicazione dell'articolo 257 e di quelli che lo statuto riserva alla Corte di giustizia. Lo statuto può prevedere che il Tribunale sia competente per altre categorie di ricorsi.\nLe decisioni emesse dal Tribunale ai sensi del presente paragrafo possono essere oggetto di impugnazione dinanzi alla Corte di giustizia per i soli motivi di diritto e alle condizioni ed entro i limiti previsti dallo statuto.\n2. Il Tribunale è competente a conoscere dei ricorsi proposti contro le decisioni dei tribunali specializzati.\nLe decisioni emesse dal Tribunale ai sensi del presente paragrafo possono eccezionalmente essere oggetto di riesame da parte della Corte di giustizia, alle condizioni ed entro i limiti previsti dallo statuto, ove sussistano gravi rischi che l'unità o la coerenza del diritto dell'Unione siano compromesse.\n3. Il Tribunale è competente a conoscere delle questioni pregiudiziali, sottoposte ai sensi dell'articolo 267, in materie specifiche determinate dallo statuto.\nIl Tribunale, ove ritenga che la causa richieda una decisione di principio che potrebbe compromettere l'unità o la coerenza del diritto dell'Unione, può rinviare la causa dinanzi alla Corte di giustizia affinché si pronunci.\nLe decisioni emesse dal Tribunale su questioni pregiudiziali possono eccezionalmente essere oggetto di riesame da parte della Corte di giustizia, alle condizioni ed entro i limiti previsti dallo statuto, ove sussistano gravi rischi che l'unità o la coerenza del diritto dell'Unione siano compromesse.",
+  "url": "https://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:12016E/TXT",
+  "consultato": "2026-10-16"
+};

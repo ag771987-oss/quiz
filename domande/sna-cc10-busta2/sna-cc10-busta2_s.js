@@ -296,7 +296,12 @@ const SPIEGAZIONI = [
       "A": "Il Presidente della Repubblica emana il regolamento con decreto, ma non rende un parere preventivo.",
       "B": "La Corte dei conti interviene con il controllo preventivo di legittimità sull'atto, non con un parere consultivo sullo schema.",
       "C": "Corretta: sugli schemi di regolamento è obbligatorio il parere del Consiglio di Stato."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_17"
+      }
+    ]
   },
   {
     "id": 26,
@@ -329,7 +334,12 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la formula dell'art. 1, comma 2-bis, l. 241/1990.",
       "B": "Gli atti amministrativi lesivi sono autoritativi: non richiedono il consenso del destinatario.",
       "C": "Le controversie su questi rapporti rientrano proprio nella giurisdizione del giudice amministrativo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_1"
+      }
+    ]
   },
   {
     "id": 29,
@@ -340,7 +350,12 @@ const SPIEGAZIONI = [
       "A": "I vincoli di bilancio valgono per tutta l'attività della PA, autoritativa o no.",
       "B": "Corretta: è il testo dell'art. 1, comma 1-bis, l. 241/1990.",
       "C": "La regola è la capacità generale di diritto privato, non un elenco tassativo di atti consentiti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_1"
+      }
+    ]
   },
   {
     "id": 30,
@@ -351,7 +366,18 @@ const SPIEGAZIONI = [
       "A": "Esclude la tutela giurisdizionale, garantita dagli artt. 24 e 113 Cost.",
       "B": "Corretta: partecipazione al procedimento e azione in giudizio, anche risarcitoria.",
       "C": "La tutela non è subordinata all'impossibilità del ristoro risarcitorio: il risarcimento è anzi una delle forme di tutela."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_30"
+      },
+      {
+        "normaId": "cost_art_24"
+      },
+      {
+        "normaId": "cost_art_113"
+      }
+    ]
   },
   {
     "id": 31,
@@ -362,7 +388,12 @@ const SPIEGAZIONI = [
       "A": "La norma non consente di addurli «una volta»: li vieta se non erano stati indicati prima.",
       "B": "Non serve alcuna autorizzazione della sentenza: la regola è fissata dalla legge.",
       "C": "Corretta: è il divieto introdotto all'art. 10-bis, l. 241/1990."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_10_bis"
+      }
+    ]
   },
   {
     "id": 32,
@@ -373,7 +404,12 @@ const SPIEGAZIONI = [
       "A": "L'attività può iniziare dalla data di presentazione; i 60 giorni (30 in edilizia) sono il termine per i controlli della PA.",
       "B": "Corretta: lo prevede espressamente l'art. 19, comma 6-ter, l. 241/1990.",
       "C": "L'avvio dell'attività non è subordinato al pagamento di un'imposta di registro."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_19"
+      }
+    ]
   },
   {
     "id": 33,
@@ -384,7 +420,18 @@ const SPIEGAZIONI = [
       "A": "Corretta: la categoria delle competenze «trasversali» non è prevista dai trattati.",
       "B": "Le competenze concorrenti sono previste dall'art. 2, par. 2, e dall'art. 4 TFUE.",
       "C": "Le competenze di sostegno, coordinamento o completamento sono previste dagli artt. 2, par. 5, e 6 TFUE."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_2"
+      },
+      {
+        "normaId": "tfue_art_4"
+      },
+      {
+        "normaId": "tfue_art_6"
+      }
+    ]
   },
   {
     "id": 34,
@@ -396,7 +443,15 @@ const SPIEGAZIONI = [
       "B": "Corretta: è la formula dell'art. 6, par. 2, TUE.",
       "C": "L'adesione è già prevista dal trattato e l'accordo segue la procedura dell'art. 218 TFUE (Consiglio all'unanimità), non una decisione del Consiglio europeo a maggioranza qualificata."
     },
-    "nota": "L'adesione prevista dall'art. 6, par. 2, non è ancora perfezionata; la risposta riprende la formula del trattato."
+    "nota": "L'adesione prevista dall'art. 6, par. 2, TUE non è ancora perfezionata; la risposta riprende la formula del trattato.",
+    "riferimenti": [
+      {
+        "normaId": "tue_art_6"
+      },
+      {
+        "normaId": "tfue_art_218"
+      }
+    ]
   },
   {
     "id": 35,
@@ -550,18 +605,28 @@ const SPIEGAZIONI = [
       "A": "Il riuso è proprio lo scopo degli open data.",
       "B": "Gli open data sono gratuiti e devono essere in formato aperto, non in qualunque formato.",
       "C": "Corretta: disponibili, accessibili e gratuiti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cad_art_1"
+      }
+    ]
   },
   {
     "id": 49,
     "corretta": "A",
     "suggerimento": "Il Codice dell'amministrazione digitale chiede a ogni amministrazione di dotarsi di una propria figura interna: a quale livello?",
-    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**.",
+    "spiegazione": "L'art. 17 del **CAD** (d.lgs. 82/2005) affida a ciascuna PA la transizione digitale tramite un **unico ufficio dirigenziale generale**, il cui responsabile è il **Responsabile per la transizione digitale (RTD)**; le amministrazioni diverse da quelle statali possono individuare l’ufficio tra quelli di livello dirigenziale o, se ne sono prive, un responsabile tra le posizioni apicali (co. 1-sexies).",
     "perOpzione": {
       "A": "Corretta: è un ufficio dirigenziale generale interno a ciascuna amministrazione.",
       "B": "AgID coordina e fornisce indirizzi, ma non svolge i compiti del RTD delle singole amministrazioni.",
       "C": "Il RTD è interno all'amministrazione, non un soggetto esterno."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cad_art_17"
+      }
+    ]
   },
   {
     "id": 50,

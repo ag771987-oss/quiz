@@ -273,7 +273,15 @@ const SPIEGAZIONI = [
       "A": "Riproduce il testo dell'art. 10, ultimo comma, Cost.: l'estradizione dello straniero per reati politici è vietata.",
       "B": "È l'opposto della regola costituzionale, che esclude proprio i reati politici.",
       "C": "Non esiste una regola di estradizione «sempre ammessa»: il divieto per i reati politici vale a prescindere dalla prova del diritto d'asilo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_10"
+      },
+      {
+        "normaId": "cost_art_26"
+      }
+    ]
   },
   {
     "id": 26,
@@ -284,7 +292,15 @@ const SPIEGAZIONI = [
       "A": "Corretto: il CSM tutela l'autonomia e l'indipendenza dell'ordine giudiziario (art. 104 Cost.).",
       "B": "Il CSM riguarda la magistratura ordinaria; la magistratura amministrativa ha un proprio organo di autogoverno (il Consiglio di presidenza della giustizia amministrativa).",
       "C": "Il CSM non è un organo del Governo: serve proprio a sottrarre i magistrati all'influenza del potere esecutivo."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_104"
+      },
+      {
+        "normaId": "cost_art_105"
+      }
+    ]
   },
   {
     "id": 27,
@@ -296,7 +312,15 @@ const SPIEGAZIONI = [
       "B": "Riproduce l'art. 136 Cost.: efficacia cessata dal giorno successivo alla pubblicazione.",
       "C": "Confonde con la vacatio legis di quindici giorni prevista per l'entrata in vigore delle leggi (art. 73 Cost.)."
     },
-    "nota": "Nel PDF il testo dell'opzione C è parzialmente coperto da una firma: la lettura «dopo quindici giorni» è la più plausibile."
+    "nota": "Nel PDF il testo dell'opzione C è parzialmente coperto da una firma: la lettura «dopo quindici giorni» è la più plausibile.",
+    "riferimenti": [
+      {
+        "normaId": "cost_art_136"
+      },
+      {
+        "normaId": "cost_art_73"
+      }
+    ]
   },
   {
     "id": 28,
@@ -307,7 +331,12 @@ const SPIEGAZIONI = [
       "A": "90 giorni è il limite massimo che i regolamenti possono fissare in via ordinaria, non il termine generale.",
       "B": "È il termine generale suppletivo dell'art. 2, comma 2, L. 241/1990.",
       "C": "60 giorni non è il termine generale previsto dalla L. 241/1990."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_2"
+      }
+    ]
   },
   {
     "id": 29,
@@ -316,9 +345,14 @@ const SPIEGAZIONI = [
     "spiegazione": "L'**art. 21-nonies L. 241/1990** consente l'annullamento d'ufficio dell'atto illegittimo solo se sussistono **ragioni di interesse pubblico**, entro un termine ragionevole e tenendo conto degli interessi dei destinatari e dei controinteressati. Secondo la giurisprudenza consolidata questo interesse deve essere **concreto e attuale** e **ulteriore** rispetto al mero ripristino della legalità violata.",
     "perOpzione": {
       "A": "Il solo ripristino della legalità non basta: altrimenti ogni atto illegittimo andrebbe annullato, senza bilanciamento con l'affidamento dei privati.",
-      "B": "Non esiste un tale onere: l'annullamento d'ufficio deve intervenire entro un termine ragionevole (comunque non superiore a dodici mesi per i provvedimenti autorizzatori o di attribuzione di vantaggi economici), non entro 30 giorni.",
+      "B": "Non esiste un tale onere: l'annullamento d'ufficio deve intervenire entro un termine ragionevole (per i provvedimenti autorizzatori o di attribuzione di vantaggi economici: non oltre dodici mesi all’epoca della prova; il testo oggi vigente dice «comunque non superiore a sei mesi dal momento dell'adozione»), non entro 30 giorni.",
       "C": "Corretto: serve un interesse pubblico specifico, diverso e ulteriore rispetto al ripristino della legalità, da esplicitare in motivazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_21_nonies"
+      }
+    ]
   },
   {
     "id": 30,
@@ -329,7 +363,12 @@ const SPIEGAZIONI = [
       "A": "Riproduce l'art. 1, comma 1-bis, L. 241/1990.",
       "B": "Anche quando usa strumenti privatistici la PA resta vincolata ai fini pubblici e al principio di legalità.",
       "C": "Inverte la regola: il diritto pubblico governa l'attività autoritativa, non quella non autoritativa."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_1"
+      }
+    ]
   },
   {
     "id": 31,
@@ -340,7 +379,12 @@ const SPIEGAZIONI = [
       "A": "Riproduce l'art. 3, comma 1, del Testo unico: solo S.p.A. e S.r.l., anche consortili o cooperative.",
       "B": "Troppo restrittiva: sono ammesse anche le S.r.l. e la forma cooperativa.",
       "C": "Troppo ampia: la società in accomandita per azioni, ad esempio, è esclusa."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dlgs175_2016_art_3"
+      }
+    ]
   },
   {
     "id": 32,
@@ -351,7 +395,15 @@ const SPIEGAZIONI = [
       "A": "Corretto: il cumulo è espressamente ammesso dall'art. 117, comma 6, c.p.a., con trattazione differenziata.",
       "B": "La diversità di rito non impedisce il cumulo: il codice prevede proprio che le due domande proseguano con riti diversi.",
       "C": "Il codice esclude la necessità della diffida: il ricorso è proposto «anche senza previa diffida»."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_117"
+      },
+      {
+        "normaId": "cpa_art_30"
+      }
+    ]
   },
   {
     "id": 33,
@@ -362,7 +414,18 @@ const SPIEGAZIONI = [
       "A": "Le regole di concorrenza necessarie al funzionamento del mercato interno sono competenza esclusiva dell'Unione (art. 3 TFUE).",
       "B": "La cultura rientra nelle competenze di sostegno, coordinamento o completamento (art. 6 TFUE).",
       "C": "Lo spazio di libertà, sicurezza e giustizia è espressamente tra le competenze concorrenti dell'art. 4 TFUE."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_4"
+      },
+      {
+        "normaId": "tfue_art_3"
+      },
+      {
+        "normaId": "tfue_art_6"
+      }
+    ]
   },
   {
     "id": 34,
@@ -373,7 +436,12 @@ const SPIEGAZIONI = [
       "A": "Nessuna norma riserva le decisioni alla Commissione su proposta del Consiglio: semmai, di regola, è la Commissione a proporre.",
       "B": "Anche il Consiglio, il Parlamento europeo con il Consiglio e la BCE adottano decisioni: non è un potere esclusivo della Commissione.",
       "C": "Riproduce l'art. 288 TFUE: gli atti tipici, decisioni comprese, sono adottati dalle istituzioni dell'Unione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_288"
+      }
+    ]
   },
   {
     "id": 35,
@@ -384,7 +452,12 @@ const SPIEGAZIONI = [
       "A": "Corretto: la BCE figura tra le istituzioni elencate all'art. 13 TUE.",
       "B": "Falso: la BCE è citata proprio nel TUE (art. 13), oltre che disciplinata nel TFUE.",
       "C": "Formula generica e imprecisa: la BCE non è un semplice «organo», ma un'istituzione dell'Unione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_13"
+      }
+    ]
   },
   {
     "id": 36,

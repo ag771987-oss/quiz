@@ -293,7 +293,15 @@ const SPIEGAZIONI = [
       "A": "Riproduce il contenuto dell’art. 14 della l. 400/1988.",
       "B": "Necessità e urgenza sono il presupposto del decreto-legge (art. 77 Cost.), non del decreto legislativo.",
       "C": "La controfirma ministeriale non si indica nel preambolo e mancano gli altri adempimenti prescritti dalla delega."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l400_1988_art_14"
+      },
+      {
+        "normaId": "cost_art_77"
+      }
+    ]
   },
   {
     "id": 26,
@@ -304,7 +312,15 @@ const SPIEGAZIONI = [
       "A": "Cinquantamila elettori è il numero per l’iniziativa legislativa popolare (art. 71); i Consigli regionali sono cinque, non sei.",
       "B": "La frazione è un quinto, non un terzo, e gli elettori sono 500.000.",
       "C": "Riproduce esattamente l’art. 138 Cost."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_138"
+      },
+      {
+        "normaId": "cost_art_71"
+      }
+    ]
   },
   {
     "id": 27,
@@ -315,18 +331,31 @@ const SPIEGAZIONI = [
       "A": "La competenza residuale riguarda le materie non elencate nell’art. 117; l’ordinamento civile è espressamente elencato.",
       "B": "È tra le materie di competenza esclusiva statale (art. 117, comma 2, lett. l).",
       "C": "Non compare tra le materie concorrenti del terzo comma."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_117"
+      }
+    ]
   },
   {
     "id": 28,
     "corretta": "A",
     "suggerimento": "Il buon andamento (art. 97 Cost.) riguarda il modo in cui l’amministrazione si organizza e lavora: quale opzione parla di questo?",
-    "spiegazione": "Il **buon andamento** (art. 97 Cost.) impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; questi criteri sono richiamati anche dall’art. 1 della l. 241/1990.",
+    "spiegazione": "Il **buon andamento** (art. 97 Cost.) impone alla PA di organizzarsi e agire in modo **economico, efficiente ed efficace**; economicità ed efficacia sono richiamate anche dall’art. 1 della l. 241/1990 («criteri di economicità, di efficacia, di imparzialità, di pubblicità e di trasparenza»), che invece non nomina l’efficienza.",
     "perOpzione": {
       "A": "Economicità, efficienza ed efficacia sono la declinazione del buon andamento.",
       "B": "Descrive l’azione collettiva degli utenti (es. class action pubblica), uno strumento di tutela, non il contenuto del principio.",
       "C": "Riguarda il regime dei beni pubblici, non l’organizzazione e l’azione dell’amministrazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_97"
+      },
+      {
+        "normaId": "l241_1990_art_1"
+      }
+    ]
   },
   {
     "id": 29,
@@ -370,7 +399,12 @@ const SPIEGAZIONI = [
       "A": "Falso: il d.lgs. 39/2013 attribuisce proprio all’RPCT la vigilanza su inconferibilità e incompatibilità e le segnalazioni all’ANAC.",
       "B": "Corrisponde alla responsabilità prevista dall’art. 1, comma 12, della l. 190/2012.",
       "C": "L’RPCT è individuato dall’organo di indirizzo, di norma tra i dirigenti di ruolo: non coincide con l’organo politico."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l190_2012_art_1"
+      }
+    ]
   },
   {
     "id": 33,
@@ -381,7 +415,15 @@ const SPIEGAZIONI = [
       "A": "È la regola ordinaria della doppia maggioranza, applicabile alle proposte della Commissione.",
       "B": "Il 72% degli Stati si applica quando il Consiglio non delibera su proposta della Commissione.",
       "C": "Non esiste una soglia del 75% degli Stati e manca il requisito della popolazione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_16"
+      },
+      {
+        "normaId": "tfue_art_238"
+      }
+    ]
   },
   {
     "id": 34,
@@ -392,7 +434,12 @@ const SPIEGAZIONI = [
       "A": "Il principio di attribuzione riguarda i limiti alle competenze dell’Unione: è un vizio tipico di un atto adottato, non dell’inerzia.",
       "B": "È la formula dell’art. 265 TFUE: l’astensione «in violazione dei trattati».",
       "C": "La violazione della sussidiarietà si fa valere contro un atto legislativo (anche su iniziativa dei Parlamenti nazionali), non contro un’omissione."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tfue_art_265"
+      }
+    ]
   },
   {
     "id": 35,
@@ -557,7 +604,12 @@ const SPIEGAZIONI = [
       "A": "Anno corretto: d.l. 83/2012.",
       "B": "Nel 2004 esisteva il CNIPA (predecessore di DigitPA), non l’AgID.",
       "C": "Il 2021 è l’anno del PNRR e di nuove riforme sulla digitalizzazione (es. Agenzia per la cybersicurezza nazionale), non della nascita di AgID."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dl83_2012_art_19"
+      }
+    ]
   },
   {
     "id": 50,

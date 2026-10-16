@@ -12,10 +12,19 @@ const QUIZ_MANIFEST = [
     "spiegazioni": "domande/sna-cc11-busta1/sna-cc11-busta1_s.js",
     "pdf": "domande/sna-cc11-busta1/sna-cc11-busta1.pdf",
     "norme": [
+      "norme/cad/cad_art_14_bis.js",
       "norme/costituzione/cost_art_77.js",
       "norme/costituzione/cost_art_94.js",
       "norme/costituzione/cost_art_113.js",
-      "norme/costituzione/cost_art_117.js"
+      "norme/costituzione/cost_art_117.js",
+      "norme/costituzione/cost_art_118.js",
+      "norme/cpa/cpa_art_30.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_7.js",
+      "norme/l241_1990/l241_1990_art_1.js",
+      "norme/l241_1990/l241_1990_art_21_quater.js",
+      "norme/tfue/tfue_art_263.js",
+      "norme/tfue/tfue_art_352.js",
+      "norme/tue/tue_art_5.js"
     ]
   },
   {
@@ -27,7 +36,21 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc11-busta2/sna-cc11-busta2_d.js",
     "risposte": "domande/sna-cc11-busta2/sna-cc11-busta2_r.js",
     "spiegazioni": "domande/sna-cc11-busta2/sna-cc11-busta2_s.js",
-    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_2_domande.pdf"
+    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_2_domande.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_71.js",
+      "norme/costituzione/cost_art_77.js",
+      "norme/costituzione/cost_art_97.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/costituzione/cost_art_138.js",
+      "norme/dl83_2012/dl83_2012_art_19.js",
+      "norme/l190_2012/l190_2012_art_1.js",
+      "norme/l241_1990/l241_1990_art_1.js",
+      "norme/l400_1988/l400_1988_art_14.js",
+      "norme/tfue/tfue_art_238.js",
+      "norme/tfue/tfue_art_265.js",
+      "norme/tue/tue_art_16.js"
+    ]
   },
   {
     "id": "sna-cc11-busta3",
@@ -38,7 +61,28 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc11-busta3/sna-cc11-busta3_d.js",
     "risposte": "domande/sna-cc11-busta3/sna-cc11-busta3_r.js",
     "spiegazioni": "domande/sna-cc11-busta3/sna-cc11-busta3_s.js",
-    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_3_domande.pdf"
+    "pdf": "https://sna.gov.it/wp-content/uploads/2025/11/busta_3_domande.pdf",
+    "norme": [
+      "norme/codice_civile/cc_art_823.js",
+      "norme/codice_civile/cc_art_826.js",
+      "norme/costituzione/cost_art_13.js",
+      "norme/costituzione/cost_art_21.js",
+      "norme/costituzione/cost_art_41.js",
+      "norme/costituzione/cost_art_72.js",
+      "norme/costituzione/cost_art_81.js",
+      "norme/costituzione/cost_art_100.js",
+      "norme/costituzione/cost_art_119.js",
+      "norme/costituzione/cost_art_120.js",
+      "norme/dlgs152_2006/dlgs152_2006_art_144.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_19.js",
+      "norme/dlgs286_1999/dlgs286_1999_art_1.js",
+      "norme/dlgs286_1999/dlgs286_1999_art_4.js",
+      "norme/l20_1994/l20_1994_art_1.js",
+      "norme/l20_1994/l20_1994_art_3.js",
+      "norme/tfue/prot19_art_1.js",
+      "norme/tfue/tfue_art_79.js",
+      "norme/tfue/tfue_art_108.js"
+    ]
   },
   {
     "id": "sna-cc10-busta1",
@@ -49,7 +93,22 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc10-busta1/sna-cc10-busta1_d.js",
     "risposte": "domande/sna-cc10-busta1/sna-cc10-busta1_r.js",
     "spiegazioni": "domande/sna-cc10-busta1/sna-cc10-busta1_s.js",
-    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_1_domande.pdf"
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_1_domande.pdf",
+    "norme": [
+      "norme/cad/cad_art_64.js",
+      "norme/costituzione/cost_art_77.js",
+      "norme/costituzione/cost_art_95.js",
+      "norme/costituzione/cost_art_120.js",
+      "norme/dl80_2021/dl80_2021_art_6.js",
+      "norme/l124_2015/l124_2015_art_14.js",
+      "norme/l241_1990/l241_1990_art_2.js",
+      "norme/l241_1990/l241_1990_art_6.js",
+      "norme/l400_1988/l400_1988_art_17.js",
+      "norme/tfue/tfue_art_218.js",
+      "norme/tue/tue_art_5.js",
+      "norme/tue/tue_art_6.js",
+      "norme/tue/tue_art_15.js"
+    ]
   },
   {
     "id": "sna-cc10-busta2",
@@ -60,7 +119,23 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc10-busta2/sna-cc10-busta2_d.js",
     "risposte": "domande/sna-cc10-busta2/sna-cc10-busta2_r.js",
     "spiegazioni": "domande/sna-cc10-busta2/sna-cc10-busta2_s.js",
-    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_2_domande.pdf"
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_2_domande.pdf",
+    "norme": [
+      "norme/cad/cad_art_1.js",
+      "norme/cad/cad_art_17.js",
+      "norme/costituzione/cost_art_24.js",
+      "norme/costituzione/cost_art_113.js",
+      "norme/cpa/cpa_art_30.js",
+      "norme/l241_1990/l241_1990_art_1.js",
+      "norme/l241_1990/l241_1990_art_10_bis.js",
+      "norme/l241_1990/l241_1990_art_19.js",
+      "norme/l400_1988/l400_1988_art_17.js",
+      "norme/tfue/tfue_art_2.js",
+      "norme/tfue/tfue_art_4.js",
+      "norme/tfue/tfue_art_6.js",
+      "norme/tfue/tfue_art_218.js",
+      "norme/tue/tue_art_6.js"
+    ]
   },
   {
     "id": "sna-cc10-busta3",
@@ -71,7 +146,23 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc10-busta3/sna-cc10-busta3_d.js",
     "risposte": "domande/sna-cc10-busta3/sna-cc10-busta3_r.js",
     "spiegazioni": "domande/sna-cc10-busta3/sna-cc10-busta3_s.js",
-    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_3_domande-estratta.pdf"
+    "pdf": "https://sna.gov.it/wp-content/uploads/2024/07/busta_3_domande-estratta.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_64.js",
+      "norme/costituzione/cost_art_78.js",
+      "norme/costituzione/cost_art_87.js",
+      "norme/costituzione/cost_art_110.js",
+      "norme/costituzione/cost_art_118.js",
+      "norme/cpa/cpa_art_55.js",
+      "norme/cpa/cpa_art_60.js",
+      "norme/dl80_2021/dl80_2021_art_6.js",
+      "norme/l241_1990/l241_1990_art_22.js",
+      "norme/l241_1990/l241_1990_art_24.js",
+      "norme/tfue/tfue_art_20.js",
+      "norme/tue/tue_art_5.js",
+      "norme/tue/tue_art_9.js",
+      "norme/tue/tue_art_17.js"
+    ]
   },
   {
     "id": "sna-cc09-prova1",
@@ -82,7 +173,23 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc09-prova1/sna-cc09-prova1_d.js",
     "risposte": "domande/sna-cc09-prova1/sna-cc09-prova1_r.js",
     "spiegazioni": "domande/sna-cc09-prova1/sna-cc09-prova1_s.js",
-    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_1_non_estratta.pdf"
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_1_non_estratta.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_13.js",
+      "norme/costituzione/cost_art_90.js",
+      "norme/costituzione/cost_art_134.js",
+      "norme/costituzione/cost_art_138.js",
+      "norme/l196_2009/l196_2009_art_21.js",
+      "norme/l196_2009/l196_2009_art_25_bis.js",
+      "norme/l241_1990/l241_1990_art_10_bis.js",
+      "norme/l241_1990/l241_1990_art_21_bis.js",
+      "norme/l241_1990/l241_1990_art_21_septies.js",
+      "norme/tfue/tfue_art_2.js",
+      "norme/tfue/tfue_art_4.js",
+      "norme/tfue/tfue_art_6.js",
+      "norme/tfue/tfue_art_267.js",
+      "norme/tue/tue_art_42.js"
+    ]
   },
   {
     "id": "sna-cc09-prova2",
@@ -93,7 +200,32 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc09-prova2/sna-cc09-prova2_d.js",
     "risposte": "domande/sna-cc09-prova2/sna-cc09-prova2_r.js",
     "spiegazioni": "domande/sna-cc09-prova2/sna-cc09-prova2_s.js",
-    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_2_non_estratta.pdf"
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_2_non_estratta.pdf",
+    "norme": [
+      "norme/carta_ue/cdfue_art_51.js",
+      "norme/costituzione/cost_art_11.js",
+      "norme/costituzione/cost_art_71.js",
+      "norme/costituzione/cost_art_72.js",
+      "norme/costituzione/cost_art_75.js",
+      "norme/costituzione/cost_art_103.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/costituzione/cost_art_135.js",
+      "norme/cpa/cpa_art_7.js",
+      "norme/cpa/cpa_art_8.js",
+      "norme/l196_2009/l196_2009_art_21.js",
+      "norme/l234_2012/l234_2012_art_1.js",
+      "norme/l241_1990/l241_1990_art_3.js",
+      "norme/l241_1990/l241_1990_art_7.js",
+      "norme/l241_1990/l241_1990_art_9.js",
+      "norme/l241_1990/l241_1990_art_10.js",
+      "norme/l241_1990/l241_1990_art_11.js",
+      "norme/l241_1990/l241_1990_art_20.js",
+      "norme/l241_1990/l241_1990_art_21_nonies.js",
+      "norme/l241_1990/l241_1990_art_21_quinquies.js",
+      "norme/tue/tue_art_2.js",
+      "norme/tue/tue_art_15.js",
+      "norme/tue/tue_art_16.js"
+    ]
   },
   {
     "id": "sna-cc09-prova3",
@@ -104,7 +236,26 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc09-prova3/sna-cc09-prova3_d.js",
     "risposte": "domande/sna-cc09-prova3/sna-cc09-prova3_r.js",
     "spiegazioni": "domande/sna-cc09-prova3/sna-cc09-prova3_s.js",
-    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_estratta.pdf"
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/Amministrazione_trasparente/Bandi/2023/Corso-concorso_IX/Prove_preselettiva/PRESELETTIVA_prova_estratta.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_10.js",
+      "norme/costituzione/cost_art_26.js",
+      "norme/costituzione/cost_art_73.js",
+      "norme/costituzione/cost_art_104.js",
+      "norme/costituzione/cost_art_105.js",
+      "norme/costituzione/cost_art_136.js",
+      "norme/cpa/cpa_art_30.js",
+      "norme/cpa/cpa_art_117.js",
+      "norme/dlgs175_2016/dlgs175_2016_art_3.js",
+      "norme/l241_1990/l241_1990_art_1.js",
+      "norme/l241_1990/l241_1990_art_2.js",
+      "norme/l241_1990/l241_1990_art_21_nonies.js",
+      "norme/tfue/tfue_art_3.js",
+      "norme/tfue/tfue_art_4.js",
+      "norme/tfue/tfue_art_6.js",
+      "norme/tfue/tfue_art_288.js",
+      "norme/tue/tue_art_13.js"
+    ]
   },
   {
     "id": "sna-cc08-busta3",
@@ -115,6 +266,31 @@ const QUIZ_MANIFEST = [
     "domande": "domande/sna-cc08-busta3/sna-cc08-busta3_d.js",
     "risposte": "domande/sna-cc08-busta3/sna-cc08-busta3_r.js",
     "spiegazioni": "domande/sna-cc08-busta3/sna-cc08-busta3_s.js",
-    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/8CC/Test_prova_preselettiva/busta_3_domande.pdf"
+    "pdf": "https://www.sitiarcheologici.palazzochigi.it/sna.gov.it/sna.gov.it/fileadmin/files/8CC/Test_prova_preselettiva/busta_3_domande.pdf",
+    "norme": [
+      "norme/costituzione/cost_art_21.js",
+      "norme/costituzione/cost_art_48.js",
+      "norme/costituzione/cost_art_60.js",
+      "norme/costituzione/cost_art_61.js",
+      "norme/costituzione/cost_art_77.js",
+      "norme/costituzione/cost_art_92.js",
+      "norme/costituzione/cost_art_117.js",
+      "norme/cpa/cpa_art_15.js",
+      "norme/dlgs36_2023/dlgs36_2023_art_101.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_6.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_35.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_52.js",
+      "norme/l20_1994/l20_1994_art_1.js",
+      "norme/l20_1994/l20_1994_art_3.js",
+      "norme/l87_1953/l87_1953_art_23.js",
+      "norme/l196_2009/l196_2009_art_10.js",
+      "norme/l241_1990/l241_1990_art_21_ter.js",
+      "norme/l400_1988/l400_1988_art_9.js",
+      "norme/tfue/tfue_art_20.js",
+      "norme/tfue/tfue_art_218.js",
+      "norme/tfue/tfue_art_256.js",
+      "norme/tfue/tfue_art_288.js",
+      "norme/tue/tue_art_9.js"
+    ]
   }
 ];

@@ -297,7 +297,12 @@ const SPIEGAZIONI = [
       "A": "I regolamenti governativi sono fonti secondarie, subordinate alla legge; quelli parlamentari sono fonti primarie.",
       "B": "Corretta: sono fonti primarie e operano in una sfera riservata dalla Costituzione all'autonomia di ciascuna Camera.",
       "C": "Sono atti scritti approvati a maggioranza assoluta, non fonti consuetudinarie."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_64"
+      }
+    ]
   },
   {
     "id": 26,
@@ -308,7 +313,15 @@ const SPIEGAZIONI = [
       "A": "Il Presidente del Consiglio non delibera lo stato di guerra.",
       "B": "Corretta: lo prevede l'art. 78 Cost.",
       "C": "Il Governo riceve i poteri necessari dalle Camere, ma non delibera lo stato di guerra."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_78"
+      },
+      {
+        "normaId": "cost_art_87"
+      }
+    ]
   },
   {
     "id": 27,
@@ -320,7 +333,12 @@ const SPIEGAZIONI = [
       "B": "È l'affermazione corretta: la regola generale esclude i singoli ministri, con l'eccezione riconosciuta per la sfiducia individuale.",
       "C": "Falsa per l'avverbio «mai»: anche il singolo ministro sfiduciato individualmente è stato ritenuto legittimato."
     },
-    "nota": "La formulazione è imprecisa perché anche il Ministro della giustizia è legittimato; resta comunque l'unica affermazione corretta tra quelle proposte."
+    "nota": "La formulazione è imprecisa perché anche il Ministro della giustizia è legittimato; resta comunque l'unica affermazione corretta tra quelle proposte.",
+    "riferimenti": [
+      {
+        "normaId": "cost_art_110"
+      }
+    ]
   },
   {
     "id": 28,
@@ -331,7 +349,12 @@ const SPIEGAZIONI = [
       "A": "Riguarda i rapporti tra livelli di governo (piano verticale) e la composizione della Conferenza Stato-Regioni, non la sussidiarietà orizzontale.",
       "B": "Corretta: è il contenuto dell'art. 118, ultimo comma, Cost.",
       "C": "Riguarda la tutela dell'ambiente e la responsabilità delle imprese, non la sussidiarietà."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cost_art_118"
+      }
+    ]
   },
   {
     "id": 29,
@@ -364,7 +387,15 @@ const SPIEGAZIONI = [
       "A": "La cauzione è solo eventuale (il giudice «può» subordinarvi la misura), non un requisito necessario.",
       "B": "Corretta: descrive periculum in mora e fumus boni iuris.",
       "C": "La sentenza in forma semplificata (art. 60 c.p.a.) è una possibilità, non l'unico modo di dare tutela cautelare."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "cpa_art_55"
+      },
+      {
+        "normaId": "cpa_art_60"
+      }
+    ]
   },
   {
     "id": 32,
@@ -375,7 +406,15 @@ const SPIEGAZIONI = [
       "A": "Descrive l'accesso alle informazioni ambientali (d.lgs. 195/2005), un istituto diverso.",
       "B": "Corretta: combina la legittimazione dell'art. 22 e la finalità difensiva dell'art. 24, comma 7, L. 241/1990.",
       "C": "Descrive il diritto di petizione o di presentare istanze, non l'accesso ai documenti."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "l241_1990_art_24"
+      },
+      {
+        "normaId": "l241_1990_art_22"
+      }
+    ]
   },
   {
     "id": 33,
@@ -386,7 +425,12 @@ const SPIEGAZIONI = [
       "A": "Nelle competenze esclusive solo l'Unione può agire, quindi la sussidiarietà non si applica.",
       "B": "Corretta: lo prevede l'art. 5, par. 3, TUE.",
       "C": "Non esiste un'eccezione per la cooperazione giudiziaria penale; il criterio è la natura non esclusiva della competenza."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_5"
+      }
+    ]
   },
   {
     "id": 34,
@@ -397,7 +441,15 @@ const SPIEGAZIONI = [
       "A": "Corretta: è la formula testuale dell'art. 9 TUE.",
       "B": "Falsa: non sostituisce la cittadinanza nazionale, che resta il presupposto per avere quella europea.",
       "C": "Falsa: è un status aggiuntivo, non incorpora la cittadinanza nazionale."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_9"
+      },
+      {
+        "normaId": "tfue_art_20"
+      }
+    ]
   },
   {
     "id": 35,
@@ -408,7 +460,12 @@ const SPIEGAZIONI = [
       "A": "Non serve l'unanimità degli Stati: il Consiglio europeo decide a maggioranza qualificata.",
       "B": "Il Consiglio dell'Unione non nomina il Presidente, e il Parlamento non vota a maggioranza semplice.",
       "C": "Corretta: corrisponde all'art. 17, par. 7, TUE."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "tue_art_17"
+      }
+    ]
   },
   {
     "id": 36,
@@ -549,9 +606,14 @@ const SPIEGAZIONI = [
     "spiegazione": "Il **PIAO** (art. 6 d.l. 80/2021) ha **durata triennale** ed è **aggiornato annualmente** entro il 31 gennaio; è obbligatorio per le PA con **più di 50 dipendenti** (con modalità semplificate per le altre), escluse le scuole.",
     "perOpzione": {
       "A": "Corretta: durata triennale con aggiornamento annuale.",
-      "B": "Non riguarda tutte le PA: sono escluse le istituzioni scolastiche e per le PA fino a 50 dipendenti è previsto un piano semplificato.",
+      "B": "Non riguarda tutte le PA: sono escluse le istituzioni scolastiche e per le PA con meno di cinquanta dipendenti sono previste modalità semplificate.",
       "C": "È uno strumento stabile di programmazione integrata, non una misura transitoria legata al Covid."
-    }
+    },
+    "riferimenti": [
+      {
+        "normaId": "dl80_2021_art_6"
+      }
+    ]
   },
   {
     "id": 49,
