@@ -606,5 +606,33 @@ const QUIZ_MANIFEST = [
       "norme/tue/tue_art_9.js"
     ],
     "dataProva": "2019-01-22"
+  },
+  {
+    "id": "esercitazione-sim01",
+    "gruppo": "Esercitazioni — prove simulate",
+    "label": "Prova simulata n. 1 (60 quesiti, modello 12° CC)",
+    "breve": "Sim. 1",
+    "ufficiale": false,
+    "tipo": "esercitazione",
+    "domande": "domande/esercitazione-sim01/esercitazione-sim01_d.js",
+    "risposte": "domande/esercitazione-sim01/esercitazione-sim01_r.js",
+    "spiegazioni": "domande/esercitazione-sim01/esercitazione-sim01_s.js",
+    "norme": [
+      "norme/cad/cad_art_1.js",
+      "norme/cad/cad_art_17.js",
+      "norme/costituzione/cost_art_68.js",
+      "norme/costituzione/cost_art_74.js",
+      "norme/costituzione/cost_art_97.js",
+      "norme/costituzione/cost_art_135.js",
+      "norme/dlgs36_2023/dlgs36_2023_art_18.js",
+      "norme/dlgs39_2013/dlgs39_2013_art_15.js",
+      "norme/dlgs165_2001/dlgs165_2001_art_21.js",
+      "norme/l190_2012/l190_2012_art_1.js",
+      "norme/l241_1990/l241_1990_art_11.js",
+      "norme/l241_1990/l241_1990_art_25.js",
+      "norme/tfue/tfue_art_228.js",
+      "norme/tfue/tfue_art_258.js",
+      "norme/tue/tue_art_50.js"
+    ]
   }
 ];

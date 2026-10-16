@@ -119,7 +119,7 @@ def genera(rng, n):
     cand.append((col2, f"segue un'altra regola di colore ({REGOLE_COLORE[altro][0]})"))
     sc = dict(giusta); a, b = rng.sample(range(4), 2)
     sc[a], sc[b] = (giusta[b][0], giusta[a][1]), (giusta[a][0], giusta[b][1])
-    cand.append((sc, f"due simboli sono scambiati di posto ({POS[a]} e {POS[b]})"))
+    cand.append((sc, f"ha due simboli scambiati di posto ({POS[a]} e {POS[b]})"))
     visti, distr = {chiave(giusta)}, []
     for f, m in cand:
         if chiave(f) not in visti:
