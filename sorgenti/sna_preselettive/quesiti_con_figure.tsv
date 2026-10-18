@@ -1,0 +1,107 @@
+id_fonte	quesito	ritaglio	figure_native	motivo	elementi_grafici
+sna-cc07-test03-A	10	img/sna-cc07-test03-A-q10.png		grafica	14
+sna-cc07-test03-A	16	img/sna-cc07-test03-A-q16.png		grafica	6
+sna-cc07-test03-A	17	img/sna-cc07-test03-A-q17.png		parola-chiave	0
+sna-cc07-test03-A	20	img/sna-cc07-test03-A-q20.png		parola-chiave	0
+sna-cc07-test03-B	11	img/sna-cc07-test03-B-q11.png		grafica	14
+sna-cc07-test03-B	16	img/sna-cc07-test03-B-q16.png		grafica	6
+sna-cc07-test03-B	18	img/sna-cc07-test03-B-q18.png		parola-chiave	0
+sna-cc07-test03-B	21	img/sna-cc07-test03-B-q21.png		parola-chiave	0
+sna-cc07-test04-A	9	img/sna-cc07-test04-A-q09.png		grafica	14
+sna-cc07-test04-A	15	img/sna-cc07-test04-A-q15.png		grafica	6
+sna-cc07-test04-A	20	img/sna-cc07-test04-A-q20.png		parola-chiave	0
+sna-cc07-test04-A	22	img/sna-cc07-test04-A-q22.png		parola-chiave	0
+sna-cc07-test04-A	23	img/sna-cc07-test04-A-q23.png		parola-chiave	0
+sna-cc07-test04-B	9	img/sna-cc07-test04-B-q09.png		grafica	14
+sna-cc07-test04-B	15	img/sna-cc07-test04-B-q15.png		grafica	6
+sna-cc07-test04-B	20	img/sna-cc07-test04-B-q20.png		parola-chiave	0
+sna-cc07-test04-B	22	img/sna-cc07-test04-B-q22.png		parola-chiave	0
+sna-cc07-test04-B	23	img/sna-cc07-test04-B-q23.png		parola-chiave	0
+sna-cc07-test05-A	11	img/sna-cc07-test05-A-q11.png		grafica	6
+sna-cc07-test05-A	16	img/sna-cc07-test05-A-q16.png		grafica	18
+sna-cc07-test05-A	17	img/sna-cc07-test05-A-q17.png		parola-chiave	0
+sna-cc07-test05-A	24	img/sna-cc07-test05-A-q24.png		parola-chiave	0
+sna-cc07-test05-B	11	img/sna-cc07-test05-B-q11.png		grafica	6
+sna-cc07-test05-B	16	img/sna-cc07-test05-B-q16.png		grafica	18
+sna-cc07-test05-B	17	img/sna-cc07-test05-B-q17.png		parola-chiave	0
+sna-cc07-test05-B	24	img/sna-cc07-test05-B-q24.png		parola-chiave	0
+sna-cc07-test06-A	12	img/sna-cc07-test06-A-q12.png		grafica	14
+sna-cc07-test06-A	14	img/sna-cc07-test06-A-q14.png		grafica	6
+sna-cc07-test06-A	17	img/sna-cc07-test06-A-q17.png		parola-chiave	0
+sna-cc07-test06-A	20	img/sna-cc07-test06-A-q20.png		parola-chiave	0
+sna-cc07-test06-A	22	img/sna-cc07-test06-A-q22.png		parola-chiave	0
+sna-cc07-test06-B	12	img/sna-cc07-test06-B-q12.png		grafica	14
+sna-cc07-test06-B	14	img/sna-cc07-test06-B-q14.png		grafica	6
+sna-cc07-test06-B	17	img/sna-cc07-test06-B-q17.png		parola-chiave	0
+sna-cc07-test06-B	20	img/sna-cc07-test06-B-q20.png		parola-chiave	0
+sna-cc07-test06-B	21	img/sna-cc07-test06-B-q21.png		parola-chiave	0
+sna-cc07-test07-A	13	img/sna-cc07-test07-A-q13.png		grafica	16
+sna-cc07-test07-A	17	img/sna-cc07-test07-A-q17.png		parola-chiave	0
+sna-cc07-test07-A	21	img/sna-cc07-test07-A-q21.png		parola-chiave	0
+sna-cc07-test07-A	22	img/sna-cc07-test07-A-q22.png		parola-chiave	0
+sna-cc07-test07-B	13	img/sna-cc07-test07-B-q13.png		grafica	16
+sna-cc07-test07-B	17	img/sna-cc07-test07-B-q17.png		parola-chiave	0
+sna-cc07-test07-B	20	img/sna-cc07-test07-B-q20.png		parola-chiave	0
+sna-cc07-test07-B	21	img/sna-cc07-test07-B-q21.png		parola-chiave	0
+sna-cc07-test12-A	11	img/sna-cc07-test12-A-q11.png		grafica	12
+sna-cc07-test12-A	17	img/sna-cc07-test12-A-q17.png		parola-chiave	0
+sna-cc07-test12-A	18	img/sna-cc07-test12-A-q18.png		parola-chiave	0
+sna-cc07-test12-A	19	img/sna-cc07-test12-A-q19.png		parola-chiave	0
+sna-cc07-test12-B	10	img/sna-cc07-test12-B-q10.png		grafica	12
+sna-cc07-test12-B	17	img/sna-cc07-test12-B-q17.png		parola-chiave	0
+sna-cc07-test12-B	18	img/sna-cc07-test12-B-q18.png		parola-chiave	0
+sna-cc07-test12-B	22	img/sna-cc07-test12-B-q22.png		parola-chiave	0
+sna-cc09-prova1	19	img/sna-cc09-prova1-q19.png		grafica+parola-chiave	1
+sna-cc09-prova1	20	img/sna-cc09-prova1-q20.png		grafica+parola-chiave	1
+sna-cc09-prova1	21	img/sna-cc09-prova1-q21.png		parola-chiave	0
+sna-cc09-prova1	22	img/sna-cc09-prova1-q22.png		parola-chiave	0
+sna-cc09-prova1	23	img/sna-cc09-prova1-q23.png		parola-chiave	0
+sna-cc09-prova1	24	img/sna-cc09-prova1-q24.png		grafica+parola-chiave	1
+sna-cc09-prova2	19	img/sna-cc09-prova2-q19.png		grafica+parola-chiave	1
+sna-cc09-prova2	20	img/sna-cc09-prova2-q20.png		parola-chiave	0
+sna-cc09-prova2	21	img/sna-cc09-prova2-q21.png		parola-chiave	0
+sna-cc09-prova2	22	img/sna-cc09-prova2-q22.png		parola-chiave	0
+sna-cc09-prova2	23	img/sna-cc09-prova2-q23.png		parola-chiave	0
+sna-cc09-prova2	24	img/sna-cc09-prova2-q24.png		parola-chiave	0
+sna-cc09-prova3	19	img/sna-cc09-prova3-q19.png		parola-chiave	0
+sna-cc09-prova3	20	img/sna-cc09-prova3-q20.png		parola-chiave	0
+sna-cc09-prova3	21	img/sna-cc09-prova3-q21.png		parola-chiave	0
+sna-cc09-prova3	22	img/sna-cc09-prova3-q22.png		parola-chiave	0
+sna-cc09-prova3	23	img/sna-cc09-prova3-q23.png		grafica+parola-chiave	1
+sna-cc09-prova3	24	img/sna-cc09-prova3-q24.png		grafica+parola-chiave	1
+sna-cc10-busta1	19	img/sna-cc10-busta1-q19.png	img/sna-cc10-busta1-q19-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta1	20	img/sna-cc10-busta1-q20.png	img/sna-cc10-busta1-q20-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta1	21	img/sna-cc10-busta1-q21.png	img/sna-cc10-busta1-q21-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta1	22	img/sna-cc10-busta1-q22.png	img/sna-cc10-busta1-q22-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta1	23	img/sna-cc10-busta1-q23.png	img/sna-cc10-busta1-q23-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta1	24	img/sna-cc10-busta1-q24.png	img/sna-cc10-busta1-q24-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	19	img/sna-cc10-busta2-q19.png	img/sna-cc10-busta2-q19-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	20	img/sna-cc10-busta2-q20.png	img/sna-cc10-busta2-q20-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	21	img/sna-cc10-busta2-q21.png	img/sna-cc10-busta2-q21-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	22	img/sna-cc10-busta2-q22.png	img/sna-cc10-busta2-q22-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	23	img/sna-cc10-busta2-q23.png	img/sna-cc10-busta2-q23-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta2	24	img/sna-cc10-busta2-q24.png	img/sna-cc10-busta2-q24-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	19	img/sna-cc10-busta3-q19.png	img/sna-cc10-busta3-q19-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	20	img/sna-cc10-busta3-q20.png	img/sna-cc10-busta3-q20-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	21	img/sna-cc10-busta3-q21.png	img/sna-cc10-busta3-q21-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	22	img/sna-cc10-busta3-q22.png	img/sna-cc10-busta3-q22-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	23	img/sna-cc10-busta3-q23.png	img/sna-cc10-busta3-q23-fig1.png	grafica+parola-chiave	1
+sna-cc10-busta3	24	img/sna-cc10-busta3-q24.png	img/sna-cc10-busta3-q24-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	13	img/sna-cc11-busta1-q13.png	img/sna-cc11-busta1-q13-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	14	img/sna-cc11-busta1-q14.png	img/sna-cc11-busta1-q14-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	15	img/sna-cc11-busta1-q15.png	img/sna-cc11-busta1-q15-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	16	img/sna-cc11-busta1-q16.png	img/sna-cc11-busta1-q16-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	17	img/sna-cc11-busta1-q17.png	img/sna-cc11-busta1-q17-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta1	18	img/sna-cc11-busta1-q18.png	img/sna-cc11-busta1-q18-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	13	img/sna-cc11-busta2-q13.png	img/sna-cc11-busta2-q13-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	14	img/sna-cc11-busta2-q14.png	img/sna-cc11-busta2-q14-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	15	img/sna-cc11-busta2-q15.png	img/sna-cc11-busta2-q15-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	16	img/sna-cc11-busta2-q16.png	img/sna-cc11-busta2-q16-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	17	img/sna-cc11-busta2-q17.png	img/sna-cc11-busta2-q17-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta2	18	img/sna-cc11-busta2-q18.png	img/sna-cc11-busta2-q18-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta3	13	img/sna-cc11-busta3-q13.png	img/sna-cc11-busta3-q13-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta3	14	img/sna-cc11-busta3-q14.png	img/sna-cc11-busta3-q14-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta3	15	img/sna-cc11-busta3-q15.png	img/sna-cc11-busta3-q15-fig1.png	grafica	1
+sna-cc11-busta3	16	img/sna-cc11-busta3-q16.png	img/sna-cc11-busta3-q16-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta3	17	img/sna-cc11-busta3-q17.png	img/sna-cc11-busta3-q17-fig1.png	grafica+parola-chiave	1
+sna-cc11-busta3	18	img/sna-cc11-busta3-q18.png	img/sna-cc11-busta3-q18-fig1.png	grafica+parola-chiave	1

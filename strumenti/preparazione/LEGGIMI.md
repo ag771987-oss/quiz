@@ -1,13 +1,15 @@
 # Come si prepara una prova per il quiz
 
 Questi sono gli strumenti usati per inserire le 16 prove SNA. `<LAVORO>` nelle istruzioni è una
-cartella di lavoro temporanea, fuori dalla repo: lì vanno i JSON intermedi.
+cartella di lavoro temporanea, fuori dalla repo: lì vanno i JSON intermedi. `<QUIZ>` è la
+cartella di questa repo.
 
 ## Flusso
 
 1. **Testo.** Si parte dal testo e dalle figure della prova. Per le prove SNA sono nella repo
-   `ag771987-oss/cla`, branch `claude/sna-preselettive`, cartella `ricerche/sna_preselettive/`
-   (`txt/`, `img/`, `fonti.tsv`, `risposte_ufficiali.tsv`).
+   cartella `sorgenti/sna_preselettive/` di questa repo (`txt/`, `img/`, `fonti.tsv`,
+   `risposte_ufficiali.tsv`; il README lì dice come sono stati raccolti e verificati). Fino al
+   18/10/2026 stavano nella repo `ag771987-oss/cla`, branch `claude/sna-preselettive`.
    - Impaginazione complessa: prima la sola trascrizione (`istruzioni_trascrizione.txt`), poi
      chiave e aiuti (`istruzioni_aiuti_da_trascrizione.txt`).
    - Altrimenti tutto in un passo (`istruzioni_prova_ricostruita.txt`).

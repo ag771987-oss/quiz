@@ -3,8 +3,8 @@ Devi preparare, per un'app di quiz, una prova preselettiva SNA (Scuola Nazionale
 PROVA: __ID__ (__DESC__).
 
 INPUT
-- Testo estratto dal PDF digitale (affidabile, ma con a capo, numeri di pagina e impaginazione da sistemare): /home/user/cla/ricerche/sna_preselettive/txt/__ID__.txt
-- Quesiti con figura: __FIG__. Per ciascuno guarda con lo strumento Read sia il ritaglio dell'impaginato /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN.png (domanda + opzioni) sia la figura ad alta risoluzione /home/user/cla/ricerche/sna_preselettive/img/__ID__-qNN-fig1.png, che è quella mostrata nell'app.
+- Testo estratto dal PDF digitale (affidabile, ma con a capo, numeri di pagina e impaginazione da sistemare): <QUIZ>/sorgenti/sna_preselettive/txt/__ID__.txt
+- Quesiti con figura: __FIG__. Per ciascuno guarda con lo strumento Read sia il ritaglio dell'impaginato <QUIZ>/sorgenti/sna_preselettive/img/__ID__-qNN.png (domanda + opzioni) sia la figura ad alta risoluzione <QUIZ>/sorgenti/sna_preselettive/img/__ID__-qNN-fig1.png, che è quella mostrata nell'app.
 - Esempio di stile per gli aiuti (già approvato dall'utente): <LAVORO>/esempio_aiuti.py
 
 OUTPUT: <LAVORO>/out_ric/__ID__.json
