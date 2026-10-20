@@ -194,6 +194,13 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .prova-btn{width:100%;margin-top:10px;text-align:left;border:1.5px solid var(--ok);background:var(--ok-soft);border-radius:12px;padding:12px 14px}
 .prova-btn b{display:block;color:var(--ok)}
 .prova-btn span{font-size:.88rem;color:var(--ink2)}
+.sessione{border-color:var(--accent)}
+.sess-riga{display:grid;gap:4px;margin-bottom:10px}
+.sess-riga .aree{margin-bottom:0}
+.sess-coda{margin:4px 0 12px;padding-left:22px;font-size:.92rem;color:var(--ink2)}
+.sess-coda li{margin:2px 0}
+.sess-coda .dur{color:var(--ink3);font-variant-numeric:tabular-nums}
+.riep-lista{display:grid;gap:8px;margin-top:10px}
 .altoparlanti summary{font-weight:600}
 .altoparlanti ol{padding-left:20px;margin:6px 0}
 .altoparlanti code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:.84rem;overflow-wrap:anywhere}
@@ -369,7 +376,16 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 <!-- ═════════ PILLOLE ═════════ -->
 <div class="wrap">
   <section id="pillole" class="hidden">
-    <div class="topbar"><button class="btn small" id="p-home">← Home</button><b>🎧 Pillole normative</b><span class="spacer"></span><button class="btn small" id="p-tutte">▶ Ascolta tutte</button></div>
+    <div class="topbar"><button class="btn small" id="p-home">← Home</button><b>🎧 Pillole normative</b><span class="spacer"></span><button class="btn small primary" id="p-sess-btn">🎧 Sessione di ascolto</button></div>
+    <div class="card hidden" id="p-riepilogo"></div>
+    <div class="card hidden sessione" id="p-sess">
+      <h2>🎧 Sessione di ascolto</h2>
+      <div class="sess-riga"><span class="muted">Quanto</span><div class="aree" id="ps-quanto"></div></div>
+      <div class="sess-riga"><span class="muted">Cosa</span><div class="aree" id="ps-cosa"></div></div>
+      <div class="sess-riga"><span class="muted">Argomento</span><select class="btn small" id="ps-area"></select></div>
+      <ol class="sess-coda" id="ps-coda"></ol>
+      <div class="row"><button class="btn primary" id="ps-avvia">▶ Avvia</button><span class="muted" id="ps-info"></span></div>
+    </div>
     <div class="card pill-oggi" id="p-oggi"></div>
     <div class="aree" id="p-aree"></div>
     <div class="pill-lista" id="p-lista"></div>
@@ -1058,6 +1074,8 @@ async function importaProgressi(file) {
   DB.daApprofondire = [...new Set([...(DB.daApprofondire || []), ...(P.daApprofondire || [])])];
   DB.pillole = DB.pillole || {};
   for (const [id, t] of Object.entries(P.pillole || {})) DB.pillole[id] = Math.max(DB.pillole[id] || 0, t);
+  DB.ascoltate = DB.ascoltate || {};
+  for (const [id, t] of Object.entries(P.ascoltate || {})) DB.ascoltate[id] = Math.max(DB.ascoltate[id] || 0, t);
   for (const [id, lista] of Object.entries(P.prove || {})) {
     const viste = new Set((DB.prove[id] || []).map(x => x.data));
     DB.prove[id] = [...(DB.prove[id] || []), ...lista.filter(x => !viste.has(x.data))].sort((a, b) => a.data - b.data);
@@ -1121,7 +1139,8 @@ document.addEventListener("keydown", e => {
 // ═════════════════════════════════════════════════════════════════════
 const HAS_PILLOLE = typeof PILLOLE !== "undefined" && PILLOLE.length > 0;
 const AREE = HAS_PILLOLE ? Object.fromEntries(PILLOLE_AREE.map(a => [a.id, a])) : {};
-let PL = { area: null, i: 0, coda: false, normeCaricate: null };
+// sess: sessione di ascolto in corso { coda: [indici], pos, fatte: [indici] } oppure null
+let PL = { area: null, i: 0, sess: null, normeCaricate: null, durate: {} };
 // Pillola del giorno: giorni dal 1/1/2026 (ora italiana) modulo il numero di pillole.
 // Stessa regola di strumenti/verifica_pillole.js, che prepara il notiziario di Alexa.
 function pillolaDelGiorno() {
@@ -1130,6 +1149,14 @@ function pillolaDelGiorno() {
   return ((n % PILLOLE.length) + PILLOLE.length) % PILLOLE.length;
 }
 const pillolaLetta = id => (DB.pillole || {})[id];
+const pillolaAscoltata = id => (DB.ascoltate || {})[id];
+// durata dei file audio (pillole/audio/impronte.json); senza file si stima poco più di un minuto
+const durata = p => PL.durate[p.id] || 70;
+function caricaDurate() {
+  return fetch("pillole/audio/impronte.json").then(r => r.ok ? r.json() : {}).then(o => {
+    for (const [id, x] of Object.entries(o || {})) if (x && x.secondi) PL.durate[id] = x.secondi;
+  }).catch(() => {});
+}
 function caricaNormePillole() {
   return PL.normeCaricate || (PL.normeCaricate = Promise.all(PILLOLE_NORME.map(n => loadScript(n).catch(() => console.warn("Fonte non caricata", n)))));
 }
@@ -1142,6 +1169,7 @@ function etichettaFonte(f) {
 }
 function renderPillole() {
   fermaAscolto();
+  PL.sess = null;
   const oggi = PILLOLE[pillolaDelGiorno()];
   $("p-oggi").innerHTML = "<div class='muted'>📅 Pillola del giorno</div>";
   $("p-oggi").appendChild(vocePillola(oggi, true));
@@ -1177,40 +1205,44 @@ function renderPillole() {
 function vocePillola(p, grande) {
   const b = document.createElement("button");
   b.className = "pill-voce"; if (grande) b.style.cssText = "width:100%;border:none;padding:6px 0 0;background:none";
-  const a = AREE[p.area] || {}, letta = pillolaLetta(p.id);
-  b.innerHTML = "<b>" + esc(p.titolo) + "</b><span>" + esc(p.sintesi) + "</span><span class='muted'>" + esc((a.icona || "") + " " + (a.nome || "")) + (letta ? " · ✔ letta " + giorniFa(letta) : "") + ((p.approfondimento || []).length ? " · 📚 approfondimento" : "") + (daApprofondire(p.id) ? " · ⭐" : "") + "</span>";
+  const a = AREE[p.area] || {}, letta = pillolaLetta(p.id), ascoltata = pillolaAscoltata(p.id);
+  b.innerHTML = "<b>" + esc(p.titolo) + "</b><span>" + esc(p.sintesi) + "</span><span class='muted'>" + esc((a.icona || "") + " " + (a.nome || "")) + (ascoltata ? " · 🎧 ascoltata " + giorniFa(ascoltata) : letta ? " · ✔ letta " + giorniFa(letta) : "") + ((p.approfondimento || []).length ? " · 📚 approfondimento" : "") + (daApprofondire(p.id) ? " · ⭐" : "") + "</span>";
   b.onclick = () => apriPillola(PILLOLE.indexOf(p));
   return b;
 }
 function sito() { return location.href.replace(/[#?].*$/, "").replace(/index\.html$/, ""); }
 function istruzioniAltoparlanti() {
   const u = sito();
-  return "<p><b>Sul telefono</b>: apri una pillola e premi ▶ Ascolta. Con «Ascolta tutte» le pillole si susseguono, anche a schermo spento.</p>" +
+  return "<p><b>Sul telefono</b>: apri una pillola e premi ▶ Ascolta. Con «🎧 Sessione di ascolto» scegli quanto tempo e quali pillole: si susseguono anche a schermo spento.</p>" +
     "<p><b>Google Nest</b>: da Chrome su Android, nella pillola premi 📡 Trasmetti al Nest e scegli l’altoparlante (telefono e Nest sulla stessa rete Wi-Fi). In alternativa collega il Nest al telefono via Bluetooth dall’app Google Home. Le pillole sono anche un podcast: <code>" + esc(u) + "pillole/podcast.xml</code>.</p>" +
     "<p><b>Alexa</b>: ogni giorno una pillola nel notiziario («Alexa, dammi le notizie»), dopo aver creato una volta la skill «Notiziario Flash» gratuita con il feed <code>" + esc(u) + "pillole/alexa.json</code>. I passaggi sono in <code>pillole/LEGGIMI.md</code>.</p>";
 }
-async function apriPillola(i, approfondisci) {
-  fermaAscolto();
+// continua: la pillola è già in riproduzione (sessione), non fermare l'audio
+async function apriPillola(i, approfondisci, continua) {
+  if (!continua) fermaAscolto();
   PL.i = i;
   const p = PILLOLE[i], a = AREE[p.area] || {};
   if (!location.hash.startsWith("#pillola=" + p.id)) history.replaceState(null, "", "#pillola=" + p.id);
   $("pp-area").textContent = (a.icona || "") + " " + (a.nome || "");
-  $("pp-pos").textContent = (i + 1) + " / " + PILLOLE.length;
+  const ss = PL.sess;
+  $("pp-pos").textContent = ss ? "🎧 " + (ss.pos + 1) + " di " + ss.coda.length : (i + 1) + " / " + PILLOLE.length;
   $("pp-titolo").textContent = p.titolo;
   $("pp-sintesi").textContent = p.sintesi;
   $("pp-testo").innerHTML = mdPillola(p.testo);
   renderApprofondimento(p);
   aggiornaStellaPillola();
-  $("pp-prec").disabled = i === 0; $("pp-succ").disabled = i === PILLOLE.length - 1;
+  $("pp-prec").disabled = ss ? ss.pos === 0 : i === 0;
+  $("pp-succ").disabled = ss ? ss.pos === ss.coda.length - 1 : i === PILLOLE.length - 1;
+  $("pp-indietro").textContent = ss ? "■ Fine sessione" : "← Pillole";
   const coll = (p.collegate || []).map(id => PILLOLE.findIndex(x => x.id === id)).filter(j => j >= 0);
   $("pp-coll-box").classList.toggle("hidden", !coll.length);
   $("pp-coll").innerHTML = "";
   for (const j of coll) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + PILLOLE[j].titolo; b.onclick = () => apriPillola(j); $("pp-coll").appendChild(b); }
-  const au = $("pp-audio");
-  au.src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
+  const au = $("pp-audio"), src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
+  if (au.getAttribute("src") !== src) au.src = src;
   au.playbackRate = +$("pp-vel").value;
   aggiornaCast();
-  $("pp-stato").textContent = "";
+  if (!continua) $("pp-stato").textContent = "";
   DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
   show("pillola");
   await caricaNormePillole();
@@ -1312,7 +1344,7 @@ function fermaAscolto() {
 }
 function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
 async function ascolta() {
-  if (inRiproduzione()) { PL.coda = false; fermaAscolto(); $("pp-stato").textContent = ""; return; }
+  if (inRiproduzione()) { fermaAscolto(); $("pp-stato").textContent = ""; return; }
   const au = $("pp-audio"), p = PILLOLE[PL.i];
   $("pp-play").textContent = "⏸ Pausa";
   if (au.src && au.dataset.ko !== au.src) {
@@ -1335,14 +1367,113 @@ function parlaTelefono(p) {
 }
 function finePillola() {
   $("pp-play").textContent = "▶ Ascolta";
-  if (PL.coda && PL.i + 1 < PILLOLE.length) apriPillola(PL.i + 1).then(ascolta);
-  else PL.coda = false;
+  DB.ascoltate = DB.ascoltate || {}; DB.ascoltate[PILLOLE[PL.i].id] = Date.now(); salva();
+  const ss = PL.sess;
+  if (!ss) return;
+  if (!ss.fatte.includes(PL.i)) ss.fatte.push(PL.i);
+  if (ss.pos + 1 < ss.coda.length) { ss.pos++; suona(ss.coda[ss.pos]); }
+  else fineSessione();
+}
+// Avvia subito l'audio della pillola i (nello stesso gesto o alla fine della precedente, così il
+// telefono continua anche a schermo spento), poi aggiorna la pagina.
+function suona(i) {
+  const au = $("pp-audio"), p = PILLOLE[i], src = "pillole/audio/" + p.id + ".mp3";
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  voceTel = null;
+  PL.i = i;
+  if (p.audio !== false && au.dataset.ko !== src) {
+    if (au.getAttribute("src") !== src) au.src = src;
+    au.playbackRate = +$("pp-vel").value;
+    au.play().then(() => mediaSession(p)).catch(e => {
+      if (e.name === "NotAllowedError") $("pp-play").textContent = "▶ Ascolta"; else parlaTelefono(p);
+    });
+  } else parlaTelefono(p);
+  $("pp-play").textContent = "⏸ Pausa";
+  return apriPillola(i, false, true);
+}
+// ── Sessione di ascolto ──
+const SESS_QUANTO = [{ v: 5, t: "5 min" }, { v: 10, t: "10 min" }, { v: 15, t: "15 min" }, { v: 0, t: "Tutte" }];
+const SESS_COSA = [{ v: "nuove", t: "🆕 Nuove prima" }, { v: "ripasso", t: "🔁 Ripasso" }, { v: "stella", t: "⭐ Da approfondire" }];
+function impSessione() { return DB.sessione || (DB.sessione = { min: 10, cosa: "nuove", area: "" }); }
+// Nuove prima: mai ascoltate (in ordine), poi le altre dalla meno recente.
+// Ripasso: solo le già ascoltate, dalla meno recente. Da approfondire: quelle con la stella.
+function componiSessione() {
+  const imp = impSessione();
+  let pool = PILLOLE.map((p, i) => i).filter(i => !imp.area || PILLOLE[i].area === imp.area);
+  const t = i => pillolaAscoltata(PILLOLE[i].id) || 0;
+  if (imp.cosa === "ripasso") pool = pool.filter(t).sort((a, b) => t(a) - t(b));
+  else if (imp.cosa === "stella") pool = pool.filter(i => daApprofondire(PILLOLE[i].id));
+  else pool = pool.filter(i => !t(i)).concat(pool.filter(t).sort((a, b) => t(a) - t(b)));
+  if (!imp.min) return pool;
+  const coda = []; let sec = 0;
+  for (const i of pool) {
+    if (coda.length && sec + durata(PILLOLE[i]) > imp.min * 60) break;
+    coda.push(i); sec += durata(PILLOLE[i]);
+  }
+  return coda;
+}
+function chips(el, voci, attivo, scegli) {
+  el.innerHTML = "";
+  for (const x of voci) {
+    const b = document.createElement("button");
+    b.textContent = x.t; b.classList.toggle("on", x.v === attivo);
+    b.onclick = () => { scegli(x.v); salva(); renderSessione(); };
+    el.appendChild(b);
+  }
+}
+const mmss = sec => Math.floor(sec / 60) + ":" + String(Math.round(sec % 60)).padStart(2, "0");
+function renderSessione() {
+  const imp = impSessione();
+  chips($("ps-quanto"), SESS_QUANTO, imp.min, v => imp.min = v);
+  chips($("ps-cosa"), SESS_COSA, imp.cosa, v => imp.cosa = v);
+  const sel = $("ps-area");
+  sel.innerHTML = "<option value=''>Tutti gli argomenti</option>" + PILLOLE_AREE.map(a => "<option value='" + a.id + "'>" + esc(a.icona + " " + a.nome) + "</option>").join("");
+  sel.value = imp.area || "";
+  const coda = componiSessione(), sec = coda.reduce((t, i) => t + durata(PILLOLE[i]), 0);
+  $("ps-coda").innerHTML = coda.map(i => "<li>" + esc(PILLOLE[i].titolo) + " <span class='dur'>· " + mmss(durata(PILLOLE[i])) + "</span></li>").join("");
+  $("ps-coda").classList.toggle("hidden", !coda.length);
+  $("ps-avvia").disabled = !coda.length;
+  $("ps-info").textContent = coda.length ? coda.length + (coda.length === 1 ? " pillola" : " pillole") + " · circa " + Math.max(1, Math.round(sec / 60)) + " min"
+    : imp.cosa === "ripasso" ? "Nessuna pillola ancora ascoltata da ripassare." : imp.cosa === "stella" ? "Nessuna pillola segnata «Da approfondire» in questo argomento." : "Nessuna pillola in questo argomento.";
+}
+function avviaSessione() {
+  const coda = componiSessione();
+  if (!coda.length) return;
+  $("p-sess").classList.add("hidden"); $("p-riepilogo").classList.add("hidden");
+  PL.sess = { coda, pos: 0, fatte: [] };
+  suona(coda[0]);
+}
+function fineSessione() {
+  const ss = PL.sess;
+  fermaAscolto();
+  renderPillole();   // azzera PL.sess
+  const fatte = ss ? ss.fatte : [], box = $("p-riepilogo");
+  box.innerHTML = "<h2>" + (fatte.length === ss.coda.length ? "✔ Sessione completata" : "Sessione interrotta") + "</h2><div class='muted'>" +
+    (fatte.length ? "Hai ascoltato " + fatte.length + (fatte.length === 1 ? " pillola" : " pillole") + ". Tocca una pillola per leggerla e approfondirla." : "Nessuna pillola ascoltata fino alla fine.") + "</div>";
+  const l = document.createElement("div"); l.className = "riep-lista";
+  for (const i of fatte) l.appendChild(vocePillola(PILLOLE[i]));
+  box.appendChild(l);
+  box.classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+function vaiInSessione(d) {
+  const ss = PL.sess, k = ss.pos + d;
+  if (k < 0 || k >= ss.coda.length) return;
+  const suonava = inRiproduzione();
+  ss.pos = k;
+  if (suonava) suona(ss.coda[k]); else apriPillola(ss.coda[k]);
 }
 function mediaSession(p) {
   if (!("mediaSession" in navigator)) return;
   navigator.mediaSession.metadata = new MediaMetadata({ title: p.titolo, artist: "Pillole normative", album: (AREE[p.area] || {}).nome || "", artwork: [{ src: "icone/icon-512.png", sizes: "512x512", type: "image/png" }] });
-  navigator.mediaSession.setActionHandler("nexttrack", PL.i + 1 < PILLOLE.length ? () => { const c = PL.coda; apriPillola(PL.i + 1).then(() => { PL.coda = c; ascolta(); }); } : null);
-  navigator.mediaSession.setActionHandler("previoustrack", PL.i > 0 ? () => { const c = PL.coda; apriPillola(PL.i - 1).then(() => { PL.coda = c; ascolta(); }); } : null);
+  const ss = PL.sess;
+  if (ss) {
+    navigator.mediaSession.setActionHandler("nexttrack", ss.pos + 1 < ss.coda.length ? () => { ss.pos++; suona(ss.coda[ss.pos]); } : null);
+    navigator.mediaSession.setActionHandler("previoustrack", ss.pos > 0 ? () => { ss.pos--; suona(ss.coda[ss.pos]); } : null);
+  } else {
+    navigator.mediaSession.setActionHandler("nexttrack", PL.i + 1 < PILLOLE.length ? () => suona(PL.i + 1) : null);
+    navigator.mediaSession.setActionHandler("previoustrack", PL.i > 0 ? () => suona(PL.i - 1) : null);
+  }
 }
 // Trasmissione: Remote Playback API (Chrome su Android → Google Nest / Chromecast)
 function aggiornaCast() {
@@ -1362,16 +1493,22 @@ if (HAS_PILLOLE) {
   au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; };
   au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if ($("pp-play").textContent.startsWith("⏸")) parlaTelefono(PILLOLE[PL.i]); };
   if (au.remote) { au.remote.onconnect = () => { $("pp-stato").textContent = "📡 In trasmissione sull’altoparlante"; }; au.remote.ondisconnect = () => { $("pp-stato").textContent = ""; }; }
-  $("pp-play").onclick = () => { PL.coda = false; ascolta(); };
+  $("pp-play").onclick = ascolta;
   $("pp-cast").onclick = trasmetti;
   $("pp-star").onclick = toggleDaApprofondire;
   $("pp-prova").onclick = provaPillola;
   $("pp-vel").onchange = () => { $("pp-audio").playbackRate = +$("pp-vel").value; };
-  $("pp-prec").onclick = () => apriPillola(PL.i - 1);
-  $("pp-succ").onclick = () => apriPillola(PL.i + 1);
-  $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); renderPillole(); };
+  $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
+  $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
+  $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
   $("p-home").onclick = () => { fermaAscolto(); history.replaceState(null, "", location.pathname); renderHome(); };
-  $("p-tutte").onclick = () => { apriPillola(0).then(() => { PL.coda = true; ascolta(); }); };
+  $("p-sess-btn").onclick = () => {
+    const box = $("p-sess"), apri = box.classList.contains("hidden");
+    box.classList.toggle("hidden", !apri); $("p-riepilogo").classList.add("hidden");
+    if (apri) { renderSessione(); caricaDurate().then(renderSessione); }
+  };
+  $("ps-area").onchange = () => { impSessione().area = $("ps-area").value; salva(); renderSessione(); };
+  $("ps-avvia").onclick = avviaSessione;
   $("vai-pillole").onclick = renderPillole;
   if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
 } else $("vai-pillole").classList.add("hidden");
