@@ -61,20 +61,24 @@ for (const p of PILLOLE) {
     if (!NORME[f.id]) errore(p, `fonte senza testo in norme/: ${f.id}`);
     else usate.add(f.id);
   }
-  // citazioni letterali
+  // citazioni letterali (testo e approfondimento)
   const testi = norm(fonti.map(f => (NORME[f.id] || {}).testo).join(" \n "));
-  for (const m of String(p.testo).matchAll(/«([^»]{12,})»/g)) {
+  const appr = (p.approfondimento || []).map(a => [a.testo || "", ...((a.tabella || {}).righe || []).flat(), ...((a.tabella || {}).colonne || [])].join("\n")).join("\n\n");
+  for (const a of p.approfondimento || []) if (!a.titolo || !(a.testo || a.tabella)) errore(p, "sezione di approfondimento senza titolo o contenuto");
+  for (const m of (p.testo + "\n" + appr).matchAll(/«([^»]{12,})»/g)) {
     const pezzi = m[1].split(/\s*(?:\[\s*(?:\.\.\.|…)\s*\]|\.\.\.|…)\s*/).map(norm).filter(x => x.length >= 8);
     if (pezzi.some(x => !testi.includes(x.replace(/[.;,:]$/, "")))) errore(p, `citazione non trovata alla lettera nelle fonti: «${m[1].slice(0, 120)}»`);
   }
   // articoli citati nel testo
-  const [cit] = CIT.risolvi([piano(p.testo)], id => id in indice);
+  const [cit] = CIT.risolvi([piano(p.testo + "\n\n" + appr)], id => id in indice);
   const idFonti = new Set(fonti.map(f => f.id));
   for (const c of cit) {
     if (!c.id) continue;
     if (!(c.id in indice)) errore(p, `citato ${c.testo || c.id} ma il testo non è in norme/`);
     else if (!idFonti.has(c.id)) errore(p, `citato ${c.id} ma manca tra le fonti`);
   }
+  // domande del quiz collegate: devono esistere norme con quel prefisso
+  for (const q of p.quiz || []) if (!Object.keys(indice).some(id => id.startsWith(q))) errore(p, `quiz: nessuna norma ${q}`);
   // parlato
   for (const re of NO_PARLATO) {
     const m = p.parlato.match(re);

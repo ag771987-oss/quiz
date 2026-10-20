@@ -6,7 +6,11 @@
 //              abbreviazioni, numeri e sigle per esteso;
 //   fonti    — da dove viene il concetto: norma (normaId del testo in norme/), sentenza
 //              (id del file in norme/sentenze/), lezione (titolo, docente, data, materiale);
-//   collegate — altre pillole da leggere insieme.
+//   collegate — altre pillole da leggere insieme;
+//   quiz     — norme (anche prefissi: comprende le versioni storiche) delle domande del quiz da proporre
+//              in «Mettiti alla prova»;
+//   approfondimento — sezioni da aprire sul telefono: { titolo, icona, testo | tabella {colonne, righe},
+//              daCompletare }.
 // Dopo ogni modifica: node strumenti/verifica_pillole.js --scrivi
 const PILLOLE_AREE = [
   { id: "procedimento", nome: "Procedimento amministrativo", icona: "⚖️" },
@@ -25,9 +29,116 @@ const PILLOLE = [
     "parlato": "Il preavviso di rigetto. Nei procedimenti avviati su domanda di un privato, prima di dire di no l'amministrazione deve avvisare chi ha presentato la domanda. Lo prevede l'articolo dieci bis della legge duecentoquarantuno del millenovecentonovanta: il responsabile del procedimento comunica tempestivamente i motivi che ostano all'accoglimento della domanda. Da quel momento l'interessato ha dieci giorni per presentare osservazioni scritte, anche con documenti, e i termini del procedimento restano sospesi. Se poi l'amministrazione respinge comunque la domanda, deve spiegare perché non ha accolto le osservazioni, e può aggiungere solo i nuovi motivi che nascono da quelle osservazioni. Se il diniego viene annullato dal giudice, l'amministrazione non può tirare fuori per la prima volta motivi che già emergevano dall'istruttoria. Due limiti: la regola non vale per i concorsi e per i procedimenti previdenziali e assistenziali, e non si possono opporre al cittadino i ritardi o le inadempienze dell'amministrazione stessa. Infine, attenzione: se il preavviso manca, il provvedimento non si salva dimostrando in giudizio che non poteva essere diverso. L'articolo ventuno octies lo esclude espressamente.",
     "fonti": [
       { "tipo": "norma", "id": "l241_1990_art_10_bis" },
-      { "tipo": "norma", "id": "l241_1990_art_21_octies" }
+      { "tipo": "norma", "id": "l241_1990_art_10_bis_al_20190122" },
+      { "tipo": "norma", "id": "l241_1990_art_21_octies" },
+      { "tipo": "norma", "id": "l241_1990_art_7" }
     ],
-    "collegate": ["annullamento-ufficio"]
+    "collegate": ["annullamento-ufficio"],
+    "quiz": ["l241_1990_art_10_bis"],
+    "approfondimento": [
+      {
+        "titolo": "Schema",
+        "icona": "🧭",
+        "tabella": {
+          "colonne": [
+            "",
+            ""
+          ],
+          "righe": [
+            [
+              "Quando",
+              "Nei procedimenti ad istanza di parte, prima di un provvedimento negativo"
+            ],
+            [
+              "Chi lo invia",
+              "Il responsabile del procedimento o l’autorità competente"
+            ],
+            [
+              "Cosa contiene",
+              "I motivi che ostano all’accoglimento della domanda"
+            ],
+            [
+              "Cosa può fare l’istante",
+              "Osservazioni scritte, anche con documenti, entro **10 giorni** dal ricevimento"
+            ],
+            [
+              "Effetto sui termini",
+              "**Sospesi**: ripartono 10 giorni dopo le osservazioni o, se non arrivano, dalla scadenza dei 10 giorni"
+            ],
+            [
+              "Diniego finale",
+              "Spiega perché le osservazioni non sono accolte; può aggiungere solo motivi ulteriori nati dalle osservazioni"
+            ],
+            [
+              "Dopo l’annullamento del giudice",
+              "Vietato addurre per la prima volta motivi che già emergevano dall’istruttoria"
+            ],
+            [
+              "Non si applica",
+              "Procedure concorsuali; procedimenti previdenziali e assistenziali a istanza di parte gestiti dagli enti previdenziali"
+            ],
+            [
+              "Se manca",
+              "Il diniego è illegittimo e non si salva dimostrando in giudizio che non poteva essere diverso (art. 21-octies, co. 2, ultimo periodo)"
+            ]
+          ]
+        }
+      },
+      {
+        "titolo": "Caso pratico",
+        "icona": "🧩",
+        "testo": "Un bar chiede al Comune di occupare il marciapiede con tavolini. L’ufficio ritiene che manchi la planimetria e che i tavolini ostacolino il passaggio dei pedoni.\n\n1. **Prima di respingere** il Comune invia il preavviso con **entrambi** i motivi.\n2. Entro 10 giorni il bar manda la planimetria e un progetto ridotto, che lascia libero il passaggio.\n3. Il Comune può ancora dire di no, ma deve spiegare perché le osservazioni non bastano. Può aggiungere un motivo nuovo solo se nasce dalle osservazioni: ad esempio, il nuovo progetto occupa un passo carrabile.\n4. Non può invece aggiungere ora i canoni arretrati non pagati, se risultavano già dagli atti: doveva indicarli nel preavviso.\n5. Se il TAR annulla il diniego, riesaminando la domanda il Comune non può far valere per la prima volta quei canoni arretrati.\n6. Se la pratica è rimasta ferma per mesi in ufficio, il Comune non può respingerla perché “la stagione estiva è finita”: è un ritardo attribuibile all’amministrazione."
+      },
+      {
+        "titolo": "Avvio (art. 7) e preavviso (art. 10-bis) a confronto",
+        "icona": "⚖️",
+        "tabella": {
+          "colonne": [
+            "",
+            "Avvio",
+            "Preavviso"
+          ],
+          "righe": [
+            [
+              "Quando",
+              "All’inizio",
+              "Alla fine, prima del diniego"
+            ],
+            [
+              "Procedimenti",
+              "In generale, salvo «particolari esigenze di celerità»",
+              "Solo ad istanza di parte"
+            ],
+            [
+              "A chi",
+              "Destinatari degli effetti diretti, chi per legge deve intervenire, terzi individuabili che possono subire un pregiudizio",
+              "Gli istanti"
+            ],
+            [
+              "A cosa serve",
+              "Partecipare all’istruttoria fin dall’inizio",
+              "Contrastare i motivi del diniego prima che sia adottato"
+            ],
+            [
+              "Se manca, si salva provando in giudizio che il contenuto non poteva essere diverso?",
+              "Sì (art. 21-octies, co. 2, secondo periodo)",
+              "No (art. 21-octies, co. 2, ultimo periodo)"
+            ]
+          ]
+        }
+      },
+      {
+        "titolo": "Com’è cambiata la norma",
+        "icona": "🕰️",
+        "testo": "Il d.l. 76/2020 ha riscritto in parte l’art. 10-bis. Confronto tra il testo del 2019 e quello di oggi:\n\n- **Termini: da interruzione a sospensione.** Nel 2019 la comunicazione «interrompe i termini per concludere il procedimento», che ripartivano da zero. Oggi li **sospende**: alla ripresa si conta solo il tempo che restava.\n- **Motivazione del diniego.** Nel 2019 bastava che del mancato accoglimento delle osservazioni fosse «data ragione nella motivazione del provvedimento finale». Oggi si possono indicare «i soli motivi ostativi ulteriori che sono conseguenza delle osservazioni».\n- **Novità: dopo l’annullamento** l’amministrazione non può addurre per la prima volta motivi che già emergevano dall’istruttoria.\n- **Invariati:** i 10 giorni per le osservazioni, le esclusioni (concorsi, previdenza e assistenza) e il divieto di opporre inadempienze o ritardi dell’amministrazione."
+      },
+      {
+        "titolo": "Giurisprudenza",
+        "icona": "🏛️",
+        "daCompletare": true,
+        "testo": "Da completare con sentenze verificate. Temi da coprire:\n\n- quando il diniego si fonda su un motivo «nuovo» rispetto al preavviso;\n- se per gli atti vincolati valga il primo periodo dell’art. 21-octies, co. 2 (vizio non invalidante quando il contenuto non poteva essere diverso)."
+      }
+    ]
   },
   {
     "id": "annullamento-ufficio",
@@ -139,12 +250,14 @@ const PILLOLE_NORME = [
   "norme/dlgs33_2013/dlgs33_2013_art_5.js",
   "norme/l190_2012/l190_2012_art_1.js",
   "norme/l241_1990/l241_1990_art_10_bis.js",
+  "norme/l241_1990/l241_1990_art_10_bis_al_20190122.js",
   "norme/l241_1990/l241_1990_art_20.js",
   "norme/l241_1990/l241_1990_art_21_nonies.js",
   "norme/l241_1990/l241_1990_art_21_nonies_al_20190122.js",
   "norme/l241_1990/l241_1990_art_21_nonies_al_20230627.js",
   "norme/l241_1990/l241_1990_art_21_octies.js",
   "norme/l241_1990/l241_1990_art_22.js",
+  "norme/l241_1990/l241_1990_art_7.js",
   "norme/sentenze/cc_1984_170.js",
   "norme/sentenze/cc_2007_103.js",
   "norme/tue/tue_art_5.js"

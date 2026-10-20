@@ -173,6 +173,27 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .player .stato{font-size:.85rem;color:var(--ink3)}
 .fonti-pill{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
 .fonti-pill .lez{font-size:.88rem;color:var(--ink2);margin-top:6px}
+.appr{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+.appr h2{margin-bottom:8px}
+.appr details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;background:var(--card)}
+.appr details[open]{background:var(--bg)}
+.appr summary{font-weight:600;list-style-position:outside}
+.appr .corpo{margin-top:10px;font-size:.96rem;line-height:1.6}
+.appr .corpo ul,.appr .corpo ol{margin:0 0 6px;padding-left:22px}
+.appr .bozza{font-size:.75rem;font-weight:600;color:var(--warn);background:var(--warn-soft);border-radius:999px;padding:1px 8px;margin-left:6px}
+.schema{display:grid;grid-template-columns:minmax(96px,34%) 1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.schema>div{padding:8px 10px;border-bottom:1px solid var(--line);font-size:.92rem}
+.schema>div:nth-last-child(-n+2){border-bottom:none}
+.schema .k{font-weight:600;color:var(--ink2);background:var(--bg);overflow-wrap:anywhere;hyphens:auto}
+.conf{display:grid;gap:8px}
+.conf .riga{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:8px 10px}
+.conf .riga b{display:block;margin-bottom:4px;font-size:.92rem}
+.conf .col{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.9rem}
+.conf .col div{background:var(--bg);border-radius:8px;padding:6px 8px}
+.conf .col small{display:block;color:var(--ink3);font-size:.75rem;font-weight:600}
+.prova-btn{width:100%;margin-top:10px;text-align:left;border:1.5px solid var(--ok);background:var(--ok-soft);border-radius:12px;padding:12px 14px}
+.prova-btn b{display:block;color:var(--ok)}
+.prova-btn span{font-size:.88rem;color:var(--ink2)}
 .altoparlanti summary{font-weight:600}
 .altoparlanti ol{padding-left:20px;margin:6px 0}
 .altoparlanti code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:.84rem;overflow-wrap:anywhere}
@@ -359,7 +380,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
   </section>
 
   <section id="pillola" class="hidden">
-    <div class="topbar"><button class="btn small" id="pp-indietro">← Pillole</button><span class="tag" id="pp-area"></span><span class="spacer"></span><span class="muted" id="pp-pos"></span></div>
+    <div class="topbar"><button class="btn small" id="pp-indietro">← Pillole</button><span class="tag" id="pp-area"></span><span class="spacer"></span><button class="star" id="pp-star" title="Da approfondire">☆</button><span class="muted" id="pp-pos"></span></div>
     <div class="card">
       <h1 id="pp-titolo" style="margin-bottom:6px"></h1>
       <div class="muted" id="pp-sintesi" style="margin-bottom:10px"></div>
@@ -371,6 +392,8 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
       </div>
       <audio id="pp-audio" preload="none"></audio>
       <div class="pill-testo" id="pp-testo"></div>
+      <div class="appr hidden" id="pp-appr-box"><h2>📚 Approfondisci</h2><div id="pp-appr"></div></div>
+      <button class="prova-btn hidden" id="pp-prova"><b>✍️ Mettiti alla prova</b><span id="pp-prova-txt"></span></button>
       <div class="fonti-pill"><b>Fonti</b><div id="pp-fonti"></div></div>
       <div class="fonti-pill hidden" id="pp-coll-box"><b>Collegate</b><div id="pp-coll"></div></div>
       <div class="actions"><button class="btn" id="pp-prec">← Precedente</button><span class="spacer"></span><button class="btn" id="pp-succ">Successiva →</button></div>
@@ -592,7 +615,7 @@ function bindImpostazioni() {
 // ═════════════════════════════════════════════════════════════════════
 let S = null; // sessione corrente
 
-const NOMI_MODO = { allenamento: "🎯 Allenamento", ripasso: "🔁 Ripasso del giorno", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
+const NOMI_MODO = { pillola: "✍️ Mettiti alla prova", allenamento: "🎯 Allenamento", ripasso: "🔁 Ripasso del giorno", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
 
 function ordinaPerPriorita(pool) {
   // prima: sbagliate da ripassare, poi mai viste, poi le altre (le meno recenti prima); casuale a parità
@@ -851,7 +874,11 @@ function salta() {
   S.coda.push(d);
   renderDomanda();
 }
-function esci() { if (S && S.timer) clearInterval(S.timer); S = null; renderHome(); }
+function esci() {
+  const pillola = S && S.pillola;
+  if (S && S.timer) clearInterval(S.timer); S = null;
+  if (pillola !== undefined) apriPillola(pillola); else renderHome();
+}
 
 // ── Simulazione ──
 function tick() {
@@ -1028,6 +1055,7 @@ async function importaProgressi(file) {
     if (!mio || (st.t || 0) > (mio.t || 0)) { DB.stats[k] = st; n++; }
   }
   DB.preferiti = [...new Set([...(DB.preferiti || []), ...(P.preferiti || [])])];
+  DB.daApprofondire = [...new Set([...(DB.daApprofondire || []), ...(P.daApprofondire || [])])];
   DB.pillole = DB.pillole || {};
   for (const [id, t] of Object.entries(P.pillole || {})) DB.pillole[id] = Math.max(DB.pillole[id] || 0, t);
   for (const [id, lista] of Object.entries(P.prove || {})) {
@@ -1117,6 +1145,12 @@ function renderPillole() {
   const oggi = PILLOLE[pillolaDelGiorno()];
   $("p-oggi").innerHTML = "<div class='muted'>📅 Pillola del giorno</div>";
   $("p-oggi").appendChild(vocePillola(oggi, true));
+  if ((oggi.approfondimento || []).length) {
+    const b = document.createElement("button");
+    b.className = "btn small"; b.style.marginTop = "8px"; b.textContent = "📚 Approfondisci";
+    b.onclick = () => apriPillola(PILLOLE.indexOf(oggi), true);
+    $("p-oggi").appendChild(b);
+  }
   const aree = $("p-aree"); aree.innerHTML = "";
   for (const a of [{ id: null, nome: "Tutte", icona: "" }].concat(PILLOLE_AREE)) {
     const n = PILLOLE.filter(p => !a.id || p.area === a.id).length;
@@ -1127,8 +1161,16 @@ function renderPillole() {
     b.onclick = () => { PL.area = a.id; renderPillole(); };
     aree.appendChild(b);
   }
+  const nStella = PILLOLE.filter(p => daApprofondire(p.id)).length;
+  if (nStella) {
+    const b = document.createElement("button");
+    b.textContent = "⭐ Da approfondire · " + nStella;
+    b.classList.toggle("on", PL.area === "*");
+    b.onclick = () => { PL.area = "*"; renderPillole(); };
+    aree.appendChild(b);
+  } else if (PL.area === "*") PL.area = null;
   const lista = $("p-lista"); lista.innerHTML = "";
-  for (const p of PILLOLE.filter(p => !PL.area || p.area === PL.area)) lista.appendChild(vocePillola(p));
+  for (const p of PILLOLE.filter(p => !PL.area || (PL.area === "*" ? daApprofondire(p.id) : p.area === PL.area))) lista.appendChild(vocePillola(p));
   $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
   show("pillole");
 }
@@ -1136,7 +1178,7 @@ function vocePillola(p, grande) {
   const b = document.createElement("button");
   b.className = "pill-voce"; if (grande) b.style.cssText = "width:100%;border:none;padding:6px 0 0;background:none";
   const a = AREE[p.area] || {}, letta = pillolaLetta(p.id);
-  b.innerHTML = "<b>" + esc(p.titolo) + "</b><span>" + esc(p.sintesi) + "</span><span class='muted'>" + esc((a.icona || "") + " " + (a.nome || "")) + (letta ? " · ✔ letta " + giorniFa(letta) : "") + "</span>";
+  b.innerHTML = "<b>" + esc(p.titolo) + "</b><span>" + esc(p.sintesi) + "</span><span class='muted'>" + esc((a.icona || "") + " " + (a.nome || "")) + (letta ? " · ✔ letta " + giorniFa(letta) : "") + ((p.approfondimento || []).length ? " · 📚 approfondimento" : "") + (daApprofondire(p.id) ? " · ⭐" : "") + "</span>";
   b.onclick = () => apriPillola(PILLOLE.indexOf(p));
   return b;
 }
@@ -1147,16 +1189,18 @@ function istruzioniAltoparlanti() {
     "<p><b>Google Nest</b>: da Chrome su Android, nella pillola premi 📡 Trasmetti al Nest e scegli l’altoparlante (telefono e Nest sulla stessa rete Wi-Fi). In alternativa collega il Nest al telefono via Bluetooth dall’app Google Home. Le pillole sono anche un podcast: <code>" + esc(u) + "pillole/podcast.xml</code>.</p>" +
     "<p><b>Alexa</b>: ogni giorno una pillola nel notiziario («Alexa, dammi le notizie»), dopo aver creato una volta la skill «Notiziario Flash» gratuita con il feed <code>" + esc(u) + "pillole/alexa.json</code>. I passaggi sono in <code>pillole/LEGGIMI.md</code>.</p>";
 }
-async function apriPillola(i) {
+async function apriPillola(i, approfondisci) {
   fermaAscolto();
   PL.i = i;
   const p = PILLOLE[i], a = AREE[p.area] || {};
-  if (location.hash !== "#pillola=" + p.id) history.replaceState(null, "", "#pillola=" + p.id);
+  if (!location.hash.startsWith("#pillola=" + p.id)) history.replaceState(null, "", "#pillola=" + p.id);
   $("pp-area").textContent = (a.icona || "") + " " + (a.nome || "");
   $("pp-pos").textContent = (i + 1) + " / " + PILLOLE.length;
   $("pp-titolo").textContent = p.titolo;
   $("pp-sintesi").textContent = p.sintesi;
   $("pp-testo").innerHTML = mdPillola(p.testo);
+  renderApprofondimento(p);
+  aggiornaStellaPillola();
   $("pp-prec").disabled = i === 0; $("pp-succ").disabled = i === PILLOLE.length - 1;
   const coll = (p.collegate || []).map(id => PILLOLE.findIndex(x => x.id === id)).filter(j => j >= 0);
   $("pp-coll-box").classList.toggle("hidden", !coll.length);
@@ -1174,6 +1218,65 @@ async function apriPillola(i) {
   renderFonti(p);
   const ris = window.CITAZIONI ? CITAZIONI.risolvi([$("pp-testo").textContent], id => !!window.NORME[id])[0] : [];
   for (const c of ris.filter(c => c.id && window.NORME[c.id]).reverse()) avvolgi($("pp-testo"), c.start, c.end, c.id);
+  // nelle sezioni di approfondimento valgono le norme della pillola: «art. 7» è quello della stessa legge
+  for (const el of document.querySelectorAll("#pp-appr .corpo")) {
+    const r = CITAZIONI.risolvi([p.testo + "\n\n" + el.textContent], id => !!window.NORME[id])[0], off = p.testo.length + 2;
+    for (const c of r.filter(c => c.id && window.NORME[c.id] && c.start >= off).reverse()) avvolgi(el, c.start - off, c.end - off, c.id);
+  }
+  if (approfondisci) { const box = $("pp-appr-box"); const d = box.querySelector("details"); if (d) d.open = true; box.scrollIntoView({ behavior: "smooth" }); }
+}
+function renderApprofondimento(p) {
+  const box = $("pp-appr"), sez = p.approfondimento || [];
+  $("pp-appr-box").classList.toggle("hidden", !sez.length);
+  box.innerHTML = "";
+  for (const a of sez) {
+    const d = document.createElement("details");
+    d.innerHTML = "<summary>" + esc((a.icona ? a.icona + " " : "") + a.titolo) + (a.daCompletare ? "<span class='bozza'>da completare</span>" : "") + "</summary>";
+    const c = document.createElement("div"); c.className = "corpo";
+    if (a.testo) c.innerHTML = mdPillola(a.testo);
+    if (a.tabella) c.appendChild(tabellaAppr(a.tabella));
+    d.appendChild(c); box.appendChild(d);
+  }
+  const n = domandePillola(p).length;
+  $("pp-prova").classList.toggle("hidden", !n);
+  $("pp-prova-txt").textContent = n + (n === 1 ? " domanda" : " domande") + " delle prove SNA su questo argomento, con le spiegazioni.";
+}
+const cella = s => md(s).replace(/^<p>|<\/p>$/g, "");
+function tabellaAppr(t) {
+  const el = document.createElement("div");
+  if (t.colonne.length <= 2) {          // schema: voce → contenuto
+    el.className = "schema";
+    el.innerHTML = t.righe.map(r => "<div class='k'>" + cella(r[0]) + "</div><div>" + cella(r[1]) + "</div>").join("");
+  } else {                              // confronto: una scheda per riga, colonne affiancate
+    el.className = "conf";
+    el.innerHTML = t.righe.map(r => "<div class='riga'><b>" + cella(r[0]) + "</b><div class='col'>" +
+      r.slice(1).map((v, k) => "<div><small>" + esc(t.colonne[k + 1]) + "</small>" + cella(v) + "</div>").join("") + "</div></div>").join("");
+  }
+  return el;
+}
+// domande del quiz che citano le norme della pillola (anche nelle versioni storiche)
+function domandePillola(p) {
+  const q = p.quiz || [];
+  if (!q.length) return [];
+  return TUTTE.filter(d => ((d.aiuti && d.aiuti.riferimenti) || []).some(r => q.some(x => r.normaId.startsWith(x))));
+}
+function provaPillola() {
+  fermaAscolto();
+  const pool = domandePillola(PILLOLE[PL.i]);
+  if (!pool.length) return;
+  S = { modo: "pillola", pillola: PL.i, coda: ordinaPerPriorita(pool), i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
+  show("quiz"); renderDomanda();
+}
+const daApprofondire = id => (DB.daApprofondire || []).includes(id);
+function aggiornaStellaPillola() {
+  const on = daApprofondire(PILLOLE[PL.i].id);
+  $("pp-star").textContent = on ? "★" : "☆"; $("pp-star").classList.toggle("on", on);
+  $("pp-star").title = on ? "Togli da «Da approfondire»" : "Segna «Da approfondire»";
+}
+function toggleDaApprofondire() {
+  const id = PILLOLE[PL.i].id, l = DB.daApprofondire = DB.daApprofondire || [];
+  if (l.includes(id)) l.splice(l.indexOf(id), 1); else l.push(id);
+  salva(); aggiornaStellaPillola();
 }
 // md() più elenchi puntati e numerati
 function mdPillola(s) {
@@ -1261,6 +1364,8 @@ if (HAS_PILLOLE) {
   if (au.remote) { au.remote.onconnect = () => { $("pp-stato").textContent = "📡 In trasmissione sull’altoparlante"; }; au.remote.ondisconnect = () => { $("pp-stato").textContent = ""; }; }
   $("pp-play").onclick = () => { PL.coda = false; ascolta(); };
   $("pp-cast").onclick = trasmetti;
+  $("pp-star").onclick = toggleDaApprofondire;
+  $("pp-prova").onclick = provaPillola;
   $("pp-vel").onchange = () => { $("pp-audio").playbackRate = +$("pp-vel").value; };
   $("pp-prec").onclick = () => apriPillola(PL.i - 1);
   $("pp-succ").onclick = () => apriPillola(PL.i + 1);
@@ -1271,9 +1376,10 @@ if (HAS_PILLOLE) {
   if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
 } else $("vai-pillole").classList.add("hidden");
 function apriDaIndirizzo() {
-  const m = location.hash.match(/^#pillola=([\w-]+)/);
+  // #pillola=<id> apre la pillola; #pillola=<id>/approfondisci apre direttamente l'approfondimento
+  const m = location.hash.match(/^#pillola=([\w-]+)(\/approfondisci)?/);
   const i = m && HAS_PILLOLE ? PILLOLE.findIndex(p => p.id === m[1]) : -1;
-  if (i >= 0) { apriPillola(i); return true; }
+  if (i >= 0) { apriPillola(i, !!m[2]); return true; }
   return false;
 }
 window.addEventListener("hashchange", apriDaIndirizzo);
