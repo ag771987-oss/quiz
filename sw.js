@@ -1,8 +1,10 @@
 // Service worker: fa funzionare il quiz anche offline.
 // Pagina e dati (domande, risposte, spiegazioni, norme): prima la rete, così gli aggiornamenti arrivano
 // subito; se manca la connessione si usa la copia salvata. Figure e PDF: prima la copia salvata.
-const CACHE = "quiz-sna-v1";
-const BASE = ["./", "index.html", "domande/manifest.js", "manifest.webmanifest", "icone/icon-192.png"];
+// Audio delle pillole: sempre dalla rete (il lettore chiede pezzi del file); offline l'app usa la
+// voce del telefono.
+const CACHE = "quiz-sna-v2";
+const BASE = ["./", "index.html", "domande/manifest.js", "pillole/pillole.js", "norme/citazioni.js", "manifest.webmanifest", "icone/icon-192.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting()));
@@ -13,7 +15,7 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   const req = e.request;
-  if (req.method !== "GET" || new URL(req.url).origin !== location.origin) return;
+  if (req.method !== "GET" || new URL(req.url).origin !== location.origin || /\.mp3$/i.test(new URL(req.url).pathname)) return;
   const statico = /\.(png|jpe?g|gif|webp|pdf)$/i.test(new URL(req.url).pathname);
   e.respondWith(statico ? primaCache(req) : primaRete(req));
 });

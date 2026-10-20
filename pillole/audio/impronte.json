@@ -1,0 +1,34 @@
+{
+  "accesso-civico": {
+    "impronta": "b6fc6890a07fe20f5ece40293fcc4ddce16c5755404bddbf68e2134fa9b5a766",
+    "secondi": 62
+  },
+  "annullamento-ufficio": {
+    "impronta": "dc268de86ac1ca9c6fd55ff7c5183e3e0e4e9b5b0e6c6a50e280b539ec993bc5",
+    "secondi": 68
+  },
+  "competenze-ue": {
+    "impronta": "bd3cc5c8e980027cdfd9ad7cfcd86c0522606a7821e72792e63f72c26fbead9d",
+    "secondi": 65
+  },
+  "concorso-pubblico": {
+    "impronta": "bb7af9be869e1b6790f339ff6bd2c93de656417556792f87c21a5ffd2fec659e",
+    "secondi": 66
+  },
+  "politica-gestione": {
+    "impronta": "d4dfb5ff7e89870fac911e2cf8617df3d0422f9660a96cd396b498fddc3be356",
+    "secondi": 66
+  },
+  "preavviso-rigetto": {
+    "impronta": "7337ae1aa0627835d7b7f719b202d26bf0b19b5895fc18c78ce5395ff9749edb",
+    "secondi": 64
+  },
+  "primato-ue": {
+    "impronta": "b5ddf2ce3ba9dec3a52d06394b254b9287a12bac011903898336fb3aa7e2e2f8",
+    "secondi": 64
+  },
+  "rpct": {
+    "impronta": "8f4b52b9eee906c10c3ce34dd2af0746f5791809a2fc62bc0b2e9b9067da723c",
+    "secondi": 73
+  }
+}

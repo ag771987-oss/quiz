@@ -1,0 +1,23 @@
+# Ogni mattina aggiorna pillole/alexa.json con la pillola del giorno: Alexa ignora le voci
+# del notiziario più vecchie di 7 giorni. Si può avviare anche a mano (Actions → Run workflow).
+name: Pillola del giorno
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node strumenti/verifica_pillole.js --scrivi
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add pillole/
+          git diff --cached --quiet || (git commit -m "Pillola del giorno $(date -u +%F)" && git push)

@@ -154,6 +154,28 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .modal .meta{font-size:.84rem;margin:-6px 0 12px;overflow-wrap:anywhere}
 .zoom{max-width:96vw;max-height:92vh;background:#fff;border-radius:10px}
 .loading{padding:60px 0;text-align:center;color:var(--ink3)}
+
+/* Pillole normative */
+.mode.pillole{border-color:var(--hint);background:linear-gradient(135deg,var(--card),var(--hint-soft))}
+.aree{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.aree button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;font-size:.88rem}
+.aree button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill-lista{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.pill-voce{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 14px}
+.pill-voce:hover{border-color:var(--accent)}
+.pill-voce b{display:block;margin-bottom:3px}
+.pill-voce span{color:var(--ink2);font-size:.9rem}
+.pill-voce .muted{display:block;margin-top:6px;font-size:.8rem}
+.pill-oggi{border-left:4px solid var(--hint)}
+.pill-testo{font-size:1.02rem;line-height:1.65}
+.pill-testo ul,.pill-testo ol{margin:0 0 6px;padding-left:22px}
+.player{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:4px 0 14px}
+.player .stato{font-size:.85rem;color:var(--ink3)}
+.fonti-pill{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.fonti-pill .lez{font-size:.88rem;color:var(--ink2);margin-top:6px}
+.altoparlanti summary{font-weight:600}
+.altoparlanti ol{padding-left:20px;margin:6px 0}
+.altoparlanti code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:.84rem;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -181,6 +203,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
         <button class="mode" data-mode="preferiti"><span class="count" id="c-pref"></span><b>⭐ Preferiti</b><span>Le domande che hai segnato con la stella.</span></button>
         <button class="mode" data-mode="simulazione"><span class="count" id="c-sim"></span><b>⏱️ Simulazione mista</b><span>Domande pescate da tutte le prove scelte, a tempo, senza aiuti.</span></button>
         <button class="mode" id="vai-prove"><span class="count" id="c-prove"></span><b>📝 Prova d’esame</b><span>Una prova ufficiale intera, nell’ordine originale e a tempo, con lo storico dei tuoi punteggi.</span></button>
+        <button class="mode pillole" id="vai-pillole"><span class="count" id="c-pill"></span><b>🎧 Pillole normative</b><span id="c-pill-oggi">Concetti brevi spiegati, con norme e sentenze. Da leggere o ascoltare, anche su Alexa e Google Nest.</span></button>
       </div>
     </div>
 
@@ -322,6 +345,39 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
   </section>
 </div>
 
+<!-- ═════════ PILLOLE ═════════ -->
+<div class="wrap">
+  <section id="pillole" class="hidden">
+    <div class="topbar"><button class="btn small" id="p-home">← Home</button><b>🎧 Pillole normative</b><span class="spacer"></span><button class="btn small" id="p-tutte">▶ Ascolta tutte</button></div>
+    <div class="card pill-oggi" id="p-oggi"></div>
+    <div class="aree" id="p-aree"></div>
+    <div class="pill-lista" id="p-lista"></div>
+    <details class="card altoparlanti" id="p-altoparlanti" style="margin-top:14px">
+      <summary>🔊 Ascoltarle su Alexa e Google Nest</summary>
+      <div id="p-altoparlanti-testo" class="muted" style="margin-top:8px"></div>
+    </details>
+  </section>
+
+  <section id="pillola" class="hidden">
+    <div class="topbar"><button class="btn small" id="pp-indietro">← Pillole</button><span class="tag" id="pp-area"></span><span class="spacer"></span><span class="muted" id="pp-pos"></span></div>
+    <div class="card">
+      <h1 id="pp-titolo" style="margin-bottom:6px"></h1>
+      <div class="muted" id="pp-sintesi" style="margin-bottom:10px"></div>
+      <div class="player">
+        <button class="btn primary" id="pp-play">▶ Ascolta</button>
+        <button class="btn hidden" id="pp-cast" title="Trasmetti l’audio a un altoparlante Google Nest o Chromecast">📡 Trasmetti al Nest</button>
+        <select class="btn small" id="pp-vel" title="Velocità"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select>
+        <span class="stato" id="pp-stato"></span>
+      </div>
+      <audio id="pp-audio" preload="none"></audio>
+      <div class="pill-testo" id="pp-testo"></div>
+      <div class="fonti-pill"><b>Fonti</b><div id="pp-fonti"></div></div>
+      <div class="fonti-pill hidden" id="pp-coll-box"><b>Collegate</b><div id="pp-coll"></div></div>
+      <div class="actions"><button class="btn" id="pp-prec">← Precedente</button><span class="spacer"></span><button class="btn" id="pp-succ">Successiva →</button></div>
+    </div>
+  </section>
+</div>
+
 <div class="overlay hidden" id="norma-ov"><div class="modal">
   <div class="row"><b id="norma-titolo"></b><span class="spacer"></span><button class="btn small" id="norma-chiudi">Chiudi</button></div>
   <div class="muted" id="norma-fonte" style="margin:4px 0 12px"></div>
@@ -332,6 +388,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 
 <script src="domande/manifest.js"></script>
 <script src="norme/citazioni.js"></script>
+<script src="pillole/pillole.js"></script>
 <script>
 "use strict";
 // ═════════════════════════════════════════════════════════════════════
@@ -438,7 +495,7 @@ function mescola(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { co
 function materieAttive() { return DB.materie || [...new Set(TUTTE.map(d => d.materia))]; }
 function fontiAttive() { return DB.fonti || QUIZ_MANIFEST.map(p => p.id); }
 function poolBase() { const m = materieAttive(), f = fontiAttive(); return TUTTE.filter(d => m.includes(d.materia) && f.includes(d._pack)); }
-function show(id) { for (const s of ["loading", "home", "quiz", "risultato"]) $(s).classList.toggle("hidden", s !== id); window.scrollTo(0, 0); }
+function show(id) { for (const s of ["loading", "home", "quiz", "risultato", "pillole", "pillola"]) $(s).classList.toggle("hidden", s !== id); window.scrollTo(0, 0); }
 
 // ═════════════════════════════════════════════════════════════════════
 // Home
@@ -455,6 +512,7 @@ function renderHome() {
   document.querySelector('[data-mode="allenamento"]').disabled = !pool.length;
   document.querySelector('[data-mode="ripasso"]').disabled = !nErr;
   $("c-prove").textContent = QUIZ_MANIFEST.length;
+  if (HAS_PILLOLE) { $("c-pill").textContent = PILLOLE.length; $("c-pill-oggi").textContent = "Oggi: «" + PILLOLE[pillolaDelGiorno()].titolo + "». Concetti brevi con norme e sentenze, da leggere o ascoltare, anche su Alexa e Google Nest."; }
   document.querySelector('[data-mode="preferiti"]').disabled = !nPref;
   document.querySelector('[data-mode="simulazione"]').disabled = !pool.length;
 
@@ -970,6 +1028,8 @@ async function importaProgressi(file) {
     if (!mio || (st.t || 0) > (mio.t || 0)) { DB.stats[k] = st; n++; }
   }
   DB.preferiti = [...new Set([...(DB.preferiti || []), ...(P.preferiti || [])])];
+  DB.pillole = DB.pillole || {};
+  for (const [id, t] of Object.entries(P.pillole || {})) DB.pillole[id] = Math.max(DB.pillole[id] || 0, t);
   for (const [id, lista] of Object.entries(P.prove || {})) {
     const viste = new Set((DB.prove[id] || []).map(x => x.data));
     DB.prove[id] = [...(DB.prove[id] || []), ...lista.filter(x => !viste.has(x.data))].sort((a, b) => a.data - b.data);
@@ -1028,12 +1088,203 @@ document.addEventListener("keydown", e => {
   if ((e.key === "Enter" || e.key === "ArrowRight") && !$("q-next").classList.contains("hidden")) { e.preventDefault(); prossima(); }
 });
 
+// ═════════════════════════════════════════════════════════════════════
+// Pillole normative (pillole/pillole.js): lettura, ascolto, trasmissione al Nest
+// ═════════════════════════════════════════════════════════════════════
+const HAS_PILLOLE = typeof PILLOLE !== "undefined" && PILLOLE.length > 0;
+const AREE = HAS_PILLOLE ? Object.fromEntries(PILLOLE_AREE.map(a => [a.id, a])) : {};
+let PL = { area: null, i: 0, coda: false, normeCaricate: null };
+// Pillola del giorno: giorni dal 1/1/2026 (ora italiana) modulo il numero di pillole.
+// Stessa regola di strumenti/verifica_pillole.js, che prepara il notiziario di Alexa.
+function pillolaDelGiorno() {
+  const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Rome" }));
+  const n = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2026, 0, 1)) / GIORNO);
+  return ((n % PILLOLE.length) + PILLOLE.length) % PILLOLE.length;
+}
+const pillolaLetta = id => (DB.pillole || {})[id];
+function caricaNormePillole() {
+  return PL.normeCaricate || (PL.normeCaricate = Promise.all(PILLOLE_NORME.map(n => loadScript(n).catch(() => console.warn("Fonte non caricata", n)))));
+}
+function etichettaFonte(f) {
+  const n = window.NORME && window.NORME[f.id];
+  if (!n) return f.id;
+  if (f.tipo === "sentenza") return "⚖️ " + n.sigla;
+  const st = f.id.match(/_al_(\d{4})(\d{2})(\d{2})$/);
+  return "📜 " + etichettaNorma(n) + (st ? " (testo al " + st[3] + "/" + st[2] + "/" + st[1] + ")" : "");
+}
+function renderPillole() {
+  fermaAscolto();
+  const oggi = PILLOLE[pillolaDelGiorno()];
+  $("p-oggi").innerHTML = "<div class='muted'>📅 Pillola del giorno</div>";
+  $("p-oggi").appendChild(vocePillola(oggi, true));
+  const aree = $("p-aree"); aree.innerHTML = "";
+  for (const a of [{ id: null, nome: "Tutte", icona: "" }].concat(PILLOLE_AREE)) {
+    const n = PILLOLE.filter(p => !a.id || p.area === a.id).length;
+    if (!n) continue;
+    const b = document.createElement("button");
+    b.textContent = (a.icona ? a.icona + " " : "") + a.nome + " · " + n;
+    b.classList.toggle("on", PL.area === a.id);
+    b.onclick = () => { PL.area = a.id; renderPillole(); };
+    aree.appendChild(b);
+  }
+  const lista = $("p-lista"); lista.innerHTML = "";
+  for (const p of PILLOLE.filter(p => !PL.area || p.area === PL.area)) lista.appendChild(vocePillola(p));
+  $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
+  show("pillole");
+}
+function vocePillola(p, grande) {
+  const b = document.createElement("button");
+  b.className = "pill-voce"; if (grande) b.style.cssText = "width:100%;border:none;padding:6px 0 0;background:none";
+  const a = AREE[p.area] || {}, letta = pillolaLetta(p.id);
+  b.innerHTML = "<b>" + esc(p.titolo) + "</b><span>" + esc(p.sintesi) + "</span><span class='muted'>" + esc((a.icona || "") + " " + (a.nome || "")) + (letta ? " · ✔ letta " + giorniFa(letta) : "") + "</span>";
+  b.onclick = () => apriPillola(PILLOLE.indexOf(p));
+  return b;
+}
+function sito() { return location.href.replace(/[#?].*$/, "").replace(/index\.html$/, ""); }
+function istruzioniAltoparlanti() {
+  const u = sito();
+  return "<p><b>Sul telefono</b>: apri una pillola e premi ▶ Ascolta. Con «Ascolta tutte» le pillole si susseguono, anche a schermo spento.</p>" +
+    "<p><b>Google Nest</b>: da Chrome su Android, nella pillola premi 📡 Trasmetti al Nest e scegli l’altoparlante (telefono e Nest sulla stessa rete Wi-Fi). In alternativa collega il Nest al telefono via Bluetooth dall’app Google Home. Le pillole sono anche un podcast: <code>" + esc(u) + "pillole/podcast.xml</code>.</p>" +
+    "<p><b>Alexa</b>: ogni giorno una pillola nel notiziario («Alexa, dammi le notizie»), dopo aver creato una volta la skill «Notiziario Flash» gratuita con il feed <code>" + esc(u) + "pillole/alexa.json</code>. I passaggi sono in <code>pillole/LEGGIMI.md</code>.</p>";
+}
+async function apriPillola(i) {
+  fermaAscolto();
+  PL.i = i;
+  const p = PILLOLE[i], a = AREE[p.area] || {};
+  if (location.hash !== "#pillola=" + p.id) history.replaceState(null, "", "#pillola=" + p.id);
+  $("pp-area").textContent = (a.icona || "") + " " + (a.nome || "");
+  $("pp-pos").textContent = (i + 1) + " / " + PILLOLE.length;
+  $("pp-titolo").textContent = p.titolo;
+  $("pp-sintesi").textContent = p.sintesi;
+  $("pp-testo").innerHTML = mdPillola(p.testo);
+  $("pp-prec").disabled = i === 0; $("pp-succ").disabled = i === PILLOLE.length - 1;
+  const coll = (p.collegate || []).map(id => PILLOLE.findIndex(x => x.id === id)).filter(j => j >= 0);
+  $("pp-coll-box").classList.toggle("hidden", !coll.length);
+  $("pp-coll").innerHTML = "";
+  for (const j of coll) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + PILLOLE[j].titolo; b.onclick = () => apriPillola(j); $("pp-coll").appendChild(b); }
+  const au = $("pp-audio");
+  au.src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
+  au.playbackRate = +$("pp-vel").value;
+  aggiornaCast();
+  $("pp-stato").textContent = "";
+  DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
+  show("pillola");
+  await caricaNormePillole();
+  if (PL.i !== i) return;
+  renderFonti(p);
+  const ris = window.CITAZIONI ? CITAZIONI.risolvi([$("pp-testo").textContent], id => !!window.NORME[id])[0] : [];
+  for (const c of ris.filter(c => c.id && window.NORME[c.id]).reverse()) avvolgi($("pp-testo"), c.start, c.end, c.id);
+}
+// md() più elenchi puntati e numerati
+function mdPillola(s) {
+  return String(s || "").split(/\n{2,}/).map(blocco => {
+    const righe = blocco.split("\n"), elenco = righe.slice(1).length && righe.slice(1).every(r => /^(-|\d+\.)\s/.test(r));
+    const tutte = righe.every(r => /^(-|\d+\.)\s/.test(r));
+    if (!tutte && !elenco) return md(blocco);
+    const testa = tutte ? "" : md(righe[0]), voci = tutte ? righe : righe.slice(1), tag = /^\d/.test(voci[0]) ? "ol" : "ul";
+    return testa + "<" + tag + ">" + voci.map(r => "<li>" + md(r.replace(/^(-|\d+\.)\s/, "")).replace(/^<p>|<\/p>$/g, "") + "</li>").join("") + "</" + tag + ">";
+  }).join("");
+}
+function renderFonti(p) {
+  const box = $("pp-fonti"); box.innerHTML = "";
+  for (const f of p.fonti || []) {
+    if (f.tipo === "lezione") {
+      const d = document.createElement("div"); d.className = "lez";
+      d.textContent = "🎓 " + [f.titolo, f.docente, f.data].filter(Boolean).join(" · ");
+      box.appendChild(d); continue;
+    }
+    const b = document.createElement("button");
+    b.className = "norma-btn"; b.textContent = etichettaFonte(f);
+    b.onclick = () => apriNorma(f.id);
+    box.appendChild(b);
+  }
+}
+// ── Ascolto: file MP3 se c'è (e si può trasmettere), altrimenti la voce del telefono ──
+let voceTel = null;
+function fermaAscolto() {
+  const au = $("pp-audio"); if (!au.paused) au.pause();
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  voceTel = null;
+  $("pp-play").textContent = "▶ Ascolta";
+}
+function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
+async function ascolta() {
+  if (inRiproduzione()) { PL.coda = false; fermaAscolto(); $("pp-stato").textContent = ""; return; }
+  const au = $("pp-audio"), p = PILLOLE[PL.i];
+  $("pp-play").textContent = "⏸ Pausa";
+  if (au.src && au.dataset.ko !== au.src) {
+    try { au.playbackRate = +$("pp-vel").value; await au.play(); $("pp-stato").textContent = ""; mediaSession(p); return; }
+    catch (e) { if (e.name === "NotAllowedError") { $("pp-play").textContent = "▶ Ascolta"; return; } au.dataset.ko = au.src; }
+  }
+  parlaTelefono(p);
+}
+function parlaTelefono(p) {
+  if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; $("pp-play").textContent = "▶ Ascolta"; return; }
+  const u = new SpeechSynthesisUtterance(p.parlato);
+  u.lang = "it-IT"; u.rate = +$("pp-vel").value;
+  const v = speechSynthesis.getVoices().filter(v => /^it/i.test(v.lang));
+  if (v.length) u.voice = v.find(v => v.localService) || v[0];
+  u.onend = () => { if (voceTel !== u) return; voceTel = null; $("pp-play").textContent = "▶ Ascolta"; finePillola(); };
+  u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
+  voceTel = u;
+  $("pp-stato").textContent = "Voce del telefono (file audio non disponibile offline)";
+  speechSynthesis.speak(u);
+}
+function finePillola() {
+  $("pp-play").textContent = "▶ Ascolta";
+  if (PL.coda && PL.i + 1 < PILLOLE.length) apriPillola(PL.i + 1).then(ascolta);
+  else PL.coda = false;
+}
+function mediaSession(p) {
+  if (!("mediaSession" in navigator)) return;
+  navigator.mediaSession.metadata = new MediaMetadata({ title: p.titolo, artist: "Pillole normative", album: (AREE[p.area] || {}).nome || "", artwork: [{ src: "icone/icon-512.png", sizes: "512x512", type: "image/png" }] });
+  navigator.mediaSession.setActionHandler("nexttrack", PL.i + 1 < PILLOLE.length ? () => { const c = PL.coda; apriPillola(PL.i + 1).then(() => { PL.coda = c; ascolta(); }); } : null);
+  navigator.mediaSession.setActionHandler("previoustrack", PL.i > 0 ? () => { const c = PL.coda; apriPillola(PL.i - 1).then(() => { PL.coda = c; ascolta(); }); } : null);
+}
+// Trasmissione: Remote Playback API (Chrome su Android → Google Nest / Chromecast)
+function aggiornaCast() {
+  const au = $("pp-audio"), b = $("pp-cast");
+  if (!au.remote || !au.src) { b.classList.add("hidden"); return; }
+  au.remote.watchAvailability(ok => b.classList.toggle("hidden", !ok)).catch(() => b.classList.add("hidden"));
+}
+async function trasmetti() {
+  const au = $("pp-audio");
+  try { await au.remote.prompt(); }
+  catch (e) { if (e.name !== "NotAllowedError" && e.name !== "AbortError") $("pp-stato").textContent = "Nessun altoparlante trovato: telefono e Nest devono essere sulla stessa rete Wi-Fi."; }
+}
+if (HAS_PILLOLE) {
+  const au = $("pp-audio");
+  au.onended = finePillola;
+  au.onpause = () => { if (!voceTel) $("pp-play").textContent = "▶ Ascolta"; };
+  au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; };
+  au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if ($("pp-play").textContent.startsWith("⏸")) parlaTelefono(PILLOLE[PL.i]); };
+  if (au.remote) { au.remote.onconnect = () => { $("pp-stato").textContent = "📡 In trasmissione sull’altoparlante"; }; au.remote.ondisconnect = () => { $("pp-stato").textContent = ""; }; }
+  $("pp-play").onclick = () => { PL.coda = false; ascolta(); };
+  $("pp-cast").onclick = trasmetti;
+  $("pp-vel").onchange = () => { $("pp-audio").playbackRate = +$("pp-vel").value; };
+  $("pp-prec").onclick = () => apriPillola(PL.i - 1);
+  $("pp-succ").onclick = () => apriPillola(PL.i + 1);
+  $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); renderPillole(); };
+  $("p-home").onclick = () => { fermaAscolto(); history.replaceState(null, "", location.pathname); renderHome(); };
+  $("p-tutte").onclick = () => { apriPillola(0).then(() => { PL.coda = true; ascolta(); }); };
+  $("vai-pillole").onclick = renderPillole;
+  if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
+} else $("vai-pillole").classList.add("hidden");
+function apriDaIndirizzo() {
+  const m = location.hash.match(/^#pillola=([\w-]+)/);
+  const i = m && HAS_PILLOLE ? PILLOLE.findIndex(p => p.id === m[1]) : -1;
+  if (i >= 0) { apriPillola(i); return true; }
+  return false;
+}
+window.addEventListener("hashchange", apriDaIndirizzo);
+
 // ── Avvio ──
 (async function () {
   carica(); bindImpostazioni();
   await caricaTutto();
   if (!TUTTE.length) { $("loading").textContent = "Nessuna domanda caricata: controlla domande/manifest.js."; return; }
   renderHome();
+  apriDaIndirizzo();
 })();
 </script>
 </body>

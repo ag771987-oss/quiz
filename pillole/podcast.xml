@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Pillole normative</title>
+  <link>https://ag771987-oss.github.io/quiz/</link>
+  <atom:link href="https://ag771987-oss.github.io/quiz/pillole/podcast.xml" rel="self" type="application/rss+xml"/>
+  <language>it</language>
+  <description>Concetti di diritto amministrativo, costituzionale ed europeo spiegati in un paio di minuti, con le fonti: norme e sentenze. Per lo studio dei concorsi pubblici.</description>
+  <itunes:author>Quiz SNA</itunes:author>
+  <itunes:image href="https://ag771987-oss.github.io/quiz/icone/icon-512.png"/>
+  <itunes:category text="Education"/>
+  <itunes:explicit>false</itunes:explicit>
+  <item>
+    <title>Il preavviso di rigetto</title>
+    <description>Procedimento amministrativo. Prima di respingere un’istanza, l’amministrazione deve comunicarne i motivi e ascoltare l’interessato.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=preavviso-rigetto</link>
+    <guid isPermaLink="false">pillola-preavviso-rigetto</guid>
+    <pubDate>Thu, 01 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/preavviso-rigetto.mp3" length="512943" type="audio/mpeg"/>
+    <itunes:duration>64</itunes:duration>
+  </item>
+  <item>
+    <title>L’annullamento d’ufficio</title>
+    <description>Procedimento amministrativo. L’amministrazione può ritirare un proprio atto illegittimo, ma solo con un interesse pubblico e entro un termine ragionevole.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=annullamento-ufficio</link>
+    <guid isPermaLink="false">pillola-annullamento-ufficio</guid>
+    <pubDate>Fri, 02 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/annullamento-ufficio.mp3" length="545758" type="audio/mpeg"/>
+    <itunes:duration>68</itunes:duration>
+  </item>
+  <item>
+    <title>Indirizzo politico e gestione</title>
+    <description>Pubblico impiego e dirigenza. Gli organi politici fissano gli obiettivi, i dirigenti gestiscono e ne rispondono: la Corte costituzionale ha protetto questa distinzione.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=politica-gestione</link>
+    <guid isPermaLink="false">pillola-politica-gestione</guid>
+    <pubDate>Sat, 03 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/politica-gestione.mp3" length="531549" type="audio/mpeg"/>
+    <itunes:duration>66</itunes:duration>
+  </item>
+  <item>
+    <title>Si entra per concorso</title>
+    <description>Pubblico impiego e dirigenza. Il concorso è la regola costituzionale per accedere agli impieghi pubblici; la legge può prevedere eccezioni.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=concorso-pubblico</link>
+    <guid isPermaLink="false">pillola-concorso-pubblico</guid>
+    <pubDate>Sun, 04 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/concorso-pubblico.mp3" length="526734" type="audio/mpeg"/>
+    <itunes:duration>66</itunes:duration>
+  </item>
+  <item>
+    <title>Accesso civico semplice e generalizzato</title>
+    <description>Anticorruzione e trasparenza. Chiunque può chiedere i dati che dovevano essere pubblicati e, nei limiti di legge, ogni altro dato o documento della PA, senza motivare.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=accesso-civico</link>
+    <guid isPermaLink="false">pillola-accesso-civico</guid>
+    <pubDate>Mon, 05 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/accesso-civico.mp3" length="498540" type="audio/mpeg"/>
+    <itunes:duration>62</itunes:duration>
+  </item>
+  <item>
+    <title>Il Responsabile della prevenzione della corruzione</title>
+    <description>Anticorruzione e trasparenza. Ogni amministrazione individua un RPCT, che propone il piano anticorruzione, ne verifica l’attuazione e ne risponde.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=rpct</link>
+    <guid isPermaLink="false">pillola-rpct</guid>
+    <pubDate>Tue, 06 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/rpct.mp3" length="580680" type="audio/mpeg"/>
+    <itunes:duration>73</itunes:duration>
+  </item>
+  <item>
+    <title>Attribuzione, sussidiarietà, proporzionalità</title>
+    <description>Costituzione e Unione europea. L’Unione ha solo le competenze che le danno i trattati, e le esercita al livello e nella misura necessari.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=competenze-ue</link>
+    <guid isPermaLink="false">pillola-competenze-ue</guid>
+    <pubDate>Wed, 07 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/competenze-ue.mp3" length="523206" type="audio/mpeg"/>
+    <itunes:duration>65</itunes:duration>
+  </item>
+  <item>
+    <title>Diritto UE e legge italiana: la non applicazione</title>
+    <description>Costituzione e Unione europea. Se una legge interna contrasta con una norma UE direttamente applicabile, il giudice applica la norma UE e non applica la legge.</description>
+    <link>https://ag771987-oss.github.io/quiz/#pillola=primato-ue</link>
+    <guid isPermaLink="false">pillola-primato-ue</guid>
+    <pubDate>Thu, 08 Jan 2026 06:00:00 GMT</pubDate>
+    <enclosure url="https://ag771987-oss.github.io/quiz/pillole/audio/primato-ue.mp3" length="511715" type="audio/mpeg"/>
+    <itunes:duration>64</itunes:duration>
+  </item>
+</channel>
+</rss>
