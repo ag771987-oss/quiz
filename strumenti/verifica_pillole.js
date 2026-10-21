@@ -133,6 +133,20 @@ const feed = [];
 }
 fs.writeFileSync(path.join(ROOT, "pillole", "alexa.json"), JSON.stringify(feed, null, 2) + "\n");
 
+// Comando rapido per iPhone (pillole/COMANDO-RAPIDO.md): file di testo semplici da leggere con
+// «Pronuncia testo». oggi.txt cambia ogni giorno (.github/workflows/pillola-del-giorno.yml).
+const SIRI = path.join(ROOT, "pillole", "siri");
+fs.mkdirSync(SIRI, { recursive: true });
+const pausa = "\n\n";
+fs.writeFileSync(path.join(SIRI, "oggi.txt"), "Pillola del giorno. " + delGiorno(Date.now()).parlato + "\n");
+fs.writeFileSync(path.join(SIRI, "tutte.txt"), PILLOLE.map(p => p.parlato).join(pausa) + "\n");
+for (const a of PILLOLE_AREE) {
+  const lista = PILLOLE.filter(p => p.area === a.id);
+  if (lista.length) fs.writeFileSync(path.join(SIRI, a.id + ".txt"), a.nome + ". " + lista.length + (lista.length === 1 ? " pillola." : " pillole.") + pausa + lista.map(p => p.parlato).join(pausa) + "\n");
+}
+// per «Una a caso»: un elenco JSON di testi, da cui il comando rapido sceglie un elemento casuale
+fs.writeFileSync(path.join(SIRI, "elenco.json"), JSON.stringify(PILLOLE.map(p => p.parlato), null, 1) + "\n");
+
 // Skill Alexa personale (alexa-skill/): tutte le pillole con il testo da leggere. La skill lo
 // scarica dal sito, così le pillole nuove arrivano su Alexa senza toccare la skill.
 fs.writeFileSync(path.join(ROOT, "pillole", "alexa-skill.json"), JSON.stringify({
