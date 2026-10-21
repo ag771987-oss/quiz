@@ -156,7 +156,6 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .loading{padding:60px 0;text-align:center;color:var(--ink3)}
 
 /* Pillole normative */
-.mode.pillole{border-color:var(--hint);background:linear-gradient(135deg,var(--card),var(--hint-soft))}
 .aree{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .aree button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;font-size:.88rem}
 .aree button.on{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -194,6 +193,12 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .prova-btn{width:100%;margin-top:10px;text-align:left;border:1.5px solid var(--ok);background:var(--ok-soft);border-radius:12px;padding:12px 14px}
 .prova-btn b{display:block;color:var(--ok)}
 .prova-btn span{font-size:.88rem;color:var(--ink2)}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:4px;background:var(--card);border-top:1px solid var(--line);padding:6px max(12px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.tabbar button{flex:0 1 200px;border:none;background:none;border-radius:10px;padding:6px 10px;font-size:.82rem;font-weight:600;color:var(--ink3);display:flex;flex-direction:column;align-items:center;gap:1px}
+.tabbar button span{font-size:1.3rem;line-height:1.2;filter:grayscale(1);opacity:.7}
+.tabbar button.on{color:var(--accent);background:var(--accent-soft)}
+.tabbar button.on span{filter:none;opacity:1}
+body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 .sessione{border-color:var(--accent)}
 .sess-riga{display:grid;gap:4px;margin-bottom:10px}
 .sess-riga .aree{margin-bottom:0}
@@ -231,7 +236,6 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
         <button class="mode" data-mode="preferiti"><span class="count" id="c-pref"></span><b>⭐ Preferiti</b><span>Le domande che hai segnato con la stella.</span></button>
         <button class="mode" data-mode="simulazione"><span class="count" id="c-sim"></span><b>⏱️ Simulazione mista</b><span>Domande pescate da tutte le prove scelte, a tempo, senza aiuti.</span></button>
         <button class="mode" id="vai-prove"><span class="count" id="c-prove"></span><b>📝 Prova d’esame</b><span>Una prova ufficiale intera, nell’ordine originale e a tempo, con lo storico dei tuoi punteggi.</span></button>
-        <button class="mode pillole" id="vai-pillole"><span class="count" id="c-pill"></span><b>🎧 Pillole normative</b><span id="c-pill-oggi">Concetti brevi spiegati, con norme e sentenze. Da leggere o ascoltare, anche su Alexa e Google Nest.</span></button>
       </div>
     </div>
 
@@ -376,7 +380,10 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 <!-- ═════════ PILLOLE ═════════ -->
 <div class="wrap">
   <section id="pillole" class="hidden">
-    <div class="topbar"><button class="btn small" id="p-home">← Home</button><b>🎧 Pillole normative</b><span class="spacer"></span><button class="btn small primary" id="p-sess-btn">🎧 Sessione di ascolto</button></div>
+    <div class="row" style="margin-bottom:12px">
+      <div><h1>Pillole normative</h1><div class="muted" id="p-sub"></div></div>
+      <span class="spacer"></span><button class="btn primary" id="p-sess-btn">🎧 Sessione di ascolto</button>
+    </div>
     <div class="card hidden" id="p-riepilogo"></div>
     <div class="card hidden sessione" id="p-sess">
       <h2>🎧 Sessione di ascolto</h2>
@@ -417,6 +424,11 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
     </div>
   </section>
 </div>
+
+<nav class="tabbar hidden" id="tabbar" aria-label="Sezioni">
+  <button id="tab-quiz" data-tab="quiz"><span>📝</span>Quiz</button>
+  <button id="tab-pillole" data-tab="pillole"><span>🎧</span>Pillole</button>
+</nav>
 
 <div class="overlay hidden" id="norma-ov"><div class="modal">
   <div class="row"><b id="norma-titolo"></b><span class="spacer"></span><button class="btn small" id="norma-chiudi">Chiudi</button></div>
@@ -535,7 +547,15 @@ function mescola(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { co
 function materieAttive() { return DB.materie || [...new Set(TUTTE.map(d => d.materia))]; }
 function fontiAttive() { return DB.fonti || QUIZ_MANIFEST.map(p => p.id); }
 function poolBase() { const m = materieAttive(), f = fontiAttive(); return TUTTE.filter(d => m.includes(d.materia) && f.includes(d._pack)); }
-function show(id) { for (const s of ["loading", "home", "quiz", "risultato", "pillole", "pillola"]) $(s).classList.toggle("hidden", s !== id); window.scrollTo(0, 0); }
+function show(id) {
+  for (const s of ["loading", "home", "quiz", "risultato", "pillole", "pillola"]) $(s).classList.toggle("hidden", s !== id);
+  // barra delle sezioni (Quiz / Pillole) solo sulle due pagine principali
+  const tab = id === "home" ? "quiz" : id === "pillole" ? "pillole" : null;
+  $("tabbar").classList.toggle("hidden", !tab || !HAS_PILLOLE);
+  document.body.classList.toggle("con-tabbar", !!tab && HAS_PILLOLE);
+  for (const b of document.querySelectorAll("#tabbar button")) b.classList.toggle("on", b.dataset.tab === tab);
+  window.scrollTo(0, 0);
+}
 
 // ═════════════════════════════════════════════════════════════════════
 // Home
@@ -552,7 +572,6 @@ function renderHome() {
   document.querySelector('[data-mode="allenamento"]').disabled = !pool.length;
   document.querySelector('[data-mode="ripasso"]').disabled = !nErr;
   $("c-prove").textContent = QUIZ_MANIFEST.length;
-  if (HAS_PILLOLE) { $("c-pill").textContent = PILLOLE.length; $("c-pill-oggi").textContent = "Oggi: «" + PILLOLE[pillolaDelGiorno()].titolo + "». Concetti brevi con norme e sentenze, da leggere o ascoltare, anche su Alexa e Google Nest."; }
   document.querySelector('[data-mode="preferiti"]').disabled = !nPref;
   document.querySelector('[data-mode="simulazione"]').disabled = !pool.length;
 
@@ -1170,6 +1189,7 @@ function etichettaFonte(f) {
 }
 function renderPillole() {
   fermaAscolto();
+  if (DB.tab !== "pillole") { DB.tab = "pillole"; salva(); }
   PL.sess = null;
   const oggi = PILLOLE[pillolaDelGiorno()];
   $("p-oggi").innerHTML = "<div class='muted'>📅 Pillola del giorno</div>";
@@ -1201,6 +1221,8 @@ function renderPillole() {
   const lista = $("p-lista"); lista.innerHTML = "";
   for (const p of PILLOLE.filter(p => !PL.area || (PL.area === "*" ? daApprofondire(p.id) : p.area === PL.area))) lista.appendChild(vocePillola(p));
   $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
+  const nAsc = PILLOLE.filter(p => pillolaAscoltata(p.id)).length;
+  $("p-sub").textContent = PILLOLE.length + " pillole · " + nAsc + " ascoltate";
   show("pillole");
 }
 function vocePillola(p, grande) {
@@ -1521,7 +1543,8 @@ if (HAS_PILLOLE) {
   $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
   $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
   $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
-  $("p-home").onclick = () => { fermaAscolto(); history.replaceState(null, "", location.pathname); renderHome(); };
+  $("tab-quiz").onclick = () => { fermaAscolto(); DB.tab = "quiz"; salva(); history.replaceState(null, "", location.pathname); renderHome(); };
+  $("tab-pillole").onclick = renderPillole;
   $("p-sess-btn").onclick = () => {
     const box = $("p-sess"), apri = box.classList.contains("hidden");
     box.classList.toggle("hidden", !apri); $("p-riepilogo").classList.add("hidden");
@@ -1529,9 +1552,8 @@ if (HAS_PILLOLE) {
   };
   $("ps-area").onchange = () => { impSessione().area = $("ps-area").value; salva(); renderSessione(); };
   $("ps-avvia").onclick = avviaSessione;
-  $("vai-pillole").onclick = renderPillole;
   if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
-} else $("vai-pillole").classList.add("hidden");
+}
 function apriDaIndirizzo() {
   // #pillola=<id> apre la pillola; #pillola=<id>/approfondisci apre direttamente l'approfondimento
   const m = location.hash.match(/^#pillola=([\w-]+)(\/approfondisci)?/);
@@ -1546,8 +1568,8 @@ window.addEventListener("hashchange", apriDaIndirizzo);
   carica(); bindImpostazioni();
   await caricaTutto();
   if (!TUTTE.length) { $("loading").textContent = "Nessuna domanda caricata: controlla domande/manifest.js."; return; }
-  renderHome();
-  apriDaIndirizzo();
+  renderHome();   // all'avvio si riapre l'ultima sezione usata
+  if (!apriDaIndirizzo() && HAS_PILLOLE && DB.tab === "pillole") renderPillole();
 })();
 </script>
 </body>
