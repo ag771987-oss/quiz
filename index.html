@@ -1286,8 +1286,8 @@ function sito() { return location.href.replace(/[#?].*$/, "").replace(/index\.ht
 function istruzioniAltoparlanti() {
   const u = sito();
   return "<p><b>Sul telefono</b>: apri una pillola e premi ▶ Ascolta. Con «🎧 Sessione di ascolto» scegli quanto tempo e quali pillole: si susseguono anche a schermo spento.</p>" +
-    "<p><b>Google Nest</b>: da Chrome su Android, nella pillola premi 📡 Trasmetti al Nest e scegli l’altoparlante (telefono e Nest sulla stessa rete Wi-Fi). In alternativa collega il Nest al telefono via Bluetooth dall’app Google Home. Le pillole sono anche un podcast: <code>" + esc(u) + "pillole/podcast.xml</code>.</p>" +
-    "<p><b>Alexa</b>: ogni giorno una pillola nel notiziario («Alexa, dammi le notizie»), dopo aver creato una volta la skill «Notiziario Flash» gratuita con il feed <code>" + esc(u) + "pillole/alexa.json</code>. I passaggi sono in <code>pillole/LEGGIMI.md</code>.</p>";
+    "<p><b>Alexa</b>: con la skill personale «Pillole normative» dici «Alexa, apri pillole normative», poi «la pillola del giorno», «tre pillole sul procedimento» o «ripasso». Si installa una volta dal computer: i passaggi sono in <code>alexa-skill/LEGGIMI.md</code>. In più, ogni giorno una pillola nel notiziario («Alexa, dammi le notizie») con il feed <code>" + esc(u) + "pillole/alexa.json</code>.</p>" +
+    "<p><b>Google Nest</b>: dall’iPhone il modo più semplice è il Bluetooth. Abbina il Nest una volta dall’app Google Home (Impostazioni del dispositivo → Audio → Dispositivi Bluetooth abbinati), poi di’ «Ok Google, connetti Bluetooth» e avvia l’ascolto qui. Su Android c’è anche il pulsante 📡 Trasmetti al Nest. Le pillole sono anche un podcast da aggiungere a YouTube Music: <code>" + esc(u) + "pillole/podcast.xml</code>.</p>";
 }
 // continua: la pillola è già in riproduzione (sessione), non fermare l'audio
 async function apriPillola(i, approfondisci, continua) {

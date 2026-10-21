@@ -7,7 +7,7 @@
 //     e sta nel limite di Alexa (4500 caratteri).
 // Uso: node strumenti/verifica_pillole.js           → solo controlli
 //      node strumenti/verifica_pillole.js --scrivi  → aggiorna PILLOLE_NORME in pillole.js,
-//                                                     pillole/alexa.json e pillole/podcast.xml
+//                                                     pillole/alexa.json, alexa-skill.json e podcast.xml
 //      node strumenti/verifica_pillole.js --json    → stampa id e parlato (per genera_audio.py)
 // L'indirizzo pubblico si ricava dal remote git (https://<utente>.github.io/<repository>/);
 // si può forzare con SITO=https://.../ .
@@ -132,6 +132,13 @@ const feed = [];
   feed.push(voce);
 }
 fs.writeFileSync(path.join(ROOT, "pillole", "alexa.json"), JSON.stringify(feed, null, 2) + "\n");
+
+// Skill Alexa personale (alexa-skill/): tutte le pillole con il testo da leggere. La skill lo
+// scarica dal sito, così le pillole nuove arrivano su Alexa senza toccare la skill.
+fs.writeFileSync(path.join(ROOT, "pillole", "alexa-skill.json"), JSON.stringify({
+  aree: PILLOLE_AREE.map(a => ({ id: a.id, nome: a.nome })),
+  pillole: PILLOLE.map(p => ({ id: p.id, area: p.area, titolo: p.titolo, parlato: p.parlato }))
+}, null, 1) + "\n");
 
 // Podcast (RSS 2.0 con estensioni iTunes): un episodio per ogni pillola con file audio.
 const x = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

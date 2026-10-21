@@ -1,0 +1,103 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "pillole normative",
+      "intents": [
+        {
+          "name": "PillolaDelGiornoIntent",
+          "slots": [],
+          "samples": [
+            "la pillola del giorno",
+            "pillola del giorno",
+            "la pillola di oggi",
+            "cosa c'è oggi",
+            "qual è la pillola di oggi",
+            "leggimi la pillola del giorno"
+          ]
+        },
+        {
+          "name": "PilloleIntent",
+          "slots": [
+            { "name": "numero", "type": "AMAZON.NUMBER" },
+            { "name": "argomento", "type": "TipoArgomento" }
+          ],
+          "samples": [
+            "una pillola",
+            "una pillola nuova",
+            "dammi una pillola",
+            "leggimi una pillola",
+            "un'altra pillola",
+            "{numero} pillole",
+            "dammi {numero} pillole",
+            "leggimi {numero} pillole",
+            "{numero} pillole nuove",
+            "una pillola su {argomento}",
+            "una pillola sul {argomento}",
+            "una pillola sulla {argomento}",
+            "una pillola di {argomento}",
+            "pillole su {argomento}",
+            "pillole sul {argomento}",
+            "pillole sulla {argomento}",
+            "pillole di {argomento}",
+            "{numero} pillole su {argomento}",
+            "{numero} pillole sul {argomento}",
+            "{numero} pillole sulla {argomento}",
+            "{numero} pillole di {argomento}",
+            "{argomento}"
+          ]
+        },
+        {
+          "name": "RipassoIntent",
+          "slots": [
+            { "name": "numero", "type": "AMAZON.NUMBER" },
+            { "name": "argomento", "type": "TipoArgomento" }
+          ],
+          "samples": [
+            "ripasso",
+            "fammi ripassare",
+            "voglio ripassare",
+            "ripassiamo",
+            "ripasso di {numero} pillole",
+            "ripassa {numero} pillole",
+            "ripasso su {argomento}",
+            "ripasso sul {argomento}",
+            "ripasso sulla {argomento}",
+            "ripasso di {argomento}",
+            "fammi ripassare {argomento}"
+          ]
+        },
+        {
+          "name": "ArgomentiIntent",
+          "slots": [],
+          "samples": [
+            "quali argomenti ci sono",
+            "che argomenti ci sono",
+            "elenca gli argomenti",
+            "gli argomenti",
+            "quali sono gli argomenti"
+          ]
+        },
+        { "name": "AMAZON.YesIntent", "samples": ["continua", "vai avanti", "certo", "va bene"] },
+        { "name": "AMAZON.NoIntent", "samples": ["basta così", "no grazie"] },
+        { "name": "AMAZON.NextIntent", "samples": ["la prossima", "prossima", "avanti", "successiva", "la successiva"] },
+        { "name": "AMAZON.RepeatIntent", "samples": ["ripeti", "ripetila", "puoi ripetere"] },
+        { "name": "AMAZON.HelpIntent", "samples": [] },
+        { "name": "AMAZON.StopIntent", "samples": [] },
+        { "name": "AMAZON.CancelIntent", "samples": [] },
+        { "name": "AMAZON.NavigateHomeIntent", "samples": [] },
+        { "name": "AMAZON.FallbackIntent", "samples": [] }
+      ],
+      "types": [
+        {
+          "name": "TipoArgomento",
+          "values": [
+            { "id": "procedimento", "name": { "value": "procedimento amministrativo", "synonyms": ["procedimento", "legge duecentoquarantuno", "duecentoquarantuno", "atti amministrativi", "provvedimento"] } },
+            { "id": "impiego", "name": { "value": "pubblico impiego", "synonyms": ["impiego", "dirigenza", "dirigenti", "dipendenti pubblici", "concorsi", "lavoro pubblico"] } },
+            { "id": "anticorruzione", "name": { "value": "anticorruzione", "synonyms": ["corruzione", "trasparenza", "anticorruzione e trasparenza", "accesso civico"] } },
+            { "id": "costituzione_ue", "name": { "value": "costituzione e unione europea", "synonyms": ["costituzione", "unione europea", "europa", "diritto europeo", "diritto dell'unione"] } }
+          ]
+        }
+      ]
+    }
+  }
+}

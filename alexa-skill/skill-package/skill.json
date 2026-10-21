@@ -1,0 +1,33 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "it-IT": {
+          "name": "Pillole normative",
+          "summary": "Concetti di diritto amministrativo, costituzionale ed europeo spiegati in un minuto.",
+          "description": "Skill personale del Quiz SNA: legge le pillole normative, la pillola del giorno, più pillole di fila, per argomento o in ripasso.",
+          "examplePhrases": [
+            "Alexa, apri pillole normative",
+            "Alexa, chiedi a pillole normative la pillola del giorno",
+            "Alexa, chiedi a pillole normative tre pillole sul procedimento"
+          ],
+          "keywords": ["diritto", "concorsi", "pillole"]
+        }
+      },
+      "isAvailableWorldwide": false,
+      "distributionCountries": ["IT"],
+      "testingInstructions": "Skill personale, non pubblicata.",
+      "category": "EDUCATION_AND_REFERENCE"
+    },
+    "apis": { "custom": {} },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "locales": { "it-IT": {} }
+    }
+  }
+}
