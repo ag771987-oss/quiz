@@ -88,7 +88,11 @@ for (const p of PILLOLE) {
 }
 console.log(`Pillole: ${PILLOLE.length}; fonti con testo: ${usate.size}; errori: ${errori}`);
 if (errori) process.exit(1);
-if (!scrivi) process.exit(0);
+if (!scrivi) {
+  try { execSync("node " + JSON.stringify(path.join(__dirname, "indice_norme.js")) + " --controlla", { stdio: "inherit" }); } catch (e) { process.exit(1); }
+  process.exit(0);
+}
+execSync("node " + JSON.stringify(path.join(__dirname, "indice_norme.js")), { stdio: "inherit" });
 
 // ── File generati ──
 const listaNorme = [...usate].map(id => indice[id]).sort();

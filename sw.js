@@ -3,8 +3,8 @@
 // subito; se manca la connessione si usa la copia salvata. Figure e PDF: prima la copia salvata.
 // Audio delle pillole: sempre dalla rete (il lettore chiede pezzi del file); offline l'app usa la
 // voce del telefono.
-const CACHE = "quiz-sna-v2";
-const BASE = ["./", "index.html", "domande/manifest.js", "pillole/pillole.js", "norme/citazioni.js", "manifest.webmanifest", "icone/icon-192.png"];
+const CACHE = "quiz-sna-v3";
+const BASE = ["./", "index.html", "domande/manifest.js", "pillole/pillole.js", "norme/citazioni.js", "norme/indice.js", "manifest.webmanifest", "icone/icon-192.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(BASE)).then(() => self.skipWaiting()));

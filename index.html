@@ -199,6 +199,25 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .tabbar button.on{color:var(--accent);background:var(--accent-soft)}
 .tabbar button.on span{filter:none;opacity:1}
 body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+.norme-trattate{display:grid;gap:2px;margin:-2px 0 12px}
+.cerca{width:100%;font:inherit;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.cerca:focus{outline:none;border-color:var(--accent)}
+.cerca-testo{display:flex;gap:8px;align-items:center;margin:8px 0 12px;flex-wrap:wrap}
+details.atto{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;padding:10px 14px}
+details.atto summary{cursor:pointer}
+.art-lista{display:grid;margin-top:8px}
+.art{display:flex;gap:10px;justify-content:space-between;align-items:baseline;text-align:left;border:none;border-top:1px solid var(--line);background:none;padding:9px 2px;font-size:.93rem}
+.art:hover{color:var(--accent)}
+.badge-n{display:flex;gap:6px;flex-shrink:0;font-size:.78rem;color:var(--ink3)}
+.badge-n i{font-style:normal;white-space:nowrap}
+.norma-testo{line-height:1.65}
+.norma-testo p{margin:0 0 9px}
+.norma-testo .lt{padding-left:18px}
+.norma-testo .cm{color:var(--accent)}
+.norma-testo del,#nn-nota del{background:var(--ko-soft);color:var(--ko);margin-right:3px}
+/* le sezioni stanno in più contenitori: quelli senza nulla di visibile non occupano spazio */
+.wrap:not(:has(> :not(.hidden))){display:none}
+.norma-testo ins,#nn-nota ins{background:var(--ok-soft);color:var(--ok);text-decoration:none;font-weight:600}
 .sessione{border-color:var(--accent)}
 .sess-riga{display:grid;gap:4px;margin-bottom:10px}
 .sess-riga .aree{margin-bottom:0}
@@ -407,6 +426,7 @@ body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
     <div class="card">
       <h1 id="pp-titolo" style="margin-bottom:6px"></h1>
       <div class="muted" id="pp-sintesi" style="margin-bottom:10px"></div>
+      <div class="norme-trattate hidden" id="pp-norme-box"><span class="muted">📜 Norme trattate</span><div id="pp-norme"></div></div>
       <div class="player">
         <button class="btn primary" id="pp-play">▶ Ascolta</button>
         <button class="btn hidden" id="pp-cast" title="Trasmetti l’audio a un altoparlante Google Nest o Chromecast">📡 Trasmetti al Nest</button>
@@ -418,9 +438,32 @@ body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
       <div class="pill-testo" id="pp-testo"></div>
       <div class="appr hidden" id="pp-appr-box"><h2>📚 Approfondisci</h2><div id="pp-appr"></div></div>
       <button class="prova-btn hidden" id="pp-prova"><b>✍️ Mettiti alla prova</b><span id="pp-prova-txt"></span></button>
-      <div class="fonti-pill"><b>Fonti</b><div id="pp-fonti"></div></div>
+      <div class="fonti-pill hidden" id="pp-fonti-box"><b>Lezioni</b><div id="pp-fonti"></div></div>
       <div class="fonti-pill hidden" id="pp-coll-box"><b>Collegate</b><div id="pp-coll"></div></div>
       <div class="actions"><button class="btn" id="pp-prec">← Precedente</button><span class="spacer"></span><button class="btn" id="pp-succ">Successiva →</button></div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section id="norme" class="hidden">
+    <div class="row" style="margin-bottom:12px"><div><h1>Norme</h1><div class="muted" id="n-sub"></div></div></div>
+    <input type="search" class="cerca" id="n-cerca" placeholder="Cerca: 10-bis, art. 97, accesso civico…" autocomplete="off">
+    <label class="muted cerca-testo"><input type="checkbox" id="n-testo"> Cerca anche nel testo degli articoli <span id="n-stato"></span></label>
+    <div id="n-lista"></div>
+  </section>
+
+  <section id="norma" class="hidden">
+    <div class="topbar"><button class="btn small" id="nn-indietro">← Indietro</button><span class="tag" id="nn-sigla"></span></div>
+    <div class="card">
+      <h1 id="nn-titolo" style="margin-bottom:4px"></h1>
+      <div class="muted" id="nn-fonte" style="margin-bottom:12px"></div>
+      <div class="aree" id="nn-versioni"></div>
+      <div class="box warn hidden" id="nn-nota" style="margin:0 0 12px"></div>
+      <div class="norma-testo" id="nn-testo"></div>
+      <div class="muted meta" id="nn-meta" style="margin-top:12px;overflow-wrap:anywhere"></div>
+      <div class="fonti-pill hidden" id="nn-pill-box"><b>🎧 Pillole che ne parlano</b><div id="nn-pill"></div></div>
+      <div class="hidden" id="nn-quiz-box"><button class="prova-btn" id="nn-prova"><b>✍️ Esercitati su questa norma</b><span id="nn-quiz-txt"></span></button></div>
     </div>
   </section>
 </div>
@@ -428,6 +471,7 @@ body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 <nav class="tabbar hidden" id="tabbar" aria-label="Sezioni">
   <button id="tab-quiz" data-tab="quiz"><span>📝</span>Quiz</button>
   <button id="tab-pillole" data-tab="pillole"><span>🎧</span>Pillole</button>
+  <button id="tab-norme" data-tab="norme"><span>📜</span>Norme</button>
 </nav>
 
 <div class="overlay hidden" id="norma-ov"><div class="modal">
@@ -441,6 +485,7 @@ body.con-tabbar{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 <script src="domande/manifest.js"></script>
 <script src="norme/citazioni.js"></script>
 <script src="pillole/pillole.js"></script>
+<script src="norme/indice.js"></script>
 <script>
 "use strict";
 // ═════════════════════════════════════════════════════════════════════
@@ -548,11 +593,11 @@ function materieAttive() { return DB.materie || [...new Set(TUTTE.map(d => d.mat
 function fontiAttive() { return DB.fonti || QUIZ_MANIFEST.map(p => p.id); }
 function poolBase() { const m = materieAttive(), f = fontiAttive(); return TUTTE.filter(d => m.includes(d.materia) && f.includes(d._pack)); }
 function show(id) {
-  for (const s of ["loading", "home", "quiz", "risultato", "pillole", "pillola"]) $(s).classList.toggle("hidden", s !== id);
+  for (const s of ["loading", "home", "quiz", "risultato", "pillole", "pillola", "norme", "norma"]) $(s).classList.toggle("hidden", s !== id);
   // barra delle sezioni (Quiz / Pillole) solo sulle due pagine principali
-  const tab = id === "home" ? "quiz" : id === "pillole" ? "pillole" : null;
-  $("tabbar").classList.toggle("hidden", !tab || !HAS_PILLOLE);
-  document.body.classList.toggle("con-tabbar", !!tab && HAS_PILLOLE);
+  const tab = { home: "quiz", pillole: "pillole", norme: "norme" }[id] || null;
+  $("tabbar").classList.toggle("hidden", !tab);
+  document.body.classList.toggle("con-tabbar", !!tab);
   for (const b of document.querySelectorAll("#tabbar button")) b.classList.toggle("on", b.dataset.tab === tab);
   window.scrollTo(0, 0);
 }
@@ -651,7 +696,7 @@ function bindImpostazioni() {
 // ═════════════════════════════════════════════════════════════════════
 let S = null; // sessione corrente
 
-const NOMI_MODO = { pillola: "✍️ Mettiti alla prova", allenamento: "🎯 Allenamento", ripasso: "🔁 Ripasso del giorno", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
+const NOMI_MODO = { pillola: "✍️ Mettiti alla prova", norma: "📜 Domande sulla norma", allenamento: "🎯 Allenamento", ripasso: "🔁 Ripasso del giorno", preferiti: "⭐ Preferiti", simulazione: "⏱️ Simulazione", revisione: "Revisione" };
 
 function ordinaPerPriorita(pool) {
   // prima: sbagliate da ripassare, poi mai viste, poi le altre (le meno recenti prima); casuale a parità
@@ -911,9 +956,9 @@ function salta() {
   renderDomanda();
 }
 function esci() {
-  const pillola = S && S.pillola;
+  const pillola = S && S.pillola, norma = S && S.norma;
   if (S && S.timer) clearInterval(S.timer); S = null;
-  if (pillola !== undefined) apriPillola(pillola); else renderHome();
+  if (pillola !== undefined) apriPillola(pillola); else if (norma) apriScheda(norma); else renderHome();
 }
 
 // ── Simulazione ──
@@ -1013,7 +1058,11 @@ function avvolgi(el, start, end, id) {
 }
 document.addEventListener("click", e => {
   const c = e.target.closest && e.target.closest(".cit[data-norma]");
-  if (c) { e.preventDefault(); e.stopPropagation(); apriNorma(c.dataset.norma); }
+  if (!c) return;
+  e.preventDefault(); e.stopPropagation();
+  const inPillola = !$("pillola").classList.contains("hidden");
+  if (inPillola && typeof apriScheda === "function" && NI[c.dataset.norma]) { const i = PL.i; apriScheda(c.dataset.norma, () => apriPillola(i)); }
+  else apriNorma(c.dataset.norma);
 }, true);
 function apriNorma(id) {
   const n = window.NORME && window.NORME[id]; if (!n) return;
@@ -1343,19 +1392,28 @@ function mdPillola(s) {
     return testa + "<" + tag + ">" + voci.map(r => "<li>" + md(r.replace(/^(-|\d+\.)\s/, "")).replace(/^<p>|<\/p>$/g, "") + "</li>").join("") + "</" + tag + ">";
   }).join("");
 }
+// in alto le norme e le sentenze trattate (una per articolo: le versioni sono nella scheda),
+// in fondo le lezioni
 function renderFonti(p) {
-  const box = $("pp-fonti"); box.innerHTML = "";
+  const box = $("pp-fonti"), norme = $("pp-norme"), i = PL.i;
+  box.innerHTML = ""; norme.innerHTML = "";
+  const viste = new Set();
   for (const f of p.fonti || []) {
     if (f.tipo === "lezione") {
       const d = document.createElement("div"); d.className = "lez";
       d.textContent = "🎓 " + [f.titolo, f.docente, f.data].filter(Boolean).join(" · ");
       box.appendChild(d); continue;
     }
+    const id = typeof baseNorma === "function" && NI[baseNorma(f.id)] ? baseNorma(f.id) : f.id;
+    if (viste.has(id)) continue;
+    viste.add(id);
     const b = document.createElement("button");
-    b.className = "norma-btn"; b.textContent = etichettaFonte(f);
-    b.onclick = () => apriNorma(f.id);
-    box.appendChild(b);
+    b.className = "norma-btn"; b.textContent = etichettaFonte({ tipo: f.tipo, id });
+    b.onclick = () => NI[id] ? apriScheda(id, () => apriPillola(i)) : apriNorma(id);
+    norme.appendChild(b);
   }
+  $("pp-norme-box").classList.toggle("hidden", !viste.size);
+  $("pp-fonti-box").classList.toggle("hidden", !box.children.length);
 }
 // ── Ascolto: file MP3 se c'è (e si può trasmettere), altrimenti la voce del telefono ──
 let voceTel = null;
@@ -1554,11 +1612,192 @@ if (HAS_PILLOLE) {
   $("ps-avvia").onclick = avviaSessione;
   if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
 }
+// ═════════════════════════════════════════════════════════════════════
+// Norme (norme/indice.js): archivio consultabile, scheda di ogni articolo con versioni,
+// differenze, pillole e domande collegate
+// ═════════════════════════════════════════════════════════════════════
+const HAS_INDICE = typeof NORME_INDICE !== "undefined" && NORME_INDICE.length > 0;
+const NI = HAS_INDICE ? Object.fromEntries(NORME_INDICE.map(v => [v.id, v])) : {};
+const baseNorma = id => id.replace(/_al_\d{8}$/, "");
+let NN = { id: null, vista: null, ritorno: null, cerca: "", testo: false, aperti: {}, tuttiCaricati: null };
+const versioni = base => NORME_INDICE.filter(v => v.base === base);   // vigente prima, poi le storiche
+function caricaNorma(id) { const v = NI[id]; return v ? loadScript(v.file).catch(() => {}) : Promise.resolve(); }
+function caricaTutteLeNorme() {
+  return NN.tuttiCaricati || (NN.tuttiCaricati = Promise.all(NORME_INDICE.map(v => caricaNorma(v.id))));
+}
+// domande e pillole collegate a un articolo (tutte le sue versioni)
+function domandeNorma(base) {
+  return TUTTE.filter(d => ((d.aiuti && d.aiuti.riferimenti) || []).some(r => baseNorma(r.normaId) === base));
+}
+function pilloleNorma(base) {
+  return HAS_PILLOLE ? PILLOLE.filter(p => (p.fonti || []).some(f => f.id && baseNorma(f.id) === base)) : [];
+}
+let CONTE = null;   // base -> numero di domande, calcolato una volta
+function conteDomande() {
+  if (CONTE) return CONTE;
+  CONTE = {};
+  for (const d of TUTTE) for (const b of new Set(((d.aiuti && d.aiuti.riferimenti) || []).map(r => baseNorma(r.normaId)))) CONTE[b] = (CONTE[b] || 0) + 1;
+  return CONTE;
+}
+const siglaAtto = atto => (NORME_INDICE.find(v => v.atto === atto) || {}).sigla || "";
+const etichettaVoce = v => v.titolo.split(" — ")[0] + (v.sigla && !/^Corte/.test(v.sigla) ? " " + v.sigla : "");
+const piega = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’']/g, " ");
+
+function renderNorme() {
+  fermaAscoltoSePillole();
+  if (DB.tab !== "norme") { DB.tab = "norme"; salva(); }
+  const basi = NORME_INDICE.filter(v => !v.al);
+  $("n-sub").textContent = basi.filter(v => v.atto !== "Giurisprudenza").length + " articoli da " + NORME_ATTI.filter(a => a !== "Giurisprudenza").length + " atti · " + basi.filter(v => v.atto === "Giurisprudenza").length + " sentenze";
+  $("n-cerca").value = NN.cerca; $("n-testo").checked = NN.testo;
+  renderListaNorme();
+  show("norme");
+}
+async function renderListaNorme() {
+  const q = piega(NN.cerca).replace(/\bart(icolo|t)?\.?\s*/g, "").trim(), parole = q.split(/\s+/).filter(Boolean);
+  if (NN.testo && parole.length) { $("n-stato").textContent = "Cerco nei testi…"; await caricaTutteLeNorme(); }
+  $("n-stato").textContent = "";
+  const conte = conteDomande(), lista = $("n-lista");
+  lista.innerHTML = "";
+  let trovati = 0;
+  for (const atto of NORME_ATTI) {
+    const voci = NORME_INDICE.filter(v => v.atto === atto && !v.al).filter(v => {
+      if (!parole.length) return true;
+      const t = piega(v.titolo + " " + v.sigla + " " + v.atto + (NN.testo ? " " + ((window.NORME || {})[v.id] || {}).testo : ""));
+      return parole.every(p => new RegExp("(^|[^a-z0-9])" + p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(t));
+    });
+    if (!voci.length) continue;
+    trovati += voci.length;
+    const d = document.createElement("details");
+    d.className = "atto"; d.open = !!parole.length || !!NN.aperti[atto];
+    d.ontoggle = () => { NN.aperti[atto] = d.open; };
+    const sigla = siglaAtto(atto);
+    d.innerHTML = "<summary><b>" + esc(atto === "Giurisprudenza" ? "⚖️ Giurisprudenza" : (sigla ? sigla + " · " : "") + atto.replace(/\s*\(versione consolidata[^)]*\)|\s*\(GU C[^)]*\)/, "")) + "</b><span class='muted'> · " + voci.length + "</span></summary>";
+    const ul = document.createElement("div"); ul.className = "art-lista";
+    for (const v of voci) {
+      const b = document.createElement("button"); b.className = "art";
+      const nq = conte[v.id] || 0, np = pilloleNorma(v.id).length, nv = versioni(v.id).length - 1;
+      b.innerHTML = "<span>" + esc(v.titolo) + "</span><span class='badge-n'>" + (np ? "<i>🎧 " + np + "</i>" : "") + (nq ? "<i>✍️ " + nq + "</i>" : "") + (nv ? "<i>🕰️ " + nv + "</i>" : "") + "</span>";
+      b.onclick = () => apriScheda(v.id, renderNorme);
+      ul.appendChild(b);
+    }
+    d.appendChild(ul); lista.appendChild(d);
+  }
+  if (!trovati) lista.innerHTML = "<div class='muted' style='padding:12px 0'>Nessun articolo trovato." + (NN.testo ? "" : " Prova a spuntare «Cerca anche nel testo».") + "</div>";
+}
+// Scheda di un articolo. ritorno: dove riporta «← Indietro».
+async function apriScheda(id, ritorno) {
+  fermaAscoltoSePillole();
+  const base = baseNorma(id), vs = versioni(base);
+  if (!vs.length) return apriNorma(id);
+  if (ritorno) NN.ritorno = ritorno;
+  NN.id = base; NN.vista = NI[id] ? id : base;
+  await Promise.all(vs.map(v => caricaNorma(v.id)));
+  const v0 = NI[base] || vs[0];
+  $("nn-sigla").textContent = v0.atto === "Giurisprudenza" ? "⚖️ Giurisprudenza" : v0.sigla;
+  $("nn-titolo").textContent = v0.titolo;
+  $("nn-fonte").textContent = (window.NORME[base] || window.NORME[vs[0].id]).fonte.split(" — ")[0];
+  renderVersione();
+  // pillole e domande collegate
+  const pp = pilloleNorma(base), dd = domandeNorma(base);
+  $("nn-pill-box").classList.toggle("hidden", !pp.length);
+  $("nn-pill").innerHTML = "";
+  for (const p of pp) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + p.titolo; b.onclick = () => apriPillola(PILLOLE.indexOf(p)); $("nn-pill").appendChild(b); }
+  $("nn-quiz-box").classList.toggle("hidden", !dd.length);
+  $("nn-quiz-txt").textContent = dd.length + (dd.length === 1 ? " domanda delle prove SNA cita" : " domande delle prove SNA citano") + " questo articolo.";
+  if (location.hash !== "#norma=" + base) history.replaceState(null, "", "#norma=" + base);
+  show("norma");
+}
+function renderVersione() {
+  const vs = versioni(NN.id), vista = NN.vista, chips = $("nn-versioni");
+  chips.innerHTML = "";
+  chips.classList.toggle("hidden", vs.length < 2);
+  const vigente = vs.find(v => !v.al);
+  const data = al => al.split("-").reverse().join("/");
+  const voci = vs.map(v => ({ k: v.id, t: v.al ? "Testo al " + data(v.al) : "Vigente" }));
+  if (vigente) for (const v of vs.filter(v => v.al)) voci.push({ k: "diff:" + v.id, t: "⇄ Cosa è cambiato dal " + data(v.al) });
+  for (const x of voci) {
+    const b = document.createElement("button");
+    b.textContent = x.t; b.classList.toggle("on", x.k === vista);
+    b.onclick = () => { NN.vista = x.k; renderVersione(); };
+    chips.appendChild(b);
+  }
+  const el = $("nn-testo"), nota = $("nn-nota");
+  if (vista.startsWith("diff:")) {
+    const vecchio = window.NORME[vista.slice(5)], nuovo = window.NORME[vigente.id];
+    const html = diffParole(vecchio.testo, nuovo.testo);
+    nota.innerHTML = html ? "<del>barrato</del> = tolto · <ins>evidenziato</ins> = aggiunto rispetto al " + esc(data(NI[vista.slice(5)].al)) : "Il testo è troppo lungo per il confronto parola per parola.";
+    el.innerHTML = html || testoNorma(nuovo.testo);
+    metaNorma(nuovo);
+  } else {
+    const n = window.NORME[vista];
+    nota.textContent = NI[vista] && NI[vista].al ? "Testo storico, non più in vigore: " + n.fonte.split(" — ").slice(1).join(" — ") : "";
+    el.innerHTML = testoNorma(n.testo);
+    metaNorma(n);
+  }
+  nota.classList.toggle("hidden", !nota.textContent);
+}
+function metaNorma(n) {
+  const meta = $("nn-meta"); meta.textContent = "";
+  if (n.url) {
+    const a = document.createElement("a");
+    a.href = n.url; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "Testo ufficiale su " + new URL(n.url).hostname.replace(/^www\./, "");
+    meta.append(a);
+  }
+  if (n.consultato) { const [y, m, g] = n.consultato.split("-"); meta.append((n.url ? " · " : "") + "consultato il " + g + "/" + m + "/" + y); }
+  if (n.vigoreDal) meta.append(" · in vigore dal " + n.vigoreDal);
+  if (n.nota) meta.append(" · " + n.nota);
+}
+// testo diviso per commi e lettere
+function testoNorma(t) {
+  return String(t || "").split("\n").filter(r => r.trim()).map(r => {
+    const e = esc(r);
+    if (/^\d+(-[a-z]+)?\.\s/.test(r)) return "<p>" + e.replace(/^(\d+(?:-[a-z]+)?\.)/, "<b class='cm'>$1</b>") + "</p>";
+    if (/^[a-z](-[a-z]+)?\)\s/.test(r)) return "<p class='lt'>" + e + "</p>";
+    return "<p>" + e + "</p>";
+  }).join("");
+}
+// confronto parola per parola (sottosequenza comune più lunga); null se il testo è troppo lungo
+function diffParole(a, b) {
+  const A = a.split(/(\s+)/), B = b.split(/(\s+)/), n = A.length, m = B.length;
+  if (n * m > 6e6) return null;
+  const L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = A[i] === B[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  let i = 0, j = 0, out = "", buf = { del: "", ins: "" };
+  const svuota = () => { if (buf.del) out += "<del>" + esc(buf.del) + "</del>"; if (buf.ins) out += "<ins>" + esc(buf.ins) + "</ins>"; buf = { del: "", ins: "" }; };
+  while (i < n && j < m) {
+    if (A[i] === B[j]) { svuota(); out += esc(A[i]); i++; j++; }
+    else if (L[i + 1][j] >= L[i][j + 1]) buf.del += A[i++];
+    else buf.ins += B[j++];
+  }
+  while (i < n) buf.del += A[i++];
+  while (j < m) buf.ins += B[j++];
+  svuota();
+  return "<p>" + out.replace(/\n/g, "</p><p>") + "</p>";
+}
+function provaNorma() {
+  const pool = domandeNorma(NN.id);
+  if (!pool.length) return;
+  S = { modo: "norma", norma: NN.id, coda: ordinaPerPriorita(pool), i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
+  show("quiz"); renderDomanda();
+}
+function fermaAscoltoSePillole() { if (HAS_PILLOLE) fermaAscolto(); }
+if (HAS_INDICE) {
+  $("tab-norme").onclick = () => { history.replaceState(null, "", location.pathname); renderNorme(); };
+  let attesa = null;
+  $("n-cerca").oninput = () => { NN.cerca = $("n-cerca").value; clearTimeout(attesa); attesa = setTimeout(renderListaNorme, 200); };
+  $("n-testo").onchange = () => { NN.testo = $("n-testo").checked; renderListaNorme(); };
+  $("nn-indietro").onclick = () => { history.replaceState(null, "", location.pathname); (NN.ritorno || renderNorme)(); };
+  $("nn-prova").onclick = provaNorma;
+} else $("tab-norme").classList.add("hidden");
+
 function apriDaIndirizzo() {
   // #pillola=<id> apre la pillola; #pillola=<id>/approfondisci apre direttamente l'approfondimento
   const m = location.hash.match(/^#pillola=([\w-]+)(\/approfondisci)?/);
   const i = m && HAS_PILLOLE ? PILLOLE.findIndex(p => p.id === m[1]) : -1;
   if (i >= 0) { apriPillola(i, !!m[2]); return true; }
+  const n = location.hash.match(/^#norma=([\w-]+)/);
+  if (n && HAS_INDICE && NI[n[1]]) { apriScheda(n[1], renderNorme); return true; }
   return false;
 }
 window.addEventListener("hashchange", apriDaIndirizzo);
@@ -1569,7 +1808,7 @@ window.addEventListener("hashchange", apriDaIndirizzo);
   await caricaTutto();
   if (!TUTTE.length) { $("loading").textContent = "Nessuna domanda caricata: controlla domande/manifest.js."; return; }
   renderHome();   // all'avvio si riapre l'ultima sezione usata
-  if (!apriDaIndirizzo() && HAS_PILLOLE && DB.tab === "pillole") renderPillole();
+  if (!apriDaIndirizzo()) { if (HAS_PILLOLE && DB.tab === "pillole") renderPillole(); else if (HAS_INDICE && DB.tab === "norme") renderNorme(); }
 })();
 </script>
 </body>
