@@ -124,7 +124,7 @@ const feed = [];
     mainText: p.parlato,
     redirectionUrl: SITO + "#pillola=" + p.id
   };
-  if (audio(p.id)) voce.streamUrl = SITO + audio(p.id);
+  // niente streamUrl: Alexa legge mainText con la sua voce italiana, più naturale dei file audio
   feed.push(voce);
 }
 fs.writeFileSync(path.join(ROOT, "pillole", "alexa.json"), JSON.stringify(feed, null, 2) + "\n");

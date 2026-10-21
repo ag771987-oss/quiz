@@ -404,6 +404,7 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
         <button class="btn primary" id="pp-play">▶ Ascolta</button>
         <button class="btn hidden" id="pp-cast" title="Trasmetti l’audio a un altoparlante Google Nest o Chromecast">📡 Trasmetti al Nest</button>
         <select class="btn small" id="pp-vel" title="Velocità"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select>
+        <select class="btn small" id="pp-voce" title="Voce"></select>
         <span class="stato" id="pp-stato"></span>
       </div>
       <audio id="pp-audio" preload="none"></audio>
@@ -1241,7 +1242,7 @@ async function apriPillola(i, approfondisci, continua) {
   const au = $("pp-audio"), src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
   if (au.getAttribute("src") !== src) au.src = src;
   au.playbackRate = +$("pp-vel").value;
-  aggiornaCast();
+  aggiornaCast(); renderVoci();
   if (!continua) $("pp-stato").textContent = "";
   DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
   show("pillola");
@@ -1342,12 +1343,29 @@ function fermaAscolto() {
   voceTel = null;
   $("pp-play").textContent = "▶ Ascolta";
 }
+// ── Voce: quella del telefono (su iPhone le voci italiane di Siri) oppure il file audio ──
+// DB.voce: "" = la migliore voce italiana del telefono, nome di una voce, oppure "file".
+const QUALITA = /premium|enhanced|avanzat|migliorat|neural|natural|siri/i;
+function vociIt() {
+  if (!window.speechSynthesis) return [];
+  return speechSynthesis.getVoices().filter(v => /^it/i.test(v.lang))
+    .sort((a, b) => QUALITA.test(b.name) - QUALITA.test(a.name) || b.localService - a.localService || a.name.localeCompare(b.name));
+}
+const usaFile = () => DB.voce === "file" || !vociIt().length;
+function voceScelta() { const v = vociIt(); return v.find(x => x.name === DB.voce) || v[0] || null; }
+function renderVoci() {
+  const sel = $("pp-voce"), v = vociIt();
+  sel.innerHTML = v.map(x => "<option value='" + esc(x.name) + "'>🗣️ " + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + (QUALITA.test(x.name) ? " ✦" : "")) + "</option>").join("") +
+    "<option value='file'>🎵 File audio</option>";
+  sel.value = usaFile() ? "file" : (voceScelta() || {}).name;
+  $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
+}
 function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
 async function ascolta() {
   if (inRiproduzione()) { fermaAscolto(); $("pp-stato").textContent = ""; return; }
   const au = $("pp-audio"), p = PILLOLE[PL.i];
   $("pp-play").textContent = "⏸ Pausa";
-  if (au.src && au.dataset.ko !== au.src) {
+  if (usaFile() && au.src && au.dataset.ko !== au.src) {
     try { au.playbackRate = +$("pp-vel").value; await au.play(); $("pp-stato").textContent = ""; mediaSession(p); return; }
     catch (e) { if (e.name === "NotAllowedError") { $("pp-play").textContent = "▶ Ascolta"; return; } au.dataset.ko = au.src; }
   }
@@ -1357,12 +1375,12 @@ function parlaTelefono(p) {
   if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; $("pp-play").textContent = "▶ Ascolta"; return; }
   const u = new SpeechSynthesisUtterance(p.parlato);
   u.lang = "it-IT"; u.rate = +$("pp-vel").value;
-  const v = speechSynthesis.getVoices().filter(v => /^it/i.test(v.lang));
-  if (v.length) u.voice = v.find(v => v.localService) || v[0];
+  const v = voceScelta();
+  if (v) u.voice = v;
   u.onend = () => { if (voceTel !== u) return; voceTel = null; $("pp-play").textContent = "▶ Ascolta"; finePillola(); };
   u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
   voceTel = u;
-  $("pp-stato").textContent = "Voce del telefono (file audio non disponibile offline)";
+  $("pp-stato").textContent = usaFile() ? "Voce del telefono (file audio non disponibile)" : "";
   speechSynthesis.speak(u);
 }
 function finePillola() {
@@ -1381,7 +1399,7 @@ function suona(i) {
   if (window.speechSynthesis) speechSynthesis.cancel();
   voceTel = null;
   PL.i = i;
-  if (p.audio !== false && au.dataset.ko !== src) {
+  if (usaFile() && p.audio !== false && au.dataset.ko !== src) {
     if (au.getAttribute("src") !== src) au.src = src;
     au.playbackRate = +$("pp-vel").value;
     au.play().then(() => mediaSession(p)).catch(e => {
@@ -1479,7 +1497,7 @@ function mediaSession(p) {
 function aggiornaCast() {
   const au = $("pp-audio"), b = $("pp-cast");
   if (!au.remote || !au.src) { b.classList.add("hidden"); return; }
-  au.remote.watchAvailability(ok => b.classList.toggle("hidden", !ok)).catch(() => b.classList.add("hidden"));
+  au.remote.watchAvailability(ok => { b.dataset.ok = ok ? "1" : ""; b.classList.toggle("hidden", !ok || !usaFile()); }).catch(() => b.classList.add("hidden"));
 }
 async function trasmetti() {
   const au = $("pp-audio");
@@ -1498,6 +1516,8 @@ if (HAS_PILLOLE) {
   $("pp-star").onclick = toggleDaApprofondire;
   $("pp-prova").onclick = provaPillola;
   $("pp-vel").onchange = () => { $("pp-audio").playbackRate = +$("pp-vel").value; };
+  $("pp-voce").onchange = () => { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = $("pp-voce").value; salva(); renderVoci(); if (suonava) ascolta(); };
+  if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { if (!$("pillola").classList.contains("hidden")) renderVoci(); });
   $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
   $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
   $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
