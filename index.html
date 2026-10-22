@@ -1425,19 +1425,25 @@ function fermaAscolto() {
 }
 // ── Voce: quella del telefono (su iPhone le voci italiane di Siri) oppure il file audio ──
 // DB.voce: "" = la migliore voce italiana del telefono, nome di una voce, oppure "file".
-const QUALITA = /premium|enhanced|avanzat|migliorat|neural|natural|siri/i;
+// Su iPhone la stessa voce esiste in più versioni con lo stesso nome («Alice» normale, avanzata,
+// premium): si distinguono dal voiceURI (com.apple.voice.compact|enhanced|premium.it-IT.Alice).
+const qualita = v => /premium/i.test(v.voiceURI + v.name) ? 2 : /enhanced|avanzat|migliorat|neural|natural|siri/i.test(v.voiceURI + v.name) ? 1 : 0;
+const ETICHETTA_Q = ["", " · Avanzata ✦", " · Premium ✦"];
+const idVoce = v => v.voiceURI || v.name;
 function vociIt() {
   if (!window.speechSynthesis) return [];
-  return speechSynthesis.getVoices().filter(v => /^it/i.test(v.lang))
-    .sort((a, b) => QUALITA.test(b.name) - QUALITA.test(a.name) || b.localService - a.localService || a.name.localeCompare(b.name));
+  const viste = new Set();
+  return speechSynthesis.getVoices().filter(v => /^it/i.test(v.lang) && !viste.has(idVoce(v)) && viste.add(idVoce(v)))
+    .sort((a, b) => qualita(b) - qualita(a) || b.localService - a.localService || a.name.localeCompare(b.name));
 }
 const usaFile = () => DB.voce === "file" || !vociIt().length;
-function voceScelta() { const v = vociIt(); return v.find(x => x.name === DB.voce) || v[0] || null; }
+// la voce scelta (salvata come voiceURI; le versioni precedenti dell'app salvavano il nome)
+function voceScelta() { const v = vociIt(); return v.find(x => idVoce(x) === DB.voce) || v.find(x => x.name === DB.voce) || v[0] || null; }
 function renderVoci() {
   const sel = $("pp-voce"), v = vociIt();
-  sel.innerHTML = v.map(x => "<option value='" + esc(x.name) + "'>🗣️ " + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + (QUALITA.test(x.name) ? " ✦" : "")) + "</option>").join("") +
+  sel.innerHTML = v.map(x => "<option value='" + esc(idVoce(x)) + "'>🗣️ " + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + ETICHETTA_Q[qualita(x)]) + "</option>").join("") +
     "<option value='file'>🎵 File audio</option>";
-  sel.value = usaFile() ? "file" : (voceScelta() || {}).name;
+  sel.value = usaFile() ? "file" : idVoce(voceScelta() || {});
   $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
 }
 function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
