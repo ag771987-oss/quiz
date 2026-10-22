@@ -218,6 +218,10 @@ details.atto summary{cursor:pointer}
 /* le sezioni stanno in più contenitori: quelli senza nulla di visibile non occupano spazio */
 .wrap:not(:has(> :not(.hidden))){display:none}
 .norma-testo ins,#nn-nota ins{background:var(--ok-soft);color:var(--ok);text-decoration:none;font-weight:600}
+.voce-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 14px}
+.voce-bar select{max-width:100%}
+.voce-bar .muted{flex-basis:100%;font-size:.82rem}
+.voce-bar .muted:empty{display:none}
 .sessione{border-color:var(--accent)}
 .sess-riga{display:grid;gap:4px;margin-bottom:10px}
 .sess-riga .aree{margin-bottom:0}
@@ -402,6 +406,13 @@ details.atto summary{cursor:pointer}
     <div class="row" style="margin-bottom:12px">
       <div><h1>Pillole normative</h1><div class="muted" id="p-sub"></div></div>
       <span class="spacer"></span><button class="btn primary" id="p-sess-btn">🎧 Sessione di ascolto</button>
+    </div>
+    <div class="card voce-bar">
+      <b>🗣️ Voce</b>
+      <select class="btn small" id="p-voce" title="Voce"></select>
+      <select class="btn small" id="p-vel" title="Velocità"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select>
+      <button class="btn small" id="p-prova">▶ Prova</button>
+      <div class="muted" id="p-voce-nota"></div>
     </div>
     <div class="card hidden" id="p-riepilogo"></div>
     <div class="card hidden sessione" id="p-sess">
@@ -1270,6 +1281,7 @@ function renderPillole() {
   const lista = $("p-lista"); lista.innerHTML = "";
   for (const p of PILLOLE.filter(p => !PL.area || (PL.area === "*" ? daApprofondire(p.id) : p.area === PL.area))) lista.appendChild(vocePillola(p));
   $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
+  renderVoci(); $("p-prova").textContent = "▶ Prova";
   const nAsc = PILLOLE.filter(p => pillolaAscoltata(p.id)).length;
   $("p-sub").textContent = PILLOLE.length + " pillole · " + nAsc + " ascoltate";
   show("pillole");
@@ -1312,7 +1324,7 @@ async function apriPillola(i, approfondisci, continua) {
   for (const j of coll) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + PILLOLE[j].titolo; b.onclick = () => apriPillola(j); $("pp-coll").appendChild(b); }
   const au = $("pp-audio"), src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
   if (au.getAttribute("src") !== src) au.src = src;
-  au.playbackRate = +$("pp-vel").value;
+  au.playbackRate = (DB.vel || 1);
   aggiornaCast(); renderVoci();
   if (!continua) $("pp-stato").textContent = "";
   DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
@@ -1439,12 +1451,35 @@ function vociIt() {
 const usaFile = () => DB.voce === "file" || !vociIt().length;
 // la voce scelta (salvata come voiceURI; le versioni precedenti dell'app salvavano il nome)
 function voceScelta() { const v = vociIt(); return v.find(x => idVoce(x) === DB.voce) || v.find(x => x.name === DB.voce) || v[0] || null; }
+// i due menu (pagina delle pillole e singola pillola) mostrano la stessa scelta
 function renderVoci() {
-  const sel = $("pp-voce"), v = vociIt();
-  sel.innerHTML = v.map(x => "<option value='" + esc(idVoce(x)) + "'>🗣️ " + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + ETICHETTA_Q[qualita(x)]) + "</option>").join("") +
-    "<option value='file'>🎵 File audio</option>";
-  sel.value = usaFile() ? "file" : idVoce(voceScelta() || {});
+  const v = vociIt();
+  for (const sel of [$("pp-voce"), $("p-voce")]) {
+    sel.innerHTML = v.map(x => "<option value='" + esc(idVoce(x)) + "'>" + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + ETICHETTA_Q[qualita(x)]) + "</option>").join("") +
+      "<option value='file'>🎵 File audio</option>";
+    sel.value = usaFile() ? "file" : idVoce(voceScelta() || {});
+  }
+  for (const sel of [$("pp-vel"), $("p-vel")]) sel.value = String(DB.vel || 1);
+  $("p-voce-nota").textContent = !vociIt().length ? "Nessuna voce italiana disponibile in questo browser: si usano i file audio." :
+    vociIt().some(x => qualita(x)) ? "" : "Per una voce più naturale scarica una voce «Avanzata» o «Premium»: Impostazioni → Accessibilità → Lettura e voce → Voci → Italiano. Poi chiudi e riapri l’app.";
   $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
+}
+function scegliVoce(valore) { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = valore; salva(); renderVoci(); if (suonava && !$("pillola").classList.contains("hidden")) ascolta(); }
+function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); }
+// «▶ Prova»: una frase con la voce scelta (o l'inizio del file audio della pillola del giorno)
+function provaVoce() {
+  if (inRiproduzione()) { fermaAscolto(); $("p-prova").textContent = "▶ Prova"; return; }
+  const p = PILLOLE[pillolaDelGiorno()];
+  if (usaFile()) {
+    const au = $("pp-audio"); au.src = "pillole/audio/" + p.id + ".mp3"; au.playbackRate = DB.vel || 1;
+    au.play().catch(() => {}); setTimeout(() => { if (!au.paused) au.pause(); }, 8000); return;
+  }
+  const u = new SpeechSynthesisUtterance("Questa è la voce che leggerà le pillole. " + p.parlato.split(". ").slice(0, 2).join(". ") + ".");
+  u.lang = "it-IT"; u.rate = DB.vel || 1;
+  const v = voceScelta(); if (v) u.voice = v;
+  u.onend = u.onerror = () => { if (voceTel === u) { voceTel = null; $("p-prova").textContent = "▶ Prova"; } };
+  speechSynthesis.cancel(); voceTel = u; $("p-prova").textContent = "■ Ferma";
+  speechSynthesis.speak(u);
 }
 function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
 async function ascolta() {
@@ -1452,7 +1487,7 @@ async function ascolta() {
   const au = $("pp-audio"), p = PILLOLE[PL.i];
   $("pp-play").textContent = "⏸ Pausa";
   if (usaFile() && au.src && au.dataset.ko !== au.src) {
-    try { au.playbackRate = +$("pp-vel").value; await au.play(); $("pp-stato").textContent = ""; mediaSession(p); return; }
+    try { au.playbackRate = (DB.vel || 1); await au.play(); $("pp-stato").textContent = ""; mediaSession(p); return; }
     catch (e) { if (e.name === "NotAllowedError") { $("pp-play").textContent = "▶ Ascolta"; return; } au.dataset.ko = au.src; }
   }
   parlaTelefono(p);
@@ -1460,7 +1495,7 @@ async function ascolta() {
 function parlaTelefono(p) {
   if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; $("pp-play").textContent = "▶ Ascolta"; return; }
   const u = new SpeechSynthesisUtterance(p.parlato);
-  u.lang = "it-IT"; u.rate = +$("pp-vel").value;
+  u.lang = "it-IT"; u.rate = (DB.vel || 1);
   const v = voceScelta();
   if (v) u.voice = v;
   u.onend = () => { if (voceTel !== u) return; voceTel = null; $("pp-play").textContent = "▶ Ascolta"; finePillola(); };
@@ -1487,7 +1522,7 @@ function suona(i) {
   PL.i = i;
   if (usaFile() && p.audio !== false && au.dataset.ko !== src) {
     if (au.getAttribute("src") !== src) au.src = src;
-    au.playbackRate = +$("pp-vel").value;
+    au.playbackRate = (DB.vel || 1);
     au.play().then(() => mediaSession(p)).catch(e => {
       if (e.name === "NotAllowedError") $("pp-play").textContent = "▶ Ascolta"; else parlaTelefono(p);
     });
@@ -1601,9 +1636,12 @@ if (HAS_PILLOLE) {
   $("pp-cast").onclick = trasmetti;
   $("pp-star").onclick = toggleDaApprofondire;
   $("pp-prova").onclick = provaPillola;
-  $("pp-vel").onchange = () => { $("pp-audio").playbackRate = +$("pp-vel").value; };
-  $("pp-voce").onchange = () => { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = $("pp-voce").value; salva(); renderVoci(); if (suonava) ascolta(); };
-  if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { if (!$("pillola").classList.contains("hidden")) renderVoci(); });
+  $("pp-vel").onchange = () => scegliVelocita($("pp-vel").value);
+  $("p-vel").onchange = () => scegliVelocita($("p-vel").value);
+  $("p-voce").onchange = () => scegliVoce($("p-voce").value);
+  $("p-prova").onclick = provaVoce;
+  $("pp-voce").onchange = () => scegliVoce($("pp-voce").value);
+  if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { renderVoci(); });
   $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
   $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
   $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
