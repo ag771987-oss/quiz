@@ -218,10 +218,11 @@ details.atto summary{cursor:pointer}
 /* le sezioni stanno in più contenitori: quelli senza nulla di visibile non occupano spazio */
 .wrap:not(:has(> :not(.hidden))){display:none}
 .norma-testo ins,#nn-nota ins{background:var(--ok-soft);color:var(--ok);text-decoration:none;font-weight:600}
-.voce-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 14px}
-.voce-bar select{max-width:100%}
-.voce-bar .muted{flex-basis:100%;font-size:.82rem}
-.voce-bar .muted:empty{display:none}
+.voce-modal{max-width:440px}
+.voce-modal .campo{display:grid;gap:5px;margin:14px 0;font-size:.9rem;color:var(--ink2)}
+.voce-modal select{width:100%;font-size:1rem}
+.voce-modal .muted{margin-top:12px;font-size:.84rem}
+.voce-modal .muted:empty{display:none}
 .sessione{border-color:var(--accent)}
 .sess-riga{display:grid;gap:4px;margin-bottom:10px}
 .sess-riga .aree{margin-bottom:0}
@@ -405,14 +406,7 @@ details.atto summary{cursor:pointer}
   <section id="pillole" class="hidden">
     <div class="row" style="margin-bottom:12px">
       <div><h1>Pillole normative</h1><div class="muted" id="p-sub"></div></div>
-      <span class="spacer"></span><button class="btn primary" id="p-sess-btn">🎧 Sessione di ascolto</button>
-    </div>
-    <div class="card voce-bar">
-      <b>🗣️ Voce</b>
-      <select class="btn small" id="p-voce" title="Voce"></select>
-      <select class="btn small" id="p-vel" title="Velocità"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select>
-      <button class="btn small" id="p-prova">▶ Prova</button>
-      <div class="muted" id="p-voce-nota"></div>
+      <span class="spacer"></span><button class="btn" id="p-voce-btn">🗣️ Voce</button><button class="btn primary" id="p-sess-btn">🎧 Sessione di ascolto</button>
     </div>
     <div class="card hidden" id="p-riepilogo"></div>
     <div class="card hidden sessione" id="p-sess">
@@ -441,8 +435,7 @@ details.atto summary{cursor:pointer}
       <div class="player">
         <button class="btn primary" id="pp-play">▶ Ascolta</button>
         <button class="btn hidden" id="pp-cast" title="Trasmetti l’audio a un altoparlante Google Nest o Chromecast">📡 Trasmetti al Nest</button>
-        <select class="btn small" id="pp-vel" title="Velocità"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select>
-        <select class="btn small" id="pp-voce" title="Voce"></select>
+        <button class="btn" id="pp-voce-btn">🗣️ Voce</button>
         <span class="stato" id="pp-stato"></span>
       </div>
       <audio id="pp-audio" preload="none"></audio>
@@ -465,7 +458,7 @@ details.atto summary{cursor:pointer}
   </section>
 
   <section id="norma" class="hidden">
-    <div class="topbar"><button class="btn small" id="nn-indietro">← Indietro</button><span class="tag" id="nn-sigla"></span></div>
+    <div class="topbar"><button class="btn small" id="nn-indietro">← Indietro</button><span class="tag" id="nn-sigla"></span><span class="spacer"></span><button class="btn small hidden" id="nn-audio" title="Ferma l’ascolto">⏸ In ascolto</button></div>
     <div class="card">
       <h1 id="nn-titolo" style="margin-bottom:4px"></h1>
       <div class="muted" id="nn-fonte" style="margin-bottom:12px"></div>
@@ -484,6 +477,14 @@ details.atto summary{cursor:pointer}
   <button id="tab-pillole" data-tab="pillole"><span>🎧</span>Pillole</button>
   <button id="tab-norme" data-tab="norme"><span>📜</span>Norme</button>
 </nav>
+
+<div class="overlay hidden" id="voce-ov"><div class="modal voce-modal">
+  <div class="row"><b>🗣️ Voce di lettura</b><span class="spacer"></span><button class="btn small" id="voce-chiudi">Chiudi</button></div>
+  <label class="campo">Voce<select class="btn" id="v-voce"></select></label>
+  <label class="campo">Velocità<select class="btn" id="v-vel"><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select></label>
+  <button class="btn primary" id="v-prova">▶ Prova</button>
+  <div class="muted" id="v-nota"></div>
+</div></div>
 
 <div class="overlay hidden" id="norma-ov"><div class="modal">
   <div class="row"><b id="norma-titolo"></b><span class="spacer"></span><button class="btn small" id="norma-chiudi">Chiudi</button></div>
@@ -1072,7 +1073,7 @@ document.addEventListener("click", e => {
   if (!c) return;
   e.preventDefault(); e.stopPropagation();
   const inPillola = !$("pillola").classList.contains("hidden");
-  if (inPillola && typeof apriScheda === "function" && NI[c.dataset.norma]) { const i = PL.i; apriScheda(c.dataset.norma, () => apriPillola(i)); }
+  if (inPillola && typeof apriScheda === "function" && NI[c.dataset.norma]) apriScheda(c.dataset.norma, tornaAllaPillola);
   else apriNorma(c.dataset.norma);
 }, true);
 function apriNorma(id) {
@@ -1193,8 +1194,8 @@ $("s-end").onclick = () => consegna(true);
 
 document.addEventListener("keydown", e => {
   if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("cit")) { e.preventDefault(); apriNorma(e.target.dataset.norma); return; }
-  if (!$("norma-ov").classList.contains("hidden") || !$("zoom-ov").classList.contains("hidden")) {
-    if (e.key === "Escape") { $("norma-ov").classList.add("hidden"); $("zoom-ov").classList.add("hidden"); }
+  if (!$("norma-ov").classList.contains("hidden") || !$("zoom-ov").classList.contains("hidden") || !$("voce-ov").classList.contains("hidden")) {
+    if (e.key === "Escape") { $("norma-ov").classList.add("hidden"); $("zoom-ov").classList.add("hidden"); $("voce-chiudi").click(); }
     return;
   }
   if (!S || $("quiz").classList.contains("hidden") || e.ctrlKey || e.metaKey || e.altKey) return;
@@ -1281,7 +1282,6 @@ function renderPillole() {
   const lista = $("p-lista"); lista.innerHTML = "";
   for (const p of PILLOLE.filter(p => !PL.area || (PL.area === "*" ? daApprofondire(p.id) : p.area === PL.area))) lista.appendChild(vocePillola(p));
   $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
-  renderVoci(); $("p-prova").textContent = "▶ Prova";
   const nAsc = PILLOLE.filter(p => pillolaAscoltata(p.id)).length;
   $("p-sub").textContent = PILLOLE.length + " pillole · " + nAsc + " ascoltate";
   show("pillole");
@@ -1421,7 +1421,7 @@ function renderFonti(p) {
     viste.add(id);
     const b = document.createElement("button");
     b.className = "norma-btn"; b.textContent = etichettaFonte({ tipo: f.tipo, id });
-    b.onclick = () => NI[id] ? apriScheda(id, () => apriPillola(i)) : apriNorma(id);
+    b.onclick = () => NI[id] ? apriScheda(id, tornaAllaPillola) : apriNorma(id);
     norme.appendChild(b);
   }
   $("pp-norme-box").classList.toggle("hidden", !viste.size);
@@ -1434,7 +1434,18 @@ function fermaAscolto() {
   if (window.speechSynthesis) speechSynthesis.cancel();
   voceTel = null;
   $("pp-play").textContent = "▶ Ascolta";
+  aggiornaMini();
 }
+// Leggendo una norma dalla pillola l'ascolto continua: la scheda mostra «⏸ In ascolto» per
+// fermarlo, e «← Indietro» riporta alla pillola che sta suonando.
+const pillolaVisibile = () => !$("pillola").classList.contains("hidden");
+function aggiornaMini() {
+  const b = $("nn-audio"); if (!b) return;
+  const on = typeof PL !== "undefined" && (!$("pp-audio").paused || (!!voceTel && !voceTel.prova));
+  b.classList.toggle("hidden", !on);
+  if (on) b.textContent = "⏸ " + PILLOLE[PL.i].titolo;
+}
+function tornaAllaPillola() { return apriPillola(PL.i, false, true); }
 // ── Voce: quella del telefono (su iPhone le voci italiane di Siri) oppure il file audio ──
 // DB.voce: "" = la migliore voce italiana del telefono, nome di una voce, oppure "file".
 // Su iPhone la stessa voce esiste in più versioni con lo stesso nome («Alice» normale, avanzata,
@@ -1454,31 +1465,40 @@ function voceScelta() { const v = vociIt(); return v.find(x => idVoce(x) === DB.
 // i due menu (pagina delle pillole e singola pillola) mostrano la stessa scelta
 function renderVoci() {
   const v = vociIt();
-  for (const sel of [$("pp-voce"), $("p-voce")]) {
+  for (const sel of [$("v-voce")]) {
     sel.innerHTML = v.map(x => "<option value='" + esc(idVoce(x)) + "'>" + esc(x.name.replace(/\s*\(.*?\)\s*$/, "") + ETICHETTA_Q[qualita(x)]) + "</option>").join("") +
       "<option value='file'>🎵 File audio</option>";
     sel.value = usaFile() ? "file" : idVoce(voceScelta() || {});
   }
-  for (const sel of [$("pp-vel"), $("p-vel")]) sel.value = String(DB.vel || 1);
-  $("p-voce-nota").textContent = !vociIt().length ? "Nessuna voce italiana disponibile in questo browser: si usano i file audio." :
+  $("v-vel").value = String(DB.vel || 1);
+  $("v-nota").textContent = !vociIt().length ? "Nessuna voce italiana disponibile in questo browser: si usano i file audio." :
     vociIt().some(x => qualita(x)) ? "" : "Per una voce più naturale scarica una voce «Avanzata» o «Premium»: Impostazioni → Accessibilità → Lettura e voce → Voci → Italiano. Poi chiudi e riapri l’app.";
   $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
 }
 function scegliVoce(valore) { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = valore; salva(); renderVoci(); if (suonava && !$("pillola").classList.contains("hidden")) ascolta(); }
 function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); }
 // «▶ Prova»: una frase con la voce scelta (o l'inizio del file audio della pillola del giorno)
+let provaAudio = null;
+function fermaProva() {
+  if (provaAudio) { provaAudio.pause(); provaAudio = null; }
+  if (voceTel && voceTel.prova) { speechSynthesis.cancel(); voceTel = null; }
+  $("v-prova").textContent = "▶ Prova";
+}
 function provaVoce() {
-  if (inRiproduzione()) { fermaAscolto(); $("p-prova").textContent = "▶ Prova"; return; }
+  if (provaAudio || (voceTel && voceTel.prova)) return fermaProva();
+  fermaAscolto();
   const p = PILLOLE[pillolaDelGiorno()];
   if (usaFile()) {
-    const au = $("pp-audio"); au.src = "pillole/audio/" + p.id + ".mp3"; au.playbackRate = DB.vel || 1;
-    au.play().catch(() => {}); setTimeout(() => { if (!au.paused) au.pause(); }, 8000); return;
+    provaAudio = new Audio("pillole/audio/" + p.id + ".mp3"); provaAudio.playbackRate = DB.vel || 1;
+    provaAudio.play().catch(() => {}); $("v-prova").textContent = "■ Ferma";
+    setTimeout(fermaProva, 8000); return;
   }
   const u = new SpeechSynthesisUtterance("Questa è la voce che leggerà le pillole. " + p.parlato.split(". ").slice(0, 2).join(". ") + ".");
   u.lang = "it-IT"; u.rate = DB.vel || 1;
   const v = voceScelta(); if (v) u.voice = v;
-  u.onend = u.onerror = () => { if (voceTel === u) { voceTel = null; $("p-prova").textContent = "▶ Prova"; } };
-  speechSynthesis.cancel(); voceTel = u; $("p-prova").textContent = "■ Ferma";
+  u.prova = true;
+  u.onend = u.onerror = () => { if (voceTel === u) { voceTel = null; $("v-prova").textContent = "▶ Prova"; } };
+  speechSynthesis.cancel(); voceTel = u; $("v-prova").textContent = "■ Ferma";
   speechSynthesis.speak(u);
 }
 function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
@@ -1506,6 +1526,7 @@ function parlaTelefono(p) {
 }
 function finePillola() {
   $("pp-play").textContent = "▶ Ascolta";
+  aggiornaMini();
   DB.ascoltate = DB.ascoltate || {}; DB.ascoltate[PILLOLE[PL.i].id] = Date.now(); salva();
   const ss = PL.sess;
   if (!ss) return;
@@ -1528,6 +1549,7 @@ function suona(i) {
     });
   } else parlaTelefono(p);
   $("pp-play").textContent = "⏸ Pausa";
+  if (!$("norma").classList.contains("hidden")) { aggiornaMini(); return Promise.resolve(); }   // si sta leggendo una norma: resta lì
   return apriPillola(i, false, true);
 }
 // ── Sessione di ascolto ──
@@ -1585,6 +1607,7 @@ function avviaSessione() {
 function fineSessione() {
   const ss = PL.sess;
   fermaAscolto();
+  if (!pillolaVisibile() && !$("norma").classList.contains("hidden")) { PL.sess = null; return; }   // non lasciare la norma che si sta leggendo
   renderPillole();   // azzera PL.sess
   const fatte = ss ? ss.fatte : [], box = $("p-riepilogo");
   box.innerHTML = "<h2>" + (fatte.length === ss.coda.length ? "✔ Sessione completata" : "Sessione interrotta") + "</h2><div class='muted'>" +
@@ -1628,19 +1651,24 @@ async function trasmetti() {
 if (HAS_PILLOLE) {
   const au = $("pp-audio");
   au.onended = finePillola;
-  au.onpause = () => { if (!voceTel) $("pp-play").textContent = "▶ Ascolta"; };
-  au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; };
+  au.onpause = () => { if (!voceTel) $("pp-play").textContent = "▶ Ascolta"; aggiornaMini(); };
+  au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; aggiornaMini(); };
   au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if ($("pp-play").textContent.startsWith("⏸")) parlaTelefono(PILLOLE[PL.i]); };
   if (au.remote) { au.remote.onconnect = () => { $("pp-stato").textContent = "📡 In trasmissione sull’altoparlante"; }; au.remote.ondisconnect = () => { $("pp-stato").textContent = ""; }; }
   $("pp-play").onclick = ascolta;
   $("pp-cast").onclick = trasmetti;
   $("pp-star").onclick = toggleDaApprofondire;
   $("pp-prova").onclick = provaPillola;
-  $("pp-vel").onchange = () => scegliVelocita($("pp-vel").value);
-  $("p-vel").onchange = () => scegliVelocita($("p-vel").value);
-  $("p-voce").onchange = () => scegliVoce($("p-voce").value);
-  $("p-prova").onclick = provaVoce;
-  $("pp-voce").onchange = () => scegliVoce($("pp-voce").value);
+  // impostazioni della voce: una finestra che si apre dal pulsante «🗣️ Voce»
+  const apriVoce = () => { renderVoci(); $("v-prova").textContent = "▶ Prova"; $("voce-ov").classList.remove("hidden"); };
+  const chiudiVoce = () => { fermaProva(); $("voce-ov").classList.add("hidden"); };
+  $("p-voce-btn").onclick = apriVoce; $("pp-voce-btn").onclick = apriVoce;
+  $("voce-chiudi").onclick = chiudiVoce;
+  $("voce-ov").onclick = e => { if (e.target.id === "voce-ov") chiudiVoce(); };
+  $("v-voce").onchange = () => scegliVoce($("v-voce").value);
+  $("v-vel").onchange = () => scegliVelocita($("v-vel").value);
+  $("v-prova").onclick = provaVoce;
+  $("nn-audio").onclick = () => { fermaAscolto(); aggiornaMini(); };
   if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { renderVoci(); });
   $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
   $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
@@ -1730,7 +1758,6 @@ async function renderListaNorme() {
 }
 // Scheda di un articolo. ritorno: dove riporta «← Indietro».
 async function apriScheda(id, ritorno) {
-  fermaAscoltoSePillole();
   const base = baseNorma(id), vs = versioni(base);
   if (!vs.length) return apriNorma(id);
   if (ritorno) NN.ritorno = ritorno;
@@ -1750,6 +1777,7 @@ async function apriScheda(id, ritorno) {
   $("nn-quiz-txt").textContent = dd.length + (dd.length === 1 ? " domanda delle prove SNA cita" : " domande delle prove SNA citano") + " questo articolo.";
   if (location.hash !== "#norma=" + base) history.replaceState(null, "", "#norma=" + base);
   show("norma");
+  if (typeof aggiornaMini === "function" && HAS_PILLOLE) aggiornaMini();
 }
 function renderVersione() {
   const vs = versioni(NN.id), vista = NN.vista, chips = $("nn-versioni");
