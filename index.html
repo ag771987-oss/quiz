@@ -218,6 +218,8 @@ details.atto summary{cursor:pointer}
 /* le sezioni stanno in più contenitori: quelli senza nulla di visibile non occupano spazio */
 .wrap:not(:has(> :not(.hidden))){display:none}
 .norma-testo ins,#nn-nota ins{background:var(--ok-soft);color:var(--ok);text-decoration:none;font-weight:600}
+.barra{display:flex;gap:10px;align-items:center;margin:-4px 0 14px;font-size:.8rem;color:var(--ink3);font-variant-numeric:tabular-nums}
+.barra input{flex:1;min-width:0;accent-color:var(--accent);height:28px}
 .voce-modal{max-width:440px}
 .voce-modal .campo{display:grid;gap:5px;margin:14px 0;font-size:.9rem;color:var(--ink2)}
 .voce-modal select{width:100%;font-size:1rem}
@@ -438,7 +440,8 @@ details.atto summary{cursor:pointer}
         <button class="btn" id="pp-voce-btn">🗣️ Voce</button>
         <span class="stato" id="pp-stato"></span>
       </div>
-      <audio id="pp-audio" preload="none"></audio>
+      <div class="barra"><span id="pp-t">0:00</span><input type="range" id="pp-barra" min="0" max="60" step="any" value="0" aria-label="Posizione nell’ascolto"><span id="pp-tot">–:––</span></div>
+      <audio id="pp-audio" preload="metadata"></audio>
       <div class="pill-testo" id="pp-testo"></div>
       <div class="appr hidden" id="pp-appr-box"><h2>📚 Approfondisci</h2><div id="pp-appr"></div></div>
       <button class="prova-btn hidden" id="pp-prova"><b>✍️ Mettiti alla prova</b><span id="pp-prova-txt"></span></button>
@@ -1325,7 +1328,8 @@ async function apriPillola(i, approfondisci, continua) {
   const au = $("pp-audio"), src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
   if (au.getAttribute("src") !== src) au.src = src;
   au.playbackRate = (DB.vel || 1);
-  aggiornaCast(); renderVoci();
+  if (!continua) PL.frasiId = null;
+  aggiornaCast(); renderVoci(); aggiornaBarra();
   if (!continua) $("pp-stato").textContent = "";
   DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
   show("pillola");
@@ -1476,7 +1480,7 @@ function renderVoci() {
   $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
 }
 function scegliVoce(valore) { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = valore; salva(); renderVoci(); if (suonava && !$("pillola").classList.contains("hidden")) ascolta(); }
-function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); }
+function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); aggiornaBarra(); }
 // «▶ Prova»: una frase con la voce scelta (o l'inizio del file audio della pillola del giorno)
 let provaAudio = null;
 function fermaProva() {
@@ -1512,17 +1516,61 @@ async function ascolta() {
   }
   parlaTelefono(p);
 }
-function parlaTelefono(p) {
+// Voce del telefono: una frase alla volta, così la barra mostra a che punto si è, ci si può
+// spostare e la pausa riprende dalla frase interrotta. PL.frase è la frase da cui ripartire.
+const CAR_AL_SECONDO = 14;   // velocità di lettura stimata a 1×, per mostrare i tempi
+function frasiDi(p) {
+  if (PL.frasiId !== p.id) {
+    PL.frasiId = p.id; PL.frase = 0;
+    PL.frasi = p.parlato.split(/(?<=[.!?:;])\s+/).filter(f => f.trim());
+    let c = 0; PL.inizi = PL.frasi.map(f => { const x = c; c += f.length + 1; return x; }); PL.caratteri = c;
+  }
+  return PL.frasi;
+}
+function parlaTelefono(p, da) {
   if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; $("pp-play").textContent = "▶ Ascolta"; return; }
-  const u = new SpeechSynthesisUtterance(p.parlato);
-  u.lang = "it-IT"; u.rate = (DB.vel || 1);
-  const v = voceScelta();
-  if (v) u.voice = v;
-  u.onend = () => { if (voceTel !== u) return; voceTel = null; $("pp-play").textContent = "▶ Ascolta"; finePillola(); };
-  u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
-  voceTel = u;
+  const frasi = frasiDi(p), v = voceScelta();
+  if (da !== undefined) PL.frase = da;
+  if (PL.frase >= frasi.length) PL.frase = 0;
+  speechSynthesis.cancel();
+  const dici = k => {
+    PL.frase = k; aggiornaBarra();
+    if (k >= frasi.length) { voceTel = null; PL.frase = 0; $("pp-play").textContent = "▶ Ascolta"; finePillola(); return; }
+    const u = new SpeechSynthesisUtterance(frasi[k]);
+    u.lang = "it-IT"; u.rate = (DB.vel || 1);
+    if (v) u.voice = v;
+    u.onend = () => { if (voceTel === u) dici(k + 1); };
+    u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
+    voceTel = u;
+    speechSynthesis.speak(u);
+  };
   $("pp-stato").textContent = usaFile() ? "Voce del telefono (file audio non disponibile)" : "";
-  speechSynthesis.speak(u);
+  dici(PL.frase);
+}
+const mmss2 = sec => Math.floor(sec / 60) + ":" + String(Math.floor(sec % 60)).padStart(2, "0");
+// la barra: secondi del file audio, oppure tempo stimato dalla frase raggiunta
+function aggiornaBarra() {
+  const au = $("pp-audio"), b = $("pp-barra");
+  if (usaFile()) {
+    const tot = isFinite(au.duration) ? au.duration : 0;
+    b.max = tot || 60; if (!PL.trascina) b.value = au.currentTime || 0;
+    $("pp-t").textContent = mmss2(au.currentTime || 0); $("pp-tot").textContent = tot ? mmss2(tot) : "–:––";
+    return;
+  }
+  const p = PILLOLE[PL.i]; frasiDi(p);
+  const vel = CAR_AL_SECONDO * (DB.vel || 1), pos = (PL.inizi[PL.frase] ?? PL.caratteri) / vel;
+  b.max = PL.caratteri / vel; if (!PL.trascina) b.value = pos;
+  $("pp-t").textContent = mmss2(pos); $("pp-tot").textContent = "~" + mmss2(PL.caratteri / vel);
+}
+// spostando la barra: nel file si salta al secondo, con la voce alla frase corrispondente
+function spostaBarra() {
+  PL.trascina = false;
+  const v = +$("pp-barra").value, au = $("pp-audio");
+  if (usaFile()) { au.currentTime = v; aggiornaBarra(); return; }
+  const p = PILLOLE[PL.i]; frasiDi(p);
+  const car = v * CAR_AL_SECONDO * (DB.vel || 1);
+  let k = 0; while (k + 1 < PL.inizi.length && PL.inizi[k + 1] <= car) k++;
+  if (voceTel && !voceTel.prova) parlaTelefono(p, k); else { PL.frase = k; aggiornaBarra(); }
 }
 function finePillola() {
   $("pp-play").textContent = "▶ Ascolta";
@@ -1540,7 +1588,7 @@ function suona(i) {
   const au = $("pp-audio"), p = PILLOLE[i], src = "pillole/audio/" + p.id + ".mp3";
   if (window.speechSynthesis) speechSynthesis.cancel();
   voceTel = null;
-  PL.i = i;
+  PL.i = i; PL.frasiId = null;
   if (usaFile() && p.audio !== false && au.dataset.ko !== src) {
     if (au.getAttribute("src") !== src) au.src = src;
     au.playbackRate = (DB.vel || 1);
@@ -1651,6 +1699,9 @@ async function trasmetti() {
 if (HAS_PILLOLE) {
   const au = $("pp-audio");
   au.onended = finePillola;
+  au.ontimeupdate = au.onloadedmetadata = au.ondurationchange = () => { if (usaFile()) aggiornaBarra(); };
+  $("pp-barra").oninput = () => { PL.trascina = true; const v = +$("pp-barra").value; $("pp-t").textContent = mmss2(v); };
+  $("pp-barra").onchange = spostaBarra;
   au.onpause = () => { if (!voceTel) $("pp-play").textContent = "▶ Ascolta"; aggiornaMini(); };
   au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; aggiornaMini(); };
   au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if ($("pp-play").textContent.startsWith("⏸")) parlaTelefono(PILLOLE[PL.i]); };
