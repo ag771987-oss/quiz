@@ -218,6 +218,20 @@ details.atto summary{cursor:pointer}
 /* le sezioni stanno in più contenitori: quelli senza nulla di visibile non occupano spazio */
 .wrap:not(:has(> :not(.hidden))){display:none}
 .norma-testo ins,#nn-nota ins{background:var(--ok-soft);color:var(--ok);text-decoration:none;font-weight:600}
+.lettura{display:flex;gap:7px;justify-content:center;padding:14px 0 2px}
+.lettura span{width:9px;height:9px;border-radius:50%;background:var(--accent);animation:pulsa 1.2s infinite ease-in-out}
+.lettura span:nth-child(2){animation-delay:.2s}
+.lettura span:nth-child(3){animation-delay:.4s}
+@keyframes pulsa{0%,80%,100%{opacity:.25;transform:scale(.75)}40%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.lettura span{animation:none;opacity:.7}}
+.altre{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+.altre .muted{font-size:.85rem;margin-bottom:8px}
+.aree.mini{margin-bottom:8px;gap:6px}
+.aree.mini button{padding:3px 10px;font-size:.8rem}
+.striscia{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.striscia button{flex:0 0 auto;width:min(62vw,230px);scroll-snap-align:start;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 12px;text-align:left;font-size:.88rem;line-height:1.35}
+.striscia button small{display:block;color:var(--ink3);font-size:.75rem;margin-bottom:2px}
+.striscia button.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
 .barra{display:flex;gap:10px;align-items:center;margin:-4px 0 14px;font-size:.8rem;color:var(--ink3);font-variant-numeric:tabular-nums}
 .barra input{flex:1;min-width:0;accent-color:var(--accent);height:28px}
 .voce-modal{max-width:440px}
@@ -443,11 +457,12 @@ details.atto summary{cursor:pointer}
       <div class="barra"><span id="pp-t">0:00</span><input type="range" id="pp-barra" min="0" max="60" step="any" value="0" aria-label="Posizione nell’ascolto"><span id="pp-tot">–:––</span></div>
       <audio id="pp-audio" preload="metadata"></audio>
       <div class="pill-testo" id="pp-testo"></div>
+      <div class="lettura hidden" id="pp-lettura" aria-label="Lettura in corso"><span></span><span></span><span></span></div>
       <div class="appr hidden" id="pp-appr-box"><h2>📚 Approfondisci</h2><div id="pp-appr"></div></div>
       <button class="prova-btn hidden" id="pp-prova"><b>✍️ Mettiti alla prova</b><span id="pp-prova-txt"></span></button>
       <div class="fonti-pill hidden" id="pp-fonti-box"><b>Lezioni</b><div id="pp-fonti"></div></div>
       <div class="fonti-pill hidden" id="pp-coll-box"><b>Collegate</b><div id="pp-coll"></div></div>
-      <div class="actions"><button class="btn" id="pp-prec">← Precedente</button><span class="spacer"></span><button class="btn" id="pp-succ">Successiva →</button></div>
+      <div class="altre"><div class="muted" id="pp-altre-tit"></div><div class="aree mini" id="pp-altre-aree"></div><div class="striscia" id="pp-altre"></div></div>
     </div>
   </section>
 </div>
@@ -1318,8 +1333,8 @@ async function apriPillola(i, approfondisci, continua) {
   $("pp-testo").innerHTML = mdPillola(p.testo);
   renderApprofondimento(p);
   aggiornaStellaPillola();
-  $("pp-prec").disabled = ss ? ss.pos === 0 : i === 0;
-  $("pp-succ").disabled = ss ? ss.pos === ss.coda.length - 1 : i === PILLOLE.length - 1;
+  if (!continua) PL.altreArea = null;
+  renderAltre();
   $("pp-indietro").textContent = ss ? "■ Fine sessione" : "← Pillole";
   const coll = (p.collegate || []).map(id => PILLOLE.findIndex(x => x.id === id)).filter(j => j >= 0);
   $("pp-coll-box").classList.toggle("hidden", !coll.length);
@@ -1446,6 +1461,7 @@ const pillolaVisibile = () => !$("pillola").classList.contains("hidden");
 function aggiornaMini() {
   const b = $("nn-audio"); if (!b) return;
   const on = typeof PL !== "undefined" && (!$("pp-audio").paused || (!!voceTel && !voceTel.prova));
+  $("pp-lettura").classList.toggle("hidden", !on);   // i tre puntini animati sotto il testo
   b.classList.toggle("hidden", !on);
   if (on) b.textContent = "⏸ " + PILLOLE[PL.i].titolo;
 }
@@ -1543,6 +1559,7 @@ function parlaTelefono(p, da) {
     u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
     voceTel = u;
     speechSynthesis.speak(u);
+    aggiornaMini();
   };
   $("pp-stato").textContent = usaFile() ? "Voce del telefono (file audio non disponibile)" : "";
   dici(PL.frase);
@@ -1666,6 +1683,43 @@ function fineSessione() {
   box.classList.remove("hidden");
   window.scrollTo(0, 0);
 }
+// Sotto la pillola: le altre pillole dello stesso argomento (con i pulsanti per cambiare
+// argomento), oppure, durante una sessione, quelle della sessione.
+function renderAltre() {
+  const lista = $("pp-altre"), aree = $("pp-altre-aree"), ss = PL.sess;
+  lista.innerHTML = ""; aree.innerHTML = "";
+  const pulsante = (testo, sopra, on, fai) => {
+    const b = document.createElement("button");
+    b.innerHTML = (sopra ? "<small>" + esc(sopra) + "</small>" : "") + esc(testo);
+    b.classList.toggle("on", on); b.onclick = fai; lista.appendChild(b); return b;
+  };
+  let attuale = null;
+  if (ss) {
+    $("pp-altre-tit").textContent = "🎧 Pillole di questa sessione";
+    ss.coda.forEach((idx, k) => {
+      const b = pulsante(PILLOLE[idx].titolo, (k + 1) + " di " + ss.coda.length, k === ss.pos, () => { if (k !== ss.pos) vaiInSessione(k - ss.pos); });
+      if (k === ss.pos) attuale = b;
+    });
+  } else {
+    const area = PL.altreArea || PILLOLE[PL.i].area, a = AREE[area] || {};
+    $("pp-altre-tit").textContent = "Altre pillole · " + (a.icona || "") + " " + (a.nome || "");
+    for (const x of PILLOLE_AREE.filter(x => PILLOLE.some(p => p.area === x.id))) {
+      const b = document.createElement("button");
+      b.textContent = x.icona + " " + ({ impiego: "Impiego", costituzione_ue: "Costituzione e UE" }[x.id] || x.nome.split(" ")[0]); b.title = x.nome;
+      b.classList.toggle("on", x.id === area);
+      b.onclick = () => { PL.altreArea = x.id; renderAltre(); };
+      aree.appendChild(b);
+    }
+    PILLOLE.forEach((p, idx) => {
+      if (p.area !== area) return;
+      const b = pulsante(p.titolo, pillolaAscoltata(p.id) ? "🎧 ascoltata" : "", idx === PL.i, () => { if (idx !== PL.i) apriPillola(idx); });
+      if (idx === PL.i) attuale = b;
+    });
+  }
+  aree.classList.toggle("hidden", !!ss);
+  // porta in vista la pillola attuale senza spostare la pagina
+  if (attuale) requestAnimationFrame(() => { lista.scrollLeft = attuale.offsetLeft - lista.offsetLeft - 8; });
+}
 function vaiInSessione(d) {
   const ss = PL.sess, k = ss.pos + d;
   if (k < 0 || k >= ss.coda.length) return;
@@ -1721,8 +1775,6 @@ if (HAS_PILLOLE) {
   $("v-prova").onclick = provaVoce;
   $("nn-audio").onclick = () => { fermaAscolto(); aggiornaMini(); };
   if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { renderVoci(); });
-  $("pp-prec").onclick = () => PL.sess ? vaiInSessione(-1) : apriPillola(PL.i - 1);
-  $("pp-succ").onclick = () => PL.sess ? vaiInSessione(1) : apriPillola(PL.i + 1);
   $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
   $("tab-quiz").onclick = () => { fermaAscolto(); DB.tab = "quiz"; salva(); history.replaceState(null, "", location.pathname); renderHome(); };
   $("tab-pillole").onclick = renderPillole;
