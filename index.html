@@ -193,6 +193,17 @@ table.res td,table.res th{padding:6px 8px;border-bottom:1px solid var(--line);te
 .prova-btn{width:100%;margin-top:10px;text-align:left;border:1.5px solid var(--ok);background:var(--ok-soft);border-radius:12px;padding:12px 14px}
 .prova-btn b{display:block;color:var(--ok)}
 .prova-btn span{font-size:.88rem;color:var(--ink2)}
+.mini-lettore{position:fixed;left:max(8px,env(safe-area-inset-left,0px));right:max(8px,env(safe-area-inset-right,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:41;display:flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 20px rgba(20,30,50,.18);padding:6px 6px 8px;overflow:hidden;max-width:720px;margin:0 auto}
+body.con-tabbar .mini-lettore{bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+.mini-lettore button{border:none;background:none}
+.mini-play{width:42px;height:42px;border-radius:50%;background:var(--accent)!important;color:#fff;font-size:1.05rem;flex-shrink:0}
+.mini-info{flex:1;min-width:0;text-align:left;padding:2px 6px;display:grid}
+.mini-info b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.92rem}
+.mini-info span{font-size:.78rem;color:var(--ink3);font-variant-numeric:tabular-nums}
+.mini-chiudi{width:36px;height:36px;color:var(--ink3);flex-shrink:0;font-size:1rem}
+.mini-avanz{position:absolute;left:0;bottom:0;height:3px;background:var(--accent);width:0;transition:width .3s linear}
+body.con-mini{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body.con-mini.con-tabbar{padding-bottom:calc(140px + env(safe-area-inset-bottom,0px))}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:4px;background:var(--card);border-top:1px solid var(--line);padding:6px max(12px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
 .tabbar button{flex:0 1 200px;border:none;background:none;border-radius:10px;padding:6px 10px;font-size:.82rem;font-weight:600;color:var(--ink3);display:flex;flex-direction:column;align-items:center;gap:1px}
 .tabbar button span{font-size:1.3rem;line-height:1.2;filter:grayscale(1);opacity:.7}
@@ -476,7 +487,7 @@ details.atto summary{cursor:pointer}
   </section>
 
   <section id="norma" class="hidden">
-    <div class="topbar"><button class="btn small" id="nn-indietro">← Indietro</button><span class="tag" id="nn-sigla"></span><span class="spacer"></span><button class="btn small hidden" id="nn-audio" title="Ferma l’ascolto">⏸ In ascolto</button></div>
+    <div class="topbar"><button class="btn small" id="nn-indietro">← Indietro</button><span class="tag" id="nn-sigla"></span></div>
     <div class="card">
       <h1 id="nn-titolo" style="margin-bottom:4px"></h1>
       <div class="muted" id="nn-fonte" style="margin-bottom:12px"></div>
@@ -490,6 +501,12 @@ details.atto summary{cursor:pointer}
   </section>
 </div>
 
+<div class="mini-lettore hidden" id="mini" role="region" aria-label="Pillola in ascolto">
+  <button class="mini-play" id="mini-play" aria-label="Pausa">⏸</button>
+  <button class="mini-info" id="mini-info"><b id="mini-tit"></b><span id="mini-sotto"></span></button>
+  <button class="mini-chiudi" id="mini-chiudi" aria-label="Chiudi l’ascolto">✕</button>
+  <i class="mini-avanz" id="mini-avanz"></i>
+</div>
 <nav class="tabbar hidden" id="tabbar" aria-label="Sezioni">
   <button id="tab-quiz" data-tab="quiz"><span>📝</span>Quiz</button>
   <button id="tab-pillole" data-tab="pillole"><span>🎧</span>Pillole</button>
@@ -629,6 +646,7 @@ function show(id) {
   $("tabbar").classList.toggle("hidden", !tab);
   document.body.classList.toggle("con-tabbar", !!tab);
   for (const b of document.querySelectorAll("#tabbar button")) b.classList.toggle("on", b.dataset.tab === tab);
+  if (typeof aggiornaLettore === "function") aggiornaLettore();
   window.scrollTo(0, 0);
 }
 
@@ -1216,6 +1234,10 @@ document.addEventListener("keydown", e => {
     if (e.key === "Escape") { $("norma-ov").classList.add("hidden"); $("zoom-ov").classList.add("hidden"); $("voce-chiudi").click(); }
     return;
   }
+  if (e.key === " " && HAS_PILLOLE && $("quiz").classList.contains("hidden") && !/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName)) {
+    if (PL.play !== null || pillolaVisibile()) { e.preventDefault(); if (pillolaVisibile() && PL.play !== PL.i) ascolta(); else if (inRiproduzione()) fermaAscolto(); else riprendi(); }
+    return;
+  }
   if (!S || $("quiz").classList.contains("hidden") || e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.target.tagName === "INPUT") return;
   const d = S.coda[S.i], ordine = ordineOpzioni(d), key = e.key.toUpperCase();
@@ -1239,7 +1261,7 @@ document.addEventListener("keydown", e => {
 const HAS_PILLOLE = typeof PILLOLE !== "undefined" && PILLOLE.length > 0;
 const AREE = HAS_PILLOLE ? Object.fromEntries(PILLOLE_AREE.map(a => [a.id, a])) : {};
 // sess: sessione di ascolto in corso { coda: [indici], pos, fatte: [indici] } oppure null
-let PL = { area: null, i: 0, sess: null, normeCaricate: null, durate: {} };
+let PL = { area: null, i: 0, play: null, sess: null, riepilogo: null, normeCaricate: null, durate: {} };
 // Pillola del giorno: giorni dal 1/1/2026 (ora italiana) modulo il numero di pillole.
 // Stessa regola di strumenti/verifica_pillole.js, che prepara il notiziario di Alexa.
 function pillolaDelGiorno() {
@@ -1267,9 +1289,7 @@ function etichettaFonte(f) {
   return "📜 " + etichettaNorma(n) + (st ? " (testo al " + st[3] + "/" + st[2] + "/" + st[1] + ")" : "");
 }
 function renderPillole() {
-  fermaAscolto();
   if (DB.tab !== "pillole") { DB.tab = "pillole"; salva(); }
-  PL.sess = null;
   const oggi = PILLOLE[pillolaDelGiorno()];
   $("p-oggi").innerHTML = "<div class='muted'>📅 Pillola del giorno</div>";
   $("p-oggi").appendChild(vocePillola(oggi, true));
@@ -1300,6 +1320,7 @@ function renderPillole() {
   const lista = $("p-lista"); lista.innerHTML = "";
   for (const p of PILLOLE.filter(p => !PL.area || (PL.area === "*" ? daApprofondire(p.id) : p.area === PL.area))) lista.appendChild(vocePillola(p));
   $("p-altoparlanti-testo").innerHTML = istruzioniAltoparlanti();
+  mostraRiepilogo();
   const nAsc = PILLOLE.filter(p => pillolaAscoltata(p.id)).length;
   $("p-sub").textContent = PILLOLE.length + " pillole · " + nAsc + " ascoltate";
   show("pillole");
@@ -1321,12 +1342,11 @@ function istruzioniAltoparlanti() {
 }
 // continua: la pillola è già in riproduzione (sessione), non fermare l'audio
 async function apriPillola(i, approfondisci, continua) {
-  if (!continua) fermaAscolto();
   PL.i = i;
   const p = PILLOLE[i], a = AREE[p.area] || {};
   if (!location.hash.startsWith("#pillola=" + p.id)) history.replaceState(null, "", "#pillola=" + p.id);
   $("pp-area").textContent = (a.icona || "") + " " + (a.nome || "");
-  const ss = PL.sess;
+  const ss = PL.sess && PL.sess.coda[PL.sess.pos] === i ? PL.sess : null;   // si sta guardando la pillola della sessione
   $("pp-pos").textContent = ss ? "🎧 " + (ss.pos + 1) + " di " + ss.coda.length : (i + 1) + " / " + PILLOLE.length;
   $("pp-titolo").textContent = p.titolo;
   $("pp-sintesi").textContent = p.sintesi;
@@ -1335,19 +1355,17 @@ async function apriPillola(i, approfondisci, continua) {
   aggiornaStellaPillola();
   if (!continua) PL.altreArea = null;
   renderAltre();
-  $("pp-indietro").textContent = ss ? "■ Fine sessione" : "← Pillole";
   const coll = (p.collegate || []).map(id => PILLOLE.findIndex(x => x.id === id)).filter(j => j >= 0);
   $("pp-coll-box").classList.toggle("hidden", !coll.length);
   $("pp-coll").innerHTML = "";
   for (const j of coll) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + PILLOLE[j].titolo; b.onclick = () => apriPillola(j); $("pp-coll").appendChild(b); }
   const au = $("pp-audio"), src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
-  if (au.getAttribute("src") !== src) au.src = src;
-  au.playbackRate = (DB.vel || 1);
-  if (!continua) PL.frasiId = null;
-  aggiornaCast(); renderVoci(); aggiornaBarra();
-  if (!continua) $("pp-stato").textContent = "";
+  if (PL.play === null && usaFile() && au.getAttribute("src") !== src) au.src = src;   // per «Trasmetti»
+  aggiornaCast(); renderVoci();
+  $("pp-stato").textContent = "";
   DB.pillole = DB.pillole || {}; DB.pillole[p.id] = Date.now(); salva();
   show("pillola");
+  aggiornaLettore();
   await caricaNormePillole();
   if (PL.i !== i) return;
   renderFonti(p);
@@ -1396,7 +1414,6 @@ function domandePillola(p) {
   return TUTTE.filter(d => ((d.aiuti && d.aiuti.riferimenti) || []).some(r => q.some(x => r.normaId.startsWith(x))));
 }
 function provaPillola() {
-  fermaAscolto();
   const pool = domandePillola(PILLOLE[PL.i]);
   if (!pool.length) return;
   S = { modo: "pillola", pillola: PL.i, coda: ordinaPerPriorita(pool), i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
@@ -1446,26 +1463,6 @@ function renderFonti(p) {
   $("pp-norme-box").classList.toggle("hidden", !viste.size);
   $("pp-fonti-box").classList.toggle("hidden", !box.children.length);
 }
-// ── Ascolto: file MP3 se c'è (e si può trasmettere), altrimenti la voce del telefono ──
-let voceTel = null;
-function fermaAscolto() {
-  const au = $("pp-audio"); if (!au.paused) au.pause();
-  if (window.speechSynthesis) speechSynthesis.cancel();
-  voceTel = null;
-  $("pp-play").textContent = "▶ Ascolta";
-  aggiornaMini();
-}
-// Leggendo una norma dalla pillola l'ascolto continua: la scheda mostra «⏸ In ascolto» per
-// fermarlo, e «← Indietro» riporta alla pillola che sta suonando.
-const pillolaVisibile = () => !$("pillola").classList.contains("hidden");
-function aggiornaMini() {
-  const b = $("nn-audio"); if (!b) return;
-  const on = typeof PL !== "undefined" && (!$("pp-audio").paused || (!!voceTel && !voceTel.prova));
-  $("pp-lettura").classList.toggle("hidden", !on);   // i tre puntini animati sotto il testo
-  b.classList.toggle("hidden", !on);
-  if (on) b.textContent = "⏸ " + PILLOLE[PL.i].titolo;
-}
-function tornaAllaPillola() { return apriPillola(PL.i, false, true); }
 // ── Voce: quella del telefono (su iPhone le voci italiane di Siri) oppure il file audio ──
 // DB.voce: "" = la migliore voce italiana del telefono, nome di una voce, oppure "file".
 // Su iPhone la stessa voce esiste in più versioni con lo stesso nome («Alice» normale, avanzata,
@@ -1495,8 +1492,13 @@ function renderVoci() {
     vociIt().some(x => qualita(x)) ? "" : "Per una voce più naturale scarica una voce «Avanzata» o «Premium»: Impostazioni → Accessibilità → Lettura e voce → Voci → Italiano. Poi chiudi e riapri l’app.";
   $("pp-cast").classList.toggle("hidden", !usaFile() || $("pp-cast").dataset.ok !== "1");
 }
-function scegliVoce(valore) { const suonava = inRiproduzione(); fermaAscolto(); DB.voce = valore; salva(); renderVoci(); if (suonava && !$("pillola").classList.contains("hidden")) ascolta(); }
-function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); aggiornaBarra(); }
+function scegliVoce(valore) {
+  const suonava = inRiproduzione(), i = PL.play;
+  fermaAscolto(); DB.voce = valore; salva(); renderVoci();
+  if (i !== null) { const f = PL.frase; PL.play = null; carica(i); PL.frase = f; if (suonava) riprendi(); }
+  aggiornaLettore();
+}
+function scegliVelocita(valore) { DB.vel = +valore; salva(); $("pp-audio").playbackRate = DB.vel; renderVoci(); aggiornaLettore(); }
 // «▶ Prova»: una frase con la voce scelta (o l'inizio del file audio della pillola del giorno)
 let provaAudio = null;
 function fermaProva() {
@@ -1521,16 +1523,67 @@ function provaVoce() {
   speechSynthesis.cancel(); voceTel = u; $("v-prova").textContent = "■ Ferma";
   speechSynthesis.speak(u);
 }
-function inRiproduzione() { return !$("pp-audio").paused || !!voceTel; }
-async function ascolta() {
-  if (inRiproduzione()) { fermaAscolto(); $("pp-stato").textContent = ""; return; }
-  const au = $("pp-audio"), p = PILLOLE[PL.i];
-  $("pp-play").textContent = "⏸ Pausa";
-  if (usaFile() && au.src && au.dataset.ko !== au.src) {
-    try { au.playbackRate = (DB.vel || 1); await au.play(); $("pp-stato").textContent = ""; mediaSession(p); return; }
-    catch (e) { if (e.name === "NotAllowedError") { $("pp-play").textContent = "▶ Ascolta"; return; } au.dataset.ko = au.src; }
-  }
-  parlaTelefono(p);
+// ── Ascolto ──
+// La pillola in ascolto (PL.play) è distinta da quella aperta (PL.i): l'ascolto continua mentre
+// si usa il resto dell'app, e il mini lettore in basso lo controlla da ogni pagina.
+// File MP3 se scelto (e si può trasmettere), altrimenti la voce del telefono, una frase alla volta.
+let voceTel = null;
+const inRiproduzione = () => !$("pp-audio").paused || (!!voceTel && !voceTel.prova);
+// pausa: si resta sulla stessa pillola e si riprende da lì
+function fermaAscolto() {
+  const au = $("pp-audio"); if (!au.paused) au.pause();
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  voceTel = null;
+  aggiornaLettore();
+}
+// chiude l'ascolto (✕ del mini lettore, fine della pillola)
+function chiudiAscolto() {
+  if (PL.sess) return fineSessione();
+  fermaAscolto();
+  PL.play = null;
+  aggiornaLettore();
+}
+const pillolaVisibile = () => !$("pillola").classList.contains("hidden");
+function tornaAllaPillola() { return apriPillola(PL.play ?? PL.i, false, true); }
+// Carica la pillola i nel lettore senza avviarla (ferma quella in corso).
+function caricaNelLettore(i) {
+  if (PL.play === i) return;
+  fermaAscolto();
+  const au = $("pp-audio"), p = PILLOLE[i];
+  PL.play = i; PL.frasiId = null;
+  const src = p.audio === false ? "" : "pillole/audio/" + p.id + ".mp3";
+  if (usaFile() && au.getAttribute("src") !== src) au.src = src;
+}
+// Avvia (o riprende) la pillola in PL.play.
+function riprendi() {
+  const au = $("pp-audio"), p = PILLOLE[PL.play], src = "pillole/audio/" + p.id + ".mp3";
+  if (usaFile() && p.audio !== false && au.dataset.ko !== src) {
+    if (au.getAttribute("src") !== src) au.src = src;
+    au.playbackRate = DB.vel || 1;
+    au.play().then(() => { mediaSession(p); aggiornaLettore(); }).catch(e => { if (e.name !== "NotAllowedError") parlaTelefono(p); else aggiornaLettore(); });
+  } else parlaTelefono(p);
+  aggiornaLettore();
+}
+// ▶ della pagina della pillola: pausa/ripresa se è quella in ascolto, altrimenti la avvia
+function ascolta() {
+  if (PL.play === PL.i && inRiproduzione()) { fermaAscolto(); return; }
+  if (PL.play === PL.i) { riprendi(); return; }
+  const ss = PL.sess;
+  if (ss) { const k = ss.coda.indexOf(PL.i); if (k >= 0) ss.pos = k; else PL.sess = null; }
+  suona(PL.i);
+}
+// Avvia subito la pillola i (nello stesso gesto o alla fine della precedente, così il telefono
+// continua anche a schermo spento). Se si stava guardando la pillola in ascolto, la pagina la
+// segue; altrimenti si resta dove si è. apri: mostra comunque la pillola.
+function suona(i, apri) {
+  const seguiva = pillolaVisibile() && PL.i === PL.play;
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  voceTel = null;
+  PL.play = null; caricaNelLettore(i);
+  riprendi();
+  if (apri || seguiva) return apriPillola(i, false, true);
+  aggiornaLettore();
+  return Promise.resolve();
 }
 // Voce del telefono: una frase alla volta, così la barra mostra a che punto si è, ci si può
 // spostare e la pausa riprende dalla frase interrotta. PL.frase è la frase da cui ripartire.
@@ -1544,78 +1597,84 @@ function frasiDi(p) {
   return PL.frasi;
 }
 function parlaTelefono(p, da) {
-  if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; $("pp-play").textContent = "▶ Ascolta"; return; }
+  if (!window.speechSynthesis) { $("pp-stato").textContent = "Audio non disponibile su questo dispositivo."; return; }
   const frasi = frasiDi(p), v = voceScelta();
   if (da !== undefined) PL.frase = da;
   if (PL.frase >= frasi.length) PL.frase = 0;
   speechSynthesis.cancel();
   const dici = k => {
-    PL.frase = k; aggiornaBarra();
-    if (k >= frasi.length) { voceTel = null; PL.frase = 0; $("pp-play").textContent = "▶ Ascolta"; finePillola(); return; }
+    PL.frase = k;
+    if (k >= frasi.length) { voceTel = null; PL.frase = 0; finePillola(); return; }
     const u = new SpeechSynthesisUtterance(frasi[k]);
-    u.lang = "it-IT"; u.rate = (DB.vel || 1);
+    u.lang = "it-IT"; u.rate = DB.vel || 1;
     if (v) u.voice = v;
     u.onend = () => { if (voceTel === u) dici(k + 1); };
-    u.onerror = () => { if (voceTel === u) { voceTel = null; $("pp-play").textContent = "▶ Ascolta"; } };
+    u.onerror = () => { if (voceTel === u) { voceTel = null; aggiornaLettore(); } };
     voceTel = u;
     speechSynthesis.speak(u);
-    aggiornaMini();
+    aggiornaLettore();
   };
   $("pp-stato").textContent = usaFile() ? "Voce del telefono (file audio non disponibile)" : "";
   dici(PL.frase);
 }
 const mmss2 = sec => Math.floor(sec / 60) + ":" + String(Math.floor(sec % 60)).padStart(2, "0");
-// la barra: secondi del file audio, oppure tempo stimato dalla frase raggiunta
-function aggiornaBarra() {
-  const au = $("pp-audio"), b = $("pp-barra");
+// posizione e durata (secondi) della pillola i: reali se è in ascolto, altrimenti 0 e la durata nota
+function posizione(i) {
+  const p = PILLOLE[i], vel = DB.vel || 1, au = $("pp-audio");
   if (usaFile()) {
-    const tot = isFinite(au.duration) ? au.duration : 0;
-    b.max = tot || 60; if (!PL.trascina) b.value = au.currentTime || 0;
-    $("pp-t").textContent = mmss2(au.currentTime || 0); $("pp-tot").textContent = tot ? mmss2(tot) : "–:––";
-    return;
+    if (i === PL.play && isFinite(au.duration)) return { pos: au.currentTime || 0, tot: au.duration, stima: false };
+    return { pos: 0, tot: (PL.durate[p.id] || 0) / vel, stima: false };
   }
-  const p = PILLOLE[PL.i]; frasiDi(p);
-  const vel = CAR_AL_SECONDO * (DB.vel || 1), pos = (PL.inizi[PL.frase] ?? PL.caratteri) / vel;
-  b.max = PL.caratteri / vel; if (!PL.trascina) b.value = pos;
-  $("pp-t").textContent = mmss2(pos); $("pp-tot").textContent = "~" + mmss2(PL.caratteri / vel);
+  if (i === PL.play) {
+    frasiDi(p);
+    return { pos: (PL.inizi[PL.frase] ?? PL.caratteri) / (CAR_AL_SECONDO * vel), tot: PL.caratteri / (CAR_AL_SECONDO * vel), stima: true };
+  }
+  return { pos: 0, tot: (p.parlato.length + 1) / (CAR_AL_SECONDO * vel), stima: true };
 }
-// spostando la barra: nel file si salta al secondo, con la voce alla frase corrispondente
+// aggiorna tutto ciò che mostra lo stato dell'ascolto: pulsante, barra e puntini della pillola
+// aperta, mini lettore in basso
+function aggiornaLettore() {
+  if (typeof PL === "undefined" || !HAS_PILLOLE) return;
+  const suona = inRiproduzione(), stessa = PL.play !== null && PL.play === PL.i;
+  // pagina della pillola
+  $("pp-play").textContent = stessa && suona ? "⏸ Pausa" : "▶ Ascolta";
+  $("pp-lettura").classList.toggle("hidden", !(stessa && suona));
+  const b = $("pp-barra"), x = posizione(PL.i);
+  b.max = x.tot || 60; if (!PL.trascina) b.value = x.pos;
+  $("pp-t").textContent = mmss2(x.pos); $("pp-tot").textContent = x.tot ? (x.stima ? "~" : "") + mmss2(x.tot) : "–:––";
+  // mini lettore: c'è una pillola in ascolto e non la si sta già guardando
+  const m = $("mini"), vis = PL.play !== null && !(pillolaVisibile() && stessa);
+  m.classList.toggle("hidden", !vis);
+  document.body.classList.toggle("con-mini", vis);
+  if (vis) {
+    const p = PILLOLE[PL.play], y = posizione(PL.play), ss = PL.sess;
+    $("mini-play").textContent = suona ? "⏸" : "▶";
+    $("mini-play").setAttribute("aria-label", suona ? "Pausa" : "Riprendi");
+    $("mini-tit").textContent = p.titolo;
+    $("mini-sotto").textContent = (ss ? "🎧 " + (ss.pos + 1) + " di " + ss.coda.length + " · " : "") + mmss2(y.pos) + " / " + (y.stima ? "~" : "") + mmss2(y.tot);
+    $("mini-avanz").style.width = (y.tot ? Math.min(100, 100 * y.pos / y.tot) : 0) + "%";
+  }
+}
+// spostando la barra della pillola aperta: nel file si salta al secondo, con la voce alla frase
 function spostaBarra() {
   PL.trascina = false;
   const v = +$("pp-barra").value, au = $("pp-audio");
-  if (usaFile()) { au.currentTime = v; aggiornaBarra(); return; }
+  if (PL.play !== PL.i) caricaNelLettore(PL.i);
+  if (usaFile()) { au.currentTime = v; aggiornaLettore(); return; }
   const p = PILLOLE[PL.i]; frasiDi(p);
   const car = v * CAR_AL_SECONDO * (DB.vel || 1);
   let k = 0; while (k + 1 < PL.inizi.length && PL.inizi[k + 1] <= car) k++;
-  if (voceTel && !voceTel.prova) parlaTelefono(p, k); else { PL.frase = k; aggiornaBarra(); }
+  if (voceTel && !voceTel.prova) parlaTelefono(p, k); else { PL.frase = k; aggiornaLettore(); }
 }
 function finePillola() {
-  $("pp-play").textContent = "▶ Ascolta";
-  aggiornaMini();
-  DB.ascoltate = DB.ascoltate || {}; DB.ascoltate[PILLOLE[PL.i].id] = Date.now(); salva();
+  const i = PL.play;
+  if (i === null || i === undefined) return;
+  DB.ascoltate = DB.ascoltate || {}; DB.ascoltate[PILLOLE[i].id] = Date.now(); salva();
   const ss = PL.sess;
-  if (!ss) return;
-  if (!ss.fatte.includes(PL.i)) ss.fatte.push(PL.i);
+  if (!ss) { PL.play = null; PL.frasiId = null; aggiornaLettore(); return; }
+  if (!ss.fatte.includes(i)) ss.fatte.push(i);
   if (ss.pos + 1 < ss.coda.length) { ss.pos++; suona(ss.coda[ss.pos]); }
   else fineSessione();
-}
-// Avvia subito l'audio della pillola i (nello stesso gesto o alla fine della precedente, così il
-// telefono continua anche a schermo spento), poi aggiorna la pagina.
-function suona(i) {
-  const au = $("pp-audio"), p = PILLOLE[i], src = "pillole/audio/" + p.id + ".mp3";
-  if (window.speechSynthesis) speechSynthesis.cancel();
-  voceTel = null;
-  PL.i = i; PL.frasiId = null;
-  if (usaFile() && p.audio !== false && au.dataset.ko !== src) {
-    if (au.getAttribute("src") !== src) au.src = src;
-    au.playbackRate = (DB.vel || 1);
-    au.play().then(() => mediaSession(p)).catch(e => {
-      if (e.name === "NotAllowedError") $("pp-play").textContent = "▶ Ascolta"; else parlaTelefono(p);
-    });
-  } else parlaTelefono(p);
-  $("pp-play").textContent = "⏸ Pausa";
-  if (!$("norma").classList.contains("hidden")) { aggiornaMini(); return Promise.resolve(); }   // si sta leggendo una norma: resta lì
-  return apriPillola(i, false, true);
 }
 // ── Sessione di ascolto ──
 const SESS_QUANTO = [{ v: 5, t: "5 min" }, { v: 10, t: "10 min" }, { v: 15, t: "15 min" }, { v: 0, t: "Tutte" }];
@@ -1667,14 +1726,23 @@ function avviaSessione() {
   if (!coda.length) return;
   $("p-sess").classList.add("hidden"); $("p-riepilogo").classList.add("hidden");
   PL.sess = { coda, pos: 0, fatte: [] };
-  suona(coda[0]);
+  suona(coda[0], true);
 }
 function fineSessione() {
   const ss = PL.sess;
-  fermaAscolto();
-  if (!pillolaVisibile() && !$("norma").classList.contains("hidden")) { PL.sess = null; return; }   // non lasciare la norma che si sta leggendo
-  renderPillole();   // azzera PL.sess
-  const fatte = ss ? ss.fatte : [], box = $("p-riepilogo");
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  voceTel = null; const au = $("pp-audio"); if (!au.paused) au.pause();
+  PL.sess = null; PL.play = null; PL.frasiId = null;
+  PL.riepilogo = ss;
+  // il riepilogo compare nella pagina delle pillole: subito se si è lì o si seguiva la sessione
+  if (!$("pillole").classList.contains("hidden") || pillolaVisibile()) renderPillole();
+  else aggiornaLettore();
+}
+function mostraRiepilogo() {
+  const ss = PL.riepilogo, box = $("p-riepilogo");
+  if (!ss) return;
+  PL.riepilogo = null;
+  const fatte = ss.fatte;
   box.innerHTML = "<h2>" + (fatte.length === ss.coda.length ? "✔ Sessione completata" : "Sessione interrotta") + "</h2><div class='muted'>" +
     (fatte.length ? "Hai ascoltato " + fatte.length + (fatte.length === 1 ? " pillola" : " pillole") + ". Tocca una pillola per leggerla e approfondirla." : "Nessuna pillola ascoltata fino alla fine.") + "</div>";
   const l = document.createElement("div"); l.className = "riep-lista";
@@ -1686,7 +1754,7 @@ function fineSessione() {
 // Sotto la pillola: le altre pillole dello stesso argomento (con i pulsanti per cambiare
 // argomento), oppure, durante una sessione, quelle della sessione.
 function renderAltre() {
-  const lista = $("pp-altre"), aree = $("pp-altre-aree"), ss = PL.sess;
+  const lista = $("pp-altre"), aree = $("pp-altre-aree"), ss = PL.sess && PL.sess.coda.includes(PL.i) ? PL.sess : null;
   lista.innerHTML = ""; aree.innerHTML = "";
   const pulsante = (testo, sopra, on, fai) => {
     const b = document.createElement("button");
@@ -1697,8 +1765,8 @@ function renderAltre() {
   if (ss) {
     $("pp-altre-tit").textContent = "🎧 Pillole di questa sessione";
     ss.coda.forEach((idx, k) => {
-      const b = pulsante(PILLOLE[idx].titolo, (k + 1) + " di " + ss.coda.length, k === ss.pos, () => { if (k !== ss.pos) vaiInSessione(k - ss.pos); });
-      if (k === ss.pos) attuale = b;
+      const b = pulsante(PILLOLE[idx].titolo, (k + 1) + " di " + ss.coda.length, idx === PL.i, () => { if (idx !== PL.i) vaiInSessione(k - ss.pos); });
+      if (idx === PL.i) attuale = b;
     });
   } else {
     const area = PL.altreArea || PILLOLE[PL.i].area, a = AREE[area] || {};
@@ -1725,7 +1793,7 @@ function vaiInSessione(d) {
   if (k < 0 || k >= ss.coda.length) return;
   const suonava = inRiproduzione();
   ss.pos = k;
-  if (suonava) suona(ss.coda[k]); else apriPillola(ss.coda[k]);
+  if (suonava) suona(ss.coda[k], true); else { caricaNelLettore(ss.coda[k]); apriPillola(ss.coda[k]); }
 }
 function mediaSession(p) {
   if (!("mediaSession" in navigator)) return;
@@ -1735,8 +1803,9 @@ function mediaSession(p) {
     navigator.mediaSession.setActionHandler("nexttrack", ss.pos + 1 < ss.coda.length ? () => { ss.pos++; suona(ss.coda[ss.pos]); } : null);
     navigator.mediaSession.setActionHandler("previoustrack", ss.pos > 0 ? () => { ss.pos--; suona(ss.coda[ss.pos]); } : null);
   } else {
-    navigator.mediaSession.setActionHandler("nexttrack", PL.i + 1 < PILLOLE.length ? () => suona(PL.i + 1) : null);
-    navigator.mediaSession.setActionHandler("previoustrack", PL.i > 0 ? () => suona(PL.i - 1) : null);
+    const i = PL.play ?? PL.i;
+    navigator.mediaSession.setActionHandler("nexttrack", i + 1 < PILLOLE.length ? () => suona(i + 1) : null);
+    navigator.mediaSession.setActionHandler("previoustrack", i > 0 ? () => suona(i - 1) : null);
   }
 }
 // Trasmissione: Remote Playback API (Chrome su Android → Google Nest / Chromecast)
@@ -1753,12 +1822,11 @@ async function trasmetti() {
 if (HAS_PILLOLE) {
   const au = $("pp-audio");
   au.onended = finePillola;
-  au.ontimeupdate = au.onloadedmetadata = au.ondurationchange = () => { if (usaFile()) aggiornaBarra(); };
+  au.ontimeupdate = au.onloadedmetadata = au.ondurationchange = () => { if (usaFile()) aggiornaLettore(); };
   $("pp-barra").oninput = () => { PL.trascina = true; const v = +$("pp-barra").value; $("pp-t").textContent = mmss2(v); };
   $("pp-barra").onchange = spostaBarra;
-  au.onpause = () => { if (!voceTel) $("pp-play").textContent = "▶ Ascolta"; aggiornaMini(); };
-  au.onplay = () => { $("pp-play").textContent = "⏸ Pausa"; aggiornaMini(); };
-  au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if ($("pp-play").textContent.startsWith("⏸")) parlaTelefono(PILLOLE[PL.i]); };
+  au.onpause = au.onplay = aggiornaLettore;
+  au.onerror = () => { if (!au.src || au.dataset.ko === au.src) return; au.dataset.ko = au.src; if (PL.play !== null && !voceTel) parlaTelefono(PILLOLE[PL.play]); };
   if (au.remote) { au.remote.onconnect = () => { $("pp-stato").textContent = "📡 In trasmissione sull’altoparlante"; }; au.remote.ondisconnect = () => { $("pp-stato").textContent = ""; }; }
   $("pp-play").onclick = ascolta;
   $("pp-cast").onclick = trasmetti;
@@ -1773,10 +1841,13 @@ if (HAS_PILLOLE) {
   $("v-voce").onchange = () => scegliVoce($("v-voce").value);
   $("v-vel").onchange = () => scegliVelocita($("v-vel").value);
   $("v-prova").onclick = provaVoce;
-  $("nn-audio").onclick = () => { fermaAscolto(); aggiornaMini(); };
+  // mini lettore
+  $("mini-play").onclick = () => { if (inRiproduzione()) fermaAscolto(); else riprendi(); };
+  $("mini-info").onclick = tornaAllaPillola;
+  $("mini-chiudi").onclick = chiudiAscolto;
   if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", () => { renderVoci(); });
-  $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); if (PL.sess) fineSessione(); else renderPillole(); };
-  $("tab-quiz").onclick = () => { fermaAscolto(); DB.tab = "quiz"; salva(); history.replaceState(null, "", location.pathname); renderHome(); };
+  $("pp-indietro").onclick = () => { history.replaceState(null, "", location.pathname); renderPillole(); };
+  $("tab-quiz").onclick = () => { DB.tab = "quiz"; salva(); history.replaceState(null, "", location.pathname); renderHome(); };
   $("tab-pillole").onclick = renderPillole;
   $("p-sess-btn").onclick = () => {
     const box = $("p-sess"), apri = box.classList.contains("hidden");
@@ -1786,6 +1857,7 @@ if (HAS_PILLOLE) {
   $("ps-area").onchange = () => { impSessione().area = $("ps-area").value; salva(); renderSessione(); };
   $("ps-avvia").onclick = avviaSessione;
   if (window.speechSynthesis) speechSynthesis.getVoices();   // alcune piattaforme caricano le voci in ritardo
+  caricaDurate().then(() => aggiornaLettore());
 }
 // ═════════════════════════════════════════════════════════════════════
 // Norme (norme/indice.js): archivio consultabile, scheda di ogni articolo con versioni,
@@ -1819,7 +1891,6 @@ const etichettaVoce = v => v.titolo.split(" — ")[0] + (v.sigla && !/^Corte/.te
 const piega = s => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’']/g, " ");
 
 function renderNorme() {
-  fermaAscoltoSePillole();
   if (DB.tab !== "norme") { DB.tab = "norme"; salva(); }
   const basi = NORME_INDICE.filter(v => !v.al);
   $("n-sub").textContent = basi.filter(v => v.atto !== "Giurisprudenza").length + " articoli da " + NORME_ATTI.filter(a => a !== "Giurisprudenza").length + " atti · " + basi.filter(v => v.atto === "Giurisprudenza").length + " sentenze";
@@ -1880,7 +1951,7 @@ async function apriScheda(id, ritorno) {
   $("nn-quiz-txt").textContent = dd.length + (dd.length === 1 ? " domanda delle prove SNA cita" : " domande delle prove SNA citano") + " questo articolo.";
   if (location.hash !== "#norma=" + base) history.replaceState(null, "", "#norma=" + base);
   show("norma");
-  if (typeof aggiornaMini === "function" && HAS_PILLOLE) aggiornaMini();
+
 }
 function renderVersione() {
   const vs = versioni(NN.id), vista = NN.vista, chips = $("nn-versioni");
@@ -1956,7 +2027,7 @@ function provaNorma() {
   S = { modo: "norma", norma: NN.id, coda: ordinaPerPriorita(pool), i: 0, giuste: 0, date: 0, risposte: {}, ordini: {}, fine: null, timer: null };
   show("quiz"); renderDomanda();
 }
-function fermaAscoltoSePillole() { if (HAS_PILLOLE) fermaAscolto(); }
+
 if (HAS_INDICE) {
   $("tab-norme").onclick = () => { history.replaceState(null, "", location.pathname); renderNorme(); };
   let attesa = null;
