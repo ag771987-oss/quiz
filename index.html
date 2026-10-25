@@ -496,6 +496,7 @@ details.atto summary{cursor:pointer}
       <div class="norma-testo" id="nn-testo"></div>
       <div class="muted meta" id="nn-meta" style="margin-top:12px;overflow-wrap:anywhere"></div>
       <div class="fonti-pill hidden" id="nn-pill-box"><b>🎧 Pillole che ne parlano</b><div id="nn-pill"></div></div>
+      <div class="fonti-pill hidden" id="nn-rich-box"><b>⚖️ Sentenze e 🎓 lezioni collegate</b><div id="nn-rich"></div><div class="muted" style="font-size:.8rem;margin-top:6px">Richiami dalle relazioni confermate in CLA.</div></div>
       <div class="hidden" id="nn-quiz-box"><button class="prova-btn" id="nn-prova"><b>✍️ Esercitati su questa norma</b><span id="nn-quiz-txt"></span></button></div>
     </div>
   </section>
@@ -1947,11 +1948,44 @@ async function apriScheda(id, ritorno) {
   $("nn-pill-box").classList.toggle("hidden", !pp.length);
   $("nn-pill").innerHTML = "";
   for (const p of pp) { const b = document.createElement("button"); b.className = "norma-btn"; b.textContent = "🎧 " + p.titolo; b.onclick = () => apriPillola(PILLOLE.indexOf(p)); $("nn-pill").appendChild(b); }
+  await caricaRichiami();
+  renderRichiami(base);
   $("nn-quiz-box").classList.toggle("hidden", !dd.length);
   $("nn-quiz-txt").textContent = dd.length + (dd.length === 1 ? " domanda delle prove SNA cita" : " domande delle prove SNA citano") + " questo articolo.";
   if (location.hash !== "#norma=" + base) history.replaceState(null, "", "#norma=" + base);
   show("norma");
 
+}
+// Richiami a sentenze e lezioni (norme/richiami.js, scritto dal raccoglitore di CLA): per ogni
+// articolo, le sentenze e le lezioni che CLA collega a quella norma con una relazione confermata.
+// Solo riferimenti: citazione, ECLI e data; titolo, docente, data e minuto della lezione.
+let RICH = null;
+function caricaRichiami() { return RICH || (RICH = loadScript("norme/richiami.js").catch(() => {})); }
+function renderRichiami(base) {
+  const box = $("nn-rich"), voci = ((window.RICHIAMI || {})[base]) || [];
+  box.innerHTML = "";
+  const data = d => /^\d{4}-\d{2}-\d{2}$/.test(d || "") ? d.split("-").reverse().join("/") : (d || "");
+  for (const r of voci) {
+    if (r.tipo === "sentenza") {
+      // se Quiz ha gli estratti della sentenza, la si apre; altrimenti resta il riferimento
+      const m = /^ECLI:IT:COST:(\d{4}):(\d+)$/.exec(r.ecli || ""), sid = m ? "cc_" + m[1] + "_" + m[2] : "";
+      if (sid && NI[sid]) {
+        const b = document.createElement("button"); b.className = "norma-btn";
+        b.textContent = "⚖️ " + (r.citazione || r.ecli);
+        b.onclick = () => apriScheda(sid, () => apriScheda(base));
+        box.appendChild(b);
+      } else {
+        const d = document.createElement("div"); d.className = "lez";
+        d.textContent = "⚖️ " + [r.citazione || r.ecli, data(r.data), r.citazione && r.ecli !== r.citazione ? r.ecli : ""].filter(Boolean).join(" · ");
+        box.appendChild(d);
+      }
+    } else if (r.tipo === "lezione") {
+      const d = document.createElement("div"); d.className = "lez";
+      d.textContent = "🎓 " + [r.titolo, r.docente, data(r.data), r.dove ? "al minuto " + r.dove : ""].filter(Boolean).join(" · ");
+      box.appendChild(d);
+    }
+  }
+  $("nn-rich-box").classList.toggle("hidden", !box.children.length);
 }
 function renderVersione() {
   const vs = versioni(NN.id), vista = NN.vista, chips = $("nn-versioni");
