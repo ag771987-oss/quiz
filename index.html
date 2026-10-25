@@ -496,7 +496,7 @@ details.atto summary{cursor:pointer}
       <div class="norma-testo" id="nn-testo"></div>
       <div class="muted meta" id="nn-meta" style="margin-top:12px;overflow-wrap:anywhere"></div>
       <div class="fonti-pill hidden" id="nn-pill-box"><b>🎧 Pillole che ne parlano</b><div id="nn-pill"></div></div>
-      <div class="fonti-pill hidden" id="nn-rich-box"><b>⚖️ Sentenze e 🎓 lezioni collegate</b><div id="nn-rich"></div><div class="muted" style="font-size:.8rem;margin-top:6px">Richiami dalle relazioni confermate in CLA.</div></div>
+      <div class="fonti-pill hidden" id="nn-rich-box"><b>⚖️ Sentenze collegate</b><div id="nn-rich"></div><div class="muted" style="font-size:.8rem;margin-top:6px">Richiami dalle relazioni confermate in CLA.</div></div>
       <div class="hidden" id="nn-quiz-box"><button class="prova-btn" id="nn-prova"><b>✍️ Esercitati su questa norma</b><span id="nn-quiz-txt"></span></button></div>
     </div>
   </section>
@@ -1956,9 +1956,9 @@ async function apriScheda(id, ritorno) {
   show("norma");
 
 }
-// Richiami a sentenze e lezioni (norme/richiami.js, scritto dal raccoglitore di CLA): per ogni
-// articolo, le sentenze e le lezioni che CLA collega a quella norma con una relazione confermata.
-// Solo riferimenti: citazione, ECLI e data; titolo, docente, data e minuto della lezione.
+// Richiami alle sentenze (norme/richiami.js, scritto dal raccoglitore di CLA): per ogni articolo,
+// le sentenze che CLA collega a quella norma con una relazione confermata. Solo riferimenti:
+// citazione, ECLI e data. Le lezioni non si pubblicano (docenti e corsi restano in CLA).
 let RICH = null;
 function caricaRichiami() { return RICH || (RICH = loadScript("norme/richiami.js").catch(() => {})); }
 function renderRichiami(base) {
@@ -1979,10 +1979,6 @@ function renderRichiami(base) {
         d.textContent = "⚖️ " + [r.citazione || r.ecli, data(r.data), r.citazione && r.ecli !== r.citazione ? r.ecli : ""].filter(Boolean).join(" · ");
         box.appendChild(d);
       }
-    } else if (r.tipo === "lezione") {
-      const d = document.createElement("div"); d.className = "lez";
-      d.textContent = "🎓 " + [r.titolo, r.docente, data(r.data), r.dove ? "al minuto " + r.dove : ""].filter(Boolean).join(" · ");
-      box.appendChild(d);
     }
   }
   $("nn-rich-box").classList.toggle("hidden", !box.children.length);
